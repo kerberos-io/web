@@ -1,6 +1,6 @@
 #KERBEROS.**WEB**
 
-[![Build Status](https://magnum.travis-ci.com/cedricve/kerberos-web.svg?token=xAPfGKsCyaCbE3s5sbJ3&branch=master)](https://magnum.travis-ci.com/cedricve/kerberos-web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/machinery.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/machinery)
+[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://magnum.travis-ci.com/cedricve/kerberos-web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/machinery.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/machinery)
 
 ## Introduction
 
