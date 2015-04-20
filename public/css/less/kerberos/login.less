@@ -1,0 +1,81 @@
+body#red
+{
+    background-color: #943633;
+}
+
+div.center
+{
+    margin: 17% 0 0 0;
+
+    /**************************
+    *   Kerberos logo
+    */
+
+    .content
+    {
+        margin: 0 auto;
+        display: table;
+        z-index: 1;
+
+        .circle
+        {
+            padding: 10px;
+
+            div.kerberos
+            {
+                padding: 10px;
+                display: block;
+                position: relative;
+                background-image: url('../images/kerberos_multihead.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 380px;
+                height: 380px;
+            }
+        }
+    }
+
+    /**************************
+    *   Login form
+    */
+    width: 100%;
+
+    form#login
+    {
+        margin: -250px auto;
+        padding: 30px;
+        display: table;
+        position: relative;
+        z-index: 1337;
+
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: px solid #EAEAEA;
+        border-bottom: 4px solid #EAEAEA;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+
+        input[type='text'], input[type='password']
+        {
+            color: #74838E;
+            border: 1px solid #CACBCB;
+            border-radius: 3px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            padding: 8px 12px;
+            margin: 0 10px 0 0;
+            height: 38px;
+        }
+
+        input[type='submit']
+        {
+            padding: 9px 16px;
+            border-radius: 3px;
+            border: none;
+            transition: all .12s linear 0s!important;
+            outline: 0;
+            color: #fff;
+            background-color: #943633;
+        }
+    }
+}

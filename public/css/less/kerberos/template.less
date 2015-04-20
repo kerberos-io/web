@@ -1,0 +1,337 @@
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/7YGmE4Ls5b94ct65u07hVQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT Sans Bold'), local('PTSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/0XxGQsSc1g4rdRdjJKZrNL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('PT Sans Italic'), local('PTSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/PIPMHY90P7jtyjpXuZ2cLLO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('PT Sans Bold Italic'), local('PTSans-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/lILlYDvubYemzYzN7GbLkKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+body
+{
+    background-color: #f5f5f5;
+}
+
+.navbar-right
+{
+    margin-right: 10px;
+}
+
+.side-nav
+{
+    background-color: #f5f5f5;
+}
+
+.navbar-nav>li>a:hover
+{
+    color: #fff;
+    background-color: #ccc;
+}
+
+.navbar-inverse
+{
+    border: none;
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-collapse .navbar-nav>a:hover
+{
+    background-color: #C8C5C5;
+}
+
+.top-nav
+{
+    padding: 0;
+}
+
+h1
+{
+    font-family: 'Source Sans Pro', sans-serif;
+    position: relative;
+    color: #fff;
+    display: block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+    padding: 1px 0 10px 0;
+}
+
+.top-nav>li>a
+{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform : capitalize;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #943633;
+    background-color: #f5f5f5;
+}
+
+.side-nav li a:hover,
+.side-nav li a:focus {
+    background-color: #C8C5C5 !important;
+}
+
+.navbar-inverse .navbar-toggle
+{
+    border: none;
+}
+
+.navbar-inverse
+{
+    z-index: 1999;
+    background-color: #943633;
+    border-color: #f5f5f5;
+}
+
+.navbar-collapse
+{
+    border-top: none;
+}
+
+div.circle
+{
+    display: table;
+    background: #ffffff;
+    margin: 9px 0 0 14px;
+    border-radius: 50%;
+    padding: 5px;
+    float: left;
+}
+
+div.kerberos
+{
+    display: block;
+    position: relative;
+    background-image: url('../images/kerberos.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 20px;
+    height: 20px;
+}
+
+#images-overview
+{
+    display: table;
+    width: 100%;
+}
+
+ul.images
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.images li
+{
+    float:left;
+    margin: 0 10px 10px 0;
+}
+
+ul.images li img, ul.images li canvas
+{
+    border-radius: 15px;
+    width: 392px;
+    height: 250px;
+    float: left;
+}
+
+ul.images li div.date-time
+{
+    text-align: center;
+    font-size: 14px;
+}
+
+div.new-page
+{
+    clear: both;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-size: 28px;
+    margin: 0;
+    padding: 0 0 20px 0;
+}
+
+div.new-page:nth-child(1)
+{
+    padding-top:15px;
+}
+
+h1.page-header small
+{
+    float:right;
+    padding-top: 15px;
+}
+
+div.start-loading
+{
+    display: table;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    width: 100%;
+}
+
+div.scroll-down
+{
+    text-align: center;
+    font-size: 20px;
+    padding: 25px;
+    cursor: pointer;
+    color: #943633;
+}
+
+/** 
+*   Override: bootstrap timepicker
+*/
+
+.datepicker
+{
+    display: block;
+    padding: 19px 13px 0 13px;
+}
+
+/**
+*   Override: bootstrap slider
+*/
+.slider.slider-horizontal 
+{
+    width: 92%;
+    margin: 40px 4% 20px auto;
+    display: table;
+}
+
+.slider .tooltip.top
+{
+    margin-top: -41px;
+}
+
+.slider.slider-horizontal .slider-track
+{
+    height: 14px;
+}
+
+.slider.slider-horizontal .slider-handle
+{
+    margin-left: -15px;
+    margin-top: -10px;
+    width: 30px;
+    height: 30px;
+}
+
+.slider-handle
+{
+    background-image: -webkit-linear-gradient(top,#943633 0, #733D3B 100%);
+    opacity: 1.0;
+}
+
+.slider-track
+{
+    background-image: -webkit-linear-gradient(top,#f9f9f9 0,#f5f5f5 100%);
+    background-image: -o-linear-gradient(top,#f9f9f9 0,#f5f5f5 100%);
+    background-image: linear-gradient(to bottom,#f9f9f9 0,#f5f5f5 100%);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.slider-selection
+{
+    background-image: -webkit-linear-gradient(top,#f5f5f5 0,#f9f9f9 100%);
+    background-image: -o-linear-gradient(top,#f5f5f5 0,#f9f9f9 100%);
+    background-image: linear-gradient(to bottom,#f5f5f5 0,#f9f9f9 100%);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+
+/**********************
+*   Timer slider
+**/
+
+#timer-slider
+{
+    border: 0;
+    border-color: #fff;
+}
+
+/**********************
+*    Region selector
+*/
+
+#map
+{
+    margin-top: 15px;
+}
+
+.point
+{
+    width: 15px;
+    height: 15px;
+    line-height: 8px;
+    background-color: #943633;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 999999;
+    border: 3px solid #fff;
+    margin-top: -9px;
+    margin-left: -9px;
+}
+
+.info
+{
+    position: absolute;
+    color: #fff;
+    text-shadow: 1px 1px #111;
+}
+
+#point_0:hover
+{
+    background-color: #fff;
+}
+
+div.line
+{
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    transform-origin: 0 50%;     
+    height: 3px;
+    background-color: #fff;
+    -webkit-transition: -webkit-transform 0s;
+    -moz-transition:    -moz-transform 0s;
+    transition:         transform 0s;
+}
+
+.signout
+{
+    display: none;
+}

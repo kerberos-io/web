@@ -1,0 +1,112 @@
+@media only screen and (min-width: 0px) and (max-width: 700px)
+{
+    body#red
+    {
+        background-color: #943633;
+        margin: 0;
+    }
+
+    body
+    {
+        div.center
+        {
+            margin: 0 0 0 0;
+            width: 100%;
+
+
+            /**************************
+            *   Kerberos logo
+            */
+
+            .content
+            {
+                margin: 0 auto;
+                padding: 0;
+                display: table;
+                z-index: 1;
+
+                .circle
+                {
+                    padding:15px;
+                    margin: 0;
+            
+
+                    div.kerberos
+                    {
+                        padding: 5px;
+                        display: block;
+                        position: relative;
+                        background-image: url('../images/kerberos_multihead.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        width: 240px;
+                        height: 240px;
+                    }
+                }
+            }
+
+            /**************************
+            *   Login form
+            */
+
+            form#login
+            {
+                margin: -165px auto;
+                padding: 30px 20px;
+                border: none;
+                width: 100%;
+                border-radius: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                background-color: #f4f4f4;
+
+                input[type='text'], input[type='password']
+                {
+                    color: #74838E;
+                    border: 1px solid #CACBCB;
+                    border-radius: 3px;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                    padding: 8px 12px;
+                    margin: 0 0 10px 0;
+                    height: 38px;
+                    width: 100%;
+                }
+
+                input[type='submit']
+                {
+                    padding: 9px 16px;
+                    margin: 0;
+                    border-radius: 3px;
+                    border: none;
+                    width: 100%;
+                    transition: all .12s linear 0s!important;
+                    outline: 0;
+                    color: #fff;
+                    background-color: #943633;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 520px)
+{
+    form#register
+    {
+        div div.input
+        {
+            float: none;
+        }
+
+        div div.input:nth-child(odd)
+        {
+            margin-right: 0;
+        }
+
+        input[type='text'], input[type='password']
+        {
+            width: 100%;
+        }
+    }
+}
