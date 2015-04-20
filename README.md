@@ -1,6 +1,6 @@
 #KERBEROS.**WEB**
 
-[![Build Status](https://magnum.travis-ci.com/cedricve/kerberos-web.svg?token=xAPfGKsCyaCbE3s5sbJ3&branch=master)](https://magnum.travis-ci.com/cedricve/kerberos-web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/machinery.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/machinery)
+[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/machinery.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/machinery)
 
 ## Introduction
 
@@ -64,4 +64,4 @@ Install Front end dependencies with bower
 
 You can access the webinterface by entering the ip address in your favorite browser. You will see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
 
-![Login page kerberos.io webinterface](http://doc.kerberos.io/documentation/1.0/40_web/how-to-access.png)
+![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0.0/40_web/1_how-to-access.png)
