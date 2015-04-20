@@ -1,0 +1,5 @@
+vendor/
+public/node_modules/
+public/picsfromio
+app/config/app.php
+composer.*
