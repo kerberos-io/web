@@ -36,7 +36,7 @@ Go to your www directory, the directory to which your webserver is pointing
 
 Get the source code from github
 
-    git clone https://github.com/cedricve/kerberos-web
+    git clone https://github.com/kerberos-io/web kerberos-web
 
 Install php packages by using composer
 
