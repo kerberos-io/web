@@ -4,6 +4,7 @@ use AWS, Config, Session, Auth;
 
 use Models\Filesystem\FileInterface as FileInterface;
 use Models\Filesystem\Image as Image;
+use Models\Cache\Cache as Cache;
 
 class AmazonS3Filesystem implements FilesystemInterface
 {
@@ -23,13 +24,14 @@ class AmazonS3Filesystem implements FilesystemInterface
         $this->s3 = AWS::get('s3');
         $this->dynamoDB = AWS::get('dynamodb');
         $this->bucket = Config::get('app.filesystem.amazons3.bucket');
-        $this->directory = ($this->user != null) ? $this->user->username . '/' : '';
+        $this->directory = 'gerrymanley/';
         $this->signingExpire = Config::get('session.lifetime') * 300;
         $this->dynamoDBTimeout = Config::get('session.lifetime') * 300;
+        $this->cache = new Cache($this->dynamoDBTimeout);
     }
 
-	public function findAllImages()
-	{   
+    public function findAllImages()
+    {   
         //-----------------
         // Image array
 
@@ -52,8 +54,8 @@ class AmazonS3Filesystem implements FilesystemInterface
 
         }
 
-		return $images;
-	}
+        return $images;
+    }
 
     public function getPathToFile(FileInterface $file)
     {
