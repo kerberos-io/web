@@ -24,7 +24,7 @@ class AmazonS3Filesystem implements FilesystemInterface
         $this->s3 = AWS::get('s3');
         $this->dynamoDB = AWS::get('dynamodb');
         $this->bucket = Config::get('app.filesystem.amazons3.bucket');
-        $this->directory = 'gerrymanley/';
+        $this->directory = Config::get('app.filesystem.amazons3.path');
         $this->signingExpire = Config::get('session.lifetime') * 300;
         $this->dynamoDBTimeout = Config::get('session.lifetime') * 300;
         $this->cache = new Cache($this->dynamoDBTimeout);
