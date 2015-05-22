@@ -32,7 +32,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             
             usort($images, function($a, $b)
             {
-                return strcmp($a->getTimestamp(), $b->getTimestamp());
+                return strcmp($a->getPath(), $b->getPath());
             });
 
             return $images;
