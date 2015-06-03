@@ -18,9 +18,14 @@ class DiskFilesystem implements FilesystemInterface
         $this->url = URL::to('/') . $this->path;
     }
 
-	public function findAllImages()
-	{
-		$images = [];
+	public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+    }
+
+    public function findAllImages()
+    {
+        $images = [];
         $dir = opendir(public_path() . $this->path);
         while(($currentFile = readdir($dir)) !== false)
         {
@@ -30,12 +35,13 @@ class DiskFilesystem implements FilesystemInterface
             }
 
             $image = new Image;
+            $image->setTimezone($this->timezone);
             $image->parse($currentFile);
             array_push($images, $image);
         }
         closedir($dir);
         return $images;
-	}
+    }
 
     public function getPathToFile(FileInterface $file)
     {

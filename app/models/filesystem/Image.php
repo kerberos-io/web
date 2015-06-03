@@ -5,7 +5,13 @@ use Carbon\Carbon as Carbon;
 
 class Image implements FileInterface
 {
-	private $information;
+    private $information;
+    private $timezone;
+
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+    }
 
     public function parse($key)
     {
@@ -96,17 +102,16 @@ class Image implements FileInterface
 
     public function getTimestamp()
     {
-    	return $this->information['timestamp'];
+        return $this->information['timestamp'];
     }
 
     public function setTimeFormats($timestamp)
     {
-        $timezone = Config::get('app.timezone');
         $carbon = Carbon::createFromTimeStamp($timestamp);
-        $carbon->setTimezone($timezone);
+        $carbon->setTimezone($this->timezone);
 
         $this->information['carbon'] = [
-            'timezone' => $timezone,
+            'timezone' => $this->timezone,
             'time' => $carbon->format('H:i:s'), // e.g. 16:45:16
             'date' => $carbon->format('jS \\of F Y'), // e.g. 24th of February 2015
             'short-date' => $carbon->format('d-m-Y'), // e.g. 24-02-2015
@@ -141,7 +146,7 @@ class Image implements FileInterface
 
     public function getToken()
     {
-    	return $this->information['token'];
+        return $this->information['token'];
     }
 
     // *****************************************************

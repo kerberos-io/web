@@ -40,13 +40,17 @@ class ConfigXMLReader implements ConfigReaderInterface
     public function parse($xml)
     {
         $tree = [];
-        $this->parseConfig($tree, $xml . "/config.xml");
+        if($xml != '')
+        {
+            $this->parseConfig($tree, $xml . "/config.xml");
+        }
         return $tree;
     }
 
     public function parseConfig(&$tree, $xml)
     {
-        if($config = $this->readXML($xml))
+        $config = $this->readXML($xml);
+        if(count($config) > 0)
         {
             $this->parseChildren($tree, $config, $xml, "");
         }
