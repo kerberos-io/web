@@ -17,9 +17,9 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $this->cache = new Cache(Config::get('session.lifetime'));
         $this->user = Auth::user();
 
+        $this->reader = $reader;
         $timezone = $this->cache->storeAndGet('timezone', function()
         {
-            $this->reader = $reader;
             $this->config = Config::get("app.config");
             $settings = $this->reader->parse($this->config);
             
