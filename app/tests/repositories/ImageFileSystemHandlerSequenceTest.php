@@ -4,6 +4,7 @@ use Tests\TestCase as TestCase;
 
 use Models\Filesystem\Image as Image;
 use Repositories\Filesystem\DiskFilesystem as DiskFilesystem;
+use Repositories\ConfigReader\ConfigXMLReader as ConfigXMLReader;
 use Repositories\Date\Carbon as Carbon;
 use Repositories\ImageHandler\ImageFilesystemHandler as ImageFilesystemHandler;
 
@@ -12,7 +13,7 @@ class ImageFilesystemHandlerSequenceTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->imageFilesystemHandler = new ImageFilesystemHandler(new DiskFilesystem, new Carbon);
+        $this->imageFilesystemHandler = new ImageFilesystemHandler(new ConfigXMLReader, new DiskFilesystem, new Carbon);
     }
 
     public function createImage($key)
