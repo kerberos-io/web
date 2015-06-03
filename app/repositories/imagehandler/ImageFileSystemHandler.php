@@ -5,18 +5,34 @@ use Carbon\Carbon as Carbon;
 
 use Repositories\Filesystem\FilesystemInterface as FilesystemInterface;
 use Repositories\Date\DateInterface as DateInterface;
+use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 use Models\Filesystem\Image as Image;
 use Models\Cache\Cache as Cache;
 
 class ImageFilesystemHandler implements ImageHandlerInterface
 { 
-    public function __construct(FilesystemInterface $filesystem, DateInterface $date)
+    public function __construct(ConfigReaderInterface $reader,
+                                FilesystemInterface $filesystem, DateInterface $date)
     {
         $this->cache = new Cache(Config::get('session.lifetime'));
         $this->user = Auth::user();
+
+        $this->reader = $reader;
+        $this->config = Config::get("app.config");
+        $settings = $this->reader->parse($this->config);
+        
+        $timezone = Config::get('app.timezone');
+        if(count($settings) > 0)
+        {
+            $timezone = $settings['instance']['children']['timezone']['value'];
+            $timezone = str_replace("-", "/", $timezone);
+        }
+
         $this->date = $date;
-        $this->date->timezone = Config::get('app.timezone');
+        $this->date->timezone = $timezone;
+
         $this->filesystem = $filesystem;
+        $this->filesystem->setTimezone($this->date->timezone);
     }
 
     public function getImagesFromFilesystem()

@@ -30,6 +30,11 @@ class AmazonS3Filesystem implements FilesystemInterface
         $this->cache = new Cache($this->dynamoDBTimeout);
     }
 
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+    }
+
     public function findAllImages()
     {   
         //-----------------
@@ -49,6 +54,7 @@ class AmazonS3Filesystem implements FilesystemInterface
             if($object['Size'] == 0) continue;
 
             $image = new Image;
+            $image->setTimezone($this->timezone);
             $image->parse($object['Key']);
             array_push($images, $image);
 
