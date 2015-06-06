@@ -18,21 +18,26 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $this->user = Auth::user();
 
         $this->reader = $reader;
-        $this->config = Config::get("app.config");
-        $settings = $this->reader->parse($this->config);
-        
-        $timezone = Config::get('app.timezone');
-        if(count($settings) > 0)
+        $timezone = $this->cache->storeAndGet('timezone', function()
         {
-            $timezone = $settings['instance']['children']['timezone']['value'];
-            $timezone = str_replace("-", "/", $timezone);
-        }
+            $this->config = Config::get("app.config");
+            $settings = $this->reader->parse($this->config);
+            
+            $timezone = Config::get('app.timezone');
+            if(count($settings) > 0)
+            {
+                $timezone = $settings['instance']['children']['timezone']['value'];
+                $timezone = str_replace("-", "/", $timezone);
+            }
+
+            return $timezone;
+        });
 
         $this->date = $date;
         $this->date->timezone = $timezone;
 
         $this->filesystem = $filesystem;
-        $this->filesystem->setTimezone($this->date->timezone);
+        $this->filesystem->setTimezone($timezone);
     }
 
     public function getImagesFromFilesystem()
