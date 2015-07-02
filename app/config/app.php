@@ -33,7 +33,7 @@ return array(
 	|
 	*/
 	
-	'config' => '/Users/cedricverst/app/machinery/config/',
+	'config' => '/home/kerberos-io/config',
 
 	'filesystem' => [
 
