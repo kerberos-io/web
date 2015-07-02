@@ -19,13 +19,6 @@ return array(
 			"password" => "root",
 			"firstname" => "Cédric",
 			"secondname" => "Verstraeten"
-		],
-		[
-			"id" => 5,
-			"username" => "root2",
-			"password" => "root2",
-			"firstname" => "Cédric",
-			"secondname" => "Verstraeten"
 		]
 	],
 
