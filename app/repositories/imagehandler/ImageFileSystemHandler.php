@@ -580,17 +580,15 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             $hours[$i] = 0;
         }
-
+        
         $images = [];
         foreach ($days as $key => $day)
         {
-            $imageArray = $this->getImagesFromDay($day, -1, 1);
+            $hoursForDay = $this->countImagesPerHour($day);
 
-            foreach ($imageArray as $key => $image)
+            for($i = 0; $i < count($hoursForDay); $i++)
             {
-                $hour = explode(':',$image->getTime())[0];
-                $hour = ($hour[0]=='0')?substr($hour,1): $hour;
-                $hours[$hour]++;
+                $hours[$i] += $hoursForDay[$i];
             }
         }
 
