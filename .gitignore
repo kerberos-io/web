@@ -1,6 +1,6 @@
 vendor/
 public/node_modules/
-public/picsfromio
+public/capture
 app/config/app.php
 composer.*
 bootstrap/compiled.php
