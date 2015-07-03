@@ -69,12 +69,25 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 $day = $image->getShortDate();
                 if($previous != $day)
                 {
-                    $imagesByDay[$day] = [];
+                    $imagesByDay[$day] = [
+                        'images' => [],
+                        'hours' => [0, 0, 0, 0 ,0, 0,
+                                    0, 0, 0, 0 ,0, 0,
+                                    0, 0, 0, 0 ,0, 0,
+                                    0, 0, 0, 0 ,0, 0],
+                    ];
                     $previous = $day;
                 }
-                array_push($imagesByDay[$day], $image);
+                array_push($imagesByDay[$day]['images'], $image);
+                
+                // -------------------
+                // Calculate metadata
+                
+                $hour = explode(':',$image->getTime())[0];
+                $hour = ($hour[0]=='0')?substr($hour,1): $hour;
+                $imagesByDay[$day]['hours'][$hour]++;
             }
-            
+
             return $imagesByDay;
         });
 
@@ -158,7 +171,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         }
         else
         {
-            $imagesTemp = $imagesTemp[$day];
+            $imagesTemp = $imagesTemp[$day]['images'];
         }
 
         // --------------
@@ -215,7 +228,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $timestamp = $this->date->nextDayToTimestamp($day);
             if($timestampOfStartDay <= $timestamp && $timestamp <= $timestampOfEndDay)
             {
-                foreach($imagesTemp[$day] as $image)
+                foreach($imagesTemp[$day]['images'] as $image)
                 {
                     array_push($imagesMerged, $image);
                 }
@@ -273,7 +286,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         }
         else
         {
-            $imagesTemp = $imagesTemp[$day];
+            $imagesTemp = $imagesTemp[$day]['images'];
         }
 
         // ---------------------------
@@ -360,7 +373,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         }
         else
         {
-            $imagesTemp = $imagesTemp[$day];
+            $imagesTemp = $imagesTemp[$day]['images'];
         }
        
         // --------------------------------------------------------------------
@@ -546,21 +559,16 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function countImagesPerHour($day)
     {
-        $hours = [];
-        for($i = 0; $i < 24; $i++)
+        $imagesTemp = $this->getImagesFromFilesystem();
+        
+        if(!array_key_exists($day, $imagesTemp))
         {
-            $hours[$i] = 0;
+            return [];
         }
-
-        $images = $this->getImagesFromDay($day, -1, 1);
-        foreach ($images as $key => $image)
+        else
         {
-            $hour = explode(':',$image->getTime())[0];
-            $hour = ($hour[0]=='0')?substr($hour,1): $hour;
-            $hours[$hour]++;
+            return $imagesTemp[$day]['hours'];
         }
-
-        return $hours;
     }
 
     public function countAverageImagesPerHour($numberOfDays)
