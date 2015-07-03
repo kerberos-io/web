@@ -9,127 +9,122 @@ define(["jquery"], function($)
     // Chartjs
     require(["chartjs"], function(Chart)
     {
-        $.ajax(
+        $.get(_baseUrl + "/api/v1/images/perhour/3",function(data)
         {
-            type: "GET",
-            url: _baseUrl + "/api/v1/images/perhour/3",
-            async: false,
-            success: function(data)
-            {
-                var canvas = $("#time-chart").get(0);
-                var ctx = canvas.getContext("2d");
+            var canvas = $("#time-chart").get(0);
+            var ctx = canvas.getContext("2d");
 
-                var dayStyle = [
-                    {
-                        label: "Today", // Red
-                        fillColor: "rgba(148,54,51,0)",
-                        strokeColor: "#943633",
-                        pointColor: "#943633",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "#943633",
-                    },
-                    {
-                        label: "Yesterday", // Dark gray
-                        fillColor: "rgba(120,120,120,0)",
-                        strokeColor: "rgba(120,120,120,1)",
-                        pointColor: "rgba(120,120,120,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(120,120,120,1)",
-                    },
-                    {
-                        label: "Ereyesterday", // Light gray
-                        fillColor: "rgba(220,220,220,0)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                    },
-                ];
-
-                var averageStyle = {
-                    label: "Average", // Green
-                    fillColor: "rgba(76,156,56,0)",
-                    strokeColor: "#4C9C38",
-                    pointColor: "#4C9C38",
+            var dayStyle = [
+                {
+                    label: "Today", // Red
+                    fillColor: "rgba(148,54,51,0)",
+                    strokeColor: "#943633",
+                    pointColor: "#943633",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
-                    pointHighlightStroke: "#4C9C38",
-                };
+                    pointHighlightStroke: "#943633",
+                },
+                {
+                    label: "Yesterday", // Dark gray
+                    fillColor: "rgba(120,120,120,0)",
+                    strokeColor: "rgba(120,120,120,1)",
+                    pointColor: "rgba(120,120,120,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(120,120,120,1)",
+                },
+                {
+                    label: "Ereyesterday", // Light gray
+                    fillColor: "rgba(220,220,220,0)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                },
+            ];
 
-                var steps = 10;
-                var max = 0;
+            var averageStyle = {
+                label: "Average", // Green
+                fillColor: "rgba(76,156,56,0)",
+                strokeColor: "#4C9C38",
+                pointColor: "#4C9C38",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "#4C9C38",
+            };
+ 
+            var steps = 10;
+            var max = 0;
 
+            // ---------------------
+            // Build statistics
+
+            var statistics = {};
+            statistics['labels'] = [];
+            for(var i = 0; i < 24; i++)
+            {
+                statistics['labels'].push(i + 'h');
+            }
+            statistics['datasets'] = [];
+
+            if(data && data.days && data.days.length > 0)
+            {
                 // ---------------------
-                // Build statistics
+                // Add averages images
 
-                var statistics = {};
-                statistics['labels'] = [];
-                for(var i = 0; i < 24; i++)
+                var average = data["statistics"]["average"];
+                if(average)
                 {
-                    statistics['labels'].push(i + 'h');
+                    dataset = averageStyle;
+                    dataset['data'] = average;
+                    statistics['datasets'].push(dataset);
                 }
-                statistics['datasets'] = [];
 
-                if(data && data.days && data.days.length > 0)
+                // ----------
+                // Add days
+
+                var days = data["days"];
+                for(var i = 0; i < days.length; i++)
                 {
-                    // ---------------------
-                    // Add averages images
+                    var dataset = dayStyle[i % dayStyle.length];
+                    dataset['data'] = days[i];
+                    statistics['datasets'].push(dataset);
 
-                    var average = data["statistics"]["average"];
-                    if(average)
+                    for(var j = 0; j < days[i].length; j++)
                     {
-                        dataset = averageStyle;
-                        dataset['data'] = average;
-                        statistics['datasets'].push(dataset);
+                        if(max < days[i][j]) max = days[i][j];
                     }
-
-                    // ----------
-                    // Add days
-
-                    var days = data["days"];
-                    for(var i = 0; i < days.length; i++)
-                    {
-                        var dataset = dayStyle[i % dayStyle.length];
-                        dataset['data'] = days[i];
-                        statistics['datasets'].push(dataset);
-
-                        for(var j = 0; j < days[i].length; j++)
-                        {
-                            if(max < days[i][j]) max = days[i][j];
-                        }
-                    }
-                }
-
-                var options = {
-                    datasetStrokeWidth : 2,
-                    responsive: true,
-                    scaleOverride: true,
-                    scaleSteps: steps,
-                    scaleStepWidth: Math.ceil(max / steps),
-                    scaleStartValue: 0,
-                    multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
-                };
-
-                // ----------------------------------------------------------------
-                // This will get the first returned node in the jQuery collection.
-
-                if(statistics['datasets'] && statistics['datasets'].length > 0)
-                {
-                    var timeChart = new Chart(ctx).Line(statistics, options);
-                }
-                else
-                {
-                    var x = canvas.width / 2;
-                    var y = canvas.height / 2;
-                    ctx.font = '20px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.fillStyle = 'black';
-                    ctx.fillText('No data available', x, y);
                 }
             }
+
+            var options = {
+                datasetStrokeWidth : 2,
+                responsive: true,
+                scaleOverride: true,
+                scaleSteps: steps,
+                scaleStepWidth: Math.ceil(max / steps),
+                scaleStartValue: 0,
+                multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
+            };
+
+            // ----------------------------------------------------------------
+            // This will get the first returned node in the jQuery collection.
+
+            if(statistics['datasets'] && statistics['datasets'].length > 0)
+            {
+                var timeChart = new Chart(ctx).Line(statistics, options);
+            }
+            else
+            {
+                var x = canvas.width / 2;
+                var y = canvas.height / 2;
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'black';
+                ctx.fillText('No data available', x, y);
+            }
+
         });
     });
 });

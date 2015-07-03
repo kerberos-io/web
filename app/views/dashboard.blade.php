@@ -26,18 +26,12 @@
                                         playInterval: 300,
                                     };
 
-                                    $.ajax(
+                                    $.get(_baseUrl + "/api/v1/images/latest_sequence", function(images)
                                     {
-                                        type: "GET",
-                                        url: _baseUrl + "/api/v1/images/latest_sequence",
-                                        async: false,
-                                        success: function(images)
-                                        {
-                                            config.images = images;
-                                            Sequencer.initialize(config);
-                                            Sequencer.attachTo(document.getElementById("latest-activity-sequence"));
-                                            Sequencer.play();
-                                        }
+                                        config.images = images;
+                                        Sequencer.initialize(config);
+                                        Sequencer.attachTo(document.getElementById("latest-activity-sequence"));
+                                        Sequencer.play();
                                     });
                                 });
                             });
