@@ -153,9 +153,12 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $imagesTemp = $this->getImagesFromFilesystem();
 
         $images = [];
-        foreach($imagesTemp as $dayWithImages)
+        foreach(array_keys($imagesTemp) as $day)
         {
-            array_merge($images, $dayWithImages);
+            foreach($imagesTemp[$day]['images'] as $image)
+            {
+                array_push($images, $image);
+            }
         }
         
         return $images;
