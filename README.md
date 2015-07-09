@@ -1,6 +1,6 @@
 #KERBEROS.**WEB**
 
-[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/web)[![Join the chat at https://gitter.im/kerberos-io/hades](https://img.shields.io/badge/GITTER-join chat-green.svg)](https://gitter.im/sahat/hackathon-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/web) [![Join the chat at https://gitter.im/kerberos-io/hades](https://img.shields.io/badge/GITTER-join chat-green.svg)](https://gitter.im/kerberos-io/hades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Introduction
 
