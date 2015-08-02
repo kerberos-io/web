@@ -8,13 +8,24 @@
 
 Route::group(array('prefix' => 'api/v1'), function()
 {
+    // -----------------
+    // Webhook Controller
+    
+    Route::resource('webhook', 'Controllers\WebhookController');
+    
     Route::group(['before' => 'guest'], function()
     {
+        // -----------------
+        // Login Controller
+        
         Route::post('login/login', 'Controllers\LoginController@login'); // try to sign-in the user.
     });
 
     Route::group(['before' => 'auth'], function()
     {
+        // -----------------
+        // Image Controller
+        
         Route::get('images/latest_sequence', 'Controllers\ImageController@getLatestSequence');
         Route::get('images/days', 'Controllers\ImageController@getDays');
         Route::get('images/perhour/{days?}', 'Controllers\ImageController@getImagesPerHour');
@@ -23,6 +34,22 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('images/{date}/hours', 'Controllers\ImageController@getImagesPerHourForDay');
         Route::get('images/{date}/{take?}/{page?}', 'Controllers\ImageController@getImages');
         Route::get('images/{date}/{take?}/{page?}/{time?}', 'Controllers\ImageController@getImagesFromStartTime');
+    });
+    
+
+    // -------------------------
+    // REST API with basic auth 
+    
+    Route::group(['before' => 'auth.basic'], function()
+    {
+        // --------------------
+        // Settings Controller
+
+        Route::get('name', 'Controllers\SettingsController@getName');
+        Route::put('name', 'Controllers\SettingsController@updateName');
+    
+        Route::get('condition/enabled', 'Controllers\SettingsController@getConditionEnabled');
+        Route::put('condition/enabled', 'Controllers\SettingsController@updateConditionEnabled');
     });
 });
 

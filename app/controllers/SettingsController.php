@@ -1,6 +1,6 @@
 <?php namespace Controllers;
 
-use View, Redirect, Input, Config;
+use View, Redirect, Input, Config, Response;
 use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -94,5 +94,77 @@ class SettingsController extends BaseController
         $this->reader->save($this->config, $settings);
 
         return Redirect::back();
+    }
+    
+    /******************************************************************
+     *  Edit a piece of a configuration file.
+     */ 
+    private function getPiece($config, array $keys)
+    {
+        $settings = $this->reader->read($this->config . '/'. $config);
+        
+        foreach($keys as $key)
+        {
+            if($settings->$key)
+            {
+                $settings = &$settings->$key;   
+            }
+        }
+        
+        if($settings)
+        {
+            return $settings;
+        }
+        
+        return null;
+    }
+    
+    /*******************************************
+    *   Get and set name of the kerberos instance
+    */
+    
+    public function getName()
+    {
+        $instance["name"] = $this->getPiece("config.xml", ["instance", "name"])->__toString();
+        return Response::json($instance);
+    }
+    
+    public function updateName()
+    {
+        if(Input::get('name') != '')
+        {
+            $settings["config__instance__name"] = Input::get('name');
+            
+            $this->reader->save($this->config, $settings);
+        }
+        
+        return $this->getName();
+    }
+    
+    /*******************************************
+    *   Get and set the "Enabled" condition.
+    */
+    
+    public function getConditionEnabled()
+    {
+        $instance["condition"]["enabled"] = $this->getPiece("condition.xml", ["Enabled"]);
+        return Response::json($instance);
+    }
+    
+    public function updateConditionEnabled()
+    {
+        if(Input::get('active') != '')
+        {
+            $settings["condition__Enabled__active"] = Input::get('active');
+        }
+        
+        if(Input::get('delay') != '')
+        {
+            $settings["condition__Enabled__delay"] = Input::get('delay');
+        }
+        
+        $this->reader->save($this->config, $settings);
+        
+        return $this->getConditionEnabled();
     }
 }
