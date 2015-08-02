@@ -147,7 +147,7 @@ class SettingsController extends BaseController
     
     public function getConditionEnabled()
     {
-        $instance["condition"]["enabled"] = $this->getPiece("condition.xml", ["Enabled"]);
+        $instance = $this->getPiece("condition.xml", ["Enabled"]);
         return Response::json($instance);
     }
     
