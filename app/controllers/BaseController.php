@@ -1,10 +1,12 @@
-<?php namespace Controllers;
+<?php
+
+namespace controllers;
 
 use Controller;
-use Repositories\ImageHandlerInterface as ImageHandlerInterface;
-use Repositories\ConfigReaderInterface as ConfigReaderInterface;
 
 class BaseController extends Controller
 {
-	public function __construct(){}
+    public function __construct()
+    {
+    }
 }

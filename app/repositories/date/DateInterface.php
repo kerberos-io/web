@@ -1,4 +1,6 @@
-<?php namespace Repositories\Date;
+<?php
+
+namespace repositories\date;
 
 interface DateInterface
 {

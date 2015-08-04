@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
@@ -14,4 +15,4 @@
  * permissions and limitations under the License.
  */
 
-return Config::get("app.filesystem.amazons3");
+return Config::get('app.filesystem.amazons3');

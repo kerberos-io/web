@@ -1,12 +1,16 @@
-<?php namespace Repositories\Filesystem;
+<?php
 
-use AWS, Config, Session, Auth;
+namespace repositories\filesystem;
 
+use Auth;
+use AWS;
+use Config;
+use Models\Cache\Cache as Cache;
 use Models\Filesystem\FileInterface as FileInterface;
 use Models\Filesystem\Image as Image;
-use Models\Cache\Cache as Cache;
+use Session;
 
-class AmazonS3Filesystem implements FilesystemInterface
+class AmazonS3FileSystem implements FilesystemInterface
 {
     protected $dynamoDB = null;
     protected $s3 = null;
@@ -36,7 +40,7 @@ class AmazonS3Filesystem implements FilesystemInterface
     }
 
     public function findAllImages()
-    {   
+    {
         //-----------------
         // Image array
 
@@ -45,19 +49,19 @@ class AmazonS3Filesystem implements FilesystemInterface
         //------------------------
         // Get objects from bucket
 
-        $objects = $this->s3->getIterator('ListObjects', array('Bucket' => $this->bucket, 'Prefix' => $this->directory));
-        foreach ($objects as $object)
-        {
+        $objects = $this->s3->getIterator('ListObjects', ['Bucket' => $this->bucket, 'Prefix' => $this->directory]);
+        foreach ($objects as $object) {
             //--------------------------------------------------
             // do check if object is an image and isn't to big..
 
-            if($object['Size'] == 0) continue;
+            if ($object['Size'] == 0) {
+                continue;
+            }
 
-            $image = new Image;
+            $image = new Image();
             $image->setTimezone($this->timezone);
             $image->parse($object['Key']);
             array_push($images, $image);
-
         }
 
         return $images;
@@ -65,16 +69,16 @@ class AmazonS3Filesystem implements FilesystemInterface
 
     public function getPathToFile(FileInterface $file)
     {
-         //-------------------------------------------------------------
+        //-------------------------------------------------------------
         // Get session or create a new one for the signed url
         // The signed url will stay in session until it expire.
         // Afterwards a new request is sent to aws and it's cached again.
-        
+
         $key = $file->getPath();
-        
-        $pathToFile = $this->cache->storeAndGet($key, function() use ($key)
-        {
-            $signedPath = $this->s3->getObjectUrl($this->bucket, $this->directory . $key, time() + $this->signingExpire);
+
+        $pathToFile = $this->cache->storeAndGet($key, function () use ($key) {
+            $signedPath = $this->s3->getObjectUrl($this->bucket, $this->directory.$key, time() + $this->signingExpire);
+
             return $signedPath;
         });
 
@@ -84,6 +88,7 @@ class AmazonS3Filesystem implements FilesystemInterface
     public function getMetadata(FileInterface $file)
     {
         $metaData = $file->getMetadata();
+
         return $metaData;
     }
 }
