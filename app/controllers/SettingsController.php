@@ -119,19 +119,6 @@ class SettingsController extends BaseController
         return null;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /*******************************************
     *   Get and set name of the kerberos instance
     */
