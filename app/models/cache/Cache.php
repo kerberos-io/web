@@ -1,10 +1,12 @@
-<?php namespace Models\Cache;
+<?php
+
+namespace models\cache;
 
 use Session;
 
 class Cache implements CacheInterface
 {
-	private $cachingTime;
+    private $cachingTime;
 
     public function __construct($cachingTime)
     {
@@ -16,14 +18,13 @@ class Cache implements CacheInterface
         $time = time();
         $valueFromCache = Session::get($key, [$key => [], 'time' => 0]);
 
-        if($time - $valueFromCache['time'] >= $this->cachingTime)
-        {
+        if ($time - $valueFromCache['time'] >= $this->cachingTime) {
             Session::forget($key);
 
             $valueFromFunction = $function();
             $valueFromCache = [$key => $valueFromFunction, 'time' => $time];
 
-            Session::put($key, $valueFromCache);   
+            Session::put($key, $valueFromCache);
         }
 
         return $valueFromCache[$key];

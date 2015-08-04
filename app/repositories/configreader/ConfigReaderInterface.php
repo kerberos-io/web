@@ -1,4 +1,6 @@
-<?php namespace Repositories\ConfigReader;
+<?php
+
+namespace repositories\configreader;
 
 interface ConfigReaderInterface
 {

@@ -1,28 +1,32 @@
-<?php namespace Controllers;
+<?php
 
-use Auth, Input;
-use View, Response, Redirect;
+namespace controllers;
+
+use Auth;
+use Input;
+use Redirect;
+use Response;
+use View;
 
 class LoginController extends BaseController
 {
     /**
-     *  Show the login screen
-     */ 
+     *  Show the login screen.
+     */
     public function index()
     {
         return View::make('login');
     }
 
     /**
-     *  Login user
+     *  Login user.
      */
     public function login()
     {
         $credentials = Input::all();
 
-        if($user = Auth::attempt(["username" => $credentials["username"],
-                                  "password" => $credentials["password"]]))
-        {
+        if ($user = Auth::attempt(['username' => $credentials['username'],
+                                  'password' => $credentials['password'], ])) {
             return Response::json($user);
         }
 
@@ -30,11 +34,12 @@ class LoginController extends BaseController
     }
 
     /**
-     *  Logout user
+     *  Logout user.
      */
     public function logout()
     {
         Auth::logout();
+
         return Redirect::to('login');
     }
-}   
+}

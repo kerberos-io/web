@@ -1,12 +1,16 @@
-<?php namespace Controllers;
+<?php
 
-use View, Response, Validator;
-use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
+namespace controllers;
+
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
+use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
+use Response;
+use Validator;
+use View;
 
 class ImageController extends BaseController
 {
-    public function __construct(ImageHandlerInterface $imageHandler, 
+    public function __construct(ImageHandlerInterface $imageHandler,
         ConfigReaderInterface $reader)
     {
         parent::__construct($imageHandler, $reader);
@@ -16,15 +20,14 @@ class ImageController extends BaseController
 
     /***************************************
      *  Show the images of a specific date
-     */ 
+     */
 
-    public function index($selectedDay = "")
+    public function index($selectedDay = '')
     {
         // ---------------------------------
         // If no day selected take last day
 
-        if($selectedDay == "")
-        {
+        if ($selectedDay == '') {
             $selectedDay = $this->imageHandler->getDays(1)[0];
         }
 
@@ -32,30 +35,27 @@ class ImageController extends BaseController
         // Get the last hour of the selected day when an event occurred.
 
         $validator = Validator::make(['day' => $selectedDay], ['day' => 'date_format:d-m-Y']);
-        if (!$validator->fails())
-        {
+        if (!$validator->fails()) {
             $lastHourOfDay = $this->imageHandler->getLastHourOfDay($selectedDay);
-        }
-        else
-        {
+        } else {
             $lastHourOfDay = 0;
         }
-        
-        // ----------------------------------------------------------------------
+
+// ----------------------------------------------------------------------
         // Get last x days from the imagehandler -> move to BaseController
 
         $days = $this->imageHandler->getDays(5);
 
         return View::make('image', [
-            'days' => $days,
-            'selectedDay' => $selectedDay,
-            'lastHourOfDay' => $lastHourOfDay
+            'days'          => $days,
+            'selectedDay'   => $selectedDay,
+            'lastHourOfDay' => $lastHourOfDay,
         ]);
     }
 
     /*************************************
      *  Get all days
-     */ 
+     */
     public function getDays()
     {
         $days = $this->imageHandler->getDays(-1);
@@ -65,7 +65,7 @@ class ImageController extends BaseController
 
     /*************************************
      *  Get the latest image that was taken.
-     */ 
+     */
 
     public function getLatestImage()
     {
@@ -74,7 +74,7 @@ class ImageController extends BaseController
 
     /********************************
      *  Get the latest sequence.
-     */ 
+     */
 
     public function getLatestSequence()
     {
@@ -87,22 +87,21 @@ class ImageController extends BaseController
      *  Return output images as json.
      *      - page: one indexed.
      *      - images are returned in reversed order, most recent images first.
-     */ 
-    
-    public function getImages($day, $take = 16, $page = 1)
-    {
-        $images = [];
+     */
 
-        $validator = Validator::make(['day' => $day], ['day' => 'date_format:d-m-Y']);
-        if (!$validator->fails())
-        {
-            $maxTimeBetweenTwoImagesInSeconds = 120;
-            
-            $images = $this->imageHandler->getImagesSequenceFromDay($day, $page, $maxTimeBetweenTwoImagesInSeconds);
-        }
+public function getImages($day, $take = 16, $page = 1)
+{
+    $images = [];
 
-        return Response::json($images);
+    $validator = Validator::make(['day' => $day], ['day' => 'date_format:d-m-Y']);
+    if (!$validator->fails()) {
+        $maxTimeBetweenTwoImagesInSeconds = 120;
+
+        $images = $this->imageHandler->getImagesSequenceFromDay($day, $page, $maxTimeBetweenTwoImagesInSeconds);
     }
+
+    return Response::json($images);
+}
 
     /************************************
      *  Return output images as json.
@@ -114,13 +113,13 @@ class ImageController extends BaseController
         $images = [];
 
         $validator = Validator::make(['day' => $day], ['day' => 'date_format:d-m-Y']);
-        if (!$validator->fails())
-        {
+        if (!$validator->fails()) {
             $maxTimeBetweenTwoImagesInSeconds = 120;
-            
-            $images = $this->imageHandler->getImagesSequenceFromDayAndStartTime($day, $page, 
+
+            $images = $this->imageHandler->getImagesSequenceFromDayAndStartTime($day, $page,
                                                                                $time, $maxTimeBetweenTwoImagesInSeconds);
         }
+
         return Response::json($images);
     }
 
@@ -140,8 +139,7 @@ class ImageController extends BaseController
     public function getImagesPerHourForDay($day)
     {
         $validator = Validator::make(['day' => $day], ['day' => 'date_format:d-m-Y']);
-        if (!$validator->fails())
-        {
+        if (!$validator->fails()) {
             $imagesPerHour = $this->imageHandler->countImagesPerHour($day);
         }
 
@@ -167,4 +165,4 @@ class ImageController extends BaseController
 
         return Response::json($imagesPerWeekDay);
     }
-}   
+}

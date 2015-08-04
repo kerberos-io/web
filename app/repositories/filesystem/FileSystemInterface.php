@@ -1,8 +1,10 @@
-<?php namespace Repositories\Filesystem;
+<?php
+
+namespace repositories\filesystem;
 
 use Models\Filesystem\FileInterface as FileInterface;
 
-interface FilesystemInterface
+interface FileSystemInterface
 {
     /******************
     *   Set timezone

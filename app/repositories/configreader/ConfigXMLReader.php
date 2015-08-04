@@ -1,10 +1,12 @@
-<?php namespace Repositories\ConfigReader;
+<?php
 
-use SimpleXMLElement as SimpleXMLElement;
+namespace repositories\configreader;
+
 use Illuminate\Filesystem\Filesystem as Filesystem;
+use SimpleXMLElement as SimpleXMLElement;
 
-class ConfigXMLReader implements ConfigReaderInterface 
-{ 
+class ConfigXMLReader implements ConfigReaderInterface
+{
     public function read($xml)
     {
         return $this->readXML($xml);
@@ -15,8 +17,7 @@ class ConfigXMLReader implements ConfigReaderInterface
         $config = [];
 
         $filesystem = new Filesystem();
-        if($filesystem->exists($xml))
-        {
+        if ($filesystem->exists($xml)) {
             $content = $filesystem->get($xml);
             $config = new SimpleXMLElement($content);
         }
@@ -26,13 +27,11 @@ class ConfigXMLReader implements ConfigReaderInterface
 
     public function isValidXML($xml)
     {
-        try
-        {
+        try {
             $xml = new SimpleXMLElement($xml);
+
             return true; //this is valid
-        }
-        catch(Exception $e)
-        {
+        } catch (Exception $e) {
             return false; //this is not valid
         }
     }
@@ -40,47 +39,42 @@ class ConfigXMLReader implements ConfigReaderInterface
     public function parse($xml)
     {
         $tree = [];
-        if($xml != '')
-        {
-            $this->parseConfig($tree, $xml . "/config.xml");
+        if ($xml != '') {
+            $this->parseConfig($tree, $xml.'/config.xml');
         }
+
         return $tree;
     }
 
     public function parseConfig(&$tree, $xml)
     {
         $config = $this->readXML($xml);
-        if(count($config) > 0)
-        {
-            $this->parseChildren($tree, $config, $xml, "");
+        if (count($config) > 0) {
+            $this->parseChildren($tree, $config, $xml, '');
         }
     }
 
     public function save($directory, $settings)
     {
         $configs = $this->getConfigs($directory);
-        
-        foreach($settings as $name => $setting)
-        {
-            $parts = explode("__", $name);
+
+        foreach ($settings as $name => $setting) {
+            $parts = explode('__', $name);
             $element = &$configs[$parts[0]];
-            for($i = 1; $i < count($parts)-1; $i++)
-            {
+            for ($i = 1; $i < count($parts) - 1; $i++) {
                 $element = &$element->$parts[$i];
             }
 
-            $element->$parts[count($parts)-1] = $setting;
+            $element->$parts[count($parts) - 1] = $setting;
         }
 
-        foreach($configs as $key => $config)
-        {
+        foreach ($configs as $key => $config) {
             // --------------------------------------------
             // Check if configs are valid, before saving it
 
             $string = $config->asXML();
-            if($this->isValidXML($string))
-            {
-                $config->saveXML($directory . "/" . $key . ".xml");
+            if ($this->isValidXML($string)) {
+                $config->saveXML($directory.'/'.$key.'.xml');
             }
         }
     }
@@ -89,17 +83,16 @@ class ConfigXMLReader implements ConfigReaderInterface
     {
         $configs = [];
         $filesystem = new Filesystem();
-        if($filesystem->exists($directory))
-        {
+        if ($filesystem->exists($directory)) {
             $files = $filesystem->files($directory);
-            foreach ($files as $key => $file)
-            {
-                $configParts = explode("/", $file);
-                $configName = explode(".", $configParts[count($configParts)-1]);
+            foreach ($files as $key => $file) {
+                $configParts = explode('/', $file);
+                $configName = explode('.', $configParts[count($configParts) - 1]);
                 $configName = $configName[0];
                 $configs[$configName] = $this->readXML($file);
             }
         }
+
         return $configs;
     }
 
@@ -107,57 +100,50 @@ class ConfigXMLReader implements ConfigReaderInterface
     {
         $tree = [];
 
-        $configParts = explode("/", $configFile);
-        $configName = explode(".", $configParts[count($configParts)-1]);
+        $configParts = explode('/', $configFile);
+        $configName = explode('.', $configParts[count($configParts) - 1]);
         $configName = $configName[0];
 
-        foreach($config->children() as $element => $item)
-        {
+        foreach ($config->children() as $element => $item) {
             $attributes = [];
-            
-            foreach ($item->attributes() as $key => $attribute)
-            {
+
+            foreach ($item->attributes() as $key => $attribute) {
                 $value = (string) $attribute;
                 $child = [
-                    "key" => $key,
-                    "value" => $value
+                    'key'   => $key,
+                    'value' => $value,
                 ];
 
                 // -----------------------------------
                 // If pointing to another XML, load it
 
-                if($key == "file")
-                {
-                    $tree[$item->getName()]["dropdown"] = [];
+                if ($key == 'file') {
+                    $tree[$item->getName()]['dropdown'] = [];
 
-                    $directory = str_replace($configParts[count($configParts)-1], "", $configFile);
-                    $xmlToLoad = $directory . "/" . $value;
+                    $directory = str_replace($configParts[count($configParts) - 1], '', $configFile);
+                    $xmlToLoad = $directory.'/'.$value;
 
-                    $child["file"] = $configName;
-                    $this->parseConfig($tree[$item->getName()]["dropdown"], $xmlToLoad, "");
+                    $child['file'] = $configName;
+                    $this->parseConfig($tree[$item->getName()]['dropdown'], $xmlToLoad, '');
                 }
                 array_push($attributes, $child);
             }
 
-            $tree[$item->getName()]["attributes"] = $attributes;
+            $tree[$item->getName()]['attributes'] = $attributes;
 
-            if($item->count() > 0)
-            {
+            if ($item->count() > 0) {
                 // ------------
                 // If a wrapper
-                
-                if(count($attributes) == 0 && $name != "")
-                {
-                    $element = $name . "__" . $element;
+
+                if (count($attributes) == 0 && $name != '') {
+                    $element = $name.'__'.$element;
                 }
 
-                $this->parseChildren($tree[$item->getName()]["children"], $item, $configFile, $element);
-            }
-            else
-            {
-                $tree[$item->getName()]["file"] = $configName;
-                $tree[$item->getName()]["attribute"] = $name . "__" . $element;
-                $tree[$item->getName()]["value"] = (string) $item;
+                $this->parseChildren($tree[$item->getName()]['children'], $item, $configFile, $element);
+            } else {
+                $tree[$item->getName()]['file'] = $configName;
+                $tree[$item->getName()]['attribute'] = $name.'__'.$element;
+                $tree[$item->getName()]['value'] = (string) $item;
             }
         }
     }

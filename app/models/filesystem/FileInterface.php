@@ -1,4 +1,6 @@
-<?php namespace Models\Filesystem;
+<?php
+
+namespace models\filesystem;
 
 interface FileInterface
 {
@@ -6,21 +8,21 @@ interface FileInterface
     *   Parse key into fields
     */
     public function parse($key);
-    
-    /********************
+
+/********************
     *   Get path to file
     */
     public function getPath();
     public function getKey();
-    
-    /**********************************
+
+/**********************************
     *   Get information array from file
     */
     public function setInformation($information);
     public function getInformation();
     public function getMetadata();
-    
-    /***************************************
+
+/***************************************
     *   Get additional information from file
     */
     public function getOwner();
@@ -28,8 +30,8 @@ interface FileInterface
     public function getChanges();
     public function getRegion();
     public function getToken();
-    
-    /*********************************
+
+/*********************************
     *   Get date information from file
     */
     public function getTimestamp();

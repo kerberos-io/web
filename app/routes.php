@@ -11,17 +11,15 @@
 |
 */
 
-Route::group(['before' => 'guest'], function()
-{
-	// ------------------------
+Route::group(['before' => 'guest'], function () {
+    // ------------------------
     // Login Controller
 
     Route::get('login', 'Controllers\LoginController@index');
 });
 
-Route::group(['before' => 'auth'], function()
-{
-	// ------------------------
+Route::group(['before' => 'auth'], function () {
+    // ------------------------
     // Login Controller
 
     Route::get('logout', 'Controllers\LoginController@logout');
@@ -30,15 +28,15 @@ Route::group(['before' => 'auth'], function()
     // Dashboard Controller
 
     Route::get('/', 'Controllers\DashboardController@index');
-    
-    // ------------------------
+
+// ------------------------
     // Settings Controller
 
     Route::get('settings', 'Controllers\SettingsController@index');
     Route::get('cloud', 'Controllers\SettingsController@cloud');
-    Route::post('settings/update', array('uses' => 'Controllers\SettingsController@update'));
-    
-    // ------------------------
+    Route::post('settings/update', ['uses' => 'Controllers\SettingsController@update']);
+
+// ------------------------
     // Image Controller
 
     Route::get('images/{date?}', 'Controllers\ImageController@index');

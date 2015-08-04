@@ -1,7 +1,9 @@
-<?php namespace Models\Filesystem;
+<?php
 
-use Config, Auth;
+namespace models\filesystem;
+
 use Carbon\Carbon as Carbon;
+use Config;
 
 class Image implements FileInterface
 {
@@ -43,12 +45,11 @@ class Image implements FileInterface
         // --------------------------------
         // Fill associative array with data
 
-        for($i = 0; $i < count($fileFormat) && $i < count($information); $i++)
-        {
+        for ($i = 0; $i < count($fileFormat) && $i < count($information); $i++) {
             $this->information[$fileFormat[$i]] = $information[$i];
         }
-        
-        // --------------------------------------------------
+
+// --------------------------------------------------
         // Calculate different time/date formats with Carbon
 
         $this->information['timestamp'] = intval($this->information['timestamp']);
@@ -111,10 +112,10 @@ class Image implements FileInterface
         $carbon->setTimezone($this->timezone);
 
         $this->information['carbon'] = [
-            'timezone' => $this->timezone,
-            'time' => $carbon->format('H:i:s'), // e.g. 16:45:16
-            'date' => $carbon->format('jS \\of F Y'), // e.g. 24th of February 2015
-            'short-date' => $carbon->format('d-m-Y'), // e.g. 24-02-2015
+            'timezone'    => $this->timezone,
+            'time'        => $carbon->format('H:i:s'), // e.g. 16:45:16
+            'date'        => $carbon->format('jS \\of F Y'), // e.g. 24th of February 2015
+            'short-date'  => $carbon->format('d-m-Y'), // e.g. 24-02-2015
             'day-of-week' => $carbon->dayOfWeek, // e.g. 1-7
         ];
     }
