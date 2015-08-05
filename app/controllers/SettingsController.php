@@ -224,7 +224,7 @@ class SettingsController extends BaseController
 
             public function updateIoWebhook()
             {
-                if(Input::get('active') != '')
+                if(Input::get('url') != '')
                 {
                     $settings["io__Webhook__url"] = Input::get('url');
                 }
