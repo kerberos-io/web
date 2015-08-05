@@ -204,7 +204,7 @@ class SettingsController extends BaseController
     {    
         if(Input::get('value') != '')
         {
-            $settings["config__instance__io"] = implode(',', json_decode(Input::get('value')));
+            $settings["config__instance__io"] = implode(',', Input::get('value'));
         }
 
         $this->reader->save($this->config, $settings);
