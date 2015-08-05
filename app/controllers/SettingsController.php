@@ -196,7 +196,7 @@ class SettingsController extends BaseController
     
     public function getIos()
     {
-        $instance = explode(',', $this->getPiece("config.xml", ["instance", "io"])->__toString());
+        $instance["devices"] = explode(',', $this->getPiece("config.xml", ["instance", "io"])->__toString());
         return Response::json($instance);
     }
     
