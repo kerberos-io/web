@@ -163,32 +163,32 @@ class SettingsController extends BaseController
         return $this->getConditions();
     }
     
-            /*******************************************
-            *   Get and set the "Enabled" condition.
-            */
+    /*******************************************
+    *   Get and set the "Enabled" condition.
+    */
 
-            public function getConditionEnabled()
-            {
-                $instance = $this->getPiece("condition.xml", ["Enabled"]);
-                return Response::json($instance);
-            }
+    public function getConditionEnabled()
+    {
+        $instance = $this->getPiece("condition.xml", ["Enabled"]);
+        return Response::json($instance);
+    }
 
-            public function updateConditionEnabled()
-            {
-                if(Input::get('active') != '')
-                {
-                    $settings["condition__Enabled__active"] = Input::get('active');
-                }
+    public function updateConditionEnabled()
+    {
+        if(Input::get('active') != '')
+        {
+            $settings["condition__Enabled__active"] = Input::get('active');
+        }
 
-                if(Input::get('delay') != '')
-                {
-                    $settings["condition__Enabled__delay"] = Input::get('delay');
-                }
+        if(Input::get('delay') != '')
+        {
+            $settings["condition__Enabled__delay"] = Input::get('delay');
+        }
 
-                $this->reader->save($this->config, $settings);
+        $this->reader->save($this->config, $settings);
 
-                return $this->getConditionEnabled();
-            }
+        return $this->getConditionEnabled();
+    }
 
     /*******************************************
     *   Get and set the ios.
@@ -212,25 +212,34 @@ class SettingsController extends BaseController
         return $this->getIos();
     }
     
-            /*******************************************
-            *   Get and set the "Webhook" io.
-            */
+    /*******************************************
+    *   Get and set the "Webhook" io.
+    */
 
-            public function getIoWebhook()
-            {
-                $instance = $this->getPiece("io.xml", ["Webhook"]);
-                return Response::json($instance);
-            }
+    public function getIoWebhook()
+    {
+        $instance = $this->getPiece("io.xml", ["Webhook"]);
+        return Response::json($instance);
+    }
 
+<<<<<<< HEAD
+    public function updateIoWebhook()
+    {
+        if(Input::get('active') != '')
+        {
+            $settings["io__Webhook__url"] = Input::get('url');
+        }
+=======
             public function updateIoWebhook()
             {
                 if(Input::get('url') != '')
                 {
                     $settings["io__Webhook__url"] = Input::get('url');
                 }
+>>>>>>> origin/develop
 
-                $this->reader->save($this->config, $settings);
+        $this->reader->save($this->config, $settings);
 
-                return $this->getIoWebhook();
-            }
+        return $this->getIoWebhook();
+    }
 }

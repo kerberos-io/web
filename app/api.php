@@ -42,6 +42,11 @@ Route::group(array('prefix' => 'api/v1'), function()
     
     Route::group(['before' => 'auth.basic'], function()
     {
+        // -------------------
+        // Health Controller
+        
+        Route::get('health', 'Controllers\HealthController@index');
+        
         // --------------------
         // Settings Controller
 
