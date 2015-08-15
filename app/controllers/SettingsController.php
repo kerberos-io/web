@@ -222,21 +222,12 @@ class SettingsController extends BaseController
         return Response::json($instance);
     }
 
-<<<<<<< HEAD
     public function updateIoWebhook()
     {
         if(Input::get('active') != '')
         {
             $settings["io__Webhook__url"] = Input::get('url');
         }
-=======
-            public function updateIoWebhook()
-            {
-                if(Input::get('url') != '')
-                {
-                    $settings["io__Webhook__url"] = Input::get('url');
-                }
->>>>>>> origin/develop
 
         $this->reader->save($this->config, $settings);
 

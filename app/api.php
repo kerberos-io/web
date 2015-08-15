@@ -13,6 +13,14 @@ Route::group(array('prefix' => 'api/v1'), function()
     
     Route::resource('webhook', 'Controllers\WebhookController');
     
+    // -------------------
+    // Health Controller
+        
+    Route::get('health', 'Controllers\HealthController@index');
+    
+    // -----------------------------
+    // Login method if not authorized
+    
     Route::group(['before' => 'guest'], function()
     {
         // -----------------
@@ -20,7 +28,10 @@ Route::group(array('prefix' => 'api/v1'), function()
         
         Route::post('login/login', 'Controllers\LoginController@login'); // try to sign-in the user.
     });
-
+    
+    // ----------------------
+    // Methods for authorized
+    
     Route::group(['before' => 'auth'], function()
     {
         // -----------------
@@ -36,16 +47,11 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('images/{date}/{take?}/{page?}/{time?}', 'Controllers\ImageController@getImagesFromStartTime');
     });
     
-
     // -------------------------
     // REST API with basic auth 
     
     Route::group(['before' => 'auth.basic'], function()
     {
-        // -------------------
-        // Health Controller
-        
-        Route::get('health', 'Controllers\HealthController@index');
         
         // --------------------
         // Settings Controller
