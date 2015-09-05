@@ -18,23 +18,19 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $this->user = Auth::user();
 
         $this->reader = $reader;
-        $timezone = $this->cache->storeAndGet('timezone', function()
+        $this->config = Config::get("app.config");
+        $settings = $this->reader->read($this->config . '/config.xml');
+
+        if(count($settings) > 0)
         {
-            $this->config = Config::get("app.config");
-            $settings = $this->reader->read($this->config . '/config.xml');
-            
-            if(count($settings) > 0)
-            {
-                $timezone = $settings->instance->timezone;
-                $timezone = str_replace("-", "/", $timezone);
-            }
-            else
-            {
-                $timezone = Config::get('app.timezone');
-            }
-            
-            return $timezone;
-        });
+            $timezone = $settings->instance->timezone;
+            $timezone = str_replace("-", "/", $timezone);
+            $timezone = str_replace("$", "_", $timezone);
+        }
+        else
+        {
+            $timezone = Config::get('app.timezone');
+        }
 
         $this->date = $date;
         $this->date->timezone = $timezone;

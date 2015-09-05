@@ -8421,10 +8421,12 @@ div.loadimage {
 }
 #settings div select,
 #cloud div select {
+  width: 123px;
   margin-right: 10px;
 }
 #settings div label,
 #cloud div label {
+  min-width: 100px;
   padding-top: 8px;
   padding-right: 15px;
 }
@@ -8459,8 +8461,17 @@ div.loadimage {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+#settings .text,
+#cloud .text {
+  margin-top: 10px;
+}
+#settings .text input[type="text"],
+#cloud .text input[type="text"] {
+  margin-left: 9px;
+}
 #settings div.submit-form,
 #cloud div.submit-form {
+  margin-top: 10px;
   clear: both;
 }
 #settings div.submit-form input[type="submit"],
