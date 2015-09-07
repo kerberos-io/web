@@ -155,52 +155,52 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getImagesFromDay($day, $take, $page)
     {
-        if(!array_key_exists($day, $this->getDays(-1)))
+        if(!in_array($day, $this->getDays(-1)))
         {
             return [];
         }
            
-        // -------------------------------------
-        // Cache images of day for x seconds
+        $startTimestamp = $this->date->dateToTimestamp($day);
+        $endTimestamp = $this->date->nextDayToTimestamp($day);
 
-        $key = $this->user->username . "_" . $day . "_images_" . $page;
+        $imagesTemp = [];
 
-        $imagesTemp = $this->cache->storeAndGet($key, function() use ($day)
+        $heap = $this->getImagesFromFilesystem();
+
+        // ---------------------------------------------
+        // Iterate while timestamp is not in current day
+
+        $timestamp = intval(explode('_', $heap->current())[0]);
+        $heap->next();
+
+        while($heap->valid())
         {
-            $startTimestamp = $this->date->dateToTimestamp($day);
-            $endTimestamp = $this->date->nextDayToTimestamp($day);
-        
-            $images = [];
-            
-            $heap = $this->getImagesFromFilesystem();
-            
-            // ---------------------------------------------
-            // Iterate while timestamp is not in current day
-            
-            $timestamp = explode('_', $heap->current())[0];
-            $heap->next();
-            while($heap->valid() && $timestamp < $startTimestamp)
-            {
-                $timestamp = explode('_', $heap->current())[0];
-                $heap->next();
-            }
-            
-            while($heap->valid() && $startTimestamp <= $timestamp && $timestamp <= $endTimestamp)
-            {
-                $timestamp = explode('_', $heap->current())[0];
-                $rest = intval(($timestamp - $startTimestamp) / 3600);
-                
-                $image = new Image;
-                $image->setTimezone($this->date->timezone);
-                $image->parse($heap->current());
-                array_push($images, $image);
-                
-                $heap->next();
-            }
-            
-            return $images;
-        });
+            $timestamp = intval(explode('_', $heap->current())[0]);
 
+            if($timestamp > $startTimestamp)
+            {
+                break;
+            }
+
+            $heap->next();
+        }
+
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[0]);
+
+            if($startTimestamp >= $timestamp || $timestamp >= $endTimestamp)   
+            {
+                break;
+            }
+
+            $image = new Image;
+            $image->setTimezone($this->date->timezone);
+            $image->parse($heap->current());
+            array_push($imagesTemp, $image);
+
+            $heap->next();
+        }
 
         // --------------
         // Paging images
@@ -238,32 +238,55 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getImagesWithinRangeOfDays($startDay, $endDay, $take, $page)
     {
-        $imagesTemp = $this->getImagesFromFilesystem();
+        // ------------------------
+        // Convert day to timestamp
+
+        $startTimestamp = $this->date->dateToTimestamp($endDay);
 
         // ------------------------
         // Convert day to timestamp
 
-        $timestampOfStartDay = $this->date->dateToTimestamp($endDay);
-
-        // ------------------------
-        // Convert day to timestamp
-
-        $timestampOfEndDay = $this->date->nextDayToTimestamp($startDay);
+        $endTimestamp = $this->date->nextDayToTimestamp($startDay);
         
-        $imagesMerged = [];
-        foreach(array_keys($imagesTemp) as $day)
+        $heap = $this->getImagesFromFilesystem();
+
+        // ---------------------------------------------
+        // Iterate while timestamp is not in current day
+
+        $timestamp = intval(explode('_', $heap->current())[0]);
+        $heap->next();
+
+        while($heap->valid())
         {
-            $timestamp = $this->date->nextDayToTimestamp($day);
-            if($timestampOfStartDay <= $timestamp && $timestamp <= $timestampOfEndDay)
+            $timestamp = intval(explode('_', $heap->current())[0]);
+
+            if($timestamp > $startTimestamp)
             {
-                foreach($imagesTemp[$day]['images'] as $image)
-                {
-                    array_push($imagesMerged, $image);
-                }
+                break;
             }
+
+            $heap->next();
         }
 
-        $imagesTemp = $imagesMerged;
+        $imagesTemp = [];
+        
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[0]);
+
+            if($startTimestamp >= $timestamp || $timestamp >= $endTimestamp)   
+            {
+                break;
+            }
+
+            $image = new Image;
+            $image->setTimezone($this->date->timezone);
+            $image->parse($heap->current());
+            array_push($imagesTemp, $image);
+
+            $heap->next();
+        }
+
 
         // -------------
         // Paging images
@@ -814,8 +837,15 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function countImagesPerDay($day)
     {
-        $images = $this->getImagesFromDay($day, -1, 1);
-        return count($images);
+        $hours = $this->countImagesPerHour($day);
+        
+        $total = 0;
+        for($i = 0; $i < count($hours); $i++)
+        {
+            $total += $hours[$i];
+        }
+        
+        return $total;
     }
 
     public function countAverageImagesPerDay($numberOfDays)
