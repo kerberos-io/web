@@ -106,7 +106,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $startTimestamp = $this->date->dateToTimestamp($day);
 
             $days = [];
-            $restCheck = 0;
+            $restCheck = -1;
             while($heap->valid())
             {
                 $timestamp = explode('_', $heap->current())[0];
