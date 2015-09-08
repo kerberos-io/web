@@ -368,11 +368,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 break;
             }
 
-            $image = new Image;
-            $image->setTimezone($this->date->timezone);
-            $image->parse($heap->current());
-            array_push($imagesTemp, $image);
-
+            array_push($imagesTemp, ['timestamp' => $timestamp, 'path' => $heap->current()]);
+            
             $heap->next();
         }
             
@@ -396,10 +393,10 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             {
                 if($i < $page) $lower--;
                 $upper = $lower;
-                $current = $imagesTemp[$lower]->getTimestamp();
+                $current = $imagesTemp[$lower]['timestamp'];
                 if($lower >= 1)
                 {
-                    $previous = $imagesTemp[$lower-1]->getTimestamp();
+                    $previous = $imagesTemp[$lower-1]['timestamp'];
 
                     // ----------------------------------------------------------
                     // if no sequence is found, only one image has to be selected
@@ -411,7 +408,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                         {
                             $lower--;
                             $current = $previous;
-                            $previous = $imagesTemp[$lower-1]->getTimestamp();
+                            $previous = $imagesTemp[$lower-1]['timestamp'];
                         }
                     }
                 }
@@ -439,6 +436,12 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             if($key >= $lower && $key < $upper)
             {
+                $path = $image['path'];
+
+                $image = new Image;
+                $image->setTimezone($this->date->timezone);
+                $image->parse($path);
+
                 array_push($images, [
                     'time' => $image->getTime(),
                     'src' => $this->filesystem->getPathToFile($image),
@@ -497,10 +500,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 break;
             }
 
-            $image = new Image;
-            $image->setTimezone($this->date->timezone);
-            $image->parse($heap->current());
-            array_push($imagesTemp, $image);
+            array_push($imagesTemp, ['timestamp' => $timestamp, 'path' => $heap->current()]);
 
             $heap->next();
         }
@@ -513,6 +513,12 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $images = [];
         foreach($imagesTemp as $image)
         {
+            $path = $image['path'];
+            
+            $image = new Image;
+            $image->setTimezone($this->date->timezone);
+            $image->parse($path);
+            
             array_push($images, [
                 'time' => $image->getTime(),
                 'src' => $this->filesystem->getPathToFile($image),
@@ -547,8 +553,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
             while($i < $page && $pointer < $n)
             {
-                $previous = $images[$pointer-1]->getTimestamp();
-                $current = $images[$pointer]->getTimestamp();
+                $previous = $images[$pointer-1]['timestamp'];
+                $current = $images[$pointer]['timestamp'];
 
                 while($current - $previous <= $maximumTimeBetween && $pointer < $n)
                 {
@@ -557,7 +563,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     if($pointer < $n)
                     {
                         $previous = $current;
-                        $current = $images[$pointer]->getTimestamp();
+                        $current = $images[$pointer]['timestamp'];
                     }
                 }
 
@@ -569,8 +575,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
             if($i == $page-1 && ($pointer - 1) < $n)
             {
-                $previous = $images[$pointer - 2]->getTimestamp();
-                $current = $images[$pointer - 1]->getTimestamp();
+                $previous = $images[$pointer - 2]['timestamp'];
+                $current = $images[$pointer - 1]['timestamp'];
 
                 if($current - $previous > $maximumTimeBetween)
                 {
