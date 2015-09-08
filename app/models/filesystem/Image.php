@@ -107,15 +107,15 @@ class Image implements FileInterface
 
     public function setTimeFormats($timestamp)
     {
-        $carbon = Carbon::createFromTimeStamp($timestamp);
-        $carbon->setTimezone($this->timezone);
+        //$carbon = Carbon::createFromTimeStamp($timestamp);
+        //$carbon->setTimezone($this->timezone);
 
         $this->information['carbon'] = [
-            'timezone' => $this->timezone,
-            'time' => $carbon->format('H:i:s'), // e.g. 16:45:16
-            'date' => $carbon->format('jS \\of F Y'), // e.g. 24th of February 2015
-            'short-date' => $carbon->format('d-m-Y'), // e.g. 24-02-2015
-            'day-of-week' => $carbon->dayOfWeek, // e.g. 1-7
+            'timezone' => '', //$this->timezone,
+            'time' => '', //$carbon->format('H:i:s'), // e.g. 16:45:16
+            'date' => '', //$carbon->format('jS \\of F Y'), // e.g. 24th of February 2015
+            'short-date' => '', //$carbon->format('d-m-Y'), // e.g. 24-02-2015
+            'day-of-week' => '', //$carbon->dayOfWeek, // e.g. 1-7
         ];
     }
 
