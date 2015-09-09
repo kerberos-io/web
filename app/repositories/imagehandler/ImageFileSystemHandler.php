@@ -832,7 +832,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         // Average images per day
 
         $statistics["statistics"] = [
-            "average" => $this->countAverageImagesPerDay($averageDays),
+            "average" => $this->countAverageImagesPerDay($statistics["days"]),
         ];
 
         return $statistics;
@@ -851,16 +851,15 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         return $total;
     }
 
-    public function countAverageImagesPerDay($numberOfDays)
+    public function countAverageImagesPerDay($imagesPerDay)
     {
-        $days = $this->getDays($numberOfDays);
-
         $averagePerDay = 0;
-        foreach ($days as $key => $value)
+        foreach ($imagesPerDay as $key => $imagesForDay)
         {
-            $averagePerDay += $this->countImagesPerDay($value);
+            $averagePerDay += $imagesForDay;
         }
 
+        $numberOfDays = count($imagesPerDay);
         if($averagePerDay > 0)
         {
             return intval($averagePerDay / $numberOfDays);
