@@ -11,12 +11,6 @@
 
     <title>kerberos.io - Video Surveillance</title>
 
-    <!-- Globals variables, that are used in the application -->
-    <script type="text/javascript">
-        var _baseUrl = "{{URL::to('/')}}";
-        var _jsBase = _baseUrl + "/js/";
-    </script>
-
     <!-- Mustachejs -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
     <!-- Custom Fonts -->
@@ -25,6 +19,21 @@
     <script src="{{URL::to('/')}}/js/vendor/requirejs/require.js"></script>
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
+    
+    <!-- Globals variables, that are used in the application -->
+    <script type="text/javascript">
+        var _baseUrl = "{{URL::to('/')}}";
+        var _jsBase = _baseUrl + "/js/";
+        
+        // Make all calls synchronous, Pi can't handle 
+        require([_jsBase + 'main.js'], function(common)
+        {
+            require(["jquery"], function($)
+            {
+                $.ajaxSetup({async:false});
+            });
+        });  
+    </script>
 </head>
 <body>
     <div id="wrapper">
