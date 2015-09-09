@@ -676,7 +676,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         // ------------------------
         // Average images per hour
 
-        $statistics["statistics"]["average"] = $this->countAverageImagesPerHour($averageDays);
+        $statistics["statistics"]["average"] = $this->countAverageImagesPerHour($statistics["days"]);
 
         return $statistics;
     }
@@ -738,10 +738,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         return $hours;
     }
 
-    public function countAverageImagesPerHour($numberOfDays)
+    public function countAverageImagesPerHour($hoursPerDay)
     {
-        $days = $this->getDays($numberOfDays);
-
         $hours = [];
         for($i = 0; $i < 24; $i++)
         {
@@ -749,10 +747,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         }
         
         $images = [];
-        foreach ($days as $key => $day)
+        foreach ($hoursPerDay as $key => $hourForDay)
         {
-            $hoursForDay = $this->countImagesPerHour($day);
-
             for($i = 0; $i < count($hoursForDay); $i++)
             {
                 $hours[$i] += $hoursForDay[$i];
