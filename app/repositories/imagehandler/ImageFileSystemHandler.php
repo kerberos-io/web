@@ -747,14 +747,15 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         }
         
         $images = [];
-        foreach ($hoursPerDay as $key => $hourForDay)
+        foreach ($hoursPerDay as $key => $hoursForDay)
         {
             for($i = 0; $i < count($hoursForDay); $i++)
             {
                 $hours[$i] += $hoursForDay[$i];
             }
         }
-
+        
+        $numberOfDays = count($hoursPerDay);
         for($i = 0; $i < 24; $i++)
         {
             $hours[$i] = intval($hours[$i] / $numberOfDays);
