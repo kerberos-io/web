@@ -23,4 +23,10 @@ class Carbon extends Carbon_ implements DateInterface
         $tomorrow = $dateTime->addDay();
         return $tomorrow->timestamp;
     }
+    
+    public function getWeekday($date)
+    {
+        $dateTime = Carbon_::createFromFormat("d-m-Y h:i:s", $date . " 00:00:00", $this->timezone);
+        return $dateTime->dayOfWeek;
+    }
 }

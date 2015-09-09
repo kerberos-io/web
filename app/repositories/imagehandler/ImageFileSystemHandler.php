@@ -670,7 +670,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         
         for($i = 0; $i < count($days); $i++)
         {
-            array_push($statistics["days"], $this->countImagesPerHour($days[$i]));
+            array_push($statistics["days"], $this->countImagesPerHour($days[$i])['total']);
         }
 
         // ------------------------
@@ -693,10 +693,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $startTimestamp = intval($this->date->dateToTimestamp($day));
             $endTimestamp = intval($this->date->nextDayToTimestamp($day));
         
-            $hours = [0, 0, 0, 0 ,0, 0,
-                      0, 0, 0, 0 ,0, 0,
-                      0, 0, 0, 0 ,0, 0,
-                      0, 0, 0, 0 ,0, 0];
+            $hours = [ 
+                'total' => [0, 0, 0, 0 ,0, 0,
+                            0, 0, 0, 0 ,0, 0,
+                            0, 0, 0, 0 ,0, 0,
+                            0, 0, 0, 0 ,0, 0],
+                'instances' => []
+            ];
             
             $heap = $this->getImagesFromFilesystem();
             
@@ -720,15 +723,30 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             
             while($heap->valid())
             {
-                $timestamp = intval(explode('_', $heap->current())[0]);
+                $pieces = explode('_', $heap->current());
+                $timestamp = intval($pieces[0]);
                 
                 if($startTimestamp >= $timestamp || $timestamp >= $endTimestamp)   
                 {
                     break;
                 }
+
+                $hour = intval(($timestamp - $startTimestamp) / 3600);
+                $hours['total'][$hour]++;
                 
-                $rest = intval(($timestamp - $startTimestamp) / 3600);
-                $hours[$rest]++;
+                $instanceName = $pieces[2];
+                if(array_key_exists($instanceName, $hours['instances']))
+                {
+                    $hours['instances'][$instanceName][$hour]++;
+                }
+                else
+                {
+                    $hours['instances'][$instanceName] = [0, 0, 0, 0 ,0, 0,
+                                                          0, 0, 0, 0 ,0, 0,
+                                                          0, 0, 0, 0 ,0, 0,
+                                                          0, 0, 0, 0 ,0, 0];
+                }
+                
                 $heap->next();
             }
             
@@ -740,18 +758,17 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function countAverageImagesPerHour($hoursPerDay)
     {
-        $hours = [];
-        for($i = 0; $i < 24; $i++)
-        {
-            $hours[$i] = 0;
-        }
+        $hours = [0, 0, 0, 0 ,0, 0,
+                  0, 0, 0, 0 ,0, 0,
+                  0, 0, 0, 0 ,0, 0,
+                  0, 0, 0, 0 ,0, 0];
         
         $images = [];
         foreach ($hoursPerDay as $key => $hoursForDay)
         {
             for($i = 0; $i < count($hoursForDay); $i++)
             {
-                $hours[$i] += $hoursForDay[$i];
+                $hours[$i] += $hoursForDay[$i]['total'];
             }
         }
         
@@ -774,37 +791,36 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             return $imagesPerWeekDay;
         }
-
+        
         // -----------------------------------
         // Get images per weekday per instance
 
-        $startDay = $days[0];
-        $endDay = end($days);
-        $images = $this->getImagesWithinRangeOfDays($startDay, $endDay, -1, 1);
-
-        foreach ($images as $key => $image)
+        foreach($days as $day)
         {
-            $instanceName = $image->getInstanceName();
-            if(array_key_exists($instanceName, $imagesPerWeekDay))
+            $dayOfWeek = $this->date->getWeekday($day);
+            $hours = $this->countImagesPerHour($day);
+            
+            foreach($hours['instances'] as $instanceName => $instanceHours)
             {
-                $dayOfWeek = $image->getDayOfWeek();
-                $imagesPerWeekDay[$instanceName]['eventsOnWeekday'][$dayOfWeek]++;
-
-                // -------------------------------------------------------
-                // We need to know exatcly how many weekdays per instance
-
-                $day = $image->getDate();
-                if(!in_array($day, $imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek]))
+                if(array_key_exists($instanceName, $imagesPerWeekDay))
                 {
-                    array_push($imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek], $day);
+                    if(!in_array($day, $imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek]))
+                    {
+                        array_push($imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek], $day);
+                    }
+                    
+                    foreach($instanceHours as $hour)
+                    {
+                        $imagesPerWeekDay[$instanceName]['eventsOnWeekday'][$dayOfWeek] += $hour;
+                    }
                 }
-            }
-            else
-            {
-                $imagesPerWeekDay[$instanceName] = [
-                    'eventsOnWeekday' => [0, 0, 0, 0, 0, 0, 0],
-                    'daysPerWeekday' => [[], [], [], [], [], [], []]
-                ];
+                else
+                {
+                    $imagesPerWeekDay[$instanceName] = [
+                        'eventsOnWeekday' => [0, 0, 0, 0, 0, 0, 0],
+                        'daysPerWeekday' => [[], [], [], [], [], [], []]
+                    ];
+                }
             }
         }
 
@@ -843,9 +859,9 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $hours = $this->countImagesPerHour($day);
         
         $total = 0;
-        for($i = 0; $i < count($hours); $i++)
+        for($i = 0; $i < count($hours['total']); $i++)
         {
-            $total += $hours[$i];
+            $total += $hours['total'][$i];
         }
         
         return $total;
