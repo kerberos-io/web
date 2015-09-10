@@ -142,7 +142,7 @@ class ImageController extends BaseController
         $validator = Validator::make(['day' => $day], ['day' => 'date_format:d-m-Y']);
         if (!$validator->fails())
         {
-            $imagesPerHour = $this->imageHandler->countImagesPerHour($day);
+            $imagesPerHour = $this->imageHandler->countImagesPerHour($day)['total'];
         }
 
         return Response::json($imagesPerHour);
