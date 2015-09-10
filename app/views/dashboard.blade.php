@@ -55,25 +55,28 @@
                                 url: _baseUrl + "/api/v1/images/latest_sequence",
                                 callback: function()
                                 {
-                                    Pie.initialize(
+                                    if ($(window).width() >= 768)
                                     {
-                                        url: "/api/v1/images/perday/3",
-                                        callback: function()
+                                        Pie.initialize(
                                         {
-                                            Graph.initialize(
+                                            url: "/api/v1/images/perday/3",
+                                            callback: function()
                                             {
-                                                url: _baseUrl + "/api/v1/images/perhour/3",
-                                                callback: function()
+                                                Graph.initialize(
                                                 {
-                                                    Radar.initialize(
+                                                    url: _baseUrl + "/api/v1/images/perhour/3",
+                                                    callback: function()
                                                     {
-                                                        url: _baseUrl + "/api/v1/images/perweekday/1",
-                                                        callback: function (){}
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });
+                                                        Radar.initialize(
+                                                        {
+                                                            url: _baseUrl + "/api/v1/images/perweekday/1",
+                                                            callback: function (){}
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
                                 }
                             });
                         });
