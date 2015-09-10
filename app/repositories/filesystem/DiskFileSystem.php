@@ -31,7 +31,10 @@ class DiskFilesystem implements FilesystemInterface
         $dir = opendir(public_path() . $this->path);
         while(($currentFile = readdir($dir)) !== false)
         {
-            $heap->insert($currentFile);
+            if($currentFile != '.' || $currentFile != '..')
+            {
+                $heap->insert($currentFile);
+            }
         }
 
         closedir($dir);
