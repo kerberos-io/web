@@ -67,7 +67,7 @@
                                                 {
                                                     Radar.initialize(
                                                     {
-                                                        url: _baseUrl + "/api/v1/images/perweekday/3",
+                                                        url: _baseUrl + "/api/v1/images/perweekday/1",
                                                         callback: function (){}
                                                     });
                                                 }

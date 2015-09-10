@@ -543,7 +543,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getNumberOfImagesPerWeekDayPerInstance($numberOfWeeks)
     {
-        $days = $this->getDays($numberOfWeeks * 7);
+        $days = $this->getDays($numberOfWeeks * 7 + 1);
         
         $imagesPerWeekDay = [];
 
