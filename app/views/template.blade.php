@@ -23,16 +23,7 @@
     <!-- Globals variables, that are used in the application -->
     <script type="text/javascript">
         var _baseUrl = "{{URL::to('/')}}";
-        var _jsBase = _baseUrl + "/js/";
-        
-        // Make all calls synchronous, Pi can't handle 
-        require([_jsBase + 'main.js'], function(common)
-        {
-            require(["jquery"], function($)
-            {
-                $.ajaxSetup({async:false});
-            });
-        });  
+        var _jsBase = _baseUrl + "/js/"; 
     </script>
 </head>
 <body>
