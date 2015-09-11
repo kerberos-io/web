@@ -40,6 +40,41 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $this->filesystem->setTimezone($timezone);
     }
     
+    public function getFileFormat()
+    {
+        $fileFormat = Config::get('app.filesystem.fileFormat');
+        $fileFormat = explode('.', $fileFormat)[0]; // e.g. fileFormat = "timestamp_name_region_numberOfChanges_token.jpg";
+        $fileFormat = explode('_', $fileFormat); // e.g. fileFormat = "timestamp_name_region_numberOfChanges_token";
+        
+        return $fileFormat;
+    }
+    
+    public function getIndexOfTimestampFromFileFormat()
+    {
+        $fileFormat = $this->getFileFormat();
+        
+        $i = 0;
+        while($i < count($fileFormat) && $fileFormat[$i] != 'timestamp')
+        {
+            $i++;
+        }
+        
+        return $i;
+    }
+    
+    public function getIndexOfInstanceNameFromFileFormat()
+    {
+        $fileFormat = $this->getFileFormat();
+        
+        $i = 0;
+        while($i < count($fileFormat) && $fileFormat[$i] != 'instanceName')
+        {
+            $i++;
+        }
+        
+        return $i;
+    }
+    
     public function getImagesFromFilesystem()
     {
         $heap = $this->filesystem->findAllImages();
@@ -95,9 +130,10 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $days = $this->cache->storeAndGet($key, function()
         {
             $heap = $this->getImagesFromFilesystem();
-
+            $index = $this->getIndexOfTimestampFromFileFormat();
+            
             $firstDay = $heap->current();
-            $timestamp = intval(explode('_', $firstDay)[0]);
+            $timestamp = intval(explode('_', $firstDay)[$index]);
             $carbon = Carbon::createFromTimeStamp($timestamp);
             $carbon->setTimezone($this->date->timezone);
             $day = $carbon->format('d-m-Y');
@@ -107,7 +143,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $restCheck = -1;
             while($heap->valid())
             {
-                $timestamp = explode('_', $heap->current())[0];
+                $timestamp = explode('_', $heap->current())[$index];
                 $rest = intval(($timestamp - $startTimestamp) / 86400);
 
                 if($restCheck != $rest)
@@ -165,13 +201,14 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $imagesTemp = [];
 
         $heap = $this->getImagesFromFilesystem();
-
+        $index = $this->getIndexOfTimestampFromFileFormat();
+        
         // ---------------------------------------------
         // Iterate while timestamp is not in current day
 
         while($heap->valid())
         {
-            $timestamp = intval(explode('_', $heap->current())[0]);
+            $timestamp = intval(explode('_', $heap->current())[$index]);
 
             if($timestamp <= $endTimestamp)
             {
@@ -183,7 +220,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         while($heap->valid())
         {
-            $timestamp = intval(explode('_', $heap->current())[0]);
+            $timestamp = intval(explode('_', $heap->current())[$index]);
 
             if($timestamp < $startTimestamp)
             {
@@ -295,13 +332,14 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         $imagesTemp = [];
         $heap = $this->getImagesFromFilesystem();
-
+        $index = $this->getIndexOfTimestampFromFileFormat();
+        
         // ---------------------------------------------
         // Iterate while timestamp is not in current day
 
         while($heap->valid())
         {
-            $timestamp = intval(explode('_', $heap->current())[0]);
+            $timestamp = intval(explode('_', $heap->current())[$index]);
 
             if($timestamp <= $endTimestamp)
             {
@@ -313,7 +351,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         while($heap->valid())
         {
-            $timestamp = intval(explode('_', $heap->current())[0]);
+            $timestamp = intval(explode('_', $heap->current())[$index]);
 
             if($timestamp < $startTimestamp)
             {
@@ -465,13 +503,15 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             ];
             
             $heap = $this->getImagesFromFilesystem();
+            $indexTimestamp = $this->getIndexOfTimestampFromFileFormat();
+            $indexInstanceName = $this->getIndexOfInstanceNameFromFileFormat();
             
             // ---------------------------------------------
             // Iterate while timestamp is not in current day
             
             while($heap->valid())
             {
-                $timestamp = intval(explode('_', $heap->current())[0]);
+                $timestamp = intval(explode('_', $heap->current())[$indexTimestamp]);
                 
                 if($timestamp <= $endTimestamp)
                 {
@@ -484,7 +524,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $pieces = explode('_', $heap->current());
-                $timestamp = intval($pieces[0]);
+                $timestamp = intval($pieces[$indexTimestamp]);
                 
                 if($timestamp < $startTimestamp)
                 {
@@ -494,7 +534,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 $hour = intval(($timestamp - $startTimestamp) / 3600);
                 $hours['total'][$hour]++;
                 
-                $instanceName = $pieces[2];
+                $instanceName = $pieces[$indexInstanceName];
                 if(array_key_exists($instanceName, $hours['instances']))
                 {
                     $hours['instances'][$instanceName][$hour]++;
