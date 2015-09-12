@@ -3,7 +3,10 @@
    	{
         require(['jquery'], function($)
    	    {
-            $("#timezone-picker option[value='{{$value}}']").attr('selected','selected');	
+            $(document).ready(function()
+            {
+                $("#timezone-picker option[value='{{$value}}']").attr('selected','selected');
+            });	
         });
 	});
 </script>
