@@ -23,8 +23,8 @@ define(["Sequencer"], function(Sequencer)
             })
             .always(function()
             {
-                // Wait 500 ms before executing 
-                setTimeout(this_.config.callback, 500);
+                // Wait 300 ms before executing 
+                setTimeout(this_.config.callback, 300);
             });
         },
         attachTo: function(element)

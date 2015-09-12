@@ -18,8 +18,8 @@ define(["jquery", "chartjs"], function($, Chart)
             })
             .always(function()
             {
-                // Wait 500 ms before executing 
-                setTimeout(this_.config.callback, 1000);
+                // Wait 300 ms before executing 
+                setTimeout(this_.config.callback, 300);
             });
         },
         draw: function(data)
