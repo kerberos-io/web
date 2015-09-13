@@ -568,7 +568,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             for($i = 0; $i < count($hoursForDay); $i++)
             {
-                $hours[$i] += $hoursForDay[$i]['total'];
+                $hours[$i] += $hoursForDay[$i];
             }
         }
         
