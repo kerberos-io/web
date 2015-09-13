@@ -18,9 +18,10 @@ class ImageFilesystemHandlerSequenceTest extends TestCase
 
     public function createImage($key)
     {
-        $image = new Image();
-        $image->parse($key);
-        return $image;
+        //$image = new Image();
+        //$image->parse($key);
+        
+        return ['timestamp' => $key];
     }
 
     public function testEmptyListOfImages()

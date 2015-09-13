@@ -129,30 +129,51 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
                     {
                         if(data[i] > max) max = data[i];
                     }
-
-                    var styling = '-webkit-linear-gradient(left,';
+                    
+                    // Decorate gradient for all browsers
+                    var styling_webkit = '-webkit-linear-gradient(left,';
+                    var styling_moz = '-moz-linear-gradient(left,';
+                    var styling_o = '-o-linear-gradient(left,';
+                    var styling_wc3 = 'linear-gradient(left,';
                     for(var i = 0; i <= self.time; i++)
                     {   
                         if(data[i] >= max - (max/3))
                         {
-                            styling += 'rgb(148, 54, 51) ' + (i*steps) + '%,';   
+                            styling_webkit += 'rgb(148, 54, 51) ' + (i*steps) + '%,';
+                            styling_moz += 'rgb(148, 54, 51) ' + (i*steps) + '%,';
+                            styling_o += 'rgb(148, 54, 51) ' + (i*steps) + '%,';
+                            styling_wc3 += 'rgb(148, 54, 51) ' + (i*steps) + '%,';
                         }
                         else if(data[i] > max/3)
                         {
-                            styling += 'rgb(132, 132, 132) ' + (i*steps) + '%,';
+                            styling_webkit += 'rgb(132, 132, 132) ' + (i*steps) + '%,';
+                            styling_moz += 'rgb(132, 132, 132) ' + (i*steps) + '%,';
+                            styling_o += 'rgb(132, 132, 132) ' + (i*steps) + '%,';
+                            styling_wc3 += 'rgb(132, 132, 132) ' + (i*steps) + '%,';
                         }
                         else if(data[i] > 0)
                         {
-                            styling += 'rgb(190, 190, 190) ' + (i*steps) + '%,';   
+                            styling_webkit += 'rgb(190, 190, 190) ' + (i*steps) + '%,';
+                            styling_moz += 'rgb(190, 190, 190) ' + (i*steps) + '%,';
+                            styling_o += 'rgb(190, 190, 190) ' + (i*steps) + '%,';
+                            styling_wc3 += 'rgb(190, 190, 190) ' + (i*steps) + '%,';   
                         }
                         else
                         {
-                            styling += 'rgb(230, 230, 230) ' + (i*steps) + '%,';  
+                            styling_webkit += 'rgb(230, 230, 230) ' + (i*steps) + '%,';
+                            styling_moz += 'rgb(230, 230, 230) ' + (i*steps) + '%,';
+                            styling_o += 'rgb(230, 230, 230) ' + (i*steps) + '%,';
+                            styling_wc3 += 'rgb(230, 230, 230) ' + (i*steps) + '%,';  
                         }
                     }
-
-                    styling = styling.slice(0, -1) + ')';
-                    $(".slider-track").css({'background': styling});
+                    styling_webkit = styling_webkit.slice(0, -1) + ')';
+                    styling_moz = styling_moz.slice(0, -1) + ')';
+                    styling_o = styling_moz.slice(0, -1) + ')';
+                    styling_wc3 = styling_moz.slice(0, -1) + ')';
+                    $(".slider-track").css({'background': styling_webkit});
+                    $(".slider-track").css({'background': styling_moz});
+                    $(".slider-track").css({'background': styling_o});
+                    $(".slider-track").css({'background': styling_wc3});
                 }
             });
 

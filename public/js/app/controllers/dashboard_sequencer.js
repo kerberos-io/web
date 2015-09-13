@@ -12,12 +12,25 @@ define(["Sequencer"], function(Sequencer)
         config: {},
         initialize: function(config)
         {
-           this.config = config;
+            this_ = this;
+            this_.config = config;
+    
+            $.get(config.url, function(images)
+            {
+                this_.config.images = images;
+                this_.attachTo(document.getElementById("latest-activity-sequence"));
+                this_.play();
+            })
+            .always(function()
+            {
+                // Wait 300 ms before executing 
+                setTimeout(this_.config.callback, 300);
+            });
         },
         attachTo: function(element)
         {
             if(this.config)
-            {
+{
                 this.config.element = element;
             }
         },

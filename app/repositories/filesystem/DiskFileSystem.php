@@ -1,6 +1,7 @@
 <?php namespace Repositories\Filesystem;
 
 use Config, URL;
+use Models\Data\Heap as Heap;
 use Models\Filesystem\FileInterface as FileInterface;
 use Models\Filesystem\Image as Image;
 
@@ -25,22 +26,19 @@ class DiskFilesystem implements FilesystemInterface
 
     public function findAllImages()
     {
-        $images = [];
+        $heap = new Heap;
+
         $dir = opendir(public_path() . $this->path);
         while(($currentFile = readdir($dir)) !== false)
         {
-            if ( $currentFile == '.' or $currentFile == '..' or $currentFile == '.DS_Store')
+            if($currentFile != '.' && $currentFile != '..')
             {
-                continue;
+                $heap->insert($currentFile);
             }
-
-            $image = new Image;
-            $image->setTimezone($this->timezone);
-            $image->parse($currentFile);
-            array_push($images, $image);
         }
+
         closedir($dir);
-        return $images;
+        return $heap;
     }
 
     public function getPathToFile(FileInterface $file)

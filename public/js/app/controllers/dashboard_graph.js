@@ -4,12 +4,25 @@
 *               Chartjs is used to render the information to a graph. 
 **/
 
-define(["jquery"], function($)
+define(["jquery", "chartjs"], function($, Chart)
 {
-    // Chartjs
-    require(["chartjs"], function(Chart)
-    {
-        $.get(_baseUrl + "/api/v1/images/perhour/3",function(data)
+    return {
+        initialize: function(config)
+        {
+            this_ = this;
+            this_.config = config;
+            
+            $.get(this_.config.url,function(data)
+            {
+               this_.draw(data);
+            })
+            .always(function()
+            {
+                // Wait 300 ms before executing 
+                setTimeout(this_.config.callback, 300);
+            });
+        },
+        draw: function(data)
         {
             var canvas = $("#time-chart").get(0);
             var ctx = canvas.getContext("2d");
@@ -124,7 +137,6 @@ define(["jquery"], function($)
                 ctx.fillStyle = 'black';
                 ctx.fillText('No data available', x, y);
             }
-
-        });
-    });
+        }
+    };
 });

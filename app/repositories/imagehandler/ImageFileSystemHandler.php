@@ -1,5 +1,6 @@
 <?php namespace Repositories\ImageHandler;
 
+use Log;
 use URL, Session, Config, Auth;
 use Carbon\Carbon as Carbon;
 
@@ -18,23 +19,19 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $this->user = Auth::user();
 
         $this->reader = $reader;
-        $timezone = $this->cache->storeAndGet('timezone', function()
+        $this->config = Config::get("app.config");
+        $settings = $this->reader->read($this->config . '/config.xml');
+
+        if(count($settings) > 0)
         {
-            $this->config = Config::get("app.config");
-            $settings = $this->reader->read($this->config . '/config.xml');
-            
-            if(count($settings) > 0)
-            {
-                $timezone = $settings->instance->timezone;
-                $timezone = str_replace("-", "/", $timezone);
-            }
-            else
-            {
-                $timezone = Config::get('app.timezone');
-            }
-            
-            return $timezone;
-        });
+            $timezone = $settings->instance->timezone;
+            $timezone = str_replace("-", "/", $timezone);
+            $timezone = str_replace("$", "_", $timezone);
+        }
+        else
+        {
+            $timezone = Config::get('app.timezone');
+        }
 
         $this->date = $date;
         $this->date->timezone = $timezone;
@@ -42,58 +39,49 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $this->filesystem = $filesystem;
         $this->filesystem->setTimezone($timezone);
     }
-
+    
+    public function getFileFormat()
+    {
+        $fileFormat = Config::get('app.filesystem.fileFormat');
+        $fileFormat = explode('.', $fileFormat)[0]; // e.g. fileFormat = "timestamp_name_region_numberOfChanges_token.jpg";
+        $fileFormat = explode('_', $fileFormat); // e.g. fileFormat = "timestamp_name_region_numberOfChanges_token";
+        
+        return $fileFormat;
+    }
+    
+    public function getIndexOfTimestampFromFileFormat()
+    {
+        $fileFormat = $this->getFileFormat();
+        
+        $i = 0;
+        while($i < count($fileFormat) && $fileFormat[$i] != 'timestamp')
+        {
+            $i++;
+        }
+        
+        return $i;
+    }
+    
+    public function getIndexOfInstanceNameFromFileFormat()
+    {
+        $fileFormat = $this->getFileFormat();
+        
+        $i = 0;
+        while($i < count($fileFormat) && $fileFormat[$i] != 'instanceName')
+        {
+            $i++;
+        }
+        
+        return $i;
+    }
+    
     public function getImagesFromFilesystem()
     {
-        // -------------------------------------
-        // Cache images directory for x seconds
+        $heap = $this->filesystem->findAllImages();
 
-        $key = $this->user->username . "_images";
-
-        $images = $this->cache->storeAndGet($key, function()
-        {
-            $images = $this->filesystem->findAllImages();
-            
-            usort($images, function($a, $b)
-            {
-                return strcmp($a->getPath(), $b->getPath());
-            });
-            
-            // ---------------------------------------------------
-            // Group image per day, mainly for performance reasons
-            
-            $previous = "";
-            $imagesByDay = [];
-            foreach($images as $image)
-            {
-                $day = $image->getShortDate();
-                if($previous != $day)
-                {
-                    $imagesByDay[$day] = [
-                        'images' => [],
-                        'hours' => [0, 0, 0, 0 ,0, 0,
-                                    0, 0, 0, 0 ,0, 0,
-                                    0, 0, 0, 0 ,0, 0,
-                                    0, 0, 0, 0 ,0, 0],
-                    ];
-                    $previous = $day;
-                }
-                array_push($imagesByDay[$day]['images'], $image);
-                
-                // -------------------
-                // Calculate metadata
-                
-                $hour = explode(':',$image->getTime())[0];
-                $hour = ($hour[0]=='0')?substr($hour,1): $hour;
-                $imagesByDay[$day]['hours'][$hour]++;
-            }
-
-            return $imagesByDay;
-        });
-
-        return $images;
+        return $heap;
     }
-
+    
     public function getLatestImage()
     {
         $latestSequence = $this->getLatestSequence();
@@ -121,22 +109,55 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getLastHourOfDay($day)
     {
-        $images = $this->getImagesSequenceFromDay($day, 1, 1);
+        $hours = $this->countImagesPerHour($day)['total'];
 
-        if(count($images)>0)
+        $i = 23;
+        while($i > 0 && $hours[$i] == 0)
         {
-            $image = $images[0];
-            $hour = ltrim(explode(":", $image["time"])[0], "0");
-            return $hour;
+            $i--;
         }
-
-        return null;
+                
+        return $i;
     }
 
     public function getDays($numberOfDays)
     {
-        $images = $this->getImagesFromFilesystem();
-        $days = array_reverse(array_keys($images));
+        // -------------------------------------
+        // Cache images directory for x seconds
+
+        $key = $this->user->username . "_days";
+
+        $days = $this->cache->storeAndGet($key, function()
+        {
+            $heap = $this->getImagesFromFilesystem();
+            $index = $this->getIndexOfTimestampFromFileFormat();
+            
+            $firstDay = $heap->current();
+            $timestamp = intval(explode('_', $firstDay)[$index]);
+            $carbon = Carbon::createFromTimeStamp($timestamp);
+            $carbon->setTimezone($this->date->timezone);
+            $day = $carbon->format('d-m-Y');
+            $startTimestamp = $this->date->dateToTimestamp($day);
+
+            $days = [];
+            $restCheck = -1;
+            while($heap->valid())
+            {
+                $timestamp = explode('_', $heap->current())[$index];
+                $rest = floor(($timestamp - $startTimestamp) / 86400);
+
+                if($restCheck != $rest)
+                {
+                    $restCheck = $rest;
+                    array_push($days, $carbon->addDays($rest)->format('d-m-Y'));
+                    $carbon->subDays($rest);
+                }
+
+                $heap->next();
+            }
+            
+            return $days;
+        });
         
         if($numberOfDays > 0)
         {
@@ -164,137 +185,57 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         return $images;
     }
 
-    public function getImagesFromDay($day, $take, $page)
-    {
-        $imagesTemp = $this->getImagesFromFilesystem();
-        
-        if(!array_key_exists($day, $imagesTemp))
-        {
-            return [];
-        }
-        else
-        {
-            $imagesTemp = $imagesTemp[$day]['images'];
-        }
-
-        // --------------
-        // Paging images
-
-        $lower = count($imagesTemp) - $take*$page;
-        $upper = $lower + $take;
-        $lower = ($lower < 0)?0:$lower;
-        $upper = ($upper < 0)?0:$upper;
-
-        // -------------------------------------------
-        // Filter images that belong to selected page
-
-        $images = [];
-
-        if($take >= 0)
-        {
-            foreach($imagesTemp as $key => $image)
-            {
-                if($key >= $lower && $key < $upper)
-                {
-                    array_push($images, $image);
-                }
-            }
-            
-            return $images;
-        }
-        // -----------------------------------------------------
-        // If $take is smaller then zero, we take all the images
-
-        else
-        {
-            return $imagesTemp;
-        }
-    }
-
-    public function getImagesWithinRangeOfDays($startDay, $endDay, $take, $page)
-    {
-        $imagesTemp = $this->getImagesFromFilesystem();
-
-        // ------------------------
-        // Convert day to timestamp
-
-        $timestampOfStartDay = $this->date->dateToTimestamp($endDay);
-
-        // ------------------------
-        // Convert day to timestamp
-
-        $timestampOfEndDay = $this->date->nextDayToTimestamp($startDay);
-        
-        $imagesMerged = [];
-        foreach(array_keys($imagesTemp) as $day)
-        {
-            $timestamp = $this->date->nextDayToTimestamp($day);
-            if($timestampOfStartDay <= $timestamp && $timestamp <= $timestampOfEndDay)
-            {
-                foreach($imagesTemp[$day]['images'] as $image)
-                {
-                    array_push($imagesMerged, $image);
-                }
-            }
-        }
-
-        $imagesTemp = $imagesMerged;
-
-        // -------------
-        // Paging images
-
-        $lower = count($imagesTemp) - $take*$page;
-        $upper = $lower + $take;
-        $lower = ($lower < 0)?0:$lower;
-        $upper = ($upper < 0)?0:$upper;
-
-        // ------------------------------------------
-        // Filter images that belong to selected page
-
-        $images = [];
-        if($take >= 0)
-        {
-            foreach($imagesTemp as $key => $image)
-            {
-                if($key >= $lower && $key < $upper)
-                {
-                    array_push($images, $image);
-                }
-            }
-        }
-        // -----------------------------------------------------
-        // If $take is smaller then zero, we take all the images
-
-        else
-        {
-            foreach($imagesTemp as $image)
-            {
-                array_push($images, $image);
-            }
-        }
-
-        return $images;
-    }
-
     /************************************************
      *  Get a sequence of images from a specific day
      */
     public function getImagesSequenceFromDay($day, $page, $maximumTimeBetween)
     {
-        $imagesTemp = $this->getImagesFromFilesystem();
-        
-        if(!array_key_exists($day, $imagesTemp))
+        if(!in_array($day, $this->getDays(-1)))
         {
             return [];
         }
-        else
+
+        $startTimestamp = $this->date->dateToTimestamp($day);
+        $endTimestamp = $this->date->nextDayToTimestamp($day);
+
+        $imagesTemp = [];
+
+        $heap = $this->getImagesFromFilesystem();
+        $index = $this->getIndexOfTimestampFromFileFormat();
+        
+        // ---------------------------------------------
+        // Iterate while timestamp is not in current day
+
+        while($heap->valid())
         {
-            $imagesTemp = $imagesTemp[$day]['images'];
+            $timestamp = intval(explode('_', $heap->current())[$index]);
+
+            if($timestamp <= $endTimestamp)
+            {
+                break;
+            }
+
+            $heap->next();
         }
 
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[$index]);
+
+            if($timestamp < $startTimestamp)
+            {
+                break;
+            }
+
+            array_push($imagesTemp, ['timestamp' => $timestamp, 'path' => $heap->current()]);
+            
+            $heap->next();
+        }
+            
         // ---------------------------
         // Paging images in a sequence
-
+        
+        $imagesTemp = array_reverse($imagesTemp);
         $lower = count($imagesTemp)-1;
         $upper;
         
@@ -312,10 +253,10 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             {
                 if($i < $page) $lower--;
                 $upper = $lower;
-                $current = $imagesTemp[$lower]->getTimestamp();
+                $current = $imagesTemp[$lower]['timestamp'];
                 if($lower >= 1)
                 {
-                    $previous = $imagesTemp[$lower-1]->getTimestamp();
+                    $previous = $imagesTemp[$lower-1]['timestamp'];
 
                     // ----------------------------------------------------------
                     // if no sequence is found, only one image has to be selected
@@ -327,7 +268,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                         {
                             $lower--;
                             $current = $previous;
-                            $previous = $imagesTemp[$lower-1]->getTimestamp();
+                            $previous = $imagesTemp[$lower-1]['timestamp'];
                         }
                     }
                 }
@@ -355,6 +296,12 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             if($key >= $lower && $key < $upper)
             {
+                $path = $image['path'];
+
+                $image = new Image;
+                $image->setTimezone($this->date->timezone);
+                $image->parse($path);
+
                 array_push($images, [
                     'time' => $image->getTime(),
                     'src' => $this->filesystem->getPathToFile($image),
@@ -368,36 +315,69 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getImagesSequenceFromDayAndStartTime($day, $page, $starttime, $maximumTimeBetween)
     {
-        $imagesTemp = $this->getImagesFromFilesystem();
-        
-        if(!array_key_exists($day, $imagesTemp))
+        if(!in_array($day, $this->getDays(-1)))
         {
             return [];
         }
-        else
-        {
-            $imagesTemp = $imagesTemp[$day]['images'];
-        }
-       
+
         // --------------------------------------------------------------------
         // Convert starttime to timestamp (= day + starttime * seconds in hour)
 
-        $starttime = $this->date->dateTimeToTimestamp($day, $starttime);
+        $startTimestamp = $this->date->dateTimeToTimestamp($day, $starttime);
 
         // ------------------------------------
         // Calculate timestamp of the day after
 
-        $timestampOfNextDay = $this->date->nextDayToTimestamp($day);
+        $endTimestamp = $this->date->nextDayToTimestamp($day);
 
+        $imagesTemp = [];
+        $heap = $this->getImagesFromFilesystem();
+        $index = $this->getIndexOfTimestampFromFileFormat();
+        
+        // ---------------------------------------------
+        // Iterate while timestamp is not in current day
+
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[$index]);
+
+            if($timestamp <= $endTimestamp)
+            {
+                break;
+            }
+
+            $heap->next();
+        }
+
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[$index]);
+
+            if($timestamp < $startTimestamp)
+            {
+                break;
+            }
+
+            array_push($imagesTemp, ['timestamp' => $timestamp, 'path' => $heap->current()]);
+
+            $heap->next();
+        }
+        
         // -------------
-        // Filter images
-
-        $imagesTemp = $this->timeSearch($imagesTemp, $starttime, $timestampOfNextDay);
-        $imagesTemp = $this->getSequence(array_values($imagesTemp), $page, $maximumTimeBetween);
+        // Sequence images
+        
+        $imagesTemp = array_reverse($imagesTemp);
+        $imagesTemp = $this->getSequence($imagesTemp, $page, $maximumTimeBetween);
 
         $images = [];
         foreach($imagesTemp as $image)
         {
+            $path = $image['path'];
+            
+            $image = new Image;
+            $image->setTimezone($this->date->timezone);
+            $image->parse($path);
+            
             array_push($images, [
                 'time' => $image->getTime(),
                 'src' => $this->filesystem->getPathToFile($image),
@@ -432,8 +412,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
             while($i < $page && $pointer < $n)
             {
-                $previous = $images[$pointer-1]->getTimestamp();
-                $current = $images[$pointer]->getTimestamp();
+                $previous = $images[$pointer-1]['timestamp'];
+                $current = $images[$pointer]['timestamp'];
 
                 while($current - $previous <= $maximumTimeBetween && $pointer < $n)
                 {
@@ -442,7 +422,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     if($pointer < $n)
                     {
                         $previous = $current;
-                        $current = $images[$pointer]->getTimestamp();
+                        $current = $images[$pointer]['timestamp'];
                     }
                 }
 
@@ -454,8 +434,8 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
             if($i == $page-1 && ($pointer - 1) < $n)
             {
-                $previous = $images[$pointer - 2]->getTimestamp();
-                $current = $images[$pointer - 1]->getTimestamp();
+                $previous = $images[$pointer - 2]['timestamp'];
+                $current = $images[$pointer - 1]['timestamp'];
 
                 if($current - $previous > $maximumTimeBetween)
                 {
@@ -477,64 +457,6 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         }
     }
 
-    public function timeSearch($images, $startTimestamp, $endTimestamp)
-    {
-        $filteredImages = [];
-
-        // ---------------------------------------------
-        // Binary search: requires that the images array
-        // is sorted ascending.
-
-        $left = 0;
-        $right = count($images) - 1;
-
-        while ($left <= $right)
-        {
-            $mid = intval(($left + $right)/2);
-            $timestamp = $images[$mid]->getTimestamp();
-
-            if ($timestamp >= $startTimestamp && $timestamp < $endTimestamp)
-            {
-                // -------------------------------
-                // Do the magic, locate boundaries
-
-                $left = $mid;
-                $right = $mid;
-
-                while($left >= 0 && $images[$left]->getTimestamp() >= $startTimestamp)
-                {
-                    $left--;
-                }
-                $left++;
-
-                while($right < count($images) && $images[$right]->getTimestamp() < $endTimestamp)
-                {
-                    $right++;
-                }
-
-                // ----------------------------
-                // Add the images to the array
-
-                for($i = $left; $i < $right; $i++)
-                {
-                    array_push($filteredImages, $images[$i]);
-                }
-                
-                break;
-            }
-            elseif ($timestamp > $endTimestamp)
-            {
-                $right = $mid - 1;
-            }
-            elseif ($timestamp < $startTimestamp)
-            {
-                $left = $mid + 1;
-            }
-        }
-
-        return $filteredImages;
-    }
-
     public function getNumberOfImagesPerHourForLastDays($numberOfDays, $averageDays)
     {
         $days = $this->getDays($numberOfDays);
@@ -549,52 +471,108 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         
         for($i = 0; $i < count($days); $i++)
         {
-            array_push($statistics["days"], $this->countImagesPerHour($days[$i]));
+            array_push($statistics["days"], $this->countImagesPerHour($days[$i])['total']);
         }
 
         // ------------------------
         // Average images per hour
 
-        $statistics["statistics"]["average"] = $this->countAverageImagesPerHour($averageDays);
+        $statistics["statistics"]["average"] = $this->countAverageImagesPerHour($statistics["days"]);
 
         return $statistics;
     }
 
     public function countImagesPerHour($day)
     {
-        $imagesTemp = $this->getImagesFromFilesystem();
+        // -------------------------------------
+        // Cache hours for x seconds
+
+        $key = $this->user->username . "_" . $day . "_hours";
+
+        $hours = $this->cache->storeAndGet($key, function() use ($day)
+        {
+            $startTimestamp = intval($this->date->dateToTimestamp($day));
+            $endTimestamp = intval($this->date->nextDayToTimestamp($day));
         
-        if(!array_key_exists($day, $imagesTemp))
-        {
-            return [];
-        }
-        else
-        {
-            return $imagesTemp[$day]['hours'];
-        }
+            $hours = [ 
+                'total' => [0, 0, 0, 0 ,0, 0,
+                            0, 0, 0, 0 ,0, 0,
+                            0, 0, 0, 0 ,0, 0,
+                            0, 0, 0, 0 ,0, 0],
+                'instances' => []
+            ];
+            
+            $heap = $this->getImagesFromFilesystem();
+            $indexTimestamp = $this->getIndexOfTimestampFromFileFormat();
+            $indexInstanceName = $this->getIndexOfInstanceNameFromFileFormat();
+            
+            // ---------------------------------------------
+            // Iterate while timestamp is not in current day
+            
+            while($heap->valid())
+            {
+                $timestamp = intval(explode('_', $heap->current())[$indexTimestamp]);
+                
+                if($timestamp <= $endTimestamp)
+                {
+                    break;
+                }
+                
+                $heap->next();
+            }
+            
+            while($heap->valid())
+            {
+                $pieces = explode('_', $heap->current());
+                $timestamp = intval($pieces[$indexTimestamp]);
+                
+                if($timestamp < $startTimestamp)
+                {
+                    break;
+                }
+
+                $hour = intval(($timestamp - $startTimestamp) / 3600);
+                $hours['total'][$hour]++;
+                
+                $instanceName = $pieces[$indexInstanceName];
+                if(array_key_exists($instanceName, $hours['instances']))
+                {
+                    $hours['instances'][$instanceName][$hour]++;
+                }
+                else
+                {
+                    $hours['instances'][$instanceName] = [0, 0, 0, 0 ,0, 0,
+                                                          0, 0, 0, 0 ,0, 0,
+                                                          0, 0, 0, 0 ,0, 0,
+                                                          0, 0, 0, 0 ,0, 0];
+                }
+                
+                $heap->next();
+            }
+            
+            return $hours;
+        });
+        
+        return $hours;
     }
 
-    public function countAverageImagesPerHour($numberOfDays)
+    public function countAverageImagesPerHour($hoursPerDay)
     {
-        $days = $this->getDays($numberOfDays);
-
-        $hours = [];
-        for($i = 0; $i < 24; $i++)
-        {
-            $hours[$i] = 0;
-        }
+        $hours = [0, 0, 0, 0 ,0, 0,
+                  0, 0, 0, 0 ,0, 0,
+                  0, 0, 0, 0 ,0, 0,
+                  0, 0, 0, 0 ,0, 0];
         
         $images = [];
-        foreach ($days as $key => $day)
+        foreach ($hoursPerDay as $key => $hoursForDay)
         {
-            $hoursForDay = $this->countImagesPerHour($day);
-
             for($i = 0; $i < count($hoursForDay); $i++)
             {
                 $hours[$i] += $hoursForDay[$i];
             }
         }
-
+        
+        $numberOfDays = count($hoursPerDay);
         for($i = 0; $i < 24; $i++)
         {
             $hours[$i] = intval($hours[$i] / $numberOfDays);
@@ -605,7 +583,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getNumberOfImagesPerWeekDayPerInstance($numberOfWeeks)
     {
-        $days = $this->getDays($numberOfWeeks * 7);
+        $days = $this->getDays($numberOfWeeks * 7 + 1);
         
         $imagesPerWeekDay = [];
 
@@ -613,37 +591,36 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             return $imagesPerWeekDay;
         }
-
+        
         // -----------------------------------
         // Get images per weekday per instance
 
-        $startDay = $days[0];
-        $endDay = end($days);
-        $images = $this->getImagesWithinRangeOfDays($startDay, $endDay, -1, 1);
-
-        foreach ($images as $key => $image)
+        foreach($days as $day)
         {
-            $instanceName = $image->getInstanceName();
-            if(array_key_exists($instanceName, $imagesPerWeekDay))
+            $dayOfWeek = $this->date->getWeekday($day);
+            $hours = $this->countImagesPerHour($day);
+            
+            foreach($hours['instances'] as $instanceName => $instanceHours)
             {
-                $dayOfWeek = $image->getDayOfWeek();
-                $imagesPerWeekDay[$instanceName]['eventsOnWeekday'][$dayOfWeek]++;
-
-                // -------------------------------------------------------
-                // We need to know exatcly how many weekdays per instance
-
-                $day = $image->getDate();
-                if(!in_array($day, $imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek]))
+                if(array_key_exists($instanceName, $imagesPerWeekDay))
                 {
-                    array_push($imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek], $day);
+                    if(!in_array($day, $imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek]))
+                    {
+                        array_push($imagesPerWeekDay[$instanceName]['daysPerWeekday'][$dayOfWeek], $day);
+                    }
+                    
+                    foreach($instanceHours as $hour)
+                    {
+                        $imagesPerWeekDay[$instanceName]['eventsOnWeekday'][$dayOfWeek] += $hour;
+                    }
                 }
-            }
-            else
-            {
-                $imagesPerWeekDay[$instanceName] = [
-                    'eventsOnWeekday' => [0, 0, 0, 0, 0, 0, 0],
-                    'daysPerWeekday' => [[], [], [], [], [], [], []]
-                ];
+                else
+                {
+                    $imagesPerWeekDay[$instanceName] = [
+                        'eventsOnWeekday' => [0, 0, 0, 0, 0, 0, 0],
+                        'daysPerWeekday' => [[], [], [], [], [], [], []]
+                    ];
+                }
             }
         }
 
@@ -671,7 +648,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         // Average images per day
 
         $statistics["statistics"] = [
-            "average" => $this->countAverageImagesPerDay($averageDays),
+            "average" => $this->countAverageImagesPerDay($statistics["days"]),
         ];
 
         return $statistics;
@@ -679,20 +656,26 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function countImagesPerDay($day)
     {
-        $images = $this->getImagesFromDay($day, -1, 1);
-        return count($images);
+        $hours = $this->countImagesPerHour($day);
+        
+        $total = 0;
+        for($i = 0; $i < count($hours['total']); $i++)
+        {
+            $total += $hours['total'][$i];
+        }
+        
+        return $total;
     }
 
-    public function countAverageImagesPerDay($numberOfDays)
+    public function countAverageImagesPerDay($imagesPerDay)
     {
-        $days = $this->getDays($numberOfDays);
-
         $averagePerDay = 0;
-        foreach ($days as $key => $value)
+        foreach ($imagesPerDay as $key => $imagesForDay)
         {
-            $averagePerDay += $this->countImagesPerDay($value);
+            $averagePerDay += $imagesForDay;
         }
 
+        $numberOfDays = count($imagesPerDay);
         if($averagePerDay > 0)
         {
             return intval($averagePerDay / $numberOfDays);

@@ -51,11 +51,13 @@
 
         select
         {
+            width: 123px;
             margin-right: 10px;
         }
 
         label
         {
+            min-width: 100px;
             padding-top: 8px;
             padding-right: 15px;
         }
@@ -90,9 +92,20 @@
         -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     }
-
+    
+    .text
+    {
+        margin-top: 10px;
+        
+        input[type="text"]
+        {
+            margin-left: 9px;
+        }
+    }
+    
     div.submit-form
     {
+        margin-top: 10px;
         clear: both;
     }
 

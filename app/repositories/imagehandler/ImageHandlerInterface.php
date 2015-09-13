@@ -27,16 +27,6 @@ interface ImageHandlerInterface
      */
 	public function getImages();
 
-	/****************************************
-     *  Get images from a specific day
-     */
-	public function getImagesFromDay($day, $take, $page);
-
-	/***********************************************
-     *  Get images within a specific range of days
-     */
-	public function getImagesWithinRangeOfDays($startDay, $endDay, $take, $page);
-
 	/************************************************
      *  Get a sequence of images from a specific day
      */
