@@ -144,7 +144,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $timestamp = explode('_', $heap->current())[$index];
-                $rest = intval(($timestamp - $startTimestamp) / 86400);
+                $rest = floor(($timestamp - $startTimestamp) / 86400);
 
                 if($restCheck != $rest)
                 {
