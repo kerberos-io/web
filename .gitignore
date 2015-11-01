@@ -1,6 +1,5 @@
 vendor/
 public/node_modules/
-public/capture
-app/config/app.php
+
 composer.*
 bootstrap/compiled.php
