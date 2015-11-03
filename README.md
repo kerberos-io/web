@@ -64,4 +64,4 @@ Install Front end dependencies with bower
 
 You can access the webinterface by entering the ip address in your favorite browser. You will see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
 
-![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0.0/40_web/1_how-to-access.png)
+![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0/1_how-to-access.png)
