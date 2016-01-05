@@ -31,7 +31,7 @@
     "morrisjs": "*",
     "raphael": "*",
     "requirejs": "*",
-    "seiyria-bootstrap-slider": "*",
+    "seiyria-bootstrap-slider": "5.3.3",
     "fancybox": "*",
     "csshake": "*",
     "chartjs": "*"
