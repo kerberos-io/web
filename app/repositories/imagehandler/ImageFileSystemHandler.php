@@ -144,7 +144,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $timestamp = explode('_', $heap->current())[$index];
-                $rest = intval(($timestamp - $startTimestamp) / 86400);
+                $rest = floor(($timestamp - $startTimestamp) / 86400);
 
                 if($restCheck != $rest)
                 {
@@ -568,7 +568,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             for($i = 0; $i < count($hoursForDay); $i++)
             {
-                $hours[$i] += $hoursForDay[$i]['total'];
+                $hours[$i] += $hoursForDay[$i];
             }
         }
         

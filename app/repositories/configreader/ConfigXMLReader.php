@@ -63,13 +63,22 @@ class ConfigXMLReader implements ConfigReaderInterface
         foreach($settings as $name => $setting)
         {
             $parts = explode("__", $name);
-            $element = &$configs[$parts[0]];
-            for($i = 1; $i < count($parts)-1; $i++)
+            if(array_key_exists($parts[0], $configs))
             {
-                $element = &$element->$parts[$i];
+                $element = &$configs[$parts[0]];
+                for($i = 1; $i < count($parts)-1; $i++)
+                {
+                    if(array_key_exists($parts[$i], $element))
+                    {
+                        $element = &$element->$parts[$i];
+                    }
+                }
+    
+                if(array_key_exists($parts[count($parts)-1], $element))
+                {
+                    $element->$parts[count($parts)-1] = $setting;
+                }
             }
-
-            $element->$parts[count($parts)-1] = $setting;
         }
 
         foreach($configs as $key => $config)
