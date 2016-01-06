@@ -21,18 +21,16 @@ Besides visualization, the webinterface is also used to configure the machinery.
 
 ## Installation
 
-First make sure you've enabled following php extensions: mcrypt, phar, gd and openssl.
+First make sure you have a working webserver **(Apache/Nginx)** with **PHP** and some extensions **(Mcrypt, Phar, GD and OpenSSL)** installed.
 
-    nano /etc/php/php.ini
-    uncomment extension=mcrypt.so
-    uncomment extension=phar.so
-    uncomment extension=gd.so
-    uncomment extension=openssl.so
-
+    extension=mcrypt.so
+    extension=phar.so
+    extension=gd.so
+    extension=openssl.so
 
 Go to your www directory, the directory to which your webserver is pointing
-	
-	cd /some/directory/www
+
+    cd /some/directory/www
 
 Get the source code from github
 
