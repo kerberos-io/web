@@ -5,7 +5,7 @@
    	    {
             $(document).ready(function()
             {
-                $("#timezone-picker option[value='{{$value}}']").attr('selected','selected');
+                $("#timezone-picker option[value='{{$value}}']").prop('selected',true);
             });	
         });
 	});

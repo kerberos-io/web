@@ -1,6 +1,6 @@
 #KERBEROS.**WEB**
 
-[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/web)
+[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/web) [![Join the chat at https://gitter.im/kerberos-io/hades](https://img.shields.io/badge/GITTER-join chat-green.svg)](https://gitter.im/kerberos-io/hades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Introduction
 
@@ -21,18 +21,16 @@ Besides visualization, the webinterface is also used to configure the machinery.
 
 ## Installation
 
-First make sure you've enabled following php extensions: mcrypt, phar, gd and openssl.
+First make sure you have a working webserver **(Apache/Nginx)** with **PHP** and some extensions **(Mcrypt, Phar, GD and OpenSSL)** installed.
 
-    nano /etc/php/php.ini
-    uncomment extension=mcrypt.so
-    uncomment extension=phar.so
-    uncomment extension=gd.so
-    uncomment extension=openssl.so
-
+    extension=mcrypt.so
+    extension=phar.so
+    extension=gd.so
+    extension=openssl.so
 
 Go to your www directory, the directory to which your webserver is pointing
-	
-	cd /some/directory/www
+
+    cd /some/directory/www
 
 Get the source code from github
 
@@ -64,4 +62,4 @@ Install Front end dependencies with bower
 
 You can access the webinterface by entering the ip address in your favorite browser. You will see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
 
-![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0.0/40_web/1_how-to-access.png)
+![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0/1_how-to-access.png)
