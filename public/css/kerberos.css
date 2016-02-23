@@ -8154,13 +8154,30 @@ div.center form#login input[type='submit'] {
     width: 100%;
   }
 }
+#dashboard #activity-sequence ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#dashboard div#livestream canvas {
+  border-radius: 7px;
+}
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  #dashboard div#livestream canvas {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+}
 #dashboard #activity-sequence {
   padding-right: 20px;
+  margin-top: 10px;
 }
 #dashboard #activity-sequence #latest-activity-sequence {
   overflow: hidden;
   border-radius: 7px;
-  margin-top: 10px;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #dashboard .col-lg-12,
@@ -8171,12 +8188,12 @@ div.center form#login input[type='submit'] {
   #dashboard .col-lg-12 #activity-sequence,
   #dashboard .col-lg-6 #activity-sequence {
     padding: 0;
+    margin: 0;
   }
   #dashboard .col-lg-12 #activity-sequence #latest-activity-sequence,
   #dashboard .col-lg-6 #activity-sequence #latest-activity-sequence {
     width: 100%;
     overflow: hidden;
-    margin: 0;
     border: none;
     border-radius: 0;
   }
@@ -8224,6 +8241,33 @@ div.center form#login input[type='submit'] {
 .col-lg-6 {
   padding-left: 0;
   padding-right: 0;
+}
+#dashboard h2 {
+  float: left;
+}
+#dashboard .top-nav > .open > a {
+  color: #fff;
+  background-color: #943633;
+}
+#dashboard .top-nav > li {
+  cursor: pointer;
+}
+#dashboard .top-nav > li > a {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 9px;
+  color: #333;
+  border-radius: 7px;
+}
+#dashboard .top-nav > li > a:hover,
+#dashboard .top-nav > li > a:active {
+  color: #fff;
+  background-color: #943633;
+}
+#dashboard .dropdown-menu > .active > a,
+#dashboard .dropdown-menu > .active > a:focus,
+#dashboard .dropdown-menu > .active > a:hover {
+  background-color: #943633;
 }
 div.loadimage {
   width: 392px;

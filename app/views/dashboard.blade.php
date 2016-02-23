@@ -5,9 +5,34 @@
         <div id="dashboard" class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2><i class="fa fa-video-camera"></i> Activity</h2>
+                    <h2>
+                        <i class="fa fa-video-camera"></i> Stream
+                     </h2>
+                        <ul class="nav navbar-right top-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i href="#"class="fa fa-fw fa-bars"></i> select view <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="active">
+                                        <a class="stream"><i href="#"class="fa fa-fw fa-cloud"></i> Live view</a>
+                                    </li>
+                                    <li>
+                                        <a class="activity"><i href="#"class="fa fa-fw fa-refresh"></i> Last activity</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                   
                     <div id="activity-sequence">
-                        <canvas id="latest-activity-sequence"></canvas>
+                        <ul id="activity-choice">
+                            <li class="stream">
+                                <div id="livestream"></div>
+                            </li>
+                            <li class="activity">
+                                <canvas id="latest-activity-sequence"></canvas>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 hide-on-mobile">
@@ -37,13 +62,40 @@
                 {
                     require(["jquery"], function($)
                     {
-                        require(["app/controllers/dashboard_sequencer",
+                        // on page load, hide all except live stream
+                        $("#activity-choice li").hide();
+                        $("#activity-choice li.stream").show();
+                        
+                        $("ul.dropdown-menu li").click(function(event)
+                        {
+                            // hide all
+                            $("#activity-choice li").hide();
+                            $("ul.dropdown-menu li").removeClass("active");
+                            
+                            // show selected
+                            var attr = $(event.target).attr("class");
+                            $("#activity-choice li." + attr).show();
+                            $(event.target).parent().addClass("active");
+                        });
+ 
+                        
+                        require(["app/controllers/dashboard_live",
+                                 "app/controllers/dashboard_sequencer",
                                  "app/controllers/dashboard_pie",
                                  "app/controllers/dashboard_graph",
                                  "app/controllers/dashboard_radar"
                                  ], 
-                                function(Sequencer, Pie, Graph, Radar)
+                        function(Streamer, Sequencer, Pie, Graph, Radar)
                         {
+                            Streamer.initialize(
+                            {
+                                element: "livestream",
+                                host: _baseUrl,
+                                port: 8888,
+                                width: '100%',
+                                callback: function(){}
+                            });
+                            
                             Sequencer.initialize(
                             {
                                 element: "canvas",

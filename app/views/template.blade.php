@@ -57,9 +57,9 @@
                 <li>
                     <a href="{{URL::to('/settings')}}"><i class="fa fa-list"></i> Settings</a>
                 </li>
-                <li>
+                <!--<li>
                     <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> Cloud</a>
-                </li>
+                </li>-->
                 @endif
 
                 <li class="dropdown">

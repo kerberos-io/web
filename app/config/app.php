@@ -33,7 +33,7 @@ return array(
 	|
 	*/
 	
-	'config' => '/etc/kerberosio/config',
+	'config' => '/etc/opt/kerberosio/config',
 
 	'filesystem' => [
 

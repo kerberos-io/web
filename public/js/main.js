@@ -58,7 +58,8 @@ require.config({
         jellyfish: 'app/models/Jellyfish',
         Sequencer: 'app/models/Sequencer',
         timepicker: 'app/models/Timepicker',
-        chartjs: 'vendor/chartjs/Chart'
+        chartjs: 'vendor/chartjs/Chart',
+        streamer: 'app/models/Streamer'
     },
     packages: [
 
