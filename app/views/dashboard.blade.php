@@ -90,7 +90,7 @@
                             Streamer.initialize(
                             {
                                 element: "livestream",
-                                host: _baseUrl,
+                                host: "<?=gethostbyname(trim(`hostname`))?>",
                                 port: 8888,
                                 width: '100%',
                                 callback: function(){}
