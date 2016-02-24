@@ -90,7 +90,7 @@
                             Streamer.initialize(
                             {
                                 element: "livestream",
-                                host: "<?=gethostbyname(trim(`hostname`))?>",
+                                host: "<?=ltrim(URL::to('/'), 'http://')?>",
                                 port: 8888,
                                 width: '100%',
                                 callback: function(){}

@@ -16,7 +16,7 @@ define(["streamer"], function(streamer)
             // Create the main viewer.
             var viewer = new streamer.Viewer({
                 divID : this_.config.element,
-                host : 'localhost',
+                host : this_.config.host,
                 refreshRate: 30,
                 quality: 100,
                 port: 8888
