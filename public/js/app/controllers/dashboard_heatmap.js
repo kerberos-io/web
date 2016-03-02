@@ -90,10 +90,10 @@ define(["heatmap"], function(heatmap)
 
                 if(regionCoordinates.length > 1)
                 {
-                    region.start.x = parseInt(regionCoordinates[1]);
-                    region.start.y = parseInt(regionCoordinates[0]);
-                    region.end.x = parseInt(regionCoordinates[3]);
-                    region.end.y = parseInt(regionCoordinates[2]);
+                    region.start.x = parseInt(regionCoordinates[0]);
+                    region.start.y = parseInt(regionCoordinates[1]);
+                    region.end.x = parseInt(regionCoordinates[2]);
+                    region.end.y = parseInt(regionCoordinates[3]);
                     region.changes = parseInt(data[i].numberOfChanges);
                     region.average = parseInt(data[i].numberOfChanges) / ((region.end.x - region.start.x) * (region.end.y - region.start.y));
                     
@@ -126,8 +126,8 @@ define(["heatmap"], function(heatmap)
             {
                 max = Math.max(max, regions[i].average);
                 var point = {
-                    x: parseInt(regions[i].end.x * dx - regions[i].start.x * dx)/2,
-                    y: parseInt(regions[i].end.y * dy - regions[i].start.y * dy)/2,
+                    x: parseInt(regions[i].start.x + (regions[i].end.x - regions[i].start.x) / 2 * dx),
+                    y: parseInt(regions[i].start.y + (regions[i].end.y - regions[i].start.y) / 2 * dy),
                     value: regions[i].average,
                     radius: regions[i].average * 500,
                 };
