@@ -8125,6 +8125,9 @@ div.center form#login input[type='submit'] {
   margin: 0;
   padding: 0;
 }
+#dashboard div#livestream {
+  overflow: hidden;
+}
 #dashboard div#livestream canvas {
   border-radius: 7px;
 }
