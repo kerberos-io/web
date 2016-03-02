@@ -126,8 +126,8 @@ define(["heatmap"], function(heatmap)
             {
                 max = Math.max(max, regions[i].average);
                 var point = {
-                    x: parseInt(regions[i].start.x + (regions[i].end.x - regions[i].start.x) / 2 * dx),
-                    y: parseInt(regions[i].start.y + (regions[i].end.y - regions[i].start.y) / 2 * dy),
+                    x: parseInt(regions[i].start.x * dx + (regions[i].end.x - regions[i].start.x) * dx / 2),
+                    y: parseInt(regions[i].start.y * dy + (regions[i].end.y - regions[i].start.y) * dy / 2),
                     value: regions[i].average,
                     radius: regions[i].average * 500,
                 };
