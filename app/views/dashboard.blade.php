@@ -20,6 +20,9 @@
                                     <li>
                                         <a class="activity"><i href="#"class="fa fa-fw fa-refresh"></i> Last activity</a>
                                     </li>
+                                    <li>
+                                        <a class="heat"><i href="#"class="fa fa-fw fa-fire"></i> Heatmap</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -31,6 +34,10 @@
                             </li>
                             <li class="activity">
                                 <canvas id="latest-activity-sequence"></canvas>
+                            </li>
+                            <li class="heat">
+                                <img src="<?=App::make("Controllers\ImageController")->getLatestImage()?>" id="latest-image" style="display: none;"/>
+                                <div class="heatmap" style="width: 100%;"></div>
                             </li>
                         </ul>
                     </div>
@@ -81,11 +88,12 @@
                         
                         require(["app/controllers/dashboard_live",
                                  "app/controllers/dashboard_sequencer",
+                                 "app/controllers/dashboard_heatmap",
                                  "app/controllers/dashboard_pie",
                                  "app/controllers/dashboard_graph",
                                  "app/controllers/dashboard_radar"
                                  ], 
-                        function(Streamer, Sequencer, Pie, Graph, Radar)
+                        function(Streamer, Sequencer, Heatmap, Pie, Graph, Radar)
                         {
                             Streamer.initialize(
                             {
@@ -94,6 +102,18 @@
                                 port: 8888,
                                 width: '100%',
                                 callback: function(){}
+                            });
+                            
+                            Heatmap.initialize(
+                            {
+                                element: "heatmap",
+                                url: _baseUrl + "/api/v1/images/regions",
+                                callback: function(){}
+                            });
+                            
+                            $("ul.dropdown-menu li a.heat").click(function(event)
+                            {
+                                Heatmap.redraw();
                             });
                             
                             Sequencer.initialize(

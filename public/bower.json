@@ -34,6 +34,7 @@
     "fancybox": "*",
     "csshake": "*",
     "chartjs": "*",
-    "mjpegcanvas": "~0.4.0"
+    "mjpegcanvas": "~0.4.0",
+    "heatmap.js-amd": "*"
   }
 }

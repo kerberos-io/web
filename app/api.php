@@ -39,6 +39,7 @@ Route::group(array('prefix' => 'api/v1'), function()
         
         Route::get('images/latest_sequence', 'Controllers\ImageController@getLatestSequence');
         Route::get('images/days', 'Controllers\ImageController@getDays');
+        Route::get('images/regions', 'Controllers\ImageController@getRegions');
         Route::get('images/perhour/{days?}', 'Controllers\ImageController@getImagesPerHour');
         Route::get('images/perday/{days?}', 'Controllers\ImageController@getImagesPerDay');
         Route::get('images/perweekday/{days?}', 'Controllers\ImageController@getAverageImagesPerWeekDay');

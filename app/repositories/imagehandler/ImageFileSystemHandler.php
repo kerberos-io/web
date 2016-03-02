@@ -168,6 +168,39 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             return $days;
         }
     }
+    
+    public function getRegions($numberOfRegions)
+    {
+        // -------------------------------------
+        // Cache images directory for x seconds
+
+        $key = $this->user->username . "_regions";
+        
+        $regions = $this->cache->storeAndGet($key, function() use ($numberOfRegions)
+        {
+            $heap = $this->getImagesFromFilesystem();
+
+            $regions = [];
+            
+            $i = 0;
+            while($i++ < $numberOfRegions && $heap->valid())
+            {
+                $image = new Image;
+                $image->setTimezone($this->date->timezone);
+                $image->parse($heap->current());
+                
+                array_push($regions, [
+                    "regionCoordinates" => $image->getRegion(),
+                    "numberOfChanges" => $image->getChanges()
+                ]);
+                $heap->next();
+            }
+            
+            return $regions;
+        });
+        
+        return $regions;
+    }
 
     public function getImages()
     {

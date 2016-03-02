@@ -62,6 +62,17 @@ class ImageController extends BaseController
 
         return Response::json($days);
     }
+    
+    /*************************************
+     *  Get all regions
+     */ 
+    public function getRegions()
+    {
+        $numberOfRegions = 250;
+        $regions = $this->imageHandler->getRegions($numberOfRegions);
+
+        return Response::json($regions);
+    }
 
     /*************************************
      *  Get the latest image that was taken.

@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM phusion/baseimage:latest
 
 MAINTAINER "Cédric Verstraeten" <hello@cedric.ws>
 
@@ -52,7 +52,7 @@ ENV BRANCH develop
 
 RUN git clone https://github.com/kerberos-io/web /var/www/web && \
 cd /var/www/web && \ 
-git checkout $BRANCH && \
+git checkout develop && \
 chown -Rf www-data.www-data /var/www/web && \
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer && \
 cd /var/www/web && \
