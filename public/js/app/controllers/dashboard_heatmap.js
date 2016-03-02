@@ -48,10 +48,7 @@ define(["heatmap"], function(heatmap)
             // create heatmap
             this.heatmapInstance = heatmap.create({
                 container: document.querySelector('.heatmap'),
-                opacity: 0.5,
-                minOpacity: 0.2,
-                maxOpacity: 0.2
-                
+                opacity: 0.5
             });
             
             this.drawBackground();
@@ -99,9 +96,9 @@ define(["heatmap"], function(heatmap)
                     region.end.y = parseInt(regionCoordinates[3]);
                     region.changes = parseInt(data[i].numberOfChanges);
                     region.average = parseInt(data[i].numberOfChanges) / ((region.end.x - region.start.x) * (region.end.y - region.start.y));
+                    
+                    this.regions.push(region);
                 }
-
-                this.regions.push(region);
             }
             
             return data;
@@ -121,12 +118,12 @@ define(["heatmap"], function(heatmap)
             var currentWidth = canvas.width();
             var currentHeight = canvas.height();
             
+            // scale x- and y-coordinates
+            var dx = currentWidth / originalWidth;
+            var dy = currentHeight / originalHeight;
+                
             for(var i = 0; i < regions.length; i++)
             {
-                // scale x- and y-coordinates
-                var dx = currentWidth / originalWidth;
-                var dy = currentHeight / originalHeight;
-                
                 max = Math.max(max, regions[i].average);
                 var point = {
                     x: parseInt(regions[i].end.x * dx - regions[i].start.x * dx)/2,
