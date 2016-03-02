@@ -15,12 +15,13 @@ define(["heatmap"], function(heatmap)
             
             $.get(self.config.url,function(data)
             {
-                self.draw(data);
+                self.data = data;
+                self.draw();
                 
                 $(window).resize(function()
                 {
                     self.resize();
-                    self.draw(data);
+                    self.draw();
                 });
             })
             .always(function()
@@ -36,14 +37,14 @@ define(["heatmap"], function(heatmap)
             $.get(self.config.url,function(data)
             {
                 self.resize();
-                self.draw(data);
+                self.draw();
             });
         },
         draw: function(data)
         {
             this.regions = [];
             
-            var regions = this.getRegions(data);
+            var regions = this.getRegions(this.data);
             
             // create heatmap
             this.heatmapInstance = heatmap.create({
