@@ -90,10 +90,10 @@ define(["heatmap"], function(heatmap)
 
                 if(regionCoordinates.length > 1)
                 {
-                    region.start.x = parseInt(regionCoordinates[0]);
-                    region.start.y = parseInt(regionCoordinates[1]);
-                    region.end.x = parseInt(regionCoordinates[2]);
-                    region.end.y = parseInt(regionCoordinates[3]);
+                    region.start.x = parseInt(regionCoordinates[1]);
+                    region.start.y = parseInt(regionCoordinates[0]);
+                    region.end.x = parseInt(regionCoordinates[3]);
+                    region.end.y = parseInt(regionCoordinates[2]);
                     region.changes = parseInt(data[i].numberOfChanges);
                     region.average = parseInt(data[i].numberOfChanges) / ((region.end.x - region.start.x) * (region.end.y - region.start.y));
                     
