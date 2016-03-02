@@ -8131,7 +8131,15 @@ div.center form#login input[type='submit'] {
 #dashboard div#livestream canvas {
   border-radius: 7px;
 }
+@media only screen and (min-width: 767px) and (max-width: 1000px) {
+  #dashboard div#livestream .load5 {
+    margin-top: 20px;
+  }
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  #dashboard div#livestream .load5 {
+    margin-top: -15px;
+  }
   #dashboard div#livestream canvas {
     width: 100%;
     overflow: hidden;
@@ -8142,6 +8150,9 @@ div.center form#login input[type='submit'] {
 }
 #dashboard div.heatmap {
   overflow: hidden;
+}
+#dashboard div.heatmap .load5 {
+  margin-top: 0;
 }
 #dashboard div.heatmap canvas {
   border-radius: 7px;
@@ -8176,9 +8187,6 @@ div.center form#login input[type='submit'] {
 .moris-donut {
   text-align: center;
 }
-#time-donut {
-  margin-top: 20px;
-}
 #time-donut-legend {
   list-style: none;
   position: absolute;
@@ -8209,9 +8217,6 @@ div.center form#login input[type='submit'] {
   border-radius: 50%;
   border: 2px solid #fff;
 }
-#time-graph {
-  margin-right: 20px;
-}
 .col-lg-12,
 .col-lg-6 {
   padding-left: 0;
@@ -8219,6 +8224,22 @@ div.center form#login input[type='submit'] {
 }
 #dashboard h2 {
   float: left;
+}
+#dashboard .load5 {
+  margin-top: 60px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#dashboard .load5 .loader {
+  font-size: 10px;
+}
+#dashboard #radar-chart,
+#dashboard #time-donut,
+#dashboard #time-chart,
+#dashboard #latest-activity-sequence {
+  width: 100%;
 }
 #dashboard .top-nav > .open > a {
   color: #fff;

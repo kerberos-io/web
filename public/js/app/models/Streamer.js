@@ -858,15 +858,17 @@ MJPEGCANVAS.Viewer = function(options) {
     
   function draw() {
     // check if we have a valid image
+ 
     if (that.image.width * that.image.height > 0)
     {
+        if($("#livestream .load5"))
+        {
+            $("#livestream .load5").remove();
+        } 
+        
         that.canvas.width = $("#livestream").width();
         that.canvas.height = $("#livestream").width()/2;
         context.drawImage(that.image, 0, 0, $("#livestream").width(), $("#livestream").width()/2);
-    }
-    else
-    {
-         
     }
 
     // check for an overlay

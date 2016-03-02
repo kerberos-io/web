@@ -22,7 +22,7 @@ define(["heatmap"], function(heatmap)
                     container: document.querySelector('.heatmap'),
                     opacity: 0.5
                 });
-                
+         
                 self.draw();
                 
                 $(window).resize(function()
@@ -49,9 +49,19 @@ define(["heatmap"], function(heatmap)
         },
         draw: function()
         {
-            this.drawBackground();
-            this.setRegions(this.data);
-            this.heatmapInstance.setData(this.calculate(this.regions));
+            if(this.data.length > 0)
+            {
+                this.drawBackground();
+                this.setRegions(this.data);
+                this.heatmapInstance.setData(this.calculate(this.regions));
+            }
+            else
+            {
+                if(this.data.length > 0 && $("#heatmap .load5"))
+                {
+                    $("#heatmap .load5").remove();
+                }
+            }
         },
         drawBackground: function()
         {

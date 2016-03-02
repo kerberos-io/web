@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>
-                        <i class="fa fa-video-camera"></i> Stream
+                        <i class="fa fa-signal"></i> Activity
                      </h2>
                         <ul class="nav navbar-right top-nav">
                             <li class="dropdown">
@@ -84,7 +84,9 @@
                             $("#activity-choice li." + attr).show();
                             $(event.target).parent().addClass("active");
                         });
- 
+                        
+                        // Set loading bars
+                        $("#radar-graph, #livestream, #time-donut-wrapper, #time-graph, li.activity, .heatmap").append($('<div class="load5 loadimage" style=""><div class="loader"></div></div>'));
                         
                         require(["app/controllers/dashboard_live",
                                  "app/controllers/dashboard_sequencer",

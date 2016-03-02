@@ -103,20 +103,17 @@ define(["jquery", "chartjs"], function($, Chart)
 	                dataset['label'] = key;
 	                statistics["datasets"].push(dataset);
 				}
+                
+                // Remove loading bar
+                if($("#radar-graph .load5").length > 0)
+                {
+                    $("#radar-graph .load5").remove();
+                } 
 
 				// ---------------------------------------------------------------
 	            // This will get the first returned node in the jQuery collection.
 
 	            var radarChart = new Chart(ctx).Radar(statistics, options);
-	        }
-	        else
-	        {
-	        	var x = canvas.width / 2;
-                var y = canvas.height / 2;
-                ctx.font = '20px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillStyle = 'black';
-                ctx.fillText('No data available', x, y);
 	        }
         }
     }
