@@ -104,18 +104,6 @@
                                 callback: function(){}
                             });
                             
-                            Heatmap.initialize(
-                            {
-                                element: "heatmap",
-                                url: _baseUrl + "/api/v1/images/regions",
-                                callback: function(){}
-                            });
-                            
-                            $("ul.dropdown-menu li a.heat").click(function(event)
-                            {
-                                Heatmap.redraw();
-                            });
-                            
                             Sequencer.initialize(
                             {
                                 element: "canvas",
@@ -142,7 +130,20 @@
                                                         Radar.initialize(
                                                         {
                                                             url: _baseUrl + "/api/v1/images/perweekday/1",
-                                                            callback: function (){}
+                                                            callback: function ()
+                                                            {
+                                                                Heatmap.initialize(
+                                                                {
+                                                                    element: "heatmap",
+                                                                    url: _baseUrl + "/api/v1/images/regions",
+                                                                    callback: function(){}
+                                                                });
+                                                            
+                                                                $("ul.dropdown-menu li a.heat").click(function(event)
+                                                                {
+                                                                    Heatmap.redraw();
+                                                                });
+                                                            }
                                                         });
                                                     }
                                                 });
