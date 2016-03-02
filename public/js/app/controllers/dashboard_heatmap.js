@@ -16,6 +16,13 @@ define(["heatmap"], function(heatmap)
             $.get(self.config.url,function(data)
             {
                 self.data = data;
+                
+                // create heatmap
+                self.heatmapInstance = heatmap.create({
+                    container: document.querySelector('.heatmap'),
+                    opacity: 0.5
+                });
+                
                 self.draw();
                 
                 $(window).resize(function()
@@ -40,21 +47,10 @@ define(["heatmap"], function(heatmap)
                 self.draw();
             });
         },
-        draw: function(data)
+        draw: function()
         {
-            this.regions = [];
-            
-            var regions = this.getRegions(this.data);
-            
-            // create heatmap
-            this.heatmapInstance = heatmap.create({
-                container: document.querySelector('.heatmap'),
-                opacity: 0.5
-            });
-            
             this.drawBackground();
-            
-            // set data points
+            this.setRegions(this.data);
             this.heatmapInstance.setData(this.calculate(this.regions));
         },
         drawBackground: function()
@@ -71,8 +67,10 @@ define(["heatmap"], function(heatmap)
             
             this.heatmapInstance._renderer.setDimensions(canvas.width(),canvas.height());
         },
-        getRegions: function(data)
+        setRegions: function(data)
         {
+            this.regions = [];
+            
             for(var i  =0; i < data.length; i++)
             {
                 var regionCoordinates = data[i].regionCoordinates.split("-");
