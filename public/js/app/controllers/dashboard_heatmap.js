@@ -26,7 +26,7 @@ define(["heatmap"], function(heatmap)
             .always(function()
             {
                 // Wait 300 ms before executing 
-                setTimeout(this_.config.callback, 300);
+                setTimeout(self.config.callback, 300);
             });
         },
         redraw: function()
