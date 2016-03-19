@@ -35,6 +35,9 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
+                <a class="signout" href="{{URL::to('/')}}/logout">
+                    <i class="fa fa-sign-out"></i>
+                </a>
                 <label style="width:60px; padding-top: 10px" class="machinery-switch toggle-mobile switch-light">
                     <input type="checkbox" style="outline: none;">
                     <span class="well" style="margin:0;background-color:#fff; color: #fff;">
@@ -49,9 +52,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="signout" href="{{URL::to('/')}}/logout">
-                    <i class="fa fa-sign-out"></i>
-                </a>
                 <a class="system" href="{{URL::to('/')}}/system">
                     <i class="fa fa-desktop"></i>
                 </a>
