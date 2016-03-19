@@ -39,6 +39,11 @@ Route::group(['before' => 'auth'], function()
     Route::post('settings/update', array('uses' => 'Controllers\SettingsController@update'));
     
     // ------------------------
+    // System Controller
+
+    Route::get('system', 'Controllers\SystemController@index');
+    
+    // ------------------------
     // Image Controller
 
     Route::get('images/{date?}', 'Controllers\ImageController@index');

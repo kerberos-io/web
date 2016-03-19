@@ -32,6 +32,8 @@ return array(
 	| also shows a history of images.
 	|
 	*/
+    
+    'version' => '2.0.0',
 	
 	'config' => '/etc/opt/kerberosio/config',
 

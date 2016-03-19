@@ -31,10 +31,12 @@
     "raphael": "*",
     "requirejs": "*",
     "seiyria-bootstrap-slider": "5.3.3",
-    "fancybox": "*",
     "csshake": "*",
     "chartjs": "*",
     "mjpegcanvas": "~0.4.0",
-    "heatmap.js-amd": "*"
+    "heatmap.js-amd": "*",
+    "mustache": "~0.7.0",
+    "fontawesome": "~4.5.0",
+    "css-toggle-switch": "~4.0.2"
   }
 }

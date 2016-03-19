@@ -204,18 +204,22 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getImages()
     {
-        $imagesTemp = $this->getImagesFromFilesystem();
+        $heap = $this->getImagesFromFilesystem();
 
         $images = [];
-        foreach(array_keys($imagesTemp) as $day)
+        while($heap->valid())
         {
-            foreach($imagesTemp[$day]['images'] as $image)
-            {
-                array_push($images, $image);
-            }
+            array_push($images, $heap->current());
+            $heap->next();
         }
         
         return $images;
+    }
+    
+    public function getNumberOfImages()
+    {
+        $heap = $this->getImagesFromFilesystem();
+        return $heap->count();
     }
 
     /************************************************

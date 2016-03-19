@@ -7694,6 +7694,9 @@ ul.alert-dropdown {
   font-weight: 700;
   src: local('PT Sans Bold Italic'), local('PTSans-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/lILlYDvubYemzYzN7GbLkKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
 }
+*:focus {
+  outline: none;
+}
 body {
   background-color: #f5f5f5;
 }
@@ -7924,6 +7927,12 @@ div.line {
 .signout {
   display: none;
 }
+.system {
+  display: none;
+}
+label.toggle-mobile {
+  display: none;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   body {
     margin-top: 50px;
@@ -7972,7 +7981,20 @@ div.line {
   }
   .signout i {
     color: #fff;
+    padding: 17px 8px 0 0;
+  }
+  .system {
+    float: right;
+    display: block;
+  }
+  .system i {
+    color: #fff;
     padding: 17px 16px 0 0;
+  }
+  label.toggle-mobile {
+    float: right;
+    display: block;
+    margin-right: 10px;
   }
 }
 body#red {
@@ -8552,5 +8574,31 @@ label {
   }
   #settings select {
     width: 200px;
+  }
+}
+#system-actions {
+  margin-top: 30px;
+}
+#system-actions a {
+  padding: 12px 25px;
+  height: auto;
+  background-color: #943633;
+  color: #fff;
+  border-color: #943633;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#system-actions a:hover {
+  text-decoration: none;
+}
+.progress {
+  width: 98%;
+}
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  #system,
+  #kerberos {
+    padding: 0 15px 20px 15px;
+    display: table;
+    width: 100%;
   }
 }
