@@ -200,6 +200,20 @@ class LinuxSystem implements SystemInterface
     public function getCPUs()
     {
         $cpus = $this->parser->getCPU();
+        
+        foreach($cpus as &$cpu)
+        {
+            if(!array_key_exists('MHz', $cpu))
+            {
+                $cpu['MHz'] = '';
+            }
+            
+            if(!array_key_exists('Vendor', $cpu))
+            {
+                $cpu['Vendor'] = '';
+            }
+        }
+        
         return $cpus;
     }
     

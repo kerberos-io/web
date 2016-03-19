@@ -56,11 +56,15 @@ class SystemController extends BaseController
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
         
-        $imageDirectory = $settings['io']['dropdown']['Disk']['children']['directory']['value'];
+        $imageDirectory = rtrim($settings['io']['dropdown']['Disk']['children']['directory']['value'], '/');
+        if(is_link($imageDirectory))
+        {
+            $imageDirectory = readlink($imageDirectory);
+        }
         
         $dir = "/data/";
         $output = shell_exec("[ -d $dir ] && echo true || echo false");
-        if($output === "true")
+        if($output === true)
         {
             $dir = "/data/tmp";
             $output = shell_exec("mkdir -p $dir");
@@ -93,9 +97,13 @@ class SystemController extends BaseController
         Session::forget($key);
         
         // Remove all images
-        $imageDirectory = $settings['io']['dropdown']['Disk']['children']['directory']['value'];
+        $imageDirectory = rtrim($settings['io']['dropdown']['Disk']['children']['directory']['value'], '/');
+        if(is_link($imageDirectory))
+        {
+            $imageDirectory = readlink($imageDirectory);
+        }
         $output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");
-        
+
         return Response::json(["clean" => true]);
     }
 }

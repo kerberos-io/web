@@ -15,7 +15,9 @@
                     <div>
                         OS specifications: 
                         <ul>
+                            @if($system->getModel() != '')
                             <li>{{$system->getModel()}}</li>
+                            @endif
                             <li>{{$system->getOS()}}</li>
                             <li>{{$system->getKernel()}}</li>
                             <li>{{$system->getHostName()}}</li>
