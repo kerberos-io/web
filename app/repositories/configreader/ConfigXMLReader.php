@@ -62,6 +62,11 @@ class ConfigXMLReader implements ConfigReaderInterface
         
         foreach($settings as $name => $setting)
         {
+            // ---------------------
+            // Replace space by dash
+            
+            $setting = str_replace(' ', '-', rtrim(ltrim($setting, ' '), ''));
+            
             $parts = explode("__", $name);
             if(array_key_exists($parts[0], $configs))
             {
