@@ -406,16 +406,16 @@ class OSSystem implements SystemInterface
     
     public function getCurrentVersion()
     {
-        $os = $this->getOs();
-        $os = explode('-', $os);
+        $cmd = 'cat /etc/version';
+        $version = shell_exec($cmd);
+        preg_match('/os_version="(.*?)"/', $version, $matches);
         
-        $version = null;
-        if(count($os) == 3)
+        if(count($matches) > 0)
         {
-            $version = 'v' . $os[2];
+            return $matches[1]; 
         }
         
-        return $version;   
+        return null;   
     }
     
     public function download()
