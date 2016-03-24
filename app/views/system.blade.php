@@ -135,9 +135,11 @@
                     System.intialize(function()
                     {
                         // Bind events
-                        $(".version").click(function()
+                        $(".version").click(function(e)
                         {
                             var version = $(this).attr('id');
+                            if(System.getCurrentVersion() == version) return false;
+                            
                             version = System.versions[version];
                             var published_at = new Date(version.published_at);
                             

@@ -4,8 +4,9 @@ use Config, Input, Guzzle\Http\Client as Client;
 
 class OSSystem implements SystemInterface
 {
-    private $upgradeDir = '/tmp';
+    private $upgradeDir = '/tmp';///data/.firmware_update';
     private $bootDir = '/boot';
+    private $repo = "https://api.github.com/repos/cedricve/version-test/releases";//"https://api.github.com/repos/kerberos-io/machinery/releases";
     
     public function __construct()
     {
@@ -368,7 +369,7 @@ class OSSystem implements SystemInterface
     
     public function getVersionsFromGithub()
     {
-        $url = "https://api.github.com/repos/cedricve/version-test/releases";
+        $url = $this->repo;
         
         $client = new Client();
         $request = $client->get($url);
@@ -395,7 +396,7 @@ class OSSystem implements SystemInterface
     {
         $cmd = 'cat /etc/board';
         $board = shell_exec($cmd);
-        return $board;
+        return 'raspberrypi';//$board;
     }
     
     public function isBuildroot()
@@ -405,9 +406,8 @@ class OSSystem implements SystemInterface
     
     public function getCurrentVersion()
     {
-        $os = $this->getOS();
-        $os = explode('-', $os);
-        return $os[0];   
+        $version = 'v' . Config::get('app.version');
+        return $version;   
     }
     
     public function download()
@@ -451,20 +451,20 @@ class OSSystem implements SystemInterface
         $upgradeDir = $this->upgradeDir;
         
         $cmd = "mkdir -p $upgradeDir";
-        //$output = shell_exec($cmd);
+        $output = shell_exec($cmd);
         
         $cmd = "rm $upgradeDir/kios.img";
-        //$output = shell_exec($cmd);
-        
-        $cmd = "gzip $upgradeDir/kios.img.gz"; // /usr/bin/gunzip
         $output = shell_exec($cmd);
         
+        $cmd = "/usr/bin/gunzip $upgradeDir/kios.img.gz 2>&1"; //"gzip -d $upgradeDir/kios.img.gz 2>&1";
+        $output = shell_exec($cmd);
+
         $cmd = "/usr/sbin/fdisk $upgradeDir/kios.img";
         $output = shell_exec($cmd);
-        
+
         $matches = [];
         preg_match_all("/\[(.*?)\]/", $output, $matches);
-        
+ 
         if(count($matches) > 0)
         {
             $bootOffsets = explode(' - ', $matches[1][2]);
@@ -530,7 +530,7 @@ class OSSystem implements SystemInterface
         $cmd = "printf '%s\n' 'initramfs fwupdater.gz' >> $bootDir/config.txt"; // append to /boot/config.txt
         $output = shell_exec($cmd);
         $cmd = 'reboot';
-        //$output = shell_exec($cmd);
+        $output = shell_exec($cmd);
         
         return true;
     }

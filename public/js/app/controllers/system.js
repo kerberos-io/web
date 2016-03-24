@@ -16,9 +16,17 @@ define(["jquery", "progressbar"], function($, ProgressBar)
         {
             this.board = board;
         },
+        getBoard: function()
+        {
+            return this.board;
+        },
         setCurrentVersion: function(version)
         {
             this.currentVersion = version;
+        },
+        getCurrentVersion: function()
+        {
+            return this.currentVersion;
         },
         
         intialize: function(callback)
