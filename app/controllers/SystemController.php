@@ -106,4 +106,40 @@ class SystemController extends BaseController
 
         return Response::json(["clean" => true]);
     }
+    
+    public function download()
+    {
+        $response = $this->system->download();
+        return Response::json($response);
+    }
+    
+    public function progress()
+    {
+        $response = $this->system->progress();
+        return Response::json($response);
+    }
+    
+    public function depack()
+    {
+        $response = $this->system->depack();
+        return Response::json($response);
+    }
+    
+    public function transfer()
+    {
+        $response = $this->system->transfer();
+        return Response::json($response);
+    }
+    
+    public function reboot()
+    {
+        $response = $this->system->reboot();
+        return Response::json($response);
+    }
+    
+    public function getVersions()
+    {
+        $versions = $this->system->getVersionsFromGithub();
+        return Response::json($versions);
+    }
 }

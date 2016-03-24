@@ -15,6 +15,9 @@
                     <div>
                         OS specifications: 
                         <ul>
+                            @if($system->getBoard() != '')
+                            <li>{{$system->getBoard()}}</li>
+                            @endif
                             @if($system->getModel() != '')
                             <li>{{$system->getModel()}}</li>
                             @endif
@@ -73,7 +76,6 @@
                 </div>
                 <div id="kerberos" class="col-lg-6">
                     <h2><i class="fa fa-user-secret"></i> Kerberos.io</h2>
-                    <div style="display: table" class="alert alert-info" role="alert">Nice, a new version of Kerberos.io is available! Click here to update..</div>
                     <div>
                         Version: 
                         <ul>
@@ -93,6 +95,18 @@
                         </div>
                     </div>
                 </div>
+                @if($system->isBuildroot())
+                <div id="kios" class="col-lg-6">
+                    <h2><i class="fa fa-linux"></i> Kios</h2>
+                    <!--<div style="display: table" class="alert alert-warning" role="alert">Nice, a new version of KIOS is available!</div>-->
+                    <div id="kios-versions">
+                        <div class="load5 loadimage" style=""><div class="loader"></div></div>
+                    </div>
+                    <div id="upgrade-modal" data-remodal-id="upgrade">
+                        <div class="modal-body"></div>
+                    </div>
+                </div>
+                @endif
             </div>
             <!-- /.row -->
         </div>
@@ -105,6 +119,96 @@
         {
             require(["app/controllers/system"], function(System)
             {
+                require(["remodal", "progressbar"], function(remodal, ProgressBar)
+                {
+                    var options = {
+                        hashTracking: false,
+                        closeOnAnyClick: false, 
+                        closeOnEscape: false
+                    };
+                    var modal = $('[data-remodal-id=upgrade]').remodal(options);
+ 
+                    // Set board and current version
+                    System.setBoard("{{$system->getBoard()}}");
+                    System.setCurrentVersion("{{$system->getCurrentVersion()}}");
+                        
+                    System.intialize(function()
+                    {
+                        // Bind events
+                        $(".version").click(function()
+                        {
+                            var version = $(this).attr('id');
+                            version = System.versions[version];
+                            var published_at = new Date(version.published_at);
+                            
+                            $("#upgrade-modal .modal-body").html("" +
+                            "<h1>Release " + version.version + "</h1>" +                       
+                            "<span>Published at " + published_at + "</span>" +                       
+                            "<p>" + version.body + "</p>" +
+                            '<a id="install">install</a>');
+                            
+                            modal.open();
+                            
+                            $("#install").click(function()
+                            {   
+                                $("#upgrade-modal").html(
+                                '<h1>Downloading..</h1>' +
+                                '<div id="percentage-downloaded"></div>');
+                                
+                                System.downloadVersion(version, function()
+                                {
+                                    // Hit when file has ben downloaded
+                                    $("#upgrade-modal").html(
+                                        '<h1>Unpacking..</h1>' +
+                                        '<div class="load5 loadimage" style=""><div class="loader"></div>');
+                                    
+                                    System.unpack(function()
+                                    {
+                                        // Hit when file has ben downloaded
+                                        $("#upgrade-modal").html(
+                                        '<h1>Transferring..</h1>' +
+                                        '<div class="load5 loadimage" style=""><div class="loader"></div>');
+                                        
+                                        System.transfer(function()
+                                        {
+                                            $("#upgrade-modal").html(
+                                                '<h1>Rebooting..</h1>' +
+                                                '<div class="load5 loadimage" style=""><div class="loader"></div>');
+                                            
+                                            System.reboot(function()
+                                            {
+                                                $("#upgrade-modal").html(
+                                                '<h1>System is rebooting..</h1>' +
+                                                '<div id="count-down"></div>');
+                                                
+                                                var waitingTime = 120000;
+                                                
+                                                var countDown = new ProgressBar.Circle('#count-down', {
+                                                    color: '#943633',
+                                                    strokeWidth: 3,
+                                                    trailWidth: 1,
+                                                    duration: waitingTime,
+                                                    text: {
+                                                        value: '100'
+                                                    },
+                                                    step: function(state, bar)
+                                                    {
+                                                        bar.setText(100 - (bar.value() * 100).toFixed(0));
+                                                    }
+                                                });
+                                                
+                                                countDown.animate(1);
+ 
+                                                setInterval(function() { window.location.reload() }, waitingTime);
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            
                 $("#clean").click(function()
                 {
                     System.clean();

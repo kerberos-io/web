@@ -19,9 +19,93 @@
     }
 }
 
+#kerberos
+{
+    margin-bottom: 30px;
+}
+
+#kios
+{
+    #kios-versions
+    {
+        ul
+        {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            
+            li
+            {
+                padding: 10px 0;
+                cursor: pointer;
+                
+                span
+                {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: #ccc;
+                    display: table;
+                    float: left;
+                    margin: 5px 15px 0 0;
+                    
+                    &.active
+                    {
+                        background-color: #943633;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.remodal
+{
+    #percentage-downloaded, #count-down
+    {
+        margin: 20px auto 0;
+        width: 150px;
+    }
+    
+     .modal-body a
+    {
+        margin-top: 20px;
+        display: block;
+        padding: 12px 25px;
+        height: auto;
+        background-color: #943633;
+        color: #fff;
+        border-color: #943633;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover
+        {
+            text-decoration: none;
+        }
+    }
+    
+    p
+    {
+        margin-top: 15px;
+    }
+    
+    span
+    {
+        color: #666;
+    }
+    
+    h1
+    {
+        font-size: 40px;
+        color: #333;
+    }
+}
+
 .progress
 {
-    width: 98%;
+    width: 80%;
 }
 
 @import "responsive-main";
