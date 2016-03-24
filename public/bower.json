@@ -38,6 +38,7 @@
     "mustache": "~0.7.0",
     "fontawesome": "~4.5.0",
     "css-toggle-switch": "~4.0.2",
-    "remodal": "0.6.4"
+    "remodal": "0.6.4",
+    "progressbar.js": "~1.0.0"
   }
 }

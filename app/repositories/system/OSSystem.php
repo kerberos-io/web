@@ -389,6 +389,11 @@ class OSSystem implements SystemInterface
             ]);
         }
         
+        $versions = array_values(array_sort($versions, function($value)
+        {
+                return $value['version'];
+        }));
+        
         return $versions;
     }
     
@@ -396,7 +401,7 @@ class OSSystem implements SystemInterface
     {
         $cmd = 'cat /etc/board';
         $board = shell_exec($cmd);
-        return $board;
+        return trim($board);
     }
     
     public function isBuildroot()
@@ -412,7 +417,7 @@ class OSSystem implements SystemInterface
         
         if(count($matches) > 0)
         {
-            return $matches[1]; 
+            return 'v' . $matches[1]; 
         }
         
         return null;   
