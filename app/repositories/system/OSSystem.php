@@ -396,7 +396,7 @@ class OSSystem implements SystemInterface
     {
         $cmd = 'cat /etc/board';
         $board = shell_exec($cmd);
-        return 'raspberrypi';//$board;
+        return $board;
     }
     
     public function isBuildroot()
@@ -406,7 +406,15 @@ class OSSystem implements SystemInterface
     
     public function getCurrentVersion()
     {
-        $version = 'v' . Config::get('app.version');
+        $os = $this->getOs();
+        $os = explode('-', $os);
+        
+        $version = null;
+        if(count($os) == 3)
+        {
+            $version = 'v' . $os[2];
+        }
+        
         return $version;   
     }
     
