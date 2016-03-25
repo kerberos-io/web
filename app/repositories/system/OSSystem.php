@@ -452,6 +452,7 @@ class OSSystem implements SystemInterface
         $output = shell_exec($cmd);
 
         // get current release file
+        // wget https://github.com/..325.img.gz -O /data/.firmware_update/kios.img.gz
         $cmd = "wget " . $url . " --no-check-certificate -O $name > /dev/null 2>/dev/null &";
         $output = shell_exec($cmd);
 
@@ -503,18 +504,21 @@ class OSSystem implements SystemInterface
         {
             $bootStart = (int) $matchesBoot[0];
             $bootEnd = (int) $matchesBoot[1];
-            $bootStart = $bootStart / 4;
+            $bootSkip = $bootStart / 4;
             $bootCount = ($bootEnd - $bootStart + 1)/4;
 
             $rootStart = (int) $matchesRoot[0];
             $rootEnd = (int) $matchesRoot[1];
-            $rootStart = $rootStart / 4;
+            $rootSkip = $rootStart / 4;
             $rootCount = ($rootEnd - $rootStart + 1)/4;
 
             // calculate start and end..
-            $cmd = "/bin/dd if=$upgradeDir/kios.img of=$upgradeDir/boot.img bs=2048 skip=$bootStart count=$bootEnd";
+            ///bin/dd if=kios.img of=boot.img bs=2048 skip=512 count=10240
+            $cmd = "/bin/dd if=$upgradeDir/kios.img of=$upgradeDir/boot.img bs=2048 skip=$bootSkip count=$bootCount";
             $output = shell_exec($cmd);
-            $cmd = "/bin/dd if=$upgradeDir/kios.img of=$upgradeDir/root.img bs=2048 skip=$rootStart count=$rootEnd";
+            
+            ///bin/dd if=kios.img of=root.img bs=2048 skip=10753 count=140800
+            $cmd = "/bin/dd if=$upgradeDir/kios.img of=$upgradeDir/root.img bs=2048 skip=$rootSkip count=$rootCount";
             $output = shell_exec($cmd);
 
             return true;
@@ -541,7 +545,7 @@ class OSSystem implements SystemInterface
         $output = shell_exec($cmd);
         $cmd = "/bin/dd if=$upgradeDir/boot.img of=/dev/mmcblk0p1 bs=1M";
         $output = shell_exec($cmd);
-        $cmd = "    /bin/mount -o rw /dev/mmcblk0p1 $bootDir";
+        $cmd = "/bin/mount -o rw /dev/mmcblk0p1 $bootDir";
         $output = shell_exec($cmd);
         
         // revert files
