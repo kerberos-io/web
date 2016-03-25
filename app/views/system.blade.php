@@ -13,82 +13,85 @@
                         System is online for {{$system->getUptime()['text']}}
                     </div>
                     <div>
-                        OS specifications: 
-                        <ul>
+                        <h3>OS specifications</h3>
+                        <table class="table">
                             @if($system->getBoard() != '')
-                            <li>{{$system->getBoard()}}</li>
+                            <tr><td>Board</td><td>{{$system->getBoard()}}</td></tr>
                             @endif
                             @if($system->getModel() != '')
-                            <li>{{$system->getModel()}}</li>
+                            <tr><td>Model</td><td>{{$system->getModel()}}</td></tr>
                             @endif
-                            <li>{{$system->getOS()}}</li>
-                            <li>{{$system->getKernel()}}</li>
-                            <li>{{$system->getHostName()}}</li>
-                        </ul> 
+                            <tr><td>OS</td><td>{{$system->getOS()}}</td></tr>
+                            <tr><td>Kernel</td><td>{{$system->getKernel()}}</td></tr>
+                            <tr><td>Hostname</td><td>{{$system->getHostName()}}</td></tr>
+                        </table> 
                     </div>
                     <div>
-                        {{count($system->getCPUs())}} CPU's:<br/>
-                        Architecture: <span class="load">{{$system->getCPUArchitecture()}}</span><br/>
-                        Average load: <span class="load">{{$system->getAverageLoad()}}</span><br/>
-                        <ul>
+                        <h3>Architecture</h3>
+                        This machine has {{count($system->getCPUs())}} {{$system->getCPUArchitecture()}} CPU's running with an average load of <b>{{$system->getAverageLoad()}}</b>.<br/>
+                        <ul class="cpus">
                         @foreach($system->getCPUs() as $cpu)
-                           <li>{{$cpu['Model']}} - {{$cpu['MHz']}} - {{$cpu['Vendor']}}</li>
+                           <li class="cpu">{{$cpu['Model']}}</li>
                         @endforeach
                         </ul>
                     </div>
                     <div>
-                        Disk specifications: 
-                        <ul>
-                            <li>
-                                Hard disks:
-                                <ul>
-                                     @foreach($system->getHD() as $key => $disk)
-                                    <li>{{$disk['device']}} - {{$disk['name']}} - {{$disk['text']['size']}}</li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            <li>
-                                Mounts:
-                                <ul>
-                                     @foreach($system->getMounts() as $key => $mount)
-                                    <li>
-                                        {{$mount['device']}} - {{$mount['type']}} - {{$mount['text']['used']}}/{{$mount['text']['size']}}
+                        <h3>Disk specifications</h3>
+                        There are {{count($system->getMounts())}} hard disks available on this machine.
+                        
+                        <div class="disks">
+                        @foreach($system->getMounts() as $key => $mount)
+                        <div class="disk">
+                            {{$mount['device']}} 
                                         <div class="progress">
                                           <div class="progress-bar {{($mount['used_percent'] < 50) ? 'progress-bar-success' : (($mount['used_percent'] < 75) ? 'progress-bar-warning' : 'progress-bar-danger')}}" role="progressbar" aria-valuenow="{{$mount['used_percent']}}"
                                           aria-valuemin="0" aria-valuemax="100" style="width:{{$mount['used_percent']}}%">
                                             {{$mount['used_percent']}}%
                                           </div>
                                         </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                        </ul> 
+                            {{$mount['text']['used']}}/{{$mount['text']['size']}}
+                         </div>
+                         @endforeach
+                         </div>    
                     </div>
                     <div>
-                        Network specifications: 
-                        <ul>
+                        <h3>Network specifications</h3>
+                        <table class="table table-striped">
+                            <tr>
+                            <th>Device</th>
+                            <th>Received</th>
+                            <th>Sent</th>
+                            </tr>
                             @foreach($system->getNet() as $key => $interface)
-                            <li>{{$key}} - Received: {{$interface['text']['recieved']}} - Sent: {{$interface['text']['sent']}}</li>
+                            <tr>
+                                <td>{{$key}}</td>
+                                <td>{{$interface['text']['recieved']}}</td>
+                                <td>{{$interface['text']['sent']}}</td>
+                            </tr>
                             @endforeach
-                        </ul> 
+                        </table> 
                     </div>
                 </div>
                 <div id="kerberos" class="col-lg-6">
                     <h2><i class="fa fa-user-secret"></i> Kerberos.io</h2>
                     <div>
-                        Version: 
-                        <ul>
-                            <li>Web: {{$system->getWebVersion()}}</li>
-                            <li>Machinery: {{$system->getMachineryVersion()}}</li>
-                        </ul> 
-                        Total images: {{$numberOfImages}}<br/>
-                        Days: 
-                        <ul>
-                            @foreach($allDays as $day)
-                            <li>{{$day}}</li>
+                        Kerberos.io has two services running: the web and the machinery.
+                        <h3>Versions</h3>
+                        <table class="table">
+                            <tr><td>Web</td><td>{{$system->getWebVersion()}}</td></tr>
+                            <tr><td>Machinery</td><td>{{$system->getMachineryVersion()}}</td></tr>
+                        </table> 
+                        <h3>Statistics</h3>
+                        <table class="table">
+                            <tr><td># of images</td><td>{{$numberOfImages}}</td></tr>
+                            <tr><td># of days</td><td>{{count($allDays)}}</td></tr>
+                            <tr><td>Days</td>
+                                <td>
+                                @foreach($allDays as $day)
+                           {{$day}}, 
                             @endforeach
-                        </ul>
+                                </td></tr>
+                        </table> 
                         <div id="system-actions">
                             <a id="download" href="{{URL::to('/')}}/api/v1/images/download">Download images</a>
                             <a id="clean">Remove images</a>

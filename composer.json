@@ -8,7 +8,8 @@
 		"intervention/image": "dev-master",
 		"cedricve/simpleauth": "1.0.0",
 		"aws/aws-sdk-php-laravel": "1.*",
-		"linfo/linfo": "^3.0"
+		"linfo/linfo": "^3.0",
+		"phpseclib/phpseclib": "2.0.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*",

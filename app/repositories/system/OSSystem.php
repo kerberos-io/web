@@ -4,7 +4,7 @@ use Config, Input, Guzzle\Http\Client as Client;
 
 class OSSystem implements SystemInterface
 {
-    private $upgradeDir = '/tmp';///data/.firmware_update';
+    private $upgradeDir = '/data/.firmware_update';
     private $bootDir = '/boot';
     private $repo = "https://api.github.com/repos/cedricve/version-test/releases";//"https://api.github.com/repos/kerberos-io/machinery/releases";
     
@@ -254,14 +254,19 @@ class OSSystem implements SystemInterface
     {
         $nets = $this->parser->getNet();
         
-        foreach($nets as &$interface)
+        $filtered = [];
+        foreach($nets as $key => &$interface)
         {
-            $interface['text'] = [];
-            $interface['text']['recieved'] = $this->toReadableSize($interface['recieved']['bytes']);
-            $interface['text']['sent'] = $this->toReadableSize($interface['sent']['bytes']);
+            if($interface['recieved']['bytes'] > 0 || $interface['sent']['bytes'] > 0)
+            {
+                $interface['text'] = [];
+                $interface['text']['recieved'] = $this->toReadableSize($interface['recieved']['bytes']);
+                $interface['text']['sent'] = $this->toReadableSize($interface['sent']['bytes']);
+                $filtered[$key] = $interface;
+            }
         }
                 
-        return $nets;
+        return $filtered;
     }
     
     public function getRam()
@@ -287,15 +292,22 @@ class OSSystem implements SystemInterface
     {
         $mounts = $this->parser->getMounts();
         
+        $filtered = [];
         foreach($mounts as &$mount)
         {
-            $mount['text'] = [];
-            $mount['text']['used'] = $this->toReadableSize($mount['used']);
-            $mount['text']['free'] = $this->toReadableSize($mount['free']);
-            $mount['text']['size'] = $this->toReadableSize($mount['size']);
+            if($mount['used'] > 0 &&
+              !array_key_exists($mount['device'], $filtered)
+            )
+            {
+                $mount['text'] = [];
+                $mount['text']['used'] = $this->toReadableSize($mount['used']);
+                $mount['text']['free'] = $this->toReadableSize($mount['free']);
+                $mount['text']['size'] = $this->toReadableSize($mount['size']);
+                array_push($filtered, $mount);
+            }
         }
         
-        return $mounts;
+        return $filtered;
     }
     
     public function diskAlmostFull()
@@ -428,6 +440,11 @@ class OSSystem implements SystemInterface
         $version = Input::get('version');
         $url = Input::get('download');
  
+        // create upgrade dir 
+        $upgradeDir = $this->upgradeDir;
+        $cmd = "mkdir -p $upgradeDir 2>&1";
+        $output = shell_exec($cmd);
+        
         // remove existing file
         $upgradeDir = $this->upgradeDir;
         $name = "$upgradeDir/kios.img.gz";
@@ -444,15 +461,12 @@ class OSSystem implements SystemInterface
     public function progress()
     {
         $completeSize = Input::get('size');
-         
-        $upgradeDir = $this->upgradeDir;
-        
+
         // Check existing file
+        $upgradeDir = $this->upgradeDir;
         $name = "$upgradeDir/kios.img.gz";
-        $cmd = "ls -l $name";
-        $output = shell_exec($cmd);
-        $parts = explode(' ', $output);
-        $size = $parts[7];
+        $cmd = "stat -c%s $name";
+        $size = (int) shell_exec($cmd);
         
         $progress = round($size / $completeSize * 100, 0);
         
@@ -462,74 +476,72 @@ class OSSystem implements SystemInterface
     public function depack()
     {
         $upgradeDir = $this->upgradeDir;
-        
-        $cmd = "mkdir -p $upgradeDir";
-        $output = shell_exec($cmd);
-        
+
         $cmd = "rm $upgradeDir/kios.img";
-        $output = shell_exec($cmd);
-        
-        $cmd = "/usr/bin/gunzip $upgradeDir/kios.img.gz 2>&1"; //"gzip -d $upgradeDir/kios.img.gz 2>&1";
+        //$output = shell_exec($cmd);
+
+        $cmd = "/bin/gunzip $upgradeDir/kios.img.gz 2>&1";
         $output = shell_exec($cmd);
 
-        $cmd = "/usr/sbin/fdisk $upgradeDir/kios.img";
-        $output = shell_exec($cmd);
+        $cmd = "/sbin/fdisk -l $upgradeDir/kios.img 2>&1";
+        $output = str_replace('  ', ' ', shell_exec($cmd));
+        preg_match("/kios.img1 \* (.*?) W95/", $output, $matchesBoot);
+        $matchesBoot = explode(' ', trim($matchesBoot[1]));
 
-        $matches = [];
-        preg_match_all("/\[(.*?)\]/", $output, $matches);
- 
-        if(count($matches) > 0)
+        preg_match("/kios.img2 (.*?) Linux/", $output, $matchesRoot);
+        $matchesRoot = explode(' ', trim($matchesRoot[1]));
+
+        if(count($matchesBoot) > 0 && count($matchesRoot) > 0)
         {
-            $bootOffsets = explode(' - ', $matches[1][2]);
-            $bootStart = (int) $bootOffsets[0];
-            $bootEnd = (int) $bootOffsets[1];
+            $bootStart = (int) $matchesBoot[0];
+            $bootEnd = (int) $matchesBoot[1];
             $bootStart = $bootStart / 4;
             $bootCount = ($bootEnd - $bootStart + 1)/4;
-            
-            $rootOffsets = explode(' - ', $matches[1][3]);
-            $rootStart = (int) $rootOffsets[0];
-            $rootEnd = (int) $rootOffsets[1];
+
+            $rootStart = (int) $matchesRoot[0];
+            $rootEnd = (int) $matchesRoot[1];
             $rootStart = $rootStart / 4;
             $rootCount = ($rootEnd - $rootStart + 1)/4;
-            
+
             // calculate start and end..
             $cmd = "/bin/dd if=$upgradeDir/kios.img of=$upgradeDir/boot.img bs=2048 skip=$bootStart count=$bootEnd";
             $output = shell_exec($cmd);
             $cmd = "/bin/dd if=$upgradeDir/kios.img of=$upgradeDir/root.img bs=2048 skip=$rootStart count=$rootEnd";
             $output = shell_exec($cmd);
-            
+
             return true;
         }
-            
+
         return false;
     }
     
     public function transfer()
     {
         $bootDir = $this->bootDir;
+        $upgradeDir = $this->upgradeDir;
         
         // copy files
-        $cmd = 'cp $bootDir/config.txt /data/tmp/config.txt';
+        $cmd = "cp $bootDir/config.txt /data/tmp/config.txt";
         $output = shell_exec($cmd);
-        $cmd = 'cp $bootDir/static_ip.conf /data/tmp/static_ip.conf';
+        $cmd = "cp $bootDir/static_ip.conf /data/tmp/static_ip.conf";
         $output = shell_exec($cmd);
-        $cmd = 'cp $bootDir/wireless.conf /data/tmp/wireless.conf';
+        $cmd = "cp $bootDir/wireless.conf /data/tmp/wireless.conf";
         $output = shell_exec($cmd);
         
         // mount boot
-        $cmd = '/bin/umount /boot';
+        $cmd = "/bin/umount $bootDir";
         $output = shell_exec($cmd);
-        $cmd = '/bin/dd if=$upgradeDir/boot.img of=/dev/mmcblk0p1 bs=1M';
+        $cmd = "/bin/dd if=$upgradeDir/boot.img of=/dev/mmcblk0p1 bs=1M";
         $output = shell_exec($cmd);
-        $cmd = '/bin/mount -o rw /dev/mmcblk0p1 $bootDir';
+        $cmd = "/bin/mount -o rw /dev/mmcblk0p1 $bootDir";
         $output = shell_exec($cmd);
         
         // revert files
-        $cmd = 'cp /data/tmp/config.txt $bootDir/config.txt';
+        $cmd = "cp /data/tmp/config.txt $bootDir/config.txt";
         $output = shell_exec($cmd);
-        $cmd = 'cp /data/tmp/static_ip.conf $bootDir/static_ip.conf';
+        $cmd = "cp /data/tmp/static_ip.conf $bootDir/static_ip.conf";
         $output = shell_exec($cmd);
-        $cmd = 'cp /data/tmp/wireless.conf $bootDir/wireless.conf';
+        $cmd = "cp /data/tmp/wireless.conf $bootDir/wireless.conf";
         $output = shell_exec($cmd);
         
         return true;

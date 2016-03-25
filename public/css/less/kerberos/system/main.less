@@ -24,6 +24,11 @@
     margin-bottom: 30px;
 }
 
+#system, #kerberos
+{
+    padding-right: 50px;
+}
+            
 #kios
 {
     #kios-versions
@@ -103,9 +108,50 @@
     }
 }
 
+.disks
+{
+    text-align: center;
+    margin-bottom: 20px;
+    display: table;
+    width: 100%;
+    
+    .disk
+    {
+        margin: 20px 0;
+        display: block;
+        padding: 5px 15px;
+        background-color: #EEEEEE;
+        border-radius: 10px;
+    }
+}
+
+.cpus
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    display: table;
+    width: 100%;
+    background-color: #EEEEEE;
+    padding: 0 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    
+    .cpu
+    {
+        margin: 20px 0;
+        display: block;
+        padding: 5px 15px;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+}
+
 .progress
 {
-    width: 80%;
+    width: 100%;
+    margin: 10px 0;
 }
 
 @import "responsive-main";

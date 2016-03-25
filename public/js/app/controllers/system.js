@@ -140,7 +140,7 @@ define(["jquery", "progressbar"], function($, ProgressBar)
                         callback();
                     }
                 };
-                interval = setInterval(intervalFunction, 1000);
+                interval = setInterval(intervalFunction, 2500);
             }
         },
         unpack: function(callback)
