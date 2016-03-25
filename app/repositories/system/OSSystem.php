@@ -562,10 +562,17 @@ class OSSystem implements SystemInterface
     public function reboot()
     {
         $bootDir = $this->bootDir;
+        $upgradeDir = $this->upgradeDir;
+        
+        // rm boot img
+        $cmd = "rm $upgradeDir/boot.img";
+        $output = shell_exec($cmd);
         
         // append config file
         $cmd = "printf '\n%s' 'initramfs fwupdater.gz' >> $bootDir/config.txt"; // append to /boot/config.txt
         $output = shell_exec($cmd);
+        
+        // reboot
         $cmd = 'reboot';
         $output = shell_exec($cmd);
         
