@@ -42,6 +42,7 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('system/versions', 'Controllers\SystemController@getVersions');
         Route::post('system/upgrade/download', 'Controllers\SystemController@download');
         Route::post('system/upgrade/progress', 'Controllers\SystemController@progress');
+        Route::get('system/upgrade/unzip', 'Controllers\SystemController@unzip');
         Route::get('system/upgrade/depack', 'Controllers\SystemController@depack');
         Route::get('system/upgrade/transfer', 'Controllers\SystemController@transfer');
         Route::get('system/upgrade/reboot', 'Controllers\SystemController@reboot');

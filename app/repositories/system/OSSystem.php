@@ -473,15 +473,23 @@ class OSSystem implements SystemInterface
         return ['progress' => $progress];
     }
     
-    public function depack()
+    
+    public function unzip()
     {
         $upgradeDir = $this->upgradeDir;
 
         $cmd = "rm $upgradeDir/kios.img";
-        //$output = shell_exec($cmd);
+        $output = shell_exec($cmd);
 
         $cmd = "/bin/gunzip $upgradeDir/kios.img.gz 2>&1";
         $output = shell_exec($cmd);
+        
+        return true;
+    }
+    
+    public function depack()
+    {
+        $upgradeDir = $this->upgradeDir;
 
         $cmd = "/sbin/fdisk -l $upgradeDir/kios.img 2>&1";
         $output = str_replace('  ', ' ', shell_exec($cmd));
@@ -533,7 +541,7 @@ class OSSystem implements SystemInterface
         $output = shell_exec($cmd);
         $cmd = "/bin/dd if=$upgradeDir/boot.img of=/dev/mmcblk0p1 bs=1M";
         $output = shell_exec($cmd);
-        $cmd = "/bin/mount -o rw /dev/mmcblk0p1 $bootDir";
+        $cmd = "    /bin/mount -o rw /dev/mmcblk0p1 $bootDir";
         $output = shell_exec($cmd);
         
         // revert files

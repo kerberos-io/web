@@ -119,6 +119,12 @@ class SystemController extends BaseController
         return Response::json($response);
     }
     
+    public function unzip()
+    {
+        $response = $this->system->unzip();
+        return Response::json($response);
+    }
+    
     public function depack()
     {
         $response = $this->system->depack();
