@@ -164,14 +164,14 @@
                                 {
                                     // Hit when file has been downloaded
                                     $("#upgrade-modal").html(
-                                        '<h1>Unpacking..</h1>' +
+                                        '<h1>Unzipping..</h1>' +
                                         '<div class="load5 loadimage" style=""><div class="loader"></div>');
                                     
                                     System.unzip(function()
                                     {
                                         // Hit when file has been unzipped
                                         $("#upgrade-modal").html(
-                                            '<h1>Unzipping..</h1>' +
+                                            '<h1>Unpacking..</h1>' +
                                             '<div class="load5 loadimage" style=""><div class="loader"></div>');
 
                                         System.unpack(function()

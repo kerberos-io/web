@@ -560,7 +560,7 @@ class OSSystem implements SystemInterface
         $bootDir = $this->bootDir;
         
         // append config file
-        $cmd = "printf '%s\n' 'initramfs fwupdater.gz' >> $bootDir/config.txt"; // append to /boot/config.txt
+        $cmd = "printf '\n%s' 'initramfs fwupdater.gz' >> $bootDir/config.txt"; // append to /boot/config.txt
         $output = shell_exec($cmd);
         $cmd = 'reboot';
         $output = shell_exec($cmd);

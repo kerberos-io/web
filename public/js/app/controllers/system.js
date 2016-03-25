@@ -147,7 +147,7 @@ define(["jquery", "progressbar"], function($, ProgressBar)
         {
             $.get(_baseUrl + "/api/v1/system/upgrade/unzip", callback)
             .fail(function(){});
-        },,
+        },
         unpack: function(callback)
         {
             $.get(_baseUrl + "/api/v1/system/upgrade/depack", callback)
