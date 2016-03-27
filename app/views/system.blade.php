@@ -185,35 +185,30 @@
                                             System.transfer(function()
                                             {
                                                 $("#upgrade-modal").html(
-                                                    '<h1>Rebooting..</h1>' +
-                                                    '<div class="load5 loadimage" style=""><div class="loader"></div>');
-
-                                                System.reboot(function()
-                                                {
-                                                    $("#upgrade-modal").html(
                                                     '<h1>System is rebooting..</h1>' +
                                                     '<div id="count-down"></div>');
 
-                                                    var waitingTime = 120000;
+                                                var waitingTime = 120000;
 
-                                                    var countDown = new ProgressBar.Circle('#count-down', {
-                                                        color: '#943633',
-                                                        strokeWidth: 3,
-                                                        trailWidth: 1,
-                                                        duration: waitingTime,
-                                                        text: {
-                                                            value: '100'
-                                                        },
-                                                        step: function(state, bar)
-                                                        {
-                                                            bar.setText(100 - (bar.value() * 100).toFixed(0));
-                                                        }
-                                                    });
-
-                                                    countDown.animate(1);
-
-                                                    setInterval(function() { window.location.reload() }, waitingTime);
+                                                var countDown = new ProgressBar.Circle('#count-down', {
+                                                    color: '#943633',
+                                                    strokeWidth: 3,
+                                                    trailWidth: 1,
+                                                    duration: waitingTime,
+                                                    text: {
+                                                        value: '100'
+                                                    },
+                                                    step: function(state, bar)
+                                                    {
+                                                        bar.setText(100 - (bar.value() * 100).toFixed(0));
+                                                    }
                                                 });
+
+                                                countDown.animate(1);
+
+                                                setInterval(function() { window.location.reload() }, waitingTime);
+                                                
+                                                System.reboot(function(){});
                                             });
                                         });
                                     });

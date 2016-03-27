@@ -303,7 +303,7 @@ class OSSystem implements SystemInterface
                 $mount['text']['used'] = $this->toReadableSize($mount['used']);
                 $mount['text']['free'] = $this->toReadableSize($mount['free']);
                 $mount['text']['size'] = $this->toReadableSize($mount['size']);
-                array_push($filtered, $mount);
+                $filtered[$mount['device']] = $mount;
             }
         }
         
