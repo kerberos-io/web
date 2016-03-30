@@ -8849,6 +8849,9 @@ label {
   border-color: #943633;
   border-radius: 4px;
   cursor: pointer;
+  margin: 0 5px 5px 0;
+  display: table;
+  float: left;
 }
 #system-actions a:hover {
   text-decoration: none;

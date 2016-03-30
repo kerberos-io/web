@@ -93,6 +93,7 @@
                                 </td></tr>
                         </table> 
                         <div id="system-actions">
+                            <a id="download" href="{{URL::to('/')}}/api/v1/system/download">Download system files</a>
                             <a id="download" href="{{URL::to('/')}}/api/v1/images/download">Download images</a>
                             <a id="clean">Remove images</a>
                         </div>

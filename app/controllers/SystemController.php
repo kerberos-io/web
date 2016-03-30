@@ -51,6 +51,41 @@ class SystemController extends BaseController
         ]);
     }
     
+    public function downloadConfiguration()
+    {
+        // Check which configuration directory to copy
+        $configDirectory = '/data/machinery';
+        $output = shell_exec("[ -d $configDirectory ] && echo 'true' || echo 'false'");
+        if(trim($output) === "false")
+        {
+            $configDirectory = "/etc/opt/kerberosio";
+        }
+
+        $dir = "/data/";
+        $output = shell_exec("[ -d $dir ] && echo true || echo false");
+        if($output === true)
+        {
+            $dir = "/data/tmp";
+            $output = shell_exec("mkdir -p $dir");
+        }
+        else
+        {
+            $dir = "/tmp";
+        }
+        
+        $file = "$dir/kerberosio-configuration.tar.gz";
+        $output = shell_exec("[ -f $file ] && echo true || echo false");
+       
+        if($output === "true")
+        {
+            $output = shell_exec("rm $file");
+        }
+
+        $output = shell_exec("tar -zcvf $file $configDirectory/config $configDirectory/logs");
+        
+        return Response::download($file);
+    }
+    
     public function downloadImages()
     {
         $directory = $this->config;
