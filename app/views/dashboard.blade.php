@@ -86,7 +86,8 @@
                         });
                         
                         // Set loading bars
-                        $("#radar-graph, #livestream, #time-donut-wrapper, #time-graph, li.activity, .heatmap").append($('<div class="load5 loadimage" style=""><div class="loader"></div></div>'));
+                        $("#radar-graph, #livestream, #time-donut-wrapper, #time-graph, li.activity").append($('<div class="load5 loadimage"><div class="loader"></div></div>'));
+                        $(".heatmap").append($('<div class="load5 loadimage" style="margin-top: 60px;"><div class="loader"></div></div>'));
                         
                         require(["app/controllers/dashboard_live",
                                  "app/controllers/dashboard_sequencer",

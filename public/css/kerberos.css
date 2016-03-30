@@ -8425,6 +8425,23 @@ div.center form#login input[type='submit'] {
 #dashboard div.heatmap canvas {
   border-radius: 7px;
 }
+@media only screen and (min-width: 767px) and (max-width: 1000px) {
+  #dashboard div.heatmap .load5 {
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  #dashboard div.heatmap .load5 {
+    margin-top: -15px;
+  }
+  #dashboard div.heatmap canvas {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+}
 #dashboard #activity-sequence {
   padding-right: 20px;
   margin-top: 10px;

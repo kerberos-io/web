@@ -188,7 +188,7 @@
                                                     '<h1>System is rebooting..</h1>' +
                                                     '<div id="count-down"></div>');
 
-                                                var waitingTime = 120000;
+                                                var waitingTime = 180000;
 
                                                 var countDown = new ProgressBar.Circle('#count-down', {
                                                     color: '#943633',

@@ -1,5 +1,5 @@
 <div class="text">
-    <label>Active:</label>
+    <label>{{$label}}:</label>
     <input id="{{$file}}__{{$attribute}}" type="checkbox" {{($value=="true")?"checked":""}}/>
     <input type="hidden" name="{{$file}}__{{$attribute}}" value="{{$value}}"/>
 </div>
