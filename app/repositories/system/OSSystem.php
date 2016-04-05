@@ -418,7 +418,7 @@ class OSSystem implements SystemInterface
         return trim($board);
     }
     
-    public function isBuildroot()
+    public function isKios()
     {
         return ($this->getBoard()!='');
     }

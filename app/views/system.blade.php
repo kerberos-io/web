@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                @if($system->isBuildroot())
+                @if($system->isKios())
                 <div id="kios" class="col-lg-6">
                     <h2><i class="fa fa-linux"></i> Kios</h2>
                     <!--<div style="display: table" class="alert alert-warning" role="alert">Nice, a new version of KIOS is available!</div>-->
