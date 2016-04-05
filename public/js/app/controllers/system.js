@@ -167,7 +167,11 @@ define(["jquery", "progressbar"], function($, ProgressBar)
                         callback();
                     }
                 };
-                interval = setInterval(intervalFunction, 2500);
+                
+                var time = 2500;
+                if(this.board === "raspberrypi") time *= 2;
+                
+                interval = setInterval(intervalFunction, time);
             }
         },
         unzip: function(callback)
