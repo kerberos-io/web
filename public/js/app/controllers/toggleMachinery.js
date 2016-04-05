@@ -37,9 +37,9 @@ define(["jquery"], function($)
             $.get(_baseUrl + "/api/v1/condition/enabled",function(data)
             {
                 self.status = (data.active === "true");
+                $(".machinery-switch input[type='checkbox']").attr("checked", self.status);
                 $(".machinery-switch input[type='checkbox']").attr("disabled", false);
                 $(".machinery-switch span.well").css("opacity", 1);
-                $(".machinery-switch input[type='checkbox']").attr("checked", self.status);
             });
         }
     };
