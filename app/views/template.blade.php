@@ -86,12 +86,12 @@
                     </ul>
                 </li>
                 <li>
-                    <label style="width:60px; padding-top: 10px" class="machinery-switch switch-light">
-                        <input type="checkbox" style="outline: none;">
-                        <span class="well" style="margin:0;background-color:#fff; color: #fff;">
+                    <label class="machinery-switch switch-light">
+                        <input type="checkbox">
+                        <span class="well">
                             <span>Off</span>
                             <span>On</span>
-                            <a class="btn btn-primary" style="background-color: #943633; border-color: #943633"></a>
+                            <a class="btn btn-primary"></a>
                         </span>
                     </label>
                 </li>

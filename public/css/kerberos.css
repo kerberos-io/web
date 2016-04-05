@@ -8174,6 +8174,23 @@ div.line {
 label.toggle-mobile {
   display: none;
 }
+.machinery-switch {
+  width: 60px;
+  padding-top: 10px;
+}
+.machinery-switch .well {
+  margin: 0;
+  background-color: #fff;
+  color: #fff;
+  opacity: 0;
+}
+.machinery-switch .well input {
+  outline: none;
+}
+.machinery-switch .well a {
+  background-color: #943633;
+  border-color: #943633;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   body {
     margin-top: 50px;

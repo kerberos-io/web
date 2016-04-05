@@ -182,7 +182,9 @@ class OSSystem implements SystemInterface
     
     public function getMachineryVersion()
     {
-        return Config::get('app.version');
+        $cmd = "/usr/bin/kerberosio -v";
+        $version = shell_exec($cmd);
+        return ltrim($version, 'v');
     }
     
     public function getOS()
