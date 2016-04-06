@@ -2,64 +2,111 @@
 
 [![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/web) [![Join the chat at https://gitter.im/kerberos-io/hades](https://img.shields.io/badge/GITTER-join chat-green.svg)](https://gitter.im/kerberos-io/hades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+
+[![Kerberos.io - video surveillance](https://kerberos.io/images/kerberos.png)](https://kerberos.io)
+
+## Why Kerberos.io?
+
+As burgalary is very common, we believe that video surveillance is a **trivial tool** in our daily lifes which helps us to **feel** a little bit more **secure**. Responding to this need, a lot of companies have started developing their own video surveillance software in the past few years.
+
+Nowadays we have a myriad of **expensive** camera's, recorders and software solutions which are mainly **outdated** and **difficult** to install and use. Kerberos.io's goal is to solve these problems and to provide every human being in this world to have its own **ecological**, **affordable**, **easy-to-use** and **innovative** surveillance solution.
+
 ## Introduction
 
-[Kerberos](http://kerberos.io) is a low-budget surveillance solution created for the Rapsberry Pi, but it also works on OSX and Linux. It uses a motion detection algorithm to detect changes and stores images when motion is detected. Kerberos is open source, so you and others, can customize the source code to your needs and share it. It has a low-energy footprint when deploying on the Raspberry Pi and it's easy to install, you only need to transfer the image to the SD card and you're done.
+[Kerberos.io](http://kerberos.io) is a **low-budget** video surveillance solution, that uses computer vision algorithms to detect changes, and that can trigger other devices. [Kerberos.io](http://kerberos.io) is open source so everyone can customize the source code to its needs and share it with the community. When deployed on the Raspberry Pi, it has a **green footprint** and it's **easy to install**; you only need to transfer the [Kerberos.io OS (KIOS)](https://doc.kerberos.io/2.0/installation/KiOS) to your SD card and that's it.
 
-Use your mobile phone, tablet or PC to keep an eye on your property. View the images taken by [Kerberos](http://kerberos.io) with our responsive and user-friendly web interface. Look at the dashboard to get a graphical overview of the past days. Multiple [Kerberos](http://kerberos.io) instances can be installed and can be viewed with only 1 web interface.
+Use your mobile phone, tablet or PC to keep an eye on your property. View the images taken by [Kerberos.io](http://kerberos.io) with our responsive and user-friendly web interface. Look at the dashboard to get a graphical overview of the past days. Multiple [Kerberos.io](http://kerberos.io) instances can be installed and can be viewed with only 1 web interface.
 
-## The web interface
+## The web
 
-The webinterface allows you to configure the machinery and to view events that were detected by the machinery. You can use your mobile phone, tablet or desktop to view the images with the *responsive* and *intuitive* web interface.
+The web is responsible for the visualization. It's a **GUI** which helps the user to find activity at a specific period, configure the machinery, view a live stream, see system information and much more. It's important to note that the machinery can work without the web, however we don't recommend this.
 
 ## How does it work?
 
-The webinterface is written in PHP using the extremely popular PHP Framework **Laravel**. It visualizes images, taken by the machinery, in a intuitive and responsive way. Besides a server-side framework, it also uses a client-side framework **Backbone** to create the dynamic behaviour. The webinterface includes the latest development tools, to increase development efficiency: RequireJS, bower, LESS, etc.
+The web is written in PHP using the extremely popular PHP Framework **Laravel**, and Javascript using the client-side framework **BackboneJS**; to create the dynamic behaviour. We will discuss the different pages and functionality briefly. Please check out the [**demo environment**](https//doc.kerberos.io) if you want to see a real life example.
 
-Besides visualization, the webinterface is also used to configure the machinery. On the settings page a user can select different options, for example a user could select a region where motion should be detected. Could select a time range when motion could be detected, which algorithm is used, etc; more information can be found on the [documentation website](http://doc.kerberos.io).
-
+[Read more](https://doc.kerberos.io/2.0/web/introduction)
 
 ## Installation
 
-First make sure you have a working webserver **(Apache/Nginx)** with **PHP** and some extensions **(Mcrypt, Phar, GD and OpenSSL)** installed.
+If you want to install **the web**, you'll need to have **a webserver** (e.g. nginx) and **PHP** running with some extensions. You also need **nodejs** and **npm** installed to install **bower**. Below you can find the installation procedure to install the web on the Ubuntu OS; the process is similar for another Linux OS.
 
-    extension=mcrypt.so
-    extension=phar.so
-    extension=gd.so
-    extension=openssl.so
+Update the packages and kernel.
 
-Go to your www directory, the directory to which your webserver is pointing
+    sudo apt-get update && sudo apt-get upgrade
 
-    cd /some/directory/www
+Install git, nginx, php (+extension) and nodejs.
 
-Get the source code from github
+    curl -sL https://deb.nodesource.com/setup | sudo bash - 
+    sudo apt-get install git nginx php5-cli php5-fpm php5-gd php5-mcrypt php5-curl nodejs
 
-    git clone https://github.com/kerberos-io/web kerberos-web
+Creating a nginx config.
 
-Install php packages by using composer
+    sudo rm -f /etc/nginx/sites-enabled/default
+    sudo nano /etc/nginx/sites-enabled/default 
+    
+Copy and paste following config file; this file tells nginx where the web will be installed and that it requires PHP.
 
-    cd kerberos-web
-    composer install
+    server
+    {
+        listen 80 default_server;
+        listen [::]:80 default_server;
 
-Change config file: edit the "configFile" variable, link it to the config directory of the kerberos-io repository. If you don't have the kerberos-io repository installed on that specific server, you can make it an empty string. In this case the option "settings" won't show up in the navigation menu.
+        root /var/www/web/public;
+        index index.html index.htm index.nginx-debian.html;
 
-    nano app/config/app.php
+        server_name kerberos.rpi kerberos.rpi;
+        index index.php index.html index.htm;
 
-Change write permission on the storage directory
+        location /
+        {
+                autoindex on;
+                try_files $uri $uri/ /index.php?$query_string;
+        }
 
-    chmod -R 777 app/storage
+        location ~ \.php$
+        {
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+    }
+
+Create a www location.
+    
+    mkdir -p /var/www
+
+Get the source code from Github.
+
+    cd /var/www && sudo git clone https://github.com/kerberos-io/web && cd web
+
+Install PHP packages by using composer.
+
+    curl -sS https://getcomposer.org/installer | sudo php
+    sudo mv composer.phar /usr/bin/composer
+    sudo composer install
+
+Change write permission on the storage directory.
+
+    sudo chmod -R 777 app/storage
 
 Install bower globally by using node package manager, this is installed when installing nodejs.
 
-    npm -g install bower
+    sudo apt-get install npm
+    sudo ln -s /usr/bin/nodejs /usr/bin/node
+    sudo npm -g install bower
 
-Install Front end dependencies with bower
+Install Front-end dependencies with bower
     
     cd public
-    bower --allow-root install
+    sudo bower --allow-root install
+    
+Restart nginx
+
+    sudo service nginx restart
 
 ## How to access
 
-You can access the webinterface by entering the ip address in your favorite browser. You will see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
+You can access **the web** by entering the IP-address in your favorite browser. You'll see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
 
 ![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0/1_how-to-access.png)
