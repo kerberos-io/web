@@ -8568,6 +8568,47 @@ div.center form#login input[type='submit'] {
 #dashboard .dropdown-menu > .active > a:hover {
   background-color: #943633;
 }
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  #dashboard ul.nav-select-view {
+    display: table;
+    width: 100%;
+  }
+  #dashboard ul.nav-select-view > .open > a {
+    color: #943633;
+    background-color: #fff;
+  }
+  #dashboard ul.nav-select-view > li {
+    width: 100%;
+    margin: 5px 0;
+  }
+  #dashboard ul.nav-select-view > li > a {
+    margin: 0;
+  }
+  #dashboard ul.nav-select-view > li > a:hover,
+  #dashboard ul.nav-select-view > li > a:active {
+    color: #943633;
+    background-color: #fff;
+  }
+  #dashboard ul.nav-select-view > li > a b.caret {
+    margin: 10px 0;
+    float: right;
+  }
+  #dashboard ul.nav-select-view .dropdown-menu {
+    margin: 0;
+    width: 100%;
+    margin-top: 4px;
+    border: 0;
+  }
+  #dashboard ul.nav-select-view .dropdown-menu li a {
+    padding: 10px;
+  }
+  #dashboard ul.nav-select-view .dropdown-menu > .active > a,
+  #dashboard ul.nav-select-view .dropdown-menu > .active > a:focus,
+  #dashboard ul.nav-select-view .dropdown-menu > .active > a:hover {
+    background-color: #fff;
+    color: #943633;
+  }
+}
 div.loadimage {
   width: 392px;
   height: 140px;

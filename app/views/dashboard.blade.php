@@ -8,7 +8,7 @@
                     <h2>
                         <i class="fa fa-signal"></i> Activity
                      </h2>
-                        <ul class="nav navbar-right top-nav">
+                        <ul class="nav-select-view nav navbar-right top-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i href="#"class="fa fa-fw fa-bars"></i> select view <b class="caret"></b>
