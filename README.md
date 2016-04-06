@@ -23,7 +23,7 @@ The web is responsible for the visualization. It's a **GUI** which helps the use
 
 ## How does it work?
 
-The web is written in PHP using the extremely popular PHP Framework **Laravel**, and Javascript using the client-side framework **BackboneJS**; to create the dynamic behaviour. We will discuss the different pages and functionality briefly. Please check out the [**demo environment**](https//doc.kerberos.io) if you want to see a real life example.
+The web is written in PHP using the extremely popular PHP Framework **Laravel**, and Javascript using the client-side framework **BackboneJS**; to create the dynamic behaviour. We will discuss the different pages and functionality briefly. Please check out the [demo environment](https//doc.kerberos.io) if you want to see a real life example.
 
 [Read more](https://doc.kerberos.io/2.0/web/introduction)
 
