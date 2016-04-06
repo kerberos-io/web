@@ -568,7 +568,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     break;
                 }
 
-                $hour = intval(($timestamp - $startTimestamp) / 3600);
+                $hour = intval(($timestamp - $startTimestamp) / 3600) % 24;
                 $hours['total'][$hour]++;
                 
                 $instanceName = $pieces[$indexInstanceName];
