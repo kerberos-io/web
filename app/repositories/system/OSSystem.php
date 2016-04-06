@@ -6,7 +6,7 @@ class OSSystem implements SystemInterface
 {
     private $upgradeDir = '/data/.firmware_update';
     private $bootDir = '/boot';
-    private $repo = "https://api.github.com/repos/cedricve/version-test/releases";//"https://api.github.com/repos/kerberos-io/machinery/releases";
+    private $repo = "https://api.github.com/repos/cedricve/version-test/releases";//"https://api.github.com/repos/kerberos-io/kios/releases";
     
     public function __construct()
     {

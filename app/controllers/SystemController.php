@@ -81,7 +81,7 @@ class SystemController extends BaseController
             $output = shell_exec("rm $file");
         }
 
-        $output = shell_exec("tar -zcvf $file $configDirectory/config $configDirectory/logs");
+        $output = shell_exec("cd $configDirectory && tar -zcvf $file config logs");
         
         return Response::download($file);
     }
@@ -117,7 +117,7 @@ class SystemController extends BaseController
             $output = shell_exec("rm $file");
         }
 
-        $output = shell_exec("tar -zcvf $file $imageDirectory");
+        $output = shell_exec("cd $imageDirectory && tar -zcvf $file .");
         
         return Response::download($file);
     }
