@@ -24,5 +24,32 @@ return array(
 	'off' => 'Off',
     
 	'logout' => 'Logout',
+    
+    
+    /*
+	|------------------------
+    |  Date-time translations
+	|------------------------
+    */
+
+    'monday' => 'Monday',
+
+    'tuesday' => 'Tuesday',
+
+    'wednesday' => 'Wednesday',
+
+    'thursday' => 'Thursday',
+
+    'friday' => 'Friday',
+
+    'saturday' => 'Saturday',
+
+    'sunday' => 'Sunday',
+            
+    'today' => 'Today',
+    
+    'yesterday' => 'Yesterday',
+    
+    'dayBeforeYesterday' => 'Ereyesterday'
 
 );

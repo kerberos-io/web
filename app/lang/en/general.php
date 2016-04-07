@@ -50,6 +50,6 @@ return array(
     
     'yesterday' => 'Yesterday',
     
-    'dayBeforeYesterday' => 'Day before yeserday'
+    'dayBeforeYesterday' => 'Ereyesterday'
 
 );
