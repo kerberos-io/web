@@ -41,8 +41,8 @@
                 <label style="width:60px; padding-top: 10px" class="machinery-switch toggle-mobile switch-light">
                     <input type="checkbox" style="outline: none;">
                     <span class="well" style="margin:0;background-color:#fff; color: #fff;">
-                        <span>Off</span>
-                        <span>On</span>
+                        <span>{{Lang::get('general.off')}}</span>
+                        <span>{{Lang::get('general.on')}}</span>
                         <a class="btn btn-primary" style="background-color: #943633; border-color: #943633"></a>
                     </span>
                 </label>
@@ -63,17 +63,17 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="active">
-                    <a href="{{URL::to('/')}}"><i class="fa fa-area-chart"></i> Dashboard</a>
+                    <a href="{{URL::to('/')}}"><i class="fa fa-area-chart"></i> {{Lang::get('general.dashboard')}}</a>
                 </li>
                 <li>
-                    <a href="{{URL::to('/system')}}"><i class="fa fa-desktop"></i> System</a>
+                    <a href="{{URL::to('/system')}}"><i class="fa fa-desktop"></i> {{Lang::get('general.system')}}</a>
                 </li>
                 @if(Config::get('app.config') != '')
                 <li>
-                    <a href="{{URL::to('/settings')}}"><i class="fa fa-list"></i> Settings</a>
+                    <a href="{{URL::to('/settings')}}"><i class="fa fa-list"></i> {{Lang::get('general.settings')}}</a>
                 </li>
                 <li>
-                    <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> Cloud</a>
+                    <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> {{Lang::get('general.cloud')}}</a>
                 </li>
                 @endif
 
@@ -81,7 +81,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> {{Lang::get('general.logout')}}</a>
                         </li>
                     </ul>
                 </li>

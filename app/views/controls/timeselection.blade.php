@@ -2,7 +2,15 @@
 	<?php
 		$times = explode('-', $value);
 	?>
-	@foreach(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as $key => $day)
+	@foreach([
+        Lang::get('general.monday'),
+        Lang::get('general.tuesday'),
+        Lang::get('general.wednesday'),
+        Lang::get('general.thursday'),
+        Lang::get('general.friday'),
+        Lang::get('general.saturday'),
+        Lang::get('general.sunday')
+    ] as $key => $day)
 		@if(count($times) > $key)
 			<?php
 				$time = explode(",", $times[$key]);

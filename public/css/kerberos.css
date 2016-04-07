@@ -8920,6 +8920,7 @@ label {
 }
 #system-actions {
   margin-top: 30px;
+  display: table;
 }
 #system-actions a {
   padding: 12px 25px;

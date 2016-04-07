@@ -44,24 +44,24 @@ define(["jquery", "chartjs"], function($, Chart)
                 {
                     color: "rgba(148,54,51,1)",
                     highlight: "rgba(148,54,51,0.8)",
-                    label: "Today"
+                    label: data.legend.today
                 },
                 {
                     color: "rgba(120,120,120,1)",
                     highlight: "rgba(120,120,120,0.8)",
-                    label: "Yesterday"
+                    label: data.legend.yesterday
                 },
                 {
                     color: "rgba(220,220,220,1)",
                     highlight: "rgba(220,220,220,0.8)",
-                    label: "Ereyesterday"
+                    label: data.legend.dayBeforeYesterday
                 }
             ];
 
             var averageStyle = {
                 color: "rgba(76,156,56,1)",
                 highlight: "rgba(76,156,56,0.8)",
-                label: "Average"
+                label: data.legend.average
             };
 
             // ------------------------------------

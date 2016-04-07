@@ -77,13 +77,13 @@ define(["jquery", "progressbar"], function($, ProgressBar)
                     if(versions[i].version === self.currentVersion)
                     {
                         list.append($("<li id='" + versions[i].version + "' class='version active'>")
-                                .html(versions[i].version + ' published ' + readableTime + ' ago')
+                                .html(versions[i].version)
                                 .prepend($("<span class='active'>")));
                     }
                     else
                     {
                         list.append($("<li id='" + versions[i].version + "' class='version'>")
-                                .html(versions[i].version + ' published ' + readableTime + ' ago')
+                                .html(versions[i].version)
                                 .prepend($("<span>")));
                     }
                     

@@ -51,7 +51,7 @@ define(["jquery", "chartjs"], function($, Chart)
 
 			var statistics =
 			{
-			    labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+			    labels: [data.legend.sunday, data.legend.monday, data.legend.tuesday, data.legend.wednesday, data.legend.thursday, data.legend.friday, data.legend.saturday],
 			    datasets: []
 			};
 
@@ -77,13 +77,13 @@ define(["jquery", "chartjs"], function($, Chart)
 	            pointStrokeColor: "rgba(220,220,220,0)",
 	            pointHighlightFill: "rgba(220,220,220,0)",
 	        }];
-
+            
             // ------------------------------------
             // Add sum of images for the past days
-            if(data && !isEmpty(data))
+            
+            if(data.instances && !isEmpty(data.instances))
             {
-				var weekDays = data;
-
+				var weekDays = data.instances;
 				var styleNumber = 0;
 				for(var key in weekDays)
 				{

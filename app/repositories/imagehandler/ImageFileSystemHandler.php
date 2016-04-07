@@ -500,7 +500,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         $statistics = [
             "days" => [],
-            "statistics" => []
+            "statistics" => [],
+            "legend" => [
+                "today" => \Lang::get('general.today'),
+                "yesterday" => \Lang::get('general.yesterday'),
+                "dayBeforeYesterday" => \Lang::get('general.dayBeforeYesterday'),
+                "average" => \Lang::get('dashboard.average')
+            ]
         ];
 
         // --------------------
@@ -660,8 +666,21 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 }
             }
         }
+        
+        $legend = [
+            "monday" => \Lang::get('general.monday'),
+            "tuesday" => \Lang::get('general.tuesday'),
+            "wednesday" => \Lang::get('general.wednesday'),
+            "thursday" => \Lang::get('general.thursday'),
+            "friday" => \Lang::get('general.friday'),
+            "saturday" => \Lang::get('general.saturday'),
+            "sunday" => \Lang::get('general.sunday'),
+        ];
 
-        return $imagesPerWeekDay;
+        return [
+            'instances' => $imagesPerWeekDay,
+            'legend' => $legend
+        ];
     }
 
     public function getNumberOfImagesPerDayForLastDays($numberOfDays, $averageDays)
@@ -670,7 +689,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         $statistics = [
             "days" => [],
-            "statistics" => []
+            "statistics" => [],
+            "legend" => [
+                "today" => \Lang::get('general.today'),
+                "yesterday" => \Lang::get('general.yesterday'),
+                "dayBeforeYesterday" => \Lang::get('general.dayBeforeYesterday'),
+                "average" => \Lang::get('dashboard.average')
+            ]
         ];
 
         // --------------------

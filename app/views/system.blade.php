@@ -5,9 +5,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="system" class="col-lg-6">
-                    <h2><i class="fa fa-desktop"></i> System</h2>
+                    <h2><i class="fa fa-desktop"></i> {{Lang::get('system.system')}}</h2>
                     @if($system->diskAlmostFull())
-                        <div style="display: table" class="alert alert-danger" role="alert">Hey, your disk is almost full. Please remove some images..</div>
+                        <div style="display: table" class="alert alert-danger" role="alert">{{Lang::get('system.diskAlmostFull')}}</div>
                     @endif
                     <div>
                         System is online for {{$system->getUptime()['text']}}
@@ -16,19 +16,19 @@
                         <h3>OS specifications</h3>
                         <table class="table">
                             @if($system->getBoard() != '')
-                            <tr><td>Board</td><td>{{$system->getBoard()}}</td></tr>
+                            <tr><td>{{Lang::get('system.board')}}</td><td>{{$system->getBoard()}}</td></tr>
                             @endif
                             @if($system->getModel() != '')
-                            <tr><td>Model</td><td>{{$system->getModel()}}</td></tr>
+                            <tr><td>{{Lang::get('system.model')}}</td><td>{{$system->getModel()}}</td></tr>
                             @endif
-                            <tr><td>OS</td><td>{{$system->getOS()}}</td></tr>
-                            <tr><td>Kernel</td><td>{{$system->getKernel()}}</td></tr>
-                            <tr><td>Hostname</td><td>{{$system->getHostName()}}</td></tr>
+                            <tr><td>{{Lang::get('system.os')}}</td><td>{{$system->getOS()}}</td></tr>
+                            <tr><td>{{Lang::get('system.kernel')}}</td><td>{{$system->getKernel()}}</td></tr>
+                            <tr><td>{{Lang::get('system.hostname')}}</td><td>{{$system->getHostName()}}</td></tr>
                         </table> 
                     </div>
                     <div>
-                        <h3>Architecture</h3>
-                        This machine has {{count($system->getCPUs())}} {{$system->getCPUArchitecture()}} CPU's running with an average load of <b>{{$system->getAverageLoad()}}</b>.<br/>
+                        <h3>{{Lang::get('system.architecture')}}</h3>
+                        {{Lang::get('system.thisMachine')}} {{count($system->getCPUs())}} {{$system->getCPUArchitecture()}} {{Lang::get('system.cpuRunning')}} <b>{{$system->getAverageLoad()}}</b>.<br/>
                         <ul class="cpus">
                         @foreach($system->getCPUs() as $cpu)
                            <li class="cpu">{{$cpu['Model']}}</li>
@@ -36,8 +36,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h3>Disk specifications</h3>
-                        There are {{count($system->getMounts())}} hard disks available on this machine.
+                        <h3>{{Lang::get('system.diskSpecs')}}</h3>
+                        {{Lang::get('system.thereAre')}} {{count($system->getMounts())}} {{Lang::get('system.harddisksAvailable')}}.
                         
                         <div class="disks">
                         @foreach($system->getMounts() as $key => $mount)
@@ -55,12 +55,12 @@
                          </div>    
                     </div>
                     <div>
-                        <h3>Network specifications</h3>
+                        <h3>{{Lang::get('system.networkSpecs')}}</h3>
                         <table class="table table-striped">
                             <tr>
-                            <th>Device</th>
-                            <th>Received</th>
-                            <th>Sent</th>
+                            <th>{{Lang::get('system.device')}}</th>
+                            <th>{{Lang::get('system.recieved')}}</th>
+                            <th>{{Lang::get('system.sent')}}</th>
                             </tr>
                             @foreach($system->getNet() as $key => $interface)
                             <tr>
@@ -75,34 +75,35 @@
                 <div id="kerberos" class="col-lg-6">
                     <h2><i class="fa fa-user-secret"></i> Kerberos.io</h2>
                     <div>
-                        Kerberos.io has two services running: the web and the machinery.
-                        <h3>Versions</h3>
+                        Kerberos.io {{Lang::get('system.twoServicesRunning')}}.
+                        <h3>{{Lang::get('system.versions')}}</h3>
                         <table class="table">
                             <tr><td>Web</td><td>{{$system->getWebVersion()}}</td></tr>
                             <tr><td>Machinery</td><td>{{$system->getMachineryVersion()}}</td></tr>
                         </table> 
                         <h3>Statistics</h3>
                         <table class="table">
-                            <tr><td># of images</td><td>{{$numberOfImages}}</td></tr>
-                            <tr><td># of days</td><td>{{count($allDays)}}</td></tr>
-                            <tr><td>Days</td>
+                            <tr><td>{{Lang::get('system.numberOfImages')}}</td><td>{{$numberOfImages}}</td></tr>
+                            <tr><td>{{Lang::get('system.numberOfDays')}}</td><td>{{count($allDays)}}</td></tr>
+                            <tr>
+                                <td>{{Lang::get('system.days')}}</td>
                                 <td>
                                 @foreach($allDays as $day)
-                           {{$day}}, 
-                            @endforeach
-                                </td></tr>
+                                    {{$day}} 
+                                @endforeach
+                                </td>
+                            </tr>
                         </table> 
                         <div id="system-actions">
-                            <a id="download" href="{{URL::to('/')}}/api/v1/system/download">Download system files</a>
-                            <a id="download" href="{{URL::to('/')}}/api/v1/images/download">Download images</a>
-                            <a id="clean">Remove images</a>
+                            <a id="download" href="{{URL::to('/')}}/api/v1/system/download">{{Lang::get('system.downloadSystemFiles')}}</a>
+                            <a id="download" href="{{URL::to('/')}}/api/v1/images/download">{{Lang::get('system.downloadImages')}}</a>
+                            <a id="clean">{{Lang::get('system.removeImages')}}</a>
                         </div>
                     </div>
                 </div>
-                @if($system->isKios())
+                @if(!$system->isKios())
                 <div id="kios" class="col-lg-6">
-                    <h2><i class="fa fa-linux"></i> Kios</h2>
-                    <!--<div style="display: table" class="alert alert-warning" role="alert">Nice, a new version of KIOS is available!</div>-->
+                    <h2><i class="fa fa-linux"></i> KiOS</h2>
                     <div id="kios-versions">
                         <div class="load5 loadimage" style=""><div class="loader"></div></div>
                     </div>
@@ -148,46 +149,46 @@
                             var published_at = new Date(version.published_at);
                             
                             $("#upgrade-modal .modal-body").html("" +
-                            "<h1>Release " + version.version + "</h1>" +                       
-                            "<span>Published at " + published_at + "</span>" +                       
+                            "<h1>{{Lang::get('system.release')}} " + version.version + "</h1>" +                       
+                            "<span>{{Lang::get('system.publishedAt')}} " + published_at + "</span>" +                       
                             "<p>" + version.body + "</p>" +
-                            '<a id="install">install</a>');
+                            "<a id='install'>{{Lang::get('system.install')}}</a>");
                             
                             modal.open();
                             
                             $("#install").click(function()
                             {   
                                 $("#upgrade-modal").html(
-                                '<h1>Downloading..</h1>' +
-                                '<div id="percentage-downloaded"></div>');
+                                "<h1>{{Lang::get('system.downloading')}}..</h1>" +
+                                "<div id='percentage-downloaded'></div>");
                                 
                                 System.downloadVersion(version, function()
                                 {
                                     // Hit when file has been downloaded
                                     $("#upgrade-modal").html(
-                                        '<h1>Unzipping..</h1>' +
-                                        '<div class="load5 loadimage" style=""><div class="loader"></div>');
+                                        "<h1>{{Lang::get('system.unzipping')}}..</h1>" +
+                                        "<div class='load5 loadimage'><div class='loader'></div");
                                     
                                     System.unzip(function()
                                     {
                                         // Hit when file has been unzipped
                                         $("#upgrade-modal").html(
-                                            '<h1>Unpacking..</h1>' +
-                                            '<div class="load5 loadimage" style=""><div class="loader"></div>');
+                                            "<h1>{{Lang::get('system.unpacking')}}..</h1>" +
+                                            "<div class='load5 loadimage'><div class='loader'></div>");
 
                                         System.unpack(function()
                                         {
                                         
                                             // Hit when file has been unpacked
                                             $("#upgrade-modal").html(
-                                            '<h1>Transferring..</h1>' +
-                                            '<div class="load5 loadimage" style=""><div class="loader"></div>');
+                                            "<h1>{{Lang::get('system.transferring')}}..</h1>" +
+                                            "<div class='load5 loadimage'><div class='loader'></div>");
 
                                             System.transfer(function()
                                             {
                                                 $("#upgrade-modal").html(
-                                                    '<h1>System is rebooting..</h1>' +
-                                                    '<div id="count-down"></div>');
+                                                    "<h1>{{Lang::get('system.rebooting')}}..</h1>" +
+                                                    "<div id='count-down'></div>");
 
                                                 var waitingTime = 180000;
 

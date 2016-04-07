@@ -1,4 +1,4 @@
-    @extends('template')
+@extends('template')
     
 @section('content')
     <div id="page-wrapper">
@@ -6,22 +6,22 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>
-                        <i class="fa fa-signal"></i> Activity
+                        <i class="fa fa-signal"></i> {{Lang::get('dashboard.activity')}}
                      </h2>
                         <ul class="nav-select-view nav navbar-right top-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i href="#"class="fa fa-fw fa-bars"></i> select view <b class="caret"></b>
+                                    <i href="#"class="fa fa-fw fa-bars"></i> {{Lang::get('dashboard.selectView')}} <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="active">
-                                        <a class="stream"><i href="#"class="fa fa-fw fa-cloud"></i> Live view</a>
+                                        <a class="stream"><i href="#"class="fa fa-fw fa-cloud"></i> {{Lang::get('dashboard.liveView')}}</a>
                                     </li>
                                     <li>
-                                        <a class="activity"><i href="#"class="fa fa-fw fa-refresh"></i> Last activity</a>
+                                        <a class="activity"><i href="#"class="fa fa-fw fa-refresh"></i> {{Lang::get('dashboard.lastActivity')}}</a>
                                     </li>
                                     <li>
-                                        <a class="heat"><i href="#"class="fa fa-fw fa-fire"></i> Heatmap</a>
+                                        <a class="heat"><i href="#"class="fa fa-fw fa-fire"></i> {{Lang::get('dashboard.heatmap')}}</a>
                                     </li>
                                 </ul>
                             </li>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 hide-on-mobile">
-                    <h2><i class="fa fa-pie-chart"></i> Overview</h2>
+                    <h2><i class="fa fa-pie-chart"></i> {{Lang::get('dashboard.overview')}}</h2>
                     <!--<div id="morris-donut"></div>-->
                     <div id="time-donut-wrapper">
                         <canvas id="time-donut"></canvas>
@@ -51,13 +51,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 hide-on-mobile">
-                    <h2><i class="fa fa-clock-o"></i> Hour</h2>
+                    <h2><i class="fa fa-clock-o"></i> {{Lang::get('dashboard.hour')}}</h2>
                     <div id="time-graph">
                         <canvas id="time-chart"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 hide-on-mobile">
-                    <h2><i class="fa fa-calendar"></i> Weekday</h2>
+                    <h2><i class="fa fa-calendar"></i> {{Lang::get('dashboard.weekday')}}</h2>
                     <div id="radar-graph">
                         <canvas id="radar-chart"></canvas>
                     </div>
