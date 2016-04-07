@@ -118,6 +118,18 @@
                                 url: _baseUrl + "/api/v1/images/latest_sequence",
                                 callback: function()
                                 {
+                                    Heatmap.initialize(
+                                    {
+                                        element: "heatmap",
+                                        url: _baseUrl + "/api/v1/images/regions",
+                                        callback: function(){}
+                                    });
+                                                            
+                                    $("ul.dropdown-menu li a.heat").click(function(event)
+                                    {
+                                        Heatmap.redraw();
+                                    });
+                                    
                                     if ($(window).width() >= 768)
                                     {
                                         Pie.initialize(
@@ -133,20 +145,7 @@
                                                         Radar.initialize(
                                                         {
                                                             url: _baseUrl + "/api/v1/images/perweekday/1",
-                                                            callback: function ()
-                                                            {
-                                                                Heatmap.initialize(
-                                                                {
-                                                                    element: "heatmap",
-                                                                    url: _baseUrl + "/api/v1/images/regions",
-                                                                    callback: function(){}
-                                                                });
-                                                            
-                                                                $("ul.dropdown-menu li a.heat").click(function(event)
-                                                                {
-                                                                    Heatmap.redraw();
-                                                                });
-                                                            }
+                                                            callback: function (){}
                                                         });
                                                     }
                                                 });
@@ -154,6 +153,11 @@
                                         });
                                     }
                                 }
+                            });
+                            
+                            $("ul.dropdown-menu li a.activity").click(function(event)
+                            {
+                                Sequencer.redraw();
                             });
                         });
                     });

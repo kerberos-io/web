@@ -6,5 +6,7 @@ use Repositories\ConfigReaderInterface as ConfigReaderInterface;
 
 class BaseController extends Controller
 {
+    use \Traits\GetVersions;
+    
 	public function __construct(){}
 }

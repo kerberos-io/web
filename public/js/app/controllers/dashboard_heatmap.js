@@ -13,29 +13,20 @@ define(["heatmap"], function(heatmap)
             self = this;
             self.config = config;
             
-            $.get(self.config.url,function(data)
-            {
-                self.data = data;
-                
-                // create heatmap
-                self.heatmapInstance = heatmap.create({
-                    container: document.querySelector('.heatmap'),
-                    opacity: 0.5
-                });
-         
-                self.draw();
-                
-                $(window).resize(function()
-                {
-                    self.resize();
-                    self.draw();
-                });
-            })
-            .always(function()
-            {
-                // Wait 300 ms before executing 
-                setTimeout(self.config.callback, 300);
+            // create heatmap
+            self.heatmapInstance = heatmap.create({
+                container: document.querySelector('.heatmap'),
+                opacity: 0.5
             });
+            
+            $(window).resize(function()
+            {
+                self.resize();
+                self.draw();
+            });
+            
+            // Wait 300 ms before executing 
+            setTimeout(self.config.callback, 300);
         },
         redraw: function()
         {
@@ -43,6 +34,7 @@ define(["heatmap"], function(heatmap)
             
             $.get(self.config.url,function(data)
             {
+                self.data = data;
                 self.resize();
                 self.draw();
             });

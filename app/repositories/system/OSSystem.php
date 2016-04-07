@@ -4,9 +4,10 @@ use Config, Input, Guzzle\Http\Client as Client;
 
 class OSSystem implements SystemInterface
 {
+    use \Traits\GetVersions;
+        
     private $upgradeDir = '/data/.firmware_update';
     private $bootDir = '/boot';
-    private $repo = "https://api.github.com/repos/cedricve/version-test/releases";//"https://api.github.com/repos/kerberos-io/kios/releases";
     
     public function __construct()
     {
@@ -381,36 +382,6 @@ class OSSystem implements SystemInterface
         }
     }
     
-    public function getVersionsFromGithub()
-    {
-        $url = $this->repo;
-        
-        $client = new Client();
-        $request = $client->get($url);
-        $response = $client->send($request);
-        $body = json_decode($response->getBody());
-        
-        $versions = [];
-        for($i = 0; $i < count($body); $i++)
-        {
-            array_push($versions, [
-                'version' => $body[$i]->tag_name,
-                'name' => $body[$i]->name,
-                'body' => $body[$i]->body,
-                'prerelease' => $body[$i]->prerelease,
-                'assets' => $body[$i]->assets,
-                'published_at' => $body[$i]->published_at 
-            ]);
-        }
-        
-        $versions = array_values(array_sort($versions, function($value)
-        {
-                return $value['version'];
-        }));
-        
-        return $versions;
-    }
-    
     public function getBoard()
     {
         $cmd = 'cat /etc/board';
@@ -421,20 +392,6 @@ class OSSystem implements SystemInterface
     public function isKios()
     {
         return ($this->getBoard()!='');
-    }
-    
-    public function getCurrentVersion()
-    {
-        $cmd = 'cat /etc/version';
-        $version = shell_exec($cmd);
-        preg_match('/os_version="(.*?)"/', $version, $matches);
-        
-        if(count($matches) > 0)
-        {
-            return 'v' . $matches[1]; 
-        }
-        
-        return null;   
     }
     
     public function download()

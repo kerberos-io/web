@@ -142,6 +142,9 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+        @if($isUpdateAvailable)
+        <div class="alert-update alert alert-warning" role="alert">Good news, <a href="{{URL::to('/').'/system'}}">a new release of KiOS</a> is available!</div>
+        @endif
         @yield('content')
     </div>
     <!-- /#wrapper -->

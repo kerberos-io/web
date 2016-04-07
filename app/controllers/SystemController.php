@@ -47,7 +47,8 @@ class SystemController extends BaseController
             'allDays' => $allDays,
             'numberOfImages' => $numberOfImages,
             'settings' => $settings,
-            'system' => $this->system
+            'system' => $this->system,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
     

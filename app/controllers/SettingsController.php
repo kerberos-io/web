@@ -29,7 +29,8 @@ class SettingsController extends BaseController
         return View::make('settings',
         [
             'days' => $days, 
-            'settings' => $settings
+            'settings' => $settings,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 
@@ -46,7 +47,8 @@ class SettingsController extends BaseController
         return View::make('cloud',
         [
             'days' => $days, 
-            'settings' => $settings
+            'settings' => $settings,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 

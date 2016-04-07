@@ -72,17 +72,20 @@ define(["jquery", "progressbar"], function($, ProgressBar)
                 versions.reverse();
                 for(var i = 0; i < versions.length; i++)
                 {
-                    var span = $("<span>");
-                    if(versions[i].version === self.currentVersion)
-                    {
-                        span.addClass('active');
-                    }
-                    
                     var readableTime = self.timeSince(new Date(versions[i].published_at));
                     
-                    list.append($("<li id='" + versions[i].version + "' class='version'>")
-                                .html("<u>" + versions[i].version + '</u> published ' + readableTime + ' ago')
-                                .prepend(span));
+                    if(versions[i].version === self.currentVersion)
+                    {
+                        list.append($("<li id='" + versions[i].version + "' class='version active'>")
+                                .html(versions[i].version + ' published ' + readableTime + ' ago')
+                                .prepend($("<span class='active'>")));
+                    }
+                    else
+                    {
+                        list.append($("<li id='" + versions[i].version + "' class='version'>")
+                                .html(versions[i].version + ' published ' + readableTime + ' ago')
+                                .prepend($("<span>")));
+                    }
                     
                     self.versions[versions[i].version] = versions[i];
                 }

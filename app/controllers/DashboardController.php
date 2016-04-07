@@ -1,6 +1,6 @@
 <?php namespace Controllers;
 
-use View;
+use App, View;
 use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -25,7 +25,8 @@ class DashboardController extends BaseController
         $days = $this->imageHandler->getDays(5);
         
 		return View::make('dashboard', [
-            'days' => $days
+            'days' => $days,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
 	}
 }
