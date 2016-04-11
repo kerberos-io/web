@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                @if(!$system->isKios())
+                @if($system->isKios())
                 <div id="kios" class="col-lg-6">
                     <h2><i class="fa fa-linux"></i> KiOS</h2>
                     <div id="kios-versions">
