@@ -40,7 +40,7 @@ class ZendeskSupport implements SupportInterface
             {
                 array_push($articles, [
                     'title' => $body[$i]->title,
-                    'date' => Carbon::parse($body[$i]->created_at),
+                    'date' => Carbon::parse($body[$i]->created_at)->formatLocalized('%d %B %Y'),
                     'body' => $body[$i]->body,
                     'url' => $body[$i]->html_url
                 ]);
