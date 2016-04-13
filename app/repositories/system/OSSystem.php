@@ -1,6 +1,6 @@
 <?php namespace Repositories\System;
 
-use Config, Input, Guzzle\Http\Client as Client;
+use Config, Input;
 
 class OSSystem implements SystemInterface
 {

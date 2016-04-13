@@ -8944,6 +8944,17 @@ label {
 #kerberos {
   padding-right: 50px;
 }
+#news ul#articles {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#news ul#articles li {
+  padding: 5px 0;
+}
+#news ul#articles li a {
+  color: #943633;
+}
 #kios #kios-versions ul {
   list-style: none;
   margin: 0;
@@ -9040,7 +9051,8 @@ label {
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #system,
   #kerberos,
-  #kios {
+  #kios,
+  #news {
     padding: 0 15px 20px 15px;
     display: table;
     width: 100%;

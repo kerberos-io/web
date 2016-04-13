@@ -3,18 +3,21 @@
 use View, Redirect, Input, Config, Response, Session, Auth;
 use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
+use Repositories\Support\SupportInterface as SupportInterface;
 use Repositories\System\OSXSystem as OSXSystem;
 use Repositories\System\LinuxSystem as LinuxSystem;
 
 class SystemController extends BaseController
 {
     public function __construct(ImageHandlerInterface $imageHandler, 
-        ConfigReaderInterface $reader)
+        ConfigReaderInterface $reader,
+        SupportInterface $support)
     {
-        parent::__construct($imageHandler, $reader);
+        parent::__construct($imageHandler, $reader, $support);
         
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
+        $this->support = $support;
         $this->config = Config::get("app.config");
         $this->user = Auth::user();
         
@@ -40,6 +43,7 @@ class SystemController extends BaseController
         $days = $this->imageHandler->getDays(5);
         $allDays = $this->imageHandler->getDays(-1);
         $numberOfImages = $this->imageHandler->getNumberOfImages();
+        $articles = $this->support->getArticles();
         
         return View::make('system',
         [
@@ -48,6 +52,7 @@ class SystemController extends BaseController
             'numberOfImages' => $numberOfImages,
             'settings' => $settings,
             'system' => $this->system,
+            'articles' => $articles,
             'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }

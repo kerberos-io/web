@@ -1,14 +1,14 @@
 @extends('template')
 
 @section('content')
+    @if($system->diskAlmostFull())
+    <div class="alert-update alert alert-danger" role="alert">{{Lang::get('system.diskAlmostFull')}}</div>
+    @endif
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div id="system" class="col-lg-6">
                     <h2><i class="fa fa-desktop"></i> {{Lang::get('system.system')}}</h2>
-                    @if($system->diskAlmostFull())
-                        <div style="display: table" class="alert alert-danger" role="alert">{{Lang::get('system.diskAlmostFull')}}</div>
-                    @endif
                     <div>
                         System is online for {{$system->getUptime()['text']}}
                     </div>
@@ -112,6 +112,14 @@
                     </div>
                 </div>
                 @endif
+                <div id="news" class="col-lg-6">
+                    <h2><i class="fa fa-newspaper-o"></i> News</h2>
+                    <ul id="articles">
+                    @foreach($articles as $article)
+                        <li>{{$article['date']}} - <a href="{{$article['url']}}" target="_blank">{{$article['title']}}</a></li>
+                    @endforeach
+                    </ul>
+                </div>
             </div>
             <!-- /.row -->
         </div>
