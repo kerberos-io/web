@@ -8,4 +8,4 @@ https://hub.docker.com/r/kerberos/web/
 
 Execute following command to build the docker image.
 
-    docker build kerberos/web .
+    docker build -t kerberos/web .
