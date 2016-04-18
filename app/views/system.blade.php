@@ -101,6 +101,14 @@
                         </div>
                     </div>
                 </div>
+                <div id="news" class="col-lg-6">
+                    <h2><i class="fa fa-newspaper-o"></i> News</h2>
+                    <ul id="articles">
+                    @foreach($articles as $article)
+                        <li>{{$article['date']}} - <a href="{{$article['url']}}" target="_blank">{{$article['title']}}</a></li>
+                    @endforeach
+                    </ul>
+                </div>
                 @if($system->isKios())
                 <div id="kios" class="col-lg-6">
                     <h2><i class="fa fa-linux"></i> KiOS</h2>
@@ -112,14 +120,6 @@
                     </div>
                 </div>
                 @endif
-                <div id="news" class="col-lg-6">
-                    <h2><i class="fa fa-newspaper-o"></i> News</h2>
-                    <ul id="articles">
-                    @foreach($articles as $article)
-                        <li>{{$article['date']}} - <a href="{{$article['url']}}" target="_blank">{{$article['title']}}</a></li>
-                    @endforeach
-                    </ul>
-                </div>
             </div>
             <!-- /.row -->
         </div>
