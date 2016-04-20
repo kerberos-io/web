@@ -25,6 +25,11 @@
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
+*:focus
+{
+    outline: none;
+}
+
 body
 {
     background-color: #f5f5f5;
@@ -336,4 +341,65 @@ div.line
 .signout
 {
     display: none;
+}
+
+.system
+{
+    display: none;
+}
+
+label.toggle-mobile
+{
+    display: none;
+}
+
+.machinery-switch
+{
+    width: 60px;
+    padding-top: 10px;
+        
+    .well
+    {
+        margin: 0;
+        background-color :#fff;
+        color: #fff;
+        opacity: 0;
+        margin-left: 10px;
+        
+        input
+        {
+            outline: none;
+        }
+        
+        a
+        {
+            background-color: #943633;
+            border-color: #943633
+        }
+    }
+}
+
+/**********************
+*     Alert boxes
+*/
+
+.alert-update
+{
+    display: table;
+    width: 100%;
+    border-radius: 0;
+    text-align:center;
+    margin: 0;
+    
+    a
+    {
+        text-decoration: none;
+        color: #943633;
+        
+        &:hover, &:focus
+        {
+            text-decoration: none;
+            color: #943633;
+        }
+    }
 }

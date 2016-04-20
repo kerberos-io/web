@@ -29,7 +29,7 @@ define(["jquery", "chartjs"], function($, Chart)
 
             var dayStyle = [
                 {
-                    label: "Today", // Red
+                    label: data.legend.today, // Red
                     fillColor: "rgba(148,54,51,0)",
                     strokeColor: "#943633",
                     pointColor: "#943633",
@@ -38,7 +38,7 @@ define(["jquery", "chartjs"], function($, Chart)
                     pointHighlightStroke: "#943633",
                 },
                 {
-                    label: "Yesterday", // Dark gray
+                    label: data.legend.yesterday, // Dark gray
                     fillColor: "rgba(120,120,120,0)",
                     strokeColor: "rgba(120,120,120,1)",
                     pointColor: "rgba(120,120,120,1)",
@@ -47,7 +47,7 @@ define(["jquery", "chartjs"], function($, Chart)
                     pointHighlightStroke: "rgba(120,120,120,1)",
                 },
                 {
-                    label: "Ereyesterday", // Light gray
+                    label: data.legend.dayBeforeYesterday, // Light gray
                     fillColor: "rgba(220,220,220,0)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
@@ -58,7 +58,7 @@ define(["jquery", "chartjs"], function($, Chart)
             ];
 
             var averageStyle = {
-                label: "Average", // Green
+                label: data.legend.average, // Green
                 fillColor: "rgba(76,156,56,0)",
                 strokeColor: "#4C9C38",
                 pointColor: "#4C9C38",
@@ -126,16 +126,12 @@ define(["jquery", "chartjs"], function($, Chart)
 
             if(statistics['datasets'] && statistics['datasets'].length > 0)
             {
+                if($("#time-graph .load5").length > 0)
+                {
+                    $("#time-graph .load5").remove();
+                }
+            
                 var timeChart = new Chart(ctx).Line(statistics, options);
-            }
-            else
-            {
-                var x = canvas.width / 2;
-                var y = canvas.height / 2;
-                ctx.font = '20px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillStyle = 'black';
-                ctx.fillText('No data available', x, y);
             }
         }
     };

@@ -30,6 +30,12 @@ require.config({
             ],
             exports: 'timepicker'
         },
+        remodal: {
+            deps: [
+                'jquery'
+            ],
+            exports: 'remodal'
+        },
         morrisjs: {
             deps: [
                 'jquery',
@@ -58,7 +64,11 @@ require.config({
         jellyfish: 'app/models/Jellyfish',
         Sequencer: 'app/models/Sequencer',
         timepicker: 'app/models/Timepicker',
-        chartjs: 'vendor/chartjs/Chart'
+        chartjs: 'vendor/chartjs/Chart',
+        streamer: 'app/models/Streamer',
+        heatmap: 'vendor/heatmap.js-amd/build/heatmap',
+        progressbar: 'vendor/progressbar.js/dist/progressbar.min',
+        remodal: 'vendor/remodal/dist/jquery.remodal.min'
     },
     packages: [
 

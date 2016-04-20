@@ -27,13 +27,18 @@
     "moment": "*",
     "eonasdan-bootstrap-datetimepicker": "3.1.3",
     "backbone": "*",
-    "moment": "*",
     "morrisjs": "*",
     "raphael": "*",
     "requirejs": "*",
     "seiyria-bootstrap-slider": "5.3.3",
-    "fancybox": "*",
     "csshake": "*",
-    "chartjs": "*"
+    "chartjs": "1.0.2",
+    "mjpegcanvas": "~0.4.0",
+    "heatmap.js-amd": "*",
+    "mustache": "~0.7.0",
+    "fontawesome": "~4.5.0",
+    "css-toggle-switch": "~4.0.2",
+    "remodal": "0.6.4",
+    "progressbar.js": "~1.0.0"
   }
 }

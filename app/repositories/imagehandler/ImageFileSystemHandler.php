@@ -168,21 +168,58 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             return $days;
         }
     }
+    
+    public function getRegions($numberOfRegions)
+    {
+        // -------------------------------------
+        // Cache images directory for x seconds
+
+        $key = $this->user->username . "_regions";
+        
+        $regions = $this->cache->storeAndGet($key, function() use ($numberOfRegions)
+        {
+            $heap = $this->getImagesFromFilesystem();
+
+            $regions = [];
+            
+            $i = 0;
+            while($i++ < $numberOfRegions && $heap->valid())
+            {
+                $image = new Image;
+                $image->setTimezone($this->date->timezone);
+                $image->parse($heap->current());
+                
+                array_push($regions, [
+                    "regionCoordinates" => $image->getRegion(),
+                    "numberOfChanges" => $image->getChanges()
+                ]);
+                $heap->next();
+            }
+            
+            return $regions;
+        });
+        
+        return $regions;
+    }
 
     public function getImages()
     {
-        $imagesTemp = $this->getImagesFromFilesystem();
+        $heap = $this->getImagesFromFilesystem();
 
         $images = [];
-        foreach(array_keys($imagesTemp) as $day)
+        while($heap->valid())
         {
-            foreach($imagesTemp[$day]['images'] as $image)
-            {
-                array_push($images, $image);
-            }
+            array_push($images, $heap->current());
+            $heap->next();
         }
         
         return $images;
+    }
+    
+    public function getNumberOfImages()
+    {
+        $heap = $this->getImagesFromFilesystem();
+        return $heap->count();
     }
 
     /************************************************
@@ -463,7 +500,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         $statistics = [
             "days" => [],
-            "statistics" => []
+            "statistics" => [],
+            "legend" => [
+                "today" => \Lang::get('general.today'),
+                "yesterday" => \Lang::get('general.yesterday'),
+                "dayBeforeYesterday" => \Lang::get('general.dayBeforeYesterday'),
+                "average" => \Lang::get('dashboard.average')
+            ]
         ];
 
         // --------------------
@@ -531,7 +574,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     break;
                 }
 
-                $hour = intval(($timestamp - $startTimestamp) / 3600);
+                $hour = intval(($timestamp - $startTimestamp) / 3600) % 24;
                 $hours['total'][$hour]++;
                 
                 $instanceName = $pieces[$indexInstanceName];
@@ -623,8 +666,21 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 }
             }
         }
+        
+        $legend = [
+            "monday" => \Lang::get('general.monday'),
+            "tuesday" => \Lang::get('general.tuesday'),
+            "wednesday" => \Lang::get('general.wednesday'),
+            "thursday" => \Lang::get('general.thursday'),
+            "friday" => \Lang::get('general.friday'),
+            "saturday" => \Lang::get('general.saturday'),
+            "sunday" => \Lang::get('general.sunday'),
+        ];
 
-        return $imagesPerWeekDay;
+        return [
+            'instances' => $imagesPerWeekDay,
+            'legend' => $legend
+        ];
     }
 
     public function getNumberOfImagesPerDayForLastDays($numberOfDays, $averageDays)
@@ -633,7 +689,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         $statistics = [
             "days" => [],
-            "statistics" => []
+            "statistics" => [],
+            "legend" => [
+                "today" => \Lang::get('general.today'),
+                "yesterday" => \Lang::get('general.yesterday'),
+                "dayBeforeYesterday" => \Lang::get('general.dayBeforeYesterday'),
+                "average" => \Lang::get('dashboard.average')
+            ]
         ];
 
         // --------------------

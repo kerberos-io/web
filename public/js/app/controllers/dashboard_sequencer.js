@@ -12,20 +12,22 @@ define(["Sequencer"], function(Sequencer)
         config: {},
         initialize: function(config)
         {
-            this_ = this;
-            this_.config = config;
-    
-            $.get(config.url, function(images)
+            self = this;
+            self.config = config;
+
+            // Wait 300 ms before executing 
+            setTimeout(self.config.callback, 300);
+        },
+        redraw: function()
+        {
+            self = this;
+            
+            $.get(self.config.url, function(images)
             {
-                this_.config.images = images;
-                this_.attachTo(document.getElementById("latest-activity-sequence"));
-                this_.play();
+                self.config.images = images;
+                self.attachTo(document.getElementById("latest-activity-sequence"));
+                self.play();
             })
-            .always(function()
-            {
-                // Wait 300 ms before executing 
-                setTimeout(this_.config.callback, 300);
-            });
         },
         attachTo: function(element)
         {
@@ -38,20 +40,13 @@ define(["Sequencer"], function(Sequencer)
         {
             if(this.config.images && this.config.images.length > 0)
             {
+                if($(".activity .load5").length > 0)
+                {
+                    $(".activity .load5").remove();
+                }
+                
                 $(this.config.element).css({"width":"100%"});
                 Sequencer.init(this.config);
-            }
-            else
-            {
-                var canvas = this.config.element;
-                var ctx = canvas.getContext("2d");
-
-                var x = canvas.width / 2;
-                var y = canvas.height / 2;
-                ctx.font = '20px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillStyle = 'black';
-                ctx.fillText('No data available', x, y);
             }
         }
     };

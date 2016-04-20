@@ -41,6 +41,7 @@ $env = $app->detectEnvironment(array(
 |
 */
 
+
 $app->bindInstallPaths(require __DIR__.'/paths.php');
 
 /*

@@ -44,24 +44,24 @@ define(["jquery", "chartjs"], function($, Chart)
                 {
                     color: "rgba(148,54,51,1)",
                     highlight: "rgba(148,54,51,0.8)",
-                    label: "Today"
+                    label: data.legend.today
                 },
                 {
                     color: "rgba(120,120,120,1)",
                     highlight: "rgba(120,120,120,0.8)",
-                    label: "Yesterday"
+                    label: data.legend.yesterday
                 },
                 {
                     color: "rgba(220,220,220,1)",
                     highlight: "rgba(220,220,220,0.8)",
-                    label: "Ereyesterday"
+                    label: data.legend.dayBeforeYesterday
                 }
             ];
 
             var averageStyle = {
                 color: "rgba(76,156,56,1)",
                 highlight: "rgba(76,156,56,0.8)",
-                label: "Average"
+                label: data.legend.average
             };
 
             // ------------------------------------
@@ -93,21 +93,17 @@ define(["jquery", "chartjs"], function($, Chart)
 
             if(statistics && statistics.length > 0)
             {
+                if($("#time-donut-wrapper .load5").length > 0)
+                {
+                    $("#time-donut-wrapper  .load5").remove();
+                }
+                
                 var timePie = new Chart(ctx).Pie(statistics, options);
 
                 // ----------------
                 // Generate legend
 
                 $("#time-donut-legend").html(timePie.generateLegend());
-            }
-            else
-            {
-                var x = canvas.width / 2;
-                var y = canvas.height / 2;
-                ctx.font = '20px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillStyle = 'black';
-                ctx.fillText('No data available', x, y);
             }
         }
     };

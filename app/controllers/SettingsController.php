@@ -29,7 +29,8 @@ class SettingsController extends BaseController
         return View::make('settings',
         [
             'days' => $days, 
-            'settings' => $settings
+            'settings' => $settings,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 
@@ -39,14 +40,15 @@ class SettingsController extends BaseController
     public function cloud()
     {
         $directory = $this->config;
-        $settings = $this->reader->parse($directory)["amazonS3"]["children"];
-
+            
+        $settings = $this->reader->parse($directory)["instance"]["children"]['cloud']['dropdown']['S3']['children'];
         $days = $this->imageHandler->getDays(5);
 
         return View::make('cloud',
         [
             'days' => $days, 
-            'settings' => $settings
+            'settings' => $settings,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 
@@ -175,6 +177,8 @@ class SettingsController extends BaseController
 
     public function updateConditionEnabled()
     {
+        $settings = [];
+        
         if(Input::get('active') != '')
         {
             $settings["condition__Enabled__active"] = Input::get('active');

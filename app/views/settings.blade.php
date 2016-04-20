@@ -5,11 +5,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="settings" class="col-lg-12">
-                    <h2><i class="fa fa-list"></i> Settings</h2>
+                    <h2><i class="fa fa-list"></i> {{Lang::get('settings.settings')}}</h2>
                     {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
                         @include('settings_controls', array('settings' => $settings))
                         <div class="submit-form">
-                            {{ Form::submit('update') }}
+                            {{ Form::submit(Lang::get('settings.update')) }}
                         </div>
                     {{ Form::close() }}
                 </div>

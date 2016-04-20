@@ -21,6 +21,11 @@ interface ImageHandlerInterface
      *  Calculate the last x days
      */
 	public function getDays($numberOfDays);
+    
+    /********************************
+     *  Get all regions
+     */
+	public function getRegions($numberOfRegions);
 
 	/*******************************
      * Get all images

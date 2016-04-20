@@ -12,13 +12,15 @@
     <title>kerberos.io - Video Surveillance</title>
 
     <!-- Mustachejs -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+    <script src="{{URL::to('/')}}/js/vendor/mustache/mustache.js"></script>
     <!-- Custom Fonts -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{URL::to('/')}}/js/vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- RequireJS -->
     <script src="{{URL::to('/')}}/js/vendor/requirejs/require.js"></script>
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
+    <!-- Toggle -->
+    <link href="{{URL::to('/')}}/js/vendor/css-toggle-switch/dist/toggle-switch.css" rel="stylesheet">
     
     <!-- Globals variables, that are used in the application -->
     <script type="text/javascript">
@@ -33,14 +35,25 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
+                <a class="signout" href="{{URL::to('/')}}/logout">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+                <label style="width:60px; padding-top: 10px" class="machinery-switch toggle-mobile switch-light">
+                    <input type="checkbox" style="outline: none;">
+                    <span class="well" style="margin:0;background-color:#fff; color: #fff;">
+                        <span>{{Lang::get('general.off')}}</span>
+                        <span>{{Lang::get('general.on')}}</span>
+                        <a class="btn btn-primary" style="background-color: #943633; border-color: #943633"></a>
+                    </span>
+                </label>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="signout" href="{{URL::to('/')}}/logout">
-                    <i class="fa fa-sign-out"></i>
+                <a class="system" href="{{URL::to('/')}}/system">
+                    <i class="fa fa-desktop"></i>
                 </a>
                 <div class="circle">
                     <div class="kerberos"></div>
@@ -50,15 +63,17 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="active">
-                    <a href="{{URL::to('/')}}"><i class="fa fa-area-chart"></i> Dashboard</a>
+                    <a href="{{URL::to('/')}}"><i class="fa fa-area-chart"></i> {{Lang::get('general.dashboard')}}</a>
                 </li>
-
+                <li>
+                    <a href="{{URL::to('/system')}}"><i class="fa fa-desktop"></i> {{Lang::get('general.system')}}</a>
+                </li>
                 @if(Config::get('app.config') != '')
                 <li>
-                    <a href="{{URL::to('/settings')}}"><i class="fa fa-list"></i> Settings</a>
+                    <a href="{{URL::to('/settings')}}"><i class="fa fa-list"></i> {{Lang::get('general.settings')}}</a>
                 </li>
                 <li>
-                    <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> Cloud</a>
+                    <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> {{Lang::get('general.cloud')}}</a>
                 </li>
                 @endif
 
@@ -66,9 +81,19 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> {{Lang::get('general.logout')}}</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <label class="machinery-switch switch-light">
+                        <input type="checkbox">
+                        <span class="well">
+                            <span>Off</span>
+                            <span>On</span>
+                            <a class="btn btn-primary"></a>
+                        </span>
+                    </label>
                 </li>
             </ul>
                       
@@ -80,6 +105,17 @@
                     {
                         datepicker.setDay("{{(isset($selectedDay))?$selectedDay:'null'}}");
                         datepicker.initialize();
+                    });
+                    
+                    require(["app/controllers/toggleMachinery"], function(toggleMachinery)
+                    {
+                        toggleMachinery.initialize();
+                        
+                        $(".machinery-switch input[type='checkbox']").click(function()
+                        {
+                            var checked = $(this).attr('checked');
+                            toggleMachinery.setStatus((checked == undefined));
+                        });
                     });
                 });
             </script>
@@ -106,6 +142,9 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+        @if($isUpdateAvailable)
+        <div class="alert-update alert alert-warning" role="alert">Good news, <a href="{{URL::to('/').'/system'}}">a new release of KiOS</a> is available!</div>
+        @endif
         @yield('content')
     </div>
     <!-- /#wrapper -->

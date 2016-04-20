@@ -1,0 +1,192 @@
+#system-actions
+{
+    margin-top:30px;
+    display: table;
+    
+    a
+    {
+        padding: 12px 25px;
+        height: auto;
+        background-color: #943633;
+        color: #fff;
+        border-color: #943633;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 5px 5px 0;
+        display: table;
+        float: left;
+        
+        &:hover
+        {
+            text-decoration: none;
+        }
+    }
+}
+
+#kerberos
+{
+    margin-bottom: 10px;
+}
+
+#system, #kerberos
+{
+    padding-right: 50px;
+}
+
+#news
+{
+    ul#articles
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        
+        li
+        {
+            padding: 5px 0;
+            
+            a
+            {
+                color: #943633;
+            }
+        }
+    }
+}
+
+#kios
+{
+    #kios-versions
+    {
+        ul
+        {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            
+            li
+            {
+                padding: 10px 0;
+                cursor: pointer;
+                
+                &.active
+                {
+                    color: #943633;
+                }
+                
+                u
+                {
+                    color: #943633;
+                    text-decoration: none;
+                }
+                
+                span
+                {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #ccc;
+                    display: table;
+                    float: left;
+                    margin: 3px 15px 0 0;
+                    
+                    &.active
+                    {
+                        background-color: #943633;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.remodal
+{
+    #percentage-downloaded, #count-down
+    {
+        margin: 20px auto 0;
+        width: 150px;
+    }
+    
+     .modal-body a
+    {
+        margin-top: 20px;
+        display: block;
+        padding: 12px 25px;
+        height: auto;
+        background-color: #943633;
+        color: #fff;
+        border-color: #943633;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover
+        {
+            text-decoration: none;
+        }
+    }
+    
+    p
+    {
+        margin-top: 15px;
+    }
+    
+    span
+    {
+        color: #666;
+    }
+    
+    h1
+    {
+        font-size: 40px;
+        color: #333;
+    }
+}
+
+.disks
+{
+    text-align: center;
+    margin-bottom: 20px;
+    display: table;
+    width: 100%;
+    
+    .disk
+    {
+        margin: 20px 0;
+        display: block;
+        padding: 5px 15px;
+        background-color: #EEEEEE;
+        border-radius: 10px;
+    }
+}
+
+.cpus
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    display: table;
+    width: 100%;
+    background-color: #EEEEEE;
+    padding: 0 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    
+    .cpu
+    {
+        margin: 20px 0;
+        display: block;
+        padding: 5px 15px;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+}
+
+.progress
+{
+    width: 100%;
+    margin: 10px 0;
+}
+
+@import "responsive-main";

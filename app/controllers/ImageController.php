@@ -49,7 +49,8 @@ class ImageController extends BaseController
         return View::make('image', [
             'days' => $days,
             'selectedDay' => $selectedDay,
-            'lastHourOfDay' => $lastHourOfDay
+            'lastHourOfDay' => $lastHourOfDay,
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 
@@ -61,6 +62,17 @@ class ImageController extends BaseController
         $days = $this->imageHandler->getDays(-1);
 
         return Response::json($days);
+    }
+    
+    /*************************************
+     *  Get all regions
+     */ 
+    public function getRegions()
+    {
+        $numberOfRegions = 250;
+        $regions = $this->imageHandler->getRegions($numberOfRegions);
+
+        return Response::json($regions);
     }
 
     /*************************************
