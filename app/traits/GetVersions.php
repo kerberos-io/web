@@ -43,7 +43,7 @@ trait GetVersions
 
         $versions = $cache->storeAndGet($key, function()
         {
-            $url = "https://api.github.com/repos/cedricve/version-test/releases";//"https://api.github.com/repos/kerberos-io/kios/releases";
+            $url = "https://api.github.com/repos/kerberos-io/kios/releases";
 
             $client = new Client();
             $request = $client->get($url);
