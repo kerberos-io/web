@@ -172,7 +172,7 @@ define(["jquery", "progressbar"], function($, ProgressBar)
                 };
                 
                 var time = 2500;
-                if(this.board === "raspberrypi") time *= 2;
+                if(this.board === "raspberrypi") time *= 3;
                 
                 interval = setInterval(intervalFunction, time);
             }
