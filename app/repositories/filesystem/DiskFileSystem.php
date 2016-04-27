@@ -16,7 +16,7 @@ class DiskFilesystem implements FilesystemInterface
         // Create url and path
         
         $this->path = Config::get("app.filesystem.disk.path");
-        $this->url = URL::to('/') . $this->path;
+        $this->url = URL::to('/') . '/' . $this->path;
     }
 
 	public function setTimezone($timezone)
@@ -27,7 +27,7 @@ class DiskFilesystem implements FilesystemInterface
     public function findAllImages()
     {
         $heap = new Heap;
-        $dirpath = public_path() . $this->path;
+        $dirpath = public_path() . '/' . $this->path;
         if (is_dir($dirpath)) {
             $dir = opendir($dirpath);
             while(($currentFile = readdir($dir)) !== false)
@@ -45,7 +45,7 @@ class DiskFilesystem implements FilesystemInterface
 
     public function getPathToFile(FileInterface $file)
     {
-        return $this->url . $file->getPath();
+        return $this->url . '/' . $file->getPath();
     }
 
     public function getMetadata(FileInterface $file)
