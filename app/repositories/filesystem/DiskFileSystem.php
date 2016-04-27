@@ -27,17 +27,19 @@ class DiskFilesystem implements FilesystemInterface
     public function findAllImages()
     {
         $heap = new Heap;
-
-        $dir = opendir(public_path() . $this->path);
-        while(($currentFile = readdir($dir)) !== false)
-        {
-            if($currentFile != '.' && $currentFile != '..')
+        $dirpath = public_path() . $this->path;
+        if (is_dir($dirpath)) {
+            $dir = opendir($dirpath);
+            while(($currentFile = readdir($dir)) !== false)
             {
-                $heap->insert($currentFile);
+                if($currentFile != '.' && $currentFile != '..')
+                {
+                    $heap->insert($currentFile);
+                }
             }
+            closedir($dir);
         }
 
-        closedir($dir);
         return $heap;
     }
 
