@@ -68,7 +68,9 @@ require.config({
         streamer: 'app/models/Streamer',
         heatmap: 'vendor/heatmap.js-amd/build/heatmap',
         progressbar: 'vendor/progressbar.js/dist/progressbar.min',
-        remodal: 'vendor/remodal/dist/jquery.remodal.min'
+        remodal: 'vendor/remodal/dist/jquery.remodal.min',
+        photoswipe: 'vendor/photoswipe/dist/photoswipe.min',
+        'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [
 

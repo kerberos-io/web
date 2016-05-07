@@ -147,28 +147,30 @@ div.kerberos
     width: 100%;
 }
 
-ul.images
+div.images
 {
-    list-style: none;
+    position: relative;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    display: block;
+    max-width: 804px;
 }
 
-ul.images li
+div.images div.image
 {
-    float:left;
-    margin: 0 10px 10px 0;
+    margin: 10px 10px 10px 0;
+    text-align: center;
+    float: left;
 }
 
-ul.images li img, ul.images li canvas
+div.images div.image img, div.images div.image canvas
 {
     border-radius: 15px;
     width: 392px;
     height: 250px;
-    float: left;
 }
 
-ul.images li div.date-time
+div.images div div.date-time
 {
     text-align: center;
     font-size: 14px;
