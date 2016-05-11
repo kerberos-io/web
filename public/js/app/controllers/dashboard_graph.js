@@ -27,7 +27,10 @@ define(["jquery", "chartjs"], function($, Chart)
             $.get(this_.config.url,function(data)
             {
                 self.data = data;
-                //self.resize();
+                if(data["days"].length == 0)
+                {
+                    self.resize();
+                }
                 self.draw();
             });
         },

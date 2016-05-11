@@ -8487,6 +8487,7 @@ div.center form#login input[type='submit'] {
 #dashboard #activity-sequence {
   padding-right: 20px;
   margin-top: 10px;
+  height: 178px;
 }
 #dashboard #activity-sequence #latest-activity-sequence {
   overflow: hidden;

@@ -27,7 +27,10 @@ define(["jquery", "chartjs"], function($, Chart)
             $.get(this_.config.url,function(data)
             {
                 self.data = data;
-                //self.resize();
+                if(self.isEmpty(data.instances))
+                {
+                	self.resize();
+                }
                 self.draw();
             });
         },
@@ -39,18 +42,17 @@ define(["jquery", "chartjs"], function($, Chart)
             $("#radar-graph").css({"height": canvas.width()}); 
             $("#radar-graph").css({"height": canvas.height()});
         },
+        isEmpty: function(obj)
+        {
+            for(var p in obj)
+            {
+                return false;
+            }
+            return true;
+        },
         draw: function()
         {
         	var data =this.data;
-
-            var isEmpty = function(obj)
-            {
-                for(var p in obj)
-                {
-                    return false;
-                }
-                return true;
-            };
 
             var canvas = $("#radar-chart").get(0);
             var ctx = canvas.getContext("2d");
@@ -110,7 +112,7 @@ define(["jquery", "chartjs"], function($, Chart)
                 $("#radar-graph .load5").remove();
             } 
 
-            if(data.instances && !isEmpty(data.instances))
+            if(data.instances && !this.isEmpty(data.instances))
             {
 				var weekDays = data.instances;
 				var styleNumber = 0;
