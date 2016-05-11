@@ -8493,6 +8493,11 @@ div.center form#login input[type='submit'] {
   overflow: hidden;
   border-radius: 7px;
 }
+@media only screen and (min-width: 767px) and (max-width: 1200px) {
+  #dashboard #activity-sequence {
+    height: auto;
+  }
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #dashboard .col-lg-12,
   #dashboard .col-lg-6 {
