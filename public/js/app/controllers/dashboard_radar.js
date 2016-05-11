@@ -12,18 +12,37 @@ define(["jquery", "chartjs"], function($, Chart)
             this_ = this;
             this_.config = config;
             
+            $(window).resize(function()
+            {
+                this_.resize();
+                this_.draw();
+            });
+
+            setTimeout(this_.config.callback, 300);
+        },
+        redraw: function()
+        {
+            var self = this;
+
             $.get(this_.config.url,function(data)
             {
-               this_.draw(data);
-            })
-            .always(function()
-            {
-                // Wait 500 ms before executing 
-                setTimeout(this_.config.callback, 300);
+                self.data = data;
+                //self.resize();
+                self.draw();
             });
         },
-        draw: function(data)
+        resize: function()
         {
+            var canvas = $("#radar-graph canvas");
+            canvas.attr("width", $("#radar-graph").width());
+            canvas.attr("height", canvas.width()/2);
+            $("#radar-graph").css({"height": canvas.width()}); 
+            $("#radar-graph").css({"height": canvas.height()});
+        },
+        draw: function()
+        {
+        	var data =this.data;
+
             var isEmpty = function(obj)
             {
                 for(var p in obj)
