@@ -9080,3 +9080,41 @@ label {
     width: 100%;
   }
 }
+#error-message {
+  display: table;
+  padding: 19px;
+  text-align: left;
+  border-radius: 25px;
+  margin-bottom: 17px;
+  color: #943633;
+  font-size: 35px;
+  font-family: Helvetica;
+  text-shadow: 1px #f4f4f4;
+  margin: 0 auto;
+  margin-top: -250px;
+  z-index: 1337;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  text-align: center;
+}
+#error-message span {
+  display: block;
+  color: #333;
+  font-size: 17px;
+  text-align: center;
+}
+#error-message p {
+  color: #333;
+  font-size: 15px;
+  text-align: center;
+}
+#error-message p a {
+  cursor: pointer;
+}
+@media only screen and (min-width: 0px) and (max-width: 700px) {
+  #error-message {
+    font-size: 22px;
+    margin-top: -180px;
+  }
+}

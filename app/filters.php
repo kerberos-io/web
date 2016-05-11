@@ -88,3 +88,83 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Config Protection filter
+|--------------------------------------------------------------------------
+|
+| The config filter is responsible to check if a valid configuration file is available.
+| if not the web application won't work properly.
+|
+*/
+
+Route::filter('validConfig', function()
+{
+	$isValid = true;
+
+	$config = Config::get("app.config");
+	$data = ['config' => $config, 'message' => ''];
+
+	if(is_dir($config))
+	{
+		$reader = App::make('Repositories\ConfigReader\ConfigReaderInterface');	
+		$settings = $reader->read($config . '/config.xml');
+
+		if(count($settings) == 0)
+		{
+			$isValid = false;
+			$data['message'] = "One or more config files are missing in <b>".$data['config']."</b>. <br/>Please check if the <b>.xml</b> files are available.";
+		}
+	}
+	else
+	{
+		$isValid = false;
+		$data['message'] = "It looks like the config directory is missing.<br/> Please create the directory: <b>".$data['config']."</b>.";
+	}
+	
+	if(!$isValid)
+	{
+		return View::make('errors.config-missing', $data);
+	}
+});
+
+/*
+|--------------------------------------------------------------------------
+| Capture Protection filter
+|--------------------------------------------------------------------------
+|
+| The capture filter is responsible to check if the capture directory exists.
+| if not the web application won't work properly.
+|
+*/
+
+Route::filter('validCapture', function()
+{
+	$isValid = true;
+
+	$capture = public_path() . Config::get("app.filesystem.disk.path");
+	$data = ['capture' => $capture, 'message' => ''];
+
+	if(!is_dir($capture))
+	{
+		$isValid = false;
+		$capture = rtrim($capture, '/');
+
+		if(!is_link($capture))
+		{
+			$data['message'] = "It looks like the capture directory is missing.<br/> Please create the directory: <b>".$data['capture']."</b>.";
+		}
+		else
+		{
+			// Check if link exists
+			$data['message'] = "It looks like the capture directory is missing.<br/> Please create the directory: <b>".readlink($capture)."</b>.";
+		}
+	}
+	
+	if(!$isValid)
+	{
+		return View::make('errors.config-missing', $data);
+	}
+});

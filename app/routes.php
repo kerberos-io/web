@@ -11,40 +11,45 @@
 |
 */
 
-Route::group(['before' => 'guest'], function()
+// Always do a pre-check if config and capture directory exists are available
+
+Route::group(['before' => ['validConfig', 'validCapture']], function()
 {
-	// ------------------------
-    // Login Controller
+    Route::group(['before' => 'guest'], function()
+    {
+	   // ------------------------
+        // Login Controller
 
-    Route::get('login', 'Controllers\LoginController@index');
-});
+        Route::get('login', 'Controllers\LoginController@index');
+    });
 
-Route::group(['before' => 'auth'], function()
-{
-	// ------------------------
-    // Login Controller
+    Route::group(['before' => 'auth'], function()
+    {
+        // ------------------------
+        // Login Controller
 
-    Route::get('logout', 'Controllers\LoginController@logout');
+        Route::get('logout', 'Controllers\LoginController@logout');
 
-    // ------------------------
-    // Dashboard Controller
+        // ------------------------
+        // Dashboard Controller
 
-    Route::get('/', 'Controllers\DashboardController@index');
+        Route::get('/', 'Controllers\DashboardController@index');
     
-    // ------------------------
-    // Settings Controller
+        // ------------------------
+        // Settings Controller
 
-    Route::get('settings', 'Controllers\SettingsController@index');
-    Route::get('cloud', 'Controllers\SettingsController@cloud');
-    Route::post('settings/update', array('uses' => 'Controllers\SettingsController@update'));
+        Route::get('settings', 'Controllers\SettingsController@index');
+        Route::get('cloud', 'Controllers\SettingsController@cloud');
+        Route::post('settings/update', array('uses' => 'Controllers\SettingsController@update'));
     
-    // ------------------------
-    // System Controller
+        // ------------------------
+        // System Controller
 
-    Route::get('system', 'Controllers\SystemController@index');
+        Route::get('system', 'Controllers\SystemController@index');
     
-    // ------------------------
-    // Image Controller
+        // ------------------------
+        // Image Controller
 
-    Route::get('images/{date?}', 'Controllers\ImageController@index');
+        Route::get('images/{date?}', 'Controllers\ImageController@index');
+    });
 });
