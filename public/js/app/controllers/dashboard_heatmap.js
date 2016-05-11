@@ -46,7 +46,7 @@ define(["heatmap"], function(heatmap)
                 $(".heatmap .load5").remove();
             }
 
-            if(this.data.length > 0)
+            if(this.data && this.data.length > 0)
             {
                 this.drawBackground();
                 this.setRegions(this.data);
