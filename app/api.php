@@ -40,6 +40,7 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('images/download', 'Controllers\SystemController@downloadImages');
         Route::get('images/clean', 'Controllers\SystemController@cleanImages');
         Route::get('system/download', 'Controllers\SystemController@downloadConfiguration');
+        Route::get('system/stream', 'Controllers\SystemController@isStreamRunning');
         Route::get('system/versions', 'Controllers\SystemController@getVersions');
         Route::post('system/upgrade/download', 'Controllers\SystemController@download');
         Route::post('system/upgrade/progress', 'Controllers\SystemController@progress');

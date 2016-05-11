@@ -49,38 +49,48 @@ define(["jquery", "chartjs"], function($, Chart)
                 multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
             };
 
-			var statistics =
+			if(data.legend)
 			{
-			    labels: [data.legend.sunday, data.legend.monday, data.legend.tuesday, data.legend.wednesday, data.legend.thursday, data.legend.friday, data.legend.saturday],
-			    datasets: []
-			};
+				var statistics =
+				{
+				    labels: [data.legend.sunday, data.legend.monday, data.legend.tuesday, data.legend.wednesday, data.legend.thursday, data.legend.friday, data.legend.saturday],
+				    datasets: []
+				};
 
-			var weekdayStyle = [
-			{
-	            fillColor: "rgba(120,120,120,0)",
-	            strokeColor: "#943633",
-	            pointColor: "#943633",
-	            pointStrokeColor: "#943633",
-	            pointHighlightFill: "#943633",
-	        },
-	        {
-	            fillColor: "rgba(120,120,120,0)",
-	            strokeColor: "rgba(120,120,120,1)",
-	            pointColor: "rgba(120,120,120,1)",
-	            pointStrokeColor: "rgba(120,120,120,1)",
-	            pointHighlightFill: "rgba(120,120,120,1)",
-	        },
-	        {
-	            fillColor: "rgba(220,220,220,0)",
-	            strokeColor: "rgba(220,220,220,0)",
-	            pointColor: "rgba(220,220,220,0)",
-	            pointStrokeColor: "rgba(220,220,220,0)",
-	            pointHighlightFill: "rgba(220,220,220,0)",
-	        }];
+				var weekdayStyle = [
+				{
+	       	     	fillColor: "rgba(120,120,120,0)",
+	       		    strokeColor: "#943633",
+	            	pointColor: "#943633",
+	            	pointStrokeColor: "#943633",
+	            	pointHighlightFill: "#943633",
+	        	},
+	        	{
+	            	fillColor: "rgba(120,120,120,0)",
+	            	strokeColor: "rgba(120,120,120,1)",
+	            	pointColor: "rgba(120,120,120,1)",
+	            	pointStrokeColor: "rgba(120,120,120,1)",
+	            	pointHighlightFill: "rgba(120,120,120,1)",
+	        	},
+	        	{
+	            	fillColor: "rgba(220,220,220,0)",
+	            	strokeColor: "rgba(220,220,220,0)",
+	            	ointColor: "rgba(220,220,220,0)",
+	            	pointStrokeColor: "rgba(220,220,220,0)",
+	            	pointHighlightFill: "rgba(220,220,220,0)",
+	        	}];
+            }
             
             // ------------------------------------
             // Add sum of images for the past days
             
+
+            // Remove loading bar
+            if($("#radar-graph .load5").length > 0)
+            {
+                $("#radar-graph .load5").remove();
+            } 
+
             if(data.instances && !isEmpty(data.instances))
             {
 				var weekDays = data.instances;
@@ -103,18 +113,21 @@ define(["jquery", "chartjs"], function($, Chart)
 	                dataset['label'] = key;
 	                statistics["datasets"].push(dataset);
 				}
-                
-                // Remove loading bar
-                if($("#radar-graph .load5").length > 0)
-                {
-                    $("#radar-graph .load5").remove();
-                } 
-
+               
 				// ---------------------------------------------------------------
 	            // This will get the first returned node in the jQuery collection.
 
 	            var radarChart = new Chart(ctx).Radar(statistics, options);
 	        }
+	        else
+            {
+                var x = canvas.width / 2;
+                var y = canvas.height / 2;
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'black';
+                ctx.fillText('No data available', x, y);
+            }
         }
     }
 });

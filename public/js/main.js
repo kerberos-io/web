@@ -66,7 +66,7 @@ require.config({
         timepicker: 'app/models/Timepicker',
         chartjs: 'vendor/chartjs/Chart',
         streamer: 'app/models/Streamer',
-        heatmap: 'vendor/heatmap.js-amd/build/heatmap',
+        heatmap: 'app/models/Heat',
         progressbar: 'vendor/progressbar.js/dist/progressbar.min',
         remodal: 'vendor/remodal/dist/jquery.remodal.min',
         photoswipe: 'vendor/photoswipe/dist/photoswipe.min',

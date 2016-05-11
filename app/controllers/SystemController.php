@@ -189,4 +189,30 @@ class SystemController extends BaseController
         $versions = $this->system->getVersionsFromGithub();
         return Response::json($versions);
     }
+
+    public function isStreamRunning()
+    {
+        $status = true;
+
+        try
+        {
+            $fp = fsockopen('127.0.0.1', 8888, $errno, $errstr, 5);
+            if(!$fp)
+            {
+                // port is closed or blocked
+                $status = false;
+            }
+            else
+            {
+                // port is open and available
+                fclose($fp);
+            }
+        }
+        catch(\Exception $ex)
+        {
+            $status = false;
+        }
+
+        return Response::json(["status" => $status]);
+    }
 }

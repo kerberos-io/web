@@ -858,17 +858,21 @@ MJPEGCANVAS.Viewer = function(options) {
     
   function draw() {
     // check if we have a valid image
- 
+    that.canvas.width = $("#livestream").width();
+    that.canvas.height = $("#livestream").width()/2;
+    var x = that.canvas.width / 2;
+    var y = that.canvas.height / 2;
+
     if (that.image.width * that.image.height > 0)
     {
-        if($("#livestream .load5"))
-        {
-            $("#livestream .load5").remove();
-        } 
-        
-        that.canvas.width = $("#livestream").width();
-        that.canvas.height = $("#livestream").width()/2;
         context.drawImage(that.image, 0, 0, $("#livestream").width(), $("#livestream").width()/2);
+    }
+    else
+    {
+      context.font = '20px Arial';
+      context.textAlign = 'center';
+      context.fillStyle = 'black';
+      context.fillText('Almost there, hold on..', x, y); 
     }
 
     // check for an overlay
@@ -887,7 +891,36 @@ MJPEGCANVAS.Viewer = function(options) {
   this.changeStream(topic);
 
   // call draw with the given interval or rate
-  setInterval(draw, drawInterval);
+  $.get(_baseUrl + "/api/v1/system/stream", function(data)
+  {
+
+    if($("#livestream .load5"))
+    {
+        $("#livestream .load5").remove();
+    } 
+
+    that.canvas.width = $("#livestream").width();
+    that.canvas.height = $("#livestream").width()/2;
+
+    var x = that.canvas.width / 2;
+    var y = that.canvas.height / 2;
+    context.font = '20px Arial';
+    context.textAlign = 'center';
+    context.fillStyle = 'black';
+
+    if(data.status == true)
+    {
+      context.fillText('Waiting for stream to connect', x, y); 
+      setTimeout(function()
+      {
+        var interval = setInterval(draw, drawInterval);
+      }, 1000);
+    }
+    else
+    {
+      context.fillText('No stream, is the machinery running?', x, y);  
+    }
+  });
 };
 MJPEGCANVAS.Viewer.prototype.__proto__ = EventEmitter.prototype;
 

@@ -8036,6 +8036,7 @@ div.images div.image {
   margin: 10px 10px 10px 0;
   text-align: center;
   float: left;
+  cursor: pointer;
 }
 div.images div.image img,
 div.images div.image canvas {
@@ -8049,11 +8050,10 @@ div.images div div.date-time {
 }
 div.new-page {
   clear: both;
-  padding: 20px 0 20px 0;
   text-align: center;
   font-size: 28px;
   margin: 0;
-  padding: 0 0 20px 0;
+  padding: 0;
 }
 div.new-page:nth-child(1) {
   padding-top: 15px;
@@ -8219,10 +8219,6 @@ label.toggle-mobile {
   body {
     margin-top: 50px;
   }
-  h1 {
-    font-size: 13px;
-    padding: 4px 0 10px 0;
-  }
   h2 {
     font-size: 20px;
   }
@@ -8230,18 +8226,18 @@ label.toggle-mobile {
     margin: 0px -15px;
     padding-bottom: 10px;
   }
-  ul.images li {
-    float: left;
+  div.images div {
     width: 100%;
-    margin: 10px 0 10px 0;
+    margin-top: -5px;
   }
   ul.top-nav {
     display: none;
   }
-  ul.images li img,
-  ul.images li canvas {
+  div.images div.image img,
+  div.images div.image canvas {
     width: 100%;
     height: 100%;
+    border-radius: 0;
   }
   ul.images li div.date-time {
     font-size: 20px;
@@ -8255,32 +8251,37 @@ label.toggle-mobile {
   #dashboard h2 {
     display: none;
   }
+  #dashboard div:last-child.col-lg-6 {
+    margin-top: 30px;
+  }
+  #dashboard ul.pie-legend {
+    display: none;
+  }
   .hide-on-mobile {
     display: none;
   }
   .row {
     margin: 0;
   }
-  .signout {
+  .signout,
+  .sync {
     float: right;
     display: block;
   }
-  .signout i {
-    color: #fff;
-    padding: 17px 8px 0 0;
-  }
-  .system {
-    float: right;
-    display: block;
-  }
-  .system i {
+  .signout i,
+  .sync i {
     color: #fff;
     padding: 17px 16px 0 0;
   }
-  label.toggle-mobile {
-    float: right;
-    display: block;
-    margin-right: 22px;
+  .register,
+  .forgot {
+    display: none;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 330px) {
+  h1 {
+    font-size: 13px;
+    padding: 3px 0 10px;
   }
 }
 body#red {
@@ -8633,9 +8634,8 @@ div.center form#login input[type='submit'] {
   }
 }
 div.loadimage {
-  width: 392px;
+  width: 370px;
   height: 140px;
-  margin: 0 auto;
 }
 .pswp {
   z-index: 2000;
@@ -8739,16 +8739,16 @@ div#images-wrapper p.metadata {
 @media only screen and (min-width: 0px) and (max-width: 1049px) {
   div.images div.image {
     float: none;
-    margin: 10px 0 10px 0;
+    margin: 0;
   }
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
-  ul.images li {
-    padding: 0 10px 0 10px;
-  }
   div.loadimage {
     width: 100%;
     padding-bottom: 100px;
+  }
+  div#images-wrapper p.metadata {
+    padding-bottom: 20px;
   }
 }
 #timeselection .day {

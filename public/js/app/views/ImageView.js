@@ -96,30 +96,67 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 
                 imagesList.find("i").hide();
 
-                self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(imagesCollection.at(0).get('time') + ' - ' + imagesCollection.last().get('time')));
-                self.$el.find("div#images-wrapper").append(imagesList);
-
                 var timeBetween = "";
+                var timeRange = "";
                 if(imagesCollection.models.length > 1)
                 {
                     timeBetween = imagesCollection.last().attributes.metadata.timestamp - imagesCollection.at(0).attributes.metadata.timestamp;
-                    if(timeBetween /60 > 1)
+                    if(timeBetween > 0 && timeBetween / 60 > 1)
                     {
-                        timeBetween = " during " + parseInt(timeBetween / 60) + " minutes"
+                        timeBetween = parseInt(timeBetween / 60);
+                        timeBetweenText = " during " + timeBetween;
+                        timeRange = imagesCollection.at(0).get('time') + ' - ' + imagesCollection.last().get('time');
+                        
+                        if(timeBetween > 1)
+                        {
+                            timeBetweenText += " minutes";
+                        }
+                        else
+                        {
+                            timeBetweenText += " minute";
+                        }
                     }
                     else
                     {
-                        timeBetween = " during " + timeBetween + " seconds"
+                        timeBetweenText = " during " + timeBetween;
+                        
+                        if(timeBetween > 1)
+                        {
+                            timeBetweenText += " seconds";
+                            timeRange = imagesCollection.at(0).get('time') + ' - ' + imagesCollection.last().get('time');
+                        }
+                        else if(timeBetween == 0)
+                        {
+                            timeBetweenText = "";
+                            timeRange = imagesCollection.at(0).get('time');
+                        }
+                        else
+                        {
+                            timeBetweenText += " second";
+                            timeRange = imagesCollection.at(0).get('time');
+                        }
                     }
                 }
+                else
+                {
+                    timeBetweenText = "";
+                    timeRange = imagesCollection.at(0).get('time');
+                }
+
+                self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(timeRange));
 
                 var numberOfEvents = (imagesCollection.models.length == 1 ) ? imagesCollection.models.length + " event" : imagesCollection.models.length  + " events";
                 this.$el.find("div#images-wrapper")
                     .append($("<p class='metadata'>")
-                        .html(numberOfEvents + timeBetween));
+                        .html(numberOfEvents + timeBetweenText));
 
                 $(".load4").css({'display':'none'});
                 $(".scroll-down").css({'display':'block'});
+
+                // -------------------
+                // Append images
+
+                self.$el.find("div#images-wrapper").append(imagesList);
 
                 // --------------------------
                 // Start progressive loading
@@ -329,28 +366,63 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     }
                 });
 
-                this.$el.find("div#images-wrapper")
-                    .prepend($("<div class='new-page'>")
-                        .html(this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time')));
-
                 var timeBetween = "";
+                var timeRange = "";
                 if(this.collection.models.length > 1)
                 {
                     timeBetween = this.collection.last().attributes.metadata.timestamp - this.collection.at(0).attributes.metadata.timestamp;
-                    if(timeBetween /60 > 1)
+                    if(timeBetween > 0 && timeBetween / 60 > 1)
                     {
-                        timeBetween = " during " + parseInt(timeBetween / 60) + " minutes"
+                        timeBetween = parseInt(timeBetween / 60);
+                        timeBetweenText = " during " + timeBetween;
+                        timeRange = this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time');
+
+                        if(timeBetween > 1)
+                        {
+                            timeBetweenText += " minutes";
+                        }
+                        else
+                        {
+                            timeBetweenText += " minute";
+                        }
                     }
                     else
                     {
-                        timeBetween = " during " + timeBetween + " seconds"
+                        timeBetweenText = " during " + timeBetween;
+                        
+                        if(timeBetween > 1)
+                        {
+                            timeBetweenText += " seconds";
+                            timeRange = this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time');
+                        }
+                        else if(timeBetween == 0)
+                        {
+                            timeBetweenText = "";
+                            timeRange = this.collection.at(0).get('time');
+                        }
+                        else
+                        {
+                            timeBetweenText += " second";
+                            timeBetweenText = "";
+                            timeRange = this.collection.at(0).get('time');
+                        }
                     }
+                }
+                else
+                {
+                    timeBetweenText = "";
+                    timeRange = this.collection.at(0).get('time');
                 }
 
                 var numberOfEvents = (this.collection.models.length == 1 ) ? this.collection.models.length + " event" : this.collection.models.length  + " events";
                 this.$el.find("div#images-wrapper")
-                    .append($("<p class='metadata'>")
-                        .html(numberOfEvents + timeBetween));
+                    .prepend($("<p class='metadata'>")
+                        .html(numberOfEvents + timeBetweenText));
+
+                this.$el.find("div#images-wrapper")
+                    .prepend($("<div class='new-page'>")
+                        .html(timeRange));
+
             }
 
             // ---------------

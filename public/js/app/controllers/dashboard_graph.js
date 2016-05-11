@@ -124,14 +124,23 @@ define(["jquery", "chartjs"], function($, Chart)
             // ----------------------------------------------------------------
             // This will get the first returned node in the jQuery collection.
 
+            if($("#time-graph .load5").length > 0)
+            {
+                $("#time-graph .load5").remove();
+            }
+
             if(statistics['datasets'] && statistics['datasets'].length > 0)
             {
-                if($("#time-graph .load5").length > 0)
-                {
-                    $("#time-graph .load5").remove();
-                }
-            
                 var timeChart = new Chart(ctx).Line(statistics, options);
+            }
+            else
+            {
+                var x = canvas.width / 2;
+                var y = canvas.height / 2;
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'black';
+                ctx.fillText('No data available', x, y);
             }
         }
     };
