@@ -175,6 +175,22 @@ class OSSystem implements SystemInterface
         $linfo = new \Linfo\Linfo($settings);
         $this->parser = $linfo->getParser();
     }
+
+    public function getShortLog()
+    {
+        $file = '/etc/opt/kerberosio/logs/log.stash';
+        $content = file($file);
+        $content = array_slice($content, -15);
+        $content = implode('', $content);
+        return $content;
+    }
+
+    public function getLog()
+    {
+        $file = '/etc/opt/kerberosio/logs/log.stash';
+        $content = file_get_contents($file);
+        return $content;
+    }
     
     public function getWebVersion()
     {

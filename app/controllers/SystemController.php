@@ -53,7 +53,7 @@ class SystemController extends BaseController
             'settings' => $settings,
             'system' => $this->system,
             'articles' => $articles,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'isUpdateAvailable' => $this->isUpdateAvailable(),
         ]);
     }
     

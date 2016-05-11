@@ -94,11 +94,36 @@
                                 </td>
                             </tr>
                         </table> 
+                        <h3>Log</h3>
+                        <div class="logging">
+                            <pre class="zoom"><code class="html">{{$system->getShortLog()}}</code></pre>
+                        </div>
                         <div id="system-actions">
                             <a id="download" href="{{URL::to('/')}}/api/v1/system/download">{{Lang::get('system.downloadSystemFiles')}}</a>
                             <a id="download" href="{{URL::to('/')}}/api/v1/images/download">{{Lang::get('system.downloadImages')}}</a>
                             <a id="clean">{{Lang::get('system.removeImages')}}</a>
                         </div>
+                        <div id="logging-modal" data-remodal-id="logging">
+                            <div class="modal-body">
+                                <pre><code class="html">{{$system->getLog()}}</code></pre>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            require([_jsBase + 'main.js'], function(common)
+                            {
+                                require(["remodal"], function(remodal)
+                                {
+                                    var options = {};
+
+                                    var modal = $('[data-remodal-id=logging]').remodal(options);
+
+                                    $("pre.zoom").click(function()
+                                    {
+                                        modal.open();
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div id="news" class="col-lg-6">
