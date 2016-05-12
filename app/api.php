@@ -48,6 +48,8 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('system/upgrade/depack', 'Controllers\SystemController@depack');
         Route::get('system/upgrade/transfer', 'Controllers\SystemController@transfer');
         Route::get('system/upgrade/reboot', 'Controllers\SystemController@reboot');
+        Route::get('system/reboot', 'Controllers\SystemController@rebooting');
+        Route::get('system/shutdown', 'Controllers\SystemController@shuttingdown');
         
         // -----------------
         // Image Controller

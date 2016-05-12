@@ -60,6 +60,10 @@ return array(
 	'downloadImages' => 'Download images',
     
 	'removeImages' => 'Remove images',
+
+	'shutdown' => 'Shutdown',
+
+	'reboot' => 'Reboot',
     
 	'release' => 'Release',
     
@@ -76,5 +80,7 @@ return array(
 	'transferring' => 'Transferring',
     
 	'rebooting' => 'System is rebooting',
+    
+	'shuttingdown' => 'System is shutting down',
 
 );

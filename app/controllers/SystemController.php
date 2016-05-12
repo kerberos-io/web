@@ -183,6 +183,18 @@ class SystemController extends BaseController
         $response = $this->system->reboot();
         return Response::json($response);
     }
+
+    public function rebooting()
+    {
+        $response = $this->system->rebooting();
+        return Response::json($response);
+    }
+
+    public function shuttingdown()
+    {
+        $response = $this->system->shuttingdown();
+        return Response::json($response);
+    }
     
     public function getVersions()
     {

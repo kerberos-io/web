@@ -559,4 +559,22 @@ class OSSystem implements SystemInterface
         
         return true;
     }
+    
+    public function rebooting()
+    {        
+        // reboot
+        $cmd = 'reboot';
+        $output = shell_exec($cmd);
+        
+        return true;
+    }
+    
+    public function shuttingdown()
+    {        
+        // reboot
+        $cmd = 'shutdown -r now';
+        $output = shell_exec($cmd);
+        
+        return true;
+    }
 }
