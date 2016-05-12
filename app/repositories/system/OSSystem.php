@@ -203,6 +203,12 @@ class OSSystem implements SystemInterface
         $version = shell_exec($cmd);
         return ltrim($version, 'v');
     }
+    public function isMachineryRunning()
+    {
+        $cmd = "ps -a | grep kerberosio";
+        $processes = shell_exec($cmd);
+        return (strlen($processes) > 0);
+    }
     
     public function getOS()
     {

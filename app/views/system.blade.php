@@ -78,8 +78,20 @@
                         Kerberos.io {{Lang::get('system.twoServicesRunning')}}.
                         <h3>{{Lang::get('system.versions')}}</h3>
                         <table class="table">
-                            <tr><td>Web</td><td>{{$system->getWebVersion()}}</td></tr>
-                            <tr><td>Machinery</td><td>{{$system->getMachineryVersion()}}</td></tr>
+                            <tr>
+                                <td>Web</td>
+                                <td>{{$system->getWebVersion()}}</td>
+                                <td><span class="label label-success">Running</span></td>
+                            </tr>
+                            <tr>
+                                <td>Machinery</td>
+                                <td>{{$system->getMachineryVersion()}}</td>
+                                <td>
+                                    <span class="label label-{{($system->isMachineryRunning()) ? 'success' : 'danger'}}">
+                                        {{($system->isMachineryRunning()) ? 'Running' : 'Not running'}}
+                                    </span>
+                                </td>
+                            </tr>
                         </table> 
                         <h3>Statistics</h3>
                         <table class="table">

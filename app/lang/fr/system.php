@@ -45,7 +45,7 @@ return array(
     
 		'sent' => 'Envoyés',
     
-	'twoServicesRunning' => 'a deux services actifs : le front-end et la machinerie',
+	'twoServicesRunning' => 'a besoin de deux services : le front-end et la machinerie',
     
 	'versions' => 'Versions',
     

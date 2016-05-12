@@ -45,7 +45,7 @@ return array(
     
 		'sent' => 'Verstuurd',
     
-	'twoServicesRunning' => 'heeft twee applicaties actief: de web en de machinery',
+	'twoServicesRunning' => 'heeft twee applicaties nodig: de web en de machinery',
     
 	'versions' => 'Versies',
     
