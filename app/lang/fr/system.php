@@ -57,9 +57,9 @@ return array(
     
 	'downloadSystemFiles' => 'Télécharger des fichiers système',
     
-	'downloadImages' => 'Télécharger des images',
+	'downloadImages' => 'Télécharger les images',
     
-	'removeImages' => 'Supprimer des images',
+	'removeImages' => 'Supprimer toutes les images',
     
 	'release' => 'Release',
     
