@@ -13,6 +13,9 @@
                         data-slider-step="1" data-slider-value="{{$lastHourOfDay}}"/>
 
                     </div>
+
+                    @include('photoswipe')
+
                     <div id="images-overview"></div>
                     <script type="text/javascript">
                         require([_jsBase + 'main.js'], function(common)

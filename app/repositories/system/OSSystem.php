@@ -175,6 +175,22 @@ class OSSystem implements SystemInterface
         $linfo = new \Linfo\Linfo($settings);
         $this->parser = $linfo->getParser();
     }
+
+    public function getShortLog()
+    {
+        $file = '/etc/opt/kerberosio/logs/log.stash';
+        $content = file($file);
+        $content = array_slice($content, -15);
+        $content = implode('', $content);
+        return $content;
+    }
+
+    public function getLog()
+    {
+        $file = '/etc/opt/kerberosio/logs/log.stash';
+        $content = file_get_contents($file);
+        return $content;
+    }
     
     public function getWebVersion()
     {
@@ -186,6 +202,12 @@ class OSSystem implements SystemInterface
         $cmd = "/usr/bin/kerberosio -v";
         $version = shell_exec($cmd);
         return ltrim($version, 'v');
+    }
+    public function isMachineryRunning()
+    {
+        $cmd = "ps -a | grep kerberosio";
+        $processes = shell_exec($cmd);
+        return (strlen($processes) > 0);
     }
     
     public function getOS()
@@ -533,6 +555,24 @@ class OSSystem implements SystemInterface
         
         // reboot
         $cmd = 'reboot';
+        $output = shell_exec($cmd);
+        
+        return true;
+    }
+    
+    public function rebooting()
+    {        
+        // reboot
+        $cmd = 'reboot';
+        $output = shell_exec($cmd);
+        
+        return true;
+    }
+    
+    public function shuttingdown()
+    {        
+        // reboot
+        $cmd = 'shutdown -r now';
         $output = shell_exec($cmd);
         
         return true;

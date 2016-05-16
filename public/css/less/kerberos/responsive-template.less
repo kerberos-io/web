@@ -5,12 +5,6 @@
         margin-top: 50px;
     }
 
-    h1
-    {
-        font-size: 13px;
-        padding: 4px 0 10px 0;
-    }
-
     h2
     {
         font-size: 20px;
@@ -22,11 +16,10 @@
         padding-bottom: 10px;
     }
 
-    ul.images li
+    div.images div
     {
-        float:left;
         width: 100%;
-        margin: 10px 0 10px 0;
+        margin-top: -5px;
     }
 
     ul.top-nav
@@ -34,10 +27,11 @@
         display: none;
     }
 
-    ul.images li img, ul.images li canvas
+    div.images div.image img, div.images div.image canvas
     {
         width: 100%;
         height: 100%;
+        border-radius: 0;
     }
 
     ul.images li div.date-time
@@ -61,6 +55,16 @@
         {
             display: none;
         }
+        
+        div:last-child.col-lg-6
+        {
+            margin-top: 30px;   
+        }
+        
+        ul.pie-legend
+        {
+            display: none;  
+        }
     }
 
     .hide-on-mobile
@@ -73,19 +77,7 @@
         margin: 0;
     }
 
-    .signout
-    {
-        float: right;
-        display: block;
-        
-        i
-        {
-            color: #fff;
-            padding: 17px 8px 0 0;
-        }
-    }
-    
-    .system
+    .signout, .sync
     {
         float: right;
         display: block;
@@ -96,11 +88,18 @@
             padding: 17px 16px 0 0;
         }
     }
-    
-    label.toggle-mobile
+
+    .register, .forgot
     {
-        float: right;
-        display: block;
-        margin-right: 22px;
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 330px)
+{
+    h1
+    {
+        font-size: 13px;
+        padding: 3px 0 10px;
     }
 }

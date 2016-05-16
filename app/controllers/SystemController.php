@@ -53,7 +53,7 @@ class SystemController extends BaseController
             'settings' => $settings,
             'system' => $this->system,
             'articles' => $articles,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'isUpdateAvailable' => $this->isUpdateAvailable(),
         ]);
     }
     
@@ -183,10 +183,48 @@ class SystemController extends BaseController
         $response = $this->system->reboot();
         return Response::json($response);
     }
+
+    public function rebooting()
+    {
+        $response = $this->system->rebooting();
+        return Response::json($response);
+    }
+
+    public function shuttingdown()
+    {
+        $response = $this->system->shuttingdown();
+        return Response::json($response);
+    }
     
     public function getVersions()
     {
         $versions = $this->system->getVersionsFromGithub();
         return Response::json($versions);
+    }
+
+    public function isStreamRunning()
+    {
+        $status = true;
+
+        try
+        {
+            $fp = fsockopen('127.0.0.1', 8888, $errno, $errstr, 5);
+            if(!$fp)
+            {
+                // port is closed or blocked
+                $status = false;
+            }
+            else
+            {
+                // port is open and available
+                fclose($fp);
+            }
+        }
+        catch(\Exception $ex)
+        {
+            $status = false;
+        }
+
+        return Response::json(["status" => $status]);
     }
 }

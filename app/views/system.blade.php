@@ -78,8 +78,20 @@
                         Kerberos.io {{Lang::get('system.twoServicesRunning')}}.
                         <h3>{{Lang::get('system.versions')}}</h3>
                         <table class="table">
-                            <tr><td>Web</td><td>{{$system->getWebVersion()}}</td></tr>
-                            <tr><td>Machinery</td><td>{{$system->getMachineryVersion()}}</td></tr>
+                            <tr>
+                                <td>Web</td>
+                                <td>{{$system->getWebVersion()}}</td>
+                                <td><span class="label label-success">Running</span></td>
+                            </tr>
+                            <tr>
+                                <td>Machinery</td>
+                                <td>{{$system->getMachineryVersion()}}</td>
+                                <td>
+                                    <span class="label label-{{($system->isMachineryRunning()) ? 'success' : 'danger'}}">
+                                        {{($system->isMachineryRunning()) ? 'Running' : 'Not running'}}
+                                    </span>
+                                </td>
+                            </tr>
                         </table> 
                         <h3>Statistics</h3>
                         <table class="table">
@@ -94,11 +106,39 @@
                                 </td>
                             </tr>
                         </table> 
+                        <h3>Log</h3>
+                        <div class="logging">
+                            <pre class="zoom"><code class="html">{{$system->getShortLog()}}</code></pre>
+                        </div>
+                        <div id="logging-modal" data-remodal-id="logging">
+                            <div class="modal-body">
+                                <pre><code class="html">{{$system->getLog()}}</code></pre>
+                            </div>
+                        </div>
                         <div id="system-actions">
                             <a id="download" href="{{URL::to('/')}}/api/v1/system/download">{{Lang::get('system.downloadSystemFiles')}}</a>
                             <a id="download" href="{{URL::to('/')}}/api/v1/images/download">{{Lang::get('system.downloadImages')}}</a>
-                            <a id="clean">{{Lang::get('system.removeImages')}}</a>
+                            <a id="clean">{{Lang::get('system.removeImages')}}</a><a id="shutdown">{{Lang::get('system.shutdown')}}</a><a id="reboot">{{Lang::get('system.reboot')}}</a>
                         </div>
+                        <div id="shutdown-modal" data-remodal-id="shutdown">
+                            <div class="modal-body"></div>
+                        </div>
+                        <script type="text/javascript">
+                            require([_jsBase + 'main.js'], function(common)
+                            {
+                                require(["remodal"], function(remodal)
+                                {
+                                    var options = {};
+
+                                    var modal = $('[data-remodal-id=logging]').remodal(options);
+
+                                    $("pre.zoom").click(function()
+                                    {
+                                        modal.open();
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div id="news" class="col-lg-6">
@@ -139,6 +179,7 @@
                         closeOnAnyClick: false, 
                         closeOnEscape: false
                     };
+
                     var modal = $('[data-remodal-id=upgrade]').remodal(options);
  
                     // Set board and current version
@@ -226,11 +267,85 @@
                             });
                         });
                     });
-                });
-            
-                $("#clean").click(function()
-                {
-                    System.clean();
+
+                    $("#clean").click(function()
+                    {
+                        System.clean();
+                    });
+
+                    $("#reboot").click(function()
+                    {   
+                        var options = {
+                            hashTracking: false,
+                            closeOnAnyClick: false, 
+                            closeOnEscape: false
+                        };
+                        var modal = $('[data-remodal-id=shutdown]').remodal(options);
+                        modal.open();
+
+                        $("#shutdown-modal").html(
+                                "<h1>{{Lang::get('system.rebooting')}}..</h1>" +
+                                "<div id='count-down'></div>");
+
+                        var waitingTime = 60000;
+
+                        var countDown = new ProgressBar.Circle('#count-down', {
+                            color: '#943633',
+                            strokeWidth: 3,
+                            trailWidth: 1,
+                            duration: waitingTime,
+                            text: {
+                                value: '60'
+                            },
+                            step: function(state, bar)
+                            {
+                                bar.setText(60 - (bar.value() * 100).toFixed(0));
+                            }
+                        });
+
+                        countDown.animate(1);
+
+                        setInterval(function() { window.location.reload() }, waitingTime);                      
+
+                        System.rebooting(function(){});
+                    });
+    
+                    $("#shutdown").click(function()
+                    {
+                        var options = {
+                            hashTracking: false,
+                            closeOnAnyClick: false, 
+                            closeOnEscape: false
+                        };
+                        var modal = $('[data-remodal-id=shutdown]').remodal(options);
+                        modal.open();
+
+                        $("#shutdown-modal").html(
+                                "<h1>{{Lang::get('system.shuttingdown')}}..</h1>" +
+                                "<div id='count-down'></div>");
+
+                        var waitingTime = 60000;
+
+                        var countDown = new ProgressBar.Circle('#count-down', {
+                            color: '#943633',
+                            strokeWidth: 3,
+                            trailWidth: 1,
+                            duration: waitingTime,
+                            text: {
+                                value: '60'
+                            },
+                            step: function(state, bar)
+                            {
+                                bar.setText(60 - (bar.value() * 100).toFixed(0));
+                            }
+                        });
+
+                        countDown.animate(1);
+
+                        setInterval(function() { window.location.reload() }, waitingTime); 
+
+                        System.shuttingdown(function(){});
+                    });
                 });
             });
         });

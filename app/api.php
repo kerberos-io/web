@@ -40,6 +40,7 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('images/download', 'Controllers\SystemController@downloadImages');
         Route::get('images/clean', 'Controllers\SystemController@cleanImages');
         Route::get('system/download', 'Controllers\SystemController@downloadConfiguration');
+        Route::get('system/stream', 'Controllers\SystemController@isStreamRunning');
         Route::get('system/versions', 'Controllers\SystemController@getVersions');
         Route::post('system/upgrade/download', 'Controllers\SystemController@download');
         Route::post('system/upgrade/progress', 'Controllers\SystemController@progress');
@@ -47,6 +48,8 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('system/upgrade/depack', 'Controllers\SystemController@depack');
         Route::get('system/upgrade/transfer', 'Controllers\SystemController@transfer');
         Route::get('system/upgrade/reboot', 'Controllers\SystemController@reboot');
+        Route::get('system/reboot', 'Controllers\SystemController@rebooting');
+        Route::get('system/shutdown', 'Controllers\SystemController@shuttingdown');
         
         // -----------------
         // Image Controller

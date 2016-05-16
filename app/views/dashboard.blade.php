@@ -147,10 +147,16 @@
                                                             url: _baseUrl + "/api/v1/images/perweekday/1",
                                                             callback: function (){}
                                                         });
+
+                                                        Radar.redraw();
                                                     }
                                                 });
+
+                                                Graph.redraw();
                                             }
                                         });
+
+                                        Pie.redraw();
                                     }
                                 }
                             });

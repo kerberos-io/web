@@ -45,7 +45,7 @@ return array(
     
 		'sent' => 'Sent',
     
-	'twoServicesRunning' => 'has two services running: the web and the machinery',
+	'twoServicesRunning' => 'needs two services: the web and the machinery',
     
 	'versions' => 'Versions',
     
@@ -60,6 +60,10 @@ return array(
 	'downloadImages' => 'Download images',
     
 	'removeImages' => 'Remove images',
+
+	'shutdown' => 'Shutdown',
+
+	'reboot' => 'Reboot',
     
 	'release' => 'Release',
     
@@ -76,5 +80,7 @@ return array(
 	'transferring' => 'Transferring',
     
 	'rebooting' => 'System is rebooting',
+    
+	'shuttingdown' => 'System is shutting down',
 
 );

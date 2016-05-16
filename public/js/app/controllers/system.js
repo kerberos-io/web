@@ -197,6 +197,16 @@ define(["jquery", "progressbar"], function($, ProgressBar)
             $.get(_baseUrl + "/api/v1/system/upgrade/reboot", callback)
             .fail(function(){});
         },
+        rebooting: function(callback)
+        {
+            $.get(_baseUrl + "/api/v1/system/reboot", callback)
+            .fail(function(){});
+        },
+        shuttingdown: function(callback)
+        {
+            $.get(_baseUrl + "/api/v1/system/shutdown", callback)
+            .fail(function(){});
+        },
         clean: function()
         {
             // ----------------

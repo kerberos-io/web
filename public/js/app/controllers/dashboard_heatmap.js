@@ -41,7 +41,12 @@ define(["heatmap"], function(heatmap)
         },
         draw: function()
         {
-            if(this.data.length > 0)
+            if($(".heatmap .load5"))
+            {
+                $(".heatmap .load5").remove();
+            }
+
+            if(this.data && this.data.length > 0)
             {
                 this.drawBackground();
                 this.setRegions(this.data);
@@ -49,10 +54,15 @@ define(["heatmap"], function(heatmap)
             }
             else
             {
-                if(this.data.length > 0 && $("#heatmap .load5"))
-                {
-                    $("#heatmap .load5").remove();
-                }
+                var canvas = $(".heatmap canvas").get(0);
+                var ctx = canvas.getContext("2d");
+                
+                var x = canvas.width / 2;
+                var y = canvas.height / 2;
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'black';
+                ctx.fillText('No data available', x, y);
             }
         },
         drawBackground: function()

@@ -4,7 +4,8 @@
 *
 **/
 
-define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/ImageView", "jellyfish"], function($, slider, ImagesCollection, ImageView, jellyfish)
+define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/ImageView", "jellyfish"], 
+    function($, slider, ImagesCollection, ImageView, jellyfish)
 {
     return {
         time: undefined,
@@ -31,7 +32,6 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
             imagesCollection.setDay(this.day);
             imagesCollection.setStartTime(this.time);
             imagesCollection.fetch({async: false});
-            
             imageView.render();
 
             jellyfish.addLoadContentFunction(imageView.draw);

@@ -11,19 +11,40 @@ define(["jquery", "chartjs"], function($, Chart)
         {
             this_ = this;
             this_.config = config;
-            
+                
+            $(window).resize(function()
+            {
+                this_.resize();
+                this_.draw();
+            })
+
+            setTimeout(this_.config.callback, 300);
+        },
+        redraw: function()
+        {
+            var self = this;
+
             $.get(this_.config.url,function(data)
             {
-               this_.draw(data);
-            })
-            .always(function()
-            {
-                // Wait 300 ms before executing 
-                setTimeout(this_.config.callback, 300);
+                self.data = data;
+                if(data["days"].length == 0)
+                {
+                    self.resize();
+                }
+                self.draw();
             });
         },
-        draw: function(data)
+        resize: function()
         {
+            var canvas = $("#time-graph canvas");
+            canvas.attr("width", $("#time-graph").width());
+            canvas.attr("height", canvas.width()/2);
+            $("#time-graph").css({"height": canvas.width()}); 
+            $("#time-graph").css({"height": canvas.height()});
+        },
+        draw: function()
+        {
+            var data = this.data;
             var canvas = $("#time-chart").get(0);
             var ctx = canvas.getContext("2d");
 
@@ -124,14 +145,23 @@ define(["jquery", "chartjs"], function($, Chart)
             // ----------------------------------------------------------------
             // This will get the first returned node in the jQuery collection.
 
+            if($("#time-graph .load5").length > 0)
+            {
+                $("#time-graph .load5").remove();
+            }
+
             if(statistics['datasets'] && statistics['datasets'].length > 0)
             {
-                if($("#time-graph .load5").length > 0)
-                {
-                    $("#time-graph .load5").remove();
-                }
-            
                 var timeChart = new Chart(ctx).Line(statistics, options);
+            }
+            else
+            {
+                var x = canvas.width / 2;
+                var y = canvas.height / 2;
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'black';
+                ctx.fillText('No data available', x, y);
             }
         }
     };
