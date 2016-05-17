@@ -93,7 +93,20 @@ class SettingsController extends BaseController
             }
         }
         
-        $this->reader->save($this->config, $settings);
+        try
+        {
+            $this->reader->save($this->config, $settings);
+        }
+        catch(\Exception $ex)
+        {
+            $data = ['message' => ''];
+
+            if(strpos($ex, 'Permission denied') !== false)
+            {
+                $data['message'] = $ex;
+                return View::make('errors.permission-denied', $data);
+            }
+        }
 
         return Redirect::back();
     }

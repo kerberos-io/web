@@ -45,7 +45,7 @@ return array(
     
 		'sent' => 'Envoyés',
     
-	'twoServicesRunning' => 'a deux services actifs : le front-end et la machinerie',
+	'twoServicesRunning' => 'a besoin de deux services : le front-end et la machinerie',
     
 	'versions' => 'Versions',
     
@@ -60,6 +60,10 @@ return array(
 	'downloadImages' => 'Télécharger des images',
     
 	'removeImages' => 'Supprimer des images',
+
+	'shutdown' => 'Éteindre',
+
+	'reboot' => 'Réinitialiser',
     
 	'release' => 'Release',
     
@@ -76,5 +80,7 @@ return array(
 	'transferring' => 'Transfert',
     
 	'rebooting' => 'Reboot du système',
+    
+	'shuttingdown' => 'Éteindre du système'
 
 );

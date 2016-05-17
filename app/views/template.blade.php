@@ -17,10 +17,13 @@
     <link href="{{URL::to('/')}}/js/vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- RequireJS -->
     <script src="{{URL::to('/')}}/js/vendor/requirejs/require.js"></script>
-    <!-- Core CSS -->
-    <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
     <!-- Toggle -->
     <link href="{{URL::to('/')}}/js/vendor/css-toggle-switch/dist/toggle-switch.css" rel="stylesheet">
+    <!-- Photoswipe -->
+    <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/photoswipe.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/default-skin/default-skin.css" rel="stylesheet">
+    <!-- Core CSS -->
+    <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
     
     <!-- Globals variables, that are used in the application -->
     <script type="text/javascript">

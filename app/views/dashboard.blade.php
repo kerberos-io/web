@@ -101,7 +101,7 @@
                             Streamer.initialize(
                             {
                                 element: "livestream",
-                                host: "<?=ltrim(URL::to('/'), 'http://')?>",
+                                host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
                                 port: 8888,
                                 width: '100%',
                                 callback: function(){}
@@ -147,10 +147,16 @@
                                                             url: _baseUrl + "/api/v1/images/perweekday/1",
                                                             callback: function (){}
                                                         });
+
+                                                        Radar.redraw();
                                                     }
                                                 });
+
+                                                Graph.redraw();
                                             }
                                         });
+
+                                        Pie.redraw();
                                     }
                                 }
                             });

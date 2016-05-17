@@ -45,7 +45,7 @@ return array(
     
 		'sent' => 'Verstuurd',
     
-	'twoServicesRunning' => 'heeft twee applicaties actief: de web en de machinery',
+	'twoServicesRunning' => 'heeft twee applicaties nodig: de web en de machinery',
     
 	'versions' => 'Versies',
     
@@ -61,6 +61,10 @@ return array(
     
 	'removeImages' => 'Verwijder beelden',
     
+	'shutdown' => 'Afsluiten',
+
+	'reboot' => 'Herstarten',
+
 	'release' => 'Release',
     
 	'publishedAt' => 'Gepubliceerd op',
@@ -76,5 +80,7 @@ return array(
 	'transferring' => 'Schrijven',
     
 	'rebooting' => 'Systeem is aan het heropstarten',
+    
+	'shuttingdown' => 'Systeem is aan het afsluiten'
 
 );

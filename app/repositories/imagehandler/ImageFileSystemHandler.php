@@ -618,7 +618,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $numberOfDays = count($hoursPerDay);
         for($i = 0; $i < 24; $i++)
         {
-            $hours[$i] = intval($hours[$i] / $numberOfDays);
+            $hours[$i] = $numberOfDays==0 ? 0 : intval($hours[$i] / $numberOfDays);
         }
 
         return $hours;
