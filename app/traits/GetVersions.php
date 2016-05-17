@@ -2,7 +2,7 @@
 
 use Auth, Config, Guzzle\Http\Client as Client;
 use Models\Cache\Cache as Cache;
-use Input;
+use Input, Session;
 
 trait GetVersions
 {
@@ -41,6 +41,11 @@ trait GetVersions
         
         $user = Auth::user();
         $key = $user->username . "_kios_versions";
+    
+        if(Input::get('develop'))
+        {
+            Session::forget($key);
+        }
 
         $versions = $cache->storeAndGet($key, function()
         {
