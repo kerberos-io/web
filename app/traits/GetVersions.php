@@ -2,6 +2,7 @@
 
 use Auth, Config, Guzzle\Http\Client as Client;
 use Models\Cache\Cache as Cache;
+use Input;
 
 trait GetVersions
 {
@@ -44,6 +45,10 @@ trait GetVersions
         $versions = $cache->storeAndGet($key, function()
         {
             $url = "https://api.github.com/repos/kerberos-io/kios/releases";
+            if(Input::get('develop'))
+            {
+                $url = "https://api.github.com/repos/cedricve/kios/releases";
+            }
 
             $client = new Client();
             $request = $client->get($url);

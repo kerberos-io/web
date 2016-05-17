@@ -61,9 +61,16 @@ define(["jquery", "progressbar"], function($, ProgressBar)
             
             var versionwrapper = $("#kios-versions");
 
+            // Set api end point and check if develop
+            var url = _baseUrl + "/api/v1/system/versions";
+            if(window.location.hash.substr(1) == 'develop')
+            {
+                url += "?develop=true";
+            }
+
             // Get versions from API
             var self = this;
-            $.get(_baseUrl + "/api/v1/system/versions",function(versions)
+            $.get(url,function(versions)
             {
                 self.versions = [];
                 
