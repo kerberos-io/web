@@ -33,6 +33,13 @@ RUN apt-get -y install supervisor curl subversion libcurl4-gnutls-dev cmake dh-a
 RUN sed -i -e "s/;listen.mode = 0660/listen.mode = 0750/g" /etc/php5/fpm/pool.d/www.conf && \
 find /etc/php5/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
+########################################
+# Force both nginx and PHP-FPM to run in the foreground
+# This is a requirement for supervisor
+
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
+
 ###################
 # nginx site conf
 
