@@ -19,7 +19,7 @@ define(["streamer"], function(streamer)
                 host : this_.config.host,
                 refreshRate: 300,
                 quality: 100,
-                port: 8888
+                port: this_.config.port
             });
 
             var width = "100%";
