@@ -8167,7 +8167,7 @@ div.scroll-down {
   color: #fff;
   text-shadow: 1px 1px #111;
 }
-#point_0:hover {
+.hullselection #point_0:hover {
   background-color: #fff;
 }
 div.line {
