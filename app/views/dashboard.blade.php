@@ -98,20 +98,19 @@
                                  ], 
                         function(Streamer, Sequencer, Heatmap, Pie, Graph, Radar)
                         {
-		         $.get('api/v1/streamPort',function(data)
-                         {
-                          console.log("success: "+data[0]);
-                          Streamer.initialize(
-                             {
-                                 element: "livestream",
-                                 host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
-                                 port: data[0],
-                                 width: '100%',
-                                 callback: function(){}
-                             });
-                          })
+                            $.get('api/v1/streamPort',function(data)
+                            {
+                                Streamer.initialize(
+                                {
+                                    element: "livestream",
+                                    host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
+                                    port: data[0],
+                                    width: '100%',
+                                    callback: function(){}
+                                });
+                            })
 
-                          Sequencer.initialize(
+                            Sequencer.initialize(
                             {
                                 element: "canvas",
                                 direction:"-x",

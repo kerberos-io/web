@@ -209,7 +209,7 @@ class SettingsController extends BaseController
 
    public function getStreamPort()
    {
-        $instance = explode(',', $this->getPiece("stream.xml", ["mjpg","streamPort"])->__toString());
+        $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
         return Response::json($instance);
    }
 
