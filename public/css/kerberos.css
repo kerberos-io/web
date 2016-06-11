@@ -8180,14 +8180,14 @@ div.line {
   -moz-transition: -moz-transform 0s;
   transition: transform 0s;
 }
-.signout {
-  display: none;
-}
-.system {
-  display: none;
-}
+.signout,
+.system,
+.settings,
 label.toggle-mobile {
   display: none;
+}
+.settings {
+  margin-right: 10px;
 }
 .machinery-switch {
   width: 60px;
@@ -8274,15 +8274,27 @@ label.toggle-mobile {
   .row {
     margin: 0;
   }
+  .navbar-brand {
+    display: none;
+  }
   .signout,
-  .sync {
+  .sync,
+  .system,
+  label.toggle-mobile,
+  .settings {
     float: right;
     display: block;
   }
   .signout i,
-  .sync i {
+  .sync i,
+  .system i,
+  label.toggle-mobile i,
+  .settings i {
     color: #fff;
     padding: 17px 16px 0 0;
+  }
+  label.toggle-mobile {
+    margin-right: 18px;
   }
   .register,
   .forgot {
