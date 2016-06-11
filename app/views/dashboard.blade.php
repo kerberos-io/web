@@ -98,15 +98,18 @@
                                  ], 
                         function(Streamer, Sequencer, Heatmap, Pie, Graph, Radar)
                         {
-                            Streamer.initialize(
+                            $.get('api/v1/streamPort',function(data)
                             {
-                                element: "livestream",
-                                host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
-                                port: 8888,
-                                width: '100%',
-                                callback: function(){}
-                            });
-                            
+                                Streamer.initialize(
+                                {
+                                    element: "livestream",
+                                    host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
+                                    port: data[0],
+                                    width: '100%',
+                                    callback: function(){}
+                                });
+                            })
+
                             Sequencer.initialize(
                             {
                                 element: "canvas",

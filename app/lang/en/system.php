@@ -41,7 +41,7 @@ return array(
     
 		'device' => 'Device',
     
-		'recieved' => 'Recieved',
+		'recieved' => 'Received',
     
 		'sent' => 'Sent',
     

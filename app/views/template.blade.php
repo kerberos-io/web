@@ -58,10 +58,17 @@
                 <a class="system" href="{{URL::to('/')}}/system">
                     <i class="fa fa-desktop"></i>
                 </a>
+                 <a class="settings" href="{{URL::to('/settings')}}">
+                    <i class="fa fa-wrench"></i>
+                </a>
                 <div class="circle">
-                    <div class="kerberos"></div>
+                    <a href="{{URL::to('/')}}">
+                        <div class="kerberos"></div>
+                    </a>
                 </div>
-                <a class="navbar-brand" href="{{URL::to('/')}}"><h1>KERBEROS.IO</h1></a>
+                <a class="navbar-brand" href="{{URL::to('/')}}">
+                    <h1>KERBEROS.IO</h1>
+                </a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -73,7 +80,7 @@
                 </li>
                 @if(Config::get('app.config') != '')
                 <li>
-                    <a href="{{URL::to('/settings')}}"><i class="fa fa-list"></i> {{Lang::get('general.settings')}}</a>
+                    <a href="{{URL::to('/settings')}}"><i class="fa fa-wrench"></i> {{Lang::get('general.settings')}}</a>
                 </li>
                 <li>
                     <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> {{Lang::get('general.cloud')}}</a>

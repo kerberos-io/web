@@ -1,30 +1,3 @@
-@font-face {
-  font-family: 'PT Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('PT Sans'), local('PTSans-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/7YGmE4Ls5b94ct65u07hVQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
-}
-@font-face {
-  font-family: 'PT Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('PT Sans Bold'), local('PTSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/0XxGQsSc1g4rdRdjJKZrNL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
-}
-@font-face {
-  font-family: 'PT Sans';
-  font-style: italic;
-  font-weight: 400;
-  src: local('PT Sans Italic'), local('PTSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/PIPMHY90P7jtyjpXuZ2cLLO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
-}
-@font-face {
-  font-family: 'PT Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: local('PT Sans Bold Italic'), local('PTSans-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/lILlYDvubYemzYzN7GbLkKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
-
 *:focus
 {
     outline: none;
@@ -337,7 +310,7 @@ div.scroll-down
     text-shadow: 1px 1px #111;
 }
 
-#point_0:hover
+.hullselection #point_0:hover
 {
     background-color: #fff;
 }
@@ -354,19 +327,14 @@ div.line
     transition:         transform 0s;
 }
 
-.signout
+.signout, .system, .settings, label.toggle-mobile
 {
     display: none;
 }
 
-.system
+.settings
 {
-    display: none;
-}
-
-label.toggle-mobile
-{
-    display: none;
+    margin-right: 10px;
 }
 
 .machinery-switch
