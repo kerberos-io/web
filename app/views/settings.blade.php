@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="settings" class="col-lg-12">
-                    <h2><i class="fa fa-list"></i> {{Lang::get('settings.settings')}}</h2>
+                    <h2><i class="fa fa-wrench"></i> {{Lang::get('settings.settings')}}</h2>
                     {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
                         @include('settings_controls', array('settings' => $settings))
                         <div class="submit-form">
