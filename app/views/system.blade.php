@@ -299,7 +299,7 @@
                             },
                             step: function(state, bar)
                             {
-                                bar.setText(60 - (bar.value() * 100).toFixed(0));
+                                bar.setText(60 - (bar.value() * 60).toFixed(0));
                             }
                         });
 
@@ -336,7 +336,7 @@
                             },
                             step: function(state, bar)
                             {
-                                bar.setText(60 - (bar.value() * 100).toFixed(0));
+                                bar.setText(60 - (bar.value() * 60).toFixed(0));
                             }
                         });
 
