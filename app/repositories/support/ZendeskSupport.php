@@ -40,11 +40,17 @@ class ZendeskSupport implements SupportInterface
             {
                 array_push($articles, [
                     'title' => $body[$i]->title,
+                    'timestamp' => Carbon::parse($body[$i]->created_at)->timestamp,
                     'date' => Carbon::parse($body[$i]->created_at)->formatLocalized('%d %B %Y'),
                     'body' => $body[$i]->body,
                     'url' => $body[$i]->html_url
                 ]);
             }
+
+            usort($articles, function($a, $b)
+            {
+                return strcmp($a['timestamp'], $b['timestamp']);
+            });
         }
         
         if($count > count($articles))
