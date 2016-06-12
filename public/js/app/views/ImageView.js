@@ -191,7 +191,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         }
             
                         // Initializes and opens PhotoSwipe
-                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
+                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {history: false});
                         gallery.init();
                     }
                 });
@@ -361,7 +361,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         }
         
                         // Initializes and opens PhotoSwipe
-                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
+                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {history: false});
                         gallery.init();
                     }
                 });
