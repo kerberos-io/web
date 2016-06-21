@@ -11,8 +11,8 @@ return array(
 	|
 	*/
     
-    'settings' => 'Settings',
+    'settings' => 'Configurações',
 
-	'update' => 'Update',
+	'update' => 'Atualizar',
 
 );

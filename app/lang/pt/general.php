@@ -11,19 +11,19 @@ return array(
 	|
 	*/
 
-	'dashboard' => 'Dashboard',
+	'dashboard' => 'Painel',
 
-	'system' => 'System',
+	'system' => 'Sistema',
 
-	'settings' => 'Settings',
+	'settings' => 'Configurações',
 
-	'cloud' => 'Cloud',
+	'cloud' => 'Nuvem',
     
 	'on' => 'On',
     
 	'off' => 'Off',
     
-	'logout' => 'Logout',
+	'logout' => 'Sair',
     
     
     /*
@@ -32,24 +32,24 @@ return array(
 	|------------------------
     */
 
-    'monday' => 'Monday',
+    'monday' => 'Segunda-Feira',
 
-    'tuesday' => 'Tuesday',
+    'tuesday' => 'Terça-Feira',
 
-    'wednesday' => 'Wednesday',
+    'wednesday' => 'Quarta-Feira',
 
-    'thursday' => 'Thursday',
+    'thursday' => 'Quinta-Feira',
 
-    'friday' => 'Friday',
+    'friday' => 'Sexta-Feira',
 
-    'saturday' => 'Saturday',
+    'saturday' => 'Sábado',
 
-    'sunday' => 'Sunday',
+    'sunday' => 'Domingo',
             
-    'today' => 'Today',
+    'today' => 'Hoje',
     
-    'yesterday' => 'Yesterday',
+    'yesterday' => 'Ontem',
     
-    'dayBeforeYesterday' => 'Ereyesterday'
+    'dayBeforeYesterday' => 'Antes de Ontem'
 
 );
