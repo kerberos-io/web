@@ -11,13 +11,13 @@ return array(
 	|
 	*/
 
-	'system' => 'System',
+	'system' => 'Sistema',
 
-	'diskAlmostFull' => 'Hey, your disk is almost full. Please remove some images..',
+	'diskAlmostFull' => 'Hey, o seu disco esta quase cheio, por favor remova algumas imagens..',
 
-	'board' => 'Board',
+	'board' => 'Quadro',
     
-	'model' => 'Model',
+	'model' => 'Modelo',
     
 	'os' => 'OS',
     
@@ -25,56 +25,56 @@ return array(
     
 	'hostname' => 'Hostname',
     
-	'architecture' => 'Architecture',
+	'architecture' => 'Arquitetura',
     
-	'thisMachine' => 'This machine has',
+	'thisMachine' => 'Esta máquina tem',
     
-	'cpuRunning' => 'CPU\'s running with an average load of',
+	'cpuRunning' => 'CPU\'s executando com carga media de',
     
-	'diskSpecs' => 'Disk specifications',
+	'diskSpecs' => 'Especificações de disco',
     
-	'thereAre' => 'There are',
+	'thereAre' => 'Existem',
     
-	'harddisksAvailable' => 'hard disks available on this machine',
+	'harddisksAvailable' => 'disco rídigos disponíveis nesta máquina',
     
-	'networkSpecs' => 'Network specifications',
+	'networkSpecs' => 'Especificações de rede',
     
-		'device' => 'Device',
+		'device' => 'Dispositivo',
     
-		'recieved' => 'Recieved',
+		'recieved' => 'Recebido',
     
-		'sent' => 'Sent',
+		'sent' => 'Enviado',
     
-	'twoServicesRunning' => 'has two services running: the web and the machinery',
+	'twoServicesRunning' => 'existem dois serviços em execução: o web e o machinery',
     
-	'versions' => 'Versions',
+	'versions' => 'Versões',
     
-	'numberOfImages' => '# of images',
+	'numberOfImages' => '# de imagens',
     
-	'numberOfDays' => '# of days',
+	'numberOfDays' => '# de dias',
     
-	'days' => 'Days',
+	'days' => 'Dias',
     
-	'downloadSystemFiles' => 'Download system files',
+	'downloadSystemFiles' => 'Sistema de download de arquivos',
     
-	'downloadImages' => 'Download images',
+	'downloadImages' => 'Download das imagens',
     
-	'removeImages' => 'Remove images',
+	'removeImages' => 'Remover Imagens',
     
-	'release' => 'Release',
+	'release' => 'Lançamento',
     
-	'publishedAt' => 'Published at',
+	'publishedAt' => 'Publicado em',
     
-	'install' => 'Install',
+	'install' => 'Instalar',
     
-	'downloading' => 'Downloading',
+	'downloading' => 'Baixando',
     
-	'unzipping' => 'Unzipping',
+	'unzipping' => 'Descompactando',
     
-	'unpacking' => 'Unpacking',
+	'unpacking' => 'Desempacotando',
     
-	'transferring' => 'Transferring',
+	'transferring' => 'Transferindo',
     
-	'rebooting' => 'System is rebooting',
+	'rebooting' => 'O sistema esta reiniciando',
 
 );
