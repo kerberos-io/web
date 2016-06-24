@@ -17,7 +17,7 @@ return array(
 
 	"user" => "Não podemos encontrar um usuário com esse endereço de e-mail.",
 
-	"token" => "Esse token de redefinição de senha é inválida.",
+	"token" => "Esse token de redefinição de senha é inválido.",
 
 	"sent" => "Lembrete de senha enviada!",
 

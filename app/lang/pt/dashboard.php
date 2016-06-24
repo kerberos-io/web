@@ -11,22 +11,22 @@ return array(
 	|
 	*/
 
-	'activity' => 'Activity',
+	'activity' => 'Atividades',
 
-		'selectView' => 'Select view',
+		'selectView' => 'Modo de Exibição',
 
-		'liveView' => 'Live View',
+		'liveView' => 'Exibição ao vivo',
 
-		'lastActivity' => 'Latest Activity',
+		'lastActivity' => 'Últimas Atividades',
 
-		'heatmap' => 'Heatmap',
+		'heatmap' => 'Mapa de Calor',
 
-	'overview' => 'Overview',
+	'overview' => 'Visão Geral',
 
-	'hour' => 'Hour',
+	'hour' => 'Hora',
     
-        'average' => 'Average',
+        'average' => 'Média',
 
-	'weekday' => 'Weekday',
+	'weekday' => 'Dia da semana',
 
 );
