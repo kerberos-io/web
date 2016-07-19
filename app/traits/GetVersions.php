@@ -9,12 +9,11 @@ trait GetVersions
     public function isUpdateAvailable()
     {
         $currentVersion = $this->getCurrentVersion();
-        $currentVersion = "1.0.0";
 
         if($currentVersion)
         {
             $versions = [];
-            
+
             try
             {
                 $versions = $this->getVersionsFromGithub();
