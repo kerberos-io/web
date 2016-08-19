@@ -49,8 +49,11 @@ define(["jquery"], function($)
                 // Success
                 .done(function(data)
                 {
-                    messageBag.hide();
                     location.reload();
+                    $(".login").fadeOut(1000, function(){
+                        $(".login").html('<div class="load1"><div class="loader"></div></div>');
+                        $(".login").show();
+                    });
                 })
 
                 // Failed
