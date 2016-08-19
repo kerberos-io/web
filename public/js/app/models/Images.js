@@ -6,11 +6,16 @@ define(["underscore", "backbone"], function (_, Backbone)
     var Images = Backbone.Model.extend({});
     var ImagesCollection = Backbone.Collection.extend({
         page: 1,
+        lastTime: undefined,
         take: 12,
         model: Images,
         setPage: function(page)
         {
             this.page = page;
+        },
+        setLastTime: function(time)
+        {
+            this.lastTime = time
         },
         setDay: function(day)
         {

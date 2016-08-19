@@ -4,11 +4,11 @@
 *
 **/
 
-define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/ImageView", "jellyfish"], 
-    function($, slider, ImagesCollection, ImageView, jellyfish)
+define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/ImageView", "jellyfish"], function($, slider, ImagesCollection, ImageView, jellyfish)
 {
     return {
         time: undefined,
+        lastTime: undefined,
         day: undefined,
 
         setDay: function(day)
@@ -18,6 +18,10 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
         setStartTime: function(time)
         {
             this.time = time;
+        },
+        setLastTime: function(time)
+        {
+            this.lastTime = time;
         },
         initialize: function()
         {
@@ -31,11 +35,7 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
             
             imagesCollection.setDay(this.day);
             imagesCollection.setStartTime(this.time);
-            imagesCollection.fetch({async: false});
-            imageView.render();
-
-            jellyfish.addLoadContentFunction(imageView.draw);
-            jellyfish.init();
+            imagesCollection.setLastTime(this.lastTime);
 
             var typewatch = function()
             {
@@ -48,8 +48,9 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
 
             function appendNextPage()
             {
-                $(".load4").css({'display':'block'});
-                $(".scroll-down").css({'display':'none'});
+                $("#load-more-images").show();
+                $(".scroll-down").hide();
+
                 typewatch(function()
                 {
                     imageView.appendNextPage(jellyfish);
@@ -66,14 +67,33 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
                     appendNextPage();
                 }
             }
-
+            
             // --------------------------------------------------
             // Get images perhour, used to visualize time slider
             //  - highlight the activity on the slider
 
             var self = this;
-            $.get(_baseUrl + "/api/v1/images/"+this.day+"/hours",function(data)
+
+            //$("#timeslider-wrapper").hide();
+
+            imagesCollection.fetch({async: true, success:function()
+                {
+                    imageView.render();                    
+                    jellyfish.addLoadContentFunction(imageView.draw);
+                    jellyfish.init();
+
+
+                    $("#loading-image-view").hide();
+                    $("#images-overview").show();
+
+
+            $.get(_baseUrl + "/api/v1/images/"+self.day+"/hours",function(data)
             {
+                
+                
+                    $("#loading-image-view").hide();
+                    $("#images-overview").show();
+
                 $('#timer-slider').slider({
                     tooltip: 'always',
                     formatter: function(value)
@@ -90,6 +110,11 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
                     }
                 }).on('slideStop', function(ev)
                 {
+                    imageView.lastTime = undefined;
+
+                    $("#loading-image-view").show();
+                    $("#images-overview").hide();
+
                     if(imageView.atEndOfDay)
                     {
                         $(".load4").css({'display':'none'});
@@ -112,9 +137,14 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
                     {
                         imagesCollection.setStartTime(undefined);
                     }
-                    imagesCollection.fetch({async: false});
-                    imageView.render();
-                    jellyfish.init();
+
+                    imagesCollection.fetch({async: true, success: function()
+                    {
+                        imageView.render();
+                        $("#loading-image-view").hide();
+                        $("#images-overview").show();
+                        jellyfish.init();
+                    }});
                 });
     
                 // --------------------------
@@ -129,7 +159,7 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
                     {
                         if(data[i] > max) max = data[i];
                     }
-                    
+
                     // Decorate gradient for all browsers
                     var styling_webkit = '-webkit-linear-gradient(left,';
                     var styling_moz = '-moz-linear-gradient(left,';
@@ -176,6 +206,8 @@ define(["jquery", "seiyria-bootstrap-slider", "app/models/Images", "app/views/Im
                     $(".slider-track").css({'background': styling_wc3});
                 }
             });
+            }});
+
 
             // -----------------------------------
             // Append new images at bottom of page or clicked on refresh.
