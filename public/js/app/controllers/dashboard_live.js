@@ -17,7 +17,7 @@ define(["streamer"], function(streamer)
             var viewer = new streamer.Viewer({
                 divID : this_.config.element,
                 host : this_.config.host,
-                refreshRate: 300,
+                refreshRate: 10,
                 quality: 100,
                 port: this_.config.port
             });
