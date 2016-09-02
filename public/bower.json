@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "*",
+    "jquery": "2.2.2",
     "fancybox": "*",
     "bootstrap": "*",
     "underscore": "*",

@@ -865,6 +865,11 @@ MJPEGCANVAS.Viewer = function(options) {
 
     if (that.image.width * that.image.height > 0)
     {
+        // silly firefox...
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+          var aux = that.image.src.split('?killcache=');
+          that.image.src = aux[0] + '?killcache=' + Math.random(42);
+        }
         context.drawImage(that.image, 0, 0, $("#livestream").width(), $("#livestream").width()/2);
     }
     else
@@ -902,6 +907,11 @@ MJPEGCANVAS.Viewer = function(options) {
       context.fillText('Waiting for stream to connect', x, y); 
       setTimeout(function()
       {
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)
+        {
+          drawInterval*=10;
+        }
+
         var interval = setInterval(draw, drawInterval);
       }, 1000);
     }

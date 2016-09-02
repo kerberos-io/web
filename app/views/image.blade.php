@@ -14,8 +14,12 @@
 
                     </div>
 
-                    @include('photoswipe')
+                    <div id="loading-image-view" class="load4" style="padding:50px 0;">
+                        <div class="loader"></div>
+                    </div>
 
+                    @include('photoswipe')
+                    
                     <div id="images-overview"></div>
                     <script type="text/javascript">
                         require([_jsBase + 'main.js'], function(common)
@@ -38,7 +42,7 @@
     <!-- CSS loader, shown when an url is pasted -->
     <div class="start-loading">
         <div class="scroll-down"><i class="fa fa-repeat"></i> Load more..</div>
-        <div class="load4" style="display:none;">
+        <div id="load-more-images" class="load4" style="display:none;">
             <div class="loader"></div>
         </div>
     </div>

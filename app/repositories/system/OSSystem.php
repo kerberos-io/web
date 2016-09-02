@@ -572,7 +572,7 @@ class OSSystem implements SystemInterface
     public function shuttingdown()
     {        
         // reboot
-        $cmd = 'shutdown -r now';
+        $cmd = 'halt';
         $output = shell_exec($cmd);
         
         return true;

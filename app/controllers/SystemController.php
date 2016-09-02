@@ -208,7 +208,11 @@ class SystemController extends BaseController
 
         try
         {
-            $fp = fsockopen('127.0.0.1', 8888, $errno, $errstr, 5);
+            $directory = $this->config;
+            $settings = $this->reader->parse($directory)["instance"]["children"];
+            $port = $settings['stream']['dropdown']['Mjpg']['children']['streamPort']['value'];
+
+            $fp = fsockopen('127.0.0.1', $port, $errno, $errstr, 5);
             if(!$fp)
             {
                 // port is closed or blocked

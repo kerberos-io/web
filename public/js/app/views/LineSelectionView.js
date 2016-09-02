@@ -1,23 +1,20 @@
 /********************************************************************
-*  HullSelectionView: show an image, on which a region (hull) 
+*  LineSelectionView: show an image, on which a region (hull) 
 *                     can be selected.
 ****/
 
-define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], function (_, Backbone, Hull, BaseView)
+define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, BaseView)
 { 
     var $document = $(document), mouse = { update: function(e) {this.x = e.pageX; this.y = e.pageY;}};
 
-    var HullSelectionView = BaseView.extend(
+    var LineSelectionView = BaseView.extend(
     {
         name: "",
         image: undefined,
-        view : 'hullselection',
+        view : 'twolines',
 
         events:
         {
-            "click img": "addPoint",
-            "dblclick .point": "removePoint",
-            "click #point_0": "closeHull",
             "mousedown.drag .point" : "movePoint",
             "change img" : "drawCoordinates"
         },
@@ -27,130 +24,30 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             this.image = data.image;
             this.model = data.model;
         },
-        addPoint: function(e)
-        {
-            var point = {
-                "x": e.pageX  - $("ul.side-nav").width() - 20,
-                "y": e.pageY  - $("nav").height() - 20 - 20
-            };
-
-            var mapPosition = this.$el.find("img");
-            var delta = {
-                "x": mapPosition.position().left,
-                "y": mapPosition.position().top
-            };
-
-            // If point is succesfully rendered, add it to collection
-            if(this.renderPoint(point, delta))
-            {
-                // Add point to Hull model (relative to ratio)
-                var widthRatio = this.image.width / mapPosition.width() ;
-                var heightRatio = this.image.height / mapPosition.height();
-                var coordinate = {
-                    "x" : Math.round((point.x - delta.x) * widthRatio),
-                    "y" : Math.round((point.y - delta.y) * heightRatio)
-                };
-
-                // Write coordinates to input field (format | and , seperated)
-                this.model.addCoordinate(coordinate);
-                this.writeCoordinates();
-            }
-        },
         renderPoint: function(point, delta)
         {
-            if(!this.closed)
+    
+            var point_id = this.$el.find('.point').length;
+            this.$el.append('<div class="point" id="point_' + point_id + '"></div>');
+
+            this.$el.find('#point_' + point_id).css('left', point.x + 'px');
+            this.$el.find('#point_' + point_id).css('top', point.y + 'px');
+
+            // Add coordinate info, relative to map
+            this.$el.append('<div class="info" id="info_' + point_id + '">('+(point.x - delta.x)+','+(point.y - delta.y)+')</div>');
+            this.$el.find('#info_' + point_id).css('left', point.x - 40 + 'px');
+            this.$el.find('#info_' + point_id).css('top', point.y - 35 + 'px');
+
+            // Draw a line between new and previous point 
+            if(point_id % 2 == 1)
             {
-                var point_id = this.$el.find('.point').length;
-                this.$el.append('<div class="point" id="point_' + point_id + '"></div>');
-
-                this.$el.find('#point_' + point_id).css('left', point.x + 'px');
-                this.$el.find('#point_' + point_id).css('top', point.y + 'px');
-
-                // Add coordinate info, relative to map
-                this.$el.append('<div class="info" id="info_' + point_id + '">('+(point.x - delta.x)+','+(point.y - delta.y)+')</div>');
-                this.$el.find('#info_' + point_id).css('left', point.x - 40 + 'px');
-                this.$el.find('#info_' + point_id).css('top', point.y - 35 + 'px');
-
-                // Draw a line between new and previous point
-                if(point_id > 0)
-                {
-                    var x1 = this.$el.find('#point_' + (point_id - 1)).position().left;
-                    var y1 = this.$el.find('#point_' + (point_id - 1)).position().top;
-                    var line = this.createLine(point_id, x1, y1, point.x, point.y);
-                    this.$el.append(line);
-                }
-
-                return true;
-            }
-            return false;
-        },
-        removePoint: function(e)
-        {
-            var point = this.$el.find(e.target);
-            var point_id = parseInt(point.attr('id').split('point_')[1]);
-
-            // remove lines that connect the point
-            if(this.$el.find(".point").length < 4 && point_id != 0 ) return;
-
-            if(point_id > 0)
-            {
-                var preLine = this.$el.find(".line[rel='"+(point_id)+"']");
-            }
-            else
-            {
-                var preLine = this.$el.find(".line[rel='"+(this.$el.find(".point").length)+"']");
-            }
-            preLine.remove();
-            var postLine = this.$el.find(".line[rel='"+(point_id+1)+"']");
-            postLine.remove();
-
-            // remove actual point
-            point.remove();
-            // remove from model
-            this.model.removeCoordinate(point_id);
-            this.writeCoordinates();
-            // remove label
-            this.$el.find("#info_"+point_id).remove();
-
-            // decrease point id, starting from next point
-            var temp = point_id;
-            for(temp++; temp <= this.$el.find(".point").length; temp++)
-            {
-                this.$el.find("#point_"+temp).attr("id", "point_" + (temp-1));
-                this.$el.find("#info_"+temp).attr("id", "info_" + (temp-1));
-                this.$el.find(".line[rel='"+temp+"']").attr("rel", (temp-1));
+                var x1 = this.$el.find('#point_' + (point_id - 1)).position().left;
+                var y1 = this.$el.find('#point_' + (point_id - 1)).position().top;
+                var line = this.createLine(point_id, x1, y1, point.x, point.y);
+                this.$el.append(line);
             }
 
-            // decrease number of last line (if closed, it should be there)
-            if(this.closed)
-            {
-                this.$el.find(".line[rel='"+temp+"']").attr("rel", (temp-1));
-            }
-
-            if(point_id > 0)
-            {
-                var first = this.$el.find("#point_" + (point_id-1));
-                var x1 = first.position().left;
-                var y1 = first.position().top;
-
-                if(point_id < this.$el.find(".point").length)
-                {
-                    var second = this.$el.find("#point_"+point_id);
-                }
-                else if (point_id == this.$el.find(".point").length && this.closed)
-                {
-                    var second = this.$el.find("#point_0");
-                }
-                var x2 = second.position().left;
-                var y2 = second.position().top;
-
-                var newLine = this.createLine(point_id, x1, y1, x2, y2);
-                this.$el.append(newLine);
-            }
-            else
-            {
-                this.closed = false;
-            }
+            return true;
         },
         movePoint: function(e)
         {
@@ -279,23 +176,6 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 $document.unbind('mousemove.drag');
             });
         },
-        closeHull: function(e)
-        {
-            var point_id = this.$el.find('.point').length;
-            if(point_id > 2)
-            {
-                var x1 = this.$el.find('#point_' + (point_id - 1)).position().left;
-                var y1 = this.$el.find('#point_' + (point_id - 1)).position().top;
-
-                var x2 = this.$el.find('#point_0').position().left;
-                var y2 = this.$el.find('#point_0').position().top;
-
-                var line = this.createLine(point_id, x1, y1, x2, y2);
-                this.$el.append(line);
-                this.$el.find('#point_0').css("background-color", "#fff");
-                this.closed = true;
-            }
-        },
         createLine: function(point_id, x1, y1, x2, y2)
         {
             var length = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
@@ -313,6 +193,19 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 .attr('rel', point_id)
                 .width(length)
                 .offset({left: x1, top: y1});
+
+            if(point_id == 1)
+            {
+                this.$el.find("#point_0").css({'background': '#943633'});
+                this.$el.find("#point_1").css({'background': '#943633'});
+                line.css({'background': '#943633'});
+            }
+            else if(point_id == 3)
+            {
+                this.$el.find("#point_2").css({'background': '#21912C'});
+                this.$el.find("#point_3").css({'background': '#21912C'});
+                line.css({'background': '#21912C'});
+            }
 
             return line;
         },
@@ -349,8 +242,6 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 };
                 this.renderPoint(point, delta);
             }
-            // close hull
-            this.closeHull();
         },
         restore: function()
         {
@@ -372,5 +263,5 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
         }
     });
 
-    return HullSelectionView;
+    return LineSelectionView;
 });

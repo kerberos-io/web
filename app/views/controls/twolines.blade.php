@@ -1,4 +1,4 @@
-<div class="image hullselection">
+<div class="image twolines">
 
     <div id="map"></div>
 
@@ -17,18 +17,18 @@
     ?>
 
     <script type="text/javascript">
-    
-        // Select a hull
+
+        // Select two lines
         require([_jsBase + 'main.js'], function(common)
         {
-            require(["app/controllers/hullselection"], function(hull)
+            require(["app/controllers/twolines"], function(twolines)
             {
-                hull.setElement($("#map"));
-                hull.setImage("{{$src}}");
-                hull.setImageSize("{{$image->width()}}","{{$image->height()}}");
-                hull.setCoordinates("{{$value}}");
-                hull.setName("{{$file."__".$attribute}}");
-                hull.initialize();
+                twolines.setElement($(".twolines #map"));
+                twolines.setImage("{{$src}}");
+                twolines.setImageSize("{{$image->width()}}","{{$image->height()}}");
+                twolines.setCoordinates("{{$value}}");
+                twolines.setName("{{$file."__".$attribute}}");
+                twolines.initialize();
             });
         });
 

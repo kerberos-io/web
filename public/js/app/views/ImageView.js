@@ -29,6 +29,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
     var ImageView = BaseView.extend(
     {
         currentPage : 1,
+        lastTime: undefined,
         view : 'image',
         gallery: [],
         initialize: function(data)
@@ -54,20 +55,26 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             var imagesCollection = new ImagesCollection();
             imagesCollection.setPage(this.currentPage);
             imagesCollection.setDay(this.collection.day);
+            imagesCollection.setLastTime(this.lastTime);
         
             if(this.collection.time != "" && this.collection.time !== undefined)
             {
                 imagesCollection.setStartTime(this.collection.time);
             }
             
-            imagesCollection.fetch({async: false});
+            var self = this;
+            imagesCollection.fetch({async: true, success: function()
+            {
 
             // ------------------------------
             // We have some images to append
 
             if(imagesCollection.models.length > 0)
             {
-                var self = this;
+                // ----------------------
+                // Hide no images message
+
+                $(".no-images").hide()
 
                 // -----------------------------
                 // Get first image of collection
@@ -83,6 +90,8 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     var secondModel = imagesCollection.models[imagesCollection.models.length-1];
                     imagesCollectionFirst.models.push(secondModel);
                 }
+
+                self.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
 
                 // -------------------------------
                 // add new collection to current.
@@ -146,12 +155,12 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(timeRange));
 
                 var numberOfEvents = (imagesCollection.models.length == 1 ) ? imagesCollection.models.length + " event" : imagesCollection.models.length  + " events";
-                this.$el.find("div#images-wrapper")
+                self.$el.find("div#images-wrapper")
                     .append($("<p class='metadata'>")
                         .html(numberOfEvents + timeBetweenText));
 
-                $(".load4").css({'display':'none'});
-                $(".scroll-down").css({'display':'block'});
+                $("#load-more-images").hide()
+                $(".scroll-down").show()
 
                 // -------------------
                 // Append images
@@ -163,7 +172,8 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                 var wrappers = document.getElementById("images-"+self.currentPage).querySelectorAll('[data-lazy-load]');
                 jellyfish.addLoadingIcons(wrappers);
-                jellyfish.addLoadContentFunction(this.draw);
+                jellyfish.addLoadContentFunction(self.draw);
+                jellyfish.checkViewport(wrappers, {offset: 99999999});
 
                 imagesList.find("div.image").click(function()
                 {
@@ -202,11 +212,13 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
             else
             {
-                $(".load4").parent().css({'display':'none'});
+                $("#start-loading").hide();
+                $("#load-more-images").hide();
                 $(window).unbind('scroll');
                 $(".scroll-down").unbind('click');
-                this.atEndOfDay = true;
+                self.atEndOfDay = true;
             }
+            }});
         },
         draw: function(wrapper)
         {
@@ -302,7 +314,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
         },
         render: function()
         {
-            this.$el.html(this.template({}));
+            this.$el.html(this.template({time: this.collection.time}));
 
             // ------------
             // Add images
@@ -326,6 +338,8 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     var secondModel = this.collection.models[this.collection.models.length-1];
                     imagesCollection.models.push(secondModel);
                 }
+
+                this.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
             }
 
             this.views = imagesCollection.map(this.createView, this);

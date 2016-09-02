@@ -17,9 +17,9 @@ define(["streamer"], function(streamer)
             var viewer = new streamer.Viewer({
                 divID : this_.config.element,
                 host : this_.config.host,
-                refreshRate: 300,
+                refreshRate: 10,
                 quality: 100,
-                port: 8888
+                port: this_.config.port
             });
 
             var width = "100%";

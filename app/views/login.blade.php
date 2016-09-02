@@ -20,9 +20,9 @@
     <script src="{{URL::to('/')}}/js/vendor/requirejs/require.js"></script>
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
-    <link href="{{URL::to('/')}}/js/vendor/csshake/csshake.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/js/vendor/csshake/dist/csshake.css" rel="stylesheet">
 </head>
-<body id="red">
+<body id="red" class="login">
     <div class="center">
         <div class="content">
             <div class="circle">

@@ -9,10 +9,22 @@ trait GetVersions
     public function isUpdateAvailable()
     {
         $currentVersion = $this->getCurrentVersion();
+
         if($currentVersion)
         {
-            $latestVersion = array_reverse($this->getVersionsFromGithub())[0]['version'];
-            return ($currentVersion !== $latestVersion);
+            $versions = [];
+
+            try
+            {
+                $versions = $this->getVersionsFromGithub();
+            }
+            catch(\Exception $e){}
+
+            if(count($versions) > 0)
+            {
+                $latestVersion = array_reverse($versions)[0]['version'];
+                return ($currentVersion !== $latestVersion);
+            }
         }
         
         return false;
