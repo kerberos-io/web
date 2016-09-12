@@ -1,5 +1,8 @@
 FROM kerberos/base:latest
 
+ARG APP_ENV=master
+ENV APP_ENV ${APP_ENV}
+
 MAINTAINER "Cédric Verstraeten" <hello@cedric.ws>
 
 #################################
@@ -48,9 +51,9 @@ ln -s /etc/opt/kerberosio/capture/ /var/www/web/public/capture
 ###########################################
 # Make capture and config directory visible
 
-VOLUME ["/etc/opt/kerberosio/capture/"]
-VOLUME ["/etc/opt/kerberosio/config/"]
-VOLUME ["/etc/opt/kerberosio/logs/"]
+VOLUME ["/etc/opt/kerberosio/capture"]
+VOLUME ["/etc/opt/kerberosio/config"]
+VOLUME ["/etc/opt/kerberosio/logs"]
 
 ##############
 # Expose Ports
