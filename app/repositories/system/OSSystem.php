@@ -207,7 +207,17 @@ class OSSystem implements SystemInterface
     {
         $cmd = "ps -a | grep kerberosio";
         $processes = shell_exec($cmd);
-        return (strlen($processes) > 0);
+        if(strlen($processes) == 0)
+        {
+            // Fix if running on Raspbian..
+            $cmd = 'service kerberosio status | grep "active (running)"';
+            $processes = shell_exec($cmd);
+            return (strlen($processes) > 0);
+        }
+        else
+        {
+            return true;
+        }
     }
     
     public function getOS()
