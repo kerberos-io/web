@@ -96,7 +96,7 @@ return array(
 	|
 	*/
 
-	'cookie' => 'kerberos_io',
+	'cookie' => 'kerberos_io_' . gethostname(),
 
 	/*
 	|--------------------------------------------------------------------------
