@@ -215,8 +215,13 @@ class SystemController extends BaseController
             $fp = fsockopen('127.0.0.1', $port, $errno, $errstr, 5);
             if(!$fp)
             {
-                // port is closed or blocked
-                $status = false;
+                // Extra check for docker
+                $fp = fsockopen('machinery', $port, $errno, $errstr, 5);
+                if(!$fp)
+                {
+                    // port is closed or blocked
+                    $status = false;
+                }
             }
             else
             {
