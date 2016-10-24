@@ -209,7 +209,20 @@ class SettingsController extends BaseController
 
    public function getStreamPort()
    {
-        $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
+        // -----------------------------------------
+        // The web can run inside a docker container
+
+        $output = shell_exec("[ -f /.dockerenv ] && echo true || echo false");
+
+        if($output === "true")
+        {
+
+        }
+        else
+        {
+            $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
+        }
+
         return Response::json($instance);
    }
 
