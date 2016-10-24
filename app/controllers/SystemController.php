@@ -206,22 +206,16 @@ class SystemController extends BaseController
     {
         $status = true;
 
+        $directory = $this->config;
+        $settings = $this->reader->parse($directory)["instance"]["children"];
+        $port = $settings['stream']['dropdown']['Mjpg']['children']['streamPort']['value'];
+
         try
         {
-            $directory = $this->config;
-            $settings = $this->reader->parse($directory)["instance"]["children"];
-            $port = $settings['stream']['dropdown']['Mjpg']['children']['streamPort']['value'];
-
             $fp = fsockopen('127.0.0.1', $port, $errno, $errstr, 5);
             if(!$fp)
             {
-                // Extra check for docker
-                $fp = fsockopen('machinery', $port, $errno, $errstr, 5);
-                if(!$fp)
-                {
-                    // port is closed or blocked
-                    $status = false;
-                }
+                $status = false;
             }
             else
             {
@@ -232,6 +226,31 @@ class SystemController extends BaseController
         catch(\Exception $ex)
         {
             $status = false;
+        }
+
+        // -----------------------
+        // Work-a-round for docker
+        
+        if(!$status)
+        {
+            try
+            {
+                $fp = fsockopen('machinery', $port, $errno, $errstr, 5);
+                if(!$fp)
+                {
+                    $status = false;
+                }
+                else
+                {
+                    // port is open and available
+                    $status = true;
+                    fclose($fp);
+                }
+            }
+            catch(\Exception $ex)
+            {
+                $status = false;
+            }
         }
 
         return Response::json(["status" => $status]);

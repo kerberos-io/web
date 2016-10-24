@@ -214,7 +214,7 @@ class SettingsController extends BaseController
 
         $output = shell_exec("[ -f /.dockerenv ] && echo true || echo false");
 
-        if($output === "true")
+        if(trim($output) === "true")
         {   
             $url = URL::to('/') . '/stream';
             $port = '8889';
