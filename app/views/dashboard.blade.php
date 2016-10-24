@@ -98,13 +98,13 @@
                                  ], 
                         function(Streamer, Sequencer, Heatmap, Pie, Graph, Radar)
                         {
-                            $.get('api/v1/streamPort',function(data)
+                            $.get('api/v1/stream',function(data)
                             {
                                 Streamer.initialize(
                                 {
                                     element: "livestream",
-                                    host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
-                                    port: data[0],
+                                    host: data.url,
+                                    port: data.port,
                                     width: '100%',
                                     callback: function(){}
                                 });

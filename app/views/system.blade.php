@@ -85,12 +85,16 @@
                             </tr>
                             <tr>
                                 <td>Machinery</td>
+                                @if($insideDocker) 
+                                <td colspan="2">Don't know i'm in a seperate docker container..</td>
+                                @else
                                 <td>{{$system->getMachineryVersion()}}</td>
                                 <td>
                                     <span class="label label-{{($system->isMachineryRunning()) ? 'success' : 'danger'}}">
                                         {{($system->isMachineryRunning()) ? 'Running' : 'Not running'}}
                                     </span>
                                 </td>
+                                @endif
                             </tr>
                         </table> 
                         <h3>Statistics</h3>
