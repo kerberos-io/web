@@ -1,6 +1,6 @@
 <?php namespace Controllers;
 
-use View, Redirect, Input, Config, Response;
+use View, Redirect, Input, Config, Response, URL;
 use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -207,7 +207,7 @@ class SettingsController extends BaseController
         return $this->getConditionEnabled();
     }
 
-   public function getStreamPort()
+   public function getStream()
    {
         // -----------------------------------------
         // The web can run inside a docker container
@@ -215,15 +215,21 @@ class SettingsController extends BaseController
         $output = shell_exec("[ -f /.dockerenv ] && echo true || echo false");
 
         if($output === "true")
-        {
-
+        {   
+            $url = "http://machinery";;
+            $port = "8889";
         }
         else
         {
             $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
+            $url = parse_url(URL::to('/'), PHP_URL_HOST);
+            $port = $instance[0];
         }
 
-        return Response::json($instance);
+        return Response::json([
+            'url' => $url,
+            'port' => $port
+        ]);
    }
 
 
