@@ -25,17 +25,12 @@ mkdir -p /etc/nginx/ssl
 ADD ./web.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-#################################
-# Kerberos.io version
-
-ENV BRANCH develop
-
 #####################
 # Clone and build web
 
 RUN git clone https://github.com/kerberos-io/web /var/www/web && \
 cd /var/www/web && \ 
-git checkout develop && \
+git checkout ${APP_ENV} && \
 chown -Rf www-data.www-data /var/www/web && \
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer && \
 cd /var/www/web && \
