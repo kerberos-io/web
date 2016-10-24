@@ -216,14 +216,15 @@ class SettingsController extends BaseController
 
         if($output === "true")
         {   
-            $url = "http://machinery";;
-            $port = "8889";
+            $url = URL::to('/') . '/stream';
+            $port = '8889';
         }
         else
         {
             $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
             $url = parse_url(URL::to('/'), PHP_URL_HOST);
             $port = $instance[0];
+            $url = 'http://' . parse_url(URL::to('/'), PHP_URL_HOST) . ':' . $port;
         }
 
         return Response::json([
