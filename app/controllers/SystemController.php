@@ -44,6 +44,7 @@ class SystemController extends BaseController
         $allDays = $this->imageHandler->getDays(-1);
         $numberOfImages = $this->imageHandler->getNumberOfImages();
         $articles = $this->support->getArticles();
+        $insideDocker = (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true');
         
         return View::make('system',
         [
@@ -53,6 +54,7 @@ class SystemController extends BaseController
             'settings' => $settings,
             'system' => $this->system,
             'articles' => $articles,
+            'insideDocker' => $insideDocker,
             'isUpdateAvailable' => $this->isUpdateAvailable(),
         ]);
     }
