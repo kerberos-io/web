@@ -28,4 +28,9 @@ class Cache implements CacheInterface
 
         return $valueFromCache[$key];
     }
+
+    public function forget($key)
+    {
+        Session::forget($key);
+    }
 }

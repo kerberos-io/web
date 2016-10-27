@@ -158,6 +158,14 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             
             return $days;
         });
+
+        // --------------------
+        // Clear cache if empty
+
+        if(!count($days))
+        {
+            $this->cache->forget($key);
+        }
         
         if($numberOfDays > 0)
         {
@@ -198,6 +206,14 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             
             return $regions;
         });
+
+        // --------------------
+        // Clear cache if empty
+
+        if(!count($regions))
+        {
+            $this->cache->forget($key);
+        }
         
         return $regions;
     }
@@ -595,6 +611,14 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             
             return $hours;
         });
+
+        // --------------------
+        // Clear cache if empty
+
+        if(!count($hours['instances']))
+        {
+            $this->cache->forget($key);
+        }
         
         return $hours;
     }
