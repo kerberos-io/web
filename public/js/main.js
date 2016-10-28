@@ -1,6 +1,6 @@
 require.config({
     baseUrl: _jsBase,
-    urlArgs: "bust=20082016",
+    urlArgs: "bust=20082019",
     shim: {
         'seiyria-bootstrap-slider': {
             deps: [
