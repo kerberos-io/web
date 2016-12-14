@@ -564,7 +564,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $heap = $this->getImagesFromFilesystem();
             $indexTimestamp = $this->getIndexOfTimestampFromFileFormat();
             $indexInstanceName = $this->getIndexOfInstanceNameFromFileFormat();
-            
+
             // ---------------------------------------------
             // Iterate while timestamp is not in current day
             
@@ -583,6 +583,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $pieces = explode('_', $heap->current());
+
+                if(count($pieces) <= $indexInstanceName)
+                {
+                    $heap->next();
+                    continue;
+                }
+
                 $timestamp = intval($pieces[$indexTimestamp]);
                 
                 if($timestamp < $startTimestamp)
