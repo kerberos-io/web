@@ -161,10 +161,29 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     $carbon->subDays($rest);
                 }
 
+                // --------------------------------------------
+                // at this point we have all the images, but we 
+                // need to sort them.
+
                 $heap->next();
             }
-            
-            return $days;
+
+            // Transformdates
+            $timestamps = [];
+            foreach($days as $day)
+            {
+                array_push($timestamps, $this->date->dateToTimestamp($day));
+            }
+
+            asort($timestamps);
+
+            $days = [];
+            foreach($timestamps as $timestamp)
+            {
+                array_push($days, $this->date->timestampToDate($timestamp));
+            }
+
+            return array_reverse($days);
         });
 
         // --------------------
