@@ -88,7 +88,17 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         if(count($latestSequence)>0)
         {
-            return $latestSequence[count($latestSequence)-1]["src"];
+            $i = count($latestSequence) -1;
+
+            while($i >= 0 && getimagesize($latestSequence[$i]['src'])['mime'] != 'image/jpeg')
+            {
+                $i--;
+            }
+
+            if($i >= 0)
+            {
+                return $latestSequence[$i]["src"];
+            }
         }
         
         return "";
