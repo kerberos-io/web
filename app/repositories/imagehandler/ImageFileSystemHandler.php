@@ -137,6 +137,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $carbon = Carbon::createFromTimeStamp($timestamp);
             $carbon->setTimezone($this->date->timezone);
             $day = $carbon->format('d-m-Y');
+
             $startTimestamp = $this->date->dateToTimestamp($day);
 
             $days = [];
@@ -144,6 +145,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $timestamp = explode('_', $heap->current())[$index];
+                
+                if(!is_numeric($timestamp))
+                {
+                    $heap->next();
+                    continue;   
+                }
+
                 $rest = floor(($timestamp - $startTimestamp) / 86400);
 
                 if($restCheck != $rest)
