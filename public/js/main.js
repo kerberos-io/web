@@ -1,6 +1,6 @@
 require.config({
     baseUrl: _jsBase,
-    urlArgs: "bust=20082019",
+    urlArgs: "bust=20082021",
     shim: {
         'seiyria-bootstrap-slider': {
             deps: [
@@ -71,6 +71,7 @@ require.config({
         progressbar: 'vendor/progressbar.js/dist/progressbar.min',
         remodal: 'vendor/remodal/dist/jquery.remodal.min',
         photoswipe: 'vendor/photoswipe/dist/photoswipe.min',
+        videojs: 'vendor/video.js/dist/video.min',
         'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [

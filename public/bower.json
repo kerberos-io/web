@@ -39,6 +39,7 @@
     "css-toggle-switch": "~4.0.2",
     "remodal": "0.6.4",
     "progressbar.js": "~1.0.0",
-    "photoswipe": "~4.1.1"
+    "photoswipe": "~4.1.1",
+    "video.js": "^5.14.1"
   }
 }

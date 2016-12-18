@@ -8784,6 +8784,82 @@ div#images-wrapper p.metadata {
   visibility: visible;
   opacity: 1;
 }
+.images {
+  clear: both;
+}
+div#cameras {
+  text-align: center;
+}
+div#cameras ul {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+div#cameras ul li {
+  float: left;
+  margin-right: 6px;
+  font-size: 22px;
+}
+div#cameras ul li a {
+  color: #983633;
+}
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 9999;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+.modal-center {
+  position: absolute;
+  top: 21%;
+  width: 100%;
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  /* 15% from the top and centered */
+  padding: 10px;
+  border: 1px solid #888;
+  margin: 0 auto;
+  display: table;
+  z-index: 1;
+  width: 522px;
+  /* Could be more or less, depending on screen size */
+}
+/* The Close Button */
+.close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  z-index: 9999999;
+  position: absolute;
+  font-weight: 700;
+  top: 13px;
+  right: 25px;
+  opacity: 1;
+}
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   div.start-loading {
     margin-bottom: 80px;

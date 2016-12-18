@@ -2,8 +2,8 @@
 *  ImageView: shows all available images.
 ****/
 
-define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView"], 
-    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView)
+define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView", 'videojs'], 
+    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView, videojs)
 { 
     var ImageItemView = BaseView.extend(
     {
@@ -26,19 +26,49 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
         }
     });
 
+    var VideoItemView = BaseView.extend(
+    {
+        el: '<li>',
+        view : 'video-item',
+
+        initialize: function(options)
+        {
+            this.parent = options.parent;
+        },
+        render: function()
+        {
+            var data = {
+                'video': this.model.attributes.src
+            };
+
+            this.$el.html(this.template(data));
+            return this;
+        }
+    });
+
     var ImageView = BaseView.extend(
     {
         currentPage : 1,
         lastTime: undefined,
+        player: undefined,
         view : 'image',
         gallery: [],
         initialize: function(data)
         {
             this.views = {};
+            this.player = videojs('sequence');
+            if(!$("#sequence video").has('source').length)
+            {
+                $("#sequence video").append($("<source>"));
+            }
         },
         createView: function(image)
         {
             return new ImageItemView({model: image, parent: this});
+        }, 
+        createVideoView: function(video)
+        {
+            return new VideoItemView({model: video, parent: this});
         }, 
         destroyViews: function()
         {
@@ -68,6 +98,17 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
             // ------------------------------
             // We have some images to append
+
+            var videoCollection = $.extend(true, {}, imagesCollection);
+            videoCollection.models = _.filter(videoCollection.models, function(item)
+            {
+                return item.attributes.type === 'video';
+            });
+
+            imagesCollection.models = _.filter(imagesCollection.models, function(item)
+            {
+                return item.attributes.type === 'image';
+            });
 
             if(imagesCollection.models.length > 0)
             {
@@ -153,11 +194,35 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 }
 
                 self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(timeRange));
-
+                
                 var numberOfEvents = (imagesCollection.models.length == 1 ) ? imagesCollection.models.length + " event" : imagesCollection.models.length  + " events";
+
                 self.$el.find("div#images-wrapper")
                     .append($("<p class='metadata'>")
                         .html(numberOfEvents + timeBetweenText));
+
+                self.videoViews = videoCollection.models.map(self.createVideoView, self);
+ 
+                self.$el.find("div#images-wrapper")
+                    .append($("<div id='cameras'>").html($("<ul>")
+                        .html(_.map(self.videoViews, self.getDom, self))));
+
+                if(self.videoViews.length>0)
+                {
+                    self.$el.find("a.video-view").click(function()
+                    {
+                        $("#sequence source").attr({'src': $(this).attr("href"), 'type':'video/mp4'});
+                        self.player.load();
+
+                        $("#myModal").css({'display':'block'})
+                        return false;
+                    });
+
+                    $(".close").click(function()
+                    {
+                        $("#myModal").css({'display':'none'})
+                    })
+                }
 
                 $("#load-more-images").hide()
                 $(".scroll-down").show()
@@ -324,34 +389,43 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             // -----------------------------
             // Get first image of collection
             
-            var imagesCollection = this.collection;
+            var imagesCollection = $.extend(true, {}, this.collection);
+            imagesCollection.models = _.filter(imagesCollection.models, function(item)
+            {
+                return item.attributes.type === 'image';
+            });
+
+            var videoCollection = $.extend(true, {}, this.collection);
+            videoCollection.models = _.filter(videoCollection.models, function(item)
+            {
+                return item.attributes.type === 'video';
+            });
+
+            var previewImages = [];
             if(imagesCollection.models.length > 0)
             {
-                imagesCollection = $.extend(true, {}, this.collection);
-                imagesCollection.models = [];
+                var firstModel = imagesCollection.models[0];
+                previewImages.push(firstModel);
 
-                var firstModel = this.collection.models[0];
-                imagesCollection.models.push(firstModel);
-
-                if(this.collection.models.length > 1)
+                if(imagesCollection.models.length > 1)
                 {
-                    var secondModel = this.collection.models[this.collection.models.length-1];
-                    imagesCollection.models.push(secondModel);
+                    var secondModel = imagesCollection.models[imagesCollection.models.length-1];
+                    previewImages.push(secondModel);
                 }
 
                 this.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
             }
 
-            this.views = imagesCollection.map(this.createView, this);
+            this.views = previewImages.map(this.createView, this);
 
             if(this.views.length>0)
-            {
-                
-                this.$el.find("div#images-1").html(_.map(this.views, this.getDom, this));
+            {     
                 var self = this;
+
+                this.$el.find("div#images-1").html(_.map(this.views, this.getDom, this));
                 this.$el.find("div.image").click(function()
                 {
-                    var collection = self.collection;
+                    var collection = imagesCollection;
                 
                     // Build photoswipe
                     var pswpElement = document.querySelectorAll('.pswp')[0];
@@ -403,7 +477,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     else
                     {
                         timeBetweenText = " during " + timeBetween;
-                        
+
                         if(timeBetween > 1)
                         {
                             timeBetweenText += " seconds";
@@ -417,7 +491,6 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         else
                         {
                             timeBetweenText += " second";
-                            timeBetweenText = "";
                             timeRange = this.collection.at(0).get('time');
                         }
                     }
@@ -429,6 +502,31 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 }
 
                 var numberOfEvents = (this.collection.models.length == 1 ) ? this.collection.models.length + " event" : this.collection.models.length  + " events";
+
+                this.videoViews = videoCollection.models.map(this.createVideoView, this);
+
+                this.$el.find("div#images-wrapper")
+                    .prepend($("<div id='cameras'>").html($("<ul>")
+                        .html(_.map(this.videoViews, this.getDom, this))));
+
+                if(this.videoViews.length>0)
+                {
+                    var self = this;
+                    this.$el.find("a.video-view").click(function()
+                    {
+                        $("#sequence source").attr({'src': $(this).attr("href"), 'type':'video/mp4'});
+                        self.player.load();
+
+                        $("#myModal").css({'display':'block'})
+                        return false;
+                    });
+
+                    $(".close").click(function()
+                    {
+                        $("#myModal").css({'display':'none'})
+                    })
+                }
+
                 this.$el.find("div#images-wrapper")
                     .prepend($("<p class='metadata'>")
                         .html(numberOfEvents + timeBetweenText));
@@ -436,7 +534,6 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 this.$el.find("div#images-wrapper")
                     .prepend($("<div class='new-page'>")
                         .html(timeRange));
-
             }
 
             // ---------------

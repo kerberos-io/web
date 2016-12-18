@@ -18,6 +18,17 @@
                         <div class="loader"></div>
                     </div>
 
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-center">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <video id="sequence" class="video-js" controls preload="auto" width="500" height="500"></video>
+                            </div>
+                        </div>
+                    </div>
+
                     @include('photoswipe')
                     
                     <div id="images-overview"></div>

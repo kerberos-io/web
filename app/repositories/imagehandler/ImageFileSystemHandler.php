@@ -86,18 +86,18 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $latestSequence = $this->getLatestSequence();
 
-        if(count($latestSequence)>0)
+        if(count($latestSequence['images'])>0)
         {
-            $i = count($latestSequence) -1;
+            $i = count($latestSequence['images']) -1;
 
-            while($i >= 0 && getimagesize($latestSequence[$i]['src'])['mime'] != 'image/jpeg')
+            while($i >= 0 && getimagesize($latestSequence['images'][$i]['src'])['mime'] != 'image/jpeg')
             {
                 $i--;
             }
 
             if($i >= 0)
             {
-                return $latestSequence[$i]["src"];
+                return $latestSequence['images'][$i]["src"];
             }
         }
         
@@ -377,7 +377,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             }
         }
 
-        $images = [];
+        $images = ['images'=>[], 'videos'=>[]];
 
         // ------------------------------------------
         // Filter images that belong to selected page
@@ -392,7 +392,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 $image->setTimezone($this->date->timezone);
                 $image->parse($path);
 
-                array_push($images, [
+                array_push($images['images'], [
                     'time' => $image->getTime(),
                     'src' => $this->filesystem->getPathToFile($image),
                     'metadata' => $this->filesystem->getMetadata($image),
@@ -459,22 +459,39 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $imagesTemp = array_reverse($imagesTemp);
         $imagesTemp = $this->getSequence($imagesTemp, $page, $maximumTimeBetween);
 
-        $images = [];
+        $data = [];
+
         foreach($imagesTemp as $image)
         {
             $path = $image['path'];
-            
+
             $image = new Image;
             $image->setTimezone($this->date->timezone);
             $image->parse($path);
-            
-            array_push($images, [
-                'time' => $image->getTime(),
-                'src' => $this->filesystem->getPathToFile($image),
-                'metadata' => $this->filesystem->getMetadata($image),
-            ]);
+
+            $path = $this->filesystem->getPathToFile($image);
+
+            if(getimagesize($path)['mime'] == 'image/jpeg')
+            {
+                array_push($data, [
+                    'time' => $image->getTime(),
+                    'src' => $path,
+                    'metadata' => $this->filesystem->getMetadata($image),
+                    'type' => 'image'
+                ]);
+            }
+            else
+            {
+                 array_push($data, [
+                    'time' => $image->getTime(),
+                    'src' => $path,
+                    'metadata' => [],
+                    'type' => 'video'
+                ]);
+            }
         }
-        return $images;
+
+        return $data;
     }
 
     public function getSequence($images, $page, $maximumTimeBetween)
