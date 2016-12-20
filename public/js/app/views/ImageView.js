@@ -2,8 +2,12 @@
 *  ImageView: shows all available images.
 ****/
 
-define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView", 'videojs'], 
-    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView, videojs)
+define("add-video-js-in-global-scope",["videojs"], function(videojs) {
+    window.videojs = videojs;
+});
+
+define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView",'videojsplaylist', 'videojsplaylistui'], 
+    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView, videojsplaylist, videojsplaylistui)
 { 
     var ImageItemView = BaseView.extend(
     {
@@ -514,8 +518,44 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     var self = this;
                     this.$el.find("a.video-view").click(function()
                     {
-                        $("#sequence source").attr({'src': $(this).attr("href"), 'type':'video/mp4'});
-                        self.player.load();
+                        //$("#sequence source").attr({'src': $(this).attr("href"), 'type':'video/mp4'});
+                        //self.player.load();
+
+self.player.playlist([{
+  sources: [{
+    src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
+    type: 'video/mp4'
+  }],
+  poster: 'http://media.w3.org/2010/05/sintel/poster.png'
+}, {
+  sources: [{
+    src: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
+    type: 'video/mp4'
+  }],
+  poster: 'http://media.w3.org/2010/05/bunny/poster.png'
+}, {
+  sources: [{
+    src: 'http://vjs.zencdn.net/v/oceans.mp4',
+    type: 'video/mp4'
+  }],
+  poster: 'http://www.videojs.com/img/poster.jpg'
+}, {
+  sources: [{
+    src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
+    type: 'video/mp4'
+  }],
+  poster: 'http://media.w3.org/2010/05/bunny/poster.png'
+}, {
+  sources: [{
+    src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
+    type: 'video/mp4'
+  }],
+  poster: 'http://media.w3.org/2010/05/video/poster.png'
+}]);
+
+// Play through the playlist automatically.
+self.player.playlistUi();
+
 
                         $("#myModal").css({'display':'block'})
                         return false;

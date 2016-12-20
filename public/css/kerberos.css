@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,7 +1103,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2532,7 +2531,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3023,7 +3021,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -7734,249 +7731,6 @@ ul.alert-dropdown {
     box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 0.2em #ffffff;
   }
 }
-/*
- *  Remodal - v0.5.0
- *  Flat, responsive, lightweight, easy customizable modal window plugin with declarative state notation and hash tracking.
- *  http://vodkabears.github.io/remodal/
- *
- *  Made by Ilya Makarov
- *  Under MIT License
- */
-/* ==========================================================================
-   Remodal necessary styles
-   ========================================================================== */
-/* Hide scroll bar */
-html.remodal-is-locked {
-  overflow: hidden;
-}
-/* Anti FOUC */
-.remodal,
-[data-remodal-id] {
-  visibility: hidden;
-}
-/* Necessary styles of the overlay */
-.remodal-overlay {
-  position: fixed;
-  z-index: 9999;
-  top: -5000px;
-  right: -5000px;
-  bottom: -5000px;
-  left: -5000px;
-  display: none;
-}
-/* Necessary styles of the wrapper */
-.remodal-wrapper {
-  position: fixed;
-  z-index: 10000;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: none;
-  overflow: auto;
-  text-align: center;
-  -webkit-overflow-scrolling: touch;
-}
-.remodal-wrapper:after {
-  display: inline-block;
-  height: 100%;
-  margin-left: -0.05em;
-  content: "";
-}
-/* Fix iPad, iPhone glitches */
-.remodal-overlay,
-.remodal-wrapper {
-  -webkit-transform: translateZ(0px);
-}
-/* Necessary styles of the modal dialog */
-.remodal {
-  position: relative;
-  display: inline-block;
-}
-/* Anti-zoom. Font-size should be >= 16px. */
-.remodal select,
-.remodal textarea,
-.remodal input,
-.remodal select:focus,
-.remodal textarea:focus,
-.remodal input:focus {
-  font-size: 16px;
-}
-/* ==========================================================================
-   Remodal default theme
-   ========================================================================== */
-/* Default theme font */
-.remodal,
-.remodal * {
-  font-family: "Exo 2", sans-serif;
-}
-/* Background for effects */
-.remodal-bg {
-  -webkit-transition: -webkit-filter 0.2s ease-out;
-  -moz-transition: -moz-filter 0.2s ease-out;
-  -o-transition: -o-filter 0.2s ease-out;
-  transition: filter 0.2s ease-out;
-}
-body.remodal-is-active .remodal-bg {
-  -webkit-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-}
-/* Default theme styles of the overlay */
-.remodal-overlay {
-  -webkit-transition: opacity 0.2s ease-out;
-  -moz-transition: opacity 0.2s ease-out;
-  -o-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
-  opacity: 0;
-  background: rgba(33, 36, 46, 0.95);
-}
-body.remodal-is-active .remodal-overlay {
-  opacity: 1;
-}
-/* Default theme styles of the modal dialog */
-.remodal {
-  font-size: 16px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  min-height: 100%;
-  padding: 35px;
-  -webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.2s ease-out;
-  -moz-transition: -moz-transform 0.2s ease-out, opacity 0.2s ease-out;
-  -o-transition: -o-transform 0.2s ease-out, opacity 0.2s ease-out;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-  -webkit-transform: scale(0.95);
-  -moz-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  transform: scale(0.95);
-  opacity: 0;
-  color: #182a3c;
-  background: #fff;
-  background-clip: padding-box;
-}
-body.remodal-is-active .remodal {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-  opacity: 1;
-}
-/* Vertical align of the modal dialog */
-.remodal,
-.remodal-wrapper:after {
-  vertical-align: middle;
-}
-/* Close button */
-.remodal-close {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 28px;
-  height: 28px;
-  -webkit-transition: background 0.2s ease-out;
-  -moz-transition: background 0.2s ease-out;
-  -o-transition: background 0.2s ease-out;
-  transition: background 0.2s ease-out;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  text-decoration: none;
-}
-.remodal-close:after {
-  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
-  font-size: 28px;
-  line-height: 28px;
-  display: block;
-  content: "×";
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  color: #943633;
-  text-decoration: none;
-}
-.remodal-close:hover,
-.remodal-close:active {
-  background: #943633;
-  text-decoration: none;
-}
-.remodal-close:hover.remodal-close:after,
-.remodal-close:active.remodal-close:after {
-  color: #fff;
-  text-decoration: none;
-}
-/* Dialog buttons */
-.remodal-confirm,
-.remodal-cancel {
-  font-size: 10pt;
-  display: inline-block;
-  width: 120px;
-  margin: 0 0 5px 0;
-  padding: 9px 0;
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  text-align: center;
-  text-decoration: none;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  background-clip: padding-box;
-}
-.remodal-confirm {
-  color: #16a085;
-  border: 2px solid #16a085;
-  background: #fff;
-}
-.remodal-confirm:hover,
-.remodal-confirm:active {
-  color: #fff;
-  background: #16a085;
-}
-.remodal-cancel {
-  color: #c0392b;
-  border: 2px solid #c0392b;
-  background: #fff;
-}
-.remodal-cancel:hover,
-.remodal-cancel:active {
-  color: #fff;
-  background: #c0392b;
-}
-/* Media queries
-   ========================================================================== */
-@media only screen and (min-width: 40.063em) {
-  .remodal {
-    max-width: 700px;
-    min-height: 0;
-    margin: 20px auto;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-  }
-}
-.lt-ie9 .remodal {
-  width: 700px;
-  min-height: 0;
-  margin: 20px auto;
-}
-.lt-ie9 .remodal-close:after {
-  margin: auto;
-  text-align: center;
-}
-.lt-ie9 .remodal-close:hover,
-.lt-ie9 .remodal-close:active {
-  background: transparent;
-}
-.lt-ie9 .remodal-close:hover.remodal-close:after,
-.lt-ie9 .remodal-close:active.remodal-close:after {
-  color: #3e5368;
-}
 /***************************
 *
 *   Kerberos.io styling
@@ -8859,6 +8613,255 @@ div#cameras ul li a {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+/* The default color for the playlist menu background, almost black */
+/* The color used to emphasize the currently playing video and for effects */
+/* The primary foreground color */
+/* Rules common to mouse and touch devices */
+.vjs-playlist {
+  list-style-type: none;
+  overflow: scroll;
+}
+.vjs-playlist .vjs-playlist-item-list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vjs-playlist .vjs-playlist-item {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5px;
+}
+.vjs-playlist .vjs-playlist-thumbnail {
+  display: block;
+}
+.vjs-playlist .vjs-playlist-thumbnail-placeholder {
+  height: 100px;
+  background: #303030;
+}
+.vjs-playlist img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.vjs-playlist .vjs-playlist-duration {
+  background-color: rgba(26, 26, 26, 0.8);
+  top: .5rem;
+  left: .5rem;
+  padding: 2px 5px 3px;
+  margin-left: 2px;
+  position: absolute;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-duration {
+  display: none;
+}
+.vjs-playlist .vjs-playlist-name {
+  display: block;
+  font-style: normal;
+  max-height: 2.5em;
+  overflow: hidden;
+  line-height: 20px;
+  padding: 0 0 4px 2px;
+}
+.vjs-playlist .vjs-playlist-description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+/* Prevent interaction with the playlist menu while ads are playing */
+/* on browsers that don't support pointer-events (IE<11), prevent
+scrolling past the ad overlay */
+.vjs-playlist.vjs-ad-playing {
+  overflow: hidden;
+}
+/* prevent clicks and scrolling from affecting the playlist during ads */
+.vjs-playlist.vjs-ad-playing.vjs-csspointerevents {
+  pointer-events: none;
+  overflow: auto;
+}
+.vjs-playlist.vjs-ad-playing.vjs-csspointerevents .vjs-playlist-ad-overlay {
+  pointer-events: auto;
+}
+/* darken the playlist menu display to indicate it's not interactive
+during ads and capture click events on IE<11 */
+.vjs-playlist.vjs-ad-playing .vjs-playlist-ad-overlay {
+  display: none;
+}
+.vjs-playlist.vjs-ad-playing .vjs-playlist-ad-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* IE8 fallback */
+  background-color: #1a1a1a;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  /* modern browsers */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* Parametric rules. These are specialized for touch and mouse-based devices */
+/* Touch-device playlist dimensions */
+.vjs-playlist {
+  font-size: 14px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 0;
+}
+.vjs-playlist .vjs-playlist-thumbnail {
+  width: 100%;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-thumbnail img {
+  opacity: .2;
+}
+.vjs-playlist .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: .5rem .8rem;
+  padding-left: 2px;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: block;
+}
+.vjs-playlist .vjs-selected {
+  background-color: #141a21;
+}
+.vjs-playlist .vjs-up-next-text {
+  display: none;
+}
+.vjs-playlist .vjs-up-next .vjs-up-next-text {
+  text-transform: uppercase;
+  display: block;
+  padding: .1rem 2px;
+  font-size: .8em;
+}
+.vjs-playlist time {
+  font-size: 1em;
+}
+.vjs-playlist .vjs-playlist-title-container {
+  position: absolute;
+  bottom: 0;
+  padding: .5rem .8rem;
+  text-shadow: 1px 1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000, -1px -1px 2px #000000;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-title-container {
+  text-shadow: none;
+}
+.vjs-playlist .vjs-playlist-description {
+  height: 42px;
+  line-height: 21px;
+}
+/* Mouse-only playlist dimensions */
+.vjs-mouse.vjs-playlist {
+  font-size: 15px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 0;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-thumbnail {
+  width: 100%;
+}
+.vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail img {
+  opacity: .2;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: .5rem .8rem;
+  padding-left: 2px;
+}
+.vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: block;
+}
+.vjs-mouse.vjs-playlist .vjs-selected {
+  background-color: #141a21;
+}
+.vjs-mouse.vjs-playlist .vjs-up-next-text {
+  display: none;
+}
+.vjs-mouse.vjs-playlist .vjs-up-next .vjs-up-next-text {
+  text-transform: uppercase;
+  display: block;
+  padding: .1rem 2px;
+  font-size: .8em;
+}
+.vjs-mouse.vjs-playlist time {
+  font-size: 1em;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-title-container {
+  position: absolute;
+  bottom: 0;
+  padding: .5rem .8rem;
+  text-shadow: 1px 1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000, -1px -1px 2px #000000;
+}
+.vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-title-container {
+  text-shadow: none;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-description {
+  height: 45px;
+  line-height: 23px;
+}
+@media (min-width: 600px) {
+  .vjs-mouse.vjs-playlist {
+    font-size: 17px;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 0;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-thumbnail {
+    width: 100%;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail img {
+    opacity: .2;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: .5rem .8rem;
+    padding-left: 2px;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+    display: block;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected {
+    background-color: #141a21;
+  }
+  .vjs-mouse.vjs-playlist .vjs-up-next-text {
+    display: none;
+  }
+  .vjs-mouse.vjs-playlist .vjs-up-next .vjs-up-next-text {
+    text-transform: uppercase;
+    display: block;
+    padding: .1rem 2px;
+    font-size: .8em;
+  }
+  .vjs-mouse.vjs-playlist time {
+    font-size: 1em;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-title-container {
+    position: absolute;
+    bottom: 0;
+    padding: .5rem .8rem;
+    text-shadow: 1px 1px 2px #000000, -1px 1px 2px #000000, 1px -1px 2px #000000, -1px -1px 2px #000000;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-title-container {
+    text-shadow: none;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-description {
+    height: 51px;
+    line-height: 26px;
+  }
+  .vjs-playlist .vjs-playlist-name {
+    line-height: 22px;
+  }
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   div.start-loading {

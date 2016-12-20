@@ -25,6 +25,7 @@
                             <div class="modal-content">
                                 <span class="close">&times;</span>
                                 <video id="sequence" class="video-js" controls preload="auto" width="500" height="500"></video>
+                                <ol class="vjs-playlist"></ol>
                             </div>
                         </div>
                     </div>

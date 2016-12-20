@@ -48,6 +48,16 @@ require.config({
             deps: [
                 'jquery'
             ]
+        },
+        videojsplaylist: {
+            deps: [
+                'add-video-js-in-global-scope'
+            ]
+        },
+        videojsplaylistui: {
+            deps: [
+                'videojsplaylist'
+            ]
         }
     },
     paths: {
@@ -73,6 +83,7 @@ require.config({
         photoswipe: 'vendor/photoswipe/dist/photoswipe.min',
         videojs: 'vendor/video.js/dist/video.min',
         videojsplaylist: 'vendor/videojs-playlist/dist/videojs-playlist',
+        videojsplaylistui: 'app/models/PlaylistUI',
         'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [
