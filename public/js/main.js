@@ -72,6 +72,7 @@ require.config({
         remodal: 'vendor/remodal/dist/jquery.remodal.min',
         photoswipe: 'vendor/photoswipe/dist/photoswipe.min',
         videojs: 'vendor/video.js/dist/video.min',
+        videojsplaylist: 'vendor/videojs-playlist/dist/videojs-playlist',
         'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [

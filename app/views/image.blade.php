@@ -29,6 +29,15 @@
                         </div>
                     </div>
 
+                    <!--
+                    <section class="main-preview-player">
+                      <video id="preview-player" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous">
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                      </video>
+                      <ol class="vjs-playlist"></ol>
+                    </section>
+                    -->
+
                     @include('photoswipe')
                     
                     <div id="images-overview"></div>
