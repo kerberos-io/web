@@ -64,6 +64,8 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 fluid: true
             });
 
+            this.player.playlistUi();
+
             if(!$("#sequence video").has('source').length)
             {
                 $("#sequence video").append($("<source>"));
@@ -512,53 +514,35 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                 this.videoViews = videoCollection.models.map(this.createVideoView, this);
 
-                this.$el.find("div#images-wrapper")
-                    .prepend($("<div id='cameras'>").html($("<ul>")
-                        .html(_.map(this.videoViews, this.getDom, this))));
-
                 if(this.videoViews.length>0)
                 {
+                    this.$el.find("div#images-wrapper").prepend(
+
+                        $("<div id='cameras'>").html(
+                            $("<ul>").html(_.map([this.videoViews[0]], this.getDom, this))
+                        )
+                        .prepend($("<div>").html(this.videoViews.length + 'x '))
+                    );
+
                     var self = this;
                     this.$el.find("a.video-view").click(function()
                     {
-                        //$("#sequence source").attr({'src': $(this).attr("href"), 'type':'video/mp4'});
-                        //self.player.load();
+                        var playlist = [];
 
-self.player.playlist([{
-  sources: [{
-    src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
-    type: 'video/mp4'
-  }],
-  poster: 'http://media.w3.org/2010/05/sintel/poster.png'
-}, {
-  sources: [{
-    src: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
-    type: 'video/mp4'
-  }],
-  poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-}, {
-  sources: [{
-    src: 'http://vjs.zencdn.net/v/oceans.mp4',
-    type: 'video/mp4'
-  }],
-  poster: 'http://www.videojs.com/img/poster.jpg'
-}, {
-  sources: [{
-    src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
-    type: 'video/mp4'
-  }],
-  poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-}, {
-  sources: [{
-    src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
-    type: 'video/mp4'
-  }],
-  poster: 'http://media.w3.org/2010/05/video/poster.png'
-}]);
+                        var videos = videoCollection.models;
+                        for(var i = 0; i < videos.length; i++)
+                        {
+                            playlist.push({
+                                name: videos[i].get('time'),
+                                    sources: [{
+                                    src: videos[i].get('src'),
+                                    type: 'video/mp4',
+                                }]
+                            })
+                        }
 
-// Play through the playlist automatically.
-self.player.playlistUi();
-
+                        self.player.playlist(playlist);
+                        self.player.load();
 
                         $("#myModal").css({'display':'block'})
                         return false;
@@ -566,6 +550,7 @@ self.player.playlistUi();
 
                     $(".close").click(function()
                     {
+                        self.player.pause();
                         $("#myModal").css({'display':'none'})
                     })
                 }

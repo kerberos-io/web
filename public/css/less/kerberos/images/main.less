@@ -95,11 +95,23 @@ div#images-wrapper
 div#cameras
 {
 	text-align: center;
+  width: 80px;
+  margin: 0 auto;
+  cursor: pointer;
+
+  > div 
+  {
+    float: left;
+    padding: 1px 7px 0 0;
+    color: #983633;
+    font-size: 19px;
+  }
 
 	ul
 	{
-		list-style:none;
-		display: inline-block;
+      float:left;
+		  list-style:none;
+		  display: inline-block;
 	    margin: 0;
 	    padding: 0;
 
@@ -422,7 +434,12 @@ during ads and capture click events on IE<11 */
 {
   padding: 0;
 }
-
+.sequence-dimensions.vjs-fluid {
+    padding-top: 40%;
+}
+.vjs-fluid {
+    padding-top: 40%;
+}
 .main-preview-player {
   display: flex;
   flex-wrap: wrap;

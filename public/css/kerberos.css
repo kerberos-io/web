@@ -8543,8 +8543,18 @@ div#images-wrapper p.metadata {
 }
 div#cameras {
   text-align: center;
+  width: 80px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+div#cameras > div {
+  float: left;
+  padding: 1px 7px 0 0;
+  color: #983633;
+  font-size: 19px;
 }
 div#cameras ul {
+  float: left;
   list-style: none;
   display: inline-block;
   margin: 0;
@@ -8862,6 +8872,12 @@ during ads and capture click events on IE<11 */
 }
 .no-padding {
   padding: 0;
+}
+.sequence-dimensions.vjs-fluid {
+  padding-top: 40%;
+}
+.vjs-fluid {
+  padding-top: 40%;
 }
 .main-preview-player {
   display: flex;
