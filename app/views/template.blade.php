@@ -22,11 +22,11 @@
     <!-- Photoswipe -->
     <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/photoswipe.css" rel="stylesheet">
     <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/default-skin/default-skin.css" rel="stylesheet">
+    <!-- VideoJS -->
+    <link href="{{URL::to('/')}}/js/vendor/video.js/dist/video-js.min.css" rel="stylesheet">    
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
 
-    <link href="{{URL::to('/')}}/js/vendor/video.js/dist/video-js.min.css" rel="stylesheet">
-    
     <!-- Globals variables, that are used in the application -->
     <script type="text/javascript">
         var _baseUrl = "{{URL::to('/')}}";

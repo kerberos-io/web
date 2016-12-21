@@ -8908,6 +8908,17 @@ body.modal-opened {
   left: 0;
   right: 0;
 }
+.video-js .vjs-big-play-button {
+  font-size: 5em;
+  border-radius: 50%;
+  top: 43%;
+  left: 46%;
+  width: 82px;
+  height: 82px;
+  padding: 22px;
+  border: .06666em solid #fff;
+  background-color: #983633;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   div.start-loading {
     margin-bottom: 80px;
