@@ -467,6 +467,8 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 var timeRange = "";
                 if(this.collection.models.length > 1)
                 {
+                    console.log(this.collection.at(0))
+                    console.log(this.collection.last())
                     timeBetween = this.collection.last().attributes.metadata.timestamp - this.collection.at(0).attributes.metadata.timestamp;
                     if(timeBetween > 0 && timeBetween / 60 > 1)
                     {

@@ -86,18 +86,18 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $latestSequence = $this->getLatestSequence();
 
-        if(count($latestSequence['images'])>0)
+        if(count($latestSequence)>0)
         {
-            $i = count($latestSequence['images']) -1;
+            $i = count($latestSequence) -1;
 
-            while($i >= 0 && getimagesize($latestSequence['images'][$i]['src'])['mime'] != 'image/jpeg')
+            while($i >= 0 && getimagesize($latestSequence[$i]['src'])['mime'] != 'image/jpeg')
             {
                 $i--;
             }
 
             if($i >= 0)
             {
-                return $latestSequence['images'][$i]["src"];
+                return $latestSequence[$i]["src"];
             }
         }
         
@@ -111,7 +111,15 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         if(count($days) > 0)
         {
             $day = $days[0];
-            return $this->getImagesSequenceFromDay($day, 1, 120);
+            $images = $this->getImagesSequenceFromDay($day, 1, 120);
+
+            // Filter out videos..
+            $images = array_where($images, function ($key, $value)
+            {
+                return $value['type'] === 'image';
+            });
+
+            return array_values($images);
         }
 
         return [];
@@ -377,7 +385,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             }
         }
 
-        $images = ['images'=>[], 'videos'=>[]];
+        $data = [];
 
         // ------------------------------------------
         // Filter images that belong to selected page
@@ -392,15 +400,29 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 $image->setTimezone($this->date->timezone);
                 $image->parse($path);
 
-                array_push($images['images'], [
+                $path = $this->filesystem->getPathToFile($image);
+
+                $object = [
                     'time' => $image->getTime(),
-                    'src' => $this->filesystem->getPathToFile($image),
-                    'metadata' => $this->filesystem->getMetadata($image),
-                ]);
+                    'src' => $path,
+                    'metadata' => $this->filesystem->getMetadata($image)
+                ];
+
+                if(getimagesize($path)['mime'] == 'image/jpeg')
+                {
+                    $object['type'] = 'image';
+                    
+                }
+                else
+                {
+                     $object['type'] = 'video';
+                }
+
+                array_push($data, $object);
             }
         }
 
-        return $images;
+        return $data;
     }
 
     public function getImagesSequenceFromDayAndStartTime($day, $page, $starttime, $maximumTimeBetween)
@@ -471,24 +493,23 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
             $path = $this->filesystem->getPathToFile($image);
 
+            $object = [
+                'time' => $image->getTime(),
+                'src' => $path,
+                'metadata' => $this->filesystem->getMetadata($image)
+            ];
+
             if(getimagesize($path)['mime'] == 'image/jpeg')
             {
-                array_push($data, [
-                    'time' => $image->getTime(),
-                    'src' => $path,
-                    'metadata' => $this->filesystem->getMetadata($image),
-                    'type' => 'image'
-                ]);
+                $object['type'] = 'image';
+                
             }
             else
             {
-                 array_push($data, [
-                    'time' => $image->getTime(),
-                    'src' => $path,
-                    'metadata' => [],
-                    'type' => 'video'
-                ]);
+                 $object['type'] = 'video';
             }
+
+            array_push($data, $object);
         }
 
         return $data;
