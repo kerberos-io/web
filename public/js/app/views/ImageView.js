@@ -70,8 +70,17 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             $(".close").click(function()
             {
                 self.player.pause();
-                $("#myModal").css({'display':'none'})
+                $("#myModal").hide();
+                $("#myModal").trigger('hidden');
             })
+
+            $("#myModal").on("show", function ()
+            {
+                $("body").addClass("modal-opened");
+            }).on("hidden", function ()
+            {
+                $("body").removeClass("modal-opened")
+            });
 
             if(!$("#sequence video").has('source').length)
             {
@@ -233,7 +242,6 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                             var playlist = [];
 
                             var videos = videoCollection.models;
-                            console.log("append");
                             for(var i = 0; i < videos.length; i++)
                             {
                                 playlist.push({
@@ -248,7 +256,9 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                             self.player.playlist(playlist);
                             self.player.playlist.first();
 
-                            $("#myModal").css({'display':'block'})
+                            $("#myModal").show();
+                            $("#myModal").trigger('show');
+
                             return false;
                         });
                     }
@@ -264,41 +274,46 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     // --------------------------
                     // Start progressive loading
 
-                    var wrappers = document.getElementById("images-"+self.currentPage).querySelectorAll('[data-lazy-load]');
-                    jellyfish.addLoadingIcons(wrappers);
-                    jellyfish.addLoadContentFunction(self.draw);
-                    jellyfish.checkViewport(wrappers, {offset: 99999999});
+                    var imagesView = document.getElementById("images-"+self.currentPage);
 
-                    imagesList.find("div.image").click(function()
+                    if(imagesView)
                     {
-                        // -------------------------------
-                        // Build photoswipe
-                    
-                        var pswpElement = document.querySelectorAll('.pswp')[0];
+                        var wrappers = imagesView.querySelectorAll('[data-lazy-load]');
+                        jellyfish.addLoadingIcons(wrappers);
+                        jellyfish.addLoadContentFunction(self.draw);
+                        jellyfish.checkViewport(wrappers, {offset: 99999999});
 
-                        // Build items array
-                        var img = new Image();
-                        var image = imagesCollection.models[0];
-                        img.src = image.attributes.src;
-                        img.onload = function()
+                        imagesList.find("div.image").click(function()
                         {
-                            var items = [];
-                            for(var i = 0; i < imagesCollection.models.length; i++)
+                            // -------------------------------
+                            // Build photoswipe
+                        
+                            var pswpElement = document.querySelectorAll('.pswp')[0];
+
+                            // Build items array
+                            var img = new Image();
+                            var image = imagesCollection.models[0];
+                            img.src = image.attributes.src;
+                            img.onload = function()
                             {
-                                image = imagesCollection.models[i];
-                                items.push({
-                                    title: image.attributes.time,
-                                    src:  image.attributes.src,
-                                    w: this.width,
-                                    h: this.height
-                                });
+                                var items = [];
+                                for(var i = 0; i < imagesCollection.models.length; i++)
+                                {
+                                    image = imagesCollection.models[i];
+                                    items.push({
+                                        title: image.attributes.time,
+                                        src:  image.attributes.src,
+                                        w: this.width,
+                                        h: this.height
+                                    });
+                                }
+                    
+                                // Initializes and opens PhotoSwipe
+                                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
+                                gallery.init();
                             }
-                
-                            // Initializes and opens PhotoSwipe
-                            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
-                            gallery.init();
-                        }
-                    });
+                        });
+                    }
                 }
 
                 // --------------------------------------------------------------
@@ -547,7 +562,6 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     var self = this;
                     this.$el.find("a.video-view").click(function()
                     {
-                        console.log("new");
                         var playlist = [];
 
                         var videos = videoCollection.models;
@@ -565,7 +579,9 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         self.player.playlist(playlist);
                         self.player.playlist.first();
 
-                        $("#myModal").css({'display':'block'})
+                        $("#myModal").show();
+                        $("#myModal").trigger('show');
+                        
                         return false;
                     });
                 }

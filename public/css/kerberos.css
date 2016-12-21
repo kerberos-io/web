@@ -8592,7 +8592,7 @@ div#cameras ul li a {
 .modal-center {
   position: absolute;
   width: 100%;
-  top: 62px;
+  top: 20%;
   margin: 0 auto;
 }
 /* Modal Content/Box */
@@ -8870,14 +8870,17 @@ during ads and capture click events on IE<11 */
     line-height: 22px;
   }
 }
+body.modal-opened {
+  overflow: hidden;
+}
 .no-padding {
   padding: 0;
 }
 .sequence-dimensions.vjs-fluid {
-  padding-top: 40%;
+  padding-top: 41%;
 }
 .vjs-fluid {
-  padding-top: 40%;
+  padding-top: 41%;
 }
 .main-preview-player {
   display: flex;
