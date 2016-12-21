@@ -66,6 +66,13 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
             this.player.playlistUi();
 
+            var self = this;
+            $(".close").click(function()
+            {
+                self.player.pause();
+                $("#myModal").css({'display':'none'})
+            })
+
             if(!$("#sequence video").has('source').length)
             {
                 $("#sequence video").append($("<source>"));
@@ -104,67 +111,73 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             var self = this;
             imagesCollection.fetch({async: true, success: function()
             {
+                // ------------------------------
+                // We have some images to append
 
-            // ------------------------------
-            // We have some images to append
+                var collection = $.extend(true, {}, imagesCollection);
 
-            var videoCollection = $.extend(true, {}, imagesCollection);
-            videoCollection.models = _.filter(videoCollection.models, function(item)
-            {
-                return item.attributes.type === 'video';
-            });
-
-            imagesCollection.models = _.filter(imagesCollection.models, function(item)
-            {
-                return item.attributes.type === 'image';
-            });
-
-            if(imagesCollection.models.length > 0)
-            {
-                // ----------------------
-                // Hide no images message
-
-                $(".no-images").hide()
-
-                // -----------------------------
-                // Get first image of collection
-
-                var imagesCollectionFirst = $.extend(true, {}, imagesCollection);
-                imagesCollectionFirst.models = [];
-
-                var firstModel = imagesCollection.models[0];
-                imagesCollectionFirst.models.push(firstModel);
-
-                if(imagesCollection.models.length > 1)
+                var videoCollection = $.extend(true, {}, collection);
+                videoCollection.models = _.filter(videoCollection.models, function(item)
                 {
-                    var secondModel = imagesCollection.models[imagesCollection.models.length-1];
-                    imagesCollectionFirst.models.push(secondModel);
+                    return item.attributes.type === 'video';
+                });
+
+                imagesCollection.models = _.filter(collection.models, function(item)
+                {
+                    return item.attributes.type === 'image';
+                });
+
+                if(imagesCollection.models.length > 0)
+                {
+                    // ----------------------
+                    // Hide no images message
+
+                    $(".no-images").hide()
+
+                    // -----------------------------
+                    // Get first image of collection
+
+                    var imagesCollectionFirst = $.extend(true, {}, imagesCollection);
+                    imagesCollectionFirst.models = [];
+
+                    if(imagesCollection.models.length > 0)
+                    {
+                        var firstModel = imagesCollection.models[0];
+                        imagesCollectionFirst.models.push(firstModel);
+
+                        if(imagesCollection.models.length > 1)
+                        {
+                            var secondModel = imagesCollection.models[imagesCollection.models.length-1];
+                            imagesCollectionFirst.models.push(secondModel);
+                        }
+
+                        self.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
+                    }
+                    
+                    // -------------------------------
+                    // add new collection to current.
+
+                    self.newViews = imagesCollectionFirst.map(self.createView, self);
+                    var imagesList = $("<div id='images-"+self.currentPage+"' class='images'>");   
+                    imagesList.html(_.map(self.newViews, self.getDom, self));
+
+                    // ---------------
+                    // Hide tooltip
+                    
+                    imagesList.find("i").hide();
                 }
 
-                self.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
-
-                // -------------------------------
-                // add new collection to current.
-
-                self.newViews = imagesCollectionFirst.map(self.createView, self);
-                var imagesList = $("<div id='images-"+self.currentPage+"' class='images'>");   
-                imagesList.html(_.map(self.newViews, self.getDom, self));
-
-                // ---------------
-                // Hide tooltip
-                
-                imagesList.find("i").hide();
-
-                var timeBetween = "";
-                var timeRange = "";
-                if(imagesCollection.models.length > 1)
-                {
-                    timeBetween = imagesCollection.last().attributes.metadata.timestamp - imagesCollection.at(0).attributes.metadata.timestamp;
+                if(collection.models.length > 0)
+                {   
+                    var timeBetween = "";
+                    var timeRange = "";
+     
+                    timeBetween = collection.last().attributes.metadata.timestamp - collection.at(0).attributes.metadata.timestamp;
                     if(timeBetween > 0 && timeBetween / 60 > 1)
                     {
                         timeBetween = parseInt(timeBetween / 60);
                         timeBetweenText = " during " + timeBetween;
-                        timeRange = imagesCollection.at(0).get('time') + ' - ' + imagesCollection.last().get('time');
+                        timeRange = collection.at(0).get('time') + ' - ' + collection.last().get('time');
                         
                         if(timeBetween > 1)
                         {
@@ -182,116 +195,123 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         if(timeBetween > 1)
                         {
                             timeBetweenText += " seconds";
-                            timeRange = imagesCollection.at(0).get('time') + ' - ' + imagesCollection.last().get('time');
+                            timeRange = collection.at(0).get('time') + ' - ' + collection.last().get('time');
                         }
                         else if(timeBetween == 0)
                         {
                             timeBetweenText = "";
-                            timeRange = imagesCollection.at(0).get('time');
+                            timeRange = collection.at(0).get('time');
                         }
                         else
                         {
                             timeBetweenText += " second";
-                            timeRange = imagesCollection.at(0).get('time');
+                            timeRange = collection.at(0).get('time');
                         }
                     }
+
+                    self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(timeRange));
+                    
+                    var numberOfEvents = (collection.models.length == 1 ) ? collection.models.length + " event" : collection.models.length  + " events";
+
+                    self.$el.find("div#images-wrapper")
+                        .append($("<p class='metadata'>")
+                            .html(numberOfEvents + timeBetweenText));
+
+                    self.videoViews = videoCollection.models.map(self.createVideoView, self);
+     
+                    if(self.videoViews.length>0)
+                    {
+                        var cameraViews = $("<div id='cameras'>").html(
+                            $("<ul>").html(_.map([self.videoViews[0]], self.getDom, self))
+                        )
+                        .prepend($("<div>").html(self.videoViews.length + 'x '));
+
+                        self.$el.find("div#images-wrapper").append(cameraViews);
+
+                        cameraViews.find("a.video-view").click(function()
+                        {
+                            var playlist = [];
+
+                            var videos = videoCollection.models;
+                            console.log("append");
+                            for(var i = 0; i < videos.length; i++)
+                            {
+                                playlist.push({
+                                    name: videos[i].get('time'),
+                                        sources: [{
+                                        src: videos[i].get('src'),
+                                        type: 'video/mp4',
+                                    }]
+                                })
+                            }
+
+                            self.player.playlist(playlist);
+                            self.player.playlist.first();
+
+                            $("#myModal").css({'display':'block'})
+                            return false;
+                        });
+                    }
+
+                    $("#load-more-images").hide()
+                    $(".scroll-down").show()
+
+                    // -------------------
+                    // Append images
+
+                    self.$el.find("div#images-wrapper").append(imagesList);
+
+                    // --------------------------
+                    // Start progressive loading
+
+                    var wrappers = document.getElementById("images-"+self.currentPage).querySelectorAll('[data-lazy-load]');
+                    jellyfish.addLoadingIcons(wrappers);
+                    jellyfish.addLoadContentFunction(self.draw);
+                    jellyfish.checkViewport(wrappers, {offset: 99999999});
+
+                    imagesList.find("div.image").click(function()
+                    {
+                        // -------------------------------
+                        // Build photoswipe
+                    
+                        var pswpElement = document.querySelectorAll('.pswp')[0];
+
+                        // Build items array
+                        var img = new Image();
+                        var image = imagesCollection.models[0];
+                        img.src = image.attributes.src;
+                        img.onload = function()
+                        {
+                            var items = [];
+                            for(var i = 0; i < imagesCollection.models.length; i++)
+                            {
+                                image = imagesCollection.models[i];
+                                items.push({
+                                    title: image.attributes.time,
+                                    src:  image.attributes.src,
+                                    w: this.width,
+                                    h: this.height
+                                });
+                            }
+                
+                            // Initializes and opens PhotoSwipe
+                            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
+                            gallery.init();
+                        }
+                    });
                 }
+
+                // --------------------------------------------------------------
+                // If nothing more to load, hide loading bar and unbind events..
+
                 else
                 {
-                    timeBetweenText = "";
-                    timeRange = imagesCollection.at(0).get('time');
+                    $("#start-loading").hide();
+                    $("#load-more-images").hide();
+                    $(window).unbind('scroll');
+                    $(".scroll-down").unbind('click');
+                    self.atEndOfDay = true;
                 }
-
-                self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(timeRange));
-                
-                var numberOfEvents = (imagesCollection.models.length == 1 ) ? imagesCollection.models.length + " event" : imagesCollection.models.length  + " events";
-
-                self.$el.find("div#images-wrapper")
-                    .append($("<p class='metadata'>")
-                        .html(numberOfEvents + timeBetweenText));
-
-                self.videoViews = videoCollection.models.map(self.createVideoView, self);
- 
-                self.$el.find("div#images-wrapper")
-                    .append($("<div id='cameras'>").html($("<ul>")
-                        .html(_.map(self.videoViews, self.getDom, self))));
-
-                if(self.videoViews.length>0)
-                {
-                    self.$el.find("a.video-view").click(function()
-                    {
-                        $("#sequence source").attr({'src': $(this).attr("href"), 'type':'video/mp4'});
-                        self.player.load();
-
-                        $("#myModal").css({'display':'block'})
-                        return false;
-                    });
-
-                    $(".close").click(function()
-                    {
-                        $("#myModal").css({'display':'none'})
-                    })
-                }
-
-                $("#load-more-images").hide()
-                $(".scroll-down").show()
-
-                // -------------------
-                // Append images
-
-                self.$el.find("div#images-wrapper").append(imagesList);
-
-                // --------------------------
-                // Start progressive loading
-
-                var wrappers = document.getElementById("images-"+self.currentPage).querySelectorAll('[data-lazy-load]');
-                jellyfish.addLoadingIcons(wrappers);
-                jellyfish.addLoadContentFunction(self.draw);
-                jellyfish.checkViewport(wrappers, {offset: 99999999});
-
-                imagesList.find("div.image").click(function()
-                {
-                    // -------------------------------
-                    // Build photoswipe
-                
-                    var pswpElement = document.querySelectorAll('.pswp')[0];
-
-                    // Build items array
-                    var img = new Image();
-                    var image = imagesCollection.models[0];
-                    img.src = image.attributes.src;
-                    img.onload = function()
-                    {
-                        var items = [];
-                        for(var i = 0; i < imagesCollection.models.length; i++)
-                        {
-                            image = imagesCollection.models[i];
-                            items.push({
-                                title: image.attributes.time,
-                                src:  image.attributes.src,
-                                w: this.width,
-                                h: this.height
-                            });
-                        }
-            
-                        // Initializes and opens PhotoSwipe
-                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
-                        gallery.init();
-                    }
-                });
-            }
-
-            // --------------------------------------------------------------
-            // If nothing more to load, hide loading bar and unbind events..
-
-            else
-            {
-                $("#start-loading").hide();
-                $("#load-more-images").hide();
-                $(window).unbind('scroll');
-                $(".scroll-down").unbind('click');
-                self.atEndOfDay = true;
-            }
             }});
         },
         draw: function(wrapper)
@@ -425,91 +445,89 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 this.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
             }
 
-            this.views = previewImages.map(this.createView, this);
+            if(this.collection.models.length > 0)
+            {
+                this.views = previewImages.map(this.createView, this);
 
-            if(this.views.length>0)
-            {     
-                var self = this;
+                if(this.views.length>0)
+                {  
+                    var self = this;
 
-                this.$el.find("div#images-1").html(_.map(this.views, this.getDom, this));
-                this.$el.find("div.image").click(function()
-                {
-                    var collection = imagesCollection;
-                
-                    // Build photoswipe
-                    var pswpElement = document.querySelectorAll('.pswp')[0];
-
-                    // Build items array
-                    var img = new Image();
-                    var image = collection.models[0];
-                    img.src = image.attributes.src;
-                    img.onload = function()
+                    this.$el.find("div#images-1").html(_.map(this.views, this.getDom, this));
+                    this.$el.find("div.image").click(function()
                     {
-                        var items = [];
-                        for(var i = 0; i < collection.models.length; i++)
+                        var collection = imagesCollection;
+                    
+                        // Build photoswipe
+                        var pswpElement = document.querySelectorAll('.pswp')[0];
+
+                        // Build items array
+                        var img = new Image();
+                        var image = collection.models[0];
+                        img.src = image.attributes.src;
+                        img.onload = function()
                         {
-                            image = collection.models[i];
-                            items.push({
-                                title: image.attributes.time,
-                                src:  image.attributes.src,
-                                w: this.width,
-                                h: this.height
-                            });
+                            var items = [];
+                            for(var i = 0; i < collection.models.length; i++)
+                            {
+                                image = collection.models[i];
+                                items.push({
+                                    title: image.attributes.time,
+                                    src:  image.attributes.src,
+                                    w: this.width,
+                                    h: this.height
+                                });
+                            }
+            
+                            // Initializes and opens PhotoSwipe
+                            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
+                            gallery.init();
                         }
-        
-                        // Initializes and opens PhotoSwipe
-                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
-                        gallery.init();
-                    }
-                });
+                    });
+                } 
+                else
+                {
+                    this.$el.find("div#images-1").remove();
+                }  
 
                 var timeBetween = "";
                 var timeRange = "";
-                if(this.collection.models.length > 1)
-                {
-                    console.log(this.collection.at(0))
-                    console.log(this.collection.last())
-                    timeBetween = this.collection.last().attributes.metadata.timestamp - this.collection.at(0).attributes.metadata.timestamp;
-                    if(timeBetween > 0 && timeBetween / 60 > 1)
-                    {
-                        timeBetween = parseInt(timeBetween / 60);
-                        timeBetweenText = " during " + timeBetween;
-                        timeRange = this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time');
 
-                        if(timeBetween > 1)
-                        {
-                            timeBetweenText += " minutes";
-                        }
-                        else
-                        {
-                            timeBetweenText += " minute";
-                        }
+                timeBetween = this.collection.last().attributes.metadata.timestamp - this.collection.at(0).attributes.metadata.timestamp;
+                if(timeBetween > 0 && timeBetween / 60 > 1)
+                {
+                    timeBetween = parseInt(timeBetween / 60);
+                    timeBetweenText = " during " + timeBetween;
+                    timeRange = this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time');
+
+                    if(timeBetween > 1)
+                    {
+                        timeBetweenText += " minutes";
                     }
                     else
                     {
-                        timeBetweenText = " during " + timeBetween;
-
-                        if(timeBetween > 1)
-                        {
-                            timeBetweenText += " seconds";
-                            timeRange = this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time');
-                        }
-                        else if(timeBetween == 0)
-                        {
-                            timeBetweenText = "";
-                            timeRange = this.collection.at(0).get('time');
-                        }
-                        else
-                        {
-                            timeBetweenText += " second";
-                            timeRange = this.collection.at(0).get('time');
-                        }
+                        timeBetweenText += " minute";
                     }
                 }
                 else
                 {
-                    timeBetweenText = "";
-                    timeRange = this.collection.at(0).get('time');
+                    timeBetweenText = " during " + timeBetween;
+
+                    if(timeBetween > 1)
+                    {
+                        timeBetweenText += " seconds";
+                        timeRange = this.collection.at(0).get('time') + ' - ' + this.collection.last().get('time');
+                    }
+                    else if(timeBetween == 0)
+                    {
+                        timeBetweenText = "";
+                        timeRange = this.collection.at(0).get('time');
+                    }
+                    else
+                    {
+                        timeBetweenText += " second";
+                        timeRange = this.collection.at(0).get('time');
+                    }
                 }
 
                 var numberOfEvents = (this.collection.models.length == 1 ) ? this.collection.models.length + " event" : this.collection.models.length  + " events";
@@ -529,6 +547,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     var self = this;
                     this.$el.find("a.video-view").click(function()
                     {
+                        console.log("new");
                         var playlist = [];
 
                         var videos = videoCollection.models;
@@ -544,17 +563,11 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         }
 
                         self.player.playlist(playlist);
-                        self.player.load();
+                        self.player.playlist.first();
 
                         $("#myModal").css({'display':'block'})
                         return false;
                     });
-
-                    $(".close").click(function()
-                    {
-                        self.player.pause();
-                        $("#myModal").css({'display':'none'})
-                    })
                 }
 
                 this.$el.find("div#images-wrapper")
@@ -564,6 +577,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 this.$el.find("div#images-wrapper")
                     .prepend($("<div class='new-page'>")
                         .html(timeRange));
+            
             }
 
             // ---------------
