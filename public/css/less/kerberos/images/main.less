@@ -133,21 +133,19 @@ div#cameras
 
 .modal-center
 {
-	position: absolute;
-    top: 21%;
+	 position: absolute;
     width: 100%;
+    top: 62px;
+    margin: 0 auto;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 0 auto; /* 15% from the top and centered */
-    padding: 10px;
-    border: 1px solid #888;;
     margin: 0 auto;
     display: table;
     z-index: 1;
-    width: 522px; /* Could be more or less, depending on screen size */
+    width: 95%;
+    border: none;
 }
 
 /* The Close Button */
@@ -420,6 +418,37 @@ during ads and capture click events on IE<11 */
   }
 }
 
+.no-padding
+{
+  padding: 0;
+}
+
+.main-preview-player {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.video-js,
+.playlist-container {
+  position: relative;
+  min-width: 300px;
+  min-height: 150px;
+  height: 0;
+}
+.video-js {
+  flex: 3 1 70%;
+}
+.playlist-container {
+  flex: 1 1 30%;
+}
+.vjs-playlist {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 @import "responsive-loader";
 @import "timeslider";

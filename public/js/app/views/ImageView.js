@@ -60,7 +60,10 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
         initialize: function(data)
         {
             this.views = {};
-            this.player = videojs('sequence');
+            this.player = videojs('sequence', {
+                fluid: true
+            });
+
             if(!$("#sequence video").has('source').length)
             {
                 $("#sequence video").append($("<source>"));

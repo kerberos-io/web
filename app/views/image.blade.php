@@ -24,8 +24,14 @@
                         <div class="modal-center">
                             <div class="modal-content">
                                 <span class="close">&times;</span>
-                                <video id="sequence" class="video-js" controls preload="auto" width="500" height="500"></video>
-                                <ol class="vjs-playlist"></ol>
+                                <section class="main-preview-player">
+                                  <video id="sequence" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous">
+                                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                                  </video>
+                                  <div class="playlist-container  preview-player-dimensions vjs-fluid">
+                                    <ol class="vjs-playlist"></ol>
+                                  </div>
+                                </section>
                             </div>
                         </div>
                     </div>
