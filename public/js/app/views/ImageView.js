@@ -60,8 +60,11 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
         initialize: function(data)
         {
             this.views = {};
-            this.player = videojs('sequence', {
-                fluid: true
+            this.player = videojs('sequence',  {
+              controlBar: {
+                volumeMenuButton: false
+              },
+              fluid: true
             });
 
             this.player.playlistUi();
