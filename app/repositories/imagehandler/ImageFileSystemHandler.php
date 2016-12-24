@@ -402,23 +402,27 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
                 $path = $this->filesystem->getPathToFile($image);
 
-                $object = [
-                    'time' => $image->getTime(),
-                    'src' => $path,
-                    'metadata' => $this->filesystem->getMetadata($image)
-                ];
-
-                if(getimagesize($path)['mime'] == 'image/jpeg')
+                try
                 {
-                    $object['type'] = 'image';
-                    
-                }
-                else
-                {
-                     $object['type'] = 'video';
-                }
+                    $object = [
+                        'time' => $image->getTime(),
+                        'src' => $path,
+                        'metadata' => $this->filesystem->getMetadata($image)
+                    ];
 
-                array_push($data, $object);
+                    if(getimagesize($path)['mime'] == 'image/jpeg')
+                    {
+                        $object['type'] = 'image';
+                        
+                    }
+                    else
+                    {
+                         $object['type'] = 'video';
+                    }
+
+                    array_push($data, $object);
+                }
+                catch(\Exception $ex){}
             }
         }
 
@@ -493,23 +497,27 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
             $path = $this->filesystem->getPathToFile($image);
 
-            $object = [
-                'time' => $image->getTime(),
-                'src' => $path,
-                'metadata' => $this->filesystem->getMetadata($image)
-            ];
-
-            if(getimagesize($path)['mime'] == 'image/jpeg')
+            try
             {
-                $object['type'] = 'image';
-                
-            }
-            else
-            {
-                 $object['type'] = 'video';
-            }
+                $object = [
+                    'time' => $image->getTime(),
+                    'src' => $path,
+                    'metadata' => $this->filesystem->getMetadata($image)
+                ];
 
-            array_push($data, $object);
+                if(getimagesize($path)['mime'] == 'image/jpeg')
+                {
+                    $object['type'] = 'image';
+                    
+                }
+                else
+                {
+                     $object['type'] = 'video';
+                }
+
+                array_push($data, $object);
+            }
+            catch(\Exception $ex){}
         }
 
         return $data;
