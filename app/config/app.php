@@ -172,8 +172,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
-		'Cedricve\Simpleauth\SimpleauthServiceProvider',
-		'Aws\Laravel\AwsServiceProvider',
+		'Cedricve\Simpleauth\SimpleauthServiceProvider'
 	),
 
 	/*
@@ -240,8 +239,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Image'			  => 'Intervention\Image\Facades\Image',
-		'AWS' 			  => 'Aws\Laravel\AwsFacade',
+		'Image'			  => 'Intervention\Image\Facades\Image'
 	),
 
 );
