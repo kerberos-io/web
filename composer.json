@@ -7,7 +7,6 @@
 		"laravel/framework": "4.2.*",
 		"intervention/image": "dev-master",
 		"cedricve/simpleauth": "1.0.0",
-		"aws/aws-sdk-php-laravel": "1.*",
 		"linfo/linfo": "^3.0"
 	},
 	"require-dev": {
