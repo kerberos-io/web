@@ -19,6 +19,8 @@
     <script src="{{URL::to('/')}}/js/vendor/requirejs/require.js"></script>
     <!-- Toggle -->
     <link href="{{URL::to('/')}}/js/vendor/css-toggle-switch/dist/toggle-switch.css" rel="stylesheet">
+    <!-- Remodal -->
+    <link href="{{URL::to('/')}}/js/vendor/remodal/dist/jquery.remodal.css" rel="stylesheet">
     <!-- Photoswipe -->
     <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/photoswipe.css" rel="stylesheet">
     <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/default-skin/default-skin.css" rel="stylesheet">
