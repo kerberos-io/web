@@ -6,8 +6,8 @@ define("add-video-js-in-global-scope",["videojs"], function(videojs) {
     window.videojs = videojs;
 });
 
-define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView",'videojsplaylist', 'videojsplaylistui'], 
-    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView, videojsplaylist, videojsplaylistui)
+define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView", "remodal", 'videojsplaylist', 'videojsplaylistui'], 
+    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView, remodal, videojsplaylist, videojsplaylistui)
 { 
     var ImageItemView = BaseView.extend(
     {
@@ -70,19 +70,12 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             this.player.playlistUi();
 
             var self = this;
-            $(".close").click(function()
+
+            var options = {};
+            self.modal = $('[data-remodal-id=video]').remodal(options);
+            $(document).on('closed', '.remodal', function (e)
             {
                 self.player.pause();
-                $("#myModal").hide();
-                $("#myModal").trigger('hidden');
-            })
-
-            $("#myModal").on("show", function ()
-            {
-                $("body").addClass("modal-opened");
-            }).on("hidden", function ()
-            {
-                $("body").removeClass("modal-opened")
             });
 
             if(!$("#sequence video").has('source').length)
@@ -261,9 +254,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                             self.player.playlist(playlist);
                             self.player.playlist.first();
-
-                            $("#myModal").show();
-                            $("#myModal").trigger('show');
+                            self.modal.open();
 
                             return false;
                         };
@@ -605,9 +596,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                         self.player.playlist(playlist);
                         self.player.playlist.first();
-
-                        $("#myModal").show();
-                        $("#myModal").trigger('show');
+                        self.modal.open();
                         
                         return false;
                     });
