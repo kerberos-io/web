@@ -9179,24 +9179,38 @@ div.video-preview .imageview-video-preview {
   margin: 0;
   padding: 50px 0;
   border-radius: 0;
+  background: #000;
+}
+#video-modal .remodal-close:after {
+  color: #fff;
+  height: 27px;
 }
 .vjs-playlist-now-playing span.vjs-playlist-now-playing,
 .vjs-selected span.vjs-playlist-now-playing {
-  color: #943633;
+  color: #fff;
 }
 .vjs-playlist-now-playing .vjs-playlist-name,
 .vjs-selected .vjs-playlist-name {
-  color: #943633;
+  color: #fff;
 }
 .vjs-playlist .vjs-playlist-item {
   margin-bottom: 2px;
 }
 .vjs-mouse.vjs-playlist .vjs-up-next .vjs-up-next-text {
   color: #fff;
+  text-transform: none;
+  display: block;
+  font-size: .8em;
+  margin: 0;
+  text-align: left;
+  text-shadow: none;
+}
+.vjs-playlist .vjs-playlist-name {
+  text-shadow: none;
 }
 .vjs-playlist-now-playing.vjs-playlist-thumbnail-placeholder,
 .vjs-selected .vjs-playlist-thumbnail-placeholder {
-  background: #fff;
+  background: #943633;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   div.start-loading {
