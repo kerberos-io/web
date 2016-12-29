@@ -231,6 +231,9 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                     self.videoViews = videoCollection.models.map(self.createVideoView, self);
      
+                    // -------------------
+                    // Append images
+
                     if(self.videoViews.length>0)
                     {
                         var cameraViews = $("<div id='cameras'>").html(
@@ -240,7 +243,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                         self.$el.find("div#images-wrapper").append(cameraViews);
 
-                        cameraViews.find("a.video-view").click(function()
+                        var openVideoView = function()
                         {
                             var playlist = [];
 
@@ -263,16 +266,27 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                             $("#myModal").trigger('show');
 
                             return false;
-                        });
+                        };
+
+                        if(imagesCollection.models.length == 0)
+                        {
+                            self.$el.find("div#images-wrapper").append($("<div>").addClass('video-preview')
+                                .append(
+                                $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
+                                ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
+                                '<source></video>').click(openVideoView)));
+                        }
+
+                        cameraViews.find("a.video-view").click(openVideoView);
+                    }
+
+                    if(imagesCollection.models.length > 0)
+                    {
+                        self.$el.find("div#images-wrapper").append(imagesList);
                     }
 
                     $("#load-more-images").hide()
                     $(".scroll-down").show()
-
-                    // -------------------
-                    // Append images
-
-                    self.$el.find("div#images-wrapper").append(imagesList);
 
                     // --------------------------
                     // Start progressive loading
@@ -554,6 +568,16 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                 if(this.videoViews.length>0)
                 {
+                    if(this.views.length == 0)
+                    {
+                        $("#images-wrapper").append($("<div>").addClass('video-preview')
+                                .append(
+                                $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
+                                ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
+                                '<source></video>')));
+
+                    }
+
                     this.$el.find("div#images-wrapper").prepend(
 
                         $("<div id='cameras'>").html(
@@ -563,7 +587,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     );
 
                     var self = this;
-                    this.$el.find("a.video-view").click(function()
+                    this.$el.find("a.video-view, video.imageview-video-preview").click(function()
                     {
                         var playlist = [];
 

@@ -9162,6 +9162,17 @@ body.modal-opened {
   border: .06666em solid #fff;
   background-color: #983633;
 }
+div.video-preview {
+  clear: both;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 0;
+}
+div.video-preview .imageview-video-preview {
+  border-radius: 15px;
+  cursor: pointer;
+  height: 250px;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   div.start-loading {
     margin-bottom: 80px;
@@ -9211,8 +9222,13 @@ body.modal-opened {
     width: 100%;
     padding-bottom: 100px;
   }
-  div#images-wrapper p.metadata {
-    padding-bottom: 20px;
+  div.new-page {
+    padding-top: 20px;
+  }
+  div.video-preview .imageview-video-preview {
+    border-radius: 0px;
+    height: auto;
+    width: 100%;
   }
 }
 #timeselection .day {
