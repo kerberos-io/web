@@ -55,6 +55,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
         currentPage : 1,
         lastTime: undefined,
         player: undefined,
+        isPlaying: false,
         view : 'image',
         gallery: [],
         initialize: function(data)
@@ -75,7 +76,25 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             self.modal = $('[data-remodal-id=video]').remodal(options);
             $(document).on('closed', '.remodal', function (e)
             {
+                self.isPlaying = false;
                 self.player.pause();
+            });
+
+            $('body').keyup(function(e)
+            {
+               if(e.keyCode == 32)
+               {
+                   if(self.isPlaying)
+                   {
+                        self.player.pause();
+                        self.isPlaying = false;
+                   }
+                   else
+                   {
+                        self.player.play();
+                        self.isPlaying = true;
+                   }
+               }
             });
 
             if(!$("#sequence video").has('source').length)
@@ -559,15 +578,25 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                 if(this.videoViews.length>0)
                 {
+                    var videoPreviews = $("<div>").addClass('video-preview');
                     if(this.views.length == 0)
                     {
-                        $("#images-wrapper").append($("<div>").addClass('video-preview')
-                                .append(
+                        videoPreviews.append(
                                 $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
                                 ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
-                                '<source></video>')));
+                                '<source></video>'));
 
                     }
+
+                    if(this.videoViews.length > 1)
+                    {
+                        videoPreviews.append(
+                                $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(videoCollection.models.length-1).get('src') + '"> '+
+                                ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
+                                '<source></video>'));
+                    }
+
+                    $("#images-wrapper").append(videoPreviews);
 
                     this.$el.find("div#images-wrapper").prepend(
 

@@ -8284,10 +8284,6 @@ label.toggle-mobile {
     margin: 0px -15px;
     padding-bottom: 10px;
   }
-  div.images div {
-    width: 100%;
-    margin-top: -5px;
-  }
   ul.top-nav {
     display: none;
   }
@@ -9173,6 +9169,9 @@ div.video-preview .imageview-video-preview {
   cursor: pointer;
   height: 250px;
 }
+div.video-preview video:first-child {
+  margin-right: 10px;
+}
 #video-modal {
   width: 100%;
   max-width: 100%;
@@ -9257,6 +9256,16 @@ div.video-preview .imageview-video-preview {
   }
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  div.images {
+    padding-top: 20px;
+  }
+  div.images div {
+    width: 100%;
+    margin-top: -5px;
+  }
+  div.video-preview video {
+    margin-top: -5px;
+  }
   div.loadimage {
     width: 100%;
     padding-bottom: 100px;
