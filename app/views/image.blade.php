@@ -18,24 +18,6 @@
                         <div class="loader"></div>
                     </div>
 
-                    <!-- The Modal -->
-                    <!--<div id="myModal" class="modal">
-                        <!-- Modal content -->
-                        <!--<div class="modal-center">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <section class="main-preview-player">
-                                  <video id="sequence" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous">
-                                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                                  </video>
-                                  <div class="playlist-container  preview-player-dimensions vjs-fluid">
-                                    <ol class="vjs-playlist"></ol>
-                                  </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>-->
-
                     <div id="video-modal" data-remodal-id="video">
                         <section class="main-preview-player">
                           <video id="sequence" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous">
@@ -46,15 +28,6 @@
                           </div>
                         </section>
                     </div>
-
-                    <!--
-                    <section class="main-preview-player">
-                      <video id="preview-player" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous">
-                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                      </video>
-                      <ol class="vjs-playlist"></ol>
-                    </section>
-                    -->
 
                     @include('photoswipe')
                     
