@@ -80,6 +80,13 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 self.player.pause();
             });
 
+            $(document).on('opened', '.remodal', function (e)
+            {
+                self.isPlaying = true;
+                self.player.play();
+            });
+
+
             $('body').keyup(function(e)
             {
                if(e.keyCode == 32)
