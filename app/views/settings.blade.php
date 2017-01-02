@@ -18,6 +18,13 @@
                     </div>
 
                     <div id="basic" style="display: {{($machinery['type'] === 'basic') ? 'block' : 'none'}}">
+                        <div class="name with-tooltip">
+                            <input type="text" placeholder="Name of camera" value=""/>
+                            <span>
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                <span>Give an unique name to your camera. This is needed to split the activity afterwards.</span>
+                            </span>
+                        </div>
 
                     </div>
 
