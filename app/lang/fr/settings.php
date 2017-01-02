@@ -13,6 +13,8 @@ return array(
     
     'settings' => 'Réglages',
 
+    'configuration' => 'Configuration',
+
 	'update' => 'Sauvegarder',
 
 );

@@ -13,6 +13,8 @@ return array(
     
     'settings' => 'Settings',
 
+    'configuration' => 'Configuration',
+
 	'update' => 'Update',
 
 );

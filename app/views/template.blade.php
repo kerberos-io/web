@@ -126,7 +126,7 @@
                         $(".machinery-switch input[type='checkbox']").click(function()
                         {
                             var checked = $(this).attr('checked');
-                            toggleMachinery.setStatus((checked == undefined));
+                            toggleMachinery.setStatus((checked === undefined));
                         });
                     });
                 });

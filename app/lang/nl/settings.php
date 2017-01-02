@@ -11,7 +11,9 @@ return array(
 	|
 	*/
     
-    'settings' => 'Installingen',
+    'settings' => 'Instellingen',
+
+    'configuration' => 'Configuratie',
 
 	'update' => 'Aanpassen',
 

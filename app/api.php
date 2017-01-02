@@ -71,7 +71,6 @@ Route::group(array('prefix' => 'api/v1'), function()
     
     Route::group(['before' => 'auth.basic'], function()
     {
-        
         // --------------------
         // Settings Controller
 
@@ -89,6 +88,9 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::put('io', 'Controllers\SettingsController@updateIos');
         Route::get('io/webhook', 'Controllers\SettingsController@getIoWebhook');
         Route::put('io/webhook', 'Controllers\SettingsController@updateIoWebhook');
+
+        Route::get('configure', array('uses' => 'Controllers\SettingsController@getConfiguration'));
+        Route::put('configure', array('uses' => 'Controllers\SettingsController@changeProperties'));
     });
 });
 
