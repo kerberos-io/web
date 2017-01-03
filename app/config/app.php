@@ -4,26 +4,6 @@ return array(
 
 	/*
 	|-----------------------------------------------------------
-	| Authentication Kerberos.web - Simpleauth by cedricverst
-	|-----------------------------------------------------------
-	|	
-	| When you first open the kerberos web application a user
-	| needs to sign-in, it can sign-in with following credentials.
-	|
-	*/
-
-	'users' => [
-		[
-			"id" => 1,
-			"username" => "root",
-			"password" => "root",
-			"firstname" => "Cédric",
-			"secondname" => "Verstraeten"
-		]
-	],
-
-	/*
-	|-----------------------------------------------------------
 	| Configuration Kerberos.io
 	|-----------------------------------------------------------
 	|

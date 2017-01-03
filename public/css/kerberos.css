@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,6 +1103,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2531,6 +2532,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3021,6 +3023,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8723,60 +8726,6 @@ div#images-wrapper p.metadata {
   text-align: center;
   clear: both;
 }
-.with-tooltip span {
-  position: relative;
-  color: white;
-  text-shadow: #090a0b 0 -1px;
-  display: inline-block;
-  font-style: bold;
-  width: 100%;
-}
-.with-tooltip span > i {
-  font-family: Helvetica;
-  font-style: normal;
-  text-align: center;
-  line-height: 150%;
-  color: black;
-  text-shadow: white 0 1px;
-  background: #f4f4f4;
-  background-clip: padding-box;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
-  border: 4px solid #111;
-  border: 4px solid #943633;
-  border-radius: 3px;
-  position: absolute;
-  width: 250px;
-  left: 50%;
-  margin-left: -125px;
-  padding: 10px 0;
-  bottom: 100%;
-  margin-bottom: 15px;
-  visibility: hidden;
-  opacity: 0;
-}
-.with-tooltip span > i:before,
-.with-tooltip span > i:after {
-  content: "";
-  position: absolute;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  top: 100%;
-  left: 50%;
-  margin-left: -10px;
-}
-.with-tooltip span > i:before {
-  border-top: 10px solid #943633;
-  margin-top: 4px;
-}
-.with-tooltip span > i:after {
-  border-top: 10px solid #f4f4f4;
-  margin-top: -2px;
-  z-index: 1;
-}
-.with-tooltip span:hover > i {
-  visibility: visible;
-  opacity: 1;
-}
 .images {
   clear: both;
 }
@@ -9416,19 +9365,21 @@ div.video-preview video:first-child {
 #cloud select,
 #settings input[type="submit"],
 #cloud input[type="submit"] {
-  border-radius: 5px;
-  margin: 3px 0 3px 0;
+  font-weight: 200;
+  margin: 3px 0;
   height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
+  /* padding: 6px 12px; */
+  width: 50%;
+  font-size: 15px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  border: none;
+  border-bottom: 1px solid #ccc;
+  /* border-radius: 4px; */
+  /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */
+  /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */
   -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -9444,6 +9395,7 @@ div.video-preview video:first-child {
 #settings div.submit-form,
 #cloud div.submit-form {
   margin-top: 10px;
+  padding-right: 20px;
   clear: both;
 }
 #settings div.submit-form input[type="submit"],
@@ -9453,6 +9405,89 @@ div.video-preview video:first-child {
   background-color: #943633;
   color: #fff;
   border-color: #943633;
+  border-radius: 10px;
+  width: 100%;
+}
+#basic .element {
+  clear: both;
+  display: table;
+  width: 100%;
+  margin-bottom: 10px;
+}
+#basic input {
+  float: left;
+}
+#basic div select {
+  width: 60%;
+}
+#basic .name input:before {
+  width: 10px;
+  height: 10px;
+  display: table;
+  background: #333;
+}
+#basic .block {
+  display: table;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.with-tooltip > span {
+  position: relative;
+  color: #943633;
+  font-size: 21px;
+  text-shadow: none;
+  display: inline-block;
+  font-style: bold;
+  float: left;
+  margin-top: 7px;
+  margin-left: 7px;
+}
+.with-tooltip span > span {
+  font-size: 14px;
+  font-family: Helvetica;
+  font-style: normal;
+  text-align: left;
+  line-height: 150%;
+  color: #943633;
+  text-shadow: white 0 1px;
+  background: #f4f4f4;
+  background-clip: padding-box;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
+  border: 2px solid #943633;
+  border-radius: 3px;
+  position: absolute;
+  width: 250px;
+  left: 350%;
+  margin-left: -27px;
+  padding: 10px;
+  top: -10px;
+  margin-bottom: 15px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999999;
+}
+.with-tooltip span > span:before,
+.with-tooltip span > span:after {
+  content: "";
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: 20px;
+  left: -4%;
+  margin-left: -22px;
+  -webkit-transform: rotate(90deg);
+}
+.with-tooltip span > span:before {
+  border-top: 10px solid #943633;
+  margin-left: -7px;
+}
+.with-tooltip span > span:after {
+  border-top: 10px solid #f4f4f4;
+  margin-left: -4px;
+}
+.with-tooltip span:hover > span {
+  visibility: visible;
+  opacity: 1;
 }
 .configuration-switch {
   width: 180px;
@@ -9512,6 +9547,17 @@ label {
   }
   #settings select {
     width: 200px;
+  }
+  .with-tooltip > span {
+    display: none;
+  }
+  #cloud input[type=submit],
+  #cloud input[type=text],
+  #cloud select,
+  #settings input[type=submit],
+  #settings input[type=text],
+  #settings select {
+    width: 90%;
   }
 }
 #system-actions {
