@@ -11,9 +11,22 @@
 |
 */
 
+
 App::before(function($request)
 {
-	//
+	/*
+	|-----------------------------------------------------------
+	| Authentication Kerberos.web - Simpleauth by cedricverst
+	|-----------------------------------------------------------
+	|	
+	| When you first open the kerberos web application a user
+	| needs to sign-in, it can sign-in with following credentials.
+	|
+	*/
+
+	$users = Config::get('web.users');
+	Auth::getProvider()->setUsers($users);
+	
 });
 
 

@@ -1,4 +1,4 @@
 <?php return array (
-  'setup' => 'motion-detection',
   'type' => 'basic',
+  'surveillance' => 'motion-detection',
 );
