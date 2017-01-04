@@ -17,6 +17,8 @@ return array(
 
 	'settings' => 'Instellingen',
 
+	'configuration' => 'Configuratie',
+
 	'cloud' => 'Cloud',
     
 	'on' => 'Aan',

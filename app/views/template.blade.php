@@ -82,17 +82,18 @@
                 </li>
                 @if(Config::get('app.config') != '')
                 <li>
-                    <a href="{{URL::to('/settings')}}"><i class="fa fa-wrench"></i> {{Lang::get('general.settings')}}</a>
+                    <a href="{{URL::to('/settings')}}"><i class="fa fa-wrench"></i> {{Lang::get('general.configuration')}}</a>
                 </li>
-                <li>
+                <!--<li>
                     <a href="{{URL::to('/cloud')}}"><i class="fa fa-cloud"></i> {{Lang::get('general.cloud')}}</a>
-                </li>
+                </li>-->
                 @endif
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
+                            <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</a>
                             <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> {{Lang::get('general.logout')}}</a>
                         </li>
                     </ul>

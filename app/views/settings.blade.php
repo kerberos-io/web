@@ -17,49 +17,20 @@
                         </label>
                     </div>
 
-                    <div id="basic" style="display: {{($machinery['type'] === 'basic') ? 'block' : 'none'}}">
+                    {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
 
-                        <div id="general" class="block">
-                            <h4>General settings</h4>
-                            <div class="name with-tooltip element">
-                                <input type="text" placeholder="Name of camera" value=""/>
-                                <span>
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>Give an unique name to your camera. This is needed to split the activity afterwards.</span>
-                                </span>
-                            </div>
+                        <!-- Basic View -->
+                        @include('settings.basic', ['machinery' => $machinery])
 
-                            <div class="timezone with-tooltip element">
-                               <select id="timezone-picker">
-                                    @include('data.timezones')
-                                </select>
-                                <span>
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The timezone is used to convert timestamps to your local time.</span>
-                                </span>
-                            </div>
-                        </div>
+                        <!-- Advanced view -->
+                        @include('settings.advanced', ['machinery' => $machinery, 'settings' => $settings])
 
-                        <div id="surveillance" class="block">
-                            <h4>Surveillance</h4>
-
-                        </div>
-
-                    </div>
-
-                    <div id="advanced" style="display: {{($machinery['type'] === 'advanced') ? 'block' : 'none'}}">
-                        {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
-                            @include('settings_controls', array('settings' => $settings))
-                            <div class="submit-form">
-                                {{ Form::submit(Lang::get('settings.update')) }}
-                            </div>
-                        {{ Form::close() }}
-                    </div>
+                    {{ Form::close() }}
                 </div>
 
                 <div id="settings" class="col-lg-6">
                     <div id="configuration">
-                        <h2><i class="fa fa-wrench"></i> {{Lang::get('settings.configuration')}}</h2>
+                        <h2><i class="fa fa-wrench"></i> Web</h2>
 
                     </div>
                 </div>
@@ -69,7 +40,7 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-
+    
     <script type="text/javascript">
         require([_jsBase + 'main.js'], function(common)
         {

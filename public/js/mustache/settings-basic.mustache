@@ -1,0 +1,90 @@
+<div id="general" class="block">
+    <h4><i class="fa fa-gears"></i> General settings</h4>
+    <div class="name with-tooltip element">
+        <input type="text" placeholder="Specify a name for the camera" value="{{name}}"/>
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span>Give an unique name to your camera. This is needed to split the activity afterwards.</span>
+        </span>
+    </div>
+
+    <div class="timezone with-tooltip element">
+       <select id="timezone-picker-basic"></select>
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span>The timezone is used to convert timestamps to your local time. It's used in both the machinery and web interface.</span>
+        </span>
+    </div>
+</div>
+
+<div id="camera" class="block">
+    <h4><i class="fa fa-video-camera"></i> Camera</h4>
+    <div class="type active with-tooltip">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        USB camera
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{Lang::get('settings.motion')}}</span>
+        </span>
+    </div>
+    <div class="type">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        RPi camera
+    </div>
+    <div class="type">
+        <i class="fa fa-video-camera aria-hidden="true"></i>
+        IP camera
+    </div>
+</div>
+
+
+<div id="surveillance" class="block">
+    <h4><i class="fa fa-user-secret"></i> Surveillance mode</h4>
+    <div class="type active with-tooltip">
+        <i class="fa fa-child" aria-hidden="true"></i>
+        motion
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{Lang::get('settings.motion')}}</span>
+        </span>
+    </div>
+    <div class="type">
+        <i class="fa fa-user-times" aria-hidden="true"></i>
+        counting
+    </div>
+    <div class="type">
+        <i class="fa fa-user-times" aria-hidden="true"></i>
+        timelapse
+    </div>
+    <div class="type">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        video
+    </div>
+</div>
+
+<div id="storage" class="block">
+    <h4><i class="fa fa-cloud"></i> Storage</h4>
+    <div class="type active with-tooltip">
+        <i class="fa fa-cloud" aria-hidden="true"></i>
+        Cloud
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{Lang::get('settings.kerberosio-cloud')}}</span>
+        </span>
+    </div>
+    <!--<div class="type">
+        <i class="fa fa-user-times" aria-hidden="true"></i>
+        OwnCloud
+    </div>-->
+</div>
+
+<div class="submit-form">
+    <p id="confirm-info">don't forget to press the <b>update button</b>, to confirm.</p>
+    <input type="submit" value="update"/>
+</div>
+
+<div id="logging-modal" data-remodal-id="logging">
+    <div class="modal-body">
+    
+    </div>
+</div>

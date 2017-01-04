@@ -17,6 +17,8 @@ return array(
 
 	'settings' => 'Réglages',
 
+	'configuration' => 'Configuration',
+
 	'cloud' => 'Cloud',
     
 	'on' => 'On',

@@ -9,5 +9,6 @@ return [
 			"firstname" => "Cédric",
 			"secondname" => "Verstraeten"
 		]
-	]
+	],
+	'language' => 'en',
 ];
