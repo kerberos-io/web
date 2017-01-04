@@ -1,7 +1,7 @@
 @import "timeselection";
 @import "dropdown";
 
-#settings, #cloud
+#settings, #cloud, #settings-modal
 {
     margin-bottom: 15px;
 
@@ -18,12 +18,7 @@
         font-size: 17px;
         color: #943633;
     }
-
-    > div
-    {
-        margin: 5px 0 5px 0;
-    }
-
+    
     .sub
     {
         margin: 20px 0 20px 0;
@@ -197,7 +192,7 @@
     }
 }
 
-#basic
+#basic, #settings-modal
 {
     h4
     {
@@ -365,6 +360,35 @@ label
         margin-bottom: 8px;
     }
 }
+
+ #settings-modal
+ {
+    min-width: 500px;
+
+    input[type=text]
+    {
+        width: 80%;
+    }
+
+    #usbcamera-view
+    {
+        .multiply
+        {
+            float: left;
+            color: #333;
+            margin-top: 25px;
+            font-size: 13px;
+            padding: 0 14px;
+        }
+
+        input.width, input.height
+        {
+            width: 20%;
+            text-align: center;
+        }
+
+    }
+ }
 
 .remodal
 {

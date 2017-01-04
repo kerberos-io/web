@@ -7577,6 +7577,11 @@ ul.alert-dropdown {
     width: 100%;
   }
 }
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td.active:hover {
+  background-color: #943633;
+  color: #fff;
+}
 .load4 .loader {
   display: table;
   font-size: 10px;
@@ -7803,10 +7808,6 @@ html.remodal-is-locked {
    Remodal default theme
    ========================================================================== */
 /* Default theme font */
-.remodal,
-.remodal * {
-  font-family: "Exo 2", sans-serif;
-}
 /* Background for effects */
 .remodal-bg {
   -webkit-transition: -webkit-filter 0.2s ease-out;
@@ -8049,6 +8050,10 @@ body {
 .navbar-collapse .navbar-nav > a:hover {
   background-color: #C8C5C5;
 }
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-text {
+  font-size: 15px;
+}
 .top-nav {
   padding: 0;
 }
@@ -8066,6 +8071,10 @@ h1 {
 .top-nav > li > a {
   font-family: 'Source Sans Pro', sans-serif;
   text-transform: capitalize;
+  font-size: 15px;
+}
+.top-nav > li > a i {
+  padding-right: 5px;
 }
 .top-nav > li > a:hover,
 .top-nav > li > a:focus,
@@ -9341,71 +9350,82 @@ div.video-preview video:first-child {
   margin-right: 5px;
 }
 #settings,
-#cloud {
+#cloud,
+#settings-modal {
   margin-bottom: 15px;
 }
 #settings div.description,
-#cloud div.description {
+#cloud div.description,
+#settings-modal div.description {
   width: 75%;
   margin-bottom: 20px;
 }
 #settings .sub h2,
-#cloud .sub h2 {
+#cloud .sub h2,
+#settings-modal .sub h2 {
   margin: 0 0 10px 0;
   padding: 0;
   font-size: 17px;
   color: #943633;
 }
-#settings > div,
-#cloud > div {
-  margin: 5px 0 5px 0;
-}
 #settings .sub,
-#cloud .sub {
+#cloud .sub,
+#settings-modal .sub {
   margin: 20px 0 20px 0;
   padding: 20px 0 20px 0;
   display: table;
 }
 #settings .image img,
-#cloud .image img {
+#cloud .image img,
+#settings-modal .image img {
   width: 100%;
   height: auto;
 }
 #settings div.dropdown div.element,
-#cloud div.dropdown div.element {
+#cloud div.dropdown div.element,
+#settings-modal div.dropdown div.element {
   clear: both;
 }
 #settings div label,
 #cloud div label,
+#settings-modal div label,
 #settings div select,
-#cloud div select {
+#cloud div select,
+#settings-modal div select {
   float: left;
 }
 #settings div select,
-#cloud div select {
+#cloud div select,
+#settings-modal div select {
   width: 123px;
   margin-right: 10px;
 }
 #settings div label,
-#cloud div label {
+#cloud div label,
+#settings-modal div label {
   min-width: 100px;
   padding-top: 8px;
   padding-right: 15px;
 }
 #settings div.section,
-#cloud div.section {
+#cloud div.section,
+#settings-modal div.section {
   display: none;
 }
 #settings #div.sub,
-#cloud #div.sub {
+#cloud #div.sub,
+#settings-modal #div.sub {
   clear: both;
 }
 #settings input[type="text"],
 #cloud input[type="text"],
+#settings-modal input[type="text"],
 #settings select,
 #cloud select,
+#settings-modal select,
 #settings input[type="submit"],
-#cloud input[type="submit"] {
+#cloud input[type="submit"],
+#settings-modal input[type="submit"] {
   font-weight: 200;
   margin: 3px 0;
   height: 34px;
@@ -9426,21 +9446,25 @@ div.video-preview video:first-child {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 #settings .text,
-#cloud .text {
+#cloud .text,
+#settings-modal .text {
   margin-top: 10px;
 }
 #settings .text input[type="text"],
-#cloud .text input[type="text"] {
+#cloud .text input[type="text"],
+#settings-modal .text input[type="text"] {
   margin-left: 9px;
 }
 #settings div.submit-form,
-#cloud div.submit-form {
+#cloud div.submit-form,
+#settings-modal div.submit-form {
   margin-top: 10px;
   padding-right: 20px;
   clear: both;
 }
 #settings div.submit-form input[type="submit"],
-#cloud div.submit-form input[type="submit"] {
+#cloud div.submit-form input[type="submit"],
+#settings-modal div.submit-form input[type="submit"] {
   padding: 12px 25px;
   height: auto;
   background-color: #943633;
@@ -9507,54 +9531,66 @@ div.video-preview video:first-child {
   visibility: visible;
   opacity: 1;
 }
-#basic h4 {
+#basic h4,
+#settings-modal h4 {
   font-size: 22px;
 }
-#basic .element {
+#basic .element,
+#settings-modal .element {
   clear: both;
   display: table;
   width: 100%;
   margin-bottom: 10px;
 }
-#basic ::-webkit-input-placeholder {
+#basic ::-webkit-input-placeholder,
+#settings-modal ::-webkit-input-placeholder {
   color: #333;
 }
-#basic :-moz-placeholder {
+#basic :-moz-placeholder,
+#settings-modal :-moz-placeholder {
   /* Firefox 18- */
   color: #333;
 }
-#basic ::-moz-placeholder {
+#basic ::-moz-placeholder,
+#settings-modal ::-moz-placeholder {
   /* Firefox 19+ */
   color: #333;
 }
-#basic :-ms-input-placeholder {
+#basic :-ms-input-placeholder,
+#settings-modal :-ms-input-placeholder {
   color: #333;
 }
-#basic #confirm-info {
+#basic #confirm-info,
+#settings-modal #confirm-info {
   text-align: right;
   font-size: 15px;
   color: #999;
 }
-#basic input {
+#basic input,
+#settings-modal input {
   float: left;
   padding: 25px 0;
 }
-#basic div select {
+#basic div select,
+#settings-modal div select {
   width: 60%;
   height: 50px;
 }
-#basic .name input:before {
+#basic .name input:before,
+#settings-modal .name input:before {
   width: 10px;
   height: 10px;
   display: table;
   background: #333;
 }
-#basic .block {
+#basic .block,
+#settings-modal .block {
   display: table;
   width: 100%;
   margin-bottom: 20px;
 }
-#basic div.type {
+#basic div.type,
+#settings-modal div.type {
   display: block;
   background: #dfc3c2;
   opacity: 1;
@@ -9568,17 +9604,20 @@ div.video-preview video:first-child {
   border-radius: 10px;
   cursor: pointer;
 }
-#basic div.type.with-tooltip {
+#basic div.type.with-tooltip,
+#settings-modal div.type.with-tooltip {
   position: relative;
 }
-#basic div.type.with-tooltip > span {
+#basic div.type.with-tooltip > span,
+#settings-modal div.type.with-tooltip > span {
   color: #fff;
   position: absolute;
   top: 0;
   right: 6px;
   margin-top: 0;
 }
-#basic div.type.active {
+#basic div.type.active,
+#settings-modal div.type.active {
   background: #943633;
   opacity: 1;
 }
@@ -9625,6 +9664,24 @@ label {
 #settings input[type='checkbox'] {
   margin-top: 13px;
   margin-bottom: 8px;
+}
+#settings-modal {
+  min-width: 500px;
+}
+#settings-modal input[type=text] {
+  width: 80%;
+}
+#settings-modal #usbcamera-view .multiply {
+  float: left;
+  color: #333;
+  margin-top: 25px;
+  font-size: 13px;
+  padding: 0 14px;
+}
+#settings-modal #usbcamera-view input.width,
+#settings-modal #usbcamera-view input.height {
+  width: 20%;
+  text-align: center;
 }
 .remodal .remodal-cancel {
   color: #fff;
@@ -9755,7 +9812,7 @@ label {
   margin-top: 15px;
 }
 .remodal span {
-  color: #666;
+  color: #943633;
 }
 .remodal h1 {
   font-size: 40px;
