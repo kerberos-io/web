@@ -9525,8 +9525,8 @@ div.video-preview video:first-child {
 }
 #basic div.type {
   display: block;
-  background: #943633;
-  opacity: 0.3;
+  background: #dfc3c2;
+  opacity: 1;
   color: #fff;
   padding: 20px;
   width: 32%;
@@ -9594,6 +9594,17 @@ label {
 #settings input[type='checkbox'] {
   margin-top: 13px;
   margin-bottom: 8px;
+}
+.remodal .remodal-cancel {
+  color: #fff;
+  border: 2px solid #943633;
+  background: #943633;
+}
+.remodal .remodal-confirm,
+.remodal .remodal-confirm:hover {
+  color: #fff;
+  border: 2px solid #387320;
+  background: #387320;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #settings,

@@ -19,47 +19,55 @@
 
 <div id="camera" class="block">
     <h4><i class="fa fa-video-camera"></i> Camera</h4>
-    <div class="type active with-tooltip">
+    <div id="USBCamera" class="type active with-tooltip">
         <i class="fa fa-video-camera" aria-hidden="true"></i>
         USB camera
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>{{Lang::get('settings.motion')}}</span>
+            <span>Select this option, if you want to use an USB camera.</span>
         </span>
     </div>
-    <div class="type">
+    <div id="RaspiCamera" class="type with-tooltip">
         <i class="fa fa-video-camera" aria-hidden="true"></i>
         RPi camera
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>If you run Kerberos.io on a <b>Raspberry Pi</b>, you can select this option, if you want to use the Raspberry Pi camera module.</span>
+        </span>
     </div>
-    <div class="type">
+    <div id="IPCamera" class="type with-tooltip">
         <i class="fa fa-video-camera aria-hidden="true"></i>
         IP camera
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.</span>
+        </span>
     </div>
 </div>
 
 
 <div id="surveillance" class="block">
     <h4><i class="fa fa-user-secret"></i> Surveillance mode</h4>
-    <div class="type active with-tooltip">
+    <div id="Motion" class="type active with-tooltip">
         <i class="fa fa-child" aria-hidden="true"></i>
         motion
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>{{Lang::get('settings.motion')}}</span>
+            <span>A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific timeinterval or region in the view.</span>
         </span>
     </div>
-    <div class="type">
+    <!--<div class="type">
         <i class="fa fa-user-times" aria-hidden="true"></i>
         counting
     </div>
     <div class="type">
-        <i class="fa fa-user-times" aria-hidden="true"></i>
+        <i class="fa fa-image" aria-hidden="true"></i>
         timelapse
     </div>
     <div class="type">
         <i class="fa fa-video-camera" aria-hidden="true"></i>
         video
-    </div>
+    </div>-->
 </div>
 
 <div id="storage" class="block">
@@ -69,7 +77,7 @@
         Cloud
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>{{Lang::get('settings.kerberosio-cloud')}}</span>
+            <span>Kerberos.io offers a <b>cloud application service</b>, to centralize and follow up multiple Kerberos.io instances. To sync the events of this instance to our cloud application, you first will need to register an account and subscribe to a plan. When you\'re subscribed succesfully, you will receive some credentials that you will need to fill-in. Once you\'ve entered <b>your credentials</b> your events will be send to the cloud application. More information on <b>https://cloud.kerberos.io</b>.</span>
         </span>
     </div>
     <!--<div class="type">
@@ -79,12 +87,14 @@
 </div>
 
 <div class="submit-form">
-    <p id="confirm-info">don't forget to press the <b>update button</b>, to confirm.</p>
+    <p id="confirm-info">don't forget to press the <b>update button</b>, to confirm your configuration.</p>
     <input type="submit" value="update"/>
 </div>
 
-<div id="logging-modal" data-remodal-id="logging">
+<div id="settings-modal" data-remodal-id="settings">
     <div class="modal-body">
-    
+        <div class="view"></div>
     </div>
+    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+    <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
 </div>

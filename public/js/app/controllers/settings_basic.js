@@ -4,7 +4,7 @@
 *
 **/
 
-define(["jquery", "app/models/Settings", "app/views/SettingsBasic"], function($, Settings, SettingsBasicView)
+define(["jquery", "app/models/Settings", "app/views/SettingsBasicView"], function($, Settings, SettingsBasicView)
 {
     return {
         initialize: function()

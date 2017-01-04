@@ -44,7 +44,7 @@
     <script type="text/javascript">
         require([_jsBase + 'main.js'], function(common)
         {
-            require(["app/controllers/settings"]);
+            require(["app/controllers/settings_advanced"]);
 
             require(["app/controllers/toggleSettings"], function(toggleSettings)
             {
