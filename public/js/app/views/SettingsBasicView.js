@@ -2,8 +2,12 @@
 *  Basic settings view: this is an easier view of the advanced view.
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView", "remodal", "app/views/SettingsBasicUSBCameraView"], 
-    function (_, Backbone, BaseView, remoda, USBCameraView)
+define(["underscore", "backbone", "app/views/BaseView", "remodal",
+ "app/views/SettingsBasicUSBCameraView",
+ "app/views/SettingsBasicIPCameraView",
+ "app/views/SettingsBasicRaspiCameraView"], 
+    function (_, Backbone, BaseView, remodal,
+        USBCameraView, IPCameraView, RaspiCameraView)
 { 
     var SettingsBasicView = BaseView.extend(
     {
@@ -29,12 +33,14 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "app/views/Se
         {
             this.model = model;
         },
-        confirm: function()
+        refresh: function()
         {
-            this.modal.close();
-            // if ok reselect device
-            $("#camera .type").removeClass("active");
-            element.addClass("active");
+            this.model.refresh();
+        },
+        selectCapture: function()
+        {
+            var capture = this.model.getCapture();
+            $("#"+capture).addClass("active");
         },
         changeTimezone: function()
         {
@@ -48,11 +54,11 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "app/views/Se
         {
             this.object = $(event.currentTarget);
             this.selected = "#" + this.object.parent().attr('id');
-
             this.subView = eval("new " + this.object.attr('id') + 'View' + "()");
 
             if(this.subView)
             {
+                this.refresh();
                 this.subView.initialize(this.model);
                 $("#settings-modal .modal-body > .view").html(this.subView.render().el)
                 this.modal.open();
@@ -66,15 +72,19 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "app/views/Se
             var timezone = this.model.getTimezone();
             this.model.setTimezone(timezone);
 
-            this.modal = $('[data-remodal-id=settings]').remodal({});
+            // Select capture device
+            this.selectCapture();
 
             var self = this;
-            $('[data-remodal-id=settings] .remodal-confirm').click(function()
+            self.modal = $('[data-remodal-id=settings]').remodal({ hashTracking: false });
+
+            $('[data-remodal-id=settings] .remodal-confirm').unbind('click').click(function()
             {
+                console.log("i")
                 self.subView.update();
                 $(self.selected + " .type").removeClass("active");
                 $(self.object).addClass("active");  
-            })
+            });
 
             return this;
         }

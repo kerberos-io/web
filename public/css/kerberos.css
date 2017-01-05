@@ -9489,10 +9489,6 @@ div.video-preview video:first-child {
   text-transform: uppercase;
   font-size: 11px;
 }
-.with-tooltip i.description:nth-child(2n) {
-  bottom: 2px;
-  left: 115px;
-}
 .with-tooltip > span {
   position: relative;
   color: #943633;
@@ -9704,7 +9700,9 @@ label {
 #settings-modal .modal-body {
   padding: 0 15px 15px 15px;
 }
-#settings-modal #usbcamera-view .multiply {
+#settings-modal #usbcamera-view .multiply,
+#settings-modal #ipcamera-view .multiply,
+#settings-modal #rpicamera-view .multiply {
   float: left;
   color: #333;
   margin-top: 25px;
@@ -9712,9 +9710,19 @@ label {
   padding: 0 14px;
 }
 #settings-modal #usbcamera-view input.width,
-#settings-modal #usbcamera-view input.height {
-  width: 20%;
+#settings-modal #ipcamera-view input.width,
+#settings-modal #rpicamera-view input.width,
+#settings-modal #usbcamera-view input.height,
+#settings-modal #ipcamera-view input.height,
+#settings-modal #rpicamera-view input.height {
+  width: 30%;
   text-align: center;
+}
+#settings-modal #usbcamera-view i.description:nth-child(2n),
+#settings-modal #ipcamera-view i.description:nth-child(2n),
+#settings-modal #rpicamera-view i.description:nth-child(2n) {
+  bottom: 2px;
+  left: 154px;
 }
 .view {
   text-align: left;
@@ -9732,6 +9740,9 @@ label {
   color: #fff;
   border: 2px solid #387320;
   background: #387320;
+  min-width: 120px;
+  width: auto;
+  padding: 9px 15px;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #settings,

@@ -10,8 +10,13 @@ define(["jquery", "app/models/Settings", "app/views/SettingsBasicView"], functio
         initialize: function()
         {
             var model = new Settings();
-            var basic = new SettingsBasicView(model);
-            basic.render();
+            this.basic = new SettingsBasicView(model);
+            this.basic.render();
+        },
+        refresh: function()
+        {
+        	this.basic.refresh();
+        	this.basic.render();
         }
     };
 });

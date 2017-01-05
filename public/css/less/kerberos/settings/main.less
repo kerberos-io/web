@@ -135,12 +135,6 @@
         font-size: 11px;
     }
 
-    i.description:nth-child(2n)
-    {
-        bottom: 2px;
-        left: 115px;
-    }
-
     > span
     {
         position: relative;
@@ -408,7 +402,7 @@ label
         padding: 0 15px 15px 15px;
     }
 
-    #usbcamera-view
+    #usbcamera-view, #ipcamera-view, #rpicamera-view
     {
         .multiply
         {
@@ -421,10 +415,15 @@ label
 
         input.width, input.height
         {
-            width: 20%;
+            width: 30%;
             text-align: center;
         }
 
+        i.description:nth-child(2n)
+        {
+            bottom: 2px;
+            left: 154px;
+        }
     }
  }
 
@@ -450,6 +449,9 @@ label
         color: #fff;
         border: 2px solid #387320;
         background: #387320;
+        min-width: 120px;
+        width: auto;
+        padding: 9px 15px;
     }
 }
 

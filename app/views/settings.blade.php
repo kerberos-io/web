@@ -46,12 +46,17 @@
         {
             require(["app/controllers/settings_advanced"]);
 
-            require(["app/controllers/toggleSettings"], function(toggleSettings)
+            require(["app/controllers/toggleSettings", "app/controllers/settings_basic"], function(toggleSettings, SettingsBasic)
             {
+                SettingsBasic.initialize();
                 toggleSettings.initialize();
                 
                 $(".configuration-switch input[type='checkbox']").click(function()
                 {
+                    // refresh model
+                    SettingsBasic.refresh();
+
+                    // toggle settings
                     var checked = $(this).attr('checked');
                     toggleSettings.setType((checked == undefined) ? 'advanced' : 'basic');
                 });

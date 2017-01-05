@@ -1,13 +1,13 @@
 /**********************
-*  USB Camera View
+*  RPI Camera View
 ****/
 
 define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, BaseView)
 { 
-    var SettingsBasicUSBCameraView = BaseView.extend(
+    var SettingsBasicRPICameraView = BaseView.extend(
     {
         el : '<div>',
-        view : 'settings/settings-basic-usbcamera',
+        view : 'settings/settings-basic-rpicamera',
         model: undefined,
 
         initialize: function(model)
@@ -16,9 +16,9 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         },
         update: function()
         {
-            this.model.changeUSBCamera({
-                width: $("#usbcamera-view .width").val(),
-                height: $("#usbcamera-view .height").val()
+            this.model.changeRPICamera({
+                width: $("#rpicamera-view .width").val(),
+                height: $("#rpicamera-view .height").val()
             });
         },
         render: function()
@@ -28,5 +28,5 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         }
     });
 
-    return SettingsBasicUSBCameraView;
+    return SettingsBasicRPICameraView;
 });

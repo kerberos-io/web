@@ -1,13 +1,13 @@
 /**********************
-*  USB Camera View
+*  IP Camera View
 ****/
 
 define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, BaseView)
 { 
-    var SettingsBasicUSBCameraView = BaseView.extend(
+    var SettingsBasicIPCameraView = BaseView.extend(
     {
         el : '<div>',
-        view : 'settings/settings-basic-usbcamera',
+        view : 'settings/settings-basic-ipcamera',
         model: undefined,
 
         initialize: function(model)
@@ -16,9 +16,9 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         },
         update: function()
         {
-            this.model.changeUSBCamera({
-                width: $("#usbcamera-view .width").val(),
-                height: $("#usbcamera-view .height").val()
+            this.model.changeIPCamera({
+                width: $("#ipcamera-view .width").val(),
+                height: $("#ipcamera-view .height").val()
             });
         },
         render: function()
@@ -28,5 +28,5 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         }
     });
 
-    return SettingsBasicUSBCameraView;
+    return SettingsBasicIPCameraView;
 });
