@@ -9688,9 +9688,6 @@ label {
   padding: 0;
   border-radius: 0;
 }
-#settings-modal {
-  min-width: 500px;
-}
 #settings-modal input[type=text] {
   width: 80%;
 }
@@ -9734,6 +9731,9 @@ label {
   color: #fff;
   border: 2px solid #943633;
   background: #943633;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: 20px;
 }
 .remodal .remodal-confirm,
 .remodal .remodal-confirm:hover {
@@ -9743,6 +9743,9 @@ label {
   min-width: 120px;
   width: auto;
   padding: 9px 15px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: 20px;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #settings,
