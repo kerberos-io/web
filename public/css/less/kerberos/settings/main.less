@@ -121,6 +121,20 @@
 
 .with-tooltip
 {
+    position: relative;
+    
+    > i.description
+    {
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        color: #cccccc;
+        text-decoration: none;
+        font-style: normal;
+        text-transform: uppercase;
+        font-size: 11px;
+    }
+
     > span
     {
         position: relative;
@@ -358,6 +372,14 @@ label
     {
         margin-top: 13px;
         margin-bottom: 8px;
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 0;
+        border-radius: 0;
     }
 }
 

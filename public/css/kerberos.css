@@ -9473,6 +9473,19 @@ div.video-preview video:first-child {
   border-radius: 10px;
   width: 100%;
 }
+.with-tooltip {
+  position: relative;
+}
+.with-tooltip > i.description {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  color: #cccccc;
+  text-decoration: none;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 11px;
+}
 .with-tooltip > span {
   position: relative;
   color: #943633;
@@ -9664,6 +9677,13 @@ label {
 #settings input[type='checkbox'] {
   margin-top: 13px;
   margin-bottom: 8px;
+}
+#settings select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border-radius: 0;
 }
 #settings-modal {
   min-width: 500px;
