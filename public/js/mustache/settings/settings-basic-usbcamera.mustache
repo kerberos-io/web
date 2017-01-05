@@ -1,9 +1,14 @@
 <div id="usbcamera-view">
-    <div class="name with-tooltip element">
-        <input type="text" class="width" value="{{fr}}"/><div class="multiply"> x </div><input class="height" type="text" value="{{fr}}"/>
+	<h4><i class="fa fa-video-camera"></i> USB Camera</h4>
+    <div class="width-and-height with-tooltip element">
+        <input type="text" class="width" value="{{usbcamera.width}}"/>
+        <div class="multiply"> x </div>
+        <input class="height" type="text" value="{{usbcamera.height}}"/>
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i>
             <span>Give an unique name to your camera. This is needed to split the activity afterwards.</span>
         </span>
+        <i class="description">width</i>
+        <i class="description">height</i>
     </div>
 </div>

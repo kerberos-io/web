@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,6 +1103,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2531,6 +2532,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3021,6 +3023,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -9486,6 +9489,10 @@ div.video-preview video:first-child {
   text-transform: uppercase;
   font-size: 11px;
 }
+.with-tooltip i.description:nth-child(2n) {
+  bottom: 2px;
+  left: 115px;
+}
 .with-tooltip > span {
   position: relative;
   color: #943633;
@@ -9691,6 +9698,12 @@ label {
 #settings-modal input[type=text] {
   width: 80%;
 }
+#settings-modal .remodal-close {
+  display: none;
+}
+#settings-modal .modal-body {
+  padding: 0 15px 15px 15px;
+}
 #settings-modal #usbcamera-view .multiply {
   float: left;
   color: #333;
@@ -9702,6 +9715,12 @@ label {
 #settings-modal #usbcamera-view input.height {
   width: 20%;
   text-align: center;
+}
+.view {
+  text-align: left;
+}
+.buttons-wrapper {
+  text-align: right;
 }
 .remodal .remodal-cancel {
   color: #fff;

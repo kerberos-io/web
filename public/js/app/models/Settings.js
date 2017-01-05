@@ -10,14 +10,25 @@ define(["underscore", "backbone"], function (_, Backbone)
     		name: undefined,
     	},
 
+        // General settings
         name: undefined,
         timezone: undefined,
+
+        // Capture devices
+        capture: undefined,
+        usbcamera: undefined,
+        rpicamera: undefined,
+        ipcamera: undefined,
 
         constructor: function(coordinates)
         {
             this.name = this.getName();
             this.timezone = this.getTimezone();
+            this.usbcamera = this.getUSBCamera();
         },
+
+        // ------------------
+        // General settings
 
         changeTimezone: function(timezone)
         {
@@ -40,7 +51,28 @@ define(["underscore", "backbone"], function (_, Backbone)
         getName: function()
         {
         	return $("input[name='config__instance__name']").val();
-        }
+        },
+
+        // --------------------------
+        // Capture devices
+
+        getCapture: function()
+        {
+
+        },
+
+            // -------------------
+            // USB camera
+
+            getUSBCamera:  function()
+            {
+                return {
+                    width: $("input[name='capture__USBCamera__frameWidth']").val(),
+                    height: $("input[name='capture__USBCamera__frameHeight']").val()
+                };
+            }
+
+
     });
 
     return Settings;

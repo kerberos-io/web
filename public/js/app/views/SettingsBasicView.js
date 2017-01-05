@@ -35,7 +35,6 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "app/views/Se
             // if ok reselect device
             $("#camera .type").removeClass("active");
             element.addClass("active");
-            alert("ok")
         },
         changeTimezone: function()
         {
