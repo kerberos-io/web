@@ -218,6 +218,52 @@
         font-size: 22px;
     }
     
+    .rotate
+    {
+        .image
+        {
+            background-image: url(/images/rotate.png);
+            background-size: cover;
+            width: 150px;
+            height: 150px;
+            display: table;
+
+            i.fa-repeat
+            {
+                color: #fff;
+                font-size: 40px;
+                top: 40%;
+                left: 35%;
+                position: absolute;
+                opacity: 1;
+            }
+        }
+    }
+
+    .rotate.with-tooltip
+    {
+        position: relative;
+        
+        > i.description
+        {
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            color: #cccccc;
+            text-decoration: none;
+            font-style: normal;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        > span
+        {
+            position: absolute;
+            top: -14px;
+            left: 0;
+        }
+    }
+
     .element
     {
         clear: both;

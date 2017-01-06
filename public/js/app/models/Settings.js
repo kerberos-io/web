@@ -83,7 +83,8 @@ define(["underscore", "backbone"], function (_, Backbone)
             {
                 return {
                     width: $("input[name='capture__USBCamera__frameWidth']").val(),
-                    height: $("input[name='capture__USBCamera__frameHeight']").val()
+                    height: $("input[name='capture__USBCamera__frameHeight']").val(),
+                    angle: parseInt($("input[name='capture__USBCamera__angle']").val())
                 };
             },
             changeUSBCamera: function(usbcamera)
@@ -92,6 +93,7 @@ define(["underscore", "backbone"], function (_, Backbone)
                 this.usbcamera = usbcamera;
                 $("input[name='capture__USBCamera__frameWidth']").val(usbcamera.width);
                 $("input[name='capture__USBCamera__frameHeight']").val(usbcamera.height);
+                $("input[name='capture__USBCamera__angle']").val(usbcamera.angle);
             },
 
 

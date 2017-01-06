@@ -1,14 +1,33 @@
 <div id="usbcamera-view">
 	<h4><i class="fa fa-video-camera"></i> USB Camera</h4>
-    <div class="width-and-height with-tooltip element">
-        <input type="text" class="width" value="{{usbcamera.width}}"/>
-        <div class="multiply"> x </div>
-        <input class="height" type="text" value="{{usbcamera.height}}"/>
-        <span>
-            <i class="fa fa-question-circle" aria-hidden="true"></i>
-            <span>Give an unique name to your camera. This is needed to split the activity afterwards.</span>
-        </span>
-        <i class="description">width</i>
-        <i class="description">height</i>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="width-and-height with-tooltip element">
+                    <input type="text" class="width" value="{{usbcamera.width}}"/>
+                    <div class="multiply"> x </div>
+                    <input class="height" type="text" value="{{usbcamera.height}}"/>
+                    <!--
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>Give an unique name to your camera. This is needed to split the activity afterwards.</span>
+                    </span>
+                    -->
+                    <i class="description">width</i>
+                    <i class="description">height</i>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="rotate with-tooltip element">
+                    <div class="image" style="transform:rotate({{usbcamera.angle}}deg)">
+                        <i class="fa fa-repeat" aria-hidden="true"></i>
+                    </div>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>Click on this image if your camera is rotated. E.g. if your camera is mounted upside down, make sure this image is also upside down.</span>
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

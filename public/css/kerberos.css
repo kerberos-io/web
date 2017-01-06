@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,6 +1103,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2531,6 +2532,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3021,6 +3023,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -9546,6 +9549,44 @@ div.video-preview video:first-child {
 #basic h4,
 #settings-modal h4 {
   font-size: 22px;
+}
+#basic .rotate .image,
+#settings-modal .rotate .image {
+  background-image: url(/images/rotate.png);
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  display: table;
+}
+#basic .rotate .image i.fa-repeat,
+#settings-modal .rotate .image i.fa-repeat {
+  color: #fff;
+  font-size: 40px;
+  top: 40%;
+  left: 35%;
+  position: absolute;
+  opacity: 1;
+}
+#basic .rotate.with-tooltip,
+#settings-modal .rotate.with-tooltip {
+  position: relative;
+}
+#basic .rotate.with-tooltip > i.description,
+#settings-modal .rotate.with-tooltip > i.description {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  color: #cccccc;
+  text-decoration: none;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+#basic .rotate.with-tooltip > span,
+#settings-modal .rotate.with-tooltip > span {
+  position: absolute;
+  top: -14px;
+  left: 0;
 }
 #basic .element,
 #settings-modal .element {
