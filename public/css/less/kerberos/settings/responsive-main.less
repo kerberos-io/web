@@ -1,6 +1,6 @@
 @media only screen and (min-width: 0px) and (max-width: 767px)
 {
-	#settings, #cloud
+	#settings, #cloud, #settings-modal
 	{
 	  	padding: 0 15px 0;
 	  	display: table;
@@ -11,16 +11,16 @@
 	        width: 100%;
 	        margin-bottom: 10px;
 	    }
+
+		.with-tooltip > span
+		{
+			display: none;
+		}
 	}
 
 	#settings select
 	{
 		width: 200px;
-	}
-
-	.with-tooltip > span
-	{
-		display: none;
 	}
 
 	#cloud input[type=submit], #cloud input[type=text], #cloud select, #settings input[type=submit], #settings input[type=text], #settings select

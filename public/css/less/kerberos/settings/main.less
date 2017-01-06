@@ -18,6 +18,11 @@
         font-size: 17px;
         color: #943633;
     }
+
+    > div
+    {
+        margin: 5px 0 5px 0;
+    }
     
     .sub
     {
@@ -117,92 +122,92 @@
         border-radius: 10px;
         width: 100%;
     }
-}
 
-.with-tooltip
-{
-    position: relative;
-    
-    > i.description
-    {
-        position: absolute;
-        bottom: 2px;
-        left: 0;
-        color: #cccccc;
-        text-decoration: none;
-        font-style: normal;
-        text-transform: uppercase;
-        font-size: 11px;
-    }
-
-    > span
+    .with-tooltip
     {
         position: relative;
-        color: #943633;
-        font-size: 21px;
-        text-shadow: none;
-        display: inline-block;
-        font-style: bold;
-        float: left;
-        margin-top: 15px;
-        margin-left: 7px;
-    }
+        
+        > i.description
+        {
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            color: #cccccc;
+            text-decoration: none;
+            font-style: normal;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
 
-    span > span
-    {
-        font-size: 14px;
-        font-family: Helvetica;
-        font-style: normal;
-        text-align: left;
-        line-height: 150%;
-        color: #943633;
-        text-shadow: white 0 1px;
-        background: #fff;
-        background-clip: padding-box;
-        box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
-        border: 2px solid #943633;
-        border-radius: 3px;
-        position: absolute;
-        width: 250px;
-        left: 350%;
-        margin-left: -27px;
-        padding: 10px;
-        top: -10px;
-        margin-bottom: 15px;
-        visibility:hidden;
-        opacity:0;
-        z-index: 9999999;
-    }
-    
-    span > span:before, 
-    span > span:after
-    {
-        content: "";
-        position: absolute;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        top: 20px;
-        left: -4%;
-        margin-left: -22px;
-        -webkit-transform: rotate(90deg);
-    }
-    
-    span > span:before
-    {
-        border-top: 10px solid #943633;
-        margin-left: -7px;
-    }
-    
-    span > span:after
-    {
-        border-top: 10px solid #f4f4f4;
-        margin-left: -4px;
-    }
-    
-    span:hover > span
-    {
-        visibility: visible;
-        opacity: 1;
+        > span
+        {
+            position: relative;
+            color: #943633;
+            font-size: 21px;
+            text-shadow: none;
+            display: inline-block;
+            font-style: bold;
+            float: left;
+            margin-top: 15px;
+            margin-left: 7px;
+        }
+
+        span > span
+        {
+            font-size: 14px;
+            font-family: Helvetica;
+            font-style: normal;
+            text-align: left;
+            line-height: 150%;
+            color: #943633;
+            text-shadow: white 0 1px;
+            background: #fff;
+            background-clip: padding-box;
+            box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
+            border: 2px solid #943633;
+            border-radius: 3px;
+            position: absolute;
+            width: 250px;
+            left: 350%;
+            margin-left: -27px;
+            padding: 10px;
+            top: -10px;
+            margin-bottom: 15px;
+            visibility:hidden;
+            opacity:0;
+            z-index: 9999999;
+        }
+        
+        span > span:before, 
+        span > span:after
+        {
+            content: "";
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            top: 20px;
+            left: -4%;
+            margin-left: -22px;
+            -webkit-transform: rotate(90deg);
+        }
+        
+        span > span:before
+        {
+            border-top: 10px solid #943633;
+            margin-left: -7px;
+        }
+        
+        span > span:after
+        {
+            border-top: 10px solid #f4f4f4;
+            margin-left: -4px;
+        }
+        
+        span:hover > span
+        {
+            visibility: visible;
+            opacity: 1;
+        }
     }
 }
 

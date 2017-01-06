@@ -9344,6 +9344,11 @@ div.video-preview video:first-child {
   font-size: 17px;
   color: #943633;
 }
+#settings > div,
+#cloud > div,
+#settings-modal > div {
+  margin: 5px 0 5px 0;
+}
 #settings .sub,
 #cloud .sub,
 #settings-modal .sub {
@@ -9449,10 +9454,14 @@ div.video-preview video:first-child {
   border-radius: 10px;
   width: 100%;
 }
-.with-tooltip {
+#settings .with-tooltip,
+#cloud .with-tooltip,
+#settings-modal .with-tooltip {
   position: relative;
 }
-.with-tooltip > i.description {
+#settings .with-tooltip > i.description,
+#cloud .with-tooltip > i.description,
+#settings-modal .with-tooltip > i.description {
   position: absolute;
   bottom: 2px;
   left: 0;
@@ -9462,7 +9471,9 @@ div.video-preview video:first-child {
   text-transform: uppercase;
   font-size: 11px;
 }
-.with-tooltip > span {
+#settings .with-tooltip > span,
+#cloud .with-tooltip > span,
+#settings-modal .with-tooltip > span {
   position: relative;
   color: #943633;
   font-size: 21px;
@@ -9473,7 +9484,9 @@ div.video-preview video:first-child {
   margin-top: 15px;
   margin-left: 7px;
 }
-.with-tooltip span > span {
+#settings .with-tooltip span > span,
+#cloud .with-tooltip span > span,
+#settings-modal .with-tooltip span > span {
   font-size: 14px;
   font-family: Helvetica;
   font-style: normal;
@@ -9497,8 +9510,12 @@ div.video-preview video:first-child {
   opacity: 0;
   z-index: 9999999;
 }
-.with-tooltip span > span:before,
-.with-tooltip span > span:after {
+#settings .with-tooltip span > span:before,
+#cloud .with-tooltip span > span:before,
+#settings-modal .with-tooltip span > span:before,
+#settings .with-tooltip span > span:after,
+#cloud .with-tooltip span > span:after,
+#settings-modal .with-tooltip span > span:after {
   content: "";
   position: absolute;
   border-left: 10px solid transparent;
@@ -9508,15 +9525,21 @@ div.video-preview video:first-child {
   margin-left: -22px;
   -webkit-transform: rotate(90deg);
 }
-.with-tooltip span > span:before {
+#settings .with-tooltip span > span:before,
+#cloud .with-tooltip span > span:before,
+#settings-modal .with-tooltip span > span:before {
   border-top: 10px solid #943633;
   margin-left: -7px;
 }
-.with-tooltip span > span:after {
+#settings .with-tooltip span > span:after,
+#cloud .with-tooltip span > span:after,
+#settings-modal .with-tooltip span > span:after {
   border-top: 10px solid #f4f4f4;
   margin-left: -4px;
 }
-.with-tooltip span:hover > span {
+#settings .with-tooltip span:hover > span,
+#cloud .with-tooltip span:hover > span,
+#settings-modal .with-tooltip span:hover > span {
   visibility: visible;
   opacity: 1;
 }
@@ -9722,21 +9745,25 @@ label {
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #settings,
-  #cloud {
+  #cloud,
+  #settings-modal {
     padding: 0 15px 0;
     display: table;
     width: 100%;
   }
   #settings div.description,
-  #cloud div.description {
+  #cloud div.description,
+  #settings-modal div.description {
     width: 100%;
     margin-bottom: 10px;
   }
+  #settings .with-tooltip > span,
+  #cloud .with-tooltip > span,
+  #settings-modal .with-tooltip > span {
+    display: none;
+  }
   #settings select {
     width: 200px;
-  }
-  .with-tooltip > span {
-    display: none;
   }
   #cloud input[type=submit],
   #cloud input[type=text],
