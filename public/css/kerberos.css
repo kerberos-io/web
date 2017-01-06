@@ -9554,8 +9554,8 @@ div.video-preview video:first-child {
 #settings-modal .rotate .image {
   background-image: url(/images/rotate.png);
   background-size: cover;
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   display: table;
 }
 #basic .rotate .image i.fa-repeat,
@@ -9728,6 +9728,15 @@ label {
 #settings-modal input[type=text] {
   width: 80%;
 }
+#settings-modal .slider.slider-horizontal {
+  width: 71%;
+  margin: 40px 4% 20px 0;
+  display: table;
+  float: left;
+}
+#settings-modal .slider > span {
+  margin-top: 36px;
+}
 #settings-modal .remodal-close {
   display: none;
 }
@@ -9752,6 +9761,11 @@ label {
   width: 30%;
   text-align: center;
 }
+#settings-modal #usbcamera-view i.description.slider,
+#settings-modal #ipcamera-view i.description.slider,
+#settings-modal #rpicamera-view i.description.slider {
+  bottom: -4px;
+}
 #settings-modal #usbcamera-view i.description:nth-child(2n),
 #settings-modal #ipcamera-view i.description:nth-child(2n),
 #settings-modal #rpicamera-view i.description:nth-child(2n) {
@@ -9775,8 +9789,8 @@ label {
 .remodal .remodal-confirm,
 .remodal .remodal-confirm:hover {
   color: #fff;
-  border: 2px solid #387320;
-  background: #387320;
+  border: 2px solid #dab918;
+  background: #dab918;
   min-width: 120px;
   width: auto;
   padding: 9px 15px;

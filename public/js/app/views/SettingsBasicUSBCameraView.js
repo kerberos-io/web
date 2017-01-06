@@ -2,7 +2,7 @@
 *  USB Camera View
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, BaseView)
+define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider"], function (_, Backbone, BaseView, Slider)
 { 
     var SettingsBasicUSBCameraView = BaseView.extend(
     {
@@ -24,21 +24,28 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         },
         rotate: function()
         {
-            $(".rotate .image").css({'transform':'rotate('+this.model.usbcamera.angle+'deg)'})
+            this.$el.find(".rotate .image").css({'transform':'rotate('+this.model.usbcamera.angle+'deg)'})
+        },
+        createSlider: function()
+        {
+            var self = this;
+            self.$el.find('.slider-delay, .slider-fps').slider({});
         },
         update: function()
         {
             this.model.changeUSBCamera({
-                width: $("#usbcamera-view .width").val(),
-                height: $("#usbcamera-view .height").val(),
-                angle: this.model.usbcamera.angle // overkill
+                width: this.$el.find("#usbcamera-view .width").val(),
+                height: this.$el.find("#usbcamera-view .height").val(),
+                angle: this.model.usbcamera.angle, // overkill
+                delay: parseFloat(this.$el.find("#usbcamera-view .slider-delay").val()) * 1000,
+                fps: parseInt(this.$el.find("#usbcamera-view .slider-fps").val())
             });
         },
         render: function()
         {
             this.$el.html(this.template(this.model));
-            console.log(this.model);
             this.rotate();
+            this.createSlider();
             return this;
         }
     });

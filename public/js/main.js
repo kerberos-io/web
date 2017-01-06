@@ -71,7 +71,7 @@ require.config({
         underscore: 'vendor/underscore/underscore',
         requirejs: 'vendor/requirejs/require',
         fancybox: 'vendor/fancybox/source/jquery.fancybox.pack',
-        'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/js/bootstrap-slider',
+        'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
         jellyfish: 'app/models/Jellyfish',
         Sequencer: 'app/models/Sequencer',
         timepicker: 'app/models/Timepicker',

@@ -16,6 +16,7 @@ define(["underscore", "backbone"], function (_, Backbone)
 
         // Capture devices
         capture: undefined,
+        stream: undefined,
         usbcamera: undefined,
         rpicamera: undefined,
         ipcamera: undefined,
@@ -30,6 +31,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             this.name = this.getName();
             this.timezone = this.getTimezone();
 
+            this.stream = this.getStream();
             this.capture = this.getCapture();
             this.usbcamera = this.getUSBCamera();
             this.ipcamera = this.getIPCamera();
@@ -66,6 +68,27 @@ define(["underscore", "backbone"], function (_, Backbone)
         // --------------------------
         // Capture devices
 
+        getStream: function()
+        {
+            return {
+                fps: $("input[name='stream__Mjpg__fps']").val(),
+                enabled: ($("#stream__Mjpg__enabled").attr('checked') !== undefined)
+            }
+        },
+        changeStream: function(fps)
+        {
+            $("input[name='stream__Mjpg__fps']").val(fps);
+            if(fps === 0)
+            {
+                $("#stream__Mjpg__enabled").removeAttr('checked');
+                $("input[name='stream__Mjpg__enabled']").val("false");
+            }
+            else
+            {
+                $("#stream__Mjpg__enabled").prop('checked', true);
+                $("input[name='stream__Mjpg__enabled']").val("true");
+            }
+        },
         getCapture: function()
         {
             return $("select[name='config__instance__capture:0'] option:selected").val();
@@ -84,7 +107,8 @@ define(["underscore", "backbone"], function (_, Backbone)
                 return {
                     width: $("input[name='capture__USBCamera__frameWidth']").val(),
                     height: $("input[name='capture__USBCamera__frameHeight']").val(),
-                    angle: parseInt($("input[name='capture__USBCamera__angle']").val())
+                    angle: parseInt($("input[name='capture__USBCamera__angle']").val()),
+                    delay: parseInt($("input[name='capture__USBCamera__delay']").val())/1000.
                 };
             },
             changeUSBCamera: function(usbcamera)
@@ -94,6 +118,8 @@ define(["underscore", "backbone"], function (_, Backbone)
                 $("input[name='capture__USBCamera__frameWidth']").val(usbcamera.width);
                 $("input[name='capture__USBCamera__frameHeight']").val(usbcamera.height);
                 $("input[name='capture__USBCamera__angle']").val(usbcamera.angle);
+                $("input[name='capture__USBCamera__delay']").val(usbcamera.delay);
+                this.changeStream(usbcamera.fps);
             },
 
 

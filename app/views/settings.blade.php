@@ -53,9 +53,6 @@
                 
                 $(".configuration-switch input[type='checkbox']").click(function()
                 {
-                    // refresh model
-                    SettingsBasic.refresh();
-
                     // toggle settings
                     var checked = $(this).attr('checked');
                     toggleSettings.setType((checked == undefined) ? 'advanced' : 'basic');

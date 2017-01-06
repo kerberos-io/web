@@ -12,11 +12,6 @@ define(["jquery", "app/models/Settings", "app/views/SettingsBasicView"], functio
             var model = new Settings();
             this.basic = new SettingsBasicView(model);
             this.basic.render();
-        },
-        refresh: function()
-        {
-        	this.basic.refresh();
-        	this.basic.render();
         }
     };
 });
