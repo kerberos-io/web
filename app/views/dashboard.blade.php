@@ -36,7 +36,7 @@
                                 <canvas id="latest-activity-sequence"></canvas>
                             </li>
                             <li class="heat">
-                                <img src="<?=App::make("Controllers\ImageController")->getLatestImage()?>" id="latest-image" style="display: none;"/>
+                                <img src="<?=App::make("Controllers\ImageController")->getLatestImage()['src']?>" id="latest-image" style="display: none;"/>
                                 <div class="heatmap" style="width: 100%;"></div>
                             </li>
                         </ul>

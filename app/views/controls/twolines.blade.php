@@ -2,12 +2,12 @@
 
     <div id="map"></div>
 
-    <?php
-        $src = App::make("Controllers\ImageController")->getLatestImage();
+     <?php
+        $imageFile = App::make("Controllers\ImageController")->getLatestImage();
 
-        if($src != "")
+        if($imageFile)
         {
-            $image = Image::make($src);
+            $image = Image::make($imageFile['path']);
         }
         else
         {
@@ -24,7 +24,7 @@
             require(["app/controllers/twolines"], function(twolines)
             {
                 twolines.setElement($(".twolines #map"));
-                twolines.setImage("{{$src}}");
+                twolines.setImage("{{$imageFile['src']}}");
                 twolines.setImageSize("{{$image->width()}}","{{$image->height()}}");
                 twolines.setCoordinates("{{$value}}");
                 twolines.setName("{{$file."__".$attribute}}");

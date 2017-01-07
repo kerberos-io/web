@@ -88,7 +88,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         if(count($latestSequence)>0)
         {
-            return $latestSequence[count($latestSequence)-1]["src"];
+            return $latestSequence[count($latestSequence)-1];
         }
         
         return "";
@@ -358,6 +358,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 array_push($images, [
                     'time' => $image->getTime(),
                     'src' => $this->filesystem->getPathToFile($image),
+                    'path' => $this->filesystem->getSystemPathToFile($image),
                     'metadata' => $this->filesystem->getMetadata($image),
                 ]);
             }
@@ -434,6 +435,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             array_push($images, [
                 'time' => $image->getTime(),
                 'src' => $this->filesystem->getPathToFile($image),
+                'path' => $this->filesystem->getSystemPathToFile($image),
                 'metadata' => $this->filesystem->getMetadata($image),
             ]);
         }

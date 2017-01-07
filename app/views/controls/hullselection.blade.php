@@ -3,11 +3,11 @@
     <div id="map"></div>
 
     <?php
-        $src = App::make("Controllers\ImageController")->getLatestImage();
+        $imageFile = App::make("Controllers\ImageController")->getLatestImage();
 
-        if($src != "")
+        if($imageFile)
         {
-            $image = Image::make($src);
+            $image = Image::make($imageFile['path']);
         }
         else
         {
@@ -24,7 +24,7 @@
             require(["app/controllers/hullselection"], function(hull)
             {
                 hull.setElement($("#map"));
-                hull.setImage("{{$src}}");
+                hull.setImage("{{$imageFile['src']}}");
                 hull.setImageSize("{{$image->width()}}","{{$image->height()}}");
                 hull.setCoordinates("{{$value}}");
                 hull.setName("{{$file."__".$attribute}}");
