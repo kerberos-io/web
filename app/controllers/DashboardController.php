@@ -24,8 +24,19 @@ class DashboardController extends BaseController
         
         $days = $this->imageHandler->getDays(5);
         
+        $lastImage = $this->imageHandler->getLatestImage();
+        if($lastImage)
+        {
+            $lastImage = $lastImage['src'];
+        }
+        else
+        {
+            $lastImage = '';
+        }
+
 		return View::make('dashboard', [
             'days' => $days,
+            'lastImage' => $lastImage,
             'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
 	}

@@ -8,11 +8,13 @@
         if($imageFile)
         {
             $image = Image::make($imageFile['path']);
+            $src = $imageFile['src'];
         }
         else
         {
             // fake an image
             $image = Image::canvas(800, 640);
+            $src = '';
         }
     ?>
 
@@ -24,7 +26,7 @@
             require(["app/controllers/hullselection"], function(hull)
             {
                 hull.setElement($("#map"));
-                hull.setImage("{{$imageFile['src']}}");
+                hull.setImage("{{$src}}");
                 hull.setImageSize("{{$image->width()}}","{{$image->height()}}");
                 hull.setCoordinates("{{$value}}");
                 hull.setName("{{$file."__".$attribute}}");

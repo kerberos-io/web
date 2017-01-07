@@ -8,11 +8,13 @@
         if($imageFile)
         {
             $image = Image::make($imageFile['path']);
+            $src = $imageFile['src'];
         }
         else
         {
             // fake an image
             $image = Image::canvas(800, 640);
+            $src = '';
         }
     ?>
 
@@ -24,7 +26,7 @@
             require(["app/controllers/twolines"], function(twolines)
             {
                 twolines.setElement($(".twolines #map"));
-                twolines.setImage("{{$imageFile['src']}}");
+                twolines.setImage("{{$src}}");
                 twolines.setImageSize("{{$image->width()}}","{{$image->height()}}");
                 twolines.setCoordinates("{{$value}}");
                 twolines.setName("{{$file."__".$attribute}}");
