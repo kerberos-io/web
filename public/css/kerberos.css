@@ -9745,7 +9745,8 @@ label {
 }
 #settings-modal #usbcamera-view .multiply,
 #settings-modal #ipcamera-view .multiply,
-#settings-modal #rpicamera-view .multiply {
+#settings-modal #rpicamera-view .multiply,
+#settings-modal #motion-view .multiply {
   float: left;
   color: #333;
   margin-top: 25px;
@@ -9755,20 +9756,24 @@ label {
 #settings-modal #usbcamera-view input.width,
 #settings-modal #ipcamera-view input.width,
 #settings-modal #rpicamera-view input.width,
+#settings-modal #motion-view input.width,
 #settings-modal #usbcamera-view input.height,
 #settings-modal #ipcamera-view input.height,
-#settings-modal #rpicamera-view input.height {
+#settings-modal #rpicamera-view input.height,
+#settings-modal #motion-view input.height {
   width: 30%;
   text-align: center;
 }
 #settings-modal #usbcamera-view i.description.slider,
 #settings-modal #ipcamera-view i.description.slider,
-#settings-modal #rpicamera-view i.description.slider {
+#settings-modal #rpicamera-view i.description.slider,
+#settings-modal #motion-view i.description.slider {
   bottom: -4px;
 }
 #settings-modal #usbcamera-view i.description:nth-child(2n),
 #settings-modal #ipcamera-view i.description:nth-child(2n),
-#settings-modal #rpicamera-view i.description:nth-child(2n) {
+#settings-modal #rpicamera-view i.description:nth-child(2n),
+#settings-modal #motion-view i.description:nth-child(2n) {
   bottom: 2px;
   left: 154px;
 }
@@ -9797,6 +9802,61 @@ label {
   text-transform: uppercase;
   font-size: 12px;
   margin-top: 20px;
+}
+.owl-theme .owl-dots .owl-dot span {
+  width: 20px;
+  height: 20px;
+}
+.owl-theme .owl-nav.disabled + .owl-dots {
+  margin-top: 30px;
+}
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #943633 !important;
+}
+.owl-theme .owl-nav [class*=owl-] {
+  background: #943633 !important;
+}
+.owl-theme .owl-nav .disabled {
+  opacity: 1;
+  background: #d6d6d6 !important;
+}
+.owl-dots {
+  position: absolute;
+  bottom: -86px;
+  left: 0;
+}
+.owl-prev {
+  position: absolute;
+  top: 40%;
+  left: -107px;
+  border-radius: 0 !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.owl-next {
+  position: absolute;
+  top: 40%;
+  right: -107px;
+  border-radius: 0 !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+.owl-nav > div {
+  padding: 40px 20px !important;
+}
+.owl-carousel .owl-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+div#step {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+#motion-view h4 {
+  margin-bottom: 15px;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #settings,

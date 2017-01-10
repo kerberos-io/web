@@ -34,6 +34,10 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
         {
             this.name = name;
         },
+        restore: function()
+        {
+            this.hullView.restore();
+        },
         initialize: function()
         {
             var hull = new Hull(this.coordinates);
@@ -45,25 +49,27 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                 "fake": (this.image == "")
             }
 
-            var hullView = new HullSelectionView({
+            this.hullView = new HullSelectionView({
                 el: this.element,
                 name: this.name,
                 image: image,
                 model: hull,
             });
 
-            hullView.render();
+            this.hullView.render();
 
+            var self = this;
+            
             $(window).resize(function()
             {
-                hullView.restore();
+                self.hullView.restore();
             });
 
             event.on("section.opened", function(changes)
             {
                 if(changes.attr("id")=="hull")
                 {
-                    hullView.restore();
+                    self.hullView.restore();
                 }
             });
         }

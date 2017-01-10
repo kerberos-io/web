@@ -30,14 +30,14 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
         addPoint: function(e)
         {
             var point = {
-                "x": e.pageX  - $("ul.side-nav").width() - 20,
-                "y": e.pageY  - $("nav").height() - 20 - 20
+                "x": e.pageX,
+                "y": e.pageY
             };
 
             var mapPosition = this.$el.find("img");
             var delta = {
-                "x": mapPosition.position().left,
-                "y": mapPosition.position().top
+                "x": Math.round(mapPosition.offset().left),
+                "y": Math.round(mapPosition.offset().top)
             };
 
             // If point is succesfully rendered, add it to collection
@@ -63,20 +63,20 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 var point_id = this.$el.find('.point').length;
                 this.$el.append('<div class="point" id="point_' + point_id + '"></div>');
 
-                this.$el.find('#point_' + point_id).css('left', point.x + 'px');
-                this.$el.find('#point_' + point_id).css('top', point.y + 'px');
+                this.$el.find('#point_' + point_id).css('left', point.x - delta.x + 'px');
+                this.$el.find('#point_' + point_id).css('top', point.y - delta.y + 'px');
 
                 // Add coordinate info, relative to map
                 this.$el.append('<div class="info" id="info_' + point_id + '">('+(point.x - delta.x)+','+(point.y - delta.y)+')</div>');
-                this.$el.find('#info_' + point_id).css('left', point.x - 40 + 'px');
-                this.$el.find('#info_' + point_id).css('top', point.y - 35 + 'px');
+                this.$el.find('#info_' + point_id).css('left', point.x - delta.x - 40 + 'px');
+                this.$el.find('#info_' + point_id).css('top', point.y - delta.y - 35 + 'px');
 
                 // Draw a line between new and previous point
                 if(point_id > 0)
                 {
                     var x1 = this.$el.find('#point_' + (point_id - 1)).position().left;
                     var y1 = this.$el.find('#point_' + (point_id - 1)).position().top;
-                    var line = this.createLine(point_id, x1, y1, point.x, point.y);
+                    var line = this.createLine(point_id, x1, y1, point.x - delta.x, point.y - delta.y);
                     this.$el.append(line);
                 }
 
@@ -368,6 +368,8 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 "coordinates": this.model.coordinates,
             }));
             this.writeCoordinates();
+            this.drawCoordinates();
+
             return this;
         }
     });

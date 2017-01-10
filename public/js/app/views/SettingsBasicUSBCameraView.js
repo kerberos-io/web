@@ -2,7 +2,8 @@
 *  USB Camera View
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider"], function (_, Backbone, BaseView, Slider)
+define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider", "carousel"],
+    function (_, Backbone, BaseView, Slider, carousel)
 { 
     var SettingsBasicUSBCameraView = BaseView.extend(
     {

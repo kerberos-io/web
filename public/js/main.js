@@ -49,6 +49,11 @@ require.config({
                 'jquery'
             ]
         },
+        carousel: {
+            deps: [
+                'jquery'
+            ]
+        },
         videojsplaylist: {
             deps: [
                 'add-video-js-in-global-scope'
@@ -84,6 +89,7 @@ require.config({
         videojs: 'vendor/video.js/dist/video.min',
         videojsplaylist: 'vendor/videojs-playlist/dist/videojs-playlist',
         videojsplaylistui: 'app/models/PlaylistUI',
+        carousel: 'vendor/owl.carousel/dist/owl.carousel.min',
         'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [

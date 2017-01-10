@@ -41,6 +41,7 @@
     "progressbar.js": "~1.0.0",
     "photoswipe": "~4.1.1",
     "video.js": "^5.14.1",
-    "videojs-playlist": "^3.0.0"
+    "videojs-playlist": "^3.0.0",
+    "owl.carousel": "^2.2.0"
   }
 }

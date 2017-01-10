@@ -467,7 +467,7 @@ label
         padding: 0 15px 15px 15px;
     }
 
-    #usbcamera-view, #ipcamera-view, #rpicamera-view
+    #usbcamera-view, #ipcamera-view, #rpicamera-view, #motion-view
     {
         .multiply
         {
@@ -529,6 +529,85 @@ label
         font-size: 12px;
         margin-top: 20px;
     }
+}
+
+
+.owl-theme .owl-dots .owl-dot span
+{
+    width: 20px;
+    height: 20px;
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots
+{
+    margin-top: 30px;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span
+{
+    background: #943633 !important;
+}
+
+.owl-theme .owl-nav [class*=owl-]
+{
+    background: #943633 !important;
+}
+
+.owl-theme .owl-nav .disabled
+{
+    opacity: 1;
+    background: #d6d6d6 !important;
+}
+
+.owl-dots
+{
+    position: absolute;
+    bottom: -86px;
+    left: 0;
+}
+
+.owl-prev
+{
+    position: absolute;
+    top: 40%;
+    left: -107px;
+    border-radius: 0 !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.owl-next
+{
+    position: absolute;
+    top: 40%;
+    right: -107px;
+    border-radius: 0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.owl-nav > div
+{
+    padding: 40px 20px !important
+}
+
+.owl-carousel .owl-item img
+{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+div#step
+{
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+#motion-view h4
+{
+    margin-bottom: 15px;
 }
 
 @import "responsive-main";
