@@ -1,13 +1,13 @@
 /**********************
-*  RPI Camera View
+*  USB Camera View
 ****/
 
 define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider"], function (_, Backbone, BaseView, Slider)
 { 
-    var SettingsBasicRPICameraView = BaseView.extend(
+    var SettingsBasicMotionView = BaseView.extend(
     {
         el : '<div>',
-        view : 'settings/settings-basic-rpicamera',
+        view : 'settings/settings-basic-motion',
         model: undefined,
         events: {
             'click .rotate .image':'changeRotation'
@@ -33,13 +33,6 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         },
         update: function()
         {
-            this.model.changeIPCamera({
-                width: $("#ipcamera-view .width").val(),
-                height: $("#ipcamera-view .height").val()
-            });
-        },
-        update: function()
-        {
             this.model.changeUSBCamera({
                 width: this.$el.find("#usbcamera-view .width").val(),
                 height: this.$el.find("#usbcamera-view .height").val(),
@@ -57,5 +50,5 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         }
     });
 
-    return SettingsBasicRPICameraView;
+    return SettingsBasicMotionView;
 });
