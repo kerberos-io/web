@@ -9459,12 +9459,18 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip,
 #cloud .with-tooltip,
-#settings-modal .with-tooltip {
+#settings-modal .with-tooltip,
+#settings .with-tooltip-left,
+#cloud .with-tooltip-left,
+#settings-modal .with-tooltip-left {
   position: relative;
 }
 #settings .with-tooltip > i.description,
 #cloud .with-tooltip > i.description,
-#settings-modal .with-tooltip > i.description {
+#settings-modal .with-tooltip > i.description,
+#settings .with-tooltip-left > i.description,
+#cloud .with-tooltip-left > i.description,
+#settings-modal .with-tooltip-left > i.description {
   position: absolute;
   bottom: 2px;
   left: 0;
@@ -9476,7 +9482,10 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip > span,
 #cloud .with-tooltip > span,
-#settings-modal .with-tooltip > span {
+#settings-modal .with-tooltip > span,
+#settings .with-tooltip-left > span,
+#cloud .with-tooltip-left > span,
+#settings-modal .with-tooltip-left > span {
   position: relative;
   color: #943633;
   font-size: 21px;
@@ -9489,7 +9498,10 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip span > span,
 #cloud .with-tooltip span > span,
-#settings-modal .with-tooltip span > span {
+#settings-modal .with-tooltip span > span,
+#settings .with-tooltip-left span > span,
+#cloud .with-tooltip-left span > span,
+#settings-modal .with-tooltip-left span > span {
   font-size: 14px;
   font-family: Helvetica;
   font-style: normal;
@@ -9516,9 +9528,15 @@ div.video-preview video:first-child {
 #settings .with-tooltip span > span:before,
 #cloud .with-tooltip span > span:before,
 #settings-modal .with-tooltip span > span:before,
+#settings .with-tooltip-left span > span:before,
+#cloud .with-tooltip-left span > span:before,
+#settings-modal .with-tooltip-left span > span:before,
 #settings .with-tooltip span > span:after,
 #cloud .with-tooltip span > span:after,
-#settings-modal .with-tooltip span > span:after {
+#settings-modal .with-tooltip span > span:after,
+#settings .with-tooltip-left span > span:after,
+#cloud .with-tooltip-left span > span:after,
+#settings-modal .with-tooltip-left span > span:after {
   content: "";
   position: absolute;
   border-left: 10px solid transparent;
@@ -9530,19 +9548,118 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip span > span:before,
 #cloud .with-tooltip span > span:before,
-#settings-modal .with-tooltip span > span:before {
+#settings-modal .with-tooltip span > span:before,
+#settings .with-tooltip-left span > span:before,
+#cloud .with-tooltip-left span > span:before,
+#settings-modal .with-tooltip-left span > span:before {
   border-top: 10px solid #943633;
   margin-left: -7px;
 }
 #settings .with-tooltip span > span:after,
 #cloud .with-tooltip span > span:after,
-#settings-modal .with-tooltip span > span:after {
+#settings-modal .with-tooltip span > span:after,
+#settings .with-tooltip-left span > span:after,
+#cloud .with-tooltip-left span > span:after,
+#settings-modal .with-tooltip-left span > span:after {
   border-top: 10px solid #f4f4f4;
   margin-left: -4px;
 }
 #settings .with-tooltip span:hover > span,
 #cloud .with-tooltip span:hover > span,
-#settings-modal .with-tooltip span:hover > span {
+#settings-modal .with-tooltip span:hover > span,
+#settings .with-tooltip-left span:hover > span,
+#cloud .with-tooltip-left span:hover > span,
+#settings-modal .with-tooltip-left span:hover > span {
+  visibility: visible;
+  opacity: 1;
+}
+#settings .with-tooltip-left,
+#cloud .with-tooltip-left,
+#settings-modal .with-tooltip-left {
+  position: relative;
+}
+#settings .with-tooltip-left > i.description,
+#cloud .with-tooltip-left > i.description,
+#settings-modal .with-tooltip-left > i.description {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  color: #cccccc;
+  text-decoration: none;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+#settings .with-tooltip-left > span,
+#cloud .with-tooltip-left > span,
+#settings-modal .with-tooltip-left > span {
+  position: relative;
+  color: #943633;
+  font-size: 21px;
+  text-shadow: none;
+  display: inline-block;
+  font-style: bold;
+  float: left;
+  margin-top: 15px;
+  margin-left: 7px;
+}
+#settings .with-tooltip-left span > span,
+#cloud .with-tooltip-left span > span,
+#settings-modal .with-tooltip-left span > span {
+  font-size: 14px;
+  font-family: Helvetica;
+  font-style: normal;
+  text-align: left;
+  line-height: 150%;
+  color: #943633;
+  text-shadow: white 0 1px;
+  background: #fff;
+  background-clip: padding-box;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
+  border: 2px solid #943633;
+  border-radius: 3px;
+  position: absolute;
+  width: 250px;
+  left: 350%;
+  margin-left: -27px;
+  padding: 10px;
+  top: -10px;
+  left: -242px;
+  margin-bottom: 15px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999999;
+}
+#settings .with-tooltip-left span > span:before,
+#cloud .with-tooltip-left span > span:before,
+#settings-modal .with-tooltip-left span > span:before,
+#settings .with-tooltip-left span > span:after,
+#cloud .with-tooltip-left span > span:after,
+#settings-modal .with-tooltip-left span > span:after {
+  content: "";
+  position: absolute;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  top: 15px;
+  left: initial;
+  right: -19px;
+  -webkit-transform: rotate(90deg);
+}
+#settings .with-tooltip-left span > span:before,
+#cloud .with-tooltip-left span > span:before,
+#settings-modal .with-tooltip-left span > span:before {
+  border-bottom: 10px solid #943633;
+  margin-right: -3px;
+}
+#settings .with-tooltip-left span > span:after,
+#cloud .with-tooltip-left span > span:after,
+#settings-modal .with-tooltip-left span > span:after {
+  border-bottom: 10px solid #f4f4f4;
+  margin-left: -4px;
+}
+#settings .with-tooltip-left span:hover > span,
+#cloud .with-tooltip-left span:hover > span,
+#settings-modal .with-tooltip-left span:hover > span {
   visibility: visible;
   opacity: 1;
 }
@@ -9776,6 +9893,9 @@ label {
 #settings-modal #motion-view i.description:nth-child(2n) {
   bottom: 2px;
   left: 154px;
+}
+#settings-modal #motion-view .slider.slider-horizontal {
+  width: 89%;
 }
 .view {
   text-align: left;

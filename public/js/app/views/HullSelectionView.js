@@ -39,13 +39,14 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 "x": Math.round(mapPosition.offset().left),
                 "y": Math.round(mapPosition.offset().top)
             };
-
+                       
             // If point is succesfully rendered, add it to collection
             if(this.renderPoint(point, delta))
             {
                 // Add point to Hull model (relative to ratio)
-                var widthRatio = this.image.width / mapPosition.width() ;
+                var widthRatio = this.image.width / mapPosition.width();
                 var heightRatio = this.image.height / mapPosition.height();
+
                 var coordinate = {
                     "x" : Math.round((point.x - delta.x) * widthRatio),
                     "y" : Math.round((point.y - delta.y) * heightRatio)
