@@ -1,5 +1,6 @@
 @import "timeselection";
 @import "dropdown";
+@import "toggle";
 
 #settings, #cloud, #settings-modal
 {
@@ -295,6 +296,28 @@
         {
             visibility: visible;
             opacity: 1;
+        }
+    }
+}
+
+#settings-modal
+{
+    #motion-view
+    {
+        .content
+        {
+            display: none;
+
+            i.description:nth-child(2n)
+            {
+                left:0;
+                width: 100% !important;
+            }
+        }
+
+        .content.visible
+        {
+            display: table;
         }
     }
 }
@@ -709,6 +732,43 @@ div#step
 {
     display: table;
     width: 100%;
+}
+
+.io-devices > div
+{
+    background: #f4f4f4;
+    padding: 10px 0;
+
+    i
+    {
+        width: 25px !important;
+    }
+}
+
+.io-devices
+{
+    > div
+    {
+        clear: both;
+
+        .button
+        {
+            margin-right: 20px;
+            display: table;
+            float: left;
+        }
+
+        .title
+        {
+            display: table;
+            float: left;
+        }
+
+        .content
+        {
+            clear: both;
+        }
+    }
 }
 
 @import "responsive-main";

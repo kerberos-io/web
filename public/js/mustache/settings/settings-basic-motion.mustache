@@ -28,6 +28,45 @@
                         </div>
                     </div>
                 </div>
+                <div class="part io-devices" description="Step 3. Select one or more outputs">
+                    <div class="io-image">
+                        <div class="button">
+                            <input class="tgl tgl-flip" id="image" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="image"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> Image
+                        </div>
+                    </div>
+                    <div class="io-video">
+                        <div class="button">
+                            <input class="tgl tgl-flip" id="video" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="video"></label>
+                        </div>
+                        <div class="title">
+                             <i class="fa fa-file-video-o" aria-hidden="true"></i> Video
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip element">
+                                <input type="text"value="{{usbcamera.width}}"/>
+                                <i class="description">delay in seconds</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-webhook">
+                        <div class="button">
+                            <input class="tgl tgl-flip" id="webhook" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="webhook"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-anchor" aria-hidden="true"></i>Webhook
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

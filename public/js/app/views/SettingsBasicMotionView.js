@@ -12,7 +12,8 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         model: undefined,
         image: undefined,
         events: {
-            'click .rotate .image':'changeRotation'
+            'click .rotate .image':'changeRotation',
+            'change .tgl': 'toggleIoDevice'
         },
 
         initialize: function(model, image)
@@ -40,6 +41,19 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
                     "<i class='fa fa-arrow-right' aria-hidden='true'></i>"
                 ],
             });
+        },
+        toggleIoDevice: function(e)
+        {
+            var element = $(e.currentTarget);
+
+            if(element.prop('checked'))
+            {
+                element.parent().parent().find('.content').slideDown();
+            }
+            else
+            {
+                element.parent().parent().find('.content').slideUp();
+            }
         },
         update: function()
         {
