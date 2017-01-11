@@ -12,7 +12,7 @@
         else
         {
             // fake an image
-            $image = Image::canvas(800, 640);
+            $image = Image::canvas(600, 480);
         }
     ?>
 

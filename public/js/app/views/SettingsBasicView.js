@@ -23,6 +23,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
         selected: undefined,
         object: undefined,
         subView: undefined,
+        image: undefined,
 
         events:
         {
@@ -30,9 +31,10 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
             "keyup div.name input": "changeName",
             "click .type": "changeType"
         },
-        initialize: function(model)
+        initialize: function(model, image)
         {
             this.model = model;
+            this.image = image;
         },
         refresh: function()
         {
@@ -55,12 +57,12 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
         {
             this.object = $(event.currentTarget);
             this.selected = "#" + this.object.parent().attr('id');
-            this.subView = eval("new " + this.object.attr('id') + 'View' + "()");
+            this.subView = eval("new " + this.object.attr('id') + 'View()');
 
             if(this.subView)
             {
                 this.refresh();
-                this.subView.initialize(this.model);
+                this.subView.initialize(this.model, this.image);
                 $("#settings-modal .modal-body > .view").html(this.subView.render().el)
                 this.modal.open();
             }
@@ -81,7 +83,6 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
 
             $('[data-remodal-id=settings] .remodal-confirm').unbind('click').click(function()
             {
-                console.log("i")
                 self.subView.update();
                 $(self.selected + " .type").removeClass("active");
                 $(self.object).addClass("active");  

@@ -10,13 +10,15 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         el : '<div>',
         view : 'settings/settings-basic-motion',
         model: undefined,
+        image: undefined,
         events: {
             'click .rotate .image':'changeRotation'
         },
 
-        initialize: function(model)
+        initialize: function(model, image)
         {
             this.model = model;
+            this.image = image;
         },
         createSlider: function()
         {
@@ -50,8 +52,8 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
             this.createCarousel();
 
             hull.setElement(this.$el.find("#region-selector"));
-            hull.setImage("http://kerberos.web//capture//1484052174_6-823046_Frontdoorrr_regionCoordinates_numberOfChanges_160.jpg");
-            hull.setImageSize(1280, 960);
+            hull.setImage(this.image.src);
+            hull.setImageSize(this.image.width, this.image.height);
             hull.setCoordinates($("input[name='expositor__Hull__region']").val());
             hull.setName("motion-hullselection");
             hull.initialize();
