@@ -19,12 +19,12 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         },
         changeRotation: function()
         {
-            this.model.usbcamera.angle = (this.model.usbcamera.angle + 90) % 360; 
+            this.model.ipcamera.angle = (this.model.ipcamera.angle + 90) % 360; 
             this.rotate();
         },
         rotate: function()
         {
-            this.$el.find(".rotate .image").css({'transform':'rotate('+this.model.usbcamera.angle+'deg)'})
+            this.$el.find(".rotate .image").css({'transform':'rotate('+this.model.ipcamera.angle+'deg)'})
         },
         createSlider: function()
         {
@@ -40,12 +40,13 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         },
         update: function()
         {
-            this.model.changeUSBCamera({
-                width: this.$el.find("#usbcamera-view .width").val(),
-                height: this.$el.find("#usbcamera-view .height").val(),
-                angle: this.model.usbcamera.angle, // overkill
-                delay: parseFloat(this.$el.find("#usbcamera-view .slider-delay").val()) * 1000,
-                fps: parseInt(this.$el.find("#usbcamera-view .slider-fps").val())
+            this.model.changeIPCamera({
+                width: this.$el.find("#ipcamera-view .width").val(),
+                height: this.$el.find("#ipcamera-view .height").val(),
+                angle: this.model.ipcamera.angle, // overkill
+                delay: parseFloat(this.$el.find("#ipcamera-view .slider-delay").val()) * 1000,
+                fps: parseInt(this.$el.find("#ipcamera-view .slider-fps").val()),
+                url: this.$el.find("#ipcamera-view .url").val()
             });
         },
         render: function()

@@ -9781,7 +9781,9 @@ label {
   text-align: left;
 }
 .buttons-wrapper {
-  text-align: right;
+  text-align: left;
+  margin-top: 30px !important;
+  margin-left: 13px !important;
 }
 .remodal .remodal-cancel {
   color: #fff;
@@ -9823,7 +9825,7 @@ label {
 }
 .owl-dots {
   position: absolute;
-  bottom: -86px;
+  bottom: -60px;
   left: 0;
 }
 .owl-prev {
@@ -9853,10 +9855,14 @@ label {
 div#step {
   position: absolute;
   top: 0;
-  right: 30px;
+  right: 15px;
 }
 #motion-view h4 {
   margin-bottom: 15px;
+}
+.submit-form {
+  display: table;
+  width: 100%;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #settings,
@@ -9890,6 +9896,9 @@ div#step {
   }
   #basic div.type {
     padding: 10px;
+  }
+  .rotate {
+    margin-top: 40px;
   }
 }
 #system-actions {

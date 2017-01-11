@@ -19,12 +19,12 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         },
         changeRotation: function()
         {
-            this.model.usbcamera.angle = (this.model.usbcamera.angle + 90) % 360; 
+            this.model.rpicamera.angle = (this.model.rpicamera.angle + 90) % 360; 
             this.rotate();
         },
         rotate: function()
         {
-            this.$el.find(".rotate .image").css({'transform':'rotate('+this.model.usbcamera.angle+'deg)'})
+            this.$el.find(".rotate .image").css({'transform':'rotate('+this.model.rpicamera.angle+'deg)'})
         },
         createSlider: function()
         {
@@ -40,12 +40,12 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         },
         update: function()
         {
-            this.model.changeUSBCamera({
-                width: this.$el.find("#usbcamera-view .width").val(),
-                height: this.$el.find("#usbcamera-view .height").val(),
-                angle: this.model.usbcamera.angle, // overkill
-                delay: parseFloat(this.$el.find("#usbcamera-view .slider-delay").val()) * 1000,
-                fps: parseInt(this.$el.find("#usbcamera-view .slider-fps").val())
+            this.model.changeRPICamera({
+                width: this.$el.find("#rpicamera-view .width").val(),
+                height: this.$el.find("#rpicamera-view .height").val(),
+                angle: this.model.rpicamera.angle, // overkill
+                delay: parseFloat(this.$el.find("#rpicamera-view .slider-delay").val()) * 1000,
+                fps: parseInt(this.$el.find("#rpicamera-view .slider-fps").val())
             });
         },
         render: function()

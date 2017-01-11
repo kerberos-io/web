@@ -130,7 +130,9 @@ define(["underscore", "backbone"], function (_, Backbone)
             {
                 return {
                     width: $("input[name='capture__RaspiCamera__frameWidth']").val(),
-                    height: $("input[name='capture__RaspiCamera__frameHeight']").val()
+                    height: $("input[name='capture__RaspiCamera__frameHeight']").val(),
+                    angle: parseInt($("input[name='capture__RaspiCamera__angle']").val()),
+                    delay: parseInt($("input[name='capture__RaspiCamera__delay']").val())/1000.
                 };
             },
             changeRPICamera: function(rpicamera)
@@ -139,6 +141,9 @@ define(["underscore", "backbone"], function (_, Backbone)
                 this.rpicamera = rpicamera;
                 $("input[name='capture__RaspiCamera__frameWidth']").val(rpicamera.width);
                 $("input[name='capture__RaspiCamera__frameHeight']").val(rpicamera.height);
+                $("input[name='capture__RaspiCamera__angle']").val(rpicamera.angle);
+                $("input[name='capture__RaspiCamera__delay']").val(rpicamera.delay);
+                this.changeStream(rpicamera.fps);
             },
 
 
@@ -149,7 +154,10 @@ define(["underscore", "backbone"], function (_, Backbone)
             {
                 return {
                     width: $("input[name='capture__IPCamera__frameWidth']").val(),
-                    height: $("input[name='capture__IPCamera__frameHeight']").val()
+                    height: $("input[name='capture__IPCamera__frameHeight']").val(),
+                    angle: parseInt($("input[name='capture__IPCamera__angle']").val()),
+                    delay: parseInt($("input[name='capture__IPCamera__delay']").val())/1000.,
+                    url: $("input[name='capture__IPCamera__url']").val()
                 };
             },
             changeIPCamera: function(ipcamera)
@@ -158,6 +166,10 @@ define(["underscore", "backbone"], function (_, Backbone)
                 this.ipcamera = ipcamera;
                 $("input[name='capture__IPCamera__frameWidth']").val(ipcamera.width);
                 $("input[name='capture__IPCamera__frameHeight']").val(ipcamera.height);
+                $("input[name='capture__IPCamera__angle']").val(ipcamera.angle);
+                $("input[name='capture__IPCamera__delay']").val(ipcamera.delay);
+                $("input[name='capture__IPCamera__url']").val(ipcamera.url);
+                this.changeStream(ipcamera.fps);
             }
 
 

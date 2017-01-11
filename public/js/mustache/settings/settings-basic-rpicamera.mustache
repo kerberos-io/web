@@ -4,18 +4,18 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="width-and-height with-tooltip element">
-                    <input type="text" class="width" value="{{usbcamera.width}}"/>
+                    <input type="text" class="width" value="{{rpicamera.width}}"/>
                     <div class="multiply"> x </div>
-                    <input class="height" type="text" value="{{usbcamera.height}}"/>
+                    <input class="height" type="text" value="{{rpicamera.height}}"/>
                     <span>
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
-                        <span>The resolution of the images being captured by your USB camera. Make sure that this resolution is supported.</span>
+                        <span>The resolution of the images being captured by your Raspberry Pi camera module. Make sure that this resolution is supported.</span>
                     </span>
                     <i class="description">width</i>
                     <i class="description">height</i>
                 </div>
                 <div class="slider with-tooltip element">
-                    <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{usbcamera.delay}}"/>
+                    <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{rpicamera.delay}}"/>
                     <i class="description slider">delay in seconds</i>
                     <span>
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-4">
                 <div class="rotate with-tooltip element">
-                    <div class="image" style="transform:rotate({{usbcamera.angle}}deg)">
+                    <div class="image" style="transform:rotate({{rpicamera.angle}}deg)">
                         <i class="fa fa-repeat" aria-hidden="true"></i>
                     </div>
                     <span>

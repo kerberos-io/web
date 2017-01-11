@@ -18,15 +18,6 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         {
             this.model = model;
         },
-        changeRotation: function()
-        {
-            this.model.usbcamera.angle = (this.model.usbcamera.angle + 90) % 360; 
-            this.rotate();
-        },
-        rotate: function()
-        {
-            this.$el.find(".rotate .image").css({'transform':'rotate('+this.model.usbcamera.angle+'deg)'})
-        },
         createSlider: function()
         {
             var self = this;
@@ -51,19 +42,10 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         update: function()
         {
             $("input[name='expositor__Hull__region']").val($("input[name='motion-hullselection']").val());
-
-            this.model.changeUSBCamera({
-                width: this.$el.find("#usbcamera-view .width").val(),
-                height: this.$el.find("#usbcamera-view .height").val(),
-                angle: this.model.usbcamera.angle, // overkill
-                delay: parseFloat(this.$el.find("#usbcamera-view .slider-delay").val()) * 1000,
-                fps: parseInt(this.$el.find("#usbcamera-view .slider-fps").val())
-            });
         },
         render: function()
         {
             this.$el.html(this.template(this.model));
-            this.rotate();
             this.createSlider();
             this.createCarousel();
 
