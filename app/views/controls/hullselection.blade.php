@@ -1,6 +1,6 @@
 <div class="image hullselection">
 
-    <div id="map"></div>
+    <div id="map" style="position: relative;"></div>
 
     <?php
         $src = App::make("Controllers\ImageController")->getLatestImage();

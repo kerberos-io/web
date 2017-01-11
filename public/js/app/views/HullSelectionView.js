@@ -39,17 +39,19 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 "x": Math.round(mapPosition.offset().left),
                 "y": Math.round(mapPosition.offset().top)
             };
-                       
+
+            point.x -= delta.x;
+            point.y -= delta.y;
+
             // If point is succesfully rendered, add it to collection
             if(this.renderPoint(point, delta))
             {
                 // Add point to Hull model (relative to ratio)
                 var widthRatio = this.image.width / mapPosition.width();
                 var heightRatio = this.image.height / mapPosition.height();
-
                 var coordinate = {
-                    "x" : Math.round((point.x - delta.x) * widthRatio),
-                    "y" : Math.round((point.y - delta.y) * heightRatio)
+                    "x" : Math.round((point.x) * widthRatio),
+                    "y" : Math.round((point.y) * heightRatio)
                 };
 
                 // Write coordinates to input field (format | and , seperated)
@@ -82,7 +84,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 this.$el.find('#point_' + point_id).css('top', point.y + 'px');
 
                 // Add coordinate info, relative to map
-                this.$el.append('<div class="info" id="info_' + point_id + '">('+(point.x - delta.x)+','+(point.y - delta.y)+')</div>');
+                this.$el.append('<div class="info" id="info_' + point_id + '">('+point.x+','+point.y+')</div>');
                 
                 // Check if point is near to X = 0
 
