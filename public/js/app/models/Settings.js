@@ -36,6 +36,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             this.usbcamera = this.getUSBCamera();
             this.ipcamera = this.getIPCamera();
             this.rpicamera = this.getRPICamera();
+            this.devices = this.getIoDevices();
         },
 
         // ------------------
@@ -63,6 +64,128 @@ define(["underscore", "backbone"], function (_, Backbone)
         getName: function()
         {
         	return $("input[name='config__instance__name']").val();
+        },
+        getIoDevices: function()
+        {
+            this.devices = {
+                disk: {
+                    enabled: false,
+                    colorTimestamp: $("input[name='io__Disk__timestampColor']").val(),
+                    markWithTimestamp: $("input[name='io__Disk__markWithTimestamp']").prop('checked')
+                },
+                video: {
+                    enabled: false,
+                    recordAfter: $("input[name='io__Video__recordAfter']").val(),
+                    fps: $("input[name='io__Video__fps']").val()
+                },
+                webhook: {
+                    enabled: false,
+                    url: $("input[name='io__Webhook__url']").val()
+                }
+            };
+
+            var self = this;
+            _.each($("select[name^='config__instance__io']"), function(device)
+            {
+                var option =  $(device).find("option:selected").text();
+                option = option.toLowerCase();
+                self.devices[option].enabled = true;
+            });
+
+            return this.devices;
+        },
+        changeIoDevices: function(devices)
+        {
+            var numberOfSelects = $("select[name^='config__instance__io']").length;
+            var activeDevices = _.filter(devices,function(device)
+            {
+                return device.enabled;
+            });
+
+            // Add new selects
+            for(var i = numberOfSelects; i < activeDevices.length; i++)
+            {
+                var section = $("select[name^='config__instance__io']").parent().parent();
+                if(section.find(".add-dropdown"))
+                {
+                    var dropdown = section.find(".add-dropdown i");
+                    dropdown.click();
+                    console.log(dropdown)
+                }
+            }
+
+            // Remove number of selects
+            for(var i = activeDevices; i < numberOfSelects.length; i++)
+            {
+                var section = $("select[name^='config__instance__io']").parent().parent();
+                if(section.find(".add-dropdown"))
+                {
+                    var dropdown = section.find(".add-dropdown i");
+                    dropdown.click();
+                    console.log(dropdown)
+                }
+            }
+            
+
+            // Step 2. Create dropdowns for each device
+
+            // Step 3. Transfer the data
+
+            /*if(element.prop('checked'))
+            {
+                /*var section = $("select[name^='config__instance__io']").parent().parent();
+                if(section.find(".add-dropdown"))
+                {
+                    var dropdown = section.find(".add-dropdown i");
+                    dropdown.click();
+
+                    // Get last device
+                    var devices = $("select[name^='config__instance__io']");
+                    var lastOne = devices[devices.length - 1];
+                }*
+
+                element.parent().parent().find('.content').slideDown();
+            }
+            else
+            {
+                // Find list of device that has been disabled.
+                /*var devices = $("select[name^='config__instance__io']");
+
+                // You need at least one device enabled.
+                if(devices.length > 1)
+                {
+                    var self = this; var i = 0;
+                    _.each(devices, function(device)
+                    {
+                        var option = $(device).find("option:selected").text();
+                        option = option.toLowerCase();
+
+                        if(name == option)
+                        {
+                            // Check if trashcan exists    
+                            if(i == 0)
+                            {
+                                $(device).next().next('div.delete-dropdown').remove();
+                            }
+                            else
+                            {
+                                $(device).next('div.delete-dropdown').remove();
+                            }
+
+                            $(device).remove();
+                        }
+
+                        i++;
+                    });
+                    element.parent().parent().find('.content').slideUp();
+                }
+                else
+                {
+                    element.prop('checked', true);
+                }
+                
+                element.parent().parent().find('.content').slideUp();
+            }*/
         },
 
         // --------------------------
