@@ -25,7 +25,7 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         createSlider: function()
         {
             var self = this;
-            self.$el.find('.slider-delay, .slider-fps').slider({});
+            self.$el.find('.slider-delay, .slider-fps, .video-fps, .video-record-seconds').slider({});
         },
         createCarousel: function()
         {
@@ -35,7 +35,6 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
                 items: 1,
                 touchDrag: false,
                 mouseDrag: false,
-                callbacks: true,
                 nav: true,
                 navText: [
                     "<i class='fa fa-arrow-left' aria-hidden='true'></i>",
@@ -54,6 +53,31 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
                     self.$el.find("#" + key).prop('checked', true);
                     self.$el.find("#" + key).parent().parent().find('.content').show();
                 }
+            })
+        },
+        setColor: function()
+        {
+            if(this.model.devices.disk.markWithTimestamp === "true")
+            {
+                this.$el.find("#timestamp-color").val(this.model.devices.disk.colorTimestamp);
+            }
+        },
+        setRegionSelector: function()
+        {
+            hull.setElement(this.$el.find("#region-selector"));
+            hull.setImage(this.image.src);
+            hull.setImageSize(this.image.width, this.image.height);
+            hull.setCoordinates($("input[name='expositor__Hull__region']").val());
+            hull.setName("motion-hullselection");
+            hull.initialize();
+
+            var self = this;
+            this.carousel.on('changed.owl.carousel', function(event)
+            {
+                var section = event.item.index;
+                self.$el.find("#step").html($(self.$el.find(".part").get(section)).attr('description'))
+                $(self.$el.find(".part").get(section)).show();
+                hull.restore();
             })
         },
         enabledDevices: function()
@@ -99,8 +123,8 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
             this.model.changeIoDevices({
                 disk: {
                     enabled: this.model.devices.disk.enabled, // overkill
-                    colorTimestamp: this.$el.find("#markWithTimestamp").val(),
-                    markWithTimestamp: this.$el.find("#markWithTimestamp").val()
+                    colorTimestamp: this.$el.find("#timestamp-color").val(),
+                    markWithTimestamp: (this.$el.find("#timestamp-color").val() != "none") ? "true" : "false"
                 },
                 video: {
                     enabled: this.model.devices.video.enabled, // overkill
@@ -121,23 +145,8 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
             this.createSlider();
             this.createCarousel();
             this.setDevices();
-
-            hull.setElement(this.$el.find("#region-selector"));
-            hull.setImage(this.image.src);
-            hull.setImageSize(this.image.width, this.image.height);
-            hull.setCoordinates($("input[name='expositor__Hull__region']").val());
-            hull.setName("motion-hullselection");
-            hull.initialize();
-
-            var self = this;
-
-            this.carousel.on('changed.owl.carousel', function(event)
-            {
-                var section = event.item.index;
-                self.$el.find("#step").html($(self.$el.find(".part").get(section)).attr('description'))
-                hull.restore();
-            })
-
+            this.setColor();
+            this.setRegionSelector();
             return this;
         }
     });

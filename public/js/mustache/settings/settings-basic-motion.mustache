@@ -7,28 +7,26 @@
                 <div class="part" description="Step 1. Select a region">
                     <div id="region-selector" class="image hullselection"></div>
                 </div>
-                <div class="part" description="Step 2. Configure parameters">
-                    <div class="col-md-12">
-                        <div class="slider with-tooltip-left element">
-                            <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{usbcamera.delay}}"/>
-                            <i class="description slider">sensitivity</i>
-                            <span>
-                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                <span>The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).</span>
-                            </span>
-                        </div>
+                <div class="part" style="display:none;" description="Step 2. Configure parameters">
+                    <div class="slider with-tooltip-left element">
+                        <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{usbcamera.delay}}"/>
+                        <i class="description slider">sensitivity</i>
+                        <span>
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <span>The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).</span>
+                        </span>
+                    </div>
 
-                        <div class="slider with-tooltip-left element">
-                            <input class="slider-fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{stream.fps}}"/>
-                            <i class="description slider">number of detections before valid</i>
-                            <span>
-                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                <span>The frames per second of the live stream can be configured. Settings this option to zero, will disable the live stream.</span>
-                            </span>
-                        </div>
+                    <div class="slider with-tooltip-left element">
+                        <input class="slider-fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{stream.fps}}"/>
+                        <i class="description slider">number of detections before valid</i>
+                        <span>
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <span>The frames per second of the live stream can be configured. Settings this option to zero, will disable the live stream.</span>
+                        </span>
                     </div>
                 </div>
-                <div class="part io-devices" description="Step 3. Select one or more outputs">
+                <div class="part io-devices" style="display:none;" description="Step 3. Select one or more outputs">
                     <div class="io-image">
                         <div class="button">
                             <input class="tgl tgl-flip" id="disk" type="checkbox"/>
@@ -39,11 +37,18 @@
                         </div>
                         <div class="content">
                             <div class="with-tooltip-left element">
-                                <input type="text" id="markWithTimestamp" value="{{devices.disk.markWithTimestamp}}"/>
-                                <i class="description">mark with time stamp</i>
+                                <select id="timestamp-color">
+                                    <option value="none">no timestamp</option>
+                                    <option value="white">white</option>
+                                    <option value="black">black</option>
+                                    <option value="red">red</option>
+                                    <option value="green">green</option>
+                                    <option value="blue">blue</option>
+                                </select>
+                                <i class="description">draw timestamp</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The frames per second written to the video file; be aware that a Raspberry Pi can only a limited number of FPS.</span>
+                                    <span>When an image is saved to disk, you can draw the current date and time on the image.</span>
                                 </span>
                             </div>
                         </div>
@@ -54,23 +59,23 @@
                             <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="video"></label>
                         </div>
                         <div class="title">
-                             <i class="fa fa-file-video-o" aria-hidden="true"></i> Video
+                             <i class="fa fa-video-camera" aria-hidden="true"></i> Video
                         </div>
                         <div class="content">
-                            <div class="with-tooltip-left element">
-                                <input type="text" id="fps" value="{{devices.video.fps}}"/>
+                            <div class="slider with-tooltip-left element">
+                                <input class="video-fps" id="fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.fps}}"/>
                                 <i class="description">fps</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The frames per second written to the video file; be aware that a Raspberry Pi can only a limited number of FPS.</span>
+                                    <span>The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).</span>
                                 </span>
                             </div>
-                            <div class="with-tooltip-left element">
-                                <input type="text" id="recordAfter" value="{{devices.video.recordAfter}}"/>
-                                <i class="description">record after</i>
+                            <div class="slider with-tooltip-left element">
+                                <input class="video-record-seconds" id="recordAfter" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.recordAfter}}"/>
+                                <i class="description">seconds to record</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The frames per second written to the video file; be aware that a Raspberry Pi can only a limited number of FPS.</span>
+                                    <span>The number of seconds that will be recorded after motion was detected.</span>
                                 </span>
                             </div>
                         </div>
@@ -89,7 +94,7 @@
                                 <i class="description">url</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The frames per second written to the video file; be aware that a Raspberry Pi can only a limited number of FPS.</span>
+                                    <span>The url to which a POST will be sent with a JSON object.</span>
                                 </span>
                             </div>
                         </div>

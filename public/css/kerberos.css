@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,7 +1103,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2532,7 +2531,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3023,7 +3021,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -9751,7 +9748,7 @@ div.video-preview video:first-child {
   border: 2px solid #943633;
   border-radius: 3px;
   position: absolute;
-  width: 250px;
+  width: 230px;
   left: 350%;
   margin-left: -27px;
   padding: 10px;
@@ -9989,7 +9986,7 @@ div.video-preview video:first-child {
 }
 #basic div select,
 #settings-modal div select {
-  width: 60%;
+  width: 50%;
   height: 50px;
 }
 #basic .name input:before,
@@ -10021,11 +10018,15 @@ div.video-preview video:first-child {
   cursor: pointer;
 }
 #basic div.type.with-tooltip,
-#settings-modal div.type.with-tooltip {
+#settings-modal div.type.with-tooltip,
+#basic div.type.with-tooltip-left,
+#settings-modal div.type.with-tooltip-left {
   position: relative;
 }
 #basic div.type.with-tooltip > span,
-#settings-modal div.type.with-tooltip > span {
+#settings-modal div.type.with-tooltip > span,
+#basic div.type.with-tooltip-left > span,
+#settings-modal div.type.with-tooltip-left > span {
   color: #fff;
   position: absolute;
   top: 0;
@@ -10081,7 +10082,8 @@ label {
   margin-top: 13px;
   margin-bottom: 8px;
 }
-#basic select {
+#basic select,
+#settings-modal select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -10233,7 +10235,7 @@ div#step {
 .io-devices > div {
   padding: 10px 0;
 }
-.io-devices > div i {
+.io-devices > div .title i {
   width: 25px !important;
 }
 .io-devices > div {

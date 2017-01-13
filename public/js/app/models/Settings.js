@@ -30,7 +30,6 @@ define(["underscore", "backbone"], function (_, Backbone)
         {
             this.name = this.getName();
             this.timezone = this.getTimezone();
-
             this.stream = this.getStream();
             this.capture = this.getCapture();
             this.usbcamera = this.getUSBCamera();
@@ -71,7 +70,7 @@ define(["underscore", "backbone"], function (_, Backbone)
                 disk: {
                     enabled: false,
                     colorTimestamp: $("input[name='io__Disk__timestampColor']").val(),
-                    markWithTimestamp: $("input[name='io__Disk__markWithTimestamp']").prop('checked')
+                    markWithTimestamp: $("input[name='io__Disk__markWithTimestamp']").val()
                 },
                 video: {
                     enabled: false,
@@ -96,96 +95,62 @@ define(["underscore", "backbone"], function (_, Backbone)
         },
         changeIoDevices: function(devices)
         {
-            var numberOfSelects = $("select[name^='config__instance__io']").length;
+            // --------------------------------------
+            // Step 1. Create or remove select boxes
+
+            var el = "select[name^='config__instance__io']";
+            var existingDevices = $(el);
             var activeDevices = _.filter(devices,function(device)
             {
                 return device.enabled;
             });
 
-            // Add new selects
-            for(var i = numberOfSelects; i < activeDevices.length; i++)
+            // Add new devices
+            for(var i = existingDevices.length; i < activeDevices.length; i++)
             {
-                var section = $("select[name^='config__instance__io']").parent().parent();
+                var section = $(el).parent().parent();
                 if(section.find(".add-dropdown"))
                 {
                     var dropdown = section.find(".add-dropdown i");
                     dropdown.click();
-                    console.log(dropdown)
                 }
             }
 
-            // Remove number of selects
-            for(var i = activeDevices; i < numberOfSelects.length; i++)
+            // Remove number of existing 
+            for(var i = activeDevices.length; i < existingDevices.length; i++)
             {
-                var section = $("select[name^='config__instance__io']").parent().parent();
-                if(section.find(".add-dropdown"))
-                {
-                    var dropdown = section.find(".add-dropdown i");
-                    dropdown.click();
-                    console.log(dropdown)
-                }
+                var lastInRow = $(el).last();
+                lastInRow.next('div.delete-dropdown').remove();
+                lastInRow.remove();
             }
             
 
-            // Step 2. Create dropdowns for each device
+            // --------------------------------------
+            // Step 2. Select correct values in boxes
 
+            function capitalizeFirstLetter(str)
+            {
+                return str.substr(0, 1).toUpperCase() + str.substr(1);
+            }
+
+            var i = 0;
+            _.each(devices, function(device, key)
+            {
+                if(device.enabled)
+                {
+                    var select = $($(el)[i++]);
+                    select.val(capitalizeFirstLetter(key));
+                }
+            });
+
+            // -------------------------
             // Step 3. Transfer the data
 
-            /*if(element.prop('checked'))
-            {
-                /*var section = $("select[name^='config__instance__io']").parent().parent();
-                if(section.find(".add-dropdown"))
-                {
-                    var dropdown = section.find(".add-dropdown i");
-                    dropdown.click();
-
-                    // Get last device
-                    var devices = $("select[name^='config__instance__io']");
-                    var lastOne = devices[devices.length - 1];
-                }*
-
-                element.parent().parent().find('.content').slideDown();
-            }
-            else
-            {
-                // Find list of device that has been disabled.
-                /*var devices = $("select[name^='config__instance__io']");
-
-                // You need at least one device enabled.
-                if(devices.length > 1)
-                {
-                    var self = this; var i = 0;
-                    _.each(devices, function(device)
-                    {
-                        var option = $(device).find("option:selected").text();
-                        option = option.toLowerCase();
-
-                        if(name == option)
-                        {
-                            // Check if trashcan exists    
-                            if(i == 0)
-                            {
-                                $(device).next().next('div.delete-dropdown').remove();
-                            }
-                            else
-                            {
-                                $(device).next('div.delete-dropdown').remove();
-                            }
-
-                            $(device).remove();
-                        }
-
-                        i++;
-                    });
-                    element.parent().parent().find('.content').slideUp();
-                }
-                else
-                {
-                    element.prop('checked', true);
-                }
-                
-                element.parent().parent().find('.content').slideUp();
-            }*/
+            $("input[name='io__Disk__timestampColor']").val(devices.disk.colorTimestamp);
+            $("input[name='io__Disk__markWithTimestamp']").val(devices.disk.markWithTimestamp);
+            $("input[name='io__Video__recordAfter']").val(devices.video.recordAfter);
+            $("input[name='io__Video__fps']").val(devices.video.fps);
+            $("input[name='io__Webhook__url']").val(devices.webhook.url);
         },
 
         // --------------------------
