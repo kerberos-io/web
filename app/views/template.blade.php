@@ -81,7 +81,7 @@
                     <a href="{{URL::to('/')}}"><i class="fa fa-area-chart"></i> {{Lang::get('general.dashboard')}}</a>
                 </li>
                 <li>
-                    <a href="{{URL::to('/system')}}"><i class="fa fa-desktop"></i> {{Lang::get('general.system')}}</a>
+                    <a href="{{URL::to('/system')}}"><i class="fa fa-heartbeat"></i> {{Lang::get('general.system')}}</a>
                 </li>
                 @if(Config::get('app.config') != '')
                 <li>
@@ -96,7 +96,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</a>
+                            <a href="#" id="update-profile"><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</a>
                             <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> {{Lang::get('general.logout')}}</a>
                         </li>
                     </ul>
@@ -133,6 +133,16 @@
                             toggleMachinery.setStatus((checked === undefined));
                         });
                     });
+
+                    require(["app/controllers/updateProfile"], function(updateProfile)
+                    {
+                        updateProfile.initialize();
+
+                        $("#update-profile").click(function()
+                        {
+                            updateProfile.open();
+                        });
+                    });
                 });
             </script>
 
@@ -163,6 +173,20 @@
         @endif
         @yield('content')
     </div>
+    <div id="update-profile-modal" data-remodal-id="update-profile">
+        <div class="modal-body">
+            <div class="view">
+                <h3><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</h3>
+                <div class="content">
+
+                </div>
+            </div>
+        </div>
+        <div class="buttons-wrapper">
+            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+            <button data-remodal-action="confirm" class="remodal-confirm">Update</button>
+        </div>
+    </div>  
     <!-- /#wrapper -->
 </body>
 </html>

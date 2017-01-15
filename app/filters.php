@@ -24,8 +24,17 @@ App::before(function($request)
 	|
 	*/
 
-	$users = Config::get('web.users');
+	$users = Config::get('kerberos.users');
 	Auth::getProvider()->setUsers($users);
+
+	/*
+	|-----------------------------------------------------------
+	| Set language
+	|-----------------------------------------------------------
+	*/
+
+	$language = Session::get('language','en'); // english will be the default language.
+   	App::setLocale($language);
 	
 });
 

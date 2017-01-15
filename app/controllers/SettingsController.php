@@ -14,7 +14,7 @@ class SettingsController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
-        $this->machinery = Config::get("machinery");
+        $this->machinery = Config::get("kerberos");
         $this->fileLoader = new FileLoader(new \Illuminate\Filesystem\Filesystem(), app_path() . '/config');
     }
     
@@ -72,7 +72,7 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-        $this->fileLoader->save($config, '', 'machinery');
+        $this->fileLoader->save($config, '', 'kerberos');
         
         return $config;
     }

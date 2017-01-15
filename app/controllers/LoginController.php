@@ -1,6 +1,6 @@
 <?php namespace Controllers;
 
-use Auth, Input;
+use Auth, Input, Session;
 use View, Response, Redirect;
 
 class LoginController extends BaseController
@@ -23,6 +23,9 @@ class LoginController extends BaseController
         if($user = Auth::attempt(["username" => $credentials["username"],
                                   "password" => $credentials["password"]]))
         {
+            $user = Auth::user();
+            $language = $user->language;
+            Session::put('language',$language);
             return Response::json($user);
         }
 
