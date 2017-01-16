@@ -5,11 +5,11 @@
     0 => 
     array (
       'id' => 1,
-      'username' => 'cedric',
+      'username' => 'root',
       'password' => 'root',
-      'firstname' => 'Cédric',
-      'secondname' => 'Verstraeten',
-      'language' => 'pt',
+      'firstname' => 'Firstname',
+      'secondname' => 'Latname',
+      'language' => 'en',
     ),
   ),
 );

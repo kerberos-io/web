@@ -33,7 +33,13 @@ Route::group(array('prefix' => 'api/v1'), function()
     // Methods for authorized
     
     Route::group(['before' => 'auth'], function()
-    {     
+    {   
+        // -----------------
+        // User Controller
+
+        Route::get('users/current', 'Controllers\UserController@current');
+        Route::post('users/current', 'Controllers\UserController@updateCurrent');
+
         // -----------------
         // System Controller
         

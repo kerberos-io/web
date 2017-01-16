@@ -20,10 +20,10 @@
                     {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
 
                         <!-- Basic View -->
-                        @include('settings.basic', ['machinery' => $machinery])
+                        @include('settings.basic', ['kerberos' => $kerberos])
 
                         <!-- Advanced view -->
-                        @include('settings.advanced', ['machinery' => $machinery, 'settings' => $settings])
+                        @include('settings.advanced', ['kerberos' => $kerberos, 'settings' => $settings])
 
                     {{ Form::close() }}
                 </div>

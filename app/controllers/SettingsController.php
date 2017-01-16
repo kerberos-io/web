@@ -14,7 +14,7 @@ class SettingsController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
-        $this->machinery = Config::get("kerberos");
+        $this->kerberos = Config::get("kerberos");
         $this->fileLoader = new FileLoader(new \Illuminate\Filesystem\Filesystem(), app_path() . '/config');
     }
     
@@ -33,7 +33,7 @@ class SettingsController extends BaseController
         [
             'days' => $days, 
             'settings' => $settings,
-            'machinery' => $this->machinery,
+            'kerberos' => $this->kerberos,
             'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
@@ -58,12 +58,12 @@ class SettingsController extends BaseController
 
     public function getConfiguration()
     {
-        return $this->machinery;
+        return $this->kerberos;
     }
 
     public function changeProperties()
     {
-        $config = $this->machinery;
+        $config = $this->kerberos;
 
         $properties = Input::get();
 

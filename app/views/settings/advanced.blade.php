@@ -1,4 +1,4 @@
-<div id="advanced" style="display: {{($machinery['type'] === 'advanced') ? 'block' : 'none'}}">
+<div id="advanced" style="display: {{($kerberos['type'] === 'advanced') ? 'block' : 'none'}}">
                             
         @include('settings_controls', array('settings' => $settings))
         <div class="submit-form">

@@ -7,6 +7,7 @@ define(["underscore", "backbone"], function (_, Backbone)
 
     var UserCollection = Backbone.Collection.extend(
     {
+    	model: Users,
         url: '/api/v1/users/current'
     });
 

@@ -1,14 +1,45 @@
-<h3><i class="fa fa-fw fa-pencil"></i> Update profile</h3>
-<div class="content container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="name with-tooltip element">
-                <input type="text" placeholder="Username" value=""/>
-                <i class="description">Your username</i>
-            </div> 
+<div class="modal-body">
+        
+    <div class="view">
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4><i class="fa fa-fw fa-user"></i> Update profile</h4>
+                    <div class="name with-tooltip element">
+                        <input id="username" type="text" placeholder="Username" value="{{username}}"/>
+                        <i class="description">Your username</i>
+                    </div> 
+                    <div class="with-tooltip-left element">
+                        <select id="language">
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                            <option value="nl">Nederlands</option>
+                            <option value="de">Deutsch</option>
+                            <option value="pt">Português</option>
+                        </select>
+                        <i class="description">language</i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4><i class="fa fa-unlock-alt"></i> Change password</h4>
+                    <div class="name with-tooltip element">
+                        <input id="current-password" type="password" placeholder="password" value=""/>
+                        <i class="description">Current password</i>
+                    </div> 
+                    <div class="name with-tooltip element">
+                        <input type="password" id="new-password-1" placeholder="new password" value=""/>
+                        <i class="description">New password</i>
+                    </div> 
+                    <div class="name with-tooltip element">
+                        <input type="password" id="new-password-2" placeholder="new password" value=""/>
+                        <i class="description">Confirm new password</i>
+                    </div> 
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-        ok2
-        </div>
+    </div>
+    <div class="buttons-wrapper">
+        <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+        <button id="update" data-remodal-action="confirm" class="remodal-confirm">Update</button>
     </div>
 </div>

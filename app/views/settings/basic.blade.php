@@ -1,1 +1,1 @@
-<div id="basic" style="display: {{($machinery['type'] === 'basic') ? 'block' : 'none'}}"></div>
+<div id="basic" style="display: {{($kerberos['type'] === 'basic') ? 'block' : 'none'}}"></div>

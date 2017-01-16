@@ -97,6 +97,8 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#" id="update-profile"><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</a>
+                        </li>
+                        <li>
                             <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> {{Lang::get('general.logout')}}</a>
                         </li>
                     </ul>
@@ -173,15 +175,7 @@
         @endif
         @yield('content')
     </div>
-    <div id="update-profile-modal" data-remodal-id="update-profile">
-        <div class="modal-body">
-            <div class="view"></div>
-        </div>
-        <div class="buttons-wrapper">
-            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-            <button data-remodal-action="confirm" class="remodal-confirm">Update</button>
-        </div>
-    </div>  
+    <div id="update-profile-modal" data-remodal-id="update-profile"></div>  
     <!-- /#wrapper -->
 </body>
 </html>
