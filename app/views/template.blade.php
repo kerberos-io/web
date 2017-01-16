@@ -175,12 +175,7 @@
     </div>
     <div id="update-profile-modal" data-remodal-id="update-profile">
         <div class="modal-body">
-            <div class="view">
-                <h3><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</h3>
-                <div class="content">
-
-                </div>
-            </div>
+            <div class="view"></div>
         </div>
         <div class="buttons-wrapper">
             <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>

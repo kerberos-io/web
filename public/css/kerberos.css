@@ -8297,6 +8297,11 @@ label.toggle-mobile {
 .bootstrap-datetimepicker-widget td.today:before {
   border-bottom: 7px solid #943633;
 }
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:focus,
+.dropdown-menu > .active > a:hover {
+  background-color: #fff;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   body {
     margin-top: 50px;
@@ -9561,20 +9566,26 @@ div.video-preview video:first-child {
   -webkit-transform: rotateY(20deg);
   transform: rotateY(20deg);
 }
+#update-profile-modal {
+  min-width: 600px;
+}
 #settings,
 #cloud,
-#settings-modal {
+#settings-modal,
+#update-profile-modal {
   margin-bottom: 15px;
 }
 #settings div.description,
 #cloud div.description,
-#settings-modal div.description {
+#settings-modal div.description,
+#update-profile-modal div.description {
   width: 75%;
   margin-bottom: 20px;
 }
 #settings .sub h2,
 #cloud .sub h2,
-#settings-modal .sub h2 {
+#settings-modal .sub h2,
+#update-profile-modal .sub h2 {
   margin: 0 0 10px 0;
   padding: 0;
   font-size: 17px;
@@ -9582,67 +9593,80 @@ div.video-preview video:first-child {
 }
 #settings > div,
 #cloud > div,
-#settings-modal > div {
+#settings-modal > div,
+#update-profile-modal > div {
   margin: 5px 0 5px 0;
 }
 #settings .sub,
 #cloud .sub,
-#settings-modal .sub {
+#settings-modal .sub,
+#update-profile-modal .sub {
   margin: 20px 0 20px 0;
   padding: 20px 0 20px 0;
   display: table;
 }
 #settings .image img,
 #cloud .image img,
-#settings-modal .image img {
+#settings-modal .image img,
+#update-profile-modal .image img {
   width: 100%;
   height: auto;
 }
 #settings div.dropdown div.element,
 #cloud div.dropdown div.element,
-#settings-modal div.dropdown div.element {
+#settings-modal div.dropdown div.element,
+#update-profile-modal div.dropdown div.element {
   clear: both;
 }
 #settings div label,
 #cloud div label,
 #settings-modal div label,
+#update-profile-modal div label,
 #settings div select,
 #cloud div select,
-#settings-modal div select {
+#settings-modal div select,
+#update-profile-modal div select {
   float: left;
 }
 #settings div select,
 #cloud div select,
-#settings-modal div select {
+#settings-modal div select,
+#update-profile-modal div select {
   width: 123px;
   margin-right: 10px;
 }
 #settings div label,
 #cloud div label,
-#settings-modal div label {
+#settings-modal div label,
+#update-profile-modal div label {
   min-width: 100px;
   padding-top: 8px;
   padding-right: 15px;
 }
 #settings div.section,
 #cloud div.section,
-#settings-modal div.section {
+#settings-modal div.section,
+#update-profile-modal div.section {
   display: none;
 }
 #settings #div.sub,
 #cloud #div.sub,
-#settings-modal #div.sub {
+#settings-modal #div.sub,
+#update-profile-modal #div.sub {
   clear: both;
 }
 #settings input[type="text"],
 #cloud input[type="text"],
 #settings-modal input[type="text"],
+#update-profile-modal input[type="text"],
 #settings select,
 #cloud select,
 #settings-modal select,
+#update-profile-modal select,
 #settings input[type="submit"],
 #cloud input[type="submit"],
-#settings-modal input[type="submit"] {
+#settings-modal input[type="submit"],
+#update-profile-modal input[type="submit"] {
   font-weight: 200;
   margin: 3px 0;
   height: 34px;
@@ -9664,24 +9688,28 @@ div.video-preview video:first-child {
 }
 #settings .text,
 #cloud .text,
-#settings-modal .text {
+#settings-modal .text,
+#update-profile-modal .text {
   margin-top: 10px;
 }
 #settings .text input[type="text"],
 #cloud .text input[type="text"],
-#settings-modal .text input[type="text"] {
+#settings-modal .text input[type="text"],
+#update-profile-modal .text input[type="text"] {
   margin-left: 9px;
 }
 #settings div.submit-form,
 #cloud div.submit-form,
-#settings-modal div.submit-form {
+#settings-modal div.submit-form,
+#update-profile-modal div.submit-form {
   margin-top: 10px;
   padding-right: 20px;
   clear: both;
 }
 #settings div.submit-form input[type="submit"],
 #cloud div.submit-form input[type="submit"],
-#settings-modal div.submit-form input[type="submit"] {
+#settings-modal div.submit-form input[type="submit"],
+#update-profile-modal div.submit-form input[type="submit"] {
   padding: 12px 25px;
   height: auto;
   background-color: #943633;
@@ -9693,17 +9721,21 @@ div.video-preview video:first-child {
 #settings .with-tooltip,
 #cloud .with-tooltip,
 #settings-modal .with-tooltip,
+#update-profile-modal .with-tooltip,
 #settings .with-tooltip-left,
 #cloud .with-tooltip-left,
-#settings-modal .with-tooltip-left {
+#settings-modal .with-tooltip-left,
+#update-profile-modal .with-tooltip-left {
   position: relative;
 }
 #settings .with-tooltip > i.description,
 #cloud .with-tooltip > i.description,
 #settings-modal .with-tooltip > i.description,
+#update-profile-modal .with-tooltip > i.description,
 #settings .with-tooltip-left > i.description,
 #cloud .with-tooltip-left > i.description,
-#settings-modal .with-tooltip-left > i.description {
+#settings-modal .with-tooltip-left > i.description,
+#update-profile-modal .with-tooltip-left > i.description {
   position: absolute;
   bottom: 2px;
   left: 0;
@@ -9716,9 +9748,11 @@ div.video-preview video:first-child {
 #settings .with-tooltip > span,
 #cloud .with-tooltip > span,
 #settings-modal .with-tooltip > span,
+#update-profile-modal .with-tooltip > span,
 #settings .with-tooltip-left > span,
 #cloud .with-tooltip-left > span,
-#settings-modal .with-tooltip-left > span {
+#settings-modal .with-tooltip-left > span,
+#update-profile-modal .with-tooltip-left > span {
   position: relative;
   color: #943633;
   font-size: 21px;
@@ -9732,9 +9766,11 @@ div.video-preview video:first-child {
 #settings .with-tooltip span > span,
 #cloud .with-tooltip span > span,
 #settings-modal .with-tooltip span > span,
+#update-profile-modal .with-tooltip span > span,
 #settings .with-tooltip-left span > span,
 #cloud .with-tooltip-left span > span,
-#settings-modal .with-tooltip-left span > span {
+#settings-modal .with-tooltip-left span > span,
+#update-profile-modal .with-tooltip-left span > span {
   font-size: 14px;
   font-family: Helvetica;
   font-style: normal;
@@ -9761,15 +9797,19 @@ div.video-preview video:first-child {
 #settings .with-tooltip span > span:before,
 #cloud .with-tooltip span > span:before,
 #settings-modal .with-tooltip span > span:before,
+#update-profile-modal .with-tooltip span > span:before,
 #settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
 #settings-modal .with-tooltip-left span > span:before,
+#update-profile-modal .with-tooltip-left span > span:before,
 #settings .with-tooltip span > span:after,
 #cloud .with-tooltip span > span:after,
 #settings-modal .with-tooltip span > span:after,
+#update-profile-modal .with-tooltip span > span:after,
 #settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
-#settings-modal .with-tooltip-left span > span:after {
+#settings-modal .with-tooltip-left span > span:after,
+#update-profile-modal .with-tooltip-left span > span:after {
   content: "";
   position: absolute;
   border-left: 10px solid transparent;
@@ -9782,38 +9822,46 @@ div.video-preview video:first-child {
 #settings .with-tooltip span > span:before,
 #cloud .with-tooltip span > span:before,
 #settings-modal .with-tooltip span > span:before,
+#update-profile-modal .with-tooltip span > span:before,
 #settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
-#settings-modal .with-tooltip-left span > span:before {
+#settings-modal .with-tooltip-left span > span:before,
+#update-profile-modal .with-tooltip-left span > span:before {
   border-top: 10px solid #943633;
   margin-left: -7px;
 }
 #settings .with-tooltip span > span:after,
 #cloud .with-tooltip span > span:after,
 #settings-modal .with-tooltip span > span:after,
+#update-profile-modal .with-tooltip span > span:after,
 #settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
-#settings-modal .with-tooltip-left span > span:after {
+#settings-modal .with-tooltip-left span > span:after,
+#update-profile-modal .with-tooltip-left span > span:after {
   border-top: 10px solid #f4f4f4;
   margin-left: -4px;
 }
 #settings .with-tooltip span:hover > span,
 #cloud .with-tooltip span:hover > span,
 #settings-modal .with-tooltip span:hover > span,
+#update-profile-modal .with-tooltip span:hover > span,
 #settings .with-tooltip-left span:hover > span,
 #cloud .with-tooltip-left span:hover > span,
-#settings-modal .with-tooltip-left span:hover > span {
+#settings-modal .with-tooltip-left span:hover > span,
+#update-profile-modal .with-tooltip-left span:hover > span {
   visibility: visible;
   opacity: 1;
 }
 #settings .with-tooltip-left,
 #cloud .with-tooltip-left,
-#settings-modal .with-tooltip-left {
+#settings-modal .with-tooltip-left,
+#update-profile-modal .with-tooltip-left {
   position: relative;
 }
 #settings .with-tooltip-left > i.description,
 #cloud .with-tooltip-left > i.description,
-#settings-modal .with-tooltip-left > i.description {
+#settings-modal .with-tooltip-left > i.description,
+#update-profile-modal .with-tooltip-left > i.description {
   position: absolute;
   bottom: 2px;
   left: 0;
@@ -9825,7 +9873,8 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip-left > span,
 #cloud .with-tooltip-left > span,
-#settings-modal .with-tooltip-left > span {
+#settings-modal .with-tooltip-left > span,
+#update-profile-modal .with-tooltip-left > span {
   position: relative;
   color: #943633;
   font-size: 21px;
@@ -9838,7 +9887,8 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip-left span > span,
 #cloud .with-tooltip-left span > span,
-#settings-modal .with-tooltip-left span > span {
+#settings-modal .with-tooltip-left span > span,
+#update-profile-modal .with-tooltip-left span > span {
   font-size: 14px;
   font-family: Helvetica;
   font-style: normal;
@@ -9866,9 +9916,11 @@ div.video-preview video:first-child {
 #settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
 #settings-modal .with-tooltip-left span > span:before,
+#update-profile-modal .with-tooltip-left span > span:before,
 #settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
-#settings-modal .with-tooltip-left span > span:after {
+#settings-modal .with-tooltip-left span > span:after,
+#update-profile-modal .with-tooltip-left span > span:after {
   content: "";
   position: absolute;
   border-top: 10px solid transparent;
@@ -9880,19 +9932,22 @@ div.video-preview video:first-child {
 }
 #settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
-#settings-modal .with-tooltip-left span > span:before {
+#settings-modal .with-tooltip-left span > span:before,
+#update-profile-modal .with-tooltip-left span > span:before {
   border-bottom: 10px solid #943633;
   margin-right: -3px;
 }
 #settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
-#settings-modal .with-tooltip-left span > span:after {
+#settings-modal .with-tooltip-left span > span:after,
+#update-profile-modal .with-tooltip-left span > span:after {
   border-bottom: 10px solid #f4f4f4;
   margin-left: -4px;
 }
 #settings .with-tooltip-left span:hover > span,
 #cloud .with-tooltip-left span:hover > span,
-#settings-modal .with-tooltip-left span:hover > span {
+#settings-modal .with-tooltip-left span:hover > span,
+#update-profile-modal .with-tooltip-left span:hover > span {
   visibility: visible;
   opacity: 1;
 }
@@ -9907,11 +9962,13 @@ div.video-preview video:first-child {
   display: table;
 }
 #basic h4,
-#settings-modal h4 {
+#settings-modal h4,
+#update-profile-modal h4 {
   font-size: 22px;
 }
 #basic .rotate .image,
-#settings-modal .rotate .image {
+#settings-modal .rotate .image,
+#update-profile-modal .rotate .image {
   background-image: url(/images/rotate.png);
   background-size: cover;
   width: 170px;
@@ -9919,7 +9976,8 @@ div.video-preview video:first-child {
   display: table;
 }
 #basic .rotate .image i.fa-repeat,
-#settings-modal .rotate .image i.fa-repeat {
+#settings-modal .rotate .image i.fa-repeat,
+#update-profile-modal .rotate .image i.fa-repeat {
   color: #fff;
   font-size: 40px;
   top: 40%;
@@ -9928,11 +9986,13 @@ div.video-preview video:first-child {
   opacity: 1;
 }
 #basic .rotate.with-tooltip,
-#settings-modal .rotate.with-tooltip {
+#settings-modal .rotate.with-tooltip,
+#update-profile-modal .rotate.with-tooltip {
   position: relative;
 }
 #basic .rotate.with-tooltip > i.description,
-#settings-modal .rotate.with-tooltip > i.description {
+#settings-modal .rotate.with-tooltip > i.description,
+#update-profile-modal .rotate.with-tooltip > i.description {
   position: absolute;
   bottom: 2px;
   left: 0;
@@ -9943,67 +10003,79 @@ div.video-preview video:first-child {
   font-size: 11px;
 }
 #basic .rotate.with-tooltip > span,
-#settings-modal .rotate.with-tooltip > span {
+#settings-modal .rotate.with-tooltip > span,
+#update-profile-modal .rotate.with-tooltip > span {
   position: absolute;
   top: -14px;
   left: 0;
 }
 #basic .element,
-#settings-modal .element {
+#settings-modal .element,
+#update-profile-modal .element {
   clear: both;
   display: table;
   width: 100%;
   margin-bottom: 10px;
 }
 #basic ::-webkit-input-placeholder,
-#settings-modal ::-webkit-input-placeholder {
+#settings-modal ::-webkit-input-placeholder,
+#update-profile-modal ::-webkit-input-placeholder {
   color: #333;
 }
 #basic :-moz-placeholder,
-#settings-modal :-moz-placeholder {
+#settings-modal :-moz-placeholder,
+#update-profile-modal :-moz-placeholder {
   /* Firefox 18- */
   color: #333;
 }
 #basic ::-moz-placeholder,
-#settings-modal ::-moz-placeholder {
+#settings-modal ::-moz-placeholder,
+#update-profile-modal ::-moz-placeholder {
   /* Firefox 19+ */
   color: #333;
 }
 #basic :-ms-input-placeholder,
-#settings-modal :-ms-input-placeholder {
+#settings-modal :-ms-input-placeholder,
+#update-profile-modal :-ms-input-placeholder {
   color: #333;
 }
 #basic #confirm-info,
-#settings-modal #confirm-info {
+#settings-modal #confirm-info,
+#update-profile-modal #confirm-info {
   text-align: right;
   font-size: 15px;
   color: #999;
 }
 #basic input,
-#settings-modal input {
+#settings-modal input,
+#update-profile-modal input {
   float: left;
   padding: 25px 0;
 }
 #basic div select,
-#settings-modal div select {
+#settings-modal div select,
+#update-profile-modal div select {
   width: 50%;
   height: 50px;
 }
 #basic .name input:before,
-#settings-modal .name input:before {
+#settings-modal .name input:before,
+#update-profile-modal .name input:before {
   width: 10px;
   height: 10px;
   display: table;
   background: #333;
 }
 #basic .block,
-#settings-modal .block {
+#settings-modal .block,
+#update-profile-modal .block {
   display: table;
   width: 100%;
   margin-bottom: 20px;
 }
 #basic div.type,
-#settings-modal div.type {
+#settings-modal div.type,
+#update-profile-modal div.type {
   display: block;
   background: #dfc3c2;
   opacity: 1;
@@ -10019,14 +10091,18 @@ div.video-preview video:first-child {
 }
 #basic div.type.with-tooltip,
 #settings-modal div.type.with-tooltip,
+#update-profile-modal div.type.with-tooltip,
 #basic div.type.with-tooltip-left,
-#settings-modal div.type.with-tooltip-left {
+#settings-modal div.type.with-tooltip-left,
+#update-profile-modal div.type.with-tooltip-left {
   position: relative;
 }
 #basic div.type.with-tooltip > span,
 #settings-modal div.type.with-tooltip > span,
+#update-profile-modal div.type.with-tooltip > span,
 #basic div.type.with-tooltip-left > span,
-#settings-modal div.type.with-tooltip-left > span {
+#settings-modal div.type.with-tooltip-left > span,
+#update-profile-modal div.type.with-tooltip-left > span {
   color: #fff;
   position: absolute;
   top: 0;
@@ -10034,7 +10110,8 @@ div.video-preview video:first-child {
   margin-top: 0;
 }
 #basic div.type.active,
-#settings-modal div.type.active {
+#settings-modal div.type.active,
+#update-profile-modal div.type.active {
   background: #943633;
   opacity: 1;
 }
@@ -10090,28 +10167,37 @@ label {
   padding: 0;
   border-radius: 0;
 }
-#settings-modal input[type=text] {
+#settings-modal input[type=text],
+#update-profile-modal input[type=text] {
   width: 80%;
 }
-#settings-modal .slider.slider-horizontal {
+#settings-modal .slider.slider-horizontal,
+#update-profile-modal .slider.slider-horizontal {
   width: 71%;
   margin: 40px 4% 20px 0;
   display: table;
   float: left;
 }
-#settings-modal .slider > span {
+#settings-modal .slider > span,
+#update-profile-modal .slider > span {
   margin-top: 36px;
 }
-#settings-modal .remodal-close {
+#settings-modal .remodal-close,
+#update-profile-modal .remodal-close {
   display: none;
 }
-#settings-modal .modal-body {
+#settings-modal .modal-body,
+#update-profile-modal .modal-body {
   padding: 0 15px 15px 15px;
 }
 #settings-modal #usbcamera-view .multiply,
+#update-profile-modal #usbcamera-view .multiply,
 #settings-modal #ipcamera-view .multiply,
+#update-profile-modal #ipcamera-view .multiply,
 #settings-modal #rpicamera-view .multiply,
-#settings-modal #motion-view .multiply {
+#update-profile-modal #rpicamera-view .multiply,
+#settings-modal #motion-view .multiply,
+#update-profile-modal #motion-view .multiply {
   float: left;
   color: #333;
   margin-top: 25px;
@@ -10119,26 +10205,42 @@ label {
   padding: 0 14px;
 }
 #settings-modal #usbcamera-view input.width,
+#update-profile-modal #usbcamera-view input.width,
 #settings-modal #ipcamera-view input.width,
+#update-profile-modal #ipcamera-view input.width,
 #settings-modal #rpicamera-view input.width,
+#update-profile-modal #rpicamera-view input.width,
 #settings-modal #motion-view input.width,
+#update-profile-modal #motion-view input.width,
 #settings-modal #usbcamera-view input.height,
+#update-profile-modal #usbcamera-view input.height,
 #settings-modal #ipcamera-view input.height,
+#update-profile-modal #ipcamera-view input.height,
 #settings-modal #rpicamera-view input.height,
-#settings-modal #motion-view input.height {
+#update-profile-modal #rpicamera-view input.height,
+#settings-modal #motion-view input.height,
+#update-profile-modal #motion-view input.height {
   width: 30%;
   text-align: center;
 }
 #settings-modal #usbcamera-view i.description.slider,
+#update-profile-modal #usbcamera-view i.description.slider,
 #settings-modal #ipcamera-view i.description.slider,
+#update-profile-modal #ipcamera-view i.description.slider,
 #settings-modal #rpicamera-view i.description.slider,
-#settings-modal #motion-view i.description.slider {
+#update-profile-modal #rpicamera-view i.description.slider,
+#settings-modal #motion-view i.description.slider,
+#update-profile-modal #motion-view i.description.slider {
   bottom: -4px;
 }
 #settings-modal #usbcamera-view i.description:nth-child(2n),
+#update-profile-modal #usbcamera-view i.description:nth-child(2n),
 #settings-modal #ipcamera-view i.description:nth-child(2n),
+#update-profile-modal #ipcamera-view i.description:nth-child(2n),
 #settings-modal #rpicamera-view i.description:nth-child(2n),
-#settings-modal #motion-view i.description:nth-child(2n) {
+#update-profile-modal #rpicamera-view i.description:nth-child(2n),
+#settings-modal #motion-view i.description:nth-child(2n),
+#update-profile-modal #motion-view i.description:nth-child(2n) {
   bottom: 2px;
   left: 154px;
 }
