@@ -36,6 +36,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             this.ipcamera = this.getIPCamera();
             this.rpicamera = this.getRPICamera();
             this.devices = this.getIoDevices();
+            this.kerberosCloud = this.getKerberosCloud();
         },
 
         // ------------------
@@ -258,8 +259,28 @@ define(["underscore", "backbone"], function (_, Backbone)
                 $("input[name='capture__IPCamera__delay']").val(ipcamera.delay);
                 $("input[name='capture__IPCamera__url']").val(ipcamera.url);
                 this.changeStream(ipcamera.fps);
-            }
+            },
 
+        // ------------------
+        // Kerberos Cloud
+
+        getKerberosCloud: function()
+        {
+            return {
+                bucket: $("input[name='cloud__S3__bucket']").val(),
+                folder: $("input[name='cloud__S3__folder']").val(),
+                public: $("input[name='cloud__S3__publicKey']").val(),
+                secret: $("input[name='cloud__S3__privateKey']").val(),
+            };
+        },
+        changeKerberosCloud: function(cloud)
+        {
+            this.kerberosCloud = cloud;
+            $("input[name='cloud__S3__bucket']").val(cloud.bucket);
+            $("input[name='cloud__S3__folder']").val(cloud.folder);
+            $("input[name='cloud__S3__publicKey']").val(cloud.public);
+            $("input[name='cloud__S3__privateKey']").val(cloud.secret);
+        }
 
     });
 

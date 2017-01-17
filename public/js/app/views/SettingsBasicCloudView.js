@@ -16,14 +16,12 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         },
         update: function()
         {
-            /*this.model.changeIPCamera({
-                width: this.$el.find("#ipcamera-view .width").val(),
-                height: this.$el.find("#ipcamera-view .height").val(),
-                angle: this.model.ipcamera.angle, // overkill
-                delay: parseFloat(this.$el.find("#ipcamera-view .slider-delay").val()) * 1000,
-                fps: parseInt(this.$el.find("#ipcamera-view .slider-fps").val()),
-                url: this.$el.find("#ipcamera-view .url").val()
-            });*/
+            this.model.changeKerberosCloud({
+                bucket: this.$el.find("#bucket input").val(),
+                folder: this.$el.find("#folder input").val(),
+                public: this.$el.find("#public input").val(),
+                secret: this.$el.find("#secret input").val(),
+            });
         },
         render: function()
         {
