@@ -6,14 +6,17 @@
 **/
 
 
-define(["Sequencer"], function(Sequencer)
+define(["Sequencer", "underscore"], function(Sequencer, _)
 {
     return {
         config: {},
+        fps: 0,
+        playingVideo: false,
         initialize: function(config)
         {
             var self = this;
             self.config = config;
+            self.fps = config.fps;
 
             $(window).resize(function()
             {
@@ -65,7 +68,51 @@ define(["Sequencer"], function(Sequencer)
             if(this.config.images && this.config.images.length > 0)
             {
                 //$(this.config.element).css({"width":"100%"});
-                Sequencer.init(this.config);
+                var images = this.config.images;
+
+                // Check if videos..
+                var videos = _.where(images, function(file)
+                {
+                    return file.type === "video";
+                });
+
+                if(videos.length)
+                {
+                    console.log(videos)
+                    if(!this.playingVideo)
+                    {
+                        var canvas, context, video, xStart, yStart, xEnd, yEnd;
+
+                        canvas = document.getElementById("latest-activity-sequence");
+                        context = canvas.getContext("2d");
+
+                        video = document.createElement("video");
+                        video.src = videos[videos.length-1].src;
+                        video.loop = true;
+
+                        var self = this;
+                        video.addEventListener('loadeddata', function()
+                        {
+                            video.play();
+                            setTimeout(videoLoop, 1000 / self.fps);
+                        });
+
+                        function videoLoop()
+                        {
+                            if (video && !video.paused && !video.ended)
+                            {
+                                context.drawImage(video,0, 0, canvas.width, canvas.height);
+                                setTimeout(videoLoop, 1000 / self.fps);
+                            }
+                        }
+
+                        this.playingVideo = true;
+                    }
+                }
+                else
+                {
+                    Sequencer.init(this.config);
+                }
             }
             else
             {

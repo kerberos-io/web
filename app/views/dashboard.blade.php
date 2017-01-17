@@ -118,6 +118,7 @@
                                 progressShowImages: true,
                                 playMode: "loop",
                                 playInterval: 300,
+                                fps: "{{$fps}}",
                                 url: _baseUrl + "/api/v1/images/latest_sequence",
                                 callback: function()
                                 {

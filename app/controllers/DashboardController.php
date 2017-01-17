@@ -1,6 +1,6 @@
 <?php namespace Controllers;
 
-use App, View;
+use App, View, Config;
 use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -12,6 +12,7 @@ class DashboardController extends BaseController
         parent::__construct($imageHandler, $reader);
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
+        $this->config = Config::get("app.config");
     }
     
     /****************************
@@ -23,10 +24,13 @@ class DashboardController extends BaseController
         // Get last x days from the imagehandler -> move to BaseController
         
         $days = $this->imageHandler->getDays(5);
+        $directory = $this->config;
+        $settings = $this->reader->parse($directory)["instance"]["children"];
         
 		return View::make('dashboard', [
             'days' => $days,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'isUpdateAvailable' => $this->isUpdateAvailable(),
+            'fps' => $settings['io']['dropdown']['Video']['children']['fps']['value'],
         ]);
 	}
 }
