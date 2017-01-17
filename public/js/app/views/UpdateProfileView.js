@@ -53,6 +53,7 @@ define(["underscore", "backbone", "fancybox", "app/models/User", "app/views/Base
             {
                 var user = self.collection.models[0];
                 self.$el.html(self.template(user.attributes));
+                self.$el.find('#language option[value="'+user.get('language')+'"]').attr('selected', 'selected');
             }});
 
             return this;

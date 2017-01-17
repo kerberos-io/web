@@ -6,9 +6,10 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
  "app/views/SettingsBasicUSBCameraView",
  "app/views/SettingsBasicIPCameraView",
  "app/views/SettingsBasicRaspiCameraView",
-  "app/views/SettingsBasicMotionView"], 
+ "app/views/SettingsBasicMotionView",
+ "app/views/SettingsBasicCloudView"], 
     function (_, Backbone, BaseView, remodal,
-        USBCameraView, IPCameraView, RaspiCameraView, MotionView)
+        USBCameraView, IPCameraView, RaspiCameraView, MotionView, CloudView)
 { 
     var SettingsBasicView = BaseView.extend(
     {

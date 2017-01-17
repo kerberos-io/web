@@ -13,11 +13,11 @@ return array(
 
 	'activity' => 'Activiteit',
 
-		'selectView' => 'Selecteer view',
+		'selectView' => 'Selecteer weergave',
 
-		'liveView' => 'Live View',
+		'liveView' => 'Live weergave',
 
-		'lastActivity' => 'Laateste activiteit',
+		'lastActivity' => 'Laatste activiteit',
 
 		'heatmap' => 'Heatmap',
 

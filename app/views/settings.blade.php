@@ -1,6 +1,11 @@
 @extends('template')
 
 @section('content')
+
+    @if(!$settings['cloud']['dropdown']['S3']['children']['bucket']['value'])
+    <div class="alert-update alert alert-warning" role="alert"><a href="https://cloud.kerberos.io/" target="_blank">Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!</a></div>
+    @endif
+    
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">

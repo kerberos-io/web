@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,7 +1103,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2532,7 +2531,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3023,7 +3021,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -7310,13 +7307,17 @@ body {
 .top-nav > .open > .dropdown-menu {
   float: left;
   position: absolute;
-  margin-top: 0;
+  margin-top: 4px;
+  margin-right: 9px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   background-color: #fff;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+.dropdown-menu {
+  min-width: 185px;
 }
 .top-nav > .open > .dropdown-menu > li > a {
   white-space: normal;
@@ -10207,7 +10208,9 @@ label {
 #settings-modal #rpicamera-view .multiply,
 #update-profile-modal #rpicamera-view .multiply,
 #settings-modal #motion-view .multiply,
-#update-profile-modal #motion-view .multiply {
+#update-profile-modal #motion-view .multiply,
+#settings-modal #cloud-view .multiply,
+#update-profile-modal #cloud-view .multiply {
   float: left;
   color: #333;
   margin-top: 25px;
@@ -10222,6 +10225,8 @@ label {
 #update-profile-modal #rpicamera-view input.width,
 #settings-modal #motion-view input.width,
 #update-profile-modal #motion-view input.width,
+#settings-modal #cloud-view input.width,
+#update-profile-modal #cloud-view input.width,
 #settings-modal #usbcamera-view input.height,
 #update-profile-modal #usbcamera-view input.height,
 #settings-modal #ipcamera-view input.height,
@@ -10229,7 +10234,9 @@ label {
 #settings-modal #rpicamera-view input.height,
 #update-profile-modal #rpicamera-view input.height,
 #settings-modal #motion-view input.height,
-#update-profile-modal #motion-view input.height {
+#update-profile-modal #motion-view input.height,
+#settings-modal #cloud-view input.height,
+#update-profile-modal #cloud-view input.height {
   width: 30%;
   text-align: center;
 }
@@ -10240,7 +10247,9 @@ label {
 #settings-modal #rpicamera-view i.description.slider,
 #update-profile-modal #rpicamera-view i.description.slider,
 #settings-modal #motion-view i.description.slider,
-#update-profile-modal #motion-view i.description.slider {
+#update-profile-modal #motion-view i.description.slider,
+#settings-modal #cloud-view i.description.slider,
+#update-profile-modal #cloud-view i.description.slider {
   bottom: -4px;
 }
 #settings-modal #usbcamera-view i.description:nth-child(2n),
@@ -10250,7 +10259,9 @@ label {
 #settings-modal #rpicamera-view i.description:nth-child(2n),
 #update-profile-modal #rpicamera-view i.description:nth-child(2n),
 #settings-modal #motion-view i.description:nth-child(2n),
-#update-profile-modal #motion-view i.description:nth-child(2n) {
+#update-profile-modal #motion-view i.description:nth-child(2n),
+#settings-modal #cloud-view i.description:nth-child(2n),
+#update-profile-modal #cloud-view i.description:nth-child(2n) {
   bottom: 2px;
   left: 154px;
 }

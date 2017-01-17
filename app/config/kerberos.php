@@ -9,7 +9,7 @@
       'password' => 'root',
       'firstname' => 'Firstname',
       'secondname' => 'Latname',
-      'language' => 'en',
+      'language' => 'nl',
     ),
   ),
 );

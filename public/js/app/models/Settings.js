@@ -48,7 +48,7 @@ define(["underscore", "backbone"], function (_, Backbone)
         setTimezone: function(timezone)
         {
             $("#timezone-picker-basic").append($("#timezone-picker option").clone());
-            $('#timezone-picker-basic option[value="'+timezone+'"]').attr('selected', 'selected')
+            $('#timezone-picker-basic option[value="'+timezone+'"]').attr('selected', 'selected');
         },
         getTimezone: function()
         {

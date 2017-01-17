@@ -34,13 +34,6 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         update: function()
         {
             this.model.changeIPCamera({
-                width: $("#ipcamera-view .width").val(),
-                height: $("#ipcamera-view .height").val()
-            });
-        },
-        update: function()
-        {
-            this.model.changeIPCamera({
                 width: this.$el.find("#ipcamera-view .width").val(),
                 height: this.$el.find("#ipcamera-view .height").val(),
                 angle: this.model.ipcamera.angle, // overkill

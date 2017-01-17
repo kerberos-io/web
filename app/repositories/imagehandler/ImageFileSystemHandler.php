@@ -86,19 +86,17 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $latestSequence = $this->getLatestSequence();
 
+        // Filter out videos..
+        $latestSequence = array_where($latestSequence, function ($key, $value)
+        {
+            return $value['type'] === 'image';
+        });
+
+
         if(count($latestSequence)>0)
         {
             $i = count($latestSequence) -1;
-
-            while($i >= 0 && getimagesize($latestSequence[$i]['src'])['mime'] != 'image/jpeg')
-            {
-                $i--;
-            }
-
-            if($i >= 0)
-            {
-                return $latestSequence[$i]["src"];
-            }
+            return $latestSequence[$i]["src"];
         }
         
         return "";
@@ -112,13 +110,6 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             $day = $days[0];
             $images = $this->getImagesSequenceFromDay($day, 1, 120);
-
-            // Filter out videos..
-            $images = array_where($images, function ($key, $value)
-            {
-                return $value['type'] === 'image';
-            });
-
             return array_values($images);
         }
 
