@@ -12,6 +12,7 @@ define(["heatmap"], function(heatmap)
         {
             self = this;
             self.config = config;
+            self.fps = config.fps;
             
             // create heatmap
             self.heatmapInstance = heatmap.create({
@@ -34,9 +35,13 @@ define(["heatmap"], function(heatmap)
             
             $.get(self.config.url,function(data)
             {
-                self.data = data;
-                self.resize();
-                self.draw();
+                $.get(self.config.urlSequence,function(images)
+                {
+                    self.data = data;
+                    self.images = images;
+                    self.resize();
+                    self.draw();
+                });
             });
         },
         draw: function()
@@ -67,16 +72,41 @@ define(["heatmap"], function(heatmap)
         },
         drawBackground: function()
         {
-            var image = $("#latest-image").attr('src');
             var canvas = $(".heatmap canvas");
-            canvas.css({
-                "background": "url('"+image+"')", 
-                "background-size": "100% 100%", 
-                "background-repeat": "no-repeat",
+
+            // Check if videos..
+            var videos = _.filter(this.images, function(file)
+            {
+                return file.type === "video";
             });
-            canvas.attr("height", canvas.width()/2);
-            $(".heatmap").css({"height": canvas.height()}); 
-            
+
+            if(videos.length)
+            {
+                context = canvas.get(0).getContext("2d");
+
+                video = document.createElement("video");
+                video.src = videos[videos.length-1].src;
+                video.loop = true;
+
+                var self = this;
+                video.addEventListener('loadeddata', function()
+                {
+                    video.play();
+                    context.drawImage(video, 0, 0, canvas.width(), canvas.height());
+                });
+            }
+            else
+            {
+                var image = this.images[this.images.length-1];
+                canvas.css({
+                    "background": "url('"+image.src+"')", 
+                    "background-size": "100% 100%", 
+                    "background-repeat": "no-repeat",
+                });
+                canvas.attr("height", canvas.width()/2);
+                $(".heatmap").css({"height": canvas.height()}); 
+            }
+
             this.heatmapInstance._renderer.setDimensions(canvas.width(),canvas.height());
         },
         setRegions: function(data)

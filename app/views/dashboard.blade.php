@@ -36,7 +36,6 @@
                                 <canvas id="latest-activity-sequence"></canvas>
                             </li>
                             <li class="heat">
-                                <img src="<?=App::make("Controllers\ImageController")->getLatestImage()?>" id="latest-image" style="display: none;"/>
                                 <div class="heatmap" style="width: 100%;"></div>
                             </li>
                         </ul>
@@ -126,6 +125,8 @@
                                     {
                                         element: "heatmap",
                                         url: _baseUrl + "/api/v1/images/regions",
+                                        urlSequence: _baseUrl + "/api/v1/images/latest_sequence",
+                                        fps: "{{$fps}}",
                                         callback: function(){}
                                     });
                                                             

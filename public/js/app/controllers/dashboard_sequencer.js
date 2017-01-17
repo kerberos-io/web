@@ -66,19 +66,17 @@ define(["Sequencer", "underscore"], function(Sequencer, _)
             }
 
             if(this.config.images && this.config.images.length > 0)
-            {
-                //$(this.config.element).css({"width":"100%"});
+            {;
                 var images = this.config.images;
 
                 // Check if videos..
-                var videos = _.where(images, function(file)
+                var videos = _.filter(images, function(file)
                 {
                     return file.type === "video";
                 });
 
                 if(videos.length)
                 {
-                    console.log(videos)
                     if(!this.playingVideo)
                     {
                         var canvas, context, video, xStart, yStart, xEnd, yEnd;
@@ -111,6 +109,7 @@ define(["Sequencer", "underscore"], function(Sequencer, _)
                 }
                 else
                 {
+                    $(this.config.element).css({"width":"100%"})
                     Sequencer.init(this.config);
                 }
             }
