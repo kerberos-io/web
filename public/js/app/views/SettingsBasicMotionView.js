@@ -140,6 +140,11 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 }
             });
 
+            this.model.changeMotion({
+                sensitivity: $("input#sensitivity").val(),
+                detections: $("input#detections").val()
+            });
+
             $("input[name='expositor__Hull__region']").val($("input[name='motion-hullselection']").val());
         },
         render: function()

@@ -36,6 +36,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             this.ipcamera = this.getIPCamera();
             this.rpicamera = this.getRPICamera();
             this.devices = this.getIoDevices();
+            this.motion = this.getMotion();
             this.kerberosCloud = this.getKerberosCloud();
         },
 
@@ -65,6 +66,20 @@ define(["underscore", "backbone"], function (_, Backbone)
         {
         	return $("input[name='config__instance__name']").val();
         },
+        
+        getMotion: function()
+        {
+            return {
+                sensitivity: 30 - $("input[name='algorithm__DifferentialCollins__threshold']").val(),
+                detections: $("input[name='heuristic__Sequence__minimumDuration']").val()
+            };
+        },
+        changeMotion: function(motion)
+        {
+            $("input[name='algorithm__DifferentialCollins__threshold']").val(30 - motion.sensitivity);
+            $("input[name='heuristic__Sequence__minimumDuration']").val(motion.detections);
+        },
+
         getIoDevices: function()
         {
             this.devices = {

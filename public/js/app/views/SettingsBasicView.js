@@ -52,7 +52,20 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
         },
         changeName: function()
         {
-            this.model.changeName($("div.name input").val());
+            var name = $("div.name input").val();
+            if(/^([a-zA-Z0-9]+)$/.test(name))
+            {
+                this.$el.find("div.name input").css({"border-color":"#ccc"});
+                this.$el.find("div.name input").css({"color":"#555"});
+                this.$el.find("div.name input").next().css({"color":"#ccc"});
+                this.model.changeName(name);
+            }
+            else
+            {
+                this.$el.find("div.name input").css({"border-color":"#943633"});
+                this.$el.find("div.name input").css({"color":"#943633"});
+                this.$el.find("div.name input").next().css({"color":"#943633"});
+            }
         },
         changeType: function(event)
         {

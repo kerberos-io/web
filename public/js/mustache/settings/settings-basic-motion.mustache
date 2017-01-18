@@ -7,9 +7,9 @@
                 <div class="part" description="Step 1. Select a region">
                     <div id="region-selector" class="image hullselection"></div>
                 </div>
-                <div class="part" style="display:none;" description="Step 2. Configure parameters">
+                <div class="part" style="display:none;padding-left:20px;" description="Step 2. Configure parameters">
                     <div class="slider with-tooltip-left element">
-                        <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{usbcamera.delay}}"/>
+                        <input id="sensitivity" class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{motion.sensitivity}}"/>
                         <i class="description slider">sensitivity</i>
                         <span>
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="slider with-tooltip-left element">
-                        <input class="slider-fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{stream.fps}}"/>
+                        <input class="slider-fps" id="detections" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="{{motion.detections}}"/>
                         <i class="description slider">number of detections before valid</i>
                         <span>
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -26,7 +26,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="part io-devices" style="display:none;" description="Step 3. Select one or more outputs">
+                <div class="part io-devices" style="display:none;padding-left:20px;" description="Step 3. Select one or more outputs">
                     <div class="io-image">
                         <div class="button">
                             <input class="tgl tgl-flip" id="disk" type="checkbox"/>
