@@ -61,7 +61,6 @@ define(["jquery", "app/controllers/event", "app/models/Line", "app/views/LineSel
 
                         video = document.createElement("video");
                         video.src = videos[videos.length-1].src;
-                        video.loop = true;
 
                         video.addEventListener('loadeddata', function()
                         {

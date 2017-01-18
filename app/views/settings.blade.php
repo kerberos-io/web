@@ -64,6 +64,28 @@
                     toggleSettings.setType((checked == undefined) ? 'advanced' : 'basic');
                 });
             });
+
+            require(["app/controllers/hullselection", "app/controllers/twolines"], function(hull, twolines)
+            {
+                hull.setElement($(".hullselection .map"));
+                twolines.setElement($(".twolines .map"));
+
+                hull.getLatestImage(function(image)
+                {
+                    hull.setImage(image.src);
+                    hull.setImageSize(image.width, image.height);
+                    hull.setCoordinates($(".hullselection .coordinates").val());
+                    hull.setName($(".hullselection .name").html());
+                    hull.initialize();
+
+                    twolines.setImage(image.src);
+                    twolines.setImageSize(image.width, image.height);
+                    twolines.setCoordinates($(".twolines .coordinates").val());
+                    twolines.setName($(".twolines .name").val());
+                    twolines.initialize();
+                });
+            });
+
         });
     </script>
 @stop

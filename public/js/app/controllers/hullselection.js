@@ -61,7 +61,6 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
 
                         video = document.createElement("video");
                         video.src = videos[videos.length-1].src;
-                        video.loop = true;
 
                         video.addEventListener('loadeddata', function()
                         {
@@ -70,7 +69,7 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                             video.play();
                             context.drawImage(video, 0, 0, canvas.width, canvas.height);
                             video.pause();
-                            
+
                             return callback({
                                 src: canvas.toDataURL(),
                                 width: canvas.width,
