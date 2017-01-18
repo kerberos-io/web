@@ -45,33 +45,14 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-
-     <?php
-        $src = App::make("Controllers\ImageController")->getLatestImage();
-
-        if($src != "")
-        {
-            $image = Image::make($src);
-        }
-        else
-        {
-            // fake an image
-            $image = Image::canvas(600, 480);
-        }
-    ?>
     
     <script type="text/javascript">
         require([_jsBase + 'main.js'], function(common)
         {
-            require(["app/controllers/settings_advanced"]);
+            require(["app/controllers/settings_advanced"], function(SettingsAdvanced){});
 
             require(["app/controllers/toggleSettings", "app/controllers/settings_basic"], function(toggleSettings, SettingsBasic)
             {
-                SettingsBasic.setImage({
-                    src: "{{$src}}",
-                    width: {{$image->width()}},
-                    height: {{$image->height()}}
-                });
                 SettingsBasic.initialize();
 
                 toggleSettings.initialize();

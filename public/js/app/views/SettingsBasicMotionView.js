@@ -2,8 +2,8 @@
 *  USB Camera View
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider", "app/controllers/hullselection"],
-    function (_, Backbone, BaseView, Slider, hull)
+define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider", "app/controllers/hullselection"],
+    function (_, $, Backbone, BaseView, Slider, hull)
 { 
     var SettingsBasicMotionView = BaseView.extend(
     {
@@ -65,11 +65,14 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
         setRegionSelector: function()
         {
             hull.setElement(this.$el.find("#region-selector"));
-            hull.setImage(this.image.src);
-            hull.setImageSize(this.image.width, this.image.height);
-            hull.setCoordinates($("input[name='expositor__Hull__region']").val());
-            hull.setName("motion-hullselection");
-            hull.initialize();
+            hull.getLatestImage(function(image)
+            {
+                hull.setImage(image.src);
+                hull.setImageSize(image.width, image.height);
+                hull.setCoordinates($("input[name='expositor__Hull__region']").val());
+                hull.setName("motion-hullselection");
+                hull.initialize();
+            });
 
             var self = this;
             this.carousel.on('changed.owl.carousel', function(event)
