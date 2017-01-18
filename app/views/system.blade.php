@@ -10,10 +10,10 @@
                 <div id="system" class="col-lg-6">
                     <h2><i class="fa fa-desktop"></i> {{Lang::get('system.system')}}</h2>
                     <div>
-                        System is online for {{$system->getUptime()['text']}}
+                       {{Lang::get('system.systemIsOnlineFor')}} {{$system->getUptime()['text']}}
                     </div>
                     <div>
-                        <h3>OS specifications</h3>
+                        <h3>{{Lang::get('system.osspecifications')}}</h3>
                         <table class="table">
                             @if($system->getBoard() != '')
                             <tr><td>{{Lang::get('system.board')}}</td><td>{{$system->getBoard()}}</td></tr>
@@ -86,7 +86,7 @@
                             <tr>
                                 <td>Machinery</td>
                                 @if($insideDocker) 
-                                <td colspan="2">Don't know i'm in a seperate docker container..</td>
+                                <td colspan="2">{{Lang::get('system.warning-docker')}}</td>
                                 @else
                                 <td>{{$system->getMachineryVersion()}}</td>
                                 <td>
@@ -97,7 +97,7 @@
                                 @endif
                             </tr>
                         </table> 
-                        <h3>Statistics</h3>
+                        <h3>{{Lang::get('system.statistics')}}</h3>
                         <table class="table">
                             <tr><td>{{Lang::get('system.numberOfImages')}}</td><td>{{$numberOfImages}}</td></tr>
                             <tr><td>{{Lang::get('system.numberOfDays')}}</td><td>{{count($allDays)}}</td></tr>
@@ -110,7 +110,7 @@
                                 </td>
                             </tr>
                         </table> 
-                        <h3>Log</h3>
+                        <h3>{{Lang::get('system.log')}}</h3>
                         <div class="logging">
                             <pre class="zoom"><code class="html">{{$system->getShortLog()}}</code></pre>
                         </div>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div id="news" class="col-lg-6">
-                    <h2><i class="fa fa-newspaper-o"></i> News</h2>
+                    <h2><i class="fa fa-newspaper-o"></i> {{Lang::get('system.news')}}</h2>
                     <ul id="articles">
                     @foreach($articles as $article)
                         <li>{{$article['date']}} - <a href="{{$article['url']}}" target="_blank">{{$article['title']}}</a></li>

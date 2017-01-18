@@ -27,7 +27,7 @@ return array(
     
 	'logout' => 'Logout',
 
-	'update-profile' => 'Update profile',
+	/* to translate */ 'update-profile' => 'Update profile',
     
     /*
 	|------------------------

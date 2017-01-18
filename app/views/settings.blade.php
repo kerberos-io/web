@@ -53,7 +53,10 @@
 
             require(["app/controllers/toggleSettings", "app/controllers/settings_basic"], function(toggleSettings, SettingsBasic)
             {
-                SettingsBasic.initialize();
+                $.get( _baseUrl + "/api/v1/translate/settings", function(translation)
+                {
+                    SettingsBasic.initialize(translation);
+                });
 
                 toggleSettings.initialize();
                 

@@ -32,10 +32,10 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
             "keyup div.name input": "changeName",
             "click .type": "changeType"
         },
-        initialize: function(model, image)
+        initialize: function(model, translations)
         {
             this.model = model;
-            this.image = image;
+            this.model.translation = translations;
         },
         refresh: function()
         {
@@ -76,7 +76,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
             if(this.subView)
             {
                 this.refresh();
-                this.subView.initialize(this.model, this.image);
+                this.subView.initialize(this.model, this.translations);
                 $("#settings-modal .modal-body > .view").html(this.subView.render().el)
                 this.modal.open();
             }

@@ -20,7 +20,19 @@ return array(
 	'model' => 'Model',
     
 	'os' => 'OS',
+
+	/* to translate */ 'osspecifications' => 'OS specifications',
     
+	/* to translate */ 'warning-docker' => 'Don\'t know i\'m in a seperate docker container..',
+
+	/* to translate */ 'statistics' => 'Statistics',
+
+	/* to translate */ 'log' => 'Log',
+	
+	/* to translate */ 'news' => 'News',
+
+	/* to translate */ 'systemIsOnlineFor' => 'System is online for',
+
 	'kernel' => 'Kernel',
     
 	'hostname' => 'Hostname',

@@ -17,6 +17,8 @@ return array(
 
 	'settings' => 'Einstellungen',
 
+	'configuration' => 'Einstellungen',
+
 	'cloud' => 'Cloud',
     
 	'on' => 'An',
@@ -24,6 +26,8 @@ return array(
 	'off' => 'Aus',
     
 	'logout' => 'Abmelden',
+
+	/* to translate */ 'update-profile' => 'Update profile',
     
     
     /*

@@ -69,6 +69,11 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('images/{date}/hours', 'Controllers\ImageController@getImagesPerHourForDay');
         Route::get('images/{date}/{take?}/{page?}', 'Controllers\ImageController@getImages');
         Route::get('images/{date}/{take?}/{page?}/{time?}', 'Controllers\ImageController@getImagesFromStartTime');
+
+        // -----------------
+        // Translate Controller
+        
+        Route::get('translate/{page}', 'Controllers\TranslateController@index');
         
     });
     

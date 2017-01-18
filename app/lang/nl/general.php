@@ -26,6 +26,8 @@ return array(
 	'off' => 'Uit',
     
 	'logout' => 'Logout',
+
+	'update-profile' => 'Profiel bijwerken',
     
     
     /*

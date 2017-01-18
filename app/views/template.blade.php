@@ -107,8 +107,8 @@
                     <label class="machinery-switch switch-light">
                         <input type="checkbox">
                         <span class="well">
-                            <span>Off</span>
-                            <span>On</span>
+                            <span>{{Lang::get('general.off')}}</span>
+                            <span>{{Lang::get('general.on')}}</span>
                             <a class="btn btn-primary"></a>
                         </span>
                     </label>

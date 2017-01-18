@@ -26,6 +26,8 @@ return array(
 	'off' => 'Off',
     
 	'logout' => 'Sair',
+
+	/* to translate */ 'update-profile' => 'Update profile',
     
     
     /*
