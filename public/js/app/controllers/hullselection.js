@@ -69,7 +69,8 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                             canvas.height = video.videoHeight;
                             video.play();
                             context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
+                            video.pause();
+                            
                             return callback({
                                 src: canvas.toDataURL(),
                                 width: canvas.width,

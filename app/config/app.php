@@ -22,7 +22,7 @@ return array(
 		'fileFormat' => 'timestamp_microseconds_instanceName_regionCoordinates_numberOfChanges_token.jpg',
 		
 		'disk' => [
-			'path' => '/capture/',
+			'path' => '/capture',
 		],
 
 		'amazons3' => [

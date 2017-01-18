@@ -1,6 +1,6 @@
 <div class="image hullselection">
 
-    <div id="map" style="position: relative;"></div>
+    <div class="map" style="position: relative;"></div>
 
     <script type="text/javascript">
     
@@ -9,7 +9,7 @@
         {
             require(["app/controllers/hullselection"], function(hull)
             {
-                hull.setElement($("#map"));
+                hull.setElement($(".hullselection .map"));
                 hull.getLatestImage(function(image)
                 {
                     hull.setImage(image.src);

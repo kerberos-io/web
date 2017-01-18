@@ -9,6 +9,7 @@ class DiskFilesystem implements FilesystemInterface
 {
     protected $path;
     protected $url;
+    protected $system;
 
     public function __construct()
     {
@@ -16,7 +17,8 @@ class DiskFilesystem implements FilesystemInterface
         // Create url and path
         
         $this->path = Config::get("app.filesystem.disk.path");
-        $this->url = URL::to('/') . '/' . $this->path;
+        $this->url = URL::to('/') . $this->path;
+        $this->system = public_path() . $this->path;
     }
 
 	public function setTimezone($timezone)
@@ -46,6 +48,11 @@ class DiskFilesystem implements FilesystemInterface
     public function getPathToFile(FileInterface $file)
     {
         return $this->url . '/' . $file->getPath();
+    }
+
+    public function getSystemPathToFile(FileInterface $file)
+    {
+        return $this->system . '/' . $file->getPath();
     }
 
     public function getMetadata(FileInterface $file)

@@ -92,7 +92,6 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             return $value['type'] === 'image';
         });
 
-
         if(count($latestSequence)>0)
         {
             $i = count($latestSequence) -1;
@@ -104,16 +103,23 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getLatestSequence()
     {
-        $days = $this->getDays(1);
+        $key = $this->user->username . "_latestSequence";
 
-        if(count($days) > 0)
+        $latestSequence = $this->cache->storeAndGet($key, function()
         {
-            $day = $days[0];
-            $images = $this->getImagesSequenceFromDay($day, 1, 120);
-            return array_values($images);
-        }
+            $days = $this->getDays(1);
 
-        return [];
+            if(count($days) > 0)
+            {
+                $day = $days[0];
+                $images = $this->getImagesSequenceFromDay($day, 1, 120);
+                return array_values($images);
+            }
+
+            return [];
+        });
+        
+        return $latestSequence;    
     }
 
     public function getLastHourOfDay($day)
@@ -485,7 +491,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $image = new Image;
             $image->setTimezone($this->date->timezone);
             $image->parse($path);
-
+            
             $path = $this->filesystem->getPathToFile($image);
 
             try
