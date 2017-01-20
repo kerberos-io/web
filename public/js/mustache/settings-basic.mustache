@@ -2,60 +2,60 @@
     <h4><i class="fa fa-gears"></i> {{translation.general}}</h4>
     <div class="name with-tooltip element">
         <input id="instance" type="text" placeholder="Specify a name for the camera" value="{{name}}"/>
-        <i class="description">name</i>
+        <i class="description">{{translation.name}}</i>
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i>
-            <span>An unique name for your camera is required, if you will run multiple Kerberos.io instances.</span>
+            <span>{{translation.nameInfo}}</span>
         </span>
     </div>
 
     <div class="timezone with-tooltip element">
         <select id="timezone-picker-basic"></select>
-        <i class="description">timezone</i>
+        <i class="description">{{translation.timezone}}</i>
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i>
-            <span>The timezone is used to convert timestamps to your local time. It's used in both the machinery and web interface.</span>
+            <span>{{translation.timezoneInfo}}</span>
         </span>
     </div>
 </div>
 
 <div id="camera" class="block">
-    <h4><i class="fa fa-video-camera"></i> Camera</h4>
+    <h4><i class="fa fa-video-camera"></i> {{translation.camera}}</h4>
     <div id="USBCamera" class="type with-tooltip">
         <i class="fa fa-video-camera" aria-hidden="true"></i>
-        USB camera
+        {{translation.usbcamera}}
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>Select this option, if you want to use an USB camera.</span>
+            <span>{{translation.usbcameraInfo}}</span>
         </span>
     </div>
     <div id="RaspiCamera" class="type with-tooltip">
         <i class="fa fa-video-camera" aria-hidden="true"></i>
-        RPi camera
+        {{translation.rpicamera}}
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>If you run Kerberos.io on a Raspberry Pi, you can select this option, if you want to use the Raspberry Pi camera module (v1 or v2).</span>
+            <span>{{translation.rpicameraInfo}}</span>
         </span>
     </div>
     <div id="IPCamera" class="type with-tooltip-left">
         <i class="fa fa-video-camera aria-hidden="true"></i>
-        IP camera
+        {{translation.ipcamera}}
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.</span>
+            <span>{{translation.ipcameraInfo}}</span>
         </span>
     </div>
 </div>
 
 
 <div id="surveillance" class="block">
-    <h4><i class="fa fa-user-secret"></i> Surveillance mode</h4>
+    <h4><i class="fa fa-user-secret"></i> {{translation.surveillanceMode}}</h4>
     <div id="Motion" class="type active with-tooltip">
         <i class="fa fa-child" aria-hidden="true"></i>
-        motion
+        {{translation.motion}}
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific timeinterval or region in the view.</span>
+            <span>{{translation.motionInfo}}</span>
         </span>
     </div>
     <!--<div class="type">
@@ -73,13 +73,13 @@
 </div>
 
 <div id="storage" class="block">
-    <h4><i class="fa fa-cloud"></i> Storage</h4>
+    <h4><i class="fa fa-cloud"></i> {{translation.storage}}</h4>
     <div id="Cloud" class="type active with-tooltip">
         <i class="fa fa-cloud" aria-hidden="true"></i>
         Cloud
         <span>
             <i class="fa fa-question-circle" aria-hidden="true"></i> 
-            <span>Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere int the world.</span>
+            <span>{{translation.storageInfo}}</span>
         </span>
     </div>
     <!--<div class="type">
@@ -89,8 +89,8 @@
 </div>
 
 <div class="submit-form">
-    <p id="confirm-info">don't forget to press the <b>update button</b>, to confirm your configuration.</p>
-    <input type="submit" value="update"/>
+    <p id="confirm-info">{{translation.dontForget}}</p>
+    <input type="submit" value="{{translation.update}}"/>
 </div>
 
 <div id="settings-modal" data-remodal-id="settings">
@@ -98,7 +98,7 @@
         <div class="view"></div>
     </div>
     <div class="buttons-wrapper">
-        <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-        <button data-remodal-action="confirm" class="remodal-confirm">Confirm and select</button>
+        <button data-remodal-action="cancel" class="remodal-cancel">{{translation.cancel}}</button>
+        <button data-remodal-action="confirm" class="remodal-confirm">{{translation.confirmAndSelect}}</button>
     </div>
 </div>  

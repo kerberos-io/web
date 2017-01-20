@@ -46,13 +46,16 @@ define(["underscore", "backbone", "fancybox", "app/models/User", "app/views/Base
                 return false;
             }
         },
-        render: function()
+        render: function(translation)
         {   
             var self = this;
             this.collection.fetch({async: true, success: function()
             {
                 var user = self.collection.models[0];
-                self.$el.html(self.template(user.attributes));
+                self.$el.html(self.template({
+                    'translation': translation,
+                    'user': user.attributes
+                }));
                 self.$el.find('#language option[value="'+user.get('language')+'"]').attr('selected', 'selected');
             }});
 

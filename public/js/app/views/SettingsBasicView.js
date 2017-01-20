@@ -23,7 +23,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
 
         selected: undefined,
         object: undefined,
-        subView: undefined,
+        subView: {},
         image: undefined,
 
         events:
@@ -71,13 +71,18 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
         {
             this.object = $(event.currentTarget);
             this.selected = "#" + this.object.parent().attr('id');
-            this.subView = eval("new " + this.object.attr('id') + 'View()');
+
+            var name = this.object.attr('id');
+            //if(!this.subView[name])
+            //{
+                this.subView[name] = eval("new " + name + 'View()')
+            //}
 
             if(this.subView)
             {
                 this.refresh();
-                this.subView.initialize(this.model, this.translations);
-                $("#settings-modal .modal-body > .view").html(this.subView.render().el)
+                this.subView[name].initialize(this.model);
+                $("#settings-modal .modal-body > .view").html(this.subView[name].render().el)
                 this.modal.open();
             }
         },
@@ -97,7 +102,8 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
 
             $('[data-remodal-id=settings] .remodal-confirm').unbind('click').click(function()
             {
-                self.subView.update();
+                var name = self.object.attr('id');
+                self.subView[name].update();
                 $(self.selected + " .type").removeClass("active");
                 $(self.object).addClass("active");  
             });

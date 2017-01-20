@@ -3,7 +3,7 @@
 @section('content')
 
     @if(!$settings['cloud']['dropdown']['S3']['children']['bucket']['value'])
-    <div class="alert-update alert alert-warning" role="alert"><a href="https://cloud.kerberos.io/" target="_blank">Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!</a></div>
+    <div class="alert-update alert alert-warning" role="alert"><a href="https://cloud.kerberos.io/" target="_blank">{{Lang::get('settings.purchase')}}</a></div>
     @endif
     
     <div id="page-wrapper">
@@ -15,8 +15,8 @@
                         <label class="configuration-switch switch-light">
                             <input type="checkbox">
                             <span class="well">
-                                <span>Basic</span>
-                                <span>Advanced</span>
+                                <span>{{Lang::get('settings.basic')}}</span>
+                                <span>{{Lang::get('settings.advanced')}}</span>
                                 <a class="btn btn-primary"></a>
                             </span>
                         </label>
@@ -78,7 +78,7 @@
                     hull.setImage(image.src);
                     hull.setImageSize(image.width, image.height);
                     hull.setCoordinates($(".hullselection .coordinates").val());
-                    hull.setName($(".hullselection .name").html());
+                    hull.setName($(".hullselection .name").val());
                     hull.initialize();
 
                     twolines.setImage(image.src);

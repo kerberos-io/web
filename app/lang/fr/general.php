@@ -21,9 +21,9 @@ return array(
 
 	'cloud' => 'Cloud',
     
-	'on' => 'On',
+	/* to translate */ 'on' => 'On',
     
-	'off' => 'Off',
+	/* to translate */ 'off' => 'Off',
     
 	'logout' => 'Déconnection',
 

@@ -8037,6 +8037,9 @@ body {
 .top-nav {
   padding: 0;
 }
+.nav .dropdown-menu {
+  margin-right: 0 !important;
+}
 h1 {
   font-family: 'Source Sans Pro', sans-serif;
   position: relative;
@@ -8255,7 +8258,7 @@ label.toggle-mobile {
   margin-right: 10px;
 }
 .machinery-switch {
-  width: 60px;
+  width: 75px;
   padding-top: 10px;
 }
 .machinery-switch .well {
@@ -9852,7 +9855,7 @@ div.video-preview video:first-child {
 #cloud .with-tooltip-left span > span:after,
 #settings-modal .with-tooltip-left span > span:after,
 #update-profile-modal .with-tooltip-left span > span:after {
-  border-top: 10px solid #f4f4f4;
+  border-top: 10px solid #fff;
   margin-left: -4px;
 }
 #settings .with-tooltip span:hover > span,
@@ -10270,6 +10273,14 @@ label {
 #update-profile-modal #cloud-view i.description:nth-child(2n) {
   bottom: 2px;
   left: 154px;
+}
+#settings-modal #ipcamera-view .url,
+#update-profile-modal #ipcamera-view .url {
+  width: 90%;
+}
+#settings-modal #ipcamera-view .rotate,
+#update-profile-modal #ipcamera-view .rotate {
+  margin-top: 20px;
 }
 #settings-modal #motion-view .slider.slider-horizontal {
   width: 89%;

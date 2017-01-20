@@ -138,8 +138,11 @@
 
                     require(["app/controllers/updateProfile"], function(updateProfile)
                     {
-                        updateProfile.initialize();
-
+                        $.get( _baseUrl + "/api/v1/translate/updateprofile", function(translation)
+                        {
+                            updateProfile.initialize(translation);
+                        });
+                        
                         $("#update-profile").click(function()
                         {
                             updateProfile.open();

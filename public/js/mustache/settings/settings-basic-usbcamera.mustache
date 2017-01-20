@@ -1,5 +1,5 @@
 <div id="usbcamera-view">
-	<h4><i class="fa fa-video-camera"></i> USB Camera</h4>
+	<h4><i class="fa fa-video-camera"></i> {{translation.usbcamera}}</h4>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
@@ -9,26 +9,26 @@
                     <input class="height" type="text" value="{{usbcamera.height}}"/>
                     <span>
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
-                        <span>The resolution of the images being captured by your USB camera. Make sure that this resolution is supported.</span>
+                        <span>{{translation.widthHeightInfo}}</span>
                     </span>
-                    <i class="description">width</i>
-                    <i class="description">height</i>
+                    <i class="description">{{translation.width}}</i>
+                    <i class="description">{{translation.height}}</i>
                 </div>
                 <div class="slider with-tooltip element">
                     <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{usbcamera.delay}}"/>
-                    <i class="description slider">delay in seconds</i>
+                    <i class="description slider">{{translation.delay}}</i>
                     <span>
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
-                        <span>The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).</span>
+                        <span>{{translation.delayInfo}}</span>
                     </span>
                 </div>
 
                 <div class="slider with-tooltip element">
                     <input class="slider-fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{stream.fps}}"/>
-                    <i class="description slider">live stream frames/sec</i>
+                    <i class="description slider">{{translation.livestream}}</i>
                     <span>
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
-                        <span>The frames per second of the live stream can be configured. Settings this option to zero, will disable the live stream.</span>
+                        <span>{{translation.livestreamInfo}}</span>
                     </span>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     </div>
                     <span>
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
-                        <span>Click on this image if your camera is rotated. E.g. if your camera is mounted upside down, make sure this image is also upside down.</span>
+                        <span>{{translation.rotate}}</span>
                     </span>
                 </div>
             </div>

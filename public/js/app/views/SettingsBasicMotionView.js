@@ -67,10 +67,9 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
             {
-                console.log(image)
                 hull.setImage(image.src);
                 hull.setImageSize(image.width, image.height);
-                hull.setCoordinates($(".hullselection .coordinates").val());
+                hull.setCoordinates($("input[name='expositor__Hull__region']").val());
                 hull.setName("motion-hullselection");
                 hull.initialize();
             });
@@ -79,7 +78,8 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             this.carousel.on('changed.owl.carousel', function(event)
             {
                 var section = event.item.index;
-                self.$el.find("#step").html($(self.$el.find(".part").get(section)).attr('description'))
+                self.$el.find("#step div.title").html($(self.$el.find(".part").get(section)).attr('description'));
+                self.$el.find("#step span.info").html($(self.$el.find(".part").get(section)).attr('info'));
                 $(self.$el.find(".part").get(section)).show();
                 hull.restore();
             })
@@ -123,8 +123,7 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             }
         },
         update: function()
-        {
-            this.model.changeIoDevices({
+        {            this.model.changeIoDevices({
                 disk: {
                     enabled: this.model.devices.disk.enabled, // overkill
                     colorTimestamp: this.$el.find("#timestamp-color").val(),

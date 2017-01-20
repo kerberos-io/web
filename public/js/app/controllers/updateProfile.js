@@ -6,13 +6,14 @@ define(["underscore", "backbone", "remodal", "app/models/User", "app/views/Updat
 	function (_, Backbone, remodal, UserCollection, UpdateProfileView)
 { 
     return {
-        config: {},
+        translation: {},
         modal: undefined,
         userCollection: undefined,
         updateProfileView: undefined,
 
-        initialize: function(config)
+        initialize: function(translation)
         {
+            this.translation = translation;
             this.modal = $('[data-remodal-id=update-profile]').remodal({ hashTracking: false });
             this.userCollection = new UserCollection();
             this.updateProfileView = new UpdateProfileView({
@@ -21,7 +22,7 @@ define(["underscore", "backbone", "remodal", "app/models/User", "app/views/Updat
         },
         open: function()
         {
-            this.updateProfileView.render();
+            this.updateProfileView.render(this.translation);
         	this.modal.open();
         }
     };

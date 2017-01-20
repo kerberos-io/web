@@ -1,32 +1,38 @@
 <div id="motion-view">
 	<h4><i class="fa fa-child" aria-hidden="true"></i> Motion</h4>
-    <div id="step">Step 1. Select a region</div>
+    <div id="step" class="with-tooltip" style="position: absolute;">
+        <div class="title" style="float:left">{{translation.step1}}</div>
+        <span style="margin-top: -5px;">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span class="info">{{translation.step1Info}}</span>
+        </span>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="owl-carousel owl-theme">
-                <div class="part" description="Step 1. Select a region">
+                <div class="part" description="{{translation.step1}}" info="{{translation.step1Info}}">
                     <div id="region-selector" class="image hullselection"></div>
                 </div>
-                <div class="part" style="display:none;padding-left:20px;" description="Step 2. Configure parameters">
+                <div class="part" style="display:none;padding-left:20px;" description="{{translation.step2}}" info="{{translation.step2Info}}">
                     <div class="slider with-tooltip-left element">
                         <input id="sensitivity" class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{motion.sensitivity}}"/>
-                        <i class="description slider">sensitivity</i>
+                        <i class="description slider">{{translation.sensitivity}}</i>
                         <span>
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
-                            <span>The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).</span>
+                            <span>{{translation.sensitivityInfo}}</span>
                         </span>
                     </div>
 
                     <div class="slider with-tooltip-left element">
                         <input class="slider-fps" id="detections" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="{{motion.detections}}"/>
-                        <i class="description slider">number of detections before valid</i>
+                        <i class="description slider">{{translation.numberOfDetections}}</i>
                         <span>
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
-                            <span>The frames per second of the live stream can be configured. Settings this option to zero, will disable the live stream.</span>
+                            <span>{{translation.numberOfDetectionsInfo}}</span>
                         </span>
                     </div>
                 </div>
-                <div class="part io-devices" style="display:none;padding-left:20px;" description="Step 3. Select one or more outputs">
+                <div class="part io-devices" style="display:none;padding-left:20px;" description="{{translation.step3}}" info="{{translation.step3Info}}">
                     <div class="io-image">
                         <div class="button">
                             <input class="tgl tgl-flip" id="disk" type="checkbox"/>
@@ -38,17 +44,17 @@
                         <div class="content">
                             <div class="with-tooltip-left element">
                                 <select id="timestamp-color">
-                                    <option value="none">no timestamp</option>
-                                    <option value="white">white</option>
-                                    <option value="black">black</option>
-                                    <option value="red">red</option>
-                                    <option value="green">green</option>
-                                    <option value="blue">blue</option>
+                                    <option value="none">{{translation.noTimestamp}}</option>
+                                    <option value="white">{{translation.white}}</option>
+                                    <option value="black">{{translation.black}}</option>
+                                    <option value="red">{{translation.red}}</option>
+                                    <option value="green">{{translation.green}}</option>
+                                    <option value="blue">{{translation.blue}}</option>
                                 </select>
-                                <i class="description">draw timestamp</i>
+                                <i class="description">{{translation.drawTimestamp}}</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>When an image is saved to disk, you can draw the current date and time on the image.</span>
+                                    <span>{{translation.drawTimestampInfo}}</span>
                                 </span>
                             </div>
                         </div>
@@ -64,18 +70,18 @@
                         <div class="content">
                             <div class="slider with-tooltip-left element">
                                 <input class="video-fps" id="fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.fps}}"/>
-                                <i class="description">fps</i>
+                                <i class="description">{{translation.fps}}</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).</span>
+                                    <span>{{translation.fpsInfo}}</span>
                                 </span>
                             </div>
                             <div class="slider with-tooltip-left element">
                                 <input class="video-record-seconds" id="recordAfter" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.recordAfter}}"/>
-                                <i class="description">seconds to record</i>
+                                <i class="description">{{translation.secondsRecord}}</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The number of seconds that will be recorded after motion was detected.</span>
+                                    <span>{{translation.secondsRecordInfo}}</span>
                                 </span>
                             </div>
                         </div>
@@ -91,10 +97,10 @@
                         <div class="content">
                             <div class="with-tooltip-left element">
                                 <input type="text" id="url" value="{{devices.webhook.url}}"/>
-                                <i class="description">url</i>
+                                <i class="description">{{translation.webhookUrl}}</i>
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>The url to which a POST will be sent with a JSON object.</span>
+                                    <span>{{translation.webhookUrlInfo}}</span>
                                 </span>
                             </div>
                         </div>
