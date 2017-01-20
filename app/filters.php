@@ -65,7 +65,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			if(!Config::get('kerberos')['installed'])
+			if(Config::get('kerberos')['installed'])
 			{
 				return Redirect::guest('login');
 			}

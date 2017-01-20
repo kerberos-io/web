@@ -188,7 +188,8 @@ class OSSystem implements SystemInterface
     public function getLog()
     {
         $file = '/etc/opt/kerberosio/logs/log.stash';
-        $content = file_get_contents($file);
+        //$content = file_get_contents($file);
+        $content = shell_exec('exec tail -n200 ' . $file);
         return $content;
     }
     

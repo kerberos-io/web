@@ -1,0 +1,152 @@
+.welcome
+{
+    h2
+    {
+        margin-top: 0px;
+    }
+
+    div.circle {
+        display: table;
+        background: #fff;
+        margin: 9px 0 0 14px;
+        border-radius: 50%;
+        padding: 5px;
+        float: left;
+        background-image: url(../images/kerberos_multihead.svg);
+        background-position: -175px -31px;
+    }
+
+    div.center .content .circle div.kerberos
+    {
+        background-image: none !important;
+    }
+
+    div.center form#welcome
+    {
+        margin: -270px auto;
+        padding: 25px 50px;
+        display: table;
+        position: relative;
+        z-index: 1337;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: px solid #EAEAEA;
+        /* border-bottom: 4px solid #EAEAEA; */
+        background-color: rgba(255,255,255,.8);
+        border-radius: 5px;
+        text-align: center;
+
+        .next
+        {
+            padding: 9px 16px;
+            border-radius: 3px;
+            border: none;
+            transition: all .12s linear 0s!important;
+            outline: 0;
+            color: #fff;
+            background-color: #943633;
+            display: table;
+            width: 20%;
+            float: left;
+            cursor: pointer;
+        }
+    }
+
+    select
+    {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 0;
+        border-radius: 0;
+        width: 70%;
+        margin-right: 5%;
+        padding: 9px;
+        border: 0;
+        border-radius: 3px;
+        float: left;
+        background-color: #fff;
+    }
+
+    footer#branding
+    {
+        color: #fff;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        
+        a, a:hover
+        {
+            color: #fff;
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        i.logo_verstraetenio {
+            background: url(/images/logo_verstraetenio.png);
+            background-size: cover !important;
+            width: 43px;
+            height: 40px;
+            padding: 16px;
+            margin-right: 10px;
+        }
+    }
+
+    footer#branding.black
+    {
+        color: #333;
+
+        a, a:hover
+        {
+            color: #333;
+        }
+    }
+
+    .scale
+    {
+        -webkit-transform: scale(10);
+        -ms-transform: scale(10);
+        transform: scale(10);
+        transition: all 2s;
+    }
+
+    #introduction
+    {
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 50px;
+        padding: 20px;
+
+        h1
+        {
+            color: #333;
+            font-size: 30px;
+        }
+
+        h2.step
+        {
+            color: #666;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 100;
+        }
+
+        .owl-carousel
+        {
+            margin-top: 60px;
+        }
+
+        .nextStep
+        {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #943633;
+            display: table;
+            float: right;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: #fff;
+        }
+    }
+}
