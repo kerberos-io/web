@@ -1,5 +1,6 @@
 <?php return array (
   'type' => 'basic',
+  'installed' => false,
   'users' => 
   array (
     0 => 
