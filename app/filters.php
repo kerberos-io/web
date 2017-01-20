@@ -65,7 +65,14 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			if(!Config::get('kerberos')['installed'])
+			{
+				return Redirect::guest('login');
+			}
+			else
+			{
+				return Redirect::guest('welcome');
+			}
 		}
 	}
 });
