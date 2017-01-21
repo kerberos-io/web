@@ -89,6 +89,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal",
         render: function(model)
         {
             this.$el.html(this.template(this.model));
+            $("#loading-image-view").remove(); // delete loading image..
             
             // Set the time zone
             var timezone = this.model.getTimezone();

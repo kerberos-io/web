@@ -102,9 +102,14 @@ Route::group(array('prefix' => 'api/v1'), function()
     
     // -----------------
     // Translate Controller
+
+    Route::get('translate/{page}', 'Controllers\TranslateController@index');
+
+    // --------------------
+    // Installation wizard
+
     if(!Config::get('kerberos')['installed'])
     {
-        Route::get('translate/{page}', 'Controllers\TranslateController@index');
         Route::post('user/language', 'Controllers\UserController@changeLanguage');
         Route::post('user/install', 'Controllers\UserController@install');
     }

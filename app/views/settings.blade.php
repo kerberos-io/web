@@ -22,6 +22,10 @@
                         </label>
                     </div>
 
+                    <div id="loading-image-view" class="load4" style="padding:50px 0;">
+                        <div class="loader"></div>
+                    </div>
+
                     {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
 
                         <!-- Basic View -->
