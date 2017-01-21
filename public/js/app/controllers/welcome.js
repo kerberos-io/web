@@ -6,44 +6,48 @@ define(["jquery", "underscore", "backbone", "remodal", "carousel", "app/views/We
 	function ($, _, Backbone, remodal, carousel, WelcomeView)
 { 
     return {
-        translation: {},
-
-        initialize: function(translation)
+        initialize: function()
         {
             var self = this;
-            self.translation = translation;
-
-            //self.openIntroduction();
-            //$(".center").show();
-            //$("form#welcome").remove();
             
             $(document).ready(function()
             {
                 $(".center").fadeIn(2000);
                 $(".next").click(function()
                 {
-                    $(".circle").css({'background-image': 'none'});
-                    $(".circle").addClass('scale');
-                    $("form#welcome").remove();
-                    setTimeout(function()
+                    var data = {
+                        language: $("#language").val()
+                    };
+
+                    $.post(_baseUrl + "/api/v1/user/language", data, function(data)
                     {
-                        self.openIntroduction();
-                    },500);
+                        $(".circle").css({'background-image': 'none'});
+                        $(".circle").addClass('scale');
+                        $("form#welcome").remove();
+                        setTimeout(function()
+                        {
+                            self.openIntroduction();
+                        },500);
+                    });
                 })
             });
         },
         openIntroduction: function()
         {
             var welcomeView = new WelcomeView();
-            welcomeView.initialize();
-            welcomeView.render(function()
+
+            $.get(_baseUrl + "/api/v1/translate/welcome", function(translation)
             {
-                $("body").css({'background': 'white'});
-                $(".content").remove();
-                $("footer").addClass("black");
-                $(".logo_verstraetenio").css({'background': 'url(/images/logo_verstraetenio_black.png)'});
-                $("div.center").css({'top': 0});
-                $("#introduction").fadeIn(1200);
+                welcomeView.initialize(translation);
+                welcomeView.render(function()
+                {
+                    $("body").css({'background': 'white'});
+                    $(".content").remove();
+                    $("footer").addClass("black");
+                    $(".logo_verstraetenio").css({'background': 'url(/images/logo_verstraetenio_black.png)'});
+                    $("div.center").css({'top': 0});
+                    $("#introduction").fadeIn(1200);
+                });
             });
         }
     };

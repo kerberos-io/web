@@ -2,7 +2,7 @@
 *  Welcome view
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, BaseView)
+define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, _, Backbone, BaseView)
 { 
     var WelcomeView = BaseView.extend(
     {
@@ -11,18 +11,54 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
 
         events:
         {
-
+            "keyup #password-1": "changePassword",
+            "keyup #password-2": "changePassword",
+            "click #finish": "finish",
         },
-        initialize: function(model, translations)
+        initialize: function(translations)
         {
-            this.model = model;
-            //this.model.translation = translations;
+            this.model = {};
+            this.model.translation = translations;
+        },
+        changePassword: function()
+        {
+            var password1 = this.$el.find("#password-1");
+            var password2 = this.$el.find("#password-2");
+
+            if(password1.val() != password2.val())
+            {
+                password2.css({'border-bottom': '1px solid #943633'});
+            }
+            else
+            {
+                password2.css({'border-bottom': '1px solid #ccc'});
+            }
+        },
+        finish: function(event)
+        {   
+            var element = $(event.currentTarget);
+            var username = this.$el.find("#username");
+            var password1 = this.$el.find("#password-1");
+            var password2 = this.$el.find("#password-2");
+
+            var data = {
+                'username': username.val(),
+                'password1': password1.val(),
+                'password2': password2.val()
+            };
+            
+            $.post(_baseUrl + "/api/v1/user/install", data, function(data)
+            {
+                window.location.href = element.attr('href');
+            });
+
+            return false;
         },
         render: function(callback)
         {
             this.$el.html(this.template(this.model));
 
-            var carousel = this.$el.find('.owl-carousel');
+            var carousel = this.carousel = this.$el.find('.owl-carousel');
             carousel.owlCarousel({
                 items: 1,
                 touchDrag: false,
@@ -34,7 +70,8 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
             carousel.on('changed.owl.carousel', function(event)
             {
                 var section = event.item.index;
-                self.$el.find("h2.step").html($(self.$el.find(".part").get(section)).attr('info'));
+                self.$el.find("h2.step span.text").html($(self.$el.find(".part").get(section)).attr('info'));
+                self.$el.find("h2.step i").removeClass().addClass("fa").addClass($(self.$el.find(".part").get(section)).attr('icon'));
                 $(self.$el.find(".part").get(section)).show();
             });
 

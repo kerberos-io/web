@@ -7,8 +7,8 @@
 *
 ***************/
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1103,7 +1103,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2532,7 +2531,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3023,7 +3021,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8405,7 +8402,7 @@ input:-webkit-autofill:active {
 }
 div.center {
   position: absolute;
-  top: 31%;
+  top: 27%;
   /**************************
     *   Kerberos logo
     */
@@ -8546,6 +8543,30 @@ div.center form#login input[type='submit'] {
     width: 100%;
   }
 }
+.welcome .col-md-6 {
+  line-height: 23px;
+}
+.welcome .cover-credentials {
+  background-image: url('../images/welcome/step2_credentials.png');
+  background-size: cover;
+  background-position: center center;
+  height: 150px;
+  width: 100%;
+  margin: 20px 0;
+}
+.welcome #cloud a,
+.welcome #cloud a:hover {
+  color: #943633;
+  text-decoration: none;
+}
+.welcome .cover-cloud {
+  background-image: url('../images/welcome/step3_cloud.png');
+  background-size: cover;
+  background-position: center center;
+  height: 200px;
+  width: 100%;
+  margin: 20px 0;
+}
 .welcome h2 {
   margin-top: 0px;
 }
@@ -8588,6 +8609,126 @@ div.center form#login input[type='submit'] {
   width: 20%;
   float: left;
   cursor: pointer;
+}
+.welcome input[type="text"],
+.welcome input[type="password"],
+.welcome input[type="submit"] {
+  font-weight: 200;
+  margin: 3px 0;
+  height: 34px;
+  /* padding: 6px 12px; */
+  width: 50%;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  /* border-radius: 4px; */
+  /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */
+  /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.welcome div.description {
+  width: 75%;
+  margin-bottom: 20px;
+}
+.welcome input {
+  float: left;
+  padding: 25px 0;
+}
+.welcome .name input:before {
+  width: 10px;
+  height: 10px;
+  display: table;
+  background: #333;
+}
+.welcome input[type=text],
+.welcome input[type=password] {
+  width: 100%;
+}
+.welcome .with-tooltip,
+.welcome .with-tooltip-left {
+  position: relative;
+}
+.welcome .with-tooltip > i.description,
+.welcome .with-tooltip-left > i.description {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  color: #cccccc;
+  text-decoration: none;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.welcome .with-tooltip > span,
+.welcome .with-tooltip-left > span {
+  position: relative;
+  color: #943633;
+  font-size: 21px;
+  text-shadow: none;
+  display: inline-block;
+  font-style: bold;
+  float: left;
+  margin-top: 15px;
+  margin-left: 7px;
+}
+.welcome .with-tooltip span > span,
+.welcome .with-tooltip-left span > span {
+  font-size: 14px;
+  font-family: Helvetica;
+  font-style: normal;
+  text-align: left;
+  line-height: 150%;
+  color: #943633;
+  text-shadow: white 0 1px;
+  background: #fff;
+  background-clip: padding-box;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
+  border: 2px solid #943633;
+  border-radius: 3px;
+  position: absolute;
+  width: 230px;
+  left: 350%;
+  margin-left: -27px;
+  padding: 10px;
+  top: -10px;
+  margin-bottom: 15px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999999;
+}
+.welcome .with-tooltip span > span:before,
+.welcome .with-tooltip-left span > span:before,
+.welcome .with-tooltip span > span:after,
+.welcome .with-tooltip-left span > span:after {
+  content: "";
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: 20px;
+  left: -4%;
+  margin-left: -22px;
+  -webkit-transform: rotate(90deg);
+}
+.welcome .with-tooltip span > span:before,
+.welcome .with-tooltip-left span > span:before {
+  border-top: 10px solid #943633;
+  margin-left: -7px;
+}
+.welcome .with-tooltip span > span:after,
+.welcome .with-tooltip-left span > span:after {
+  border-top: 10px solid #fff;
+  margin-left: -4px;
+}
+.welcome .with-tooltip span:hover > span,
+.welcome .with-tooltip-left span:hover > span {
+  visibility: visible;
+  opacity: 1;
 }
 .welcome select {
   -webkit-appearance: none;
@@ -8636,6 +8777,15 @@ div.center form#login input[type='submit'] {
   transform: scale(10);
   transition: all 2s;
 }
+.welcome .social {
+  margin-top: 20px;
+}
+.welcome .social i {
+  font-size: 45px;
+  color: #943633;
+  cursor: pointer;
+  margin-right: 15px;
+}
 .welcome #introduction {
   color: #333;
   max-width: 800px;
@@ -8643,13 +8793,31 @@ div.center form#login input[type='submit'] {
   margin-top: 50px;
   padding: 20px;
 }
+.welcome #introduction .owl-dots {
+  position: fixed;
+  top: 0;
+  left: 25px;
+}
+.welcome #introduction .logo {
+  background-image: url(../images/kerberos_multihead.svg);
+  background-position: -81px -31px;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 71%;
+  display: table;
+  height: 400px;
+  width: 400px;
+  background-repeat: no-repeat;
+}
 .welcome #introduction h1 {
   color: #333;
-  font-size: 30px;
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 .welcome #introduction h2.step {
   color: #666;
-  font-size: 18px;
+  font-size: 35px;
   text-align: center;
   font-weight: 100;
 }
@@ -8658,13 +8826,20 @@ div.center form#login input[type='submit'] {
 }
 .welcome #introduction .nextStep {
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #943633;
   display: table;
   float: right;
-  margin-top: 20px;
+  margin-top: 35px;
   border-radius: 5px;
   color: #fff;
+  font-size: 20px;
+}
+.welcome #introduction .nextStep i.fa {
+  font-size: 15px;
+  top: -2px;
+  position: relative;
+  left: 4px;
 }
 @media only screen and (min-width: 0px) and (max-width: 700px) {
   .welcome div.center form#welcome {
@@ -8672,6 +8847,12 @@ div.center form#login input[type='submit'] {
   }
   .welcome div.center .content {
     display: none !important;
+  }
+  .welcome #introduction .logo {
+    background-position: -65px -31px;
+    top: 85%;
+    height: 200px;
+    width: 200px;
   }
 }
 #dashboard #activity-sequence ul {

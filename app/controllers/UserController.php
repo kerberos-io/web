@@ -27,6 +27,35 @@ class UserController extends BaseController
         return Response::json(['error' => true], 400);
     }
 
+    public function changeLanguage()
+    {
+        $language = Input::get('language');
+        Session::put('language',$language);
+        return Response::json(['language' => $language]);
+    }
+
+    public function install()
+    {
+        $input = Input::all();
+
+        $config = $this->kerberos;
+        $user = &$config['users'][0];
+        $user['language'] = Session::get('language');
+        $installed = &$config['installed'];
+        $installed = true;
+
+        if($input['username'] &&
+            $input['password1'] === $input['password2'])
+        {
+            $user['username'] = $input['username'];
+            $user['password'] = $input['password1'];
+        } 
+
+        $this->fileLoader->save($config, '', 'kerberos');
+
+        return Response::json($user);
+    }
+
     public function updateCurrent()
     {
         $input = Input::all();

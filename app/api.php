@@ -69,11 +69,6 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('images/{date}/hours', 'Controllers\ImageController@getImagesPerHourForDay');
         Route::get('images/{date}/{take?}/{page?}', 'Controllers\ImageController@getImages');
         Route::get('images/{date}/{take?}/{page?}/{time?}', 'Controllers\ImageController@getImagesFromStartTime');
-
-        // -----------------
-        // Translate Controller
-        
-        Route::get('translate/{page}', 'Controllers\TranslateController@index');
         
     });
     
@@ -103,6 +98,16 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('configure', array('uses' => 'Controllers\SettingsController@getConfiguration'));
         Route::put('configure', array('uses' => 'Controllers\SettingsController@changeProperties'));
     });
+
+    
+    // -----------------
+    // Translate Controller
+    if(!Config::get('kerberos')['installed'])
+    {
+        Route::get('translate/{page}', 'Controllers\TranslateController@index');
+        Route::post('user/language', 'Controllers\UserController@changeLanguage');
+        Route::post('user/install', 'Controllers\UserController@install');
+    }
 });
 
 /**********************************

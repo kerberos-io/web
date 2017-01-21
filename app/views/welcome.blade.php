@@ -47,7 +47,7 @@
                 <option value="pt">Português</option>
             </select>
             <div class="next">
-                <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
         </form>
         <div id="introduction" style="display: none;"></div>
