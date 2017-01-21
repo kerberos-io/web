@@ -8417,20 +8417,27 @@ div.center .content {
   z-index: 1;
 }
 div.center .content .circle {
-  padding: 10px;
+  display: table;
+  background: #fff;
+  margin: 9px 0 0 14px;
+  border-radius: 50%;
+  padding: 5px;
+  float: left;
+  background-image: url(../images/kerberos_multihead.svg);
+  background-position: -175px -31px;
 }
 div.center .content .circle div.kerberos {
   padding: 10px;
   display: block;
   position: relative;
-  background-image: url('../images/kerberos_multihead.svg');
+  background-image: none !important;
   background-position: center;
   background-repeat: no-repeat;
   width: 380px;
   height: 380px;
 }
 div.center form#login {
-  margin: -250px auto;
+  margin: -280px auto;
   padding: 30px;
   display: table;
   position: relative;
@@ -8438,20 +8445,23 @@ div.center form#login {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: px solid #EAEAEA;
-  border-bottom: 4px solid #EAEAEA;
-  background-color: #f4f4f4;
+  /* border-bottom: 4px solid #EAEAEA; */
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
+  text-align: center;
+  max-width: 200px;
 }
 div.center form#login input[type='text'],
 div.center form#login input[type='password'] {
   color: #74838E;
-  border: 1px solid #CACBCB;
+  border: none;
   border-radius: 3px;
   -webkit-box-shadow: none;
   box-shadow: none;
   padding: 8px 12px;
-  margin: 0 10px 0 0;
+  margin: 0;
   height: 38px;
+  margin-bottom: 10px;
 }
 div.center form#login input[type='submit'] {
   padding: 9px 16px;
@@ -8461,6 +8471,27 @@ div.center form#login input[type='submit'] {
   outline: 0;
   color: #fff;
   background-color: #943633;
+  width: 100%;
+}
+.login footer#branding {
+  color: #fff;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.login footer#branding a,
+.login footer#branding a:hover {
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+}
+.login footer#branding i.logo_verstraetenio {
+  background: url(/images/logo_verstraetenio.png);
+  background-size: cover !important;
+  width: 43px;
+  height: 40px;
+  padding: 16px;
+  margin-right: 10px;
 }
 @media only screen and (min-width: 0px) and (max-width: 700px) {
   body#red {

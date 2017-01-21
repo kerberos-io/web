@@ -28,8 +28,12 @@ define(["jquery"], function($)
         },
         initialize: function()
         {
-            if(this.form == undefined) return false;
+            $(document).ready(function()
+            {
+                $(".center").fadeIn(2000);
+            });
 
+            if(this.form == undefined) return false;
 
             var messageBag = this.messageBag;
             var endpoint = _baseUrl + this.url;
