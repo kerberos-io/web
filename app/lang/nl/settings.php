@@ -17,6 +17,8 @@ return array(
 
 	'update' => 'Aanpassen',
 
+	'heatmap' => 'Warmtefoto',
+
 	'general' => 'Algemene instellingen',
 
 	'purchase' => 'Bekijk je activeit overal ter wereld met <b>Kerberos.cloud</b>, Start <u>nu</u> voor slechts 1,49€/maand!',
@@ -31,7 +33,7 @@ return array(
 
 	'timezone' => 'Tijdzone',
 
-	'timezoneInfo' => 'De tijdzone wordt gebruikt om de correct datum en tijd, die in jouw land van toepassing is, van de verschillende events te kunnen weer te geven.',
+	'timezoneInfo' => 'De tijdzone wordt gebruikt om de correct datum en tijd, die in jouw land van toepassing is, van de verschillende events te kunnen weergeven.',
 
 	'camera' => 'Camera',
 

@@ -45,7 +45,7 @@ return array(
 
 		'cloudOverview' => 'Simple overview to see all your instances together.',
 
-		'cloudRegister' => 'To get started register an account on <a href="https://cloud.kerberos.io">cloud.kerberos.io</a>, and subscribe te plan.',
+		'cloudRegister' => 'To get started register an account on <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, and subscribe te plan.',
 
 	'username' => 'username',
 

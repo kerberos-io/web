@@ -17,6 +17,8 @@ return array(
 
 	'update' => 'Aktualisieren',
 
+	/* to translate */ 'heatmap' => 'Heatmap',
+
 	/* to translate */ 'general' => 'General settings',
 
 	/* to translate */ 'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!',

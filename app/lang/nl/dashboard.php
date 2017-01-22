@@ -19,7 +19,7 @@ return array(
 
 		'lastActivity' => 'Laatste activiteit',
 
-		'heatmap' => 'Heatmap',
+		'heatmap' => 'Warmtefoto',
 
 	'overview' => 'Overzicht',
 

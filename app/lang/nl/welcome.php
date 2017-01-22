@@ -45,7 +45,7 @@ return array(
 
 		'cloudOverview' => 'Een eenvoudig overview om al je installaties te bekijken.',
 
-		'cloudRegister' => 'Om te starten met Kerberos.cloud maak je een account aan op <a href="https://cloud.kerberos.io">cloud.kerberos.io</a>, en schrijf je jezelf in voor een plan op maat.',
+		'cloudRegister' => 'Om te starten met Kerberos.cloud maak je een account aan op <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, en schrijf je jezelf in voor een plan op maat.',
 
 	'username' => 'gebruikersnaam',
 

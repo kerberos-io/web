@@ -13,6 +13,7 @@ class DashboardController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
+        $this->kerberos = Config::get("kerberos");
     }
     
     /****************************
@@ -29,6 +30,7 @@ class DashboardController extends BaseController
         
 		return View::make('dashboard', [
             'days' => $days,
+            'kerberos' => $this->kerberos,
             'isUpdateAvailable' => $this->isUpdateAvailable(),
             'fps' => $settings['io']['dropdown']['Video']['children']['fps']['value'],
         ]);

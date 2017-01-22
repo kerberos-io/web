@@ -77,6 +77,25 @@ class SettingsController extends BaseController
         return $config;
     }
 
+    /********************************
+     *  Update web interface config
+     */
+    public function updateWeb()
+    {
+        $config = $this->kerberos;
+
+        $properties = Input::except("_token");
+
+        foreach ($properties as $key => $property)
+        {
+            $config[$key] = $property;
+        }
+
+        $this->fileLoader->save($config, '', 'kerberos');
+        
+        return Redirect::back();
+    }
+
     /******************************************************************
      *  Get new settings from the settings page.
      *

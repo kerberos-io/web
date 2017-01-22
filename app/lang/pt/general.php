@@ -19,6 +19,8 @@ return array(
 
 	'configuration' => 'Configurações',
 
+	'heatmap' => 'Mapa de Calor',
+
 	'cloud' => 'Nuvem',
     
 	/* to translate */ 'on' => 'On',

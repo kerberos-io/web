@@ -1,5 +1,6 @@
 <?php return array (
   'type' => 'basic',
+  'radius' => '3',
   'installed' => false,
   'users' => 
   array (
@@ -9,8 +10,8 @@
       'username' => 'root',
       'password' => 'root',
       'firstname' => 'Firstname',
-      'secondname' => 'Latname',
-      'language' => 'nl',
+      'secondname' => 'Lastname',
+      'language' => 'en',
     ),
-  ),
+  )
 );

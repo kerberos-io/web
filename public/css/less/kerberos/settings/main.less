@@ -8,7 +8,34 @@
     min-width: 600px;
 }
 
-#settings, #cloud, #settings-modal, #update-profile-modal
+#machinery-settings,
+#web-settings
+{
+    padding-right: 30px;
+}
+
+#web-settings
+{
+    .content
+    {
+        display: table;
+        clear: both;
+        width: 100%;
+
+        .slider
+        {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .slider.slider-horizontal
+        {
+            margin: 10px 4% 40px auto;
+        }
+    }
+}
+
+#machinery-settings, #web-settings, #cloud, #settings-modal, #update-profile-modal
 {
     margin-bottom: 15px;
 
@@ -115,7 +142,6 @@
     div.submit-form
     {
         margin-top: 10px;
-        padding-right: 20px;
         clear: both;
     }
 
@@ -506,6 +532,7 @@ div#configuration
 {
     clear: both; 
     display: table;
+    width: 100%;
 
     h2
     {
@@ -534,7 +561,7 @@ label
     text-transform: capitalize;
 }
 
-#settings
+#machinery-settings, #web-settings
 {
     input[type='checkbox']
     {

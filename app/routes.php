@@ -49,6 +49,7 @@ Route::group(['before' => ['validConfig', 'validCapture']], function()
         Route::get('settings', 'Controllers\SettingsController@index');
         Route::get('cloud', 'Controllers\SettingsController@cloud');
         Route::post('settings/update', array('uses' => 'Controllers\SettingsController@update'));
+        Route::post('settings/update/web', array('uses' => 'Controllers\SettingsController@updateWeb'));
     
         // ------------------------
         // System Controller

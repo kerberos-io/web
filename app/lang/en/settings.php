@@ -16,6 +16,8 @@ return array(
     'configuration' => 'Configuration',
 
 	'update' => 'Update',
+
+	'heatmap' => 'Heatmap',
 	
 	'general' => 'General settings',
 

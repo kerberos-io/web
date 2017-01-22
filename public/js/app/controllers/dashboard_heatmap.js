@@ -17,12 +17,13 @@ define(["heatmap"], function(heatmap)
             self = this;
             self.config = config;
             self.fps = config.fps;
+            self.radius = (config.radius) ? config.radius * 100 : 250;
             
             // create heatmap
             self.heatmapInstance = heatmap.create({
                 container: document.querySelector('.heatmap'),
                 maxOpacity: 0.5,
-                minOpacity: 0,
+                minOpacity: 0
             });
             
             $(window).resize(function()
@@ -33,6 +34,11 @@ define(["heatmap"], function(heatmap)
             
             // Wait 300 ms before executing 
             setTimeout(self.config.callback, 300);
+        },
+        changeRadius: function(radius)
+        {
+            this.radius = radius * 100;
+            this.draw();
         },
         redraw: function()
         {
@@ -196,7 +202,7 @@ define(["heatmap"], function(heatmap)
                     x: parseInt(regions[i].start.x * dx + (regions[i].end.x - regions[i].start.x) * dx / 2),
                     y: parseInt(regions[i].start.y * dy + (regions[i].end.y - regions[i].start.y) * dy / 2),
                     value: regions[i].average,
-                    radius: regions[i].average * 500,
+                    radius: regions[i].average * this.radius,
                 };
                 
                 dataPoints.push(point);

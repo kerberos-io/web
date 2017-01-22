@@ -9658,10 +9658,10 @@ div.video-preview video:first-child {
 #timeselection .timepicker {
   text-align: center;
 }
-#settings .dropdown-section {
+#machinery-settings .dropdown-section {
   padding-right: 20px;
 }
-#settings .dropdown-section .dropdown {
+#machinery-settings .dropdown-section .dropdown {
   clear: both;
   background-color: #f5f5f5;
   color: #000;
@@ -9671,10 +9671,10 @@ div.video-preview video:first-child {
   width: 100%;
   border-radius: 10px;
 }
-#settings .dropdown-section .dropdown i {
+#machinery-settings .dropdown-section .dropdown i {
   color: #943633;
 }
-#settings .dropdown-section .dropdown div.icon {
+#machinery-settings .dropdown-section .dropdown div.icon {
   float: right;
   font-size: 20px;
   padding-top: 7px;
@@ -9682,7 +9682,7 @@ div.video-preview video:first-child {
   cursor: pointer;
   color: #fff;
 }
-#settings .dropdown-section .dropdown div.delete-dropdown {
+#machinery-settings .dropdown-section .dropdown div.delete-dropdown {
   float: left;
   margin-right: 5px;
 }
@@ -9925,20 +9925,39 @@ div.video-preview video:first-child {
 #update-profile-modal {
   min-width: 600px;
 }
-#settings,
+#machinery-settings,
+#web-settings {
+  padding-right: 30px;
+}
+#web-settings .content {
+  display: table;
+  clear: both;
+  width: 100%;
+}
+#web-settings .content .slider {
+  width: 100%;
+  margin-bottom: 10px;
+}
+#web-settings .content .slider.slider-horizontal {
+  margin: 10px 4% 40px auto;
+}
+#machinery-settings,
+#web-settings,
 #cloud,
 #settings-modal,
 #update-profile-modal {
   margin-bottom: 15px;
 }
-#settings div.description,
+#machinery-settings div.description,
+#web-settings div.description,
 #cloud div.description,
 #settings-modal div.description,
 #update-profile-modal div.description {
   width: 75%;
   margin-bottom: 20px;
 }
-#settings .sub h2,
+#machinery-settings .sub h2,
+#web-settings .sub h2,
 #cloud .sub h2,
 #settings-modal .sub h2,
 #update-profile-modal .sub h2 {
@@ -9947,13 +9966,15 @@ div.video-preview video:first-child {
   font-size: 17px;
   color: #943633;
 }
-#settings > div,
+#machinery-settings > div,
+#web-settings > div,
 #cloud > div,
 #settings-modal > div,
 #update-profile-modal > div {
   margin: 5px 0 5px 0;
 }
-#settings .sub,
+#machinery-settings .sub,
+#web-settings .sub,
 #cloud .sub,
 #settings-modal .sub,
 #update-profile-modal .sub {
@@ -9961,37 +9982,43 @@ div.video-preview video:first-child {
   padding: 20px 0 20px 0;
   display: table;
 }
-#settings .image img,
+#machinery-settings .image img,
+#web-settings .image img,
 #cloud .image img,
 #settings-modal .image img,
 #update-profile-modal .image img {
   width: 100%;
   height: auto;
 }
-#settings div.dropdown div.element,
+#machinery-settings div.dropdown div.element,
+#web-settings div.dropdown div.element,
 #cloud div.dropdown div.element,
 #settings-modal div.dropdown div.element,
 #update-profile-modal div.dropdown div.element {
   clear: both;
 }
-#settings div label,
+#machinery-settings div label,
+#web-settings div label,
 #cloud div label,
 #settings-modal div label,
 #update-profile-modal div label,
-#settings div select,
+#machinery-settings div select,
+#web-settings div select,
 #cloud div select,
 #settings-modal div select,
 #update-profile-modal div select {
   float: left;
 }
-#settings div select,
+#machinery-settings div select,
+#web-settings div select,
 #cloud div select,
 #settings-modal div select,
 #update-profile-modal div select {
   width: 123px;
   margin-right: 10px;
 }
-#settings div label,
+#machinery-settings div label,
+#web-settings div label,
 #cloud div label,
 #settings-modal div label,
 #update-profile-modal div label {
@@ -9999,31 +10026,37 @@ div.video-preview video:first-child {
   padding-top: 8px;
   padding-right: 15px;
 }
-#settings div.section,
+#machinery-settings div.section,
+#web-settings div.section,
 #cloud div.section,
 #settings-modal div.section,
 #update-profile-modal div.section {
   display: none;
 }
-#settings #div.sub,
+#machinery-settings #div.sub,
+#web-settings #div.sub,
 #cloud #div.sub,
 #settings-modal #div.sub,
 #update-profile-modal #div.sub {
   clear: both;
 }
-#settings input[type="text"],
+#machinery-settings input[type="text"],
+#web-settings input[type="text"],
 #cloud input[type="text"],
 #settings-modal input[type="text"],
 #update-profile-modal input[type="text"],
-#settings input[type="password"],
+#machinery-settings input[type="password"],
+#web-settings input[type="password"],
 #cloud input[type="password"],
 #settings-modal input[type="password"],
 #update-profile-modal input[type="password"],
-#settings select,
+#machinery-settings select,
+#web-settings select,
 #cloud select,
 #settings-modal select,
 #update-profile-modal select,
-#settings input[type="submit"],
+#machinery-settings input[type="submit"],
+#web-settings input[type="submit"],
 #cloud input[type="submit"],
 #settings-modal input[type="submit"],
 #update-profile-modal input[type="submit"] {
@@ -10046,27 +10079,30 @@ div.video-preview video:first-child {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-#settings .text,
+#machinery-settings .text,
+#web-settings .text,
 #cloud .text,
 #settings-modal .text,
 #update-profile-modal .text {
   margin-top: 10px;
 }
-#settings .text input[type="text"],
+#machinery-settings .text input[type="text"],
+#web-settings .text input[type="text"],
 #cloud .text input[type="text"],
 #settings-modal .text input[type="text"],
 #update-profile-modal .text input[type="text"] {
   margin-left: 9px;
 }
-#settings div.submit-form,
+#machinery-settings div.submit-form,
+#web-settings div.submit-form,
 #cloud div.submit-form,
 #settings-modal div.submit-form,
 #update-profile-modal div.submit-form {
   margin-top: 10px;
-  padding-right: 20px;
   clear: both;
 }
-#settings div.submit-form input[type="submit"],
+#machinery-settings div.submit-form input[type="submit"],
+#web-settings div.submit-form input[type="submit"],
 #cloud div.submit-form input[type="submit"],
 #settings-modal div.submit-form input[type="submit"],
 #update-profile-modal div.submit-form input[type="submit"] {
@@ -10078,21 +10114,25 @@ div.video-preview video:first-child {
   border-radius: 10px;
   width: 100%;
 }
-#settings .with-tooltip,
+#machinery-settings .with-tooltip,
+#web-settings .with-tooltip,
 #cloud .with-tooltip,
 #settings-modal .with-tooltip,
 #update-profile-modal .with-tooltip,
-#settings .with-tooltip-left,
+#machinery-settings .with-tooltip-left,
+#web-settings .with-tooltip-left,
 #cloud .with-tooltip-left,
 #settings-modal .with-tooltip-left,
 #update-profile-modal .with-tooltip-left {
   position: relative;
 }
-#settings .with-tooltip > i.description,
+#machinery-settings .with-tooltip > i.description,
+#web-settings .with-tooltip > i.description,
 #cloud .with-tooltip > i.description,
 #settings-modal .with-tooltip > i.description,
 #update-profile-modal .with-tooltip > i.description,
-#settings .with-tooltip-left > i.description,
+#machinery-settings .with-tooltip-left > i.description,
+#web-settings .with-tooltip-left > i.description,
 #cloud .with-tooltip-left > i.description,
 #settings-modal .with-tooltip-left > i.description,
 #update-profile-modal .with-tooltip-left > i.description {
@@ -10105,11 +10145,13 @@ div.video-preview video:first-child {
   text-transform: uppercase;
   font-size: 11px;
 }
-#settings .with-tooltip > span,
+#machinery-settings .with-tooltip > span,
+#web-settings .with-tooltip > span,
 #cloud .with-tooltip > span,
 #settings-modal .with-tooltip > span,
 #update-profile-modal .with-tooltip > span,
-#settings .with-tooltip-left > span,
+#machinery-settings .with-tooltip-left > span,
+#web-settings .with-tooltip-left > span,
 #cloud .with-tooltip-left > span,
 #settings-modal .with-tooltip-left > span,
 #update-profile-modal .with-tooltip-left > span {
@@ -10123,11 +10165,13 @@ div.video-preview video:first-child {
   margin-top: 15px;
   margin-left: 7px;
 }
-#settings .with-tooltip span > span,
+#machinery-settings .with-tooltip span > span,
+#web-settings .with-tooltip span > span,
 #cloud .with-tooltip span > span,
 #settings-modal .with-tooltip span > span,
 #update-profile-modal .with-tooltip span > span,
-#settings .with-tooltip-left span > span,
+#machinery-settings .with-tooltip-left span > span,
+#web-settings .with-tooltip-left span > span,
 #cloud .with-tooltip-left span > span,
 #settings-modal .with-tooltip-left span > span,
 #update-profile-modal .with-tooltip-left span > span {
@@ -10154,19 +10198,23 @@ div.video-preview video:first-child {
   opacity: 0;
   z-index: 9999999;
 }
-#settings .with-tooltip span > span:before,
+#machinery-settings .with-tooltip span > span:before,
+#web-settings .with-tooltip span > span:before,
 #cloud .with-tooltip span > span:before,
 #settings-modal .with-tooltip span > span:before,
 #update-profile-modal .with-tooltip span > span:before,
-#settings .with-tooltip-left span > span:before,
+#machinery-settings .with-tooltip-left span > span:before,
+#web-settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
 #settings-modal .with-tooltip-left span > span:before,
 #update-profile-modal .with-tooltip-left span > span:before,
-#settings .with-tooltip span > span:after,
+#machinery-settings .with-tooltip span > span:after,
+#web-settings .with-tooltip span > span:after,
 #cloud .with-tooltip span > span:after,
 #settings-modal .with-tooltip span > span:after,
 #update-profile-modal .with-tooltip span > span:after,
-#settings .with-tooltip-left span > span:after,
+#machinery-settings .with-tooltip-left span > span:after,
+#web-settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
 #settings-modal .with-tooltip-left span > span:after,
 #update-profile-modal .with-tooltip-left span > span:after {
@@ -10179,46 +10227,54 @@ div.video-preview video:first-child {
   margin-left: -22px;
   -webkit-transform: rotate(90deg);
 }
-#settings .with-tooltip span > span:before,
+#machinery-settings .with-tooltip span > span:before,
+#web-settings .with-tooltip span > span:before,
 #cloud .with-tooltip span > span:before,
 #settings-modal .with-tooltip span > span:before,
 #update-profile-modal .with-tooltip span > span:before,
-#settings .with-tooltip-left span > span:before,
+#machinery-settings .with-tooltip-left span > span:before,
+#web-settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
 #settings-modal .with-tooltip-left span > span:before,
 #update-profile-modal .with-tooltip-left span > span:before {
   border-top: 10px solid #943633;
   margin-left: -7px;
 }
-#settings .with-tooltip span > span:after,
+#machinery-settings .with-tooltip span > span:after,
+#web-settings .with-tooltip span > span:after,
 #cloud .with-tooltip span > span:after,
 #settings-modal .with-tooltip span > span:after,
 #update-profile-modal .with-tooltip span > span:after,
-#settings .with-tooltip-left span > span:after,
+#machinery-settings .with-tooltip-left span > span:after,
+#web-settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
 #settings-modal .with-tooltip-left span > span:after,
 #update-profile-modal .with-tooltip-left span > span:after {
   border-top: 10px solid #fff;
   margin-left: -4px;
 }
-#settings .with-tooltip span:hover > span,
+#machinery-settings .with-tooltip span:hover > span,
+#web-settings .with-tooltip span:hover > span,
 #cloud .with-tooltip span:hover > span,
 #settings-modal .with-tooltip span:hover > span,
 #update-profile-modal .with-tooltip span:hover > span,
-#settings .with-tooltip-left span:hover > span,
+#machinery-settings .with-tooltip-left span:hover > span,
+#web-settings .with-tooltip-left span:hover > span,
 #cloud .with-tooltip-left span:hover > span,
 #settings-modal .with-tooltip-left span:hover > span,
 #update-profile-modal .with-tooltip-left span:hover > span {
   visibility: visible;
   opacity: 1;
 }
-#settings .with-tooltip-left,
+#machinery-settings .with-tooltip-left,
+#web-settings .with-tooltip-left,
 #cloud .with-tooltip-left,
 #settings-modal .with-tooltip-left,
 #update-profile-modal .with-tooltip-left {
   position: relative;
 }
-#settings .with-tooltip-left > i.description,
+#machinery-settings .with-tooltip-left > i.description,
+#web-settings .with-tooltip-left > i.description,
 #cloud .with-tooltip-left > i.description,
 #settings-modal .with-tooltip-left > i.description,
 #update-profile-modal .with-tooltip-left > i.description {
@@ -10231,7 +10287,8 @@ div.video-preview video:first-child {
   text-transform: uppercase;
   font-size: 11px;
 }
-#settings .with-tooltip-left > span,
+#machinery-settings .with-tooltip-left > span,
+#web-settings .with-tooltip-left > span,
 #cloud .with-tooltip-left > span,
 #settings-modal .with-tooltip-left > span,
 #update-profile-modal .with-tooltip-left > span {
@@ -10245,7 +10302,8 @@ div.video-preview video:first-child {
   margin-top: 15px;
   margin-left: 7px;
 }
-#settings .with-tooltip-left span > span,
+#machinery-settings .with-tooltip-left span > span,
+#web-settings .with-tooltip-left span > span,
 #cloud .with-tooltip-left span > span,
 #settings-modal .with-tooltip-left span > span,
 #update-profile-modal .with-tooltip-left span > span {
@@ -10273,11 +10331,13 @@ div.video-preview video:first-child {
   opacity: 0;
   z-index: 9999999;
 }
-#settings .with-tooltip-left span > span:before,
+#machinery-settings .with-tooltip-left span > span:before,
+#web-settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
 #settings-modal .with-tooltip-left span > span:before,
 #update-profile-modal .with-tooltip-left span > span:before,
-#settings .with-tooltip-left span > span:after,
+#machinery-settings .with-tooltip-left span > span:after,
+#web-settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
 #settings-modal .with-tooltip-left span > span:after,
 #update-profile-modal .with-tooltip-left span > span:after {
@@ -10290,21 +10350,24 @@ div.video-preview video:first-child {
   right: -19px;
   -webkit-transform: rotate(90deg);
 }
-#settings .with-tooltip-left span > span:before,
+#machinery-settings .with-tooltip-left span > span:before,
+#web-settings .with-tooltip-left span > span:before,
 #cloud .with-tooltip-left span > span:before,
 #settings-modal .with-tooltip-left span > span:before,
 #update-profile-modal .with-tooltip-left span > span:before {
   border-bottom: 10px solid #943633;
   margin-right: -3px;
 }
-#settings .with-tooltip-left span > span:after,
+#machinery-settings .with-tooltip-left span > span:after,
+#web-settings .with-tooltip-left span > span:after,
 #cloud .with-tooltip-left span > span:after,
 #settings-modal .with-tooltip-left span > span:after,
 #update-profile-modal .with-tooltip-left span > span:after {
   border-bottom: 10px solid #f4f4f4;
   margin-left: -4px;
 }
-#settings .with-tooltip-left span:hover > span,
+#machinery-settings .with-tooltip-left span:hover > span,
+#web-settings .with-tooltip-left span:hover > span,
 #cloud .with-tooltip-left span:hover > span,
 #settings-modal .with-tooltip-left span:hover > span,
 #update-profile-modal .with-tooltip-left span:hover > span {
@@ -10496,6 +10559,7 @@ div.video-preview video:first-child {
 div#configuration {
   clear: both;
   display: table;
+  width: 100%;
 }
 div#configuration h2 {
   float: left;
@@ -10515,7 +10579,8 @@ label {
   font-weight: 0;
   text-transform: capitalize;
 }
-#settings input[type='checkbox'] {
+#machinery-settings input[type='checkbox'],
+#web-settings input[type='checkbox'] {
   margin-top: 13px;
   margin-bottom: 8px;
 }
@@ -10737,33 +10802,43 @@ div#step {
   clear: both;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
-  #settings,
+  #machinery-settings,
+  #web-settings,
   #cloud,
   #settings-modal {
     padding: 0 15px 0;
     display: table;
     width: 100%;
   }
-  #settings div.description,
+  #machinery-settings div.description,
+  #web-settings div.description,
   #cloud div.description,
   #settings-modal div.description {
     width: 100%;
     margin-bottom: 10px;
   }
-  #settings .with-tooltip > span,
+  #machinery-settings .with-tooltip > span,
+  #web-settings .with-tooltip > span,
   #cloud .with-tooltip > span,
-  #settings-modal .with-tooltip > span {
+  #settings-modal .with-tooltip > span,
+  #machinery-settings .with-tooltip-left > span,
+  #web-settings .with-tooltip-left > span,
+  #cloud .with-tooltip-left > span,
+  #settings-modal .with-tooltip-left > span {
     display: none;
   }
-  #settings select {
+  #machinery-settings select,
+  #web-settings select {
     width: 200px;
   }
   #cloud input[type=submit],
   #cloud input[type=text],
   #cloud select,
-  #settings input[type=submit],
-  #settings input[type=text],
-  #settings select {
+  #machinery-settings input[type=submit],
+  #machinery-settings input[type=text],
+  #machinerysettings select #web-settings input[type=submit],
+  #web-settings input[type=text],
+  #web-settings select {
     width: 90%;
   }
   #basic div.type {

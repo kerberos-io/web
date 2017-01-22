@@ -4,7 +4,7 @@ define(["jquery", "app/controllers/event"], function($, event)
     {
         // When clicked on the expand button, we show the section
         // and alert the section it has been opened "changed".
-        $("#settings div.open-section i").click(function(e)
+        $("#machinery-settings div.open-section i").click(function(e)
         {
             // Show the section
             var section = $(this).parent().parent().next();
@@ -30,7 +30,7 @@ define(["jquery", "app/controllers/event"], function($, event)
         });
 
         // When changing dropdown, we make the other section visitble
-        $("#settings .dropdown select").change(changeSection);
+        $("#machinery-settings .dropdown select").change(changeSection);
 
         function changeSection(v)
         {
@@ -55,7 +55,7 @@ define(["jquery", "app/controllers/event"], function($, event)
         }
 
         // When clicked on the delete button, hide dropdown.
-        $("#settings div.delete-dropdown i").click(deleteDropdown);
+        $("#machinery-settings div.delete-dropdown i").click(deleteDropdown);
 
         function deleteDropdown(e)
         {
@@ -66,7 +66,7 @@ define(["jquery", "app/controllers/event"], function($, event)
         }
 
         // When clicked on the delete button, hide dropdown.
-        $("#settings div.add-dropdown i").click(function(e)
+        $("#machinery-settings div.add-dropdown i").click(function(e)
         {
             var selects = $(this).parent().parent().find("select");
             var numberOfSelects = selects.length;
