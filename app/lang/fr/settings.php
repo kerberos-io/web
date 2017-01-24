@@ -92,6 +92,10 @@ return array(
 	// ----------------
 	// Motion
 
+	/* to translate */ 'image' => 'Image',
+
+	/* to translate */ 'video' => 'Video',
+
 	/* to translate */ 'step1' => 'Step 1. Select a region',
 
 	/* to translate */ 'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
@@ -142,6 +146,18 @@ return array(
 	/* to translate */ 'webhookUrl' => 'url',
 
 	/* to translate */ 'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
+
+	/* to translate */ 'scriptPath' => 'path',
+
+	/* to translate */ 'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
+
+	/* to translate */ 'gpioPin' => 'pin',
+
+	/* to translate */ 'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
+
+	/* to translate */ 'gpioPeriod' => 'period',
+
+	/* to translate */ 'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
 
 	// --------------
 	// Cloud

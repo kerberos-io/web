@@ -39,7 +39,7 @@
                             <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="disk"></label>
                         </div>
                         <div class="title">
-                            <i class="fa fa-picture-o" aria-hidden="true"></i> Image
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> {{translation.image}}
                         </div>
                         <div class="content">
                             <div class="with-tooltip-left element">
@@ -65,7 +65,7 @@
                             <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="video"></label>
                         </div>
                         <div class="title">
-                             <i class="fa fa-video-camera" aria-hidden="true"></i> Video
+                             <i class="fa fa-video-camera" aria-hidden="true"></i> {{translation.video}}
                         </div>
                         <div class="content">
                             <div class="slider with-tooltip-left element">
@@ -101,6 +101,52 @@
                                 <span>
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                                     <span>{{translation.webhookUrlInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-script">
+                        <div class="button">
+                            <input class="tgl tgl-flip" id="script" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="script"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-terminal" aria-hidden="true"></i>Script
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="path" value="{{devices.script.path}}"/>
+                                <i class="description">{{translation.scriptPath}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.scriptPathInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-GPIO">
+                        <div class="button">
+                            <input class="tgl tgl-flip" id="gpio" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="gpio"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-microchip" aria-hidden="true"></i>GPIO
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="pin" value="{{devices.gpio.pin}}"/>
+                                <i class="description">{{translation.gpioPin}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.gpioPinInfo}}</span>
+                                </span>
+                            </div>
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="period" value="{{devices.gpio.period}}"/>
+                                <i class="description">{{translation.gpioPeriod}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.gpioPeriodInfo}}</span>
                                 </span>
                             </div>
                         </div>

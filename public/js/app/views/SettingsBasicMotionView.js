@@ -123,7 +123,8 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             }
         },
         update: function()
-        {            this.model.changeIoDevices({
+        {            
+            this.model.changeIoDevices({
                 disk: {
                     enabled: this.model.devices.disk.enabled, // overkill
                     colorTimestamp: this.$el.find("#timestamp-color").val(),
@@ -137,6 +138,15 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 webhook: {
                     enabled: this.model.devices.webhook.enabled, // overkill
                     url:  this.$el.find("#url").val()
+                },
+                script: {
+                    enabled: this.model.devices.script.enabled, // overkill
+                    path:  this.$el.find("#path").val()
+                },
+                gpio: {
+                    enabled: this.model.devices.gpio.enabled, // overkill
+                    pin:  this.$el.find("#pin").val(),
+                    period:  this.$el.find("#period").val()
                 }
             });
 

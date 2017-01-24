@@ -92,6 +92,10 @@ return array(
 	// ----------------
 	// Motion
 
+	'image' => 'Afbeelding',
+
+	'video' => 'Video',
+
 	'step1' => 'Stap 1. Selecteer een bereik',
 
 	'step1Info' => 'Door het verslepen van de rode punten kan je een bereik bepalen, waarin beweging zal worden gededecteerd. Je kan punten verwijderen door op de rode punten te klikken. Om meer punten toe te voegen kan je dubbel klikken op het witte punt.',
@@ -142,6 +146,18 @@ return array(
 	'webhookUrl' => 'url',
 
 	'webhookUrlInfo' => 'De url naar waar een POST zal gestuurd worden (JSON object).',
+
+	'scriptPath' => 'bestand',
+
+	'scriptPathInfo' => 'Het pad naar een bash script dat wordt uitgevoerd. Een JSON object wordt als parameter meegestuurd.',
+
+	'gpioPin' => 'pin',
+
+	/* to translate */ 'gpioPinInfo' => 'Definieer de nummer van de pin op welke een puls moet worden verstuurd.',
+
+	/* to translate */ 'gpioPeriod' => 'periode',
+
+	/* to translate */ 'gpioPeriodInfo' => 'Het aantal microseconden dat de puls zal duren.',
 
 	// --------------
 	// Cloud

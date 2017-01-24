@@ -92,6 +92,10 @@ return array(
 	// ----------------
 	// Motion
 
+	'image' => 'Image',
+
+	'video' => 'Video',
+
 	'step1' => 'Step 1. Select a region',
 
 	'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
@@ -142,6 +146,18 @@ return array(
 	'webhookUrl' => 'url',
 
 	'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
+
+	'scriptPath' => 'path',
+
+	'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
+
+	'gpioPin' => 'pin',
+
+	'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
+
+	'gpioPeriod' => 'period',
+
+	'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
 
 	// --------------
 	// Cloud

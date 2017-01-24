@@ -96,6 +96,15 @@ define(["underscore", "backbone"], function (_, Backbone)
                 webhook: {
                     enabled: false,
                     url: $("input[name='io__Webhook__url']").val()
+                },
+                script: {
+                    enabled: false,
+                    path: $("input[name='io__Script__path']").val()
+                },
+                gpio: {
+                    enabled: false,
+                    pin: $("input[name='io__GPIO__pin']").val(),
+                    period: $("input[name='io__GPIO__periodTime']").val()
                 }
             };
 
@@ -104,7 +113,10 @@ define(["underscore", "backbone"], function (_, Backbone)
             {
                 var option =  $(device).find("option:selected").text();
                 option = option.toLowerCase();
-                self.devices[option].enabled = true;
+                if(self.devices[option])
+                {
+                    self.devices[option].enabled = true;
+                }
             });
 
             return this.devices;
@@ -156,6 +168,10 @@ define(["underscore", "backbone"], function (_, Backbone)
                 {
                     var select = $($(el)[i++]);
                     select.val(capitalizeFirstLetter(key));
+                    if(key === "gpio")
+                    {
+                        select.val(key.toUpperCase());
+                    }
                 }
             });
 
@@ -167,6 +183,9 @@ define(["underscore", "backbone"], function (_, Backbone)
             $("input[name='io__Video__recordAfter']").val(devices.video.recordAfter);
             $("input[name='io__Video__fps']").val(devices.video.fps);
             $("input[name='io__Webhook__url']").val(devices.webhook.url);
+            $("input[name='io__Script__path']").val(devices.script.path);
+            $("input[name='io__GPIO__pin']").val(devices.gpio.pin);
+            $("input[name='io__GPIO__periodTime']").val(devices.gpio.period);
         },
 
         // --------------------------
