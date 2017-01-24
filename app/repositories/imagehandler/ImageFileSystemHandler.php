@@ -122,6 +122,27 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         return $latestSequence;    
     }
 
+    public function getSecondLatestSequence()
+    {
+        $key = $this->user->username . "_secondLatestSequence";
+
+        $latestSequence = $this->cache->storeAndGet($key, function()
+        {
+            $days = $this->getDays(1);
+
+            if(count($days) > 0)
+            {
+                $day = $days[0];
+                $images = $this->getImagesSequenceFromDay($day, 2, 120);
+                return array_values($images);
+            }
+
+            return [];
+        });
+        
+        return $latestSequence;    
+    }
+
     public function getLastHourOfDay($day)
     {
         $hours = $this->countImagesPerHour($day)['total'];
