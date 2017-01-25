@@ -4,8 +4,13 @@
 *
 **/
 
-define(["jquery", "progressbar", "app/views/SystemOSView", "app/views/SystemKerberosView", "app/views/SystemKiOSView"],
-    function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView)
+define(["jquery", "progressbar",
+    "app/views/SystemOSView",
+    "app/views/SystemKerberosView",
+    "app/views/SystemKiOSView",
+    "app/views/NewsView"
+],
+function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView, NewsView)
 {
     return {
         currentVersion: undefined,
@@ -36,6 +41,14 @@ define(["jquery", "progressbar", "app/views/SystemOSView", "app/views/SystemKerb
             systemKiOSView.fetchData(function(data)
             {
                 systemKiOSView.render(data);  
+            })
+
+            var newsView = new NewsView();
+
+            newsView.initialize(translation, self);
+            newsView.fetchData(function(data)
+            {
+                newsView.render(data);  
             })
         },
         reboot: function(callback)
