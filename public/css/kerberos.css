@@ -8037,7 +8037,7 @@ body {
 .top-nav {
   padding: 0;
 }
-.nav .dropdown-menu {
+nav .nav .dropdown-menu {
   margin-right: 0 !important;
 }
 h1 {
@@ -8251,11 +8251,9 @@ div.line {
 .signout,
 .system,
 .settings,
-label.toggle-mobile {
+label.toggle-mobile,
+.profile {
   display: none;
-}
-.settings {
-  margin-right: 10px;
 }
 .machinery-switch {
   width: 75px;
@@ -8364,6 +8362,7 @@ label.toggle-mobile {
   .signout,
   .sync,
   .system,
+  .profile,
   label.toggle-mobile,
   .settings {
     float: right;
@@ -8372,10 +8371,18 @@ label.toggle-mobile {
   .signout i,
   .sync i,
   .system i,
+  .profile i,
   label.toggle-mobile i,
   .settings i {
     color: #fff;
-    padding: 17px 16px 0 0;
+    padding: 17px 10px 0 0;
+  }
+  .profile,
+  .system {
+    margin-right: 16px;
+  }
+  .settings {
+    margin-right: 6px;
   }
   label.toggle-mobile {
     margin-right: 18px;
@@ -8383,6 +8390,13 @@ label.toggle-mobile {
   .register,
   .forgot {
     display: none;
+  }
+  #update-profile-modal {
+    width: 100% !important;
+    min-width: initial !important;
+  }
+  #update-profile-modal .with-tooltip span {
+    display: none !important;
   }
 }
 @media only screen and (min-width: 0px) and (max-width: 330px) {
@@ -10848,11 +10862,11 @@ div#step {
     margin-top: 40px;
   }
 }
-#system-actions {
-  margin-top: 30px;
+.system-actions {
+  margin-top: 10px;
   display: table;
 }
-#system-actions a {
+.system-actions a {
   padding: 12px 25px;
   height: auto;
   background-color: #943633;
@@ -10864,7 +10878,7 @@ div#step {
   display: table;
   float: left;
 }
-#system-actions a:hover {
+.system-actions a:hover {
   text-decoration: none;
 }
 #kerberos {

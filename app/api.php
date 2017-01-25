@@ -56,6 +56,10 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('system/upgrade/reboot', 'Controllers\SystemController@reboot');
         Route::get('system/reboot', 'Controllers\SystemController@rebooting');
         Route::get('system/shutdown', 'Controllers\SystemController@shuttingdown');
+
+        Route::get('system/os', 'Controllers\SystemController@getOS');
+        Route::get('system/kerberos', 'Controllers\SystemController@getKerberos');
+        Route::get('system/kios', 'Controllers\SystemController@getKiOS');
         
         // -----------------
         // Image Controller

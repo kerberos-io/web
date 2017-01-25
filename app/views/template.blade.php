@@ -60,11 +60,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="system" href="{{URL::to('/')}}/system">
-                    <i class="fa fa-desktop"></i>
-                </a>
+
                  <a class="settings" href="{{URL::to('/settings')}}">
                     <i class="fa fa-wrench"></i>
+                </a>
+                <a class="system" href="{{URL::to('/')}}/system">
+                    <i class="fa fa-heartbeat"></i>
+                </a>
+                <a class="profile update-profile" href="#">
+                    <i class="fa fa-fw fa-user"></i>
                 </a>
                 <div class="circle">
                     <a href="{{URL::to('/')}}">
@@ -96,7 +100,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#" id="update-profile"><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</a>
+                            <a href="#" class="update-profile"><i class="fa fa-fw fa-pencil"></i> {{Lang::get('general.update-profile')}}</a>
                         </li>
                         <li>
                             <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> {{Lang::get('general.logout')}}</a>
@@ -141,11 +145,11 @@
                         $.get( _baseUrl + "/api/v1/translate/updateprofile", function(translation)
                         {
                             updateProfile.initialize(translation);
-                        });
-                        
-                        $("#update-profile").click(function()
-                        {
-                            updateProfile.open();
+
+                            $(".update-profile").click(function()
+                            {
+                                updateProfile.open();
+                            });
                         });
                     });
                 });
