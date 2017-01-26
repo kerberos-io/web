@@ -1,6 +1,6 @@
 <?php return array (
   'type' => 'basic',
-  'radius' => '3',
+  'radius' => '1',
   'installed' => false,
   'users' => 
   array (
@@ -13,5 +13,5 @@
       'secondname' => 'Lastname',
       'language' => 'en',
     ),
-  )
+  ),
 );

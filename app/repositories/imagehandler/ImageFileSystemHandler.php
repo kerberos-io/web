@@ -419,6 +419,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 $image->parse($path);
 
                 $path = $this->filesystem->getPathToFile($image);
+                $systemPath = $this->filesystem->getSystemPathToFile($image);
 
                 try
                 {
@@ -428,7 +429,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                         'metadata' => $this->filesystem->getMetadata($image)
                     ];
 
-                    if(getimagesize($path)['mime'] == 'image/jpeg')
+                    if(getimagesize($systemPath)['mime'] == 'image/jpeg')
                     {
                         $object['type'] = 'image';
                         
@@ -514,6 +515,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $image->parse($path);
             
             $path = $this->filesystem->getPathToFile($image);
+            $systemPath = $this->filesystem->getSystemPathToFile($image);
 
             try
             {
@@ -523,7 +525,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     'metadata' => $this->filesystem->getMetadata($image)
                 ];
 
-                if(getimagesize($path)['mime'] == 'image/jpeg')
+                if(getimagesize($systemPath)['mime'] == 'image/jpeg')
                 {
                     $object['type'] = 'image';
                     
