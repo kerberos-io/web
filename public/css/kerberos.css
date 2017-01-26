@@ -10093,6 +10093,13 @@ div.video-preview video:first-child {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+#machinery-settings input[type="password"],
+#web-settings input[type="password"],
+#cloud input[type="password"],
+#settings-modal input[type="password"],
+#update-profile-modal input[type="password"] {
+  height: initial;
+}
 #machinery-settings .text,
 #web-settings .text,
 #cloud .text,
@@ -10377,7 +10384,7 @@ div.video-preview video:first-child {
 #cloud .with-tooltip-left span > span:after,
 #settings-modal .with-tooltip-left span > span:after,
 #update-profile-modal .with-tooltip-left span > span:after {
-  border-bottom: 10px solid #f4f4f4;
+  border-bottom: 10px solid #fff;
   margin-left: -4px;
 }
 #machinery-settings .with-tooltip-left span:hover > span,
