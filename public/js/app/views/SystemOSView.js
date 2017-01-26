@@ -28,6 +28,17 @@ define(["underscore", "backbone", "app/views/BaseView", "progressbar"],
             this.model.os = data;
             this.$el.html(this.template(this.model));
 
+            // ------------------------
+            // Check disk size, if full
+
+            if(this.model.os.diskAlmostFull)
+            {
+                $("#diskFull").show();
+            }
+
+            // -----------------
+            // Bind click events
+
             var self = this;
             this.$el.find("#reboot").click(function()
             {   

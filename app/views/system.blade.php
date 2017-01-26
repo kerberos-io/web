@@ -1,9 +1,14 @@
 @extends('template')
 
 @section('content')
-    <div id="diskFull"></div>
+
+    <div id="diskFull" style="display:none">
+        <div class="alert-update alert alert-danger" role="alert">{{Lang::get('system.diskAlmostFull')}}</div>
+    </div>
+
     <div id="page-wrapper">
         <div class="container-fluid">
+
             <div class="row">
 
                 <div id="system" class="col-lg-6">

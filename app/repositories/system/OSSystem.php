@@ -334,16 +334,20 @@ class OSSystem implements SystemInterface
     
     public function diskAlmostFull()
     {
-        $mounts = $this->getMounts();
+        $mounts = $this->getMounts()['disks'];
         
-        $percentage = 0;
+        $used = 0;
+        $size = 0;
+        
         foreach($mounts as &$mount)
         {
-            $percentage += $mount['used_percent'];
+            $used += $mount['used'];
+            $size += $mount['size'];
         }
-        $percentage /= count($mounts);
+
+        $percentage = $used / $size * 100;
         
-        return ($percentage > 75) ? true : false;
+        return ($percentage > 80) ? true : false;
     }
     
     public function getFreeSpace()

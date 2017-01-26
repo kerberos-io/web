@@ -39,18 +39,12 @@ class SystemController extends BaseController
     public function index()
     {
         $days = $this->imageHandler->getDays(5);
-        $allDays = $this->imageHandler->getDays(-1);
-        $numberOfImages = $this->imageHandler->getNumberOfImages();
         $insideDocker = (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true');
 
         return View::make('system',
         [
             'days' => $days,
-            'allDays' => $allDays,
-            'numberOfImages' => $numberOfImages,
-            'system' => $this->system,
-            'insideDocker' => $insideDocker,
-            'isUpdateAvailable' => $this->isUpdateAvailable(),
+            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 
@@ -73,7 +67,8 @@ class SystemController extends BaseController
             'cpuLoad' => $this->system->getAverageLoad(),
             'numberOfMounts' => count($this->system->getMounts()),
             'mounts' => $this->system->getMounts(),
-            'network' => $this->system->getNet()
+            'network' => $this->system->getNet(),
+            'diskAlmostFull' => $this->system->diskAlmostFull()
         ];  
     }
 
@@ -89,8 +84,7 @@ class SystemController extends BaseController
             'webVersion' => $this->system->getWebVersion(),
             'isMachineryRunning' => $this->system->isMachineryRunning(),
             'shortLog' => $this->system->getShortLog(),
-            'log' => $this->system->getLog(),
-            //"articles" => $this->support->getArticles()
+            'log' => $this->system->getLog()
         ];
     }
 
@@ -101,11 +95,6 @@ class SystemController extends BaseController
             'board' => $this->system->getBoard(),
             'version' => $this->system->getCurrentVersion()
         ];
-    }
-
-    public function getNews()
-    {
-        $articles = $this->support->getArticles();
     }
     
     public function downloadConfiguration()
