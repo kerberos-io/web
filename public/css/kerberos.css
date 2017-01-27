@@ -7997,7 +7997,7 @@ body.remodal-is-active .remodal {
 @-webkit-keyframes autofill {
   to {
     color: #666;
-    background: transparent;
+    background: #fff;
   }
 }
 input:-webkit-autofill {
