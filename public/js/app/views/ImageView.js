@@ -289,14 +289,14 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         {
                             var videoPreviews = $("<div>").addClass('video-preview');
                             videoPreviews.append(
-                                $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
+                                $('<video class="imageview-video-preview" loop="true" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
                                 ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
                                 '<source></video>').click(openVideoView));
 
                             if(self.videoViews.length > 1)
                             {
                                 videoPreviews.append(
-                                        $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(videoCollection.models.length-1).get('src') + '"> '+
+                                        $('<video class="imageview-video-preview" loop="true" preload="auto" autoplay="true" src="' + videoCollection.at(videoCollection.models.length-1).get('src') + '"> '+
                                         ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
                                         '<source></video>').click(openVideoView));
                             }
@@ -599,14 +599,14 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     if(this.views.length == 0)
                     {
                         videoPreviews.append(
-                                $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
+                                $('<video class="imageview-video-preview" loop="true" preload="auto" autoplay="true" src="' + videoCollection.at(0).get('src') + '"> '+
                                 ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
                                 '<source></video>'));
 
                         if(this.videoViews.length > 1)
                         {
                             videoPreviews.append(
-                                    $('<video class="imageview-video-preview" preload="auto" autoplay="true" src="' + videoCollection.at(videoCollection.models.length-1).get('src') + '"> '+
+                                    $('<video class="imageview-video-preview" loop="true" preload="auto" autoplay="true" src="' + videoCollection.at(videoCollection.models.length-1).get('src') + '"> '+
                                     ' <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank" class="vjs-hidden" hidden="hidden">supports HTML5 video</a></p>'+
                                     '<source></video>'));
                         }
