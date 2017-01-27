@@ -73,6 +73,7 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
                 self.$el.find("h2.step span.text").html($(self.$el.find(".part").get(section)).attr('info'));
                 self.$el.find("h2.step i").removeClass().addClass("fa").addClass($(self.$el.find(".part").get(section)).attr('icon'));
                 $(self.$el.find(".part").get(section)).show();
+                window.scrollTo(0,0);
             });
 
             this.$el.find('.nextStep').click(function() {

@@ -7994,6 +7994,16 @@ body.remodal-is-active .remodal {
   font-weight: 400;
   src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(/fonts/opensans.woff2) format('woff2'), url(/fonts/opensans.woff) format('woff');
 }
+@-webkit-keyframes autofill {
+  to {
+    color: #666;
+    background: transparent;
+  }
+}
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
 *:focus {
   outline: none;
 }
@@ -8531,6 +8541,9 @@ div.center form#login input[type='submit'] {
   body div.center .content .circle {
     padding: 15px;
     margin: 0;
+    background-position: -55px -45px;
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
   body div.center .content .circle div.kerberos {
     padding: 5px;
@@ -8793,8 +8806,12 @@ div.center form#login input[type='submit'] {
 .welcome footer#branding {
   color: #fff;
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
   right: 20px;
+  text-align: right;
+  z-index: 1;
+  padding: 25px 0;
+  width: 100%;
 }
 .welcome footer#branding a,
 .welcome footer#branding a:hover {
@@ -8812,6 +8829,7 @@ div.center form#login input[type='submit'] {
 }
 .welcome footer#branding.black {
   color: #333;
+  background-color: #fff;
 }
 .welcome footer#branding.black a,
 .welcome footer#branding.black a:hover {
@@ -8838,6 +8856,7 @@ div.center form#login input[type='submit'] {
   margin: 0 auto;
   margin-top: 50px;
   padding: 20px;
+  padding-bottom: 100px;
 }
 .welcome #introduction .owl-dots {
   position: fixed;
@@ -8852,6 +8871,7 @@ div.center form#login input[type='submit'] {
   left: 0;
   top: 71%;
   display: table;
+  z-index: 99999;
   height: 400px;
   width: 400px;
   background-repeat: no-repeat;
@@ -8889,13 +8909,23 @@ div.center form#login input[type='submit'] {
 }
 @media only screen and (min-width: 0px) and (max-width: 700px) {
   .welcome div.center form#welcome {
-    margin: 0 auto;
+    margin: -165px auto;
+    padding: 45px;
+    width: 100%;
+    border-radius: 0;
+    background-color: #fff;
   }
-  .welcome div.center .content {
-    display: none !important;
+  .welcome div.center form#welcome .next {
+    width: 15%;
+  }
+  .welcome select {
+    border: 1px solid #CACBCB;
+  }
+  .welcome #introduction {
+    padding-bottom: 75px;
   }
   .welcome #introduction .logo {
-    background-position: -65px -31px;
+    background-position: -65px -26px;
     top: 85%;
     height: 200px;
     width: 200px;
