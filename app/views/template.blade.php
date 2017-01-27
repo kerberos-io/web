@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description" content="homesecurity webinterface">
-    <meta name="author" content="Cédric Verstraeten">
-    
-    <link rel="icon" type="image/png" href="{{URL::to('/')}}/images/favicon.ico" />
 
-    <title>kerberos.io - Video Surveillance</title>
+    <title>Kerberos.io</title>
+    <meta name="description" content="Video surveillance made easy. Kerberos.io is a free video surveillance solution, which works with any camera and on every Linux based machine. You can deploy a fully configured video surveillance system within a few minutes on the environment you prefer: Raspberry Pi, Docker, etc.">
+    <meta name="author" content="Verstraeten.io">
+    <meta name="robots" content="none" />
+
+    <link rel="icon" type="image/png" href="{{URL::to('/')}}/images/favicon.ico" />
 
     <!-- Mustachejs -->
     <script src="{{URL::to('/')}}/js/vendor/mustache/mustache.js"></script>
@@ -177,9 +178,19 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-        @if($isUpdateAvailable)
-        <div class="alert-update alert alert-warning" role="alert">Good news, <a href="{{URL::to('/').'/system'}}">a new release of KiOS</a> is available!</div>
-        @endif
+
+        <div id="new-release" style="display:none;" class="alert-update alert alert-warning" role="alert">Good news, <a href="{{URL::to('/').'/system'}}">a new release of KiOS</a> is available!</div>
+
+        <script type="text/javascript">
+            require([_jsBase + 'main.js'], function(common)
+            {
+                require(["app/controllers/releases"], function(Releases)
+                {
+                    Releases.highlightIfNewRelease();
+                });
+            });
+        </script>
+
         @yield('content')
     </div>
     <div id="update-profile-modal" data-remodal-id="update-profile"></div>  

@@ -19,7 +19,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal"],
         {
             var zendesk = "https://kerberosio.zendesk.com/api/v2/help_center/";
 
-            $.get(zendesk + "sections.json", function(data)
+            $.get(zendesk + "en-us/sections.json", function(data)
             {
                 var announcements = _.find(data.sections, function(section)
                 {

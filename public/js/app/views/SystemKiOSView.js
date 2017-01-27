@@ -2,8 +2,8 @@
 *  SystemKiOSView
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView", "remodal", "progressbar"], 
-    function (_, Backbone, BaseView, remodal, ProgressBar)
+define(["underscore", "backbone", "app/views/BaseView", "remodal", "progressbar", "app/controllers/releases"], 
+    function (_, Backbone, BaseView, remodal, ProgressBar, Releases)
 { 
     var SystemKiOSView = BaseView.extend(
     {
@@ -83,7 +83,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "progressbar"
                 var published_at = new Date(version.published_at);
                 
                 $("#upgrade-modal .modal-body").html("" +
-                "<h1>" + self.model.translation.release + " " + version.version + "</h1>" +                       
+                "<h1>" + self.model.translation.release + " " + version.tag_name + "</h1>" +                       
                 "<span>" + self.model.translation.publishedAt+" " + published_at + "</span>" +                       
                 "<p>" + version.body + "</p>" +
                 "<a id='install'>" + self.model.translation.install + "</a>");
@@ -267,8 +267,8 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "progressbar"
         },
         render: function(data)
         {
-            this.setBoard("raspberrypi2");//(data.board);
-            this.setCurrentVersion("v1.0.0");//(data.version);
+            this.setBoard(data.board);
+            this.setCurrentVersion(data.version);
 
             this.model.kerberos = data;
 
@@ -287,40 +287,33 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "progressbar"
             
             var versionwrapper = this.$el.find("#kios-versions");
 
-            // Set api end point and check if develop
-            var url = _baseUrl + "/api/v1/system/versions";
-            if(window.location.hash.substr(1) == 'develop')
-            {
-                url += "?develop=true";
-            }
-
-            // Get versions from API
+            // Get versions from Github
             var self = this;
-            $.get(url,function(versions)
+            Releases.getVersions(function(versions)
             {
                 self.versions = [];
                 
                 var list = $("<ul>");
                 versionwrapper.html(list);
-                versions.reverse();
+
                 for(var i = 0; i < versions.length; i++)
                 {
                     var readableTime = self.timeSince(new Date(versions[i].published_at));
                     
-                    if(versions[i].version === self.currentVersion)
+                    if(versions[i].tag_name === self.currentVersion)
                     {
-                        list.append($("<li id='" + versions[i].version + "' class='version active'>")
-                                .html(versions[i].version)
+                        list.append($("<li id='" + versions[i].tag_name + "' class='version active'>")
+                                .html(versions[i].tag_name)
                                 .prepend($("<span class='active'>")));
                     }
                     else
                     {
-                        list.append($("<li id='" + versions[i].version + "' class='version'>")
-                                .html(versions[i].version)
+                        list.append($("<li id='" + versions[i].tag_name + "' class='version'>")
+                                .html(versions[i].tag_name)
                                 .prepend($("<span>")));
                     }
                     
-                    self.versions[versions[i].version] = versions[i];
+                    self.versions[versions[i].tag_name] = versions[i];
                 }
 
                 self.initializeSystem();

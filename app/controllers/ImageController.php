@@ -49,8 +49,7 @@ class ImageController extends BaseController
         return View::make('image', [
             'days' => $days,
             'selectedDay' => $selectedDay,
-            'lastHourOfDay' => $lastHourOfDay,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'lastHourOfDay' => $lastHourOfDay
         ]);
     }
 

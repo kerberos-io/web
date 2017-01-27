@@ -43,8 +43,7 @@ class SystemController extends BaseController
 
         return View::make('system',
         [
-            'days' => $days,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'days' => $days
         ]);
     }
 

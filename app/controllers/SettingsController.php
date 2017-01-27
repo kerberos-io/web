@@ -33,8 +33,7 @@ class SettingsController extends BaseController
         [
             'days' => $days, 
             'settings' => $settings,
-            'kerberos' => $this->kerberos,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'kerberos' => $this->kerberos
         ]);
     }
 

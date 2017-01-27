@@ -31,7 +31,6 @@ class DashboardController extends BaseController
 		return View::make('dashboard', [
             'days' => $days,
             'kerberos' => $this->kerberos,
-            'isUpdateAvailable' => $this->isUpdateAvailable(),
             'fps' => $settings['io']['dropdown']['Video']['children']['fps']['value'],
         ]);
 	}
