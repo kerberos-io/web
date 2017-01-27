@@ -8547,6 +8547,7 @@ div.center form#login input[type='submit'] {
     padding: 30px 20px;
     border: none;
     width: 100%;
+    max-width: initial;
     border-radius: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
