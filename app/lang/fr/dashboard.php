@@ -19,7 +19,7 @@ return array(
 
 		'lastActivity' => 'Dernière activité',
 
-		/* to translate */ 'heatmap' => 'Heatmap',
+		'heatmap' => 'Points chauds',
 
 	'overview' => 'Vue globale',
 

@@ -21,13 +21,13 @@ return array(
 
 	'cloud' => 'Cloud',
     
-	/* to translate */ 'on' => 'On',
+	'on' => 'On',
     
-	/* to translate */ 'off' => 'Off',
+	'off' => 'Off',
     
 	'logout' => 'Déconnection',
 
-	/* to translate */ 'update-profile' => 'Update profile',
+	'update-profile' => 'MEttre à jour le profil',
     
     
     /*

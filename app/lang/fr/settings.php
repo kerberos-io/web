@@ -17,155 +17,155 @@ return array(
 
 	'update' => 'Sauvegarder',
 
-	/* to translate */ 'heatmap' => 'Heatmap',
-
-	/* to translate */ 'general' => 'General settings',
-
-	/* to translate */ 'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!',
-
-	/* to translate */ 'basic' => 'Basic',
-
-	/* to translate */ 'advanced' => 'Advanced',
-
-	/* to translate */ 'name' => 'Name',
-
-	/* to translate */ 'nameInfo' => 'An unique name for your camera is required, if you will run multiple Kerberos.io instances.',
-
-	/* to translate */ 'timezone' => 'Timezone',
-
-	/* to translate */ 'timezoneInfo' => 'The timezone is used to convert timestamps to your local time. It\'s used in both the machinery and web interface.',
-
-	/* to translate */ 'camera' => 'Camera',
-
-	/* to translate */ 'usbcamera' => 'USB camera',
-
-	/* to translate */ 'usbcameraInfo' => 'Select this option, if you want to use an USB camera.',
-
-	/* to translate */ 'rpicamera' => 'RPi camera',
-
-	/* to translate */ 'rpicameraInfo' => 'If you run Kerberos.io on a Raspberry Pi, you can select this option, if you want to use the Raspberry Pi camera module (v1 or v2).',
-
-	/* to translate */ 'ipcamera' => 'IP camera',
-
-	/* to translate */ 'ipcameraInfo' => 'Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.',
-
-	/* to translate */ 'surveillanceMode' => 'Surveillance',
-
-	/* to translate */ 'motion' => 'Motion',
-
-	/* to translate */ 'motionInfo' => 'A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific region in the view.',
-
-	/* to translate */ 'storage' => 'Storage',
-
-	/* to translate */ 'storageInfo' => 'Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere int the world.',
-
-	/* to translate */ 'dontForget' => 'Press update to confirm your configuration.',
-
-	/* to translate */ 'update' => 'Update',
-
-	/* to translate */ 'cancel' => 'Cancel',
-
-	/* to translate */ 'confirmAndSelect' => 'Confirm and select',
+	'heatmap' => 'Points chauds',
+    
+	'general' => 'Préférences',
+    
+	'purchase' => 'Accédez à votre video-surveillance depuis n\'importe où dans le monde avec <b>Kerberos.cloud</b> ; <u>démarrez</u> pour seulement 1,49€ par mois!',
+    
+	'basic' => 'Simple',
+    
+	'advanced' => 'Avancé',
+    
+	'name' => 'Nom',
+    
+	'nameInfo' => 'Un nom unique est requis pour votre camera si vous lancez plusieurs instances de Kerberos.io.',
+    
+	'timezone' => 'Fuseau horaire',
+    
+	'timezoneInfo' => 'Le fuseau horaire permet de calculer le décalage horaire avec l`heure locale. Il est utilisé par le moteur et l\'interface web.',
+    
+	'camera' => 'Caméra',
+    
+	'usbcamera' => 'Caméra USB',
+    
+	'usbcameraInfo' => 'Sélectionner cette option pour utiliser une camera USB.',
+    
+	'rpicamera' => 'Caméra RPi',
+    
+	'rpicameraInfo' => 'Si vous utilisez Kerberos.io sur un Raspberry Pi, vous pouvez sélectionner cette option pour activer le module caméra (v1 ou v2).',
+    
+	'ipcamera' => 'Caméra IP',
+    
+	'ipcameraInfo' => 'Selectionner cette option pour utiliser une caméra IP compatible avec les flux RTSP ou MJPEG.',
+    
+	'surveillanceMode' => 'Surveillance',
+    
+	'motion' => 'Mouvement',
+    
+	'motionInfo' => 'Détection intelligente de mouvement : prend un photo ou une video et peut déclancher un webhook. Il est possible de configurer une région spécifique de l\'image pour la détection de mouvement.',
+    
+	'storage' => 'Stockage',
+    
+	'storageInfo' => 'Utiliser Kerberos.cloud to suivre plusieurs instances de Kerberos.io depuis n\'importe où dans le monde.',
+    
+	'dontForget' => 'Clickez sur "Valider" pour confirmer la configuration.',
+    
+	'update' => 'Valider',
+    
+	'cancel' => 'Annuler',
+    
+	'confirmAndSelect' => 'Confirmer and sélectionner',
 
 
 	// --------------
 	// Camera
 
-	/* to translate */ 'width' => 'Width',
+	'width' => 'Largeur',
 
-	/* to translate */ 'height' => 'Height',
+	'height' => 'Hauteur',
 
-	/* to translate */ 'widthHeightInfo' => 'The resolution of the images being captured by your camera. Make sure that this resolution is supported!',
+	'widthHeightInfo' => 'La résolution des images capturées. Doit-être compatible avec les spécifications de la caméra !',
 
-	/* to translate */ 'delay' => 'delay in seconds',
+	'delay' => 'delai en secondes',
 
-	/* to translate */ 'delayInfo' => 'The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).',
+	'delayInfo' => 'Le délai indique à Kerberos.io d\'attendre entre deux captures d\'images. Permet de réduire le nombre d\'images traitées par seconde.',
 
-	/* to translate */ 'livestream' => 'live stream frames/sec',
+	'livestream' => 'images/sec',
 
-	/* to translate */ 'livestreamInfo' => 'The frames per second of the live stream can be configured. Setting this option to zero, will disable the live stream.',
+	'livestreamInfo' => 'Le nombre d\'images par secondes du flux live. Mettre à 0 pour désactiver le flux live.',
 
-	/* to translate */ 'rotate' => 'Click on this image if your camera is rotated. E.g. if your camera is mounted upside down, make sure this image is also upside down.',
+	'rotate' => 'Click pour effectuer une rotation de l\'image. Par exemple, si la caméra est montée tête en bas, assurez-vous que l\'image l\'est aussi.',
 
-	/* to translate */ 'url' => 'Enter the url of the RTSP or MJPEG stream of your IP camera.',
+	'url' => 'Entrez l\'URL du flux RTSP ou MJPEG de la caméra IP.',
 
 	// ----------------
 	// Motion
 
-	/* to translate */ 'image' => 'Image',
+	'image' => 'Image',
+    
+	'video' => 'Vidéo',
+    
+	'step1' => 'Etape 1. Sélectionner une région',
+    
+	'step1Info' => 'Déplacer les points pour dessiner la région à surveiller. Double-clicker sur un point pour le supprimer, ou sur le point pour ajouter un nouveau point.',
+    
+	'step2' => 'Etape 2. Configurer les paramètres',
+    
+	'step2Info' => 'Changer la configuration ci-dessous pour ajuster la sensibilité de la détection.',
+    
+	'step3' => 'Etape 3. Sélectionner une ou plusieurs sorties',
+    
+	'step3Info' => 'Les sorties sont exécutées quand un mouvement est détecté.',
+    
+	'sensitivity' => 'sensibilité',
+    
+	'sensitivityInfo' => 'Augmenter le curseur pour augmenter la sensibilité.',
+    
+	'numberOfDetections' => 'Nombre de détections avant action',
+    
+	'numberOfDetectionsInfo' => 'Le nombre de détections d\'affilée qui sont nécessaires pour que Kerberos.io déclenche un évènement. Augmenter cette valeur permet d\'éliminter les faux-positifs dûs aux changements de luminosité, aux nuages, etc.',
 
-	/* to translate */ 'video' => 'Video',
+	// ------------------
+	// Timestamp - Colors
 
-	/* to translate */ 'step1' => 'Step 1. Select a region',
+	'noTimestamp' => 'Pas d\'horodatage',
 
-	/* to translate */ 'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
+	'white' => 'blanc',
 
-	/* to translate */ 'step2' => 'Step 2. Configure parameters',
+	'black' => 'noir',
 
-	/* to translate */ 'step2Info' => 'By changing the configuration below you can make the motion detection more or less sensitive.',
+	'red' => 'rouge',
 
-	/* to translate */ 'step3' => 'Step 3. Select one or more outputs',
+	'green' => 'vert',
 
-	/* to translate */ 'step3Info' => 'Once motion is detected you can execute (asynchronous) one or more outputs.',
+	'blue' => 'bleu',
 
-	/* to translate */ 'sensitivity' => 'sensitivity',
-
-	/* to translate */ 'sensitivityInfo' => 'Increasing this slider will make Kerberos.io more sensitive for motion. Decreasing will make it less sensitive for motion.',
-
-	/* to translate */ 'numberOfDetections' => 'number of detections before valid',
-
-	/* to translate */ 'numberOfDetectionsInfo' => 'This number represents the number of detections in a row before Kerberos.io will trigger a valid event. By increasing this value you can eliminate false-positives: e.g. lightning, clouds, etc.',
-
-		// ------------------
-		// Timestamp - Colors
-
-		/* to translate */ 'noTimestamp' => 'no timestamp',
-
-		/* to translate */ 'white' => 'white',
-
-		/* to translate */ 'black' => 'black',
-
-		/* to translate */ 'red' => 'red',
-
-		/* to translate */ 'green' => 'green',
-
-		/* to translate */ 'blue' => 'blue',
-
-	/* to translate */ 'drawTimestamp' => 'draw timestamp',
-
-	/* to translate */ 'drawTimestampInfo' => 'When an image is saved to disk, you can draw the current date and time on the image.',
-
-	/* to translate */ 'fps' => 'frames per second',
-
-	/* to translate */ 'fpsInfo' => 'The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).',
-
-	/* to translate */ 'secondsRecord' => 'seconds to record',
-
-	/* to translate */ 'secondsRecordInfo' => 'The number of seconds that will be recorded after motion was detected.',
-
-	/* to translate */ 'webhookUrl' => 'url',
-
-	/* to translate */ 'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
-
-	/* to translate */ 'scriptPath' => 'path',
-
-	/* to translate */ 'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
-
-	/* to translate */ 'gpioPin' => 'pin',
-
-	/* to translate */ 'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
-
-	/* to translate */ 'gpioPeriod' => 'period',
-
-	/* to translate */ 'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
+	'drawTimestamp' => 'Activer l\'horodatage',
+    
+	'drawTimestampInfo' => 'Activer l\'affichage de la date et de l\'heure sur les images sauvées sur disque.',
+    
+	'fps' => 'images par seconde',
+    
+	'fpsInfo' => 'Le nombre d\'image par seconde écrites dans le fichier vidéo. Attention, le Raspberry Pi a une limite du nombre de FPS (7 FPS environ)',
+    
+	'secondsRecord' => 'durée d\'enregistrement en secondes',
+    
+	'secondsRecordInfo' => 'La durée de l\'enregistrement après une détection de mouvement.',
+    
+	'webhookUrl' => 'url',
+    
+	'webhookUrlInfo' => 'L\'URL de destination de la requête POST.',
+    
+	'scriptPath' => 'chemin',
+    
+	'scriptPathInfo' => 'Le chemin du script BASH qui sera exécuté. Un objet JSON est passé en paramètre.',
+    
+	'gpioPin' => 'pin GPIO',
+    
+	'gpioPinInfo' => 'Définit le numéro de pin GPIO qui recevra une impulsion.',
+    
+	'gpioPeriod' => 'Durée',
+    
+	'gpioPeriodInfo' => 'Durée de l\'impulsion en microseconde.',
 
 	// --------------
 	// Cloud
 
-	/* to translate */ 'whatIsThis' => 'What is this',
+	'whatIsThis' => 'Qu\'est-ce donc ?',
 
-	/* to translate */ 'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
+	'whatIsthisInformation' => 'Kerberos.io possède sa propre application dans le cloud. En souscrivant au service, vous pouvez synchroniser toutes les images et videos capturées, et les consulter de partout dans le monde. Après l\'enregistrement, vous recevrez votre informations de connexion à copier dans les champs à gauche. Après confirmation, toute l\'activité sera synchronisée automatiquement.',
 
-	/* to translate */ 'subscribeNow' => 'Subscribe now for only €1,49'
+	'subscribeNow' => 'Enregistrez-vous maintenant pour seulement 1,49€'
 
 );
