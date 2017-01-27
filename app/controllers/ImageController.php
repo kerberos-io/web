@@ -49,8 +49,7 @@ class ImageController extends BaseController
         return View::make('image', [
             'days' => $days,
             'selectedDay' => $selectedDay,
-            'lastHourOfDay' => $lastHourOfDay,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'lastHourOfDay' => $lastHourOfDay
         ]);
     }
 
@@ -90,7 +89,12 @@ class ImageController extends BaseController
 
     public function getLatestSequence()
     {
-        $images = $this->imageHandler->getLatestSequence();
+        $images = $this->imageHandler->getSecondLatestSequence();
+
+        if(count($images) == 0)
+        {
+            $images = $this->imageHandler->getLatestSequence();
+        }
 
         return Response::json($images);
     }

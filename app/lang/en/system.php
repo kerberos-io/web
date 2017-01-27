@@ -11,15 +11,27 @@ return array(
 	|
 	*/
 
-	'system' => 'System',
+	'system' => 'System', 
 
 	'diskAlmostFull' => 'Hey, your disk is almost full. Please remove some images..',
 
-	'board' => 'Board',
+	'board' => 'Board',  
     
 	'model' => 'Model',
     
 	'os' => 'OS',
+
+	'osspecifications' => 'OS specifications',
+
+	'warning-docker' => 'Don\'t know i\'m in a seperate docker container..',
+
+	'statistics' => 'Statistics',
+
+	'log' => 'Log',
+
+	'news' => 'News',
+
+	'systemIsOnlineFor' => 'System is online for',
     
 	'kernel' => 'Kernel',
     

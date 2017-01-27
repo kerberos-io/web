@@ -17,10 +17,18 @@ Route::group(['before' => ['validConfig', 'validCapture']], function()
 {
     Route::group(['before' => 'guest'], function()
     {
-	   // ------------------------
+        // -----------------
         // Login Controller
 
         Route::get('login', 'Controllers\LoginController@index');
+        
+        // ----------------------------------------
+        // Welcome controller, for first time setup.
+
+        if(!Config::get('kerberos')['installed'])
+        {
+            Route::get('welcome', 'Controllers\WelcomeController@index');
+        }
     });
 
     Route::group(['before' => 'auth'], function()
@@ -41,6 +49,7 @@ Route::group(['before' => ['validConfig', 'validCapture']], function()
         Route::get('settings', 'Controllers\SettingsController@index');
         Route::get('cloud', 'Controllers\SettingsController@cloud');
         Route::post('settings/update', array('uses' => 'Controllers\SettingsController@update'));
+        Route::post('settings/update/web', array('uses' => 'Controllers\SettingsController@updateWeb'));
     
         // ------------------------
         // System Controller

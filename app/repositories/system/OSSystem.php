@@ -6,15 +6,16 @@ class OSSystem implements SystemInterface
 {
     use \Traits\GetVersions;
         
-    private $upgradeDir = '/data/.firmware_update';
+    private $upgradeDir = '/data/.firmware_update'; // '/Users/cedricverst/Desktop/kios';
     private $bootDir = '/boot';
     
-    public function __construct()
+    public function __construct(){}
+
+    public function initialize()
     {
         $settings = array();
         // If you experience timezone errors, uncomment (remove //) the following line and change the timezone to your liking
         // date_default_timezone_set('America/New_York');
-
         /*
          * Usual configuration
          */
@@ -23,11 +24,9 @@ class OSSystem implements SystemInterface
         $settings['language'] = 'en'; // Refer to the lang/ folder for supported lanugages
         $settings['icons'] = true; // simple icons 
         $settings['theme'] = 'default'; // Theme file (layout/theme_$n.css). Look at the contents of the layout/ folder for other themes.
-
         /*
          * Possibly don't show stuff
          */
-
         // For certain reasons, some might choose to not display all we can
         // Set these to true to enable; false to disable. They default to false.
         $settings['show']['kernel'] = true;
@@ -50,59 +49,46 @@ class OSSystem implements SystemInterface
         $settings['show']['model'] = true; # Model of system. Supported on certain OS's. ex: Macbook Pro
         $settings['show']['numLoggedIn'] = true; # Number of unqiue users with shells running (on Linux)
         $settings['show']['virtualization'] = true; # whether this is a VPS/VM and what kind
-
         // CPU Usage on Linux (per core and overall). This requires running sleep(1) once so it slows
         // the entire page load down. Enable at your own inconvenience, especially since the load averages
         // are more useful.
         $settings['cpu_usage'] = false; 
-
         // Sometimes a filesystem mount is mounted more than once. Only list the first one I see? 
         // (note, duplicates are not shown twice in the file system totals)
         $settings['show']['duplicate_mounts'] = true;
-
         // Disabled by default as they require extra config below
         $settings['show']['temps'] = false;
         $settings['show']['raid'] = false; 
-
         // Following are probably only useful on laptop/desktop/workstation systems, not servers, although they work just as well
         $settings['show']['battery'] = false;
         $settings['show']['sound'] = false;
         $settings['show']['wifi'] = false; # Not finished
-
         // Service monitoring
         $settings['show']['services'] = true;
-
         /*
          * Misc settings pertaining to the above follow below:
          */
-
         // Hide certain file systems / devices
         $settings['hide']['filesystems'] = array(
             'tmpfs', 'ecryptfs', 'nfsd', 'rpc_pipefs',
             'usbfs', 'devpts', 'fusectl', 'securityfs', 'fuse.truecrypt');
         $settings['hide']['storage_devices'] = array('gvfs-fuse-daemon', 'none');
-
         // filter mountpoints based on PCRE regex, eg '@^/proc@', '@^/sys@', '@^/dev@'
         $settings['hide']['mountpoints_regex'] = array();
-
         // Hide mount options for these file systems. (very, very suggested, especially the ecryptfs ones)
         $settings['hide']['fs_mount_options'] = array('ecryptfs');
-
         // Hide hard drives that begin with /dev/sg?. These are duplicates of usual ones, like /dev/sd?
         $settings['hide']['sg'] = true; # Linux only
-
         // Various softraids. Set to true to enable.
         // Only works if it's available on your system; otherwise does nothing
         $settings['raid']['gmirror'] = false;  # For FreeBSD
         $settings['raid']['mdadm'] = false;  # For Linux; known to support RAID 1, 5, and 6
-
         // Various ways of getting temps/voltages/etc. Set to true to enable. Currently these are just for Linux
         $settings['temps']['hwmon'] = true; // Requires no extra config, is fast, and is in /sys :)
         $settings['temps']['hddtemp'] = false;
         $settings['temps']['mbmon'] = false;
         $settings['temps']['sensord'] = false; // Part of lm-sensors; logs periodically to syslog. slow
         $settings['temps_show0rpmfans'] = false; // Set to true to show fans with 0 RPM
-
         // Configuration for getting temps with hddtemp
         $settings['hddtemp']['mode'] = 'daemon'; // Either daemon or syslog
         $settings['hddtemp']['address'] = array( // Address/Port of hddtemp daemon to connect to
@@ -114,7 +100,6 @@ class OSSystem implements SystemInterface
             'host' => 'localhost',
             'port' => 411
         );
-
         /*
          * For the things that require executing external programs, such as non-linux OS's
          * and the extensions, you may specify other paths to search for them here:
@@ -122,41 +107,32 @@ class OSSystem implements SystemInterface
         $settings['additional_paths'] = array(
              //'/opt/bin' # for example
         );
-
-
         /*
          * Services. It works by specifying locations to PID files, which then get checked
          * Either that or specifying a path to the executable, which we'll try to find a running
          * process PID entry for. It'll stop on the first it finds.
          */
-
         // Format: Label => pid file path
         $settings['services']['pidFiles'] = array(
             // 'Apache' => '/var/run/apache2.pid', // uncomment to enable
             // 'SSHd' => '/var/run/sshd.pid'
         );
-
         // Format: Label => path to executable or array containing arguments to be checked
         $settings['services']['executables'] = array(
             // 'MySQLd' => '/usr/sbin/mysqld' // uncomment to enable
             // 'BuildSlave' => array('/usr/bin/python', // executable
-            //						1 => '/usr/local/bin/buildslave') // argv[1]
+            //                      1 => '/usr/local/bin/buildslave') // argv[1]
         );
-
         /*
          * Debugging settings
          */
-
         // Show errors? Disabled by default to hide vulnerabilities / attributes on the server
         $settings['show_errors'] = false;
-
         // Show results from timing ourselves? Similar to above.
         // Lets you see how much time getting each bit of info takes.
         $settings['timer'] = false;
-
         // Compress content, can be turned off to view error messages in browser
         $settings['compress_content'] = true;
-
         /*
          * Occasional sudo
          * Sometimes you may want to have one of the external commands here be ran as root with
@@ -171,7 +147,7 @@ class OSSystem implements SystemInterface
         $settings['sudo_apps'] = array(
             //'ps' // For example
         );
-
+        
         $linfo = new \Linfo\Linfo($settings);
         $this->parser = $linfo->getParser();
     }
@@ -188,7 +164,8 @@ class OSSystem implements SystemInterface
     public function getLog()
     {
         $file = '/etc/opt/kerberosio/logs/log.stash';
-        $content = file_get_contents($file);
+        //$content = file_get_contents($file);
+        $content = shell_exec('exec tail -n200 ' . $file);
         return $content;
     }
     
@@ -207,7 +184,17 @@ class OSSystem implements SystemInterface
     {
         $cmd = "ps -a | grep kerberosio";
         $processes = shell_exec($cmd);
-        return (strlen($processes) > 0);
+        if(strlen($processes) == 0)
+        {
+            // Fix if running on Raspbian..
+            $cmd = 'service kerberosio status | grep "active (running)"';
+            $processes = shell_exec($cmd);
+            return (strlen($processes) > 0);
+        }
+        else
+        {
+            return true;
+        }
     }
     
     public function getOS()
@@ -279,15 +266,20 @@ class OSSystem implements SystemInterface
     {
         $nets = $this->parser->getNet();
         
-        $filtered = [];
+        $filtered = [
+            'networks' => []
+        ];
+
         foreach($nets as $key => &$interface)
         {
             if($interface['recieved']['bytes'] > 0 || $interface['sent']['bytes'] > 0)
             {
+                $interface['name'] = $key;
                 $interface['text'] = [];
                 $interface['text']['recieved'] = $this->toReadableSize($interface['recieved']['bytes']);
                 $interface['text']['sent'] = $this->toReadableSize($interface['sent']['bytes']);
-                $filtered[$key] = $interface;
+                
+                array_push($filtered['networks'], $interface);
             }
         }
                 
@@ -317,7 +309,9 @@ class OSSystem implements SystemInterface
     {
         $mounts = $this->parser->getMounts();
         
-        $filtered = [];
+        $filtered = [
+            'disks' => []
+        ];
         foreach($mounts as &$mount)
         {
             if($mount['used'] > 0 &&
@@ -328,7 +322,10 @@ class OSSystem implements SystemInterface
                 $mount['text']['used'] = $this->toReadableSize($mount['used']);
                 $mount['text']['free'] = $this->toReadableSize($mount['free']);
                 $mount['text']['size'] = $this->toReadableSize($mount['size']);
-                $filtered[$mount['device']] = $mount;
+                $mount['isFull'] = ($mount['used_percent'] > 75);
+                $mount['isAlmostFull'] = ($mount['used_percent'] > 50);
+
+                array_push($filtered['disks'], $mount);
             }
         }
         
@@ -337,16 +334,20 @@ class OSSystem implements SystemInterface
     
     public function diskAlmostFull()
     {
-        $mounts = $this->getMounts();
+        $mounts = $this->getMounts()['disks'];
         
-        $percentage = 0;
+        $used = 0;
+        $size = 0;
+        
         foreach($mounts as &$mount)
         {
-            $percentage += $mount['used_percent'];
+            $used += $mount['used'];
+            $size += $mount['size'];
         }
-        $percentage /= count($mounts);
+
+        $percentage = $used / $size * 100;
         
-        return ($percentage > 75) ? true : false;
+        return ($percentage > 80) ? true : false;
     }
     
     public function getFreeSpace()
@@ -447,6 +448,10 @@ class OSSystem implements SystemInterface
         // Check existing file
         $upgradeDir = $this->upgradeDir;
         $name = "$upgradeDir/kios.img.gz";
+
+        // for osx
+        //$cmd = "stat -f%z $name";
+        // for linux
         $cmd = "stat -c%s $name";
         $size = (int) shell_exec($cmd);
         
@@ -454,7 +459,6 @@ class OSSystem implements SystemInterface
         
         return ['progress' => $progress];
     }
-    
     
     public function unzip()
     {
@@ -572,7 +576,7 @@ class OSSystem implements SystemInterface
     public function shuttingdown()
     {        
         // reboot
-        $cmd = 'shutdown -r now';
+        $cmd = 'halt';
         $output = shell_exec($cmd);
         
         return true;

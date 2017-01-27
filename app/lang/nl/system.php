@@ -20,6 +20,18 @@ return array(
 	'model' => 'Model',
     
 	'os' => 'OS',
+
+	'osspecifications' => 'OS specificaties',
+
+	'warning-docker' => 'Ik weet het niet, de machinery draait in een andere docker container..',
+
+	'log' => 'Logging',
+
+	'news' => 'Nieuws',
+
+	'systemIsOnlineFor' => 'Systeem is online sinds',
+
+	'statistics' => 'Statistieken',
     
 	'kernel' => 'Kernel',
     

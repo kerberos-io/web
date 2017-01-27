@@ -1,8 +1,16 @@
-#KERBEROS.**WEB**
+#KERBEROS.**IO**
 
 [![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](http://waffle.io/kerberos-io/web) [![Join the chat at https://gitter.im/kerberos-io/hades](https://img.shields.io/badge/GITTER-join chat-green.svg)](https://gitter.im/kerberos-io/hades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Kerberos.io - video surveillance](https://kerberos.io/images/kerberos.png)](https://kerberos.io)
+
+## Vote for features
+
+[![Feature Requests](http://feathub.com/kerberos-io/machinery?format=svg)](http://feathub.com/kerberos-io/machinery)
+
+#CC-NC-ND license
+
+THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
 
 ## Why Kerberos.io?
 
@@ -12,7 +20,7 @@ Nowadays we have a myriad of **expensive** camera's, recorders and software solu
 
 ## Introduction
 
-[Kerberos.io](http://kerberos.io) is a **low-budget** video surveillance solution, that uses computer vision algorithms to detect changes, and that can trigger other devices. [Kerberos.io](http://kerberos.io) is open source so everyone can customize the source code to its needs and share it with the community. When deployed on the Raspberry Pi, it has a **green footprint** and it's **easy to install**; you only need to transfer the [Kerberos.io OS (KIOS)](https://doc.kerberos.io/2.0/installation/KiOS) to your SD card and that's it.
+[Kerberos.io](http://kerberos.io) is a **low-budget** video surveillance solution, that uses computer vision algorithms to detect changes, and that can trigger other devices. [Kerberos.io](http://kerberos.io) is open source so everyone can customize the source code to its needs and share it with the community under the [**CC-NC-ND license model**](https://doc.kerberos.io/license). When deployed on the Raspberry Pi, it has a **green footprint** and it's **easy to install**; you only need to transfer the [Kerberos.io OS (KIOS)](https://doc.kerberos.io/2.0/installation/KiOS) to your SD card and that's it.
 
 Use your mobile phone, tablet or PC to keep an eye on your property. View the images taken by [Kerberos.io](http://kerberos.io) with our responsive and user-friendly web interface. Look at the dashboard to get a graphical overview of the past days. Multiple [Kerberos.io](http://kerberos.io) instances can be installed and can be viewed with only 1 web interface.
 
@@ -124,4 +132,4 @@ Restart nginx
 
 You can access **the web** by entering the IP-address in your favorite browser. You'll see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
 
-![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/1.0/1_how-to-access.png)
+![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/2.0/70_installation/1_how-to-access.png)

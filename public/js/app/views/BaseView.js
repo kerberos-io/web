@@ -70,7 +70,7 @@ define(["underscore", "backbone"], function (_, Backbone)
         },
         getTemplate: function(view)
         {
-            return this.templateDriver.get(view) || this.fetch(view);
+            return /*this.templateDriver.get(view) || */this.fetch(view);
         },
         setTemplate: function(name, template)
         {

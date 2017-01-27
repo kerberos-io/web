@@ -1,0 +1,78 @@
+<div class="logo"></div>
+<h1>{{translation.settingThingsUp}}</h1>
+<h2 class="step"><i class="fa fa-bolt" aria-hidden="true"></i> <span class="text">{{translation.welcome}}</span></h2>
+<div class="owl-carousel owl-theme">
+  <div class="part" icon="fa-bolt" info="{{translation.welcome}}">
+        <div class="step">
+            <div class="row">
+                <div class="col-md-6">
+                    {{{translation.introduction1}}}
+                </div>
+                <div class="col-md-6">
+                    {{{translation.introduction2}}}
+
+                    <div class="social">
+                        <a href="https://github.com/kerberos-io" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a href="https://www.facebook.com/kerberosio" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/kerberosio" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nextStep">{{translation.next}} <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+  </div>
+  <div class="part" icon="fa-lock" info="{{translation.setupProfile}}" style="display:none;">
+        <div class="step">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>{{{translation.changeCredentials1}}}</p>
+                    <div class="cover-credentials"></div>
+                    <p>{{{translation.changeCredentials2}}}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{{translation.changeCredentials3}}}</p>
+                    <div class="name with-tooltip element">
+                        <input id="username" type="text" placeholder="{{translation.enterUsername}}" value=""/>
+                    </div>
+                    <div class="name with-tooltip element">
+                        <input type="password" id="password-1" placeholder="{{translation.choosePassword}}" value=""/>
+                    </div> 
+                    <div class="name with-tooltip element">
+                        <input type="password" id="password-2" placeholder="{{translation.confirmPassword}}" value=""/>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="nextStep">{{translation.next}} <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+  </div>
+  <div class="part" icon="fa-cloud" info="{{translation.cloudStorage}}" style="display:none;">
+        <div id="cloud" class="step">
+            <div class="row">
+                <div class="col-md-6">
+                    {{{translation.cloud1}}}
+                    <br/><br/>
+                    <ul>
+                        <li>{{translation.cloudReviewActivity}}</li>
+                        <li>{{translation.cloudNotifications}}</li>
+                        <li>{{translation.cloudTimeline}}</li>
+                        <li>{{translation.cloudOverview}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    {{{translation.cloudRegister}}}
+
+                    <div class="cover-cloud"></div>
+                </div>
+            </Div>
+        </div>
+        <a id="finish" href="{{URL::to('/')}}/login">
+            <div class="nextStep">{{translation.finish}}</div>
+        </a>
+  </div>
+</div>

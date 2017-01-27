@@ -15,13 +15,13 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="active">
-                                        <a class="stream"><i href="#"class="fa fa-fw fa-cloud"></i> {{Lang::get('dashboard.liveView')}}</a>
+                                        <a class="stream"><i href="#" class="fa fa-fw fa-cloud"></i> {{Lang::get('dashboard.liveView')}}</a>
                                     </li>
                                     <li>
-                                        <a class="activity"><i href="#"class="fa fa-fw fa-refresh"></i> {{Lang::get('dashboard.lastActivity')}}</a>
+                                        <a class="activity"><i href="#" class="fa fa-fw fa-refresh"></i> {{Lang::get('dashboard.lastActivity')}}</a>
                                     </li>
                                     <li>
-                                        <a class="heat"><i href="#"class="fa fa-fw fa-fire"></i> {{Lang::get('dashboard.heatmap')}}</a>
+                                        <a class="heat"><i href="#" class="fa fa-fw fa-fire"></i> {{Lang::get('dashboard.heatmap')}}</a>
                                     </li>
                                 </ul>
                             </li>
@@ -36,7 +36,6 @@
                                 <canvas id="latest-activity-sequence"></canvas>
                             </li>
                             <li class="heat">
-                                <img src="<?=App::make("Controllers\ImageController")->getLatestImage()?>" id="latest-image" style="display: none;"/>
                                 <div class="heatmap" style="width: 100%;"></div>
                             </li>
                         </ul>
@@ -98,13 +97,13 @@
                                  ], 
                         function(Streamer, Sequencer, Heatmap, Pie, Graph, Radar)
                         {
-                            $.get('api/v1/streamPort',function(data)
+                            $.get('api/v1/stream',function(data)
                             {
                                 Streamer.initialize(
                                 {
                                     element: "livestream",
-                                    host: "<?=parse_url(URL::to('/'), PHP_URL_HOST)?>",
-                                    port: data[0],
+                                    host: data.url,
+                                    port: data.port,
                                     width: '100%',
                                     callback: function(){}
                                 });
@@ -118,6 +117,7 @@
                                 progressShowImages: true,
                                 playMode: "loop",
                                 playInterval: 300,
+                                fps: "{{$fps}}",
                                 url: _baseUrl + "/api/v1/images/latest_sequence",
                                 callback: function()
                                 {
@@ -125,6 +125,9 @@
                                     {
                                         element: "heatmap",
                                         url: _baseUrl + "/api/v1/images/regions",
+                                        urlSequence: _baseUrl + "/api/v1/images/latest_sequence",
+                                        fps: "1",
+                                        radius: "{{$kerberos['radius']}}",
                                         callback: function(){}
                                     });
                                                             

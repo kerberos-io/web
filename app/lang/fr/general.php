@@ -17,13 +17,17 @@ return array(
 
 	'settings' => 'Réglages',
 
+	'configuration' => 'Réglages',
+
 	'cloud' => 'Cloud',
     
-	'on' => 'On',
+	/* to translate */ 'on' => 'On',
     
-	'off' => 'Off',
+	/* to translate */ 'off' => 'Off',
     
 	'logout' => 'Déconnection',
+
+	/* to translate */ 'update-profile' => 'Update profile',
     
     
     /*

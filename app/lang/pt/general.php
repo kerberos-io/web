@@ -11,19 +11,25 @@ return array(
 	|
 	*/
 
-	'dashboard' => 'Dashboard',
+	'dashboard' => 'Painel',
 
-	'system' => 'System',
+	'system' => 'Sistema',
 
-	'settings' => 'Settings',
+	'settings' => 'Configurações',
 
-	'cloud' => 'Cloud',
+	'configuration' => 'Configurações',
+
+	'heatmap' => 'Mapa de Calor',
+
+	'cloud' => 'Nuvem',
     
-	'on' => 'On',
+	/* to translate */ 'on' => 'On',
     
-	'off' => 'Off',
+	/* to translate */ 'off' => 'Off',
     
-	'logout' => 'Logout',
+	'logout' => 'Sair',
+
+	/* to translate */ 'update-profile' => 'Update profile',
     
     
     /*
@@ -32,24 +38,24 @@ return array(
 	|------------------------
     */
 
-    'monday' => 'Monday',
+    'monday' => 'Segunda-Feira',
 
-    'tuesday' => 'Tuesday',
+    'tuesday' => 'Terça-Feira',
 
-    'wednesday' => 'Wednesday',
+    'wednesday' => 'Quarta-Feira',
 
-    'thursday' => 'Thursday',
+    'thursday' => 'Quinta-Feira',
 
-    'friday' => 'Friday',
+    'friday' => 'Sexta-Feira',
 
-    'saturday' => 'Saturday',
+    'saturday' => 'Sábado',
 
-    'sunday' => 'Sunday',
+    'sunday' => 'Domingo',
             
-    'today' => 'Today',
+    'today' => 'Hoje',
     
-    'yesterday' => 'Yesterday',
+    'yesterday' => 'Ontem',
     
-    'dayBeforeYesterday' => 'Ereyesterday'
+    'dayBeforeYesterday' => 'Antes de Ontem'
 
 );

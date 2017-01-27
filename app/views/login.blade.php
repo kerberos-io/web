@@ -20,16 +20,15 @@
     <script src="{{URL::to('/')}}/js/vendor/requirejs/require.js"></script>
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
-    <link href="{{URL::to('/')}}/js/vendor/csshake/csshake.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/js/vendor/csshake/dist/csshake.css" rel="stylesheet">
 </head>
-<body id="red">
-    <div class="center">
+<body id="red" class="login">
+    <div class="center" style="display: none;">
         <div class="content">
             <div class="circle">
                 <div class="kerberos"></div>
             </div>
         </div>
-        <div id="messages"></div>
         <form id="login">
             <input type="text" id="username" placeholder="username" name="username"/>
             <input type="password" id="password" placeholder="password" name="password"/>
@@ -49,5 +48,9 @@
             });
         });
     </script>
+
+    <footer id="branding">
+         A product by<a class="logo" href="https://verstraeten.io" target="_blank"><i class="logo_verstraetenio"></i>verstraeten.io</a>
+    </footer>
 </body>
 </html>

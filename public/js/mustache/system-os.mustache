@@ -1,0 +1,89 @@
+<div>
+    {{translation.systemIsOnlineFor}} {{os.uptime}}
+    <div class="system-actions">
+        <a id="shutdown">
+            <i class="fa fa-power-off"></i> {{translation.shutdown}}
+        </a>
+        <a id="reboot">
+            <i class="fa fa-refresh"></i> {{translation.reboot}}
+        </a>
+    </div>
+</div>
+<div>
+    <h3>{{translation.osspecifications}}</h3>
+    <table class="table">
+
+        {{#os.board}}
+        <tr><td>{{translation.board}}</td><td>{{os.board}}</td></tr>
+        {{/os.board}}
+
+        {{#os.model}}
+        <tr><td>{{translation.model}}</td><td>{{os.model}}</td></tr>
+        {{/os.model}}
+
+        <tr><td>{{translation.os}}</td><td>{{os.os}}</td></tr>
+        <tr><td>{{translation.kernel}}</td><td>{{os.kernel}}</td></tr>
+        <tr><td>{{translation.hostname}}</td><td>{{os.hostname}}</td></tr>
+    </table> 
+</div>
+<div>
+    <h3>{{translation.architecture}}</h3>
+    {{translation.thisMachine}} {{os.numberOfCPU}} {{$is.architecture}} {{translation.cpuRunning}} <b>{{os.cpuLoad}}</b>.<br/>
+    <ul class="cpus">
+        {{#os.cpu}}
+        <li class="cpu">{{Model}}</li>
+        {{/os.cpu}}
+    </ul>
+</div>
+<div>
+    <h3>{{translation.diskSpecs}}</h3>
+    {{translation.thereAre}} {{os.numberOfMounts}} {{translation.harddisksAvailable}}.
+    <div class="disks">
+        {{#os.mounts.disks}}
+        <div class="disk">
+            {{device}} 
+            <div class="progress">
+              <div class="progress-bar 
+                {{^isAlmostFull}}
+                    progress-bar-success
+                {{/isAlmostFull}}
+                {{#isAlmostFull}}
+                    {{^isFull}}
+                        progress-bar-warning
+                    {{/isFull}}
+                    {{#isFull}}
+                        progress-bar-danger
+                    {{/isFull}}
+                {{/isAlmostFull}}" 
+
+                role="progressbar"
+                aria-valuenow="{{used_percent}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:{{used_percent}}%">
+
+                    {{used_percent}}%
+              </div>
+            </div>
+            {{text.used}}/{{text.size}}
+         </div>
+         {{/os.mounts.disks}}
+     </div>    
+</div>
+<div>
+    <h3>{{translation.networkSpecs}}</h3>
+    <table class="table table-striped">
+        <tr>
+        <th>{{translation.device}}</th>
+        <th>{{translation.recieved}}</th>
+        <th>{{translation.sent}}</th>
+        </tr>
+        {{#os.network.networks}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{text.recieved}}</td>
+            <td>{{text.sent}}</td>
+        </tr>
+        {{/os.network.networks}}
+    </table> 
+</div>

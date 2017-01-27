@@ -11,6 +11,12 @@ class Carbon extends Carbon_ implements DateInterface
         return $dateTime->timestamp;
     }
 
+    public function timestampToDate($timestamp)
+    {
+        $date = Carbon::createFromTimestamp($timestamp, $this->timezone)->format('d-m-Y');  
+        return $date;
+    }
+
     public function dateTimeToTimestamp($date, $time)
     {
         $dateTime = Carbon_::createFromFormat("d-m-Y H:i:s", $date . " ".$time.":00:00", $this->timezone);

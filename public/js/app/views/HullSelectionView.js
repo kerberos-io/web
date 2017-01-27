@@ -30,25 +30,28 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
         addPoint: function(e)
         {
             var point = {
-                "x": e.pageX  - $("ul.side-nav").width() - 20,
-                "y": e.pageY  - $("nav").height() - 20 - 20
+                "x": e.pageX,
+                "y": e.pageY
             };
 
             var mapPosition = this.$el.find("img");
             var delta = {
-                "x": mapPosition.position().left,
-                "y": mapPosition.position().top
+                "x": Math.round(mapPosition.offset().left),
+                "y": Math.round(mapPosition.offset().top)
             };
+
+            point.x -= delta.x;
+            point.y -= delta.y;
 
             // If point is succesfully rendered, add it to collection
             if(this.renderPoint(point, delta))
             {
                 // Add point to Hull model (relative to ratio)
-                var widthRatio = this.image.width / mapPosition.width() ;
+                var widthRatio = this.image.width / mapPosition.width();
                 var heightRatio = this.image.height / mapPosition.height();
                 var coordinate = {
-                    "x" : Math.round((point.x - delta.x) * widthRatio),
-                    "y" : Math.round((point.y - delta.y) * heightRatio)
+                    "x" : Math.round((point.x) * widthRatio),
+                    "y" : Math.round((point.y) * heightRatio)
                 };
 
                 // Write coordinates to input field (format | and , seperated)
@@ -60,6 +63,20 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
         {
             if(!this.closed)
             {
+                var mapPosition = this.$el.find("img").position();
+                var mapWidth = this.$el.find("img").width();
+                var mapHeight = this.$el.find("img").height();
+
+                if(point.x - mapPosition.left < 0)
+                    point.x = mapPosition.left;
+                if(point.y - mapPosition.top < 0)
+                    point.y = mapPosition.top;
+
+                if(point.x > mapPosition.left + mapWidth)
+                    point.x = mapPosition.left + mapWidth;
+                if(point.y > mapPosition.top + mapHeight)
+                    point.y = mapPosition.top + mapHeight;
+
                 var point_id = this.$el.find('.point').length;
                 this.$el.append('<div class="point" id="point_' + point_id + '"></div>');
 
@@ -67,9 +84,32 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 this.$el.find('#point_' + point_id).css('top', point.y + 'px');
 
                 // Add coordinate info, relative to map
-                this.$el.append('<div class="info" id="info_' + point_id + '">('+(point.x - delta.x)+','+(point.y - delta.y)+')</div>');
-                this.$el.find('#info_' + point_id).css('left', point.x - 40 + 'px');
-                this.$el.find('#info_' + point_id).css('top', point.y - 35 + 'px');
+                this.$el.append('<div class="info" id="info_' + point_id + '">('+point.x+','+point.y+')</div>');
+                
+                // Check if point is near to X = 0
+
+                if (point.x > 50)
+                {
+                    this.$el.find('#info_' + point_id).css('left', point.x - 40 + 'px');
+                }
+                else
+                {
+                    this.$el.find('#info_' + point_id).css('left', point.x + 20 + 'px');
+                }
+
+                if (point.x > mapPosition.left + mapWidth - 50)
+                {
+                    this.$el.find('#info_' + point_id).css('left', point.x - 80 + 'px');
+                }
+
+                if (point.y > 50)
+                {
+                    this.$el.find('#info_' + point_id).css('top', point.y - 35 + 'px');
+                }
+                else
+                {
+                    this.$el.find('#info_' + point_id).css('top', point.y + 20 + 'px');
+                }
 
                 // Draw a line between new and previous point
                 if(point_id > 0)
@@ -192,7 +232,6 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 var line_sm = parseInt($elem.attr('id').split('point_')[1],10);
 
                 // Edit point in Hull model (relative to ratio)
-                var mapPosition = self.$el.find("img").position();
                 var widthRatio = self.image.width / self.$el.find("img").width() ;
                 var heightRatio = self.image.height / self.$el.find("img").height();
                 var point = {
@@ -207,9 +246,13 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 
                 var $info = self.$el.find("#info_"+line_sm);
 
+                var leftCoordinate = (left > 50) ? left - 40 : left + 20;
+                leftCoordinate = (left > mapPosition.left + mapWidth - 50) ? left - 80 : leftCoordinate;
+                var topCoordinate = (top > 50) ? top - 35 : top + 20;
+
                 $info.css({
-                    left: left - 40 + "px",
-                    top: top - 35 + "px"
+                    left:  leftCoordinate + "px",
+                    top: topCoordinate + "px"
                 });
 
                 $info.html('('+(left - mapPosition.left)+','+(top - mapPosition.top)+')');
@@ -340,6 +383,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             var widthRatio = this.image.width / mapPosition.width() ;
             var heightRatio = this.image.height / mapPosition.height();
 
+
             var coordinates = this.model.coordinates;
             for(var i = 0; i < coordinates.length; i++)
             {
@@ -368,6 +412,8 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 "coordinates": this.model.coordinates,
             }));
             this.writeCoordinates();
+            this.drawCoordinates();
+
             return this;
         }
     });

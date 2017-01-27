@@ -1,6 +1,6 @@
 @media only screen and (min-width: 0px) and (max-width: 767px)
 {
-	#settings, #cloud
+	#machinery-settings, #web-settings, #cloud, #settings-modal
 	{
 	  	padding: 0 15px 0;
 	  	display: table;
@@ -11,10 +11,42 @@
 	        width: 100%;
 	        margin-bottom: 10px;
 	    }
+
+		.with-tooltip > span,
+		.with-tooltip-left > span
+		{
+			display: none;
+		}
 	}
 
-	#settings select
+	#machinery-settings select, #web-settings select
 	{
 		width: 200px;
 	}
+
+	#cloud input[type=submit],
+	#cloud input[type=text],
+	#cloud select,
+	#machinery-settings input[type=submit],
+	#machinery-settings input[type=text],
+	#machinerysettings select
+	#web-settings input[type=submit],
+	#web-settings input[type=text],
+	#web-settings select
+    {
+    	width: 90%;
+    }
+
+    #basic
+    {
+     	div.type
+	    {
+	        padding: 10px;
+	    }
+    }
+
+    .rotate
+    {
+    	margin-top: 40px;
+    }
 }
