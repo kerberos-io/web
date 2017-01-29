@@ -21,17 +21,17 @@ return array(
     
 	'os' => 'OS',
 
-	/* to translate */ 'osspecifications' => 'OS specifications',
+	'osspecifications' => 'spécifications de l\'OS',
 
-	/* to translate */ 'warning-docker' => 'Don\'t know i\'m in a seperate docker container..',
+	'warning-docker' => 'Impossible de déterminer le conteneur docker..',
 
-	/* to translate */ 'statistics' => 'Statistics',
+	'statistics' => 'Statistiques',
 
-	/* to translate */ 'log' => 'Log',
+	'log' => 'Log',
 	
-	/* to translate */ 'news' => 'News',
+	'news' => 'Nouveautés',
 
-	/* to translate */ 'systemIsOnlineFor' => 'System is online for',
+	'systemIsOnlineFor' => 'Système en ligne :',
     
 	'kernel' => 'Noyau',
     
@@ -69,13 +69,13 @@ return array(
     
 	'downloadSystemFiles' => 'Télécharger des fichiers système',
     
-	'downloadImages' => 'Télécharger des images',
+	'downloadImages' => 'Télécharger les images',
     
-	'removeImages' => 'Supprimer des images',
+	'removeImages' => 'Supprimer toutes les images',
 
 	'shutdown' => 'Éteindre',
 
-	'reboot' => 'Réinitialiser',
+	'reboot' => 'Rebooter',
     
 	'release' => 'Release',
     
