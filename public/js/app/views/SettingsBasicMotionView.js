@@ -162,9 +162,9 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             this.$el.html(this.template(this.model));
             this.createSlider();
             this.createCarousel();
+            this.setRegionSelector();
             this.setDevices();
             this.setColor();
-            this.setRegionSelector();
             return this;
         }
     });
