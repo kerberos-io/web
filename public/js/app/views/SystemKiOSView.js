@@ -36,7 +36,7 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal", "progressbar"
         },
         fetchData: function(callback)
         {
-            $.get( _baseUrl + "/api/v1/system/kios", function(data)
+            Releases.getSystemInfo(function(data)
             {
                 if(data.isKios)
                 {

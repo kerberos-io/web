@@ -24,7 +24,7 @@ define(["jquery", "underscore", "app/controllers/Cache"], function($, _, Cache)
                 callback(versions);
             });
         },
-        getCurrentVersion: function(callback)
+        getSystemInfo: function(callback)
         {
             Cache(this.kiosEndpoint).then(function(data)
             {
@@ -35,7 +35,7 @@ define(["jquery", "underscore", "app/controllers/Cache"], function($, _, Cache)
         {
             var self = this;
 
-            self.getCurrentVersion(function(data)
+            self.getSystemInfo(function(data)
             {
                 var currentVersion = data.version;
 

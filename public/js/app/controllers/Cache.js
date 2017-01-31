@@ -8,17 +8,23 @@ define(["jquery", "underscore"], function($, _)
     {
         var supportsLocalStorage = 'localStorage' in window;
 
-        // both functions return a promise, so no matter which function
-        // gets called inside getCache, you get the same API.
         function getJSON(key)
         {
-            return jQuery.getJSON(key).then(function(data)
+            var promise = jQuery.getJSON(key);
+
+            return promise.pipe(function(data)
             {
+                var jsonDfd = new jQuery.Deferred();
+
                 if(supportsLocalStorage)
                 {
                     localStorage.setItem(key, JSON.stringify(data));
                 }
-            }).promise();
+
+                jsonDfd.resolveWith(null, [data]);
+
+                return jsonDfd.promise();
+            })
         }
 
         function getStorage(key)
