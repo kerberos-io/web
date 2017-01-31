@@ -81,6 +81,7 @@ class SystemController extends BaseController
             'numberOfDays' => count($days),
             'numberOfImages' => $this->imageHandler->getNumberOfImages(),
             'webVersion' => $this->system->getWebVersion(),
+            'machineryVersion' => $this->system->getMachineryVersion
             'isMachineryRunning' => $this->system->isMachineryRunning(),
             'shortLog' => $this->system->getShortLog(),
             'log' => $this->system->getLog()
