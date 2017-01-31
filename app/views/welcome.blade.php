@@ -29,7 +29,8 @@
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
     <link href="{{URL::to('/')}}/js/vendor/csshake/dist/csshake.css" rel="stylesheet">
 </head>
-<body id="red" class="welcome">
+<body id="red" class="welcome" style="margin:0">
+    <div class="alert-update alert alert-success" role="alert">Hey, this is a demo environment! We've disabled some parts of the interface, so the environment stays clean for everyone.</div>
     <div class="center" style="display: none;">
         <div class="content">
             <div class="circle">

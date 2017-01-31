@@ -47,10 +47,10 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
                 'password2': password2.val()
             };
             
-            $.post(_baseUrl + "/api/v1/user/install", data, function(data)
-            {
+            //$.post(_baseUrl + "/api/v1/user/install", data, function(data)
+            //{
                 window.location.href = element.attr('href');
-            });
+            //});
 
             return false;
         },

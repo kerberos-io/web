@@ -41,6 +41,7 @@
     </script>
 </head>
 <body>
+    <div class="alert-update alert alert-success" role="alert">Hey, this is a demo environment! We've disabled some parts of the interface, so the environment stays clean for everyone.</div>
     <div id="wrapper">
 
         <!-- Navigation -->

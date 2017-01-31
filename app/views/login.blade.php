@@ -22,7 +22,8 @@
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
     <link href="{{URL::to('/')}}/js/vendor/csshake/dist/csshake.css" rel="stylesheet">
 </head>
-<body id="red" class="login">
+<body id="red" class="login" style="margin:0">
+    <div class="alert-update alert alert-success" role="alert">Hey, this is a demo environment! We've disabled some parts of the interface, so the environment stays clean for everyone.</div>
     <div class="center" style="display: none;">
         <div class="content">
             <div class="circle">
@@ -30,8 +31,8 @@
             </div>
         </div>
         <form id="login">
-            <input type="text" id="username" placeholder="username" name="username"/>
-            <input type="password" id="password" placeholder="password" name="password"/>
+            <input type="text" id="username" value="root" disabled placeholder="username" name="username"/>
+            <input type="password" id="password" value="root" disabled placeholder="password" name="password"/>
             <input type="submit" id="submit" value="Login"/>
         </form>
     </div>

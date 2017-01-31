@@ -162,7 +162,7 @@ class SystemController extends BaseController
             $output = shell_exec("rm $file");
         }
 
-        $output = shell_exec("cd $imageDirectory && tar -zcvf $file .");
+        //$output = shell_exec("cd $imageDirectory && tar -zcvf $file .");
         
         return Response::download($file);
     }
@@ -182,7 +182,7 @@ class SystemController extends BaseController
         {
             $imageDirectory = readlink($imageDirectory);
         }
-        $output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");
+        //$output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");
 
         return Response::json(["clean" => true]);
     }

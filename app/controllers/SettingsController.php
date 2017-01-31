@@ -71,7 +71,7 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-        $this->fileLoader->save($config, '', 'kerberos');
+        //$this->fileLoader->save($config, '', 'kerberos');
         
         return $config;
     }
@@ -90,7 +90,7 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-        $this->fileLoader->save($config, '', 'kerberos');
+        //$this->fileLoader->save($config, '', 'kerberos');
         
         return Redirect::back();
     }
@@ -138,7 +138,7 @@ class SettingsController extends BaseController
         
         try
         {
-            $this->reader->save($this->config, $settings);
+            //$this->reader->save($this->config, $settings);
         }
         catch(\Exception $ex)
         {
@@ -216,7 +216,7 @@ class SettingsController extends BaseController
             $settings["config__condition"] = implode(',',Input::get('value'));
         }
         
-        $this->reader->save($this->config, $settings);
+        //$this->reader->save($this->config, $settings);
         
         return $this->getConditions();
     }
@@ -245,7 +245,7 @@ class SettingsController extends BaseController
             $settings["condition__Enabled__delay"] = Input::get('delay');
         }
 
-        $this->reader->save($this->config, $settings);
+        //$this->reader->save($this->config, $settings);
 
         return $this->getConditionEnabled();
     }
@@ -294,7 +294,7 @@ class SettingsController extends BaseController
             $settings["config__instance__io"] = implode(',', Input::get('value'));
         }
 
-        $this->reader->save($this->config, $settings);
+        //$this->reader->save($this->config, $settings);
         
         return $this->getIos();
     }
@@ -316,7 +316,7 @@ class SettingsController extends BaseController
             $settings["io__Webhook__url"] = Input::get('url');
         }
 
-        $this->reader->save($this->config, $settings);
+        //$this->reader->save($this->config, $settings);
 
         return $this->getIoWebhook();
     }

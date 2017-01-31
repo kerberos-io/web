@@ -51,7 +51,7 @@ class UserController extends BaseController
             $user['password'] = $input['password1'];
         } 
 
-        $this->fileLoader->save($config, '', 'kerberos');
+        //$this->fileLoader->save($config, '', 'kerberos');
 
         return Response::json($user);
     }
@@ -95,7 +95,7 @@ class UserController extends BaseController
             }
         }
 
-        $this->fileLoader->save($config, '', 'kerberos');
+        //$this->fileLoader->save($config, '', 'kerberos');
 
         return Response::json($config); 
     }
