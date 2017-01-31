@@ -41,6 +41,15 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                     "<i class='fa fa-arrow-right' aria-hidden='true'></i>"
                 ],
             });
+
+            this.carousel.on('changed.owl.carousel', function(event)
+            {
+                var section = event.item.index;
+                self.$el.find("#step div.title").html($(self.$el.find(".part").get(section)).attr('description'));
+                self.$el.find("#step span.info").html($(self.$el.find(".part").get(section)).attr('info'));
+                $(self.$el.find(".part").get(section)).show();
+                hull.restore();
+            })
         },
         setDevices: function()
         {
@@ -62,7 +71,7 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 this.$el.find("#timestamp-color").val(this.model.devices.disk.colorTimestamp);
             }
         },
-        setRegionSelector: function()
+        setRegionSelector: function(callback)
         {
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
@@ -72,17 +81,9 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 hull.setCoordinates($("input[name='expositor__Hull__region']").val());
                 hull.setName("motion-hullselection");
                 hull.initialize();
-            });
 
-            var self = this;
-            this.carousel.on('changed.owl.carousel', function(event)
-            {
-                var section = event.item.index;
-                self.$el.find("#step div.title").html($(self.$el.find(".part").get(section)).attr('description'));
-                self.$el.find("#step span.info").html($(self.$el.find(".part").get(section)).attr('info'));
-                $(self.$el.find(".part").get(section)).show();
-                hull.restore();
-            })
+                callback();
+            });
         },
         enabledDevices: function()
         {
@@ -160,11 +161,17 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
         render: function()
         {
             this.$el.html(this.template(this.model));
-            this.createSlider();
-            this.createCarousel();
-            this.setRegionSelector();
-            this.setDevices();
-            this.setColor();
+
+            var self = this;
+            this.setRegionSelector(function()
+            {
+                self.createSlider();
+                self.createCarousel();
+                self.setDevices();
+                self.setColor();
+                hull.restore();
+            });
+
             return this;
         }
     });
