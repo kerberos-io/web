@@ -32,7 +32,7 @@
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
 
     <!--[if IE]>
-        <link ref={{URL::to('/')}}/css/ie.css" rel="stylesheet"/>
+        <link href="{{URL::to('/')}}/css/ie.css" rel="stylesheet"/>
     <![endif]-->
 
     <!-- Globals variables, that are used in the application -->

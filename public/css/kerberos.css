@@ -9491,9 +9491,6 @@ body.modal-opened {
 .no-padding {
   padding: 0;
 }
-.vjs-fluid.sequence-dimensions {
-  padding-top: 56% !important;
-}
 .sequence-dimensions.vjs-fluid {
   padding-top: 41%;
   min-height: 500px;
