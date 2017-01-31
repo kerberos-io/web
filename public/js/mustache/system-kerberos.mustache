@@ -8,9 +8,9 @@ Kerberos.io {{translation.twoServicesRunning}}.
     </tr>
     <tr>
         <td>Machinery</td>
-        {{#insideDocker}}
+        {{#kerberos.insideDocker}}
         <td colspan="2">{{translation.warning-docker}}</td>
-        {{/insideDocker}}
+        {{/kerberos.insideDocker}}
 
         {{^insideDocker}}
         <td>{{$system->getMachineryVersion()}}</td>
