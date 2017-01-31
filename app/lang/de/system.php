@@ -21,17 +21,17 @@ return array(
     
 	'os' => 'OS',
 
-	/* to translate */ 'osspecifications' => 'OS specifications',
+	'osspecifications' => 'OS Spezifikationen',
     
-	/* to translate */ 'warning-docker' => 'Don\'t know i\'m in a seperate docker container..',
+	'warning-docker' => 'Keine Ahnung, bin in einem seperaten docker container..',
 
-	/* to translate */ 'statistics' => 'Statistics',
+	'statistics' => 'Statistiken',
 
-	/* to translate */ 'log' => 'Log',
+	'log' => 'Log',
 	
-	/* to translate */ 'news' => 'News',
+	'news' => 'News',
 
-	/* to translate */ 'systemIsOnlineFor' => 'System is online for',
+	'systemIsOnlineFor' => 'System ist online für',
 
 	'kernel' => 'Kernel',
     
