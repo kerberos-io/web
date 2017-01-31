@@ -19,7 +19,7 @@ return array(
 
 		'lastActivity' => 'Neueste Aktiväten',
 
-		/* to translate */ 'heatmap' => 'Heatmap',
+		'heatmap' => 'Heatmap',
 
 	'overview' => 'Übersicht',
 
