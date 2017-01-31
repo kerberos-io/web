@@ -38,25 +38,63 @@ class SystemController extends BaseController
 
     public function index()
     {
-        $directory = $this->config;
-        $settings = $this->reader->parse($directory)["instance"]["children"];
         $days = $this->imageHandler->getDays(5);
-        $allDays = $this->imageHandler->getDays(-1);
-        $numberOfImages = $this->imageHandler->getNumberOfImages();
-        $articles = $this->support->getArticles();
         $insideDocker = (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true');
-        
+
         return View::make('system',
         [
-            'days' => $days,
-            'allDays' => $allDays,
-            'numberOfImages' => $numberOfImages,
-            'settings' => $settings,
-            'system' => $this->system,
-            'articles' => $articles,
-            'insideDocker' => $insideDocker,
-            'isUpdateAvailable' => $this->isUpdateAvailable(),
+            'days' => $days
         ]);
+    }
+
+    public function getOS()
+    {
+        $this->system->initialize();
+        
+        return [
+            'system' => $this->system,
+            'uptime' => $this->system->getUptime()['text'],
+            'board' => $this->system->getBoard(),
+            'model' => $this->system->getModel(),
+            'os' => $this->system->getOS(),
+            'kernel' => $this->system->getKernel(),
+            'hostname' => $this->system->getHostName(),
+            'kernel' => $this->system->getKernel(),
+            'numberOfCPU' => count($this->system->getCPUs()),
+            'cpu' => $this->system->getCPUs(),
+            'architecture' => $this->system->getCPUArchitecture(),
+            'cpuLoad' => $this->system->getAverageLoad(),
+            'numberOfMounts' => count($this->system->getMounts()),
+            'mounts' => $this->system->getMounts(),
+            'network' => $this->system->getNet(),
+            'diskAlmostFull' => $this->system->diskAlmostFull()
+        ];  
+    }
+
+    public function getKerberos()
+    {
+        $days = $this->imageHandler->getDays(-1);
+
+        return [
+            'insideDocker' => (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true'),
+            'days' =>  $days,
+            'numberOfDays' => count($days),
+            'numberOfImages' => $this->imageHandler->getNumberOfImages(),
+            'webVersion' => $this->system->getWebVersion(),
+            'machineryVersion' => $this->system->getMachineryVersion(),
+            'isMachineryRunning' => $this->system->isMachineryRunning(),
+            'shortLog' => $this->system->getShortLog(),
+            'log' => $this->system->getLog()
+        ];
+    }
+
+    public function getKiOS()
+    {
+        return [
+            'isKios' => $this->system->isKios(),
+            'board' => $this->system->getBoard(),
+            'version' => $this->system->getCurrentVersion()
+        ];
     }
     
     public function downloadConfiguration()

@@ -17,13 +17,19 @@ return array(
 
 	'settings' => 'Configurações',
 
+	'configuration' => 'Configurações',
+
+	'heatmap' => 'Mapa de Calor',
+
 	'cloud' => 'Nuvem',
     
-	'on' => 'On',
+	/* to translate */ 'on' => 'On',
     
-	'off' => 'Off',
+	/* to translate */ 'off' => 'Off',
     
 	'logout' => 'Sair',
+
+	/* to translate */ 'update-profile' => 'Update profile',
     
     
     /*

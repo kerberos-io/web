@@ -86,19 +86,16 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $latestSequence = $this->getLatestSequence();
 
+        // Filter out videos..
+        $latestSequence = array_where($latestSequence, function ($key, $value)
+        {
+            return $value['type'] === 'image';
+        });
+
         if(count($latestSequence)>0)
         {
             $i = count($latestSequence) -1;
-
-            while($i >= 0 && getimagesize($latestSequence[$i]['src'])['mime'] != 'image/jpeg')
-            {
-                $i--;
-            }
-
-            if($i >= 0)
-            {
-                return $latestSequence[$i]["src"];
-            }
+            return $latestSequence[$i]["src"];
         }
         
         return "";
@@ -106,23 +103,44 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getLatestSequence()
     {
-        $days = $this->getDays(1);
+        $key = $this->user->username . "_latestSequence";
 
-        if(count($days) > 0)
+        $latestSequence = $this->cache->storeAndGet($key, function()
         {
-            $day = $days[0];
-            $images = $this->getImagesSequenceFromDay($day, 1, 120);
+            $days = $this->getDays(1);
 
-            // Filter out videos..
-            $images = array_where($images, function ($key, $value)
+            if(count($days) > 0)
             {
-                return $value['type'] === 'image';
-            });
+                $day = $days[0];
+                $images = $this->getImagesSequenceFromDay($day, 1, 120);
+                return array_values($images);
+            }
 
-            return array_values($images);
-        }
+            return [];
+        });
+        
+        return $latestSequence;    
+    }
 
-        return [];
+    public function getSecondLatestSequence()
+    {
+        $key = $this->user->username . "_secondLatestSequence";
+
+        $latestSequence = $this->cache->storeAndGet($key, function()
+        {
+            $days = $this->getDays(1);
+
+            if(count($days) > 0)
+            {
+                $day = $days[0];
+                $images = $this->getImagesSequenceFromDay($day, 2, 120);
+                return array_values($images);
+            }
+
+            return [];
+        });
+        
+        return $latestSequence;    
     }
 
     public function getLastHourOfDay($day)
@@ -401,6 +419,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                 $image->parse($path);
 
                 $path = $this->filesystem->getPathToFile($image);
+                $systemPath = $this->filesystem->getSystemPathToFile($image);
 
                 try
                 {
@@ -410,7 +429,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                         'metadata' => $this->filesystem->getMetadata($image)
                     ];
 
-                    if(getimagesize($path)['mime'] == 'image/jpeg')
+                    if(getimagesize($systemPath)['mime'] == 'image/jpeg')
                     {
                         $object['type'] = 'image';
                         
@@ -494,8 +513,9 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $image = new Image;
             $image->setTimezone($this->date->timezone);
             $image->parse($path);
-
+            
             $path = $this->filesystem->getPathToFile($image);
+            $systemPath = $this->filesystem->getSystemPathToFile($image);
 
             try
             {
@@ -505,7 +525,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     'metadata' => $this->filesystem->getMetadata($image)
                 ];
 
-                if(getimagesize($path)['mime'] == 'image/jpeg')
+                if(getimagesize($systemPath)['mime'] == 'image/jpeg')
                 {
                     $object['type'] = 'image';
                     

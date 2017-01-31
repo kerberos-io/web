@@ -83,7 +83,7 @@
         display: none;
     }
 
-    .signout, .sync, .system, label.toggle-mobile, .settings
+    .signout, .sync, .system, .profile, label.toggle-mobile, .settings
     {
         float: right;
         display: block;
@@ -91,8 +91,18 @@
         i
         {
             color: #fff;
-            padding: 17px 16px 0 0;
+            padding: 17px 10px 0 0;
         }
+    }
+
+    .profile, .system
+    {
+        margin-right: 16px;
+    }
+
+    .settings
+    {
+        margin-right: 6px;
     }
 
     label.toggle-mobile 
@@ -103,6 +113,20 @@
     .register, .forgot
     {
         display: none;
+    }
+
+    #update-profile-modal
+    {
+        width: 100% !important;
+        min-width: initial !important;
+
+        .with-tooltip
+        {
+            span
+            {
+                display: none !important;
+            }
+        }
     }
 }
 

@@ -17,6 +17,8 @@ return array(
 
 	'settings' => 'Instellingen',
 
+	'configuration' => 'Configuratie',
+
 	'cloud' => 'Cloud',
     
 	'on' => 'Aan',
@@ -24,6 +26,8 @@ return array(
 	'off' => 'Uit',
     
 	'logout' => 'Logout',
+
+	'update-profile' => 'Profiel bijwerken',
     
     
     /*

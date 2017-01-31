@@ -1,6 +1,6 @@
 require.config({
     baseUrl: _jsBase,
-    urlArgs: "bust=20082022",
+    urlArgs: "bust=20170127",
     shim: {
         'seiyria-bootstrap-slider': {
             deps: [
@@ -49,6 +49,11 @@ require.config({
                 'jquery'
             ]
         },
+        carousel: {
+            deps: [
+                'jquery'
+            ]
+        },
         videojsplaylist: {
             deps: [
                 'add-video-js-in-global-scope'
@@ -71,7 +76,7 @@ require.config({
         underscore: 'vendor/underscore/underscore',
         requirejs: 'vendor/requirejs/require',
         fancybox: 'vendor/fancybox/source/jquery.fancybox.pack',
-        'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/js/bootstrap-slider',
+        'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
         jellyfish: 'app/models/Jellyfish',
         Sequencer: 'app/models/Sequencer',
         timepicker: 'app/models/Timepicker',
@@ -84,6 +89,7 @@ require.config({
         videojs: 'vendor/video.js/dist/video.min',
         videojsplaylist: 'vendor/videojs-playlist/dist/videojs-playlist',
         videojsplaylistui: 'app/models/PlaylistUI',
+        carousel: 'vendor/owl.carousel/dist/owl.carousel.min',
         'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [

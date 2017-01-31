@@ -14,7 +14,7 @@ class SettingsController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
-        $this->machinery = Config::get("machinery");
+        $this->kerberos = Config::get("kerberos");
         $this->fileLoader = new FileLoader(new \Illuminate\Filesystem\Filesystem(), app_path() . '/config');
     }
     
@@ -33,8 +33,7 @@ class SettingsController extends BaseController
         [
             'days' => $days, 
             'settings' => $settings,
-            'machinery' => $this->machinery,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'kerberos' => $this->kerberos
         ]);
     }
 
@@ -58,12 +57,12 @@ class SettingsController extends BaseController
 
     public function getConfiguration()
     {
-        return $this->machinery;
+        return $this->kerberos;
     }
 
     public function changeProperties()
     {
-        $config = $this->machinery;
+        $config = $this->kerberos;
 
         $properties = Input::get();
 
@@ -72,9 +71,28 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-        $this->fileLoader->save($config, '', 'machinery');
+        $this->fileLoader->save($config, '', 'kerberos');
         
         return $config;
+    }
+
+    /********************************
+     *  Update web interface config
+     */
+    public function updateWeb()
+    {
+        $config = $this->kerberos;
+
+        $properties = Input::except("_token");
+
+        foreach ($properties as $key => $property)
+        {
+            $config[$key] = $property;
+        }
+
+        $this->fileLoader->save($config, '', 'kerberos');
+        
+        return Redirect::back();
     }
 
     /******************************************************************

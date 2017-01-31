@@ -17,6 +17,8 @@ return array(
 
 	'settings' => 'Réglages',
 
+	'configuration' => 'Réglages',
+
 	'cloud' => 'Cloud',
     
 	'on' => 'On',
@@ -24,6 +26,8 @@ return array(
 	'off' => 'Off',
     
 	'logout' => 'Déconnection',
+
+	'update-profile' => 'MEttre à jour le profil',
     
     
     /*
