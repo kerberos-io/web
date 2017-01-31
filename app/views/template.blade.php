@@ -144,9 +144,9 @@
                         });
                     });
 
-                    require(["app/controllers/updateProfile"], function(updateProfile)
+                    require(["app/controllers/updateProfile", "app/controllers/Cache"], function(updateProfile, Cache)
                     {
-                        $.get( _baseUrl + "/api/v1/translate/updateprofile", function(translation)
+                        Cache( _baseUrl + "/api/v1/translate/updateprofile").then(function(translation)
                         {
                             updateProfile.initialize(translation);
 
@@ -196,7 +196,11 @@
 
         @yield('content')
     </div>
-    <div id="update-profile-modal" data-remodal-id="update-profile"></div>  
+    <div id="update-profile-modal" data-remodal-id="update-profile">
+        <div id="loading-image-view" class="load4" style="padding:50px 0;">
+            <div class="loader"></div>
+        </div>
+    </div>  
     <!-- /#wrapper -->
 </body>
 </html>

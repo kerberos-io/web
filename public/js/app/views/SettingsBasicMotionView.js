@@ -73,15 +73,17 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
         },
         setRegionSelector: function(callback)
         {
+            var self = this;
+            
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
             {
+                self.$el.find("#loading-image-view").remove();
                 hull.setImage(image.src);
                 hull.setImageSize(image.width, image.height);
                 hull.setCoordinates($("input[name='expositor__Hull__region']").val());
                 hull.setName("motion-hullselection");
                 hull.initialize();
-
                 callback();
             });
         },
