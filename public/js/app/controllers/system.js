@@ -19,29 +19,6 @@ function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView, NewsV
         initialize: function(translation)
         {
             var self = this;
-            var systemOSView = new SystemOSView();
-
-            systemOSView.initialize(translation, self);
-            systemOSView.fetchData(function(data)
-            {
-                systemOSView.render(data);  
-            })
-
-            var systemKerberosView = new SystemKerberosView();
-
-            systemKerberosView.initialize(translation, self);
-            systemKerberosView.fetchData(function(data)
-            {
-                systemKerberosView.render(data);  
-            })
-
-            var systemKiOSView = new SystemKiOSView();
-
-            systemKiOSView.initialize(translation, self);
-            systemKiOSView.fetchData(function(data)
-            {
-                systemKiOSView.render(data);  
-            })
 
             var newsView = new NewsView();
 
@@ -49,6 +26,30 @@ function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView, NewsV
             newsView.fetchData(function(data)
             {
                 newsView.render(data);  
+
+                var systemOSView = new SystemOSView();
+
+                systemOSView.initialize(translation, self);
+                systemOSView.fetchData(function(data)
+                {
+                    systemOSView.render(data); 
+
+                    var systemKerberosView = new SystemKerberosView();
+
+                    systemKerberosView.initialize(translation, self);
+                    systemKerberosView.fetchData(function(data)
+                    {
+                        systemKerberosView.render(data);  
+
+                        var systemKiOSView = new SystemKiOSView();
+
+                        systemKiOSView.initialize(translation, self);
+                        systemKiOSView.fetchData(function(data)
+                        {
+                            systemKiOSView.render(data);  
+                        })
+                    })
+                })
             })
         },
         reboot: function(callback)
