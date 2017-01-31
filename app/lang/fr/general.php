@@ -27,7 +27,7 @@ return array(
     
 	'logout' => 'Déconnection',
 
-	'update-profile' => 'MEttre à jour le profil',
+	'update-profile' => 'Mettre à jour le profil',
     
     
     /*
