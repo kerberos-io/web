@@ -101,6 +101,13 @@ Route::group(array('prefix' => 'api/v1'), function()
 
         Route::get('configure', array('uses' => 'Controllers\SettingsController@getConfiguration'));
         Route::put('configure', array('uses' => 'Controllers\SettingsController@changeProperties'));
+
+        App::missing(function($exception)
+        {
+            return Response::json([
+                'error' => 'API method does not exists'
+            ], 404);
+        });
     });
 
     
