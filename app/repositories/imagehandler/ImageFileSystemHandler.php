@@ -79,6 +79,35 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $heap = $this->filesystem->findAllImages();
 
+        // -----------------------------------------------------------------------------
+        // Work-a-round for shorter timestamps, no numerical sorting is applied in heap
+        // sort because it would decreases performance enourmously (split of key)
+        // Therefore we make sure the string is long enough.
+        //
+        // -- Why is this needed?
+        //
+        // Usecase; it's possible that kerberos.io works without a working internet
+        // connection, and therefore wrong timestamps are assigned to the images typically
+        // from the beginning of the unix epoch - 01-01-1970
+
+        $index = $this->getIndexOfTimestampFromFileFormat();
+
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[$index]);
+
+            if($timestamp > 1000000000) 
+            {
+                break;
+            }
+
+            $numberOfZeros = strlen("1000000000") - strlen($timestamp);
+            $heap->insert(str_repeat("0", $numberOfZeros) . $heap->current());
+
+            $heap->extract();
+            $heap->next();
+        }
+ 
         return $heap;
     }
     
@@ -412,7 +441,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             if($key >= $lower && $key < $upper)
             {
-                $path = $image['path'];
+                $path = ltrim($image['path'], "0");
 
                 $image = new Image;
                 $image->setTimezone($this->date->timezone);
@@ -508,7 +537,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
         foreach($imagesTemp as $image)
         {
-            $path = $image['path'];
+            $path = ltrim($image['path'], "0");
 
             $image = new Image;
             $image->setTimezone($this->date->timezone);
