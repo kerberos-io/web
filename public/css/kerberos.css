@@ -8306,7 +8306,8 @@ label.toggle-mobile,
 *   Time picker
 */
 .bootstrap-datetimepicker-widget td.active,
-.bootstrap-datetimepicker-widget td.active:hover {
+.bootstrap-datetimepicker-widget td.active:hover,
+.bootstrap-datetimepicker-widget td span.active {
   background-color: #943633;
 }
 .bootstrap-datetimepicker-widget td.today:before {
