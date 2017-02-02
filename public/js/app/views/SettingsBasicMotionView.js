@@ -180,7 +180,10 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 self.createCarousel();
                 self.setDevices();
                 self.setColor();
-                hull.restore();
+                setTimeout(function()
+                {
+                    hull.restore();
+                }, 100);
             });
 
             return this;
