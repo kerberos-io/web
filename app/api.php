@@ -102,6 +102,13 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('configure', array('uses' => 'Controllers\SettingsController@getConfiguration'));
         Route::put('configure', array('uses' => 'Controllers\SettingsController@changeProperties'));
 
+        // --------------------
+        // System Controller
+
+        Route::get('system/health', 'Controllers\SystemController@isStreamRunning');
+        Route::post('system/reboot', 'Controllers\SystemController@rebooting');
+        Route::post('system/shutdown', 'Controllers\SystemController@shuttingdown');
+
         App::missing(function($exception)
         {
             return Response::json([

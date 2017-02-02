@@ -137,6 +137,12 @@ return array(
 
 	'drawTimestampInfo' => 'Wenn ein Bild gespeichert wird Datum und Uhrzeit auf dem Bild hinterlegen.',
 
+	/* to translate */ 'drawTimestampInfoVideo' => 'When a video is saved to disk, you can draw the current date and time on the video.',
+
+	/* to translate */ 'privacy' => 'privacy',
+
+	/* to translate */ 'privacyInfo' => 'By enabling this option, only the selected region of step 1 will be visible. All pixels outside the region are made black.',
+
 	'fps' => 'Frames pro Sekunde',
 
 	'fpsInfo' => 'Frmes pro Sekunde mit der das Video geschrieben wird; bitte beachten das der Raspberry Pi nur eine geringe Anzahl von FPS verarbeiten kann (z.B. 7 FPS).',

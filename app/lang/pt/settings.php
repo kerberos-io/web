@@ -133,6 +133,12 @@ return array(
 
 	/* to translate */ 'drawTimestampInfo' => 'When an image is saved to disk, you can draw the current date and time on the image.',
 
+	/* to translate */ 'drawTimestampInfoVideo' => 'When a video is saved to disk, you can draw the current date and time on the video.',
+
+	/* to translate */ 'privacy' => 'privacy',
+
+	/* to translate */ 'privacyInfo' => 'By enabling this option, only the selected region of step 1 will be visible. All pixels outside the region are made black.',
+
 	/* to translate */ 'fps' => 'frames per second',
 
 	/* to translate */ 'fpsInfo' => 'The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).',

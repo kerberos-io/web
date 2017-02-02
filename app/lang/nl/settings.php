@@ -133,7 +133,13 @@ return array(
 
 	'drawTimestamp' => 'geef tijd weer',
 
-	'drawTimestampInfo' => 'Wanneer een afbeelding wordt opgeslagen, kan je er voor kiezen om de huidige tijd aftebeelden op de afbeelding.',
+	'drawTimestampInfo' => 'Wanneer een afbeelding wordt opgeslagen, kan je er voor kiezen om de huidige tijd af te beelden op de afbeelding.',
+
+	'drawTimestampInfoVideo' => 'Wanneer een video wordt opgeslagen, kan je er voor kiezen om de huidige tijd af te beelden in de video.',
+
+	'privacy' => 'privacy',
+
+	'privacyInfo' => 'Door deze optie te activeren zorg je ervoor dat enkel het gebied, aangeduid in stap 1, zichtbaar is. Alle pixels die buiten deze zone vallen worden zwart gemaakt.',
 
 	'fps' => 'beelden per seconde',
 
@@ -153,11 +159,11 @@ return array(
 
 	'gpioPin' => 'pin',
 
-	/* to translate */ 'gpioPinInfo' => 'Definieer de nummer van de pin op welke een puls moet worden verstuurd.',
+	'gpioPinInfo' => 'Definieer de nummer van de pin op welke een puls moet worden verstuurd.',
 
-	/* to translate */ 'gpioPeriod' => 'periode',
+	'gpioPeriod' => 'periode',
 
-	/* to translate */ 'gpioPeriodInfo' => 'Het aantal microseconden dat de puls zal duren.',
+	'gpioPeriodInfo' => 'Het aantal microseconden dat de puls zal duren.',
 
 	// --------------
 	// Cloud

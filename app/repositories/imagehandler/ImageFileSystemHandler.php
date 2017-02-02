@@ -105,7 +105,6 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $heap->insert(str_repeat("0", $numberOfZeros) . $heap->current());
 
             $heap->extract();
-            $heap->next();
         }
  
         return $heap;
@@ -134,19 +133,14 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $key = $this->user->username . "_latestSequence";
 
-        $latestSequence = $this->cache->storeAndGet($key, function()
+        $days = $this->getDays(1);
+
+        if(count($days) > 0)
         {
-            $days = $this->getDays(1);
-
-            if(count($days) > 0)
-            {
-                $day = $days[0];
-                $images = $this->getImagesSequenceFromDay($day, 1, 120);
-                return array_values($images);
-            }
-
-            return [];
-        });
+            $day = $days[0];
+            $images = $this->getImagesSequenceFromDay($day, 1, 120);
+            return array_values($images);
+        }
         
         return $latestSequence;    
     }
@@ -155,21 +149,16 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $key = $this->user->username . "_secondLatestSequence";
 
-        $latestSequence = $this->cache->storeAndGet($key, function()
+        $days = $this->getDays(1);
+
+        if(count($days) > 0)
         {
-            $days = $this->getDays(1);
+            $day = $days[0];
+            $images = $this->getImagesSequenceFromDay($day, 2, 120);
+            return array_values($images);
+        }
 
-            if(count($days) > 0)
-            {
-                $day = $days[0];
-                $images = $this->getImagesSequenceFromDay($day, 2, 120);
-                return array_values($images);
-            }
-
-            return [];
-        });
-        
-        return $latestSequence;    
+        return [];
     }
 
     public function getLastHourOfDay($day)

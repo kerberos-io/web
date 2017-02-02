@@ -86,12 +86,16 @@ define(["underscore", "backbone"], function (_, Backbone)
                 disk: {
                     enabled: false,
                     colorTimestamp: $("input[name='io__Disk__timestampColor']").val(),
-                    markWithTimestamp: $("input[name='io__Disk__markWithTimestamp']").val()
+                    markWithTimestamp: $("input[name='io__Disk__markWithTimestamp']").val(),
+                    privacy: ($("input[name='io__Disk__privacy']").val() === "true")
                 },
                 video: {
                     enabled: false,
                     recordAfter: $("input[name='io__Video__recordAfter']").val(),
-                    fps: $("input[name='io__Video__fps']").val()
+                    fps: $("input[name='io__Video__fps']").val(),
+                    colorTimestamp: $("input[name='io__Video__timestampColor']").val(),
+                    markWithTimestamp: $("input[name='io__Video__markWithTimestamp']").val(),
+                    privacy: ($("input[name='io__Video__privacy']").val() === "true")
                 },
                 webhook: {
                     enabled: false,
@@ -180,8 +184,12 @@ define(["underscore", "backbone"], function (_, Backbone)
 
             $("input[name='io__Disk__timestampColor']").val(devices.disk.colorTimestamp);
             $("input[name='io__Disk__markWithTimestamp']").val(devices.disk.markWithTimestamp);
+            $("input[name='io__Disk__privacy']").val(devices.disk.privacy);
             $("input[name='io__Video__recordAfter']").val(devices.video.recordAfter);
             $("input[name='io__Video__fps']").val(devices.video.fps);
+            $("input[name='io__Video__timestampColor']").val(devices.video.colorTimestamp);
+            $("input[name='io__Video__markWithTimestamp']").val(devices.video.markWithTimestamp);
+            $("input[name='io__Video__privacy']").val(devices.video.privacy);
             $("input[name='io__Webhook__url']").val(devices.webhook.url);
             $("input[name='io__Script__path']").val(devices.script.path);
             $("input[name='io__GPIO__pin']").val(devices.gpio.pin);

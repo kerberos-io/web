@@ -83,17 +83,42 @@ class ImageController extends BaseController
         return $this->imageHandler->getLatestImage();
     }
 
-    /********************************
+    /**********************************
      *  Get the latest sequence.
+     *
+     *   - these extra checks are needed when you're recording video.
+     *   it's possible that while you're changing the region
+     *   a video is recording. Therefore no image can be retrieved.
      */ 
 
     public function getLatestSequence()
     {
-        $images = $this->imageHandler->getSecondLatestSequence();
+        $images = $this->imageHandler->getLatestSequence();
 
-        if(count($images) == 0)
+        $videosFound = false;
+        for($i = 0; $i < count($images); $i++)
         {
-            $images = $this->imageHandler->getLatestSequence();
+            if($images[$i]['type'] === 'video')
+            {
+                $videosFound = true;
+                break;
+            }
+        }
+
+        if($videosFound)
+        {
+            if(count($images) > 1)
+            {
+                $lastMedia = $images[count($images)-1];
+                if($lastMedia['type'] === 'video')
+                {
+                    array_pop($images);
+                }
+            }
+            else
+            {
+                $images = $this->imageHandler->getSecondLatestSequence();
+            }
         }
 
         return Response::json($images);
