@@ -87,6 +87,7 @@ define(["Sequencer", "underscore"], function(Sequencer, _)
                         video = document.createElement("video");
                         video.src = videos[videos.length-1].src;
                         video.loop = true;
+                        video.muted = true;
 
                         var self = this;
                         video.addEventListener('loadeddata', function()
