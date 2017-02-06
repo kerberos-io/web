@@ -10,6 +10,8 @@ define(["jquery", "underscore", "backbone", "remodal", "carousel", "app/views/We
         {
             var self = this;
             
+            //self.openIntroduction();
+
             $(document).ready(function()
             {
                 $(".center").fadeIn(2000);
@@ -47,6 +49,7 @@ define(["jquery", "underscore", "backbone", "remodal", "carousel", "app/views/We
                     $(".logo_verstraetenio").css({'background': 'url(/images/logo_verstraetenio_black.png)'});
                     $("div.center").css({'top': 0});
                     $("#introduction").fadeIn(1200);
+                    $("body").append($('<div class="logo"></div>').fadeIn(1200));
                 });
             });
         }

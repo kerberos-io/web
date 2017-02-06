@@ -8864,19 +8864,6 @@ div.center form#login input[type='submit'] {
   top: 0;
   left: 25px;
 }
-.welcome #introduction .logo {
-  background-image: url(../images/kerberos_multihead.svg);
-  background-position: -81px -31px;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  top: 71%;
-  display: table;
-  z-index: 99999;
-  height: 400px;
-  width: 400px;
-  background-repeat: no-repeat;
-}
 .welcome #introduction h1 {
   color: #333;
   font-size: 50px;
@@ -8908,6 +8895,19 @@ div.center form#login input[type='submit'] {
   position: relative;
   left: 4px;
 }
+.welcome > .logo {
+  background-image: url(../images/kerberos_multihead.svg);
+  background-position: -81px -31px;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 71%;
+  display: table;
+  z-index: 99999;
+  height: 400px;
+  width: 400px;
+  background-repeat: no-repeat;
+}
 @media only screen and (min-width: 0px) and (max-width: 700px) {
   .welcome div.center form#welcome {
     margin: -165px auto;
@@ -8925,7 +8925,7 @@ div.center form#login input[type='submit'] {
   .welcome #introduction {
     padding-bottom: 75px;
   }
-  .welcome #introduction .logo {
+  .welcome > .logo {
     background-position: -65px -26px;
     top: 85%;
     height: 200px;
@@ -9655,6 +9655,7 @@ div.video-preview video:first-child {
     border-radius: 0px;
     height: auto;
     width: 100%;
+    margin-right: 0 !important;
   }
   #video-modal {
     padding: 52px 0 0 0;
