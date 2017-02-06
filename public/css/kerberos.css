@@ -10908,6 +10908,29 @@ div#step {
   #web-settings select {
     width: 90%;
   }
+  #settings-modal {
+    display: block;
+    margin: 0;
+  }
+  #settings-modal .modal-body {
+    margin: 0;
+  }
+  #settings-modal #motion-view .container-fluid {
+    padding: 0;
+    margin: 23px 0;
+  }
+  #settings-modal #motion-view h4 {
+    margin-bottom: 15px;
+    margin: 0;
+    padding: 20px 0;
+  }
+  #settings-modal #motion-view div#step {
+    padding: 20px 0;
+    width: 55%;
+  }
+  #settings-modal #motion-view .owl-nav {
+    display: none;
+  }
   .slider-horizontal {
     margin-bottom: 30px !important;
   }
