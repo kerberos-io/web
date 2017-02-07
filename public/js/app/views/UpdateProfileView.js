@@ -32,6 +32,12 @@ define(["underscore", "backbone", "fancybox", "app/models/User", "app/views/Base
             {
                 $.post(_baseUrl + "/api/v1/users/current", data, function(data)
                 {
+                    var supportsLocalStorage = 'localStorage' in window;
+                    if(supportsLocalStorage)
+                    {
+                        localStorage.clear();
+                    }
+                    
                     location.reload();
                 });
                 return true;

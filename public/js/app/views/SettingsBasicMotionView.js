@@ -14,7 +14,7 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
         devices: undefined,
         events: {
             'click .rotate .image':'changeRotation',
-            'change .tgl': 'toggleIoDevice'
+            'change .tgl-device': 'toggleIoDevice'
         },
 
         initialize: function(model, image)
@@ -70,18 +70,25 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             {
                 this.$el.find("#timestamp-color").val(this.model.devices.disk.colorTimestamp);
             }
+
+            if(this.model.devices.video.markWithTimestamp === "true")
+            {
+                this.$el.find("#timestamp-video-color").val(this.model.devices.video.colorTimestamp);
+            }
         },
         setRegionSelector: function(callback)
         {
+            var self = this;
+            
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
             {
+                self.$el.find("#loading-image-view").remove();
                 hull.setImage(image.src);
                 hull.setImageSize(image.width, image.height);
                 hull.setCoordinates($("input[name='expositor__Hull__region']").val());
                 hull.setName("motion-hullselection");
                 hull.initialize();
-
                 callback();
             });
         },
@@ -129,12 +136,16 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 disk: {
                     enabled: this.model.devices.disk.enabled, // overkill
                     colorTimestamp: this.$el.find("#timestamp-color").val(),
-                    markWithTimestamp: (this.$el.find("#timestamp-color").val() != "none") ? "true" : "false"
+                    markWithTimestamp: (this.$el.find("#timestamp-color").val() != "none") ? "true" : "false",
+                    privacy: this.$el.find("#privacy-disk").prop('checked')
                 },
                 video: {
                     enabled: this.model.devices.video.enabled, // overkill
                     recordAfter:  this.$el.find("#recordAfter").val(),
-                    fps:  this.$el.find("#fps").val()
+                    fps:  this.$el.find("#fps").val(),
+                    colorTimestamp: this.$el.find("#timestamp-video-color").val(),
+                    markWithTimestamp: (this.$el.find("#timestamp-video-color").val() != "none") ? "true" : "false",
+                    privacy: this.$el.find("#privacy-video").prop('checked')
                 },
                 webhook: {
                     enabled: this.model.devices.webhook.enabled, // overkill
@@ -169,7 +180,10 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 self.createCarousel();
                 self.setDevices();
                 self.setColor();
-                hull.restore();
+                setTimeout(function()
+                {
+                    hull.restore();
+                }, 100);
             });
 
             return this;

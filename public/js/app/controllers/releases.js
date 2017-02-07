@@ -24,11 +24,18 @@ define(["jquery", "underscore", "app/controllers/Cache"], function($, _, Cache)
                 callback(versions);
             });
         },
+        getSystemInfo: function(callback)
+        {
+            Cache(this.kiosEndpoint).then(function(data)
+            {
+                callback(data);
+            });
+        },
         highlightIfNewRelease: function()
         {
             var self = this;
 
-            $.get(this.kiosEndpoint, function(data)
+            self.getSystemInfo(function(data)
             {
                 var currentVersion = data.version;
 

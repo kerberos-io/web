@@ -57,9 +57,9 @@
         {
             require(["app/controllers/settings_advanced"], function(SettingsAdvanced){});
 
-            require(["app/controllers/toggleSettings", "app/controllers/settings_basic", "app/controllers/settings_web"], function(toggleSettings, SettingsBasic, SettingsWeb)
+            require(["app/controllers/toggleSettings", "app/controllers/settings_basic", "app/controllers/settings_web", "app/controllers/Cache"], function(toggleSettings, SettingsBasic, SettingsWeb, Cache)
             {
-                $.get( _baseUrl + "/api/v1/translate/settings", function(translation)
+                Cache(_baseUrl + "/api/v1/translate/settings").then(function (translation)
                 {
                     SettingsBasic.initialize(translation);
                     SettingsWeb.initialize("{{$kerberos['radius']}}", translation);

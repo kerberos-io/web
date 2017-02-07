@@ -8306,7 +8306,8 @@ label.toggle-mobile,
 *   Time picker
 */
 .bootstrap-datetimepicker-widget td.active,
-.bootstrap-datetimepicker-widget td.active:hover {
+.bootstrap-datetimepicker-widget td.active:hover,
+.bootstrap-datetimepicker-widget td span.active {
   background-color: #943633;
 }
 .bootstrap-datetimepicker-widget td.today:before {
@@ -8863,19 +8864,6 @@ div.center form#login input[type='submit'] {
   top: 0;
   left: 25px;
 }
-.welcome #introduction .logo {
-  background-image: url(../images/kerberos_multihead.svg);
-  background-position: -81px -31px;
-  background-size: cover;
-  position: fixed;
-  left: 0;
-  top: 71%;
-  display: table;
-  z-index: 99999;
-  height: 400px;
-  width: 400px;
-  background-repeat: no-repeat;
-}
 .welcome #introduction h1 {
   color: #333;
   font-size: 50px;
@@ -8907,6 +8895,19 @@ div.center form#login input[type='submit'] {
   position: relative;
   left: 4px;
 }
+.welcome > .logo {
+  background-image: url(../images/kerberos_multihead.svg);
+  background-position: -81px -31px;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 71%;
+  display: table;
+  z-index: 99999;
+  height: 400px;
+  width: 400px;
+  background-repeat: no-repeat;
+}
 @media only screen and (min-width: 0px) and (max-width: 700px) {
   .welcome div.center form#welcome {
     margin: -165px auto;
@@ -8924,7 +8925,7 @@ div.center form#login input[type='submit'] {
   .welcome #introduction {
     padding-bottom: 75px;
   }
-  .welcome #introduction .logo {
+  .welcome > .logo {
     background-position: -65px -26px;
     top: 85%;
     height: 200px;
@@ -9654,6 +9655,7 @@ div.video-preview video:first-child {
     border-radius: 0px;
     height: auto;
     width: 100%;
+    margin-right: 0 !important;
   }
   #video-modal {
     padding: 52px 0 0 0;
@@ -9966,6 +9968,16 @@ div.video-preview video:first-child {
 .tgl-flip:checked + .tgl-btn:active:after {
   -webkit-transform: rotateY(20deg);
   transform: rotateY(20deg);
+}
+.label-ios {
+  min-width: 50px !important;
+  padding-top: 0px !important;
+  padding-right: 0px !important;
+  height: 25px !important;
+  width: 40px !important;
+}
+.tgl-ios:checked + .tgl-btn {
+  background: #f1f1f1;
 }
 #update-profile-modal {
   min-width: 600px;
@@ -10853,6 +10865,9 @@ div#step {
 .io-devices > div .content {
   clear: both;
 }
+#machinery-settings div select {
+  height: 34px;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #machinery-settings,
   #web-settings,
@@ -10893,11 +10908,40 @@ div#step {
   #web-settings select {
     width: 90%;
   }
+  #settings-modal {
+    display: block;
+    margin: 0;
+  }
+  #settings-modal .modal-body {
+    margin: 0;
+  }
+  #settings-modal #motion-view .container-fluid {
+    padding: 0;
+    margin: 23px 0;
+  }
+  #settings-modal #motion-view h4 {
+    margin-bottom: 15px;
+    margin: 0;
+    padding: 20px 0;
+  }
+  #settings-modal #motion-view div#step {
+    padding: 20px 0;
+    width: 55%;
+  }
+  #settings-modal #motion-view .owl-nav {
+    display: none;
+  }
+  .slider-horizontal {
+    margin-bottom: 30px !important;
+  }
   #basic div.type {
     padding: 10px;
   }
   .rotate {
     margin-top: 40px;
+  }
+  .io-devices > div .button {
+    margin-bottom: 20px;
   }
 }
 .system-actions {

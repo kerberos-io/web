@@ -7,6 +7,7 @@
 		"laravel/framework": "4.2.*",
 		"intervention/image": "dev-master",
 		"cedricve/simpleauth": "1.1.2",
+		"cedricve/lockfile": "1.0.0",
 		"linfo/linfo": "^3.0"
 	},
 	"require-dev": {

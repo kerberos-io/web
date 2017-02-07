@@ -27,7 +27,7 @@ return array(
     
 	'logout' => 'Abmelden',
 
-	/* to translate */ 'update-profile' => 'Update profile',
+	'update-profile' => 'Profil aktualisieren',
     
     
     /*

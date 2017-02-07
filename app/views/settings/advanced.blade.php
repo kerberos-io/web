@@ -4,4 +4,5 @@
         <div class="submit-form">
             {{ Form::submit(Lang::get('settings.update')) }}
         </div>
+        
 </div>

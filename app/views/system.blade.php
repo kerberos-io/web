@@ -53,9 +53,9 @@
     <script type="text/javascript">
         require([_jsBase + 'main.js'], function(common)
         {
-            require(["app/controllers/system", "remodal", "progressbar"], function(System, remodal, ProgressBar)
+            require(["app/controllers/system", "remodal", "progressbar", "app/controllers/Cache"], function(System, remodal, ProgressBar, Cache)
             {
-                $.get( _baseUrl + "/api/v1/translate/system", function(translation)
+                Cache(_baseUrl + "/api/v1/translate/system").then(function (translation)
                 {
                     System.initialize(translation);
                 });
