@@ -52,6 +52,11 @@ App::error(function(Exception $exception, $code)
     return Redirect::to("/");
 });
 
+if(App::environment('production'))
+{
+        URL::forceSchema('https');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler
