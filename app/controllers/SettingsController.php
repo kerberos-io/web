@@ -267,7 +267,7 @@ class SettingsController extends BaseController
             $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
             $url = parse_url(URL::to('/'), PHP_URL_HOST);
             $port = $instance[0];
-            $url = 'http://' . parse_url(URL::to('/'), PHP_URL_HOST) . ':' . $port;
+            $url = 'https://' . parse_url(URL::to('/'), PHP_URL_HOST) . ':' . $port;
         }
 
         return Response::json([

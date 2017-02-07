@@ -54,7 +54,7 @@ App::error(function(Exception $exception, $code)
 
 if(App::environment('production'))
 {
-        URL::forceSchema('https');
+    URL::forceSchema('https');
 }
 
 /*
