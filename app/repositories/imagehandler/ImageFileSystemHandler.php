@@ -142,7 +142,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             return array_values($images);
         }
         
-        return $latestSequence;    
+        return [];    
     }
 
     public function getSecondLatestSequence()
