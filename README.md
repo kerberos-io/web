@@ -131,6 +131,4 @@ Restart nginx
 
 ## How to access
 
-You can access **the web** by entering the IP-address in your favorite browser. You'll see a login page showing up, on which you will need to enter your credentials. The default username and password is **root**. You are able to change this password by editing the **app/config/app.php** file.
-
-![Login page kerberos.io webinterface](https://doc.kerberos.io/documentation/2.0/70_installation/1_how-to-access.png)
+You can access **the web** by entering the IP-address in your favorite browser. You'll see a welcome page showing up, on which you will be able to choose an username and password; the default username and password is **root**. 
