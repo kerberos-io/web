@@ -132,3 +132,5 @@ Restart nginx
 ## How to access
 
 You can access **the web** by entering the IP-address in your favorite browser. You'll see a welcome page showing up, on which you will be able to choose an username and password; the default username and password is **root**. 
+
+![Welcome](https://doc.kerberos.io/documentation/develop/70_installation/1_how-to-access.png)
