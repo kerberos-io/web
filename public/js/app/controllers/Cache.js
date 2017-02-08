@@ -18,7 +18,12 @@ define(["jquery", "underscore"], function($, _)
 
                 if(supportsLocalStorage)
                 {
-                    localStorage.setItem(key, JSON.stringify(data));
+                    var expirationMS = 15 * 60 * 1000; // 15min.
+
+                    localStorage.setItem(key, JSON.stringify({
+                        value: data,
+                        timestamp: new Date().getTime() + expirationMS
+                    }));
                 }
 
                 jsonDfd.resolveWith(null, [data]);
@@ -32,11 +37,23 @@ define(["jquery", "underscore"], function($, _)
             var storageDfd = new jQuery.Deferred(),
             storedData = localStorage.getItem(key);
 
-            if (!storedData) return getJSON(key);
+            if (!storedData)
+            {
+                return getJSON(key);
+            }
+            else
+            {
+                storedData = JSON.parse(storedData);
+                var now  = new Date().getTime();
+                if(now > storedData.timestamp)
+                {
+                    return getJSON(key);
+                }
+            }
 
             setTimeout(function()
             {
-                storageDfd.resolveWith(null, [JSON.parse(storedData)]);
+                storageDfd.resolveWith(null, [storedData.value]);
             });
 
             return storageDfd.promise();
