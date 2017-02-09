@@ -271,8 +271,8 @@ class SettingsController extends BaseController
         }
 
         return Response::json([
-            'url' => $url,
-            'port' => $port
+            'url' => "https://stream.kerberos.io",
+            'port' => 80
         ]);
    }
 

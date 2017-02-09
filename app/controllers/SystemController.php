@@ -246,7 +246,7 @@ class SystemController extends BaseController
     {
         $status = true;
 
-        $directory = $this->config;
+        /*$directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
         $port = $settings['stream']['dropdown']['Mjpg']['children']['streamPort']['value'];
 
@@ -291,7 +291,7 @@ class SystemController extends BaseController
             {
                 $status = false;
             }
-        }
+        }*/
 
         return Response::json(["status" => $status]);
     }
