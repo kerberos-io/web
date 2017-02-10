@@ -23,7 +23,15 @@ define(["jquery"], function($)
                 success: function(data)
                 {
                     self.status = data.active;
-                    $(".machinery-switch input[type='checkbox']").attr("checked", "true");
+
+                    if(self.status)
+                    {
+                        $(".machinery-switch input[type='checkbox']").attr("checked", "checked");
+                    }
+                    else
+                    {
+                        $(".machinery-switch input[type='checkbox']").removeAttr("checked");
+                    }
                 }
             });
         },

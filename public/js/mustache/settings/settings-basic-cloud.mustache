@@ -1,0 +1,34 @@
+<div id="cloud-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h4><i class="fa fa-cloud"></i> Kerberos.cloud</h4>
+                <div id="bucket" class="with-tooltip element">
+                    <input type="text" value="{{kerberosCloud.bucket}}"/>
+                    <span></span>
+                    <i class="description">bucket</i>
+                </div>
+                <div id="folder" class="with-tooltip element">
+                    <input type="text" value="{{kerberosCloud.folder}}"/>
+                    <span></span>
+                    <i class="description">folder</i>
+                </div>
+                <div id="public" class="with-tooltip element">
+                    <input type="text" value="{{kerberosCloud.public}}"/>
+                    <span></span>
+                    <i class="description">public key</i>
+                </div>
+                <div id="secret" class="with-tooltip element">
+                    <input type="text" value="{{kerberosCloud.secret}}"/>
+                    <span></span>
+                    <i class="description">secret key</i>
+                </div>
+             </div>
+             <div class="col-md-6">
+                <h4><i class="fa fa-question"></i> {{translation.whatIsThis}}</h4>
+                <p>{{translation.whatIsthisInformation}}</p>
+                <a id="subscribe-now" style="text-align: center; text-decoration: none;" target="_blank" href="https://cloud.kerberos.io">{{translation.subscribeNow}}</a>
+             </div>
+        </div>
+    </div>
+</div>

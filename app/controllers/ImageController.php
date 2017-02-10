@@ -49,8 +49,7 @@ class ImageController extends BaseController
         return View::make('image', [
             'days' => $days,
             'selectedDay' => $selectedDay,
-            'lastHourOfDay' => $lastHourOfDay,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'lastHourOfDay' => $lastHourOfDay
         ]);
     }
 
@@ -84,13 +83,43 @@ class ImageController extends BaseController
         return $this->imageHandler->getLatestImage();
     }
 
-    /********************************
+    /**********************************
      *  Get the latest sequence.
+     *
+     *   - these extra checks are needed when you're recording video.
+     *   it's possible that while you're changing the region
+     *   a video is recording. Therefore no image can be retrieved.
      */ 
 
     public function getLatestSequence()
     {
         $images = $this->imageHandler->getLatestSequence();
+
+        $videosFound = false;
+        for($i = 0; $i < count($images); $i++)
+        {
+            if($images[$i]['type'] === 'video')
+            {
+                $videosFound = true;
+                break;
+            }
+        }
+
+        if($videosFound)
+        {
+            if(count($images) > 1)
+            {
+                $lastMedia = $images[count($images)-1];
+                if($lastMedia['type'] === 'video')
+                {
+                    array_pop($images);
+                }
+            }
+            else
+            {
+                $images = $this->imageHandler->getSecondLatestSequence();
+            }
+        }
 
         return Response::json($images);
     }

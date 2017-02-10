@@ -1,3 +1,27 @@
+/**
+ * Import Google Font - Open Sans
+ ******************************************************************************************
+ */
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(/fonts/opensans.woff2) format('woff2'), url(/fonts/opensans.woff) format('woff');
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: #666;
+        background: #fff;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
 *:focus
 {
     outline: none;
@@ -54,9 +78,19 @@ body
     background-color: #C8C5C5;
 }
 
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text
+{
+    font-size: 15px;
+}
+
 .top-nav
 {
     padding: 0;
+}
+
+nav .nav .dropdown-menu
+{
+    margin-right: 0 !important;
 }
 
 h1
@@ -76,6 +110,12 @@ h1
 {
     font-family: 'Source Sans Pro', sans-serif;
     text-transform : capitalize;
+    font-size: 15px;
+
+    i
+    {
+        padding-right: 5px;
+    }
 }
 
 .top-nav>li>a:hover,
@@ -327,19 +367,14 @@ div.line
     transition:         transform 0s;
 }
 
-.signout, .system, .settings, label.toggle-mobile
+.signout, .system, .settings, label.toggle-mobile, .profile
 {
     display: none;
 }
 
-.settings
-{
-    margin-right: 10px;
-}
-
 .machinery-switch
 {
-    width: 60px;
+    width: 75px;
     padding-top: 10px;
         
     .well
@@ -386,4 +421,26 @@ div.line
             color: #943633;
         }
     }
+}
+
+
+/*************************
+*   Time picker
+*/
+
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td.active:hover,
+.bootstrap-datetimepicker-widget td span.active
+{
+    background-color: #943633;
+}
+
+.bootstrap-datetimepicker-widget td.today:before
+{
+    border-bottom: 7px solid #943633;
+}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover
+{
+    background-color: #943633;
 }

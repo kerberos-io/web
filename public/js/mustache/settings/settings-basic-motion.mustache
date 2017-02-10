@@ -1,0 +1,197 @@
+<div id="motion-view">
+	<h4><i class="fa fa-child" aria-hidden="true"></i> Motion</h4>
+    <div id="step" class="with-tooltip" style="position: absolute;">
+        <div class="title" style="float:left">{{translation.step1}}</div>
+        <span style="margin-top: -5px;">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span class="info">{{translation.step1Info}}</span>
+        </span>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="loading-image-view" class="load4" style="padding:50px 0;">
+                <div class="loader"></div>
+            </div>
+            <div class="owl-carousel owl-theme">
+                <div class="part" description="{{translation.step1}}" info="{{translation.step1Info}}">
+                    <div id="region-selector" class="image hullselection"></div>
+                </div>
+                <div class="part" style="display:none;padding-left:20px;" description="{{translation.step2}}" info="{{translation.step2Info}}">
+                    <div class="slider with-tooltip-left element">
+                        <input id="sensitivity" class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{motion.sensitivity}}"/>
+                        <i class="description slider">{{translation.sensitivity}}</i>
+                        <span>
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <span>{{translation.sensitivityInfo}}</span>
+                        </span>
+                    </div>
+                    <div class="slider with-tooltip-left element">
+                        <input class="slider-fps" id="detections" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="{{motion.detections}}"/>
+                        <i class="description slider">{{translation.numberOfDetections}}</i>
+                        <span>
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <span>{{translation.numberOfDetectionsInfo}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="part io-devices" style="display:none;padding-left:20px;" description="{{translation.step3}}" info="{{translation.step3Info}}">
+                    <div class="io-image">
+                        <div class="button">
+                            <input class="tgl tgl-device tgl-flip" id="disk" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="disk"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> {{translation.image}}
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <select id="timestamp-color">
+                                    <option value="none">{{translation.noTimestamp}}</option>
+                                    <option value="white">{{translation.white}}</option>
+                                    <option value="black">{{translation.black}}</option>
+                                    <option value="red">{{translation.red}}</option>
+                                    <option value="green">{{translation.green}}</option>
+                                    <option value="blue">{{translation.blue}}</option>
+                                </select>
+                                <i class="description">{{translation.drawTimestamp}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.drawTimestampInfo}}</span>
+                                </span>
+                            </div>
+                            <div class="with-tooltip element">
+                                <div class="button">
+                                    <input class="tgl tgl-ios" id="privacy-disk" {{#devices.disk.privacy}}checked{{/devices.disk.privacy}} type="checkbox"/>
+                                    <label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="privacy-disk"></label>
+                                </div>
+                                <i class="description">{{translation.privacy}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.privacyInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-video">
+                        <div class="button">
+                            <input class="tgl tgl-device tgl-flip" id="video" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="video"></label>
+                        </div>
+                        <div class="title">
+                             <i class="fa fa-video-camera" aria-hidden="true"></i> {{translation.video}}
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <select id="timestamp-video-color">
+                                    <option value="none">{{translation.noTimestamp}}</option>
+                                    <option value="white">{{translation.white}}</option>
+                                    <option value="black">{{translation.black}}</option>
+                                    <option value="red">{{translation.red}}</option>
+                                    <option value="green">{{translation.green}}</option>
+                                    <option value="blue">{{translation.blue}}</option>
+                                </select>
+                                <i class="description">{{translation.drawTimestamp}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.drawTimestampInfoVideo}}</span>
+                                </span>
+                            </div>
+                            <div class="slider with-tooltip-left element">
+                                <input class="video-fps" id="fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.fps}}"/>
+                                <i class="description">{{translation.fps}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.fpsInfo}}</span>
+                                </span>
+                            </div>
+                            <div class="slider with-tooltip-left element">
+                                <input class="video-record-seconds" id="recordAfter" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.recordAfter}}"/>
+                                <i class="description">{{translation.secondsRecord}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.secondsRecordInfo}}</span>
+                                </span>
+                            </div>
+                            <div class="with-tooltip element">
+                                <div class="button">
+                                    <input class="tgl tgl-ios" {{#devices.video.privacy}}checked{{/devices.video.privacy}} id="privacy-video" type="checkbox"/>
+                                    <label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="privacy-video"></label>
+                                </div>
+                                <i class="description">{{translation.privacy}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.privacyInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-webhook">
+                        <div class="button">
+                            <input class="tgl tgl-device tgl-flip" id="webhook" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="webhook"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-anchor" aria-hidden="true"></i>Webhook
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="url" value="{{devices.webhook.url}}"/>
+                                <i class="description">{{translation.webhookUrl}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.webhookUrlInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-script">
+                        <div class="button">
+                            <input class="tgl tgl-device tgl-flip" id="script" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="script"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-terminal" aria-hidden="true"></i>Script
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="path" value="{{devices.script.path}}"/>
+                                <i class="description">{{translation.scriptPath}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.scriptPathInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="io-GPIO">
+                        <div class="button">
+                            <input class="tgl tgl-device tgl-flip" id="gpio" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="gpio"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-microchip" aria-hidden="true"></i>GPIO
+                        </div>
+                        <div class="content">
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="pin" value="{{devices.gpio.pin}}"/>
+                                <i class="description">{{translation.gpioPin}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.gpioPinInfo}}</span>
+                                </span>
+                            </div>
+                            <div class="with-tooltip-left element">
+                                <input type="text" id="period" value="{{devices.gpio.period}}"/>
+                                <i class="description">{{translation.gpioPeriod}}</i>
+                                <span>
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                    <span>{{translation.gpioPeriodInfo}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

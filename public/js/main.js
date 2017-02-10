@@ -1,6 +1,6 @@
 require.config({
     baseUrl: _jsBase,
-    urlArgs: "bust=20082019",
+    urlArgs: "bust=20170127",
     shim: {
         'seiyria-bootstrap-slider': {
             deps: [
@@ -48,6 +48,21 @@ require.config({
             deps: [
                 'jquery'
             ]
+        },
+        carousel: {
+            deps: [
+                'jquery'
+            ]
+        },
+        videojsplaylist: {
+            deps: [
+                'add-video-js-in-global-scope'
+            ]
+        },
+        videojsplaylistui: {
+            deps: [
+                'videojsplaylist'
+            ]
         }
     },
     paths: {
@@ -61,7 +76,7 @@ require.config({
         underscore: 'vendor/underscore/underscore',
         requirejs: 'vendor/requirejs/require',
         fancybox: 'vendor/fancybox/source/jquery.fancybox.pack',
-        'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/js/bootstrap-slider',
+        'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
         jellyfish: 'app/models/Jellyfish',
         Sequencer: 'app/models/Sequencer',
         timepicker: 'app/models/Timepicker',
@@ -71,6 +86,10 @@ require.config({
         progressbar: 'vendor/progressbar.js/dist/progressbar.min',
         remodal: 'vendor/remodal/dist/jquery.remodal.min',
         photoswipe: 'vendor/photoswipe/dist/photoswipe.min',
+        videojs: 'vendor/video.js/dist/video.min',
+        videojsplaylist: 'vendor/videojs-playlist/dist/videojs-playlist',
+        videojsplaylistui: 'app/models/PlaylistUI',
+        carousel: 'vendor/owl.carousel/dist/owl.carousel.min',
         'photoswipe-ui': 'vendor/photoswipe/dist/photoswipe-ui-default.min'
     },
     packages: [

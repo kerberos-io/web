@@ -33,7 +33,13 @@ Route::group(array('prefix' => 'api/v1'), function()
     // Methods for authorized
     
     Route::group(['before' => 'auth'], function()
-    {     
+    {   
+        // -----------------
+        // User Controller
+
+        Route::get('users/current', 'Controllers\UserController@current');
+        Route::post('users/current', 'Controllers\UserController@updateCurrent');
+
         // -----------------
         // System Controller
         
@@ -50,6 +56,10 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::get('system/upgrade/reboot', 'Controllers\SystemController@reboot');
         Route::get('system/reboot', 'Controllers\SystemController@rebooting');
         Route::get('system/shutdown', 'Controllers\SystemController@shuttingdown');
+
+        Route::get('system/os', 'Controllers\SystemController@getOS');
+        Route::get('system/kerberos', 'Controllers\SystemController@getKerberos');
+        Route::get('system/kios', 'Controllers\SystemController@getKiOS');
         
         // -----------------
         // Image Controller
@@ -71,7 +81,6 @@ Route::group(array('prefix' => 'api/v1'), function()
     
     Route::group(['before' => 'auth.basic'], function()
     {
-        
         // --------------------
         // Settings Controller
 
@@ -89,7 +98,39 @@ Route::group(array('prefix' => 'api/v1'), function()
         Route::put('io', 'Controllers\SettingsController@updateIos');
         Route::get('io/webhook', 'Controllers\SettingsController@getIoWebhook');
         Route::put('io/webhook', 'Controllers\SettingsController@updateIoWebhook');
+
+        Route::get('configure', array('uses' => 'Controllers\SettingsController@getConfiguration'));
+        Route::put('configure', array('uses' => 'Controllers\SettingsController@changeProperties'));
+
+        // --------------------
+        // System Controller
+
+        Route::get('system/health', 'Controllers\SystemController@isStreamRunning');
+        Route::post('system/reboot', 'Controllers\SystemController@rebooting');
+        Route::post('system/shutdown', 'Controllers\SystemController@shuttingdown');
+
+        App::missing(function($exception)
+        {
+            return Response::json([
+                'error' => 'API method does not exists'
+            ], 404);
+        });
     });
+
+    
+    // -----------------
+    // Translate Controller
+
+    Route::get('translate/{page}', 'Controllers\TranslateController@index');
+
+    // --------------------
+    // Installation wizard
+
+    if(!Config::get('kerberos')['installed'])
+    {
+        Route::post('user/language', 'Controllers\UserController@changeLanguage');
+        Route::post('user/install', 'Controllers\UserController@install');
+    }
 });
 
 /**********************************

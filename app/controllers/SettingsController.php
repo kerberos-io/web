@@ -1,6 +1,7 @@
 <?php namespace Controllers;
 
 use View, Redirect, Input, Config, Response, URL;
+use Models\Config\FileLoader as FileLoader;
 use Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -13,6 +14,8 @@ class SettingsController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
+        $this->kerberos = Config::get("kerberos");
+        $this->fileLoader = new FileLoader(new \Illuminate\Filesystem\Filesystem(), app_path() . '/config');
     }
     
     /********************************************
@@ -30,7 +33,7 @@ class SettingsController extends BaseController
         [
             'days' => $days, 
             'settings' => $settings,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
+            'kerberos' => $this->kerberos
         ]);
     }
 
@@ -50,6 +53,46 @@ class SettingsController extends BaseController
             'settings' => $settings,
             'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
+    }
+
+    public function getConfiguration()
+    {
+        return $this->kerberos;
+    }
+
+    public function changeProperties()
+    {
+        $config = $this->kerberos;
+
+        $properties = Input::get();
+
+        foreach ($properties as $key => $property)
+        {
+            $config[$key] = $property;
+        }
+
+        $this->fileLoader->save($config, '', 'kerberos');
+        
+        return $config;
+    }
+
+    /********************************
+     *  Update web interface config
+     */
+    public function updateWeb()
+    {
+        $config = $this->kerberos;
+
+        $properties = Input::except("_token");
+
+        foreach ($properties as $key => $property)
+        {
+            $config[$key] = $property;
+        }
+
+        $this->fileLoader->save($config, '', 'kerberos');
+        
+        return Redirect::back();
     }
 
     /******************************************************************

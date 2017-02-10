@@ -79,6 +79,34 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $heap = $this->filesystem->findAllImages();
 
+        // -----------------------------------------------------------------------------
+        // Work-a-round for shorter timestamps, no numerical sorting is applied in heap
+        // sort because it would decreases performance enourmously (split of key)
+        // Therefore we make sure the string is long enough.
+        //
+        // -- Why is this needed?
+        //
+        // Usecase; it's possible that kerberos.io works without a working internet
+        // connection, and therefore wrong timestamps are assigned to the images typically
+        // from the beginning of the unix epoch - 01-01-1970
+
+        $index = $this->getIndexOfTimestampFromFileFormat();
+
+        while($heap->valid())
+        {
+            $timestamp = intval(explode('_', $heap->current())[$index]);
+
+            if($timestamp > 1000000000) 
+            {
+                break;
+            }
+
+            $numberOfZeros = strlen("1000000000") - strlen($timestamp);
+            $heap->insert(str_repeat("0", $numberOfZeros) . $heap->current());
+
+            $heap->extract();
+        }
+ 
         return $heap;
     }
     
@@ -86,9 +114,16 @@ class ImageFilesystemHandler implements ImageHandlerInterface
     {
         $latestSequence = $this->getLatestSequence();
 
+        // Filter out videos..
+        $latestSequence = array_where($latestSequence, function ($key, $value)
+        {
+            return $value['type'] === 'image';
+        });
+
         if(count($latestSequence)>0)
         {
-            return $latestSequence[count($latestSequence)-1];
+            $i = count($latestSequence) -1;
+            return $latestSequence[$i]["src"];
         }
         
         return "";
@@ -96,12 +131,31 @@ class ImageFilesystemHandler implements ImageHandlerInterface
 
     public function getLatestSequence()
     {
+        $key = $this->user->username . "_latestSequence";
+
         $days = $this->getDays(1);
 
         if(count($days) > 0)
         {
             $day = $days[0];
-            return $this->getImagesSequenceFromDay($day, 1, 120);
+            $images = $this->getImagesSequenceFromDay($day, 1, 120);
+            return array_values($images);
+        }
+        
+        return [];    
+    }
+
+    public function getSecondLatestSequence()
+    {
+        $key = $this->user->username . "_secondLatestSequence";
+
+        $days = $this->getDays(1);
+
+        if(count($days) > 0)
+        {
+            $day = $days[0];
+            $images = $this->getImagesSequenceFromDay($day, 2, 120);
+            return array_values($images);
         }
 
         return [];
@@ -137,6 +191,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $carbon = Carbon::createFromTimeStamp($timestamp);
             $carbon->setTimezone($this->date->timezone);
             $day = $carbon->format('d-m-Y');
+
             $startTimestamp = $this->date->dateToTimestamp($day);
 
             $days = [];
@@ -144,6 +199,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $timestamp = explode('_', $heap->current())[$index];
+                
+                if(!is_numeric($timestamp))
+                {
+                    $heap->next();
+                    continue;   
+                }
+
                 $rest = floor(($timestamp - $startTimestamp) / 86400);
 
                 if($restCheck != $rest)
@@ -153,10 +215,29 @@ class ImageFilesystemHandler implements ImageHandlerInterface
                     $carbon->subDays($rest);
                 }
 
+                // --------------------------------------------
+                // at this point we have all the images, but we 
+                // need to sort them.
+
                 $heap->next();
             }
-            
-            return $days;
+
+            // Transformdates
+            $timestamps = [];
+            foreach($days as $day)
+            {
+                array_push($timestamps, $this->date->dateToTimestamp($day));
+            }
+
+            asort($timestamps);
+
+            $days = [];
+            foreach($timestamps as $timestamp)
+            {
+                array_push($days, $this->date->timestampToDate($timestamp));
+            }
+
+            return array_reverse($days);
         });
 
         // --------------------
@@ -340,7 +421,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             }
         }
 
-        $images = [];
+        $data = [];
 
         // ------------------------------------------
         // Filter images that belong to selected page
@@ -349,22 +430,40 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         {
             if($key >= $lower && $key < $upper)
             {
-                $path = $image['path'];
+                $path = ltrim($image['path'], "0");
 
                 $image = new Image;
                 $image->setTimezone($this->date->timezone);
                 $image->parse($path);
 
-                array_push($images, [
-                    'time' => $image->getTime(),
-                    'src' => $this->filesystem->getPathToFile($image),
-                    'path' => $this->filesystem->getSystemPathToFile($image),
-                    'metadata' => $this->filesystem->getMetadata($image),
-                ]);
+                $path = $this->filesystem->getPathToFile($image);
+                $systemPath = $this->filesystem->getSystemPathToFile($image);
+
+                try
+                {
+                    $object = [
+                        'time' => $image->getTime(),
+                        'src' => $path,
+                        'metadata' => $this->filesystem->getMetadata($image)
+                    ];
+
+                    if(getimagesize($systemPath)['mime'] == 'image/jpeg')
+                    {
+                        $object['type'] = 'image';
+                        
+                    }
+                    else
+                    {
+                         $object['type'] = 'video';
+                    }
+
+                    array_push($data, $object);
+                }
+                catch(\Exception $ex){}
             }
         }
 
-        return $images;
+        return $data;
     }
 
     public function getImagesSequenceFromDayAndStartTime($day, $page, $starttime, $maximumTimeBetween)
@@ -423,23 +522,43 @@ class ImageFilesystemHandler implements ImageHandlerInterface
         $imagesTemp = array_reverse($imagesTemp);
         $imagesTemp = $this->getSequence($imagesTemp, $page, $maximumTimeBetween);
 
-        $images = [];
+        $data = [];
+
         foreach($imagesTemp as $image)
         {
-            $path = $image['path'];
-            
+            $path = ltrim($image['path'], "0");
+
             $image = new Image;
             $image->setTimezone($this->date->timezone);
             $image->parse($path);
             
-            array_push($images, [
-                'time' => $image->getTime(),
-                'src' => $this->filesystem->getPathToFile($image),
-                'path' => $this->filesystem->getSystemPathToFile($image),
-                'metadata' => $this->filesystem->getMetadata($image),
-            ]);
+            $path = $this->filesystem->getPathToFile($image);
+            $systemPath = $this->filesystem->getSystemPathToFile($image);
+
+            try
+            {
+                $object = [
+                    'time' => $image->getTime(),
+                    'src' => $path,
+                    'metadata' => $this->filesystem->getMetadata($image)
+                ];
+
+                if(getimagesize($systemPath)['mime'] == 'image/jpeg')
+                {
+                    $object['type'] = 'image';
+                    
+                }
+                else
+                {
+                     $object['type'] = 'video';
+                }
+
+                array_push($data, $object);
+            }
+            catch(\Exception $ex){}
         }
-        return $images;
+
+        return $data;
     }
 
     public function getSequence($images, $page, $maximumTimeBetween)
@@ -566,7 +685,7 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             $heap = $this->getImagesFromFilesystem();
             $indexTimestamp = $this->getIndexOfTimestampFromFileFormat();
             $indexInstanceName = $this->getIndexOfInstanceNameFromFileFormat();
-            
+
             // ---------------------------------------------
             // Iterate while timestamp is not in current day
             
@@ -585,6 +704,13 @@ class ImageFilesystemHandler implements ImageHandlerInterface
             while($heap->valid())
             {
                 $pieces = explode('_', $heap->current());
+
+                if(count($pieces) <= $indexInstanceName)
+                {
+                    $heap->next();
+                    continue;
+                }
+
                 $timestamp = intval($pieces[$indexTimestamp]);
                 
                 if($timestamp < $startTimestamp)

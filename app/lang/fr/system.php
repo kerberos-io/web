@@ -20,6 +20,18 @@ return array(
 	'model' => 'Modèle',
     
 	'os' => 'OS',
+
+	'osspecifications' => 'spécifications de l\'OS',
+
+	'warning-docker' => 'Impossible de déterminer le conteneur docker..',
+
+	'statistics' => 'Statistiques',
+
+	'log' => 'Log',
+	
+	'news' => 'Nouveautés',
+
+	'systemIsOnlineFor' => 'Système en ligne :',
     
 	'kernel' => 'Noyau',
     
@@ -57,13 +69,13 @@ return array(
     
 	'downloadSystemFiles' => 'Télécharger des fichiers système',
     
-	'downloadImages' => 'Télécharger des images',
+	'downloadImages' => 'Télécharger les images',
     
-	'removeImages' => 'Supprimer des images',
+	'removeImages' => 'Supprimer toutes les images',
 
 	'shutdown' => 'Éteindre',
 
-	'reboot' => 'Réinitialiser',
+	'reboot' => 'Rebooter',
     
 	'release' => 'Release',
     

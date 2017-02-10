@@ -4,26 +4,6 @@ return array(
 
 	/*
 	|-----------------------------------------------------------
-	| Authentication Kerberos.web - Simpleauth by cedricverst
-	|-----------------------------------------------------------
-	|	
-	| When you first open the kerberos web application a user
-	| needs to sign-in, it can sign-in with following credentials.
-	|
-	*/
-
-	'users' => [
-		[
-			"id" => 1,
-			"username" => "root",
-			"password" => "root",
-			"firstname" => "Cédric",
-			"secondname" => "Verstraeten"
-		]
-	],
-
-	/*
-	|-----------------------------------------------------------
 	| Configuration Kerberos.io
 	|-----------------------------------------------------------
 	|
@@ -33,7 +13,7 @@ return array(
 	|
 	*/
     
-    'version' => '2.1.0',
+    'version' => '2.2.0',
 	
 	'config' => '/etc/opt/kerberosio/config',
 
@@ -167,13 +147,14 @@ return array(
 		'Illuminate\Auth\Reminders\ReminderServiceProvider',
 		'Illuminate\Database\SeedServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
+		'Cedricve\Lockfile\LockfileServiceProvider',
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Cedricve\Simpleauth\SimpleauthServiceProvider',
-		'Aws\Laravel\AwsServiceProvider',
+		//'Aws\Laravel\AwsServiceProvider',
 	),
 
 	/*
@@ -241,7 +222,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Image'			  => 'Intervention\Image\Facades\Image',
-		'AWS' 			  => 'Aws\Laravel\AwsFacade',
+		//'AWS' 			  => 'Aws\Laravel\AwsFacade',
 	),
 
 );

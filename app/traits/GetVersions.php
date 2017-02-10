@@ -61,34 +61,41 @@ trait GetVersions
 
         $versions = $cache->storeAndGet($key, function()
         {
-            $url = "https://api.github.com/repos/kerberos-io/kios/releases";
-            if(Input::get('develop'))
+            try
             {
-                $url = "https://api.github.com/repos/cedricve/kios/releases";
-            }
+                $url = "https://api.github.com/repos/kerberos-io/kios/releases";
+                if(Input::get('develop'))
+                {
+                    $url = "https://api.github.com/repos/cedricve/kios/releases";
+                }
 
-            $client = new Client();
-            $request = $client->get($url);
-            $response = $client->send($request);
-            $body = json_decode($response->getBody());
-            
-            $versions = [];
-            for($i = 0; $i < count($body); $i++)
-            {
-                array_push($versions, [
-                    'version' => $body[$i]->tag_name,
-                    'name' => $body[$i]->name,
-                    'body' => $body[$i]->body,
-                    'prerelease' => $body[$i]->prerelease,
-                    'assets' => $body[$i]->assets,
-                    'published_at' => $body[$i]->published_at 
-                ]);
+                $client = new Client();
+                $request = $client->get($url);
+                $response = $client->send($request);
+                $body = json_decode($response->getBody());
+                
+                $versions = [];
+                for($i = 0; $i < count($body); $i++)
+                {
+                    array_push($versions, [
+                        'version' => $body[$i]->tag_name,
+                        'name' => $body[$i]->name,
+                        'body' => $body[$i]->body,
+                        'prerelease' => $body[$i]->prerelease,
+                        'assets' => $body[$i]->assets,
+                        'published_at' => $body[$i]->published_at 
+                    ]);
+                }
+                
+                $versions = array_values(array_sort($versions, function($value)
+                {
+                    return $value['version'];
+                }));
             }
-            
-            $versions = array_values(array_sort($versions, function($value)
+            catch(\Exception $ex)
             {
-                return $value['version'];
-            }));
+                $versions = [];
+            }
             
             return $versions;
         });

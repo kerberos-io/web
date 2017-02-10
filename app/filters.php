@@ -11,9 +11,31 @@
 |
 */
 
+
 App::before(function($request)
 {
-	//
+	/*
+	|-----------------------------------------------------------
+	| Authentication Kerberos.web - Simpleauth by cedricverst
+	|-----------------------------------------------------------
+	|	
+	| When you first open the kerberos web application a user
+	| needs to sign-in, it can sign-in with following credentials.
+	|
+	*/
+
+	$users = Config::get('kerberos.users');
+	Auth::getProvider()->setUsers($users);
+
+	/*
+	|-----------------------------------------------------------
+	| Set language
+	|-----------------------------------------------------------
+	*/
+
+	$language = Session::get('language','en'); // english will be the default language.
+   	App::setLocale($language);
+	
 });
 
 
@@ -43,7 +65,14 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			if(Config::get('kerberos')['installed'])
+			{
+				return Redirect::guest('login');
+			}
+			else
+			{
+				return Redirect::guest('welcome');
+			}
 		}
 	}
 });

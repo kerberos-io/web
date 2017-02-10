@@ -1,0 +1,104 @@
+<div id="general" class="block">
+    <h4><i class="fa fa-gears"></i> {{translation.general}}</h4>
+    <div class="name with-tooltip element">
+        <input id="instance" type="text" placeholder="Specify a name for the camera" value="{{name}}"/>
+        <i class="description">{{translation.name}}</i>
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span>{{translation.nameInfo}}</span>
+        </span>
+    </div>
+
+    <div class="timezone with-tooltip element">
+        <select id="timezone-picker-basic"></select>
+        <i class="description">{{translation.timezone}}</i>
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <span>{{translation.timezoneInfo}}</span>
+        </span>
+    </div>
+</div>
+
+<div id="camera" class="block">
+    <h4><i class="fa fa-video-camera"></i> {{translation.camera}}</h4>
+    <div id="USBCamera" class="type with-tooltip">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        {{translation.usbcamera}}
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{translation.usbcameraInfo}}</span>
+        </span>
+    </div>
+    <div id="RaspiCamera" class="type with-tooltip">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        {{translation.rpicamera}}
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{translation.rpicameraInfo}}</span>
+        </span>
+    </div>
+    <div id="IPCamera" class="type with-tooltip-left">
+        <i class="fa fa-video-camera aria-hidden="true"></i>
+        {{translation.ipcamera}}
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{translation.ipcameraInfo}}</span>
+        </span>
+    </div>
+</div>
+
+
+<div id="surveillance" class="block">
+    <h4><i class="fa fa-user-secret"></i> {{translation.surveillanceMode}}</h4>
+    <div id="Motion" class="type active with-tooltip">
+        <i class="fa fa-child" aria-hidden="true"></i>
+        {{translation.motion}}
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{translation.motionInfo}}</span>
+        </span>
+    </div>
+    <!--<div class="type">
+        <i class="fa fa-user-times" aria-hidden="true"></i>
+        counting
+    </div>
+    <div class="type">
+        <i class="fa fa-image" aria-hidden="true"></i>
+        timelapse
+    </div>
+    <div class="type">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        video
+    </div>-->
+</div>
+
+<div id="storage" class="block">
+    <h4><i class="fa fa-cloud"></i> {{translation.storage}}</h4>
+    <div id="Cloud" class="type active with-tooltip">
+        <i class="fa fa-cloud" aria-hidden="true"></i>
+        Cloud
+        <span>
+            <i class="fa fa-question-circle" aria-hidden="true"></i> 
+            <span>{{translation.storageInfo}}</span>
+        </span>
+    </div>
+    <!--<div class="type">
+        <i class="fa fa-user-times" aria-hidden="true"></i>
+        OwnCloud
+    </div>-->
+</div>
+
+<div class="submit-form">
+    <p id="confirm-info">{{translation.dontForget}}</p>
+    <input type="submit" value="{{translation.update}}"/>
+</div>
+
+<div id="settings-modal" data-remodal-id="settings">
+    <div class="modal-body">
+        <div class="view"></div>
+    </div>
+    <div class="buttons-wrapper">
+        <button data-remodal-action="cancel" class="remodal-cancel">{{translation.cancel}}</button>
+        <button data-remodal-action="confirm" class="remodal-confirm">{{translation.confirmAndSelect}}</button>
+    </div>
+</div>  

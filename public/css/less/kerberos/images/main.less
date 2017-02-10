@@ -18,74 +18,477 @@ div#images-wrapper
 	}	
 }
 
-.with-tooltip
+.images
 {
-	span
+	clear: both;
+}
+
+div#cameras
+{
+	text-align: center;
+  width: 80px;
+  margin: 0 auto;
+  cursor: pointer;
+
+  > div 
+  {
+    float: left;
+    padding: 1px 7px 0 0;
+    color: #983633;
+    font-size: 19px;
+  }
+
+	ul
 	{
-		position: relative;
-		color: white;
-		text-shadow: #090A0B 0 -1px;
-		display: inline-block;
-		font-style: bold;
-		width: 100%;
-	}
-	
-	span > i
-	{
-		font-family: Helvetica;
-		font-style: normal;
-		text-align: center;
-		line-height: 150%;
-		color: black;
-		text-shadow: white 0 1px;
-        background: #f4f4f4;
-        background-clip: padding-box;
-		box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
-		border: 4px solid #111;
-		border: 4px solid #943633;
-		border-radius: 3px;
-		position: absolute;
-		width: 250px;
-		left: 50%;
-		margin-left: -125px;
-		padding: 10px 0;
-		bottom: 100%;
-		margin-bottom: 15px;
-		visibility:hidden;
-		opacity:0;
-	}
-	
-	span > i:before, 
-    span > i:after
-    {
-		content: "";
-		position: absolute;
-		border-left: 10px solid transparent;
-		border-right: 10px solid transparent;
-		top: 100%;
-		left: 50%;
-		margin-left: -10px;
-	}
-	
-	span > i:before
-	{
-		border-top: 10px solid #943633;
-		margin-top: 4px;
-	}
-	
-	span > i:after
-	{
-		border-top: 10px solid #f4f4f4;
-		margin-top: -2px;
-		z-index: 1;
-	}
-	
-	span:hover > i
-	{
-		visibility: visible;
-		opacity: 1;
+      float:left;
+		  list-style:none;
+		  display: inline-block;
+	    margin: 0;
+	    padding: 0;
+
+		li
+		{
+			float:left;
+			margin-right: 6px;
+	    	font-size: 22px;
+
+			a
+			{
+				color: #983633;
+			}
+		}
 	}
 }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-center
+{
+	 position: absolute;
+    width: 100%;
+    top: 20%;
+    margin: 0 auto;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    margin: 0 auto;
+    display: table;
+    z-index: 1;
+    width: 95%;
+    border: none;
+}
+
+/* The Close Button */
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    z-index: 9999999;
+    position: absolute;
+    font-weight: 700;
+    top: 13px;
+    right: 25px;
+    opacity: 1;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* The default color for the playlist menu background, almost black */
+/* The color used to emphasize the currently playing video and for effects */
+/* The primary foreground color */
+/* Rules common to mouse and touch devices */
+.vjs-playlist {
+  list-style-type: none;
+  overflow: scroll;
+}
+.vjs-playlist .vjs-playlist-item-list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vjs-playlist .vjs-playlist-item {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5px;
+}
+.vjs-playlist .vjs-playlist-thumbnail {
+  display: block;
+}
+.vjs-playlist .vjs-playlist-thumbnail-placeholder {
+  height: 100px;
+  background: #303030;
+}
+.vjs-playlist img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.vjs-playlist .vjs-playlist-duration {
+  background-color: rgba(26, 26, 26, 0.8);
+  top: .5rem;
+  left: .5rem;
+  padding: 2px 5px 3px;
+  margin-left: 2px;
+  position: absolute;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-duration {
+  display: none;
+}
+.vjs-playlist .vjs-playlist-name {
+  display: block;
+  font-style: normal;
+  max-height: 2.5em;
+  overflow: hidden;
+  line-height: 20px;
+  padding: 0 0 4px 2px;
+}
+.vjs-playlist .vjs-playlist-description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+/* Prevent interaction with the playlist menu while ads are playing */
+/* on browsers that don't support pointer-events (IE<11), prevent
+scrolling past the ad overlay */
+.vjs-playlist.vjs-ad-playing {
+  overflow: hidden;
+}
+/* prevent clicks and scrolling from affecting the playlist during ads */
+.vjs-playlist.vjs-ad-playing.vjs-csspointerevents {
+  pointer-events: none;
+  overflow: auto;
+}
+.vjs-playlist.vjs-ad-playing.vjs-csspointerevents .vjs-playlist-ad-overlay {
+  pointer-events: auto;
+}
+/* darken the playlist menu display to indicate it's not interactive
+during ads and capture click events on IE<11 */
+.vjs-playlist.vjs-ad-playing .vjs-playlist-ad-overlay {
+  display: none;
+}
+.vjs-playlist.vjs-ad-playing .vjs-playlist-ad-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* IE8 fallback */
+  background-color: #1a1a1a;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  /* modern browsers */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* Parametric rules. These are specialized for touch and mouse-based devices */
+/* Touch-device playlist dimensions */
+.vjs-playlist {
+  font-size: 14px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 0;
+}
+.vjs-playlist .vjs-playlist-thumbnail {
+  width: 100%;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-thumbnail img {
+  opacity: .2;
+}
+.vjs-playlist .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: .5rem .8rem;
+  padding-left: 2px;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: block;
+}
+.vjs-playlist .vjs-selected {
+  background-color: #141a21;
+}
+.vjs-playlist .vjs-up-next-text {
+  display: none;
+}
+.vjs-playlist .vjs-up-next .vjs-up-next-text {
+  text-transform: uppercase;
+  display: block;
+  padding: .1rem 2px;
+  font-size: .8em;
+}
+.vjs-playlist time {
+  font-size: 1em;
+}
+.vjs-playlist .vjs-playlist-title-container {
+  position: absolute;
+  bottom: 0;
+  padding: .5rem .8rem;
+  text-shadow: 1px 1px 2px black, -1px 1px 2px black, 1px -1px 2px black, -1px -1px 2px black;
+}
+.vjs-playlist .vjs-selected .vjs-playlist-title-container {
+  text-shadow: none;
+}
+.vjs-playlist .vjs-playlist-description {
+  height: 42px;
+  line-height: 21px;
+}
+/* Mouse-only playlist dimensions */
+.vjs-mouse.vjs-playlist {
+  font-size: 15px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 0;
+  min-height: 500px;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-thumbnail {
+  width: 100%;
+}
+.vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail img {
+  opacity: .2;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: .5rem .8rem;
+  padding-left: 2px;
+}
+.vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+  display: block;
+}
+.vjs-mouse.vjs-playlist .vjs-selected {
+  background-color: #141a21;
+}
+.vjs-mouse.vjs-playlist .vjs-up-next-text {
+  display: none;
+}
+.vjs-mouse.vjs-playlist .vjs-up-next .vjs-up-next-text {
+  text-transform: uppercase;
+  display: block;
+  padding: .1rem 2px;
+  font-size: .8em;
+}
+.vjs-mouse.vjs-playlist time {
+  font-size: 1em;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-title-container {
+  position: absolute;
+  bottom: 0;
+  padding: .5rem .8rem;
+  text-shadow: 1px 1px 2px black, -1px 1px 2px black, 1px -1px 2px black, -1px -1px 2px black;
+}
+.vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-title-container {
+  text-shadow: none;
+}
+.vjs-mouse.vjs-playlist .vjs-playlist-description {
+  height: 45px;
+  line-height: 23px;
+}
+@media (min-width: 600px) {
+  .vjs-mouse.vjs-playlist {
+    font-size: 17px;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 0;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-thumbnail {
+    width: 100%;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail img {
+    opacity: .2;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: .5rem .8rem;
+    padding-left: 2px;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-thumbnail .vjs-playlist-now-playing {
+    display: block;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected {
+    background-color: #141a21;
+  }
+  .vjs-mouse.vjs-playlist .vjs-up-next-text {
+    display: none;
+  }
+  .vjs-mouse.vjs-playlist .vjs-up-next .vjs-up-next-text {
+    text-transform: uppercase;
+    display: block;
+    padding: .1rem 2px;
+    font-size: .8em;
+  }
+  .vjs-mouse.vjs-playlist time {
+    font-size: 1em;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-title-container {
+    position: absolute;
+    bottom: 0;
+    padding: .5rem .8rem;
+    text-shadow: 1px 1px 2px black, -1px 1px 2px black, 1px -1px 2px black, -1px -1px 2px black;
+  }
+  .vjs-mouse.vjs-playlist .vjs-selected .vjs-playlist-title-container {
+    text-shadow: none;
+  }
+  .vjs-mouse.vjs-playlist .vjs-playlist-description {
+    height: 51px;
+    line-height: 26px;
+  }
+  .vjs-playlist .vjs-playlist-name {
+    line-height: 22px;
+  }
+}
+body.modal-opened {
+    overflow: hidden;
+}
+.no-padding
+{
+  padding: 0;
+}
+
+.sequence-dimensions.vjs-fluid {
+    padding-top: 41%;
+    min-height: 500px;
+}
+.vjs-fluid {
+    padding-top: 41%;
+}
+.main-preview-player {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.video-js,
+.playlist-container {
+  position: relative;
+  min-width: 300px;
+  min-height: 150px;
+  height: 0;
+}
+.video-js {
+  flex: 3 1 70%;
+}
+.playlist-container {
+  flex: 1 1 30%;
+}
+.vjs-playlist {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.video-js .vjs-big-play-button {
+    font-size: 5em;
+    border-radius: 50%;
+    top: 43%;
+    left: 46%;
+    width: 82px;
+    height: 82px;
+    padding: 22px;
+    border: .06666em solid #fff;
+    background-color: #983633;
+}
+
+div.video-preview
+{
+    clear: both;
+    margin: 0 auto;
+    text-align: center;
+    padding:10px 0;
+
+    .imageview-video-preview
+    {
+        border-radius: 15px;
+        cursor: pointer;
+        height: 250px;
+    }
+
+    video:first-child
+    {
+        margin-right: 10px;
+    }
+}
+
+#video-modal
+{
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: #000;
+
+    .remodal-close:after
+    {
+      color: #fff;
+      height: 27px;
+    }
+}
+
+.vjs-playlist-now-playing, .vjs-selected
+{   
+    span.vjs-playlist-now-playing
+    {
+        color: #fff;
+    }
+
+    .vjs-playlist-name
+    {
+        color: #fff;
+    }
+}
+
+.vjs-playlist .vjs-playlist-item
+{
+    margin-bottom: 2px;
+}
+
+.vjs-mouse.vjs-playlist .vjs-up-next .vjs-up-next-text
+{
+    color: #fff;
+    text-transform: none;
+    display: block;
+    font-size: .8em;
+    margin: 0;
+    text-align: left;
+    text-shadow: none;
+}
+
+.vjs-playlist .vjs-playlist-name {
+    text-shadow: none;
+}
+
+.vjs-playlist-now-playing.vjs-playlist-thumbnail-placeholder, .vjs-selected .vjs-playlist-thumbnail-placeholder
+{
+    background: #943633;
+}
+
 
 @import "responsive-loader";
 @import "timeslider";
