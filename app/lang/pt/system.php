@@ -11,70 +11,70 @@ return array(
 	|
 	*/
 
-	'system' => 'System',
+	'system' => 'Sistema',
 
-	'diskAlmostFull' => 'Hey, your disk is almost full. Please remove some images..',
+	'diskAlmostFull' => 'Ei, seu disco está quase cheio. Por favor, remova algumas imagens..',
 
-	'board' => 'Board',
+	'board' => 'Quadro',
     
-	'model' => 'Model',
+	'model' => 'Modelo',
     
-	'os' => 'OS',
+	'os' => 'SO',
     
 	'kernel' => 'Kernel',
     
-	'hostname' => 'Hostname',
+	'hostname' => 'Nome do host',
     
-	'architecture' => 'Architecture',
+	'architecture' => 'Arquitetura',
     
-	'thisMachine' => 'This machine has',
+	'thisMachine' => 'Esta máquina tem',
     
-	'cpuRunning' => 'CPU\'s running with an average load of',
+	'cpuRunning' => 'O CPU está funcionando com uma carga de ',
     
-	'diskSpecs' => 'Disk specifications',
+	'diskSpecs' => 'Especificações de disco',
     
-	'thereAre' => 'There are',
+	'thereAre' => 'Tem',
     
-	'harddisksAvailable' => 'hard disks available on this machine',
+	'harddisksAvailable' => 'Disco rígidos disponíveis nesta máquina',
     
-	'networkSpecs' => 'Network specifications',
+	'networkSpecs' => 'Especificações de rede',
     
-		'device' => 'Device',
+		'device' => 'Dispositivo',
     
-		'recieved' => 'Recieved',
+		'recieved' => 'Recebido',
     
-		'sent' => 'Sent',
+		'sent' => 'Enviei',
     
-	'twoServicesRunning' => 'has two services running: the web and the machinery',
+	'twoServicesRunning' => 'tem dois serviços rodando: a web e o maquinário',
     
-	'versions' => 'Versions',
+	'versions' => 'Versões',
     
-	'numberOfImages' => '# of images',
+	'numberOfImages' => '# de imagens',
     
-	'numberOfDays' => '# of days',
+	'numberOfDays' => '# de dias',
     
-	'days' => 'Days',
+	'days' => 'Dias',
     
-	'downloadSystemFiles' => 'Download system files',
+	'downloadSystemFiles' => 'Baixar arquivos do sistema',
     
-	'downloadImages' => 'Download images',
+	'downloadImages' => 'Baixar imagens',
     
-	'removeImages' => 'Remove images',
+	'removeImages' => 'Remover imagens',
     
-	'release' => 'Release',
+	'release' => 'Lançamento',
     
-	'publishedAt' => 'Published at',
+	'publishedAt' => 'Publicado um',
     
-	'install' => 'Install',
+	'install' => 'Instalar',
     
-	'downloading' => 'Downloading',
+	'downloading' => 'Baixando',
     
-	'unzipping' => 'Unzipping',
+	'unzipping' => 'Descompactando',
     
-	'unpacking' => 'Unpacking',
+	'unpacking' => 'Desembalando',
     
-	'transferring' => 'Transferring',
+	'transferring' => 'Transferindo',
     
-	'rebooting' => 'System is rebooting',
+	'rebooting' => 'O sistema está reiniciando',
 
 );

@@ -11,10 +11,10 @@ return array(
 	|
 	*/
     
-    'cloud' => 'Cloud',
+    'cloud' => 'Nuvem',
     
-    'description' => 'Kerberos.io offers a <b>cloud application service</b>, to centralize and follow up multiple Kerberos.io instances. To sync the events of this instance to our cloud application, you first will need to <a href="https://cloud.kerberos.io">register an account</a> and subscribe to a plan. When you\'re subscribed succesfully, you will receive some credentials that you can fill in the fields below. Once you\'ve entered <b>your credentials</b> your events will be send to the cloud application',
+    'description' => 'O Kerberos.io oferece um serviço de aplicação em nuvem, para centralizar e acompanhar várias instâncias do Kerberos.io. Para sincronizar os eventos desta instância com nosso aplicação em nuvem, primeiro você precisará registrar uma conta e inscrever se em um plano. Quando você estiver inscrito com sucesso, você receberá algumas credenciais que você deve preencher nos campos abaixo. Depois de inserir suas credenciais, seus eventos serão enviados para a aplicação em nuvem.',
     
-	'update' => 'Update',
+	'update' => 'Atualizar',
 
 );
