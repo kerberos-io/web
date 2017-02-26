@@ -23,7 +23,7 @@ return array(
 
 	'osspecifications' => 'OS specifications',
 
-	'warning-docker' => 'Don\'t know i\'m in a seperate docker container..',
+	'warning-docker' => 'Don\'t know I\'m in a separate Docker container..',
 
 	'statistics' => 'Statistics',
 
