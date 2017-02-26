@@ -25,11 +25,11 @@ return array(
 
 	'changePassword' => 'Change password',
 
-	'currentPassword' => 'current passsword',
+	'currentPassword' => 'current password',
 
-	'newPassword' => 'new passsword',
+	'newPassword' => 'new password',
 
-	'confirmNewPassword' => 'confirm new passsword',
+	'confirmNewPassword' => 'confirm new password',
 
 	'cancel' => 'cancel',
 
