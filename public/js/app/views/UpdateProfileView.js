@@ -3,9 +3,9 @@
 ****/
 
 
-define(["underscore", "backbone", "fancybox", "app/models/User", "app/views/BaseView"], 
-    function (_, Backbone, fancybox, UserCollection, BaseView)
-{ 
+define(["underscore", "backbone", "app/models/User", "app/views/BaseView"],
+    function (_, Backbone, UserCollection, BaseView)
+{
     var UpdateProfileView = BaseView.extend(
     {
         el : '#update-profile-modal',
@@ -37,7 +37,7 @@ define(["underscore", "backbone", "fancybox", "app/models/User", "app/views/Base
                     {
                         localStorage.clear();
                     }
-                    
+
                     location.reload();
                 });
                 return true;
@@ -53,7 +53,7 @@ define(["underscore", "backbone", "fancybox", "app/models/User", "app/views/Base
             }
         },
         render: function(translation)
-        {   
+        {
             var self = this;
             this.collection.fetch({async: true, success: function()
             {
