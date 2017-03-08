@@ -12,15 +12,15 @@ return array(
 	| also shows a history of images.
 	|
 	*/
-
-  'version' => '2.2.1',
-
+    
+    'version' => '2.2.1',
+	
 	'config' => '/etc/opt/kerberosio/config',
 
 	'filesystem' => [
 
 		'fileFormat' => 'timestamp_microseconds_instanceName_regionCoordinates_numberOfChanges_token.jpg',
-
+		
 		'disk' => [
 			'path' => '/capture',
 		],
