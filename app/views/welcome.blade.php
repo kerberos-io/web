@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="description" content="homesecurity webinterface">
     <meta name="author" content="Cédric Verstraeten">
-    
+
     <link rel="icon" type="image/png" href="{{URL::to('/')}}/images/favicon.ico" />
 
     <title>kerberos.io - Video Surveillance</title>
@@ -23,8 +23,8 @@
     <!-- Custom Fonts -->
     <link href="{{URL::to('/')}}/js/vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Carousel -->
-    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">  
-    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet"> 
+    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
     <link href="{{URL::to('/')}}/js/vendor/csshake/dist/csshake.css" rel="stylesheet">
@@ -44,6 +44,7 @@
                 <option value="fr">Français</option>
                 <option value="nl">Nederlands</option>
                 <option value="de">Deutsch</option>
+                <option value="bg">България</option>
                 <!--<option value="pt">Português</option>-->
             </select>
             <div class="next">
