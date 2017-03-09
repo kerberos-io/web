@@ -29,7 +29,7 @@ return array(
 
 	'name' => 'Name',
 
-	'nameInfo' => 'An unique name for your camera is required, if you will run multiple Kerberos.io instances.',
+	'nameInfo' => 'A unique name for your camera is required, if you will run multiple Kerberos.io instances.',
 
 	'timezone' => 'Timezone',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => 'Storage',
 
-	'storageInfo' => 'Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere int the world.',
+	'storageInfo' => 'Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere in the world.',
 
 	'dontForget' => 'Press update to confirm your configuration.',
 
@@ -114,7 +114,7 @@ return array(
 
 	'numberOfDetections' => 'number of detections before valid',
 
-	'numberOfDetectionsInfo' => 'This number represents the number of detections in a row before Kerberos.io will trigger a valid event. By increasing this value you can eliminate false-positives: e.g. lightning, clouds, etc.',
+	'numberOfDetectionsInfo' => 'This number represents the number of detections in a row before Kerberos.io will trigger a valid event. By increasing this value, you can eliminate false-positives: e.g. lightning, clouds, etc.',
 
 		// ------------------
 		// Timestamp - Colors
@@ -170,7 +170,7 @@ return array(
 
 	'whatIsThis' => 'What is this',
 
-	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
+	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan, you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
 
 	'subscribeNow' => 'Subscribe now for only €1,49'
 

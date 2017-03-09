@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "jquery": "2.2.2",
-    "fancybox": "*",
+
     "bootstrap": "*",
     "underscore": "*",
     "moment": "*",
@@ -40,7 +40,7 @@
     "remodal": "0.6.4",
     "progressbar.js": "~1.0.0",
     "photoswipe": "~4.1.1",
-    "video.js": "^5.14.1",
+    "video.js": "5.17.0",
     "videojs-playlist": "^3.0.0",
     "owl.carousel": "^2.2.0"
   }
