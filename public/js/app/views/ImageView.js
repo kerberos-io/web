@@ -6,9 +6,9 @@ define("add-video-js-in-global-scope",["videojs"], function(videojs) {
     window.videojs = videojs;
 });
 
-define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "app/models/Images", "app/views/BaseView", "remodal", 'videojsplaylist', 'videojsplaylistui'], 
-    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, fancybox, ImagesCollection, BaseView, remodal, videojsplaylist, videojsplaylistui)
-{ 
+define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "app/models/Images", "app/views/BaseView", "remodal", 'videojsplaylist', 'videojsplaylistui'],
+    function (_, PhotoSwipe, PhotoSwipeUI, Backbone, ImagesCollection, BaseView, remodal, videojsplaylist, videojsplaylistui)
+{
     var ImageItemView = BaseView.extend(
     {
         el: '<div>',
@@ -112,11 +112,11 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
         createView: function(image)
         {
             return new ImageItemView({model: image, parent: this});
-        }, 
+        },
         createVideoView: function(video)
         {
             return new VideoItemView({model: video, parent: this});
-        }, 
+        },
         destroyViews: function()
         {
             _.invoke(this.views, 'close');
@@ -133,12 +133,12 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
             imagesCollection.setPage(this.currentPage);
             imagesCollection.setDay(this.collection.day);
             imagesCollection.setLastTime(this.lastTime);
-        
+
             if(this.collection.time != "" && this.collection.time !== undefined)
             {
                 imagesCollection.setStartTime(this.collection.time);
             }
-            
+
             var self = this;
             imagesCollection.fetch({async: true, success: function()
             {
@@ -184,32 +184,32 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
                         self.lastTime = imagesCollection.models[imagesCollection.models.length-1].attributes.metadata.timestamp;
                     }
-                    
+
                     // -------------------------------
                     // add new collection to current.
 
                     self.newViews = imagesCollectionFirst.map(self.createView, self);
-                    var imagesList = $("<div id='images-"+self.currentPage+"' class='images'>");   
+                    var imagesList = $("<div id='images-"+self.currentPage+"' class='images'>");
                     imagesList.html(_.map(self.newViews, self.getDom, self));
 
                     // ---------------
                     // Hide tooltip
-                    
+
                     imagesList.find("i").hide();
                 }
 
                 if(collection.models.length > 0)
-                {   
+                {
                     var timeBetween = "";
                     var timeRange = "";
-     
+
                     timeBetween = collection.last().attributes.metadata.timestamp - collection.at(0).attributes.metadata.timestamp;
                     if(timeBetween > 0 && timeBetween / 60 > 1)
                     {
                         timeBetween = parseInt(timeBetween / 60);
                         timeBetweenText = " during " + timeBetween;
                         timeRange = collection.at(0).get('time') + ' - ' + collection.last().get('time');
-                        
+
                         if(timeBetween > 1)
                         {
                             timeBetweenText += " minutes";
@@ -222,7 +222,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     else
                     {
                         timeBetweenText = " during " + timeBetween;
-                        
+
                         if(timeBetween > 1)
                         {
                             timeBetweenText += " seconds";
@@ -241,7 +241,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     }
 
                     self.$el.find("div#images-wrapper").append($("<div class='new-page'>").html(timeRange));
-                    
+
                     var numberOfEvents = (collection.models.length == 1 ) ? collection.models.length + " event" : collection.models.length  + " events";
 
                     self.$el.find("div#images-wrapper")
@@ -249,7 +249,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                             .html(numberOfEvents + timeBetweenText));
 
                     self.videoViews = videoCollection.models.map(self.createVideoView, self);
-     
+
                     // -------------------
                     // Append images
 
@@ -331,7 +331,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         {
                             // -------------------------------
                             // Build photoswipe
-                        
+
                             var pswpElement = document.querySelectorAll('.pswp')[0];
 
                             // Build items array
@@ -351,7 +351,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                                         h: this.height
                                     });
                                 }
-                    
+
                                 // Initializes and opens PhotoSwipe
                                 var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
                                 gallery.init();
@@ -382,7 +382,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
             var src = wrapper.getAttribute('data-lazy-load');
             var metadata = JSON.parse(wrapper.getAttribute('metadata'));
-            
+
             // ------------------
             // Create new image
 
@@ -408,10 +408,10 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 canvas.width = width;
                 canvas.height = width / ratio;
 
-                ctx.drawImage(image, 0, 0, width, canvas.height); 
+                ctx.drawImage(image, 0, 0, width, canvas.height);
 
                 // ---------------------
-                // Draw region 
+                // Draw region
 
                 var tooltipOutput = "";
 
@@ -432,7 +432,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                     // ---------------------------
                     // e.g. show region in tooltip
                     //tooltipOutput += "Region: " + (coordinates[2]-coordinates[0]) + "x" + (coordinates[3]-coordinates[1]);
-                    
+
                     ctx.rect(x1, y1, regionWidth, regionHeight);
                     ctx.strokeStyle = color;
                     ctx.stroke();
@@ -476,7 +476,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
 
             // -----------------------------
             // Get first image of collection
-            
+
             var imagesCollection = $.extend(true, {}, this.collection);
             imagesCollection.models = _.filter(imagesCollection.models, function(item)
             {
@@ -509,14 +509,14 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 this.views = previewImages.map(this.createView, this);
 
                 if(this.views.length>0)
-                {  
+                {
                     var self = this;
 
                     this.$el.find("div#images-1").html(_.map(this.views, this.getDom, this));
                     this.$el.find("div.image").click(function()
                     {
                         var collection = imagesCollection;
-                    
+
                         // Build photoswipe
                         var pswpElement = document.querySelectorAll('.pswp')[0];
 
@@ -537,17 +537,17 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                                     h: this.height
                                 });
                             }
-            
+
                             // Initializes and opens PhotoSwipe
                             var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, {});
                             gallery.init();
                         }
                     });
-                } 
+                }
                 else
                 {
                     this.$el.find("div#images-1").remove();
-                }  
+                }
 
                 var timeBetween = "";
                 var timeRange = "";
@@ -642,7 +642,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                         self.player.playlist(playlist);
                         self.player.playlist.first();
                         self.modal.open();
-                        
+
                         return false;
                     });
                 }
@@ -654,7 +654,7 @@ define(["underscore", "photoswipe", "photoswipe-ui", "backbone", "fancybox", "ap
                 this.$el.find("div#images-wrapper")
                     .prepend($("<div class='new-page'>")
                         .html(timeRange));
-            
+
             }
 
             // ---------------

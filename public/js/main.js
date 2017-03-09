@@ -44,11 +44,6 @@ require.config({
             ],
             exports: 'Morris'
         },
-        fancybox: {
-            deps: [
-                'jquery'
-            ]
-        },
         carousel: {
             deps: [
                 'jquery'
@@ -75,7 +70,6 @@ require.config({
         'eonasdan-bootstrap-datetimepicker': 'vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min',
         underscore: 'vendor/underscore/underscore',
         requirejs: 'vendor/requirejs/require',
-        fancybox: 'vendor/fancybox/source/jquery.fancybox.pack',
         'seiyria-bootstrap-slider': 'vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min',
         jellyfish: 'app/models/Jellyfish',
         Sequencer: 'app/models/Sequencer',
