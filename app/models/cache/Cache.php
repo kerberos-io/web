@@ -1,6 +1,6 @@
 <?php namespace Models\Cache;
 
-use Session;
+use Cache as LCache;
 
 class Cache implements CacheInterface
 {
@@ -14,16 +14,16 @@ class Cache implements CacheInterface
     public function storeAndGet($key, $function)
     {
         $time = time();
-        $valueFromCache = Session::get($key, [$key => [], 'time' => 0]);
+        $valueFromCache = LCache::get($key, [$key => [], 'time' => 0]);
 
         if($time - $valueFromCache['time'] >= $this->cachingTime)
         {
-            Session::forget($key);
+            LCache::forget($key);
 
             $valueFromFunction = $function();
             $valueFromCache = [$key => $valueFromFunction, 'time' => $time];
 
-            Session::put($key, $valueFromCache);   
+            LCache::put($key, $valueFromCache, 999999);
         }
 
         return $valueFromCache[$key];
@@ -31,6 +31,6 @@ class Cache implements CacheInterface
 
     public function forget($key)
     {
-        Session::forget($key);
+        LCache::forget($key);
     }
 }

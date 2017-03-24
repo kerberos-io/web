@@ -25,9 +25,8 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-
-	'local' => array('homestead'),
-
+	'local' => array('homestead','Cedrics-Mac-mini.local'),
+	'production' => array('vps.cedricve.me')
 ));
 
 /*
