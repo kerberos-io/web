@@ -50,7 +50,13 @@ If you already have a Raspberry Pi running with Raspbian, you probably don't wan
 
 [Read more](https://doc.kerberos.io/2.0/installation/Raspbian)
 
-###Advanced
+###Armbian (for Orange Pi, PCDuino, etc)
+
+Kerberos.io can also be installed on other boards, which run the Armbian OS. 
+
+[Read more](https://doc.kerberos.io/2.0/installation/Armbian)
+
+###Generic
 
 If you want to install **the web**, you'll need to have **a webserver** (e.g. nginx) and **PHP** running with some extensions. You also need **nodejs** and **npm** installed to install **bower**. Below you can find the installation procedure to install the web on the Ubuntu OS; the process is similar for another Linux OS.
 
