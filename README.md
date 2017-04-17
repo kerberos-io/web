@@ -50,7 +50,7 @@ If you already have a Raspberry Pi running with Raspbian, you probably don't wan
 
 [Read more](https://doc.kerberos.io/2.0/installation/Raspbian)
 
-###Armbian (for Orange Pi, PCDuino, etc)
+### Armbian (for Orange Pi, PCDuino, etc)
 
 Kerberos.io can also be installed on other boards, which run the Armbian OS. 
 
