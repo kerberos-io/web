@@ -2,11 +2,9 @@
   "name": "kerberos-web",
   "version": "0.0.1",
   "private": true,
-  "dependencies": {
-    "grunt-bower-requirejs": "*"
-  },
   "main": "index.js",
-  "devDependencies": {
+  "dependencies": {
+    "grunt-bower-requirejs": "*",
     "bower": "~1.2.6",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "^1.1.0",
