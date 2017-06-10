@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             'js/vendor/video.js/src/',
           ],
           bootstrap: [
-            'js/vendor/bootstrap/dist/',
+            'js/vendor/bootstrap/dist/bootstrap.min*',
             'js/vendor/bootstrap/grunt/',
           ],
           moment: [
