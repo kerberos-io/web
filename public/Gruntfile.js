@@ -22,11 +22,18 @@ module.exports = function(grunt) {
             'js/vendor/video.js/src/',
           ],
           bootstrap: [
-            'js/vendor/bootstrap/dist/bootstrap.min*',
+            'js/vendor/bootstrap/dist/css/',
             'js/vendor/bootstrap/grunt/',
+            'js/vendor/bootstrap/fonts/',
+            'js/vendor/bootstrap/Gruntfile.js',
+            'js/vendor/bootstrap/bower.js',
+            'js/vendor/bootstrap/CHANGELOG.md',
           ],
           moment: [
             'js/vendor/moment/min/',
+          ],
+          fontawesome: [
+            'js/vendor/fontawesome/scss/',
           ]
         },
 
