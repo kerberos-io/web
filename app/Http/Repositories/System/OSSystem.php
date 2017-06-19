@@ -4,7 +4,7 @@ use Config, Input;
 
 class OSSystem implements SystemInterface
 {
-    use \Traits\GetVersions;
+    use \App\Traits\GetVersions;
 
     private $upgradeDir = '/data/.firmware_update'; // '/Users/cedricverst/Desktop/kios';
     private $bootDir = '/boot';

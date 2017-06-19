@@ -18,7 +18,7 @@ class SimpleAuth
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $loggedIn = Auth::guard($guard)->check();
+        $loggedIn = Auth::check();
 
         if(!$loggedIn)
         {

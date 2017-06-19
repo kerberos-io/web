@@ -16,8 +16,6 @@ class ImageFileSystemHandler implements ImageHandlerInterface
                                 FilesystemInterface $filesystem, DateInterface $date)
     {
         $this->cache = new Cache(Config::get('session.lifetime'));
-        $this->user = Auth::user();
-
         $this->reader = $reader;
         $this->config = Config::get("app.config");
         $settings = $this->reader->read($this->config . '/config.xml');
@@ -131,7 +129,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
 
     public function getLatestSequence()
     {
-        $key = $this->user->username . "_latestSequence";
+        $key = Auth::user()->username . "_latestSequence";
 
         $days = $this->getDays(1);
 
@@ -147,7 +145,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
 
     public function getSecondLatestSequence()
     {
-        $key = $this->user->username . "_secondLatestSequence";
+        $key = Auth::user()->username . "_secondLatestSequence";
 
         $days = $this->getDays(1);
 
@@ -179,7 +177,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         // -------------------------------------
         // Cache images directory for x seconds
 
-        $key = $this->user->username . "_days";
+        $key = Auth::user()->username . "_days";
 
         $days = $this->cache->storeAndGet($key, function()
         {
@@ -263,7 +261,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         // -------------------------------------
         // Cache images directory for x seconds
 
-        $key = $this->user->username . "_regions";
+        $key = Auth::user()->username . "_regions";
 
         $regions = $this->cache->storeAndGet($key, function() use ($numberOfRegions)
         {
@@ -667,7 +665,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         // -------------------------------------
         // Cache hours for x seconds
 
-        $key = $this->user->username . "_" . $day . "_hours";
+        $key = Auth::user()->username . "_" . $day . "_hours";
 
         $hours = $this->cache->storeAndGet($key, function() use ($day)
         {
