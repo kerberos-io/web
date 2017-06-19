@@ -13,23 +13,20 @@
 
 Route::group(['before' => ['hasConfiguration', 'hasCaptureDirectory']], function()
 {
-    Route::group(['before' => 'guest'], function()
+    // -----------------
+    // Login Controller
+
+    Route::get('login', 'LoginController@index');
+
+    // ----------------------------------------
+    // Welcome controller, for first time setup.
+
+    if(!Config::get('kerberos')['installed'])
     {
-        // -----------------
-        // Login Controller
+        Route::get('welcome', 'WelcomeController@index');
+    }
 
-        Route::get('login', 'LoginController@index');
-
-        // ----------------------------------------
-        // Welcome controller, for first time setup.
-
-        if(!Config::get('kerberos')['installed'])
-        {
-            Route::get('welcome', 'WelcomeController@index');
-        }
-    });
-
-    Route::group(['before' => 'auth'], function()
+    Route::middleware('auth.simple')->group(function()
     {
         // ------------------------
         // Login Controller

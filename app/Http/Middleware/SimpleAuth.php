@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Config;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,7 @@ class SimpleAuth
     public function handle($request, Closure $next, $guard = null)
     {
         $loggedIn = Auth::guard($guard)->check();
+
         if(!$loggedIn)
         {
             if($request->ajax())

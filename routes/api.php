@@ -13,17 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 /**********************************
 *
 *               API V1
 *
 **********************************/
 
-Route::prefix('api/v1')->group(function()
+Route::prefix('v1')->group(function()
 {
     // -----------------
     // Webhook Controller
@@ -35,21 +31,15 @@ Route::prefix('api/v1')->group(function()
 
     Route::get('health', 'HealthController@index');
 
-    // -----------------------------
-    // Login method if not authorized
+    // -----------------
+    // Login Controller
 
-    Route::group(['before' => 'guest'], function()
-    {
-        // -----------------
-        // Login Controller
-
-        Route::post('login/login', 'LoginController@login'); // try to sign-in the user.
-    });
+    Route::post('login/login', 'LoginController@login'); // try to sign-in the user.
 
     // ----------------------
     // Methods for authorized
 
-    Route::group(['before' => 'auth'], function()
+    Route::middleware('auth.simple')->group(function()
     {
         // -----------------
         // User Controller
@@ -156,4 +146,4 @@ Route::prefix('api/v1')->group(function()
 *
 **********************************/
 
-Route::group(array('prefix' => 'api/v2'), function(){});
+Route::prefix('v2')->group(function(){});
