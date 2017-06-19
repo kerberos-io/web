@@ -9,7 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "intervention/image": "dev-master",
-        "cedricve/simpleauth": "dev-master",
+        "cedricve/simpleauth": "1.2.2",
         "cedricve/lockfile": "1.0.1",
         "linfo/linfo": "^3.0"
     },
