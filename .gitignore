@@ -2,5 +2,5 @@ vendor/
 public/node_modules/
 node_modules/
 public/capture
-composer.*
+composer.lock
 bootstrap/compiled.php
