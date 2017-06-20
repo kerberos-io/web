@@ -3,7 +3,7 @@
 @section('content')
 
     @if(!$settings['cloud']['dropdown']['S3']['children']['bucket']['value'])
-    <div class="alert-update alert alert-warning" role="alert"><a href="https://cloud.kerberos.io/" target="_blank">{{Lang::get('settings.purchase')}}</a></div>
+    <div class="alert-update alert alert-warning" role="alert"><a href="https://cloud.kerberos.io/" target="_blank">{!! Lang::get('settings.purchase') !!}</a></div>
     @endif
 
     <div id="page-wrapper">

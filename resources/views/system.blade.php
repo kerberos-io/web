@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="diskFull" style="display:none">
-        <div class="alert-update alert alert-danger" role="alert">{{Lang::get('system.diskAlmostFull')}}</div>
+        <div class="alert-update alert alert-danger" role="alert">{!! Lang::get('system.diskAlmostFull') !!}</div>
     </div>
 
     <div id="page-wrapper">
@@ -17,7 +17,7 @@
                         <div id="loading-image-view" class="load4" style="padding:50px 0;">
                             <div class="loader"></div>
                         </div>
-                    </div>  
+                    </div>
                     <div id="shutdown-modal" data-remodal-id="shutdown">
                         <div class="modal-body"></div>
                     </div>
@@ -40,9 +40,9 @@
                         </div>
                     </div>
                 </div>
-       
+
                 <div id="kios" class="col-lg-6"></div>
-             
+
             </div>
             <!-- /.row -->
         </div>
