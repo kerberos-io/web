@@ -45,6 +45,7 @@
                 <option value="nl">Nederlands</option>
                 <option value="de">Deutsch</option>
                 <option value="bg">България</option>
+                <option value="ca">Catalan</option>
                 <!--<option value="pt">Português</option>-->
             </select>
             <div class="next">

@@ -11,7 +11,7 @@
       'password' => 'root',
       'firstname' => 'Firstname',
       'secondname' => 'Lastname',
-      'language' => 'bg',
+      'language' => 'ca',
     ),
   ),
 );
