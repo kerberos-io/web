@@ -52,7 +52,7 @@ If you already have a Raspberry Pi running with Raspbian, you probably don't wan
 
 ### Armbian (for Orange Pi, PCDuino, etc)
 
-Kerberos.io can also be installed on other boards, which run the Armbian OS. 
+Kerberos.io can also be installed on other boards, which run the Armbian OS.
 
 [Read more](https://doc.kerberos.io/2.0/installation/Armbian)
 
@@ -66,14 +66,14 @@ Update the packages and kernel.
 
 Install git, nginx, php (+extension) and nodejs.
 
-    curl -sL https://deb.nodesource.com/setup | sudo bash - 
-    sudo apt-get install git nginx php5-cli php5-fpm php5-gd php5-mcrypt php5-curl nodejs
+    curl -sL https://deb.nodesource.com/setup | sudo bash -
+    sudo apt-get install git nginx php7-cli php7-fpm php7-gd php7-mcrypt php7-curl nodejs
 
 Creating a nginx config.
 
     sudo rm -f /etc/nginx/sites-enabled/default
-    sudo nano /etc/nginx/sites-enabled/default 
-    
+    sudo nano /etc/nginx/sites-enabled/default
+
 Copy and paste following config file; this file tells nginx where the web will be installed and that it requires PHP.
 
     server
@@ -102,7 +102,7 @@ Copy and paste following config file; this file tells nginx where the web will b
     }
 
 Create a www location.
-    
+
     mkdir -p /var/www
 
 Get the source code from Github.
@@ -117,8 +117,8 @@ Install PHP packages by using composer.
 
 Add write permission for the storage directory, and the kerberos config file.
 
-    sudo chmod -R 777 app/storage
-    sudo chmod 777 app/config/kerberos.php
+    sudo chmod -R 777 storage
+    sudo chmod 777 config/kerberos.php
 
 Install bower globally by using node package manager, this is installed when installing nodejs.
 
@@ -127,10 +127,10 @@ Install bower globally by using node package manager, this is installed when ins
     sudo npm -g install bower
 
 Install Front-end dependencies with bower
-    
+
     cd public
     sudo bower --allow-root install
-    
+
 Restart nginx
 
     sudo service nginx restart
