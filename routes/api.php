@@ -26,11 +26,6 @@ Route::prefix('v1')->group(function()
 
     Route::resource('webhook', 'WebhookController');
 
-    // -------------------
-    // Health Controller
-
-    Route::get('health', 'HealthController@index');
-
     // -----------------
     // Login Controller
 
@@ -86,7 +81,7 @@ Route::prefix('v1')->group(function()
     // -------------------------
     // REST API with basic auth
 
-    Route::middleware('authenticated')->group(function()
+    Route::middleware('basic.authenticated')->group(function()
     {
         // --------------------
         // Settings Controller

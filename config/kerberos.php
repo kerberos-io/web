@@ -7,11 +7,11 @@
     0 => 
     array (
       'id' => 1,
-      'username' => 'root',
-      'password' => 'root',
+      'username' => 'cedric',
+      'password' => 'cedric',
       'firstname' => 'Firstname',
       'secondname' => 'Lastname',
-      'language' => 'ca',
+      'language' => 'en',
     ),
   ),
 );
