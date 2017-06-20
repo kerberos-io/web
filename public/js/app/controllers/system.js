@@ -15,7 +15,7 @@ function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView, NewsV
     return {
         currentVersion: undefined,
         currentVersionAsset: undefined,
-        
+
         initialize: function(translation)
         {
             var self = this;
@@ -25,28 +25,28 @@ function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView, NewsV
             newsView.initialize(translation, self);
             newsView.fetchData(function(data)
             {
-                newsView.render(data);  
+                newsView.render(data);
 
                 var systemOSView = new SystemOSView();
 
                 systemOSView.initialize(translation, self);
                 systemOSView.fetchData(function(data)
                 {
-                    systemOSView.render(data); 
+                    systemOSView.render(data);
 
                     var systemKerberosView = new SystemKerberosView();
 
                     systemKerberosView.initialize(translation, self);
                     systemKerberosView.fetchData(function(data)
                     {
-                        systemKerberosView.render(data);  
+                        systemKerberosView.render(data);
 
                         var systemKiOSView = new SystemKiOSView();
 
                         systemKiOSView.initialize(translation, self);
                         systemKiOSView.fetchData(function(data)
                         {
-                            systemKiOSView.render(data);  
+                            systemKiOSView.render(data);
                         })
                     })
                 })
@@ -71,7 +71,7 @@ function($, ProgressBar, SystemOSView, SystemKerberosView, SystemKiOSView, NewsV
         {
             // ----------------
             // Download images
-            
+
             var self = this;
             $.get(_baseUrl + "/api/v1/images/clean",function(file)
             {

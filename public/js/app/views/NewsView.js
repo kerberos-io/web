@@ -2,9 +2,9 @@
 *  NewsView
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView", "remodal"], 
+define(["underscore", "backbone", "app/views/BaseView", "remodal"],
     function (_, Backbone, BaseView, remodal)
-{ 
+{
     var NewsView = BaseView.extend(
     {
         el : '#news .view',
@@ -23,9 +23,9 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal"],
             {
                 var announcements = _.find(data.sections, function(section)
                 {
-                    return section.name === "Announcements";                    
+                    return section.name === "Announcements";
                 });
-                
+
                 $.get(zendesk + "articles/search.json?query=&section=" + announcements.id, function(data)
                 {
                     var articles = data.results;
@@ -56,11 +56,24 @@ define(["underscore", "backbone", "app/views/BaseView", "remodal"],
 
                     callback(articles);
                 })
+                .fail(function() {
+                  callback([]);
+                });
+            })
+            .fail(function() {
+              callback([]);
             });
         },
         render: function(data)
         {
-            this.$el.html(this.template({articles: data}));
+            if(data && data.length)
+            {
+                this.$el.html(this.template({articles: data}));
+            }
+            else
+            {
+                this.$el.html("Couldn't retrieve any news, sorry.");
+            }
 
             return this;
         }
