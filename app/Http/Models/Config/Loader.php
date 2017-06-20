@@ -38,7 +38,6 @@ class Loader implements LoaderInterface {
 	{
 		$this->files = $files;
 		$this->defaultPath = $defaultPath;
-		\Log::info("Default: ". $defaultPath);
 	}
 	/**
 	 * Load the given configuration group.
@@ -101,7 +100,7 @@ class Loader implements LoaderInterface {
 		// We'll first check to see if we have determined if this namespace and
 		// group combination have been checked before. If they have, we will
 		// just return the cached result so we don't have to hit the disk.
-		if (isset($this->exists[$key]))
+		if (isset($thi->exists[$key]))
 		{
 			return $this->exists[$key];
 		}

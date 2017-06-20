@@ -2,6 +2,7 @@
 
 use Auth, Input, Session, Config;
 use View, Response, Redirect;
+use \Illuminate\Filesystem\Filesystem as Filesystem;
 use App\Http\Models\Config\FileLoader as FileLoader;
 
 class UserController extends BaseController
@@ -9,7 +10,7 @@ class UserController extends BaseController
     public function __construct()
     {
         $this->kerberos = Config::get("kerberos");
-        $this->fileLoader = new FileLoader(new \Illuminate\Filesystem\Filesystem(), app_path() . '/config');
+        $this->fileLoader = new FileLoader(new Filesystem(), config_path());
     }
 
     /**

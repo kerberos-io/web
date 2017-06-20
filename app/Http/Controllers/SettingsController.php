@@ -16,8 +16,7 @@ class SettingsController extends BaseController
         $this->reader = $reader;
         $this->config = Config::get("app.config");
         $this->kerberos = Config::get("kerberos");
-        \Log::info("Base path: " .  base_path() . '/config');
-        $this->fileLoader = new FileLoader(new Filesystem(), base_path() . '/config');
+        $this->fileLoader = new FileLoader(new Filesystem(), config_path());
     }
 
     /********************************************

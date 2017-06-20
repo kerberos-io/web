@@ -13,7 +13,7 @@
 
 Route::group(['before' => ['hasConfiguration', 'hasCaptureDirectory']], function()
 {
-    Route::middleware('guest')->group(function()
+    Route::middleware('not.authenticated')->group(function()
     {
         // -----------------
         // Login Controller
@@ -29,7 +29,7 @@ Route::group(['before' => ['hasConfiguration', 'hasCaptureDirectory']], function
         }
     });
 
-    Route::middleware('auth.simple')->group(function()
+    Route::middleware('authenticated')->group(function()
     {
         // ------------------------
         // Login Controller

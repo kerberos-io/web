@@ -39,7 +39,7 @@ Route::prefix('v1')->group(function()
     // ----------------------
     // Methods for authorized
 
-    Route::middleware('auth.simple')->group(function()
+    Route::middleware('authenticated')->group(function()
     {
         // -----------------
         // User Controller
@@ -86,7 +86,7 @@ Route::prefix('v1')->group(function()
     // -------------------------
     // REST API with basic auth
 
-    Route::middleware('auth.basic')->group(function()
+    Route::middleware('authenticated')->group(function()
     {
         // --------------------
         // Settings Controller
