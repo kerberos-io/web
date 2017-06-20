@@ -32,7 +32,6 @@ class Kernel extends HttpKernel
         'web' => [
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -58,5 +57,7 @@ class Kernel extends HttpKernel
         'authenticated' => \App\Http\Middleware\SimpleAuth::class,
         'basic.authenticated' => \App\Http\Middleware\BasicSimpleAuth::class,
         'not.authenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'has.captureDirectory' => \App\Http\Middleware\HasCaptureDirectory::class,
+        'has.configuration' => \App\Http\Middleware\HasConfiguration::class,
     ];
 }

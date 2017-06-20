@@ -4,6 +4,6 @@
 
         Oops, something went wrong <i class="fa fa-frown-o"></i>
 
-        <span>{{$message}}</span>
+        <span>{!! $message !!}</span>
 
 @stop

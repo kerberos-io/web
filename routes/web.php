@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['before' => ['hasConfiguration', 'hasCaptureDirectory']], function()
+Route::middleware(['has.configuration', 'has.captureDirectory'])->group(function()
 {
     Route::middleware('not.authenticated')->group(function()
     {
