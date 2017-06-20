@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use View, Redirect, Input, Config, Response, URL;
+use \Illuminate\Filesystem\Filesystem as Filesystem;
 use App\Http\Models\Config\FileLoader as FileLoader;
 use App\Http\Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use App\Http\Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
@@ -15,7 +16,8 @@ class SettingsController extends BaseController
         $this->reader = $reader;
         $this->config = Config::get("app.config");
         $this->kerberos = Config::get("kerberos");
-        $this->fileLoader = new FileLoader(new \Illuminate\Filesystem\Filesystem(), app_path() . '/config');
+        \Log::info("Base path: " .  base_path() . '/config');
+        $this->fileLoader = new FileLoader(new Filesystem(), base_path() . '/config');
     }
 
     /********************************************

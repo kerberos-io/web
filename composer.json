@@ -11,7 +11,8 @@
         "intervention/image": "dev-master",
         "cedricve/simpleauth": "1.2.2",
         "cedricve/lockfile": "1.0.1",
-        "linfo/linfo": "^3.0"
+        "linfo/linfo": "^3.0",
+        "laravelcollective/html": "~5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

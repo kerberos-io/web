@@ -5,7 +5,7 @@
     @if(!$settings['cloud']['dropdown']['S3']['children']['bucket']['value'])
     <div class="alert-update alert alert-warning" role="alert"><a href="https://cloud.kerberos.io/" target="_blank">{{Lang::get('settings.purchase')}}</a></div>
     @endif
-    
+
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -22,7 +22,7 @@
                         </label>
                     </div>
 
-                    {{ Form::open(array('action' => 'Controllers\SettingsController@update')) }}
+                    {{ Form::open(array('action' => 'SettingsController@update')) }}
 
                         <!-- Basic View -->
                         @include('settings.basic', ['kerberos' => $kerberos])
@@ -36,7 +36,7 @@
                 <div id="web-settings" class="col-lg-6">
                     <div id="configuration">
                         <h2><i class="fa fa-eye"></i> Web</h2>
-                        {{ Form::open(array('action' => 'Controllers\SettingsController@updateWeb')) }}
+                        {{ Form::open(array('action' => 'SettingsController@updateWeb')) }}
                             <div class="content">
                                 <div id="loading-image-view" class="load4" style="padding:50px 0;">
                                     <div class="loader"></div>
@@ -51,7 +51,7 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-    
+
     <script type="text/javascript">
         require([_jsBase + 'main.js'], function(common)
         {
@@ -66,7 +66,7 @@
                 });
 
                 toggleSettings.initialize();
-                
+
                 $(".configuration-switch input[type='checkbox']").click(function()
                 {
                     // toggle settings

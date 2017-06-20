@@ -1,6 +1,6 @@
 <?php namespace App\Http\Models\Config;
 
-class FileLoader extends \Illuminate\Config\FileLoader
+class FileLoader extends Loader
 {
     public function save($items, $environment, $group, $namespace = null)
     {
