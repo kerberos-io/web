@@ -8317,6 +8317,15 @@ label.toggle-mobile,
   background-color: #943633;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  .slider .tooltip.top {
+    margin-top: -48px;
+  }
+  .slider.slider-horizontal .slider-handle {
+    margin-left: -25px;
+    margin-top: -20px;
+    width: 50px;
+    height: 50px;
+  }
   body {
     margin-top: 50px;
   }
@@ -8412,15 +8421,6 @@ label.toggle-mobile,
   h1 {
     font-size: 13px;
     padding: 3px 0 10px;
-  }
-  .slider .tooltip.top {
-    margin-top: -48px;
-  }
-  .slider.slider-horizontal .slider-handle {
-    margin-left: -25px;
-    margin-top: -20px;
-    width: 50px;
-    height: 50px;
   }
 }
 body#red {
