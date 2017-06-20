@@ -1,10 +1,10 @@
 <?php namespace App\Http\Middleware;
 
-use Config;
+use App;
+use Session;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class LoadUsersFromConfig
+class SetLanguage
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class LoadUsersFromConfig
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $users = Config::get('kerberos.users');
-        Auth::getProvider()->setUsers($users);
+        $language = Session::get('language','en'); // english will be the default language.
+        App::setLocale($language);
 
         return $next($request);
     }
