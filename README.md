@@ -67,7 +67,7 @@ Update the packages and kernel.
 Install Git, Nginx, PHP7 (+extension) and NodeJS.
 
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install git nginx php7.0-cli php7.0-fpm php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip nodejs
+    sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php-fpm nodejs
 
 Creating a Nginx config.
 
@@ -118,6 +118,7 @@ Install PHP packages by using composer.
 Add write permission for the storage directory, and the kerberos config file.
 
     sudo chmod -R 777 storage
+    sudo chmod -R 777 bootstrap/cache
     sudo chmod 777 config/kerberos.php
 
 Install bower globally by using node package manager, this is installed when installing nodejs.
