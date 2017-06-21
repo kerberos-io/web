@@ -64,12 +64,12 @@ Update the packages and kernel.
 
     sudo apt-get update && sudo apt-get upgrade
 
-Install git, nginx, php (+extension) and nodejs.
+Install Git, Nginx, PHP7 (+extension) and NodeJS.
 
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install git nginx php7-cli php7-fpm php7-gd php7-mcrypt php7-curl nodejs
+    sudo apt-get install git nginx php7.0-cli php7.0-fpm php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip nodejs
 
-Creating a nginx config.
+Creating a Nginx config.
 
     sudo rm -f /etc/nginx/sites-enabled/default
     sudo nano /etc/nginx/sites-enabled/default
@@ -95,7 +95,7 @@ Copy and paste following config file; this file tells nginx where the web will b
 
         location ~ \.php$
         {
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_pass unix:/var/run/php7.0-fpm.sock;
                 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                 include fastcgi_params;
         }
