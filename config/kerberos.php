@@ -1,14 +1,14 @@
 <?php return array (
   'type' => 'basic',
   'radius' => '1',
-  'installed' => true,
+  'installed' => false,
   'users' => 
   array (
     0 => 
     array (
       'id' => 1,
-      'username' => 'cedric',
-      'password' => 'cedric',
+      'username' => 'root',
+      'password' => 'root',
       'firstname' => 'Firstname',
       'secondname' => 'Lastname',
       'language' => 'en',
