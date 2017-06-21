@@ -9,9 +9,16 @@
 | which serves as the "glue" for all the components of Laravel, and is
 | the IoC container for the system binding all of the various parts.
 |
+| --------------
+| Special note
+| --------------
+|
+| We've extended the Application so it can work with
+| a different configuration location.
+|
 */
 
-$app = new Illuminate\Foundation\Application(
+$app = new App\Application(
     realpath(__DIR__.'/../')
 );
 
