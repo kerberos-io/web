@@ -442,6 +442,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
                     $object = [
                         'time' => $image->getTime(),
                         'src' => $path,
+                        'local_src' => $systemPath,
                         'metadata' => $this->filesystem->getMetadata($image)
                     ];
 
@@ -538,6 +539,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
                 $object = [
                     'time' => $image->getTime(),
                     'src' => $path,
+                    'local_src' => $systemPath,
                     'metadata' => $this->filesystem->getMetadata($image)
                 ];
 

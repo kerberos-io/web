@@ -107,17 +107,24 @@ class ImageController extends BaseController
 
         if($videosFound)
         {
-            if(count($images) > 1)
+            for($i = count($images) - 1; $i >= 0; $i--)
             {
-                $lastMedia = $images[count($images)-1];
-                if($lastMedia['type'] === 'video')
+                $media = $images[$i];
+
+                // We will use getID4 to check if media this.
+                $getID3 = new \getID3;
+	              $mediaInfo = $getID3->analyze($media['local_src']);
+
+                if($media['type'] === 'image' ||
+                  ($media['type'] === 'video' && $mediaInfo['playtime_seconds'])
+                )
+                {
+                    break;
+                }
+                else // If a video but not valid, remove it!
                 {
                     array_pop($images);
                 }
-            }
-            else
-            {
-                $images = $this->imageHandler->getSecondLatestSequence();
             }
         }
 
