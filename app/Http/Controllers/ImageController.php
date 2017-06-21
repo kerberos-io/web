@@ -115,15 +115,20 @@ class ImageController extends BaseController
                 $getID3 = new \getID3;
 	              $mediaInfo = $getID3->analyze($media['local_src']);
 
-                if($media['type'] === 'image' ||
-                  ($media['type'] === 'video' && $mediaInfo['playtime_seconds'])
-                )
-                {
-                    break;
-                }
-                else // If a video but not valid, remove it!
+                if($media['type'] === 'image')
                 {
                     array_pop($images);
+                }
+                elseif($media['type'] === 'video')
+                {
+                    if($mediaInfo['playtime_seconds'])
+                    {
+                        break;
+                    }
+                    else // If a video but not valid, remove it!
+                    {
+                        array_pop($images);
+                    }
                 }
             }
         }
