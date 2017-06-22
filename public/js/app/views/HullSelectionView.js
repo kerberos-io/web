@@ -393,6 +393,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 };
                 this.renderPoint(point, delta);
             }
+
             // close hull
             this.closeHull();
         },
