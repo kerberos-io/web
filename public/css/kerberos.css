@@ -10882,11 +10882,14 @@ div#step {
   padding: 10px 0;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  #settings-modal h4 {
+    padding: 20px 0;
+  }
   #machinery-settings,
   #web-settings,
   #cloud,
   #settings-modal {
-    padding: 0 15px 0;
+    padding: 0 15px;
     display: table;
     width: 100%;
   }
@@ -10927,6 +10930,7 @@ div#step {
   }
   #settings-modal .modal-body {
     margin: 0;
+    padding: 1px 15px 15px;
   }
   #settings-modal #motion-view .container-fluid {
     padding: 0;

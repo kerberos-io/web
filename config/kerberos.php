@@ -1,7 +1,7 @@
 <?php return array (
   'type' => 'basic',
   'radius' => '1',
-  'installed' => false,
+  'installed' => true,
   'users' => 
   array (
     0 => 
@@ -11,7 +11,7 @@
       'password' => 'root',
       'firstname' => 'Firstname',
       'secondname' => 'Lastname',
-      'language' => 'en',
+      'language' => 'nl',
     ),
   ),
 );
