@@ -13,19 +13,19 @@ return array(
 
 	'activity' => 'Activity',
 
-		'selectView' => 'Select view',
+	'selectView' => 'Select view',
 
-		'liveView' => 'Live View',
+	'liveView' => 'Live View',
 
-		'lastActivity' => 'Latest Activity',
+	'lastActivity' => 'Latest Activity',
 
-		'heatmap' => 'Heatmap',
+	'heatmap' => 'Heatmap',
 
 	'overview' => 'Overview',
 
 	'hour' => 'Hour',
-    
-        'average' => 'Average',
+
+  'average' => 'Average',
 
 	'weekday' => 'Weekday',
 

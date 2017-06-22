@@ -3,7 +3,7 @@
 **/
 
 define(["underscore", "backbone"], function (_, Backbone)
-{ 
+{
     var Settings = Backbone.Model.extend(
     {
     	options: {
@@ -66,7 +66,7 @@ define(["underscore", "backbone"], function (_, Backbone)
         {
         	return $("input[name='config__instance__name']").val();
         },
-        
+
         getMotion: function()
         {
             return {
@@ -91,6 +91,7 @@ define(["underscore", "backbone"], function (_, Backbone)
                 },
                 video: {
                     enabled: false,
+                    hardwareEncodingEnabled: (this.getCapture() === 'RaspiCamera'),
                     recordAfter: $("input[name='io__Video__recordAfter']").val(),
                     fps: $("input[name='io__Video__fps']").val(),
                     colorTimestamp: $("input[name='io__Video__timestampColor']").val(),
@@ -148,14 +149,14 @@ define(["underscore", "backbone"], function (_, Backbone)
                 }
             }
 
-            // Remove number of existing 
+            // Remove number of existing
             for(var i = activeDevices.length; i < existingDevices.length; i++)
             {
                 var lastInRow = $(el).last();
                 lastInRow.next('div.delete-dropdown').remove();
                 lastInRow.remove();
             }
-            
+
 
             // --------------------------------------
             // Step 2. Select correct values in boxes
@@ -260,6 +261,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             getRPICamera:  function()
             {
                 return {
+                    fps: $("input[name='capture__RaspiCamera__framerate']").val(),
                     width: $("input[name='capture__RaspiCamera__frameWidth']").val(),
                     height: $("input[name='capture__RaspiCamera__frameHeight']").val(),
                     angle: parseInt($("input[name='capture__RaspiCamera__angle']").val()),
@@ -270,6 +272,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             {
                 this.changeCapture("RaspiCamera");
                 this.rpicamera = rpicamera;
+                $("input[name='capture__RaspiCamera__framerate']").val(rpicamera.fps);
                 $("input[name='capture__RaspiCamera__frameWidth']").val(rpicamera.width);
                 $("input[name='capture__RaspiCamera__frameHeight']").val(rpicamera.height);
                 $("input[name='capture__RaspiCamera__angle']").val(rpicamera.angle);

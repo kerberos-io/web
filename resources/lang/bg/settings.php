@@ -10,7 +10,7 @@ return array(
 	| The following language lines are used on the settings page.
 	|
 	*/
-    
+
     'settings' => 'Настройки',
 
     'configuration' => 'Конфигурация',
@@ -18,7 +18,7 @@ return array(
 	'update' => 'Запиши',
 
 	'heatmap' => 'Топлинна карта',
-	
+
 	'general' => 'Основни настройки',
 
 	'purchase' => 'Гледай навсякъде по света използвайки <b>Kerberos.cloud</b>, <u>започни сега</u> само за 1,49€ на месец!',
@@ -70,6 +70,8 @@ return array(
 
 	// --------------
 	// Camera
+
+	/* to translate */ 'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
 
 	'width' => 'Широчина',
 
@@ -164,6 +166,9 @@ return array(
 	'gpioPeriod' => 'времетраене',
 
 	'gpioPeriodInfo' => 'Времетраене на импулса в микросекунди.',
+
+	/* to translate */ 'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
+		Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
 	// --------------
 	// Cloud

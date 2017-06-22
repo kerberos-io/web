@@ -14,6 +14,16 @@
                     <i class="description">{{translation.width}}</i>
                     <i class="description">{{translation.height}}</i>
                 </div>
+
+								<div class="slider with-tooltip element">
+                    <input class="slider-fps" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="{{rpicamera.fps}}"/>
+                    <i class="description slider">{{translation.fps}}</i>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>{{translation.fpsRaspberryInfo}}</span>
+                    </span>
+                </div>
+
                 <div class="slider with-tooltip element">
                     <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{rpicamera.delay}}"/>
                     <i class="description slider">{{translation.delay}}</i>

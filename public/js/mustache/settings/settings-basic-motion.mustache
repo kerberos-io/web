@@ -81,48 +81,57 @@
                              <i class="fa fa-video-camera" aria-hidden="true"></i> {{translation.video}}
                         </div>
                         <div class="content">
-                            <div class="with-tooltip-left element">
-                                <select id="timestamp-video-color">
-                                    <option value="none">{{translation.noTimestamp}}</option>
-                                    <option value="white">{{translation.white}}</option>
-                                    <option value="black">{{translation.black}}</option>
-                                    <option value="red">{{translation.red}}</option>
-                                    <option value="green">{{translation.green}}</option>
-                                    <option value="blue">{{translation.blue}}</option>
-                                </select>
-                                <i class="description">{{translation.drawTimestamp}}</i>
-                                <span>
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>{{translation.drawTimestampInfoVideo}}</span>
-                                </span>
-                            </div>
-                            <div class="slider with-tooltip-left element">
-                                <input class="video-fps" id="fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.fps}}"/>
-                                <i class="description">{{translation.fps}}</i>
-                                <span>
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>{{translation.fpsInfo}}</span>
-                                </span>
-                            </div>
-                            <div class="slider with-tooltip-left element">
-                                <input class="video-record-seconds" id="recordAfter" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.recordAfter}}"/>
-                                <i class="description">{{translation.secondsRecord}}</i>
-                                <span>
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>{{translation.secondsRecordInfo}}</span>
-                                </span>
-                            </div>
-                            <div class="with-tooltip element">
-                                <div class="button">
-                                    <input class="tgl tgl-ios" {{#devices.video.privacy}}checked{{/devices.video.privacy}} id="privacy-video" type="checkbox"/>
-                                    <label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="privacy-video"></label>
-                                </div>
-                                <i class="description">{{translation.privacy}}</i>
-                                <span>
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                    <span>{{translation.privacyInfo}}</span>
-                                </span>
-                            </div>
+														{{#devices.video.hardwareEncodingEnabled}}
+														<div class="enabled-hw-encoding">
+															{{translation.hardwareEncodingEnabled}}
+														</div>
+														{{/devices.video.hardwareEncodingEnabled}}
+														{{^devices.video.hardwareEncodingEnabled}}
+														<div class="disabled-hw-encoding">
+		                            <div class="with-tooltip-left element">
+		                                <select id="timestamp-video-color">
+		                                    <option value="none">{{translation.noTimestamp}}</option>
+		                                    <option value="white">{{translation.white}}</option>
+		                                    <option value="black">{{translation.black}}</option>
+		                                    <option value="red">{{translation.red}}</option>
+		                                    <option value="green">{{translation.green}}</option>
+		                                    <option value="blue">{{translation.blue}}</option>
+		                                </select>
+		                                <i class="description">{{translation.drawTimestamp}}</i>
+		                                <span>
+		                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+		                                    <span>{{translation.drawTimestampInfoVideo}}</span>
+		                                </span>
+		                            </div>
+		                            <div class="slider with-tooltip-left element">
+		                                <input class="video-fps" id="fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.fps}}"/>
+		                                <i class="description">{{translation.fps}}</i>
+		                                <span>
+		                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+		                                    <span>{{translation.fpsInfo}}</span>
+		                                </span>
+		                            </div>
+		                            <div class="slider with-tooltip-left element">
+		                                <input class="video-record-seconds" id="recordAfter" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{devices.video.recordAfter}}"/>
+		                                <i class="description">{{translation.secondsRecord}}</i>
+		                                <span>
+		                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+		                                    <span>{{translation.secondsRecordInfo}}</span>
+		                                </span>
+		                            </div>
+		                            <div class="with-tooltip element">
+		                                <div class="button">
+		                                    <input class="tgl tgl-ios" {{#devices.video.privacy}}checked{{/devices.video.privacy}} id="privacy-video" type="checkbox"/>
+		                                    <label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="privacy-video"></label>
+		                                </div>
+		                                <i class="description">{{translation.privacy}}</i>
+		                                <span>
+		                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+		                                    <span>{{translation.privacyInfo}}</span>
+		                                </span>
+		                            </div>
+														</div>
+														{{/devices.video.hardwareEncodingEnabled}}
                         </div>
                     </div>
                     <div class="io-webhook">

@@ -71,6 +71,8 @@ return array(
 	// --------------
 	// Camera
 
+	/* to translate */ 'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
+
 	'width' => 'Amplada',
 
 	'height' => 'Altura',
@@ -160,6 +162,9 @@ return array(
 	'gpioPeriod' => 'durada',
 
 	'gpioPeriodInfo' => 'Durada (en microsegons) de la pulsacia.',
+
+	/* to translate */ 'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
+		Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
 	// --------------
 	// Cloud

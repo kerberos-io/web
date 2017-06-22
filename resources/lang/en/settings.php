@@ -10,15 +10,15 @@ return array(
 	| The following language lines are used on the settings page.
 	|
 	*/
-    
-    'settings' => 'Settings',
 
-    'configuration' => 'Configuration',
+  'settings' => 'Settings',
+
+  'configuration' => 'Configuration',
 
 	'update' => 'Update',
 
 	'heatmap' => 'Heatmap',
-	
+
 	'general' => 'General settings',
 
 	'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!',
@@ -70,6 +70,8 @@ return array(
 
 	// --------------
 	// Camera
+
+	'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
 
 	'width' => 'Width',
 
@@ -164,6 +166,9 @@ return array(
 	'gpioPeriod' => 'period',
 
 	'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
+
+	'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
+	Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
 	// --------------
 	// Cloud

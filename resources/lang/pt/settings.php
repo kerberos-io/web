@@ -10,7 +10,7 @@ return array(
 	| The following language lines are used on the settings page.
 	|
 	*/
-    
+
     'settings' => 'Configurações',
 
     'configuration' => 'Configurações',
@@ -24,7 +24,7 @@ return array(
 	/* to translate */ 'basic' => 'Basic',
 
 	/* to translate */ 'advanced' => 'Advanced',
-	
+
 	/* to translate */ 'name' => 'Name',
 
 	/* to translate */ 'nameInfo' => 'An unique name for your camera is required, if you will run multiple Kerberos.io instances.',
@@ -68,6 +68,8 @@ return array(
 
 	// --------------
 	// Camera
+
+	/* to translate */ 'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
 
 	/* to translate */ 'width' => 'Width',
 
@@ -162,6 +164,9 @@ return array(
 	/* to translate */ 'gpioPeriod' => 'period',
 
 	/* to translate */ 'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
+
+	/* to translate */ 'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
+		Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
 	// --------------
 	// Cloud

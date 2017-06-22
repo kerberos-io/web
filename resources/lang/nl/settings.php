@@ -10,7 +10,7 @@ return array(
 	| The following language lines are used on the settings page.
 	|
 	*/
-    
+
     'settings' => 'Instellingen',
 
     'configuration' => 'Configuratie',
@@ -70,6 +70,8 @@ return array(
 
 	// --------------
 	// Camera
+
+	'fpsRaspberryInfo' => 'Het aantal beelden per seconde die worden verwerkt; let op deze parameter bepaalt ook het aantal beelden per seconde van een video opname.',
 
 	'width' => 'Breedte',
 
@@ -164,6 +166,9 @@ return array(
 	'gpioPeriod' => 'periode',
 
 	'gpioPeriodInfo' => 'Het aantal microseconden dat de puls zal duren.',
+
+	'hardwareEncodingEnabled' => 'De camera die je geselecteerd hebt ondersteund hardware encoding, dat is waarom bepaalde parameters niet kunnen geselecteerd worden (e.g. tijdsweergave).
+		Alsook heeft de video die wordt opgenomen dezelfde eigenschappen als degene die ingesteld zijn bij jouw camera (e.g. FPS, sharpness, etc).',
 
 	// --------------
 	// Cloud

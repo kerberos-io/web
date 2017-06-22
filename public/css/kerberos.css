@@ -10878,6 +10878,9 @@ div#step {
 #machinery-settings div select {
   height: 34px;
 }
+.enabled-hw-encoding {
+  padding: 10px 0;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #machinery-settings,
   #web-settings,
