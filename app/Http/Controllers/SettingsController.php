@@ -259,9 +259,21 @@ class SettingsController extends BaseController
 
         $output = shell_exec("[ -f /.dockerenv ] && echo true || echo false");
 
+        // ------------------------------------
+        // Get username and password of stream
+
+        $username = $this->getPiece("stream.xml", ["Mjpg","username"])->__toString();
+        $password = $this->getPiece("stream.xml", ["Mjpg","password"])->__toString();
+        $authentication = "";
+        if($username != "" && $password != "")
+        {
+            $authentication = $username . ":" . $password . "@";
+        }
+
         if(trim($output) === "true")
         {
-            $url = URL::to('/') . '/stream';
+            $originalUrl =  URL::to('/');
+            $url = 'http://' . $authentication . str_replace('http://', '', URL::to('/'))  . '/stream';
             $port = '8889';
         }
         else
@@ -269,7 +281,7 @@ class SettingsController extends BaseController
             $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
             $url = parse_url(URL::to('/'), PHP_URL_HOST);
             $port = $instance[0];
-            $url = 'http://' . parse_url(URL::to('/'), PHP_URL_HOST) . ':' . $port;
+            $url = 'http://' . $authentication . $url . ':' . $port;
         }
 
         return Response::json([
