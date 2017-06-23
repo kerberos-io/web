@@ -8059,6 +8059,16 @@ h1 {
   margin: 0;
   padding: 1px 0 10px 0;
 }
+.navbar-brand h1 {
+  float: left;
+}
+.navbar-brand .camera-name {
+  float: left;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  color: #b96f6f;
+  margin-left: 5px;
+}
 .top-nav > li > a {
   font-family: 'Source Sans Pro', sans-serif;
   text-transform: capitalize;
@@ -8162,7 +8172,7 @@ div.scroll-down {
   cursor: pointer;
   color: #943633;
 }
-/** 
+/**
 *   Override: bootstrap timepicker
 */
 .datepicker {

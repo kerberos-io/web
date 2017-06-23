@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use View, Response, Validator;
+use Config, View, Response, Validator;
 use App\Http\Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use App\Http\Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -12,6 +12,7 @@ class ImageController extends BaseController
         parent::__construct($imageHandler, $reader);
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
+        $this->config = Config::get("app.config");
     }
 
     /***************************************
@@ -41,12 +42,16 @@ class ImageController extends BaseController
             $lastHourOfDay = 0;
         }
 
+        $directory = $this->config;
+        $settings = $this->reader->parse($directory)["instance"]["children"];
+
         // ----------------------------------------------------------------------
         // Get last x days from the imagehandler -> move to BaseController
 
         $days = $this->imageHandler->getDays(5);
 
         return View::make('image', [
+            'cameraName' => $settings['name']['value'],
             'days' => $days,
             'selectedDay' => $selectedDay,
             'lastHourOfDay' => $lastHourOfDay

@@ -24,10 +24,10 @@
     <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/photoswipe.css" rel="stylesheet">
     <link href="{{URL::to('/')}}/js/vendor/photoswipe/dist/default-skin/default-skin.css" rel="stylesheet">
     <!-- VideoJS -->
-    <link href="{{URL::to('/')}}/js/vendor/video.js/dist/video-js.min.css" rel="stylesheet">   
+    <link href="{{URL::to('/')}}/js/vendor/video.js/dist/video-js.min.css" rel="stylesheet">
     <!-- Carousel -->
-    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">  
-    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">    
+    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/js/vendor/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
     <!-- Core CSS -->
     <link href="{{URL::to('/')}}/css/kerberos.min.css" rel="stylesheet">
 
@@ -37,7 +37,7 @@
     <!-- Globals variables, that are used in the application -->
     <script type="text/javascript">
         var _baseUrl = "{{URL::to('/')}}";
-        var _jsBase = _baseUrl + "/js/"; 
+        var _jsBase = _baseUrl + "/js/";
     </script>
 </head>
 <body>
@@ -81,6 +81,7 @@
                 </div>
                 <a class="navbar-brand" href="{{URL::to('/')}}">
                     <h1>KERBEROS.IO</h1>
+                    <span class="camera-name"> > {{$cameraName}}</span>
                 </a>
             </div>
             <!-- Top Menu Items -->
@@ -122,7 +123,7 @@
                     </label>
                 </li>
             </ul>
-                      
+
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <script type="text/javascript">
                 require([_jsBase + 'main.js'], function(common)
@@ -132,11 +133,11 @@
                         datepicker.setDay("{{(isset($selectedDay))?$selectedDay:'null'}}");
                         datepicker.initialize();
                     });
-                    
+
                     require(["app/controllers/toggleMachinery"], function(toggleMachinery)
                     {
                         toggleMachinery.initialize();
-                        
+
                         $(".machinery-switch input[type='checkbox']").click(function()
                         {
                             var checked = $(this).attr('checked');
@@ -200,7 +201,7 @@
         <div id="loading-image-view" class="load4" style="padding:50px 0;">
             <div class="loader"></div>
         </div>
-    </div>  
+    </div>
     <!-- /#wrapper -->
 </body>
 </html>

@@ -24,10 +24,12 @@ class DashboardController extends BaseController
         // Get last x days from the imagehandler -> move to BaseController
 
         $days = $this->imageHandler->getDays(5);
+        
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
 
         return View::make('dashboard', [
+            'cameraName' => $settings['name']['value'],
             'days' => $days,
             'kerberos' => $this->kerberos,
             'fps' => $settings['io']['dropdown']['Video']['children']['fps']['value'],

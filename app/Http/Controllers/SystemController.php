@@ -38,11 +38,15 @@ class SystemController extends BaseController
 
     public function index()
     {
+        $directory = $this->config;
+        $settings = $this->reader->parse($directory)["instance"]["children"];
+        
         $days = $this->imageHandler->getDays(5);
         $insideDocker = (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true');
 
         return View::make('system',
         [
+            'cameraName' => $settings['name']['value'],
             'days' => $days
         ]);
     }

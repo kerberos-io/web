@@ -32,6 +32,7 @@ class SettingsController extends BaseController
 
         return View::make('settings',
         [
+            'cameraName' => $settings['name']['value'],
             'days' => $days,
             'settings' => $settings,
             'kerberos' => $this->kerberos
