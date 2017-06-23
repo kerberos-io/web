@@ -113,7 +113,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         $latestSequence = $this->getLatestSequence();
 
         // Filter out videos..
-        $latestSequence = array_where($latestSequence, function ($key, $value)
+        $latestSequence = array_where($latestSequence, function ($value, $key)
         {
             return $value['type'] === 'image';
         });
@@ -489,6 +489,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         // ---------------------------------------------
         // Iterate while timestamp is not in current day
 
+
         while($heap->valid())
         {
             $timestamp = intval(explode('_', $heap->current())[$index]);
@@ -522,7 +523,6 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         $imagesTemp = $this->getSequence($imagesTemp, $page, $maximumTimeBetween);
 
         $data = [];
-
         foreach($imagesTemp as $image)
         {
             $path = ltrim($image['path'], "0");
@@ -622,7 +622,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
                 return [];
             }
 
-            $images = array_where($images, function($key, $value) use ($start, $end, $images)
+            $images = array_where($images, function($value, $key) use ($start, $end)
             {
                 return ($key >= $start && $key < $end);
             });
