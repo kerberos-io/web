@@ -18,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if(env('SECURE_SSL', false) === true)
+        {
+            $this->app['request']->server->set('HTTPS', true);
+        }
+
         /**********************************
         *
         *   Bind repositories to controllers

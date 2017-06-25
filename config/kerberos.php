@@ -1,7 +1,7 @@
 <?php return array (
   'type' => 'basic',
   'radius' => '1',
-  'installed' => true,
+  'installed' => false,
   'users' => 
   array (
     0 => 

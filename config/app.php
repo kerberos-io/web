@@ -213,9 +213,15 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         /*
-         * Simple authenticator...
+         * Simple authenticator
          */
         Cedricve\Simpleauth\SimpleauthServiceProvider::class,
+
+
+        /*
+         *  Lock file
+         */
+		    Cedricve\Lockfile\LockfileServiceProvider::class,
 
     ],
 

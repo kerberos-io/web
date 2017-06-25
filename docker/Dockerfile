@@ -1,4 +1,4 @@
-FROM kerberos/base:latest
+FROM kerberos/base:php7
 
 ARG APP_ENV=master
 ENV APP_ENV ${APP_ENV}
@@ -29,12 +29,11 @@ RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/defau
 # Clone and build web
 
 RUN git clone https://github.com/kerberos-io/web /var/www/web && \
-cd /var/www/web && \ 
+cd /var/www/web && \
 git checkout ${APP_ENV} && \
 chown -Rf www-data.www-data /var/www/web && \
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer && \
 cd /var/www/web && \
-php5enmod mcrypt && \
 composer install --prefer-source && \
 npm install -g bower && \
 cd public && \

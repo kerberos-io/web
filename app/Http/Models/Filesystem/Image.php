@@ -92,12 +92,22 @@ class Image implements FileInterface
 
     public function getChanges()
     {
-        return $this->information['numberOfChanges'];
+        if(array_key_exists('numberOfChanges', $this->information))
+        {
+            return $this->information['numberOfChanges'];
+        }
+
+        return 0;
     }
 
     public function getRegion()
     {
-        return $this->information['regionCoordinates'];
+        if(array_key_exists('regionCoordinates', $this->information))
+        {
+            return $this->information['regionCoordinates'];
+        }
+
+        return "";
     }
 
     public function getTimestamp()

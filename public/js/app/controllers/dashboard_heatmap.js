@@ -99,8 +99,6 @@ define(["heatmap"], function(heatmap)
                 context = canvas.get(0).getContext("2d");
 
                 video = document.createElement("video");
-                video.src = videos[videos.length-1].src;
-                video.loop = true;
                 var self = this;
                 video.addEventListener('loadeddata', function()
                 {
@@ -118,12 +116,14 @@ define(["heatmap"], function(heatmap)
                     video.pause();
                     callback();
                 });
+
+                video.loop = true;
+                video.src = videos[videos.length-1].src;
             }
             else if(this.images.length)
             {
-                var image = this.images[this.images.length-1];
                 var img = new Image();
-                img.src = image.src;
+
                 var self = this;
                 img.onload = function()
                 {
@@ -138,6 +138,9 @@ define(["heatmap"], function(heatmap)
                     $(".heatmap").css({"height": canvas.height()});
                     callback();
                 };
+
+                var image = this.images[this.images.length-1];
+                img.src = image.src;
             }
 
             this.heatmapInstance._renderer.setDimensions(canvas.width(),canvas.height());

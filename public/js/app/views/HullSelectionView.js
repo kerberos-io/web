@@ -405,7 +405,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             this.closed = false;
             this.drawCoordinates();
         },
-        render: function()
+        render: function(callback)
         {
             this.$el.html(this.template({
                 "name": this.name,
@@ -414,6 +414,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             }));
             this.writeCoordinates();
             this.drawCoordinates();
+            callback && callback();
 
             return this;
         }

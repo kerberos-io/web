@@ -126,7 +126,8 @@ class ImageController extends BaseController
                 }
                 elseif($media['type'] === 'video')
                 {
-                    if($mediaInfo['playtime_seconds'])
+                    if(array_key_exists('playtime_seconds', $mediaInfo) &&
+                    $mediaInfo['playtime_seconds'])
                     {
                         break;
                     }

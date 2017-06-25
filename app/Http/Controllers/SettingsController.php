@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use View, Redirect, Input, Config, Response, URL;
+use View, Redirect, Input, Config, Response, URL, Session;
 use \Illuminate\Filesystem\Filesystem as Filesystem;
 use App\Http\Models\Config\FileLoader as FileLoader;
 use App\Http\Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
@@ -15,7 +15,14 @@ class SettingsController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
-        $this->kerberos = Config::get("kerberos");
+
+        $this->kerberos = Session::get('kerberos', []);
+        if(count($this->kerberos) == 0)
+        {
+            $this->kerberos = Config::get("kerberos");
+            Session::put('kerberos', $this->kerberos);
+        }
+
         $this->fileLoader = new FileLoader(new Filesystem(), config_path());
     }
 
@@ -75,6 +82,9 @@ class SettingsController extends BaseController
 
         $this->fileLoader->save($config, '', 'kerberos');
 
+        $properties = array_merge(Session::get('kerberos', []), $properties);
+        Session::put('kerberos', $properties);
+
         return $config;
     }
 
@@ -93,6 +103,9 @@ class SettingsController extends BaseController
         }
 
         $this->fileLoader->save($config, '', 'kerberos');
+
+        $properties = array_merge(Session::get('kerberos', []), $properties);
+        Session::put('kerberos', $properties);
 
         return Redirect::back();
     }

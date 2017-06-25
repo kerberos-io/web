@@ -10820,8 +10820,7 @@ label {
   background: #943633 !important;
 }
 .owl-theme .owl-nav .disabled {
-  opacity: 1;
-  background: #d6d6d6 !important;
+  opacity: 0;
 }
 .owl-dots {
   position: absolute;
