@@ -175,13 +175,13 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
 
             var self = this;
 
-            self.setRegionSelector(function()
+            self.createCarousel(function()
             {
-                self.createSlider();
-                self.setDevices();
-                self.setColor();
-                self.createCarousel(function()
+                self.setRegionSelector(function()
                 {
+                    self.createSlider();
+                    self.setDevices();
+                    self.setColor();
                     hull.restore();
                 });
             });
