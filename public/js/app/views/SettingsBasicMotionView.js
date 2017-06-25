@@ -36,11 +36,15 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 touchDrag: false,
                 mouseDrag: false,
                 nav: true,
+                margin: 20,
                 navText: [
                     "<i class='fa fa-arrow-left' aria-hidden='true'></i>",
                     "<i class='fa fa-arrow-right' aria-hidden='true'></i>"
                 ],
-                onInitialized: callback
+                onInitialized: function()
+                {
+                    callback();
+                },
             });
 
             this.carousel.on('changed.owl.carousel', function(event)
@@ -84,12 +88,12 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
             {
-                self.$el.find("#loading-image-view").remove();
                 hull.setImage(image.src);
                 hull.setImageSize(image.width, image.height);
                 hull.setCoordinates($("input[name='expositor__Hull__region']").val());
                 hull.setName("motion-hullselection");
                 hull.initialize(callback);
+                self.$el.find("#loading-image-view").remove();
             });
         },
         enabledDevices: function()
