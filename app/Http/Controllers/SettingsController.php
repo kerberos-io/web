@@ -283,10 +283,16 @@ class SettingsController extends BaseController
             $authentication = $username . ":" . $password . "@";
         }
 
+        $protocol = 'http://';
+        $originalUrl =  URL::to('/');
+        if(explode('://', $originalUrl)[0] === "https")
+        {
+            $protocol = 'https://';
+        }
+
         if(trim($output) === "true")
         {
-            $originalUrl =  URL::to('/');
-            $url = 'http://' . $authentication . str_replace('http://', '', URL::to('/'))  . '/stream';
+            $url = $protocol . $authentication . str_replace($protocol, '', URL::to('/'))  . '/stream';
             $port = '8889';
         }
         else
@@ -294,7 +300,7 @@ class SettingsController extends BaseController
             $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
             $url = parse_url(URL::to('/'), PHP_URL_HOST);
             $port = $instance[0];
-            $url = 'http://' . $authentication . $url . ':' . $port;
+            $url = $protocol . $authentication . $url . ':' . $port;
         }
 
         return Response::json([
