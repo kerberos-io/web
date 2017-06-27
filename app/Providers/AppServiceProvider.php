@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if(env('SECURE_SSL', false) === true)
+        if(env('KERBEROSIO_SECURE_SSL') === true || env('SECURE_SSL', false) === true)
         {
             $this->app['request']->server->set('HTTPS', true);
         }
