@@ -67,7 +67,7 @@ Update the packages and kernel.
 Install Git, Nginx, PHP7 (+extension) and NodeJS.
 
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php-fpm nodejs
+    sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php7.0-fpm nodejs
 
 Creating a Nginx config.
 
