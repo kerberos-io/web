@@ -9999,12 +9999,19 @@ div.video-preview video:first-child {
 .tgl-ios:checked + .tgl-btn {
   background: #f1f1f1;
 }
+#kios-configuration .tgl-ios:checked + .tgl-btn {
+  background-color: #943633;
+}
 #update-profile-modal {
   min-width: 600px;
 }
 #machinery-settings,
 #web-settings {
   padding-right: 30px;
+}
+.switch-light span span,
+.switch-light a {
+  outline: none !important;
 }
 #web-settings .content {
   display: table;
@@ -10623,7 +10630,7 @@ div.video-preview video:first-child {
   opacity: 1;
 }
 .configuration-switch {
-  width: 180px;
+  width: 200px;
   padding: 10px;
 }
 .configuration-switch .well {

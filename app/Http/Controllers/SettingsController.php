@@ -37,12 +37,22 @@ class SettingsController extends BaseController
 
         $days = $this->imageHandler->getDays(5);
 
+        $kios = null;
+        if($this->isKios())
+        {
+            $kios = [
+                'autoremoval' => $this->getAutoRemoval(),
+                'forcenetwork' => $this->getForceNetwork(),
+            ];
+        }
+
         return View::make('settings',
         [
             'cameraName' => $settings['name']['value'],
             'days' => $days,
             'settings' => $settings,
-            'kerberos' => $this->kerberos
+            'kerberos' => $this->kerberos,
+            'kios' => $kios
         ]);
     }
 
@@ -352,5 +362,84 @@ class SettingsController extends BaseController
         $this->reader->save($this->config, $settings);
 
         return $this->getIoWebhook();
+    }
+
+    // -------------------------------------------
+    // Duplicate functions with OSsystem.php class,
+    // TODO: refactor these methods.
+
+    public function getBoard()
+    {
+        $cmd = 'cat /etc/board';
+        $board = shell_exec($cmd);
+        return trim($board);
+    }
+
+    public function isKios()
+    {
+        return ($this->getBoard()!='');
+    }
+
+    //
+    // -------------------------
+
+    public function getForceNetwork()
+    {
+        $cmd = 'cat /data/etc/watch.conf | grep "netwatch_enable"';
+        $forcenetwork = shell_exec($cmd);
+
+        if($forcenetwork && $forcenetwork !== '')
+        {
+            $parameter = explode('=', $forcenetwork);
+            $active = (str_replace("\n", '', $parameter[1]) === 'yes');
+        }
+
+        return $active;
+    }
+
+    public function updateForceNetwork()
+    {
+        $active = (Input::get('active') === "true") ? "yes" : "no";
+        $currentState = ($this->getForceNetwork()) ? "yes" : "no";
+
+        if($active !== $currentState)
+        {
+            $old = "netwatch_enable\=$currentState";
+            $new = "netwatch_enable\=$active";
+            shell_exec("sed -i 's/$old/$new/g' /data/etc/watch.conf");
+            return ['active' => $active];
+        }
+
+        return ['active' => $currentState];
+    }
+
+    public function getAutoRemoval()
+    {
+        $cmd = 'cat /data/etc/watch.conf | grep "autoremoval"';
+        $autoremoval = shell_exec($cmd);
+
+        if($autoremoval && $autoremoval !== '')
+        {
+            $parameter = explode('=', $autoremoval);
+            $active = (str_replace("\n", '', $parameter[1]) === 'yes');
+        }
+
+        return $active;
+    }
+
+    public function updateAutoRemoval()
+    {
+      $active = (Input::get('active') === "true") ? "yes" : "no";
+      $currentState = ($this->getAutoRemoval()) ? "yes" : "no";
+
+      if($active !== $currentState)
+      {
+          $old = "autoremoval\=$currentState";
+          $new = "autoremoval\=$active";
+          shell_exec("sed -i 's/$old/$new/g' /data/etc/watch.conf");
+          return ['active' => $active];
+      }
+
+      return ['active' => $currentState];
     }
 }

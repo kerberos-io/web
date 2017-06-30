@@ -101,6 +101,9 @@ Route::prefix('v1')->group(function()
         Route::get('io/webhook', 'SettingsController@getIoWebhook');
         Route::put('io/webhook', 'SettingsController@updateIoWebhook');
 
+        Route::put('force-network', 'SettingsController@updateForceNetwork');
+        Route::put('auto-removal', 'SettingsController@updateAutoRemoval');
+
         Route::get('configure', array('uses' => 'SettingsController@getConfiguration'));
         Route::put('configure', array('uses' => 'SettingsController@changeProperties'));
 

@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App, View, Config;
+use App, View, Config, Session;
 use App\Http\Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use App\Http\Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 
@@ -12,7 +12,12 @@ class DashboardController extends BaseController
         $this->imageHandler = $imageHandler;
         $this->reader = $reader;
         $this->config = Config::get("app.config");
-        $this->kerberos = Config::get("kerberos");
+        $this->kerberos = Session::get('kerberos', []);
+        if(count($this->kerberos) == 0)
+        {
+            $this->kerberos = Config::get("kerberos");
+            Session::put('kerberos', $this->kerberos);
+        }
     }
 
     /****************************
@@ -24,7 +29,7 @@ class DashboardController extends BaseController
         // Get last x days from the imagehandler -> move to BaseController
 
         $days = $this->imageHandler->getDays(5);
-        
+
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
 

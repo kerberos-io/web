@@ -34,10 +34,20 @@
                 </div>
 
                 <div id="web-settings" class="col-lg-6">
+                    @if($kios)
+                        <div id="kios-configuration">
+                            <h2><i class="fa fa-server"></i> KiOS</h2>
+                            <div class="kios-content content" style="margin-top: 30px; margin-bottom: 10px; display: table;">
+                                <div id="loading-image-view" class="load4" style="padding:50px 0;">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div id="configuration">
                         <h2><i class="fa fa-eye"></i> Web</h2>
                         {{ Form::open(array('action' => 'SettingsController@updateWeb')) }}
-                            <div class="content">
+                            <div class="web-content content">
                                 <div id="loading-image-view" class="load4" style="padding:50px 0;">
                                     <div class="loader"></div>
                                 </div>
@@ -57,11 +67,12 @@
         {
             require(["app/controllers/settings_advanced"], function(SettingsAdvanced){});
 
-            require(["app/controllers/toggleSettings", "app/controllers/settings_basic", "app/controllers/settings_web", "app/controllers/Cache"], function(toggleSettings, SettingsBasic, SettingsWeb, Cache)
+            require(["app/controllers/toggleSettings", "app/controllers/settings_basic", "app/controllers/settings_web", "app/controllers/settings_kios", "app/controllers/Cache"], function(toggleSettings, SettingsBasic, SettingsWeb, SettingsKiOS, Cache)
             {
-                Cache(_baseUrl + "/api/v1/translate/settings").then(function (translation)
+                Cache(_baseUrl + "/api/v1/translate/settings").then(function(translation)
                 {
                     SettingsBasic.initialize(translation);
+                    SettingsKiOS.initialize("{{$kios['autoremoval']}}", "{{$kios['forcenetwork']}}", translation);
                     SettingsWeb.initialize("{{$kerberos['radius']}}", translation);
                 });
 
