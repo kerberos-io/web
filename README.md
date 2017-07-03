@@ -68,17 +68,17 @@ A) Ubuntu
     
     sudo apt-get update && sudo apt-get upgrade
     curl -sL https://deb.nodesource.com/setup | sudo bash -
-    sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php7.0-fpm nodejs
+    sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php7.0-fpm nodejs npm
     
 B) Raspbian
 
     echo "deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi" | sudo tee --append /etc/apt/sources.list
     sudo apt-get update
-    sudo apt-get install -t stretch php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip nodejs
+    sudo apt-get install -t stretch php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip nodejs npm
     
 C) OSX
 
-    brew install php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip nodejs 
+    brew install php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip nodejs npm
 
 #### Configure webserver
 
@@ -146,10 +146,8 @@ Add write permission for the storage directory, and the kerberos config file.
     sudo chmod -R 777 bootstrap/cache
     sudo chmod 777 config/kerberos.php
 
-Install bower globally by using node package manager, this is installed when installing nodejs.
+Install bower globally by using npm.
 
-    sudo apt-get install npm
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
     sudo npm -g install bower
 
 Install Front-end dependencies with bower
