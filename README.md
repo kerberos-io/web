@@ -40,13 +40,13 @@ The reason why you're reading this paragraph is because you want to know how to 
 
 ### KiOS (for Raspberry Pi)
 
-[KiOS](https://github.com/kerberos-io/kios) is a custom linux OS (created by buildroot) which runs Kerberos.io out-of-the- (it contains both the machinery and the web). KiOS is **installed like every other OS** for the Raspberry Pi, you need to flash the OS (.img) to a SD card, update your network configration and you're up and running; no manual compilation or horrible configurations. This is the **most simple** and **basic** installation procedure.
+[KiOS](https://github.com/kerberos-io/kios) is a custom linux OS (created by buildroot) which runs Kerberos.io out-of-the-box (it contains both the machinery and the web). KiOS is **installed like every other OS** for the Raspberry Pi, you need to flash the OS (.img) to a SD card, update your network configration and you're up and running; no manual compilation or horrible configurations. This is the **most simple** and **basic** installation procedure.
 
 [Read more](https://doc.kerberos.io/2.0/installation/KiOS)
 
 ### Raspbian (for Raspberry Pi)
 
-If you already have a Raspberry Pi running with Raspbian, you probably don't want to reflash your SD-card. Therefore you can install the different parts of Kerberos.io (the machinery and the web) manual.
+If you already have a Raspberry Pi running with Raspbian, you probably don't want to reflash your SD-card. Therefore you can install and download the different parts of Kerberos.io (the machinery and the web) without the need for complex and time consuming compiling.
 
 [Read more](https://doc.kerberos.io/2.0/installation/Raspbian)
 
@@ -58,16 +58,39 @@ Kerberos.io can also be installed on other boards, which run the Armbian OS.
 
 ### Generic
 
-If you want to install **the web**, you'll need to have **a webserver** (e.g. nginx) and **PHP** running with some extensions. You also need **nodejs** and **npm** installed to install **bower**. Below you can find the installation procedure to install the web on the Ubuntu OS; the process is similar for another Linux OS.
+If you want to install **the web**, you'll need to have **a webserver** (e.g. Nginx) and **PHP** running with some extensions. You also need **NodeJS** and **npm** installed to install **Bower**. Below you can find the installation procedure to install the web on your preferred environment.
 
-Update the packages and kernel.
+#### Install Dependencies
 
+Install Git, PHP7 (+extensions) and NodeJS.
+
+A) Ubuntu
+    
     sudo apt-get update && sudo apt-get upgrade
-
-Install Git, Nginx, PHP7 (+extension) and NodeJS.
-
     curl -sL https://deb.nodesource.com/setup | sudo bash -
     sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php7.0-fpm nodejs
+    
+B) Raspbian
+
+    echo "deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi" | sudo tee --append /etc/apt/sources.list
+    sudo apt-get update
+    sudo apt-get install -t stretch php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip nodejs
+    
+C) OSX
+
+    brew install php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip nodejs 
+
+#### Configure webserver
+
+A) Nginx
+
+Install Nginx,
+
+    sudo apt-get install nginx
+
+or if you're running OSX use brew.
+
+    sudo brew install nginx
 
 Creating a Nginx config.
 
@@ -100,6 +123,8 @@ Copy and paste following config file; this file tells nginx where the web will b
                 include fastcgi_params;
         }
     }
+
+#### Clone source
 
 Create a www location.
 
