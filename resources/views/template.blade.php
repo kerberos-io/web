@@ -172,7 +172,7 @@
                     </li>
                     <!-- show latest days -->
                     @foreach($days as $day)
-                        <li {{(isset($selectedDay) && $selectedDay == $day)?"class='active'":''}}>
+                        <li {{(isset($selectedDay) && $selectedDay == $day)?"class=active":''}}>
                             <a href="{{URL::to('/').'/images/'.$day}}">
                                 <i class="fa fa-calendar"></i>&nbsp; {{Carbon\Carbon::parse($day)->format('jS \\of F Y') }}
                             </a>

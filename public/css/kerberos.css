@@ -7990,7 +7990,7 @@ body.remodal-is-active .remodal {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(/fonts/opensans.woff2) format('woff2'), url(/fonts/opensans.woff) format('woff');
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url('/fonts/opensans.woff2') format('woff2'), url('/fonts/opensans.woff') format('woff');
 }
 @-webkit-keyframes autofill {
   to {
@@ -8025,9 +8025,10 @@ body {
 .side-nav {
   background-color: #f5f5f5;
 }
-.navbar-nav > li > a:hover {
-  color: #fff;
-  background-color: #ccc;
+.navbar-nav > li > a:hover,
+.navbar-nav > li.active > a {
+  color: #fff important;
+  background-color: #ccc !important;
 }
 .navbar-inverse {
   border: none;
