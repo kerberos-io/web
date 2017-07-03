@@ -119,7 +119,7 @@ Copy and paste following config file; this file tells nginx where the web will b
 
         location ~ \.php$
         {
-                fastcgi_pass unix:/var/run/php7.0-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
                 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                 include fastcgi_params;
         }
