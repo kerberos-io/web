@@ -175,6 +175,17 @@ return array(
 
 	/* to translate */ 'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
 
-	/* to translate */ 'subscribeNow' => 'Subscribe now for only €1,49'
+	/* to translate */ 'subscribeNow' => 'Subscribe now for only €1,49',
+
+	// ---------------
+	// KiOS settings
+
+	/* to translate */ 'forceNetwork' => 'Force network mode',
+
+	/* to translate */ 'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+
+	/* to translate */ 'autoRemoval' => 'Auto removal media',
+
+	/* to translate */ 'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
 
 );

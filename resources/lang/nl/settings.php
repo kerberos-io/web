@@ -177,6 +177,17 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io heeft zijn eigen cloud applicatie. Doormiddel van een inschrijving op een plan, kan je al jouw afbeeldingen en videos synchroniseren en overal ter wereld opvolgen. Na het inschrijven zal je enkele gegevens ontvangen welke je in de velden (aan de linkerzijde) kan ingeven. Na het bevestigen van deze gegevens, zal al jouw activiteit automatisch gesynchroniseerd worden met ons platform. Veel plezier!',
 
-	'subscribeNow' => 'Schrijf nu in voor slechts €1,49'
+	'subscribeNow' => 'Schrijf nu in voor slechts €1,49',
+
+	// ---------------
+	// KiOS settings
+
+	/* to translate */ 'forceNetwork' => 'Netwerk verplicht',
+
+	/* to translate */ 'forceNetworkInfo' => 'Deze optie zal er voor zorgen dat het OS steeds internet verbinding heeft, wanneer dit niet het geval is zal KiOS opnieuw opstarten. Dit is nodig bij instabiele netwerken en het gebruik van de cloud applicatie.',
+
+	/* to translate */ 'autoRemoval' => 'Automatisch verwijderen',
+
+	/* to translate */ 'autoRemovalInfo' => 'Wanneer de SD kaart bijna vol is worden de oudste beelden automatisch verwijderd.'
 
 );

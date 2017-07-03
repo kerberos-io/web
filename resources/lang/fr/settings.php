@@ -177,6 +177,17 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io possède sa propre application dans le cloud. En souscrivant au service, vous pouvez synchroniser toutes les images et videos capturées, et les consulter de partout dans le monde. Après l\'enregistrement, vous recevrez votre informations de connexion à copier dans les champs à gauche. Après confirmation, toute l\'activité sera synchronisée automatiquement.',
 
-	'subscribeNow' => 'Enregistrez-vous maintenant pour seulement 1,49€'
+	'subscribeNow' => 'Enregistrez-vous maintenant pour seulement 1,49€',
+
+	// ---------------
+	// KiOS settings
+
+	/* to translate */ 'forceNetwork' => 'Force network mode',
+
+	/* to translate */ 'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+
+	/* to translate */ 'autoRemoval' => 'Auto removal media',
+
+	/* to translate */ 'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
 
 );

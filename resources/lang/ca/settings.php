@@ -173,6 +173,17 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io disposa de la seva propia aplicacia en el novol. Si us subscriviu a un pla podreu sincronitzar totes les vostres imatges i videos, i veure\'ls des de qualsevol lloc del m�n. En subscriure-us rebreu les credencials per posar en els camps de l\'esquerra. Despros de confirmar i actualitzar els ajustos, la vostra activitat es comencara a sincronitzar automaticament.',
 
-	'subscribeNow' => 'Subscriviu-vos ara per noms 1,49€'
+	'subscribeNow' => 'Subscriviu-vos ara per noms 1,49€',
+
+	// ---------------
+	// KiOS settings
+
+	/* to translate */ 'forceNetwork' => 'Force network mode',
+
+	/* to translate */ 'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+
+	/* to translate */ 'autoRemoval' => 'Auto removal media',
+
+	/* to translate */ 'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
 
 );

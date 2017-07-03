@@ -180,6 +180,17 @@ return array(
 
 	'whatIsthisInformation' => '',
 
-	'subscribeNow' => 'Für nur €1,49 abonnieren'
+	'subscribeNow' => 'Für nur €1,49 abonnieren',
+
+	// ---------------
+	// KiOS settings
+
+	/* to translate */ 'forceNetwork' => 'Force network mode',
+
+	/* to translate */ 'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+
+	/* to translate */ 'autoRemoval' => 'Auto removal media',
+
+	/* to translate */ 'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
 
 );
