@@ -522,6 +522,9 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         $imagesTemp = array_reverse($imagesTemp);
         $imagesTemp = $this->getSequence($imagesTemp, $page, $maximumTimeBetween);
 
+        // We will use getID3 to check if media this.
+        $getID3 = new \getID3;
+
         $data = [];
         foreach($imagesTemp as $image)
         {
@@ -533,6 +536,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
 
             $path = $this->filesystem->getPathToFile($image);
             $systemPath = $this->filesystem->getSystemPathToFile($image);
+            $mediaInfo = $getID3->analyze($systemPath);
 
             try
             {
@@ -543,14 +547,13 @@ class ImageFileSystemHandler implements ImageHandlerInterface
                     'metadata' => $this->filesystem->getMetadata($image)
                 ];
 
-                if(getimagesize($systemPath)['mime'] == 'image/jpeg')
+                if(array_key_exists('error', $mediaInfo) || $mediaInfo['fileformat'] == 'mp4')
                 {
-                    $object['type'] = 'image';
-
+                    $object['type'] = 'video';
                 }
                 else
                 {
-                     $object['type'] = 'video';
+                     $object['type'] = 'image';
                 }
 
                 array_push($data, $object);
