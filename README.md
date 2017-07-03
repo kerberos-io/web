@@ -83,8 +83,6 @@ C) OSX
 
 #### Configure webserver
 
-A) Nginx
-
 Install Nginx,
 
     sudo apt-get install nginx
