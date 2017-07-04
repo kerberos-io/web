@@ -102,7 +102,7 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
         {
             this.hullView.restore();
         },
-        initialize: function()
+        initialize: function(callback)
         {
             var hull = new Hull(this.coordinates);
 
@@ -120,10 +120,10 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                 model: hull,
             });
 
-            this.hullView.render();
+            this.hullView.render(callback);
 
             var self = this;
-            
+
             $(window).resize(function()
             {
                 self.hullView.restore();

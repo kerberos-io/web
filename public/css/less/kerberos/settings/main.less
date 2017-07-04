@@ -1,7 +1,7 @@
 @import "timeselection";
 @import "dropdown";
 @import "toggle";
-
+@import "kios";
 
 #update-profile-modal
 {
@@ -12,6 +12,14 @@
 #web-settings
 {
     padding-right: 30px;
+}
+
+.switch-light
+{
+    span span, a
+    {
+        outline: none !important;
+    }
 }
 
 #web-settings
@@ -57,7 +65,7 @@
     {
         margin: 5px 0 5px 0;
     }
-    
+
     .sub
     {
         margin: 20px 0 20px 0;
@@ -133,17 +141,17 @@
     {
         height: initial;
     }
-    
+
     .text
     {
         margin-top: 10px;
-        
+
         input[type="text"]
         {
             margin-left: 9px;
         }
     }
-    
+
     div.submit-form
     {
         margin-top: 10px;
@@ -164,7 +172,7 @@
     .with-tooltip, .with-tooltip-left
     {
         position: relative;
-        
+
         > i.description
         {
             position: absolute;
@@ -215,8 +223,8 @@
             opacity:0;
             z-index: 9999999;
         }
-        
-        span > span:before, 
+
+        span > span:before,
         span > span:after
         {
             content: "";
@@ -228,19 +236,19 @@
             margin-left: -22px;
             -webkit-transform: rotate(90deg);
         }
-        
+
         span > span:before
         {
             border-top: 10px solid #943633;
             margin-left: -7px;
         }
-        
+
         span > span:after
         {
             border-top: 10px solid #fff;
             margin-left: -4px;
         }
-        
+
         span:hover > span
         {
             visibility: visible;
@@ -251,7 +259,7 @@
     .with-tooltip-left
     {
         position: relative;
-        
+
         > i.description
         {
             position: absolute;
@@ -303,8 +311,8 @@
             opacity:0;
             z-index: 9999999;
         }
-        
-        span > span:before, 
+
+        span > span:before,
         span > span:after
         {
             content: "";
@@ -316,19 +324,19 @@
             right: -19px;
             -webkit-transform: rotate(90deg);
         }
-        
+
         span > span:before
         {
             border-bottom: 10px solid #943633;
             margin-right: -3px
         }
-        
+
         span > span:after
         {
             border-bottom: 10px solid #fff;
             margin-left: -4px;
         }
-        
+
         span:hover > span
         {
             visibility: visible;
@@ -365,7 +373,7 @@
     {
         font-size: 22px;
     }
-    
+
     .rotate
     {
         .image
@@ -391,7 +399,7 @@
     .rotate.with-tooltip
     {
         position: relative;
-        
+
         > i.description
         {
             position: absolute;
@@ -426,15 +434,15 @@
     }
 
     :-moz-placeholder { /* Firefox 18- */
-       color: #333;  
+       color: #333;
     }
 
     ::-moz-placeholder {  /* Firefox 19+ */
-       color: #333;  
+       color: #333;
     }
 
-    :-ms-input-placeholder {  
-       color: #333;  
+    :-ms-input-placeholder {
+       color: #333;
     }
 
     #confirm-info
@@ -510,9 +518,9 @@
 
 .configuration-switch
 {
-    width: 180px;
+    width: 200px;
     padding: 10px;
-        
+
     .well
     {
         margin: 0;
@@ -520,12 +528,12 @@
         color: #fff;
         opacity: 0;
         margin-left: 10px;
-        
+
         input
         {
             outline: none;
         }
-        
+
         a
         {
             background-color: #943633;
@@ -536,7 +544,7 @@
 
 div#configuration
 {
-    clear: both; 
+    clear: both;
     display: table;
     width: 100%;
 
@@ -725,8 +733,7 @@ label
 
 .owl-theme .owl-nav .disabled
 {
-    opacity: 1;
-    background: #d6d6d6 !important;
+    opacity: 0;
 }
 
 .owl-dots
@@ -825,6 +832,11 @@ div#step
 #machinery-settings div select
 {
     height: 34px;
+}
+
+.enabled-hw-encoding
+{
+    padding: 10px 0;
 }
 
 @import "responsive-main";

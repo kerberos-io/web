@@ -1,15 +1,15 @@
-/********************************************************************
-*  Basic settings view: this is an easier view of the advanced view.
+/*********************
+*  Web settings view.
 ****/
 
-define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider", "app/controllers/dashboard_heatmap"], 
+define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slider", "app/controllers/dashboard_heatmap"],
     function (_, Backbone, BaseView, Slider, Heatmap)
-{ 
+{
     var SettingsWebView = BaseView.extend(
     {
-        el : '#web-settings .content',
+        el : '#web-settings .web-content',
         view : 'settings-web',
- 
+
         events:
         {
             "change .slider-radius": "changeRadius",
@@ -48,7 +48,7 @@ define(["underscore", "backbone", "app/views/BaseView", "seiyria-bootstrap-slide
                 fps: "1",
                 radius: this.model.radius,
                 callback: function(){}
-            }); 
+            });
 
             Heatmap.redraw();
 
