@@ -145,6 +145,7 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 },
                 video: {
                     enabled: this.model.devices.video.enabled, // overkill
+                    hardwareEncodingEnabled: this.model.devices.video.hardwareEncodingEnabled, // overkill
                     recordAfter:  this.$el.find("#recordAfter").val(),
                     fps:  this.$el.find("#fps").val(),
                     colorTimestamp: this.$el.find("#timestamp-video-color").val(),
