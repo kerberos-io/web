@@ -547,7 +547,7 @@ class ImageFileSystemHandler implements ImageHandlerInterface
                     'metadata' => $this->filesystem->getMetadata($image)
                 ];
 
-                if(array_key_exists('error', $mediaInfo) || $mediaInfo['fileformat'] == 'mp4')
+                if(array_key_exists('error', $mediaInfo) || $mediaInfo['fileformat'] !== 'jpg')
                 {
                     $object['type'] = 'video';
                 }
