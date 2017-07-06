@@ -90,7 +90,7 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-        $this->fileLoader->save($config, '', 'kerberos');
+        //$this->fileLoader->save($config, '', 'kerberos');
 
         $properties = array_merge(Session::get('kerberos', []), $properties);
         Session::put('kerberos', $properties);
@@ -112,7 +112,7 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-        $this->fileLoader->save($config, '', 'kerberos');
+        //$this->fileLoader->save($config, '', 'kerberos');
 
         $properties = array_merge(Session::get('kerberos', []), $properties);
         Session::put('kerberos', $properties);

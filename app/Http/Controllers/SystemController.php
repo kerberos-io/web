@@ -40,7 +40,7 @@ class SystemController extends BaseController
     {
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
-        
+
         $days = $this->imageHandler->getDays(5);
         $insideDocker = (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true');
 
@@ -138,7 +138,7 @@ class SystemController extends BaseController
 
     public function downloadImages()
     {
-        $directory = $this->config;
+        /*$directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
 
         $imageDirectory = rtrim($settings['io']['dropdown']['Disk']['children']['directory']['value'], '/');
@@ -169,7 +169,8 @@ class SystemController extends BaseController
 
         $output = shell_exec("cd $imageDirectory && tar -zcvf $file .");
 
-        return Response::download($file);
+        return Response::download($file);*/
+        return Response::json(["demo" => true]);;
     }
 
     public function cleanImages()
@@ -187,7 +188,7 @@ class SystemController extends BaseController
         {
             $imageDirectory = readlink($imageDirectory);
         }
-        $output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");
+        /*$output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");*/
 
         return Response::json(["clean" => true]);
     }
