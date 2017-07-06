@@ -53,7 +53,6 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 self.$el.find("#step div.title").html($(self.$el.find(".part").get(section)).attr('description'));
                 self.$el.find("#step span.info").html($(self.$el.find(".part").get(section)).attr('info'));
                 $(self.$el.find(".part").get(section)).show();
-                hull.restore();
             });
         },
         setDevices: function()
@@ -90,10 +89,21 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             {
                 hull.setImage(image.src);
                 hull.setImageSize(image.width, image.height);
-                hull.setCoordinates($("input[name='expositor__Hull__region']").val());
-                hull.setName("motion-hullselection");
-                hull.initialize(callback);
-                self.$el.find("#loading-image-view").remove();
+
+                var retrieveCoordinates = function()
+                {
+                    if($("input[name='expositor__Hull__region']").length &&
+                    $("input[name='expositor__Hull__region']").val() != '')
+                    {
+                        hull.setCoordinates($("input[name='expositor__Hull__region']").val());
+                        hull.setName("motion-hullselection");
+                        hull.initialize(callback);
+                        self.$el.find("#loading-image-view").remove();
+                        clearInterval(interval);
+                    }
+                };
+
+                var interval = setInterval(retrieveCoordinates, 500);
             });
         },
         enabledDevices: function()

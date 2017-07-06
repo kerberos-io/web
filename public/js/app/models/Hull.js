@@ -3,7 +3,7 @@
 **/
 
 define(["underscore", "backbone"], function (_, Backbone)
-{ 
+{
     var Hull = Backbone.Model.extend(
     {
         coordinates: [],
@@ -11,7 +11,7 @@ define(["underscore", "backbone"], function (_, Backbone)
         constructor: function(coordinates)
         {
             var points = [];
-            if(coordinates != "")
+            if(coordinates && coordinates != "")
             {
                 coordinates = coordinates.split("|");
                 for(var i = 0; i < coordinates.length; i++)
