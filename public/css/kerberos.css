@@ -8327,6 +8327,11 @@ label.toggle-mobile,
 .dropdown-menu > .active > a:hover {
   background-color: #943633;
 }
+@media (min-width: 768px) {
+  .side-nav {
+    top: 102px;
+  }
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   .slider .tooltip.top {
     margin-top: -48px;

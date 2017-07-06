@@ -377,7 +377,7 @@ class SettingsController extends BaseController
 
     public function isKios()
     {
-        return ($this->getBoard()!='');
+        return !($this->getBoard()!='');
     }
 
     //
