@@ -167,13 +167,8 @@ class SystemController extends BaseController
             $output = shell_exec("rm $file");
         }
 
-<<<<<<< HEAD:app/controllers/SystemController.php
-        //$output = shell_exec("cd $imageDirectory && tar -zcvf $file .");
-        
-=======
         $output = shell_exec("cd $imageDirectory && tar -zcvf $file .");
 
->>>>>>> develop:app/Http/Controllers/SystemController.php
         return Response::download($file);
     }
 
@@ -192,7 +187,7 @@ class SystemController extends BaseController
         {
             $imageDirectory = readlink($imageDirectory);
         }
-        //$output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");
+        $output = shell_exec("find $imageDirectory -type f -name '*' -print0 | xargs -0 rm;");
 
         return Response::json(["clean" => true]);
     }
@@ -255,7 +250,7 @@ class SystemController extends BaseController
     {
         $status = true;
 
-        /*$directory = $this->config;
+        $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
         $port = $settings['stream']['dropdown']['Mjpg']['children']['streamPort']['value'];
 
@@ -300,7 +295,7 @@ class SystemController extends BaseController
             {
                 $status = false;
             }
-        }*/
+        }
 
         return Response::json(["status" => $status]);
     }

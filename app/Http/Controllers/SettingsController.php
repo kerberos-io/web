@@ -90,16 +90,11 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-<<<<<<< HEAD:app/controllers/SettingsController.php
-        //$this->fileLoader->save($config, '', 'kerberos');
-        
-=======
         $this->fileLoader->save($config, '', 'kerberos');
 
         $properties = array_merge(Session::get('kerberos', []), $properties);
         Session::put('kerberos', $properties);
 
->>>>>>> develop:app/Http/Controllers/SettingsController.php
         return $config;
     }
 
@@ -117,16 +112,11 @@ class SettingsController extends BaseController
             $config[$key] = $property;
         }
 
-<<<<<<< HEAD:app/controllers/SettingsController.php
-        //$this->fileLoader->save($config, '', 'kerberos');
-        
-=======
         $this->fileLoader->save($config, '', 'kerberos');
 
         $properties = array_merge(Session::get('kerberos', []), $properties);
         Session::put('kerberos', $properties);
 
->>>>>>> develop:app/Http/Controllers/SettingsController.php
         return Redirect::back();
     }
 
@@ -173,7 +163,7 @@ class SettingsController extends BaseController
 
         try
         {
-            //$this->reader->save($this->config, $settings);
+            $this->reader->save($this->config, $settings);
         }
         catch(\Exception $ex)
         {
@@ -250,15 +240,9 @@ class SettingsController extends BaseController
         {
             $settings["config__condition"] = implode(',',Input::get('value'));
         }
-<<<<<<< HEAD:app/controllers/SettingsController.php
-        
-        //$this->reader->save($this->config, $settings);
-        
-=======
 
         $this->reader->save($this->config, $settings);
 
->>>>>>> develop:app/Http/Controllers/SettingsController.php
         return $this->getConditions();
     }
 
@@ -286,7 +270,7 @@ class SettingsController extends BaseController
             $settings["condition__Enabled__delay"] = Input::get('delay');
         }
 
-        //$this->reader->save($this->config, $settings);
+        $this->reader->save($this->config, $settings);
 
         return $this->getConditionEnabled();
     }
@@ -326,16 +310,12 @@ class SettingsController extends BaseController
             $instance = explode(',', $this->getPiece("stream.xml", ["Mjpg","streamPort"])->__toString());
             $url = parse_url(URL::to('/'), PHP_URL_HOST);
             $port = $instance[0];
-<<<<<<< HEAD:app/controllers/SettingsController.php
-            $url = 'https://' . parse_url(URL::to('/'), PHP_URL_HOST) . ':' . $port;
-=======
             $url = $protocol . $authentication . $url . ':' . $port;
->>>>>>> develop:app/Http/Controllers/SettingsController.php
         }
 
         return Response::json([
-            'url' => "https://stream.kerberos.io",
-            'port' => 80
+            'url' => $url,
+            'port' => $port
         ]);
    }
 
@@ -357,13 +337,8 @@ class SettingsController extends BaseController
             $settings["config__instance__io"] = implode(',', Input::get('value'));
         }
 
-<<<<<<< HEAD:app/controllers/SettingsController.php
-        //$this->reader->save($this->config, $settings);
-        
-=======
         $this->reader->save($this->config, $settings);
 
->>>>>>> develop:app/Http/Controllers/SettingsController.php
         return $this->getIos();
     }
 
@@ -384,7 +359,7 @@ class SettingsController extends BaseController
             $settings["io__Webhook__url"] = Input::get('url');
         }
 
-        //$this->reader->save($this->config, $settings);
+        $this->reader->save($this->config, $settings);
 
         return $this->getIoWebhook();
     }
