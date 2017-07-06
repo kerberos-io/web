@@ -1,10 +1,10 @@
 /********************************************************************
-*  HullSelectionView: show an image, on which a region (hull) 
+*  HullSelectionView: show an image, on which a region (hull)
 *                     can be selected.
 ****/
 
 define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], function (_, Backbone, Hull, BaseView)
-{ 
+{
     var $document = $(document), mouse = { update: function(e) {this.x = e.pageX; this.y = e.pageY;}};
 
     var HullSelectionView = BaseView.extend(
@@ -84,8 +84,8 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 this.$el.find('#point_' + point_id).css('top', point.y + 'px');
 
                 // Add coordinate info, relative to map
-                this.$el.append('<div class="info" id="info_' + point_id + '">('+point.x+','+point.y+')</div>');
-                
+                // Hide because of confusion users -> this.$el.append('<div class="info" id="info_' + point_id + '">('+point.x+','+point.y+')</div>');
+
                 // Check if point is near to X = 0
 
                 if (point.x > 50)
@@ -240,10 +240,10 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 };
                 self.model.editCoordinate(line_sm, point);
                 self.writeCoordinates();
-        
+
                 x2 = left;
                 y2 = top;
-                
+
                 var $info = self.$el.find("#info_"+line_sm);
 
                 var leftCoordinate = (left > 50) ? left - 40 : left + 20;
@@ -285,10 +285,10 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                         'transform':          transform
                     }).width(length);
                 }
-                
+
                 self.$el.find('.line[rel=' + (line_sm + 1) + ']').css('top', top);
                 self.$el.find('.line[rel=' + (line_sm + 1) + ']').css('left', left);
-            
+
                 if (self.$el.find('.point').length-1 == line_sm)
                 {
                     var x1 = self.$el.find('#point_0').position().left;
@@ -303,7 +303,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 var length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
                 var angle  = Math.atan2(y1 - y2, x1 - x2) * 180 / Math.PI;
                 var transform = 'rotate('+angle+'deg)';
-        
+
                 self.$el.find('.line[rel=' + (line_sm + 1) + ']').css(
                 {
                     'position': 'absolute',
@@ -312,7 +312,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                     'transform':          transform
                 })
                 .width(length);
-            
+
                 mouse.update(e);
                 e.preventDefault();
             });
@@ -388,11 +388,12 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             for(var i = 0; i < coordinates.length; i++)
             {
                 var point = {
-                    "x": Math.round((coordinates[i].x/widthRatio)+delta.x), 
+                    "x": Math.round((coordinates[i].x/widthRatio)+delta.x),
                     "y": Math.round((coordinates[i].y/heightRatio)+delta.y)
                 };
                 this.renderPoint(point, delta);
             }
+
             // close hull
             this.closeHull();
         },
@@ -404,7 +405,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             this.closed = false;
             this.drawCoordinates();
         },
-        render: function()
+        render: function(callback)
         {
             this.$el.html(this.template({
                 "name": this.name,
@@ -413,6 +414,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
             }));
             this.writeCoordinates();
             this.drawCoordinates();
+            callback && callback();
 
             return this;
         }

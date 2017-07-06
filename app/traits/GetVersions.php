@@ -1,7 +1,7 @@
-<?php namespace Traits;
+<?php namespace App\Traits;
 
 use Auth, Config, Guzzle\Http\Client as Client;
-use Models\Cache\Cache as Cache;
+use App\Http\Models\Cache\Cache as Cache;
 use Input, Session;
 
 trait GetVersions
@@ -26,34 +26,34 @@ trait GetVersions
                 return ($currentVersion !== $latestVersion);
             }
         }
-        
+
         return false;
     }
-    
+
     public function getCurrentVersion()
     {
         $cmd = 'cat /etc/version';
         $version = shell_exec($cmd);
         preg_match('/os_version="(.*?)"/', $version, $matches);
-        
+
         if(count($matches) > 0)
         {
-            return 'v' . $matches[1]; 
+            return 'v' . $matches[1];
         }
-        
-        return null;   
+
+        return null;
     }
-    
+
     public function getVersionsFromGithub()
     {
         // -------------------------------------
         // Cache images directory for x seconds
-        
+
         $cache = new Cache(Config::get('session.lifetime'));
-        
+
         $user = Auth::user();
         $key = $user->username . "_kios_versions";
-    
+
         if(Input::get('develop'))
         {
             Session::forget($key);
@@ -73,7 +73,7 @@ trait GetVersions
                 $request = $client->get($url);
                 $response = $client->send($request);
                 $body = json_decode($response->getBody());
-                
+
                 $versions = [];
                 for($i = 0; $i < count($body); $i++)
                 {
@@ -83,10 +83,10 @@ trait GetVersions
                         'body' => $body[$i]->body,
                         'prerelease' => $body[$i]->prerelease,
                         'assets' => $body[$i]->assets,
-                        'published_at' => $body[$i]->published_at 
+                        'published_at' => $body[$i]->published_at
                     ]);
                 }
-                
+
                 $versions = array_values(array_sort($versions, function($value)
                 {
                     return $value['version'];
@@ -96,10 +96,10 @@ trait GetVersions
             {
                 $versions = [];
             }
-            
+
             return $versions;
         });
-                                              
+
         return $versions;
     }
 }

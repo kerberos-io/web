@@ -4,7 +4,7 @@
 *
 **/
 
-define(["jquery"], function($)
+define(["jquery", "app/controllers/hullselection", "app/controllers/twolines"], function($, hull, twolines)
 {
     return {
         type: undefined,
@@ -12,6 +12,26 @@ define(["jquery"], function($)
         getType: function()
         {
             return this.type;
+        },
+        reloadHull: function()
+        {
+            hull.setElement($(".hullselection .map"));
+            twolines.setElement($(".twolines .map"));
+
+            hull.getLatestImage(function(image)
+            {
+                hull.setImage(image.src);
+                hull.setImageSize(image.width, image.height);
+                hull.setCoordinates($(".hullselection .coordinates").val());
+                hull.setName($(".hullselection .name").val());
+                hull.initialize();
+
+                twolines.setImage(image.src);
+                twolines.setImageSize(image.width, image.height);
+                twolines.setCoordinates($(".twolines .coordinates").val());
+                twolines.setName($(".twolines .name").val());
+                twolines.initialize();
+            });
         },
         setType: function(type)
         {
@@ -36,6 +56,8 @@ define(["jquery"], function($)
                         $("#advanced").hide();
                         $("#basic").show();
                     }
+
+                    self.reloadHull();
                 }
             });
         },
@@ -43,7 +65,7 @@ define(["jquery"], function($)
         {
             // -----------------------------------
             // Load view and images
-            
+
             var self = this;
             $(".configuration-switch input[type='checkbox']").attr("disabled", true);
             $.get(_baseUrl + "/api/v1/configure",function(data)
@@ -52,6 +74,7 @@ define(["jquery"], function($)
                 $(".configuration-switch input[type='checkbox']").attr("checked", (self.type === 'advanced'));
                 $(".configuration-switch input[type='checkbox']").attr("disabled", false);
                 $(".configuration-switch span.well").css("opacity", 1);
+                self.reloadHull();
             });
         }
     };

@@ -7990,7 +7990,7 @@ body.remodal-is-active .remodal {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(/fonts/opensans.woff2) format('woff2'), url(/fonts/opensans.woff) format('woff');
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url('/fonts/opensans.woff2') format('woff2'), url('/fonts/opensans.woff') format('woff');
 }
 @-webkit-keyframes autofill {
   to {
@@ -8025,9 +8025,10 @@ body {
 .side-nav {
   background-color: #f5f5f5;
 }
-.navbar-nav > li > a:hover {
-  color: #fff;
-  background-color: #ccc;
+.navbar-nav > li > a:hover,
+.navbar-nav > li.active > a {
+  color: #fff important;
+  background-color: #ccc !important;
 }
 .navbar-inverse {
   border: none;
@@ -8058,6 +8059,16 @@ h1 {
   font-size: 16px;
   margin: 0;
   padding: 1px 0 10px 0;
+}
+.navbar-brand h1 {
+  float: left;
+}
+.navbar-brand .camera-name {
+  float: left;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  color: #b96f6f;
+  margin-left: 5px;
 }
 .top-nav > li > a {
   font-family: 'Source Sans Pro', sans-serif;
@@ -8162,7 +8173,7 @@ div.scroll-down {
   cursor: pointer;
   color: #943633;
 }
-/** 
+/**
 *   Override: bootstrap timepicker
 */
 .datepicker {
@@ -8322,6 +8333,15 @@ label.toggle-mobile,
   }
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  .slider .tooltip.top {
+    margin-top: -48px;
+  }
+  .slider.slider-horizontal .slider-handle {
+    margin-left: -25px;
+    margin-top: -20px;
+    width: 50px;
+    height: 50px;
+  }
   body {
     margin-top: 50px;
   }
@@ -9637,6 +9657,9 @@ div.video-preview video:first-child {
   }
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  .main-preview-player {
+    display: block;
+  }
   div.images {
     padding-top: 20px;
   }
@@ -9982,12 +10005,43 @@ div.video-preview video:first-child {
 .tgl-ios:checked + .tgl-btn {
   background: #f1f1f1;
 }
+#kios-configuration .kios-content {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: table;
+}
+#kios-configuration .tgl-ios:checked + .tgl-btn {
+  background-color: #943633;
+}
+#kios-configuration .with-tooltip {
+  clear: both;
+  margin-bottom: 15px;
+  display: table;
+}
+#kios-configuration .with-tooltip .button {
+  float: left;
+  margin-right: 20px;
+}
+#kios-configuration .with-tooltip .title {
+  float: left;
+  margin-top: 2px;
+}
+#kios-configuration .with-tooltip > span {
+  float: left !important;
+  margin: 0 !important;
+  margin-top: -4px !important;
+  margin-left: 10px !important;
+}
 #update-profile-modal {
   min-width: 600px;
 }
 #machinery-settings,
 #web-settings {
   padding-right: 30px;
+}
+.switch-light span span,
+.switch-light a {
+  outline: none !important;
 }
 #web-settings .content {
   display: table;
@@ -10606,7 +10660,7 @@ div.video-preview video:first-child {
   opacity: 1;
 }
 .configuration-switch {
-  width: 180px;
+  width: 200px;
   padding: 10px;
 }
 .configuration-switch .well {
@@ -10803,8 +10857,7 @@ label {
   background: #943633 !important;
 }
 .owl-theme .owl-nav .disabled {
-  opacity: 1;
-  background: #d6d6d6 !important;
+  opacity: 0;
 }
 .owl-dots {
   position: absolute;
@@ -10871,12 +10924,18 @@ div#step {
 #machinery-settings div select {
   height: 34px;
 }
+.enabled-hw-encoding {
+  padding: 10px 0;
+}
 @media only screen and (min-width: 0px) and (max-width: 767px) {
+  #settings-modal h4 {
+    padding: 20px 0;
+  }
   #machinery-settings,
   #web-settings,
   #cloud,
   #settings-modal {
-    padding: 0 15px 0;
+    padding: 0 15px;
     display: table;
     width: 100%;
   }
@@ -10917,6 +10976,7 @@ div#step {
   }
   #settings-modal .modal-body {
     margin: 0;
+    padding: 1px 15px 15px;
   }
   #settings-modal #motion-view .container-fluid {
     padding: 0;
