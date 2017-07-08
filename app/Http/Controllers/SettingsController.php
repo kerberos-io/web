@@ -290,7 +290,11 @@ class SettingsController extends BaseController
         $authentication = "";
         if($username != "" && $password != "")
         {
-            $authentication = $username . ":" . $password . "@";
+            // Disabled in Chrome 59 and other browsers.
+            // Need to find a work a round..
+
+            //$authentication = $username . ":" . $password . "@";
+
         }
 
         $protocol = 'http://';
