@@ -1,0 +1,23 @@
+<div class="with-tooltip element">
+    <div class="button">
+        <input class="tgl tgl-ios" {{#forcenetwork}}checked{{/forcenetwork}} id="force-network" type="checkbox"/>
+        <label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="force-network"></label>
+    </div>
+    <div class="title">{{translation.forceNetwork}}</div>
+    <span>
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+        <span>{{translation.forceNetworkInfo}}</span>
+    </span>
+</div>
+
+<div class="with-tooltip element">
+    <div class="button">
+        <input class="tgl tgl-ios" {{#autoremoval}}checked{{/autoremoval}} id="auto-removal" type="checkbox"/>
+        <label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="auto-removal"></label>
+    </div>
+    <div class="title">{{translation.autoRemoval}}</div>
+    <span>
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+        <span>{{translation.autoRemovalInfo}}</span>
+    </span>
+</div>

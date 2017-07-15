@@ -29,7 +29,7 @@ define(["jquery", "app/controllers/event"], function($, event)
             event.trigger("section.opened", todo);
         });
 
-        // When changing dropdown, we make the other section visitble
+        // When changing dropdown, we make the other section visible
         $("#machinery-settings .dropdown select").change(changeSection);
 
         function changeSection(v)
@@ -39,7 +39,7 @@ define(["jquery", "app/controllers/event"], function($, event)
 
             // hide everything and show the selected one
             $.each(section.children(), function(key, value){
-                $(value).css({"display":"none"});  
+                $(value).css({"display":"none"});
                 var todo = $(value).find(".doSomethingOnChange");
                 event.trigger("section.closed", todo);
             });
@@ -47,7 +47,7 @@ define(["jquery", "app/controllers/event"], function($, event)
             // show section with selected id
             $.each($(this).parent().find("select"), function(index, value)
             {
-                var open = section.find("#" + $(this).val());        
+                var open = section.find("#" + $(this).val());
                 $(open).css({"display":"table"});
                 var todo = open.find(".doSomethingOnChange");
                 event.trigger("section.opened", todo);
@@ -79,7 +79,7 @@ define(["jquery", "app/controllers/event"], function($, event)
             clone_name = clone_name.slice(0,-1) + clone_id;
             clone.attr("name", clone_name);
             clone.bind("change", changeSection);
-            
+
             if(numberOfSelects > 1)
             {
                 last = last.next();

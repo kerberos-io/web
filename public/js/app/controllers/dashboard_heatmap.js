@@ -1,7 +1,7 @@
 /**
-*   Dashboard Heatmap:  
+*   Dashboard Heatmap:
 *               Shows an heatmap which is draw
-*               on a canvas 
+*               on a canvas
 **/
 
 define(["heatmap"], function(heatmap)
@@ -18,21 +18,21 @@ define(["heatmap"], function(heatmap)
             self.config = config;
             self.fps = config.fps;
             self.radius = (config.radius) ? config.radius * 100 : 250;
-            
+
             // create heatmap
             self.heatmapInstance = heatmap.create({
                 container: document.querySelector('.heatmap'),
                 maxOpacity: 0.5,
                 minOpacity: 0
             });
-            
+
             $(window).resize(function()
             {
                 self.resize();
                 self.draw();
             });
-            
-            // Wait 300 ms before executing 
+
+            // Wait 300 ms before executing
             setTimeout(self.config.callback, 300);
         },
         changeRadius: function(radius)
@@ -43,7 +43,7 @@ define(["heatmap"], function(heatmap)
         redraw: function()
         {
             self = this;
-            
+
             $.get(self.config.url,function(data)
             {
                 $.get(self.config.urlSequence,function(images)
@@ -75,7 +75,7 @@ define(["heatmap"], function(heatmap)
             {
                 var canvas = $(".heatmap canvas").get(0);
                 var ctx = canvas.getContext("2d");
-                
+
                 var x = canvas.width / 2;
                 var y = canvas.height / 2;
                 ctx.font = '20px Arial';
@@ -99,8 +99,6 @@ define(["heatmap"], function(heatmap)
                 context = canvas.get(0).getContext("2d");
 
                 video = document.createElement("video");
-                video.src = videos[videos.length-1].src;
-                video.loop = true;
                 var self = this;
                 video.addEventListener('loadeddata', function()
                 {
@@ -110,42 +108,47 @@ define(["heatmap"], function(heatmap)
                     context.drawImage(video, 0, 0, canvas.width(), canvas.height());
                     var data =  canvas.get(0).toDataURL();
                     canvas.css({
-                        "background-image": "url("+data+")", 
-                        "background-size": "100% 100%", 
+                        "background-image": "url("+data+")",
+                        "background-size": "100% 100%",
                         "background-repeat": "no-repeat",
                     });
 
                     video.pause();
                     callback();
                 });
+
+                video.loop = true;
+                video.src = videos[videos.length-1].src;
             }
-            else
+            else if(this.images.length)
             {
-                var image = this.images[this.images.length-1];
                 var img = new Image();
-                img.src = image.src;
+
                 var self = this;
                 img.onload = function()
                 {
                     self.latestImage.width = this.width;
                     self.latestImage.height = this.height;
                     canvas.css({
-                        "background": "url('"+image.src+"')", 
-                        "background-size": "100% 100%", 
+                        "background": "url('"+image.src+"')",
+                        "background-size": "100% 100%",
                         "background-repeat": "no-repeat",
                     });
                     canvas.attr("height", canvas.width()/2);
-                    $(".heatmap").css({"height": canvas.height()}); 
+                    $(".heatmap").css({"height": canvas.height()});
                     callback();
                 };
+
+                var image = this.images[this.images.length-1];
+                img.src = image.src;
             }
-            
+
             this.heatmapInstance._renderer.setDimensions(canvas.width(),canvas.height());
         },
         setRegions: function(data)
         {
             this.regions = [];
-            
+
             for(var i  =0; i < data.length; i++)
             {
                 var regionCoordinates = data[i].regionCoordinates.split("-");
@@ -170,11 +173,11 @@ define(["heatmap"], function(heatmap)
                     region.end.y = parseInt(regionCoordinates[3]);
                     region.changes = parseInt(data[i].numberOfChanges);
                     region.average = parseInt(data[i].numberOfChanges) / ((region.end.x - region.start.x) * (region.end.y - region.start.y));
-                    
+
                     this.regions.push(region);
                 }
             }
-            
+
             return data;
         },
         calculate: function(regions)
@@ -183,18 +186,18 @@ define(["heatmap"], function(heatmap)
             var width = 640;
             var height = 360;
             var dataPoints = [];
-            
+
             var originalWidth = this.latestImage.width;
             var originalHeight = this.latestImage.height;
-            
+
             var canvas = $(".heatmap canvas");
             var currentWidth = canvas.width();
             var currentHeight = canvas.height();
-            
+
             // scale x- and y-coordinates
             var dx = currentWidth / originalWidth;
             var dy = currentHeight / originalHeight;
-                
+
             for(var i = 0; i < regions.length; i++)
             {
                 max = Math.max(max, regions[i].average);
@@ -204,15 +207,15 @@ define(["heatmap"], function(heatmap)
                     value: regions[i].average,
                     radius: regions[i].average * this.radius,
                 };
-                
+
                 dataPoints.push(point);
             }
-            
-            var data = { 
-              max: max, 
+
+            var data = {
+              max: max,
               data: dataPoints
             };
-            
+
             return data;
         },
         resize: function()
@@ -220,7 +223,7 @@ define(["heatmap"], function(heatmap)
             var canvas = $(".heatmap canvas");
             canvas.attr("width", $(".heatmap").width());
             canvas.attr("height", canvas.width()/2);
-            $(".heatmap").css({"height": canvas.width()}); 
+            $(".heatmap").css({"height": canvas.width()});
             $(".heatmap").css({"height": canvas.height()});
         }
     };

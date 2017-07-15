@@ -1,6 +1,6 @@
 vendor/
 public/node_modules/
+node_modules/
 public/capture
-app/config/app.php
-composer.*
+composer.lock
 bootstrap/compiled.php
