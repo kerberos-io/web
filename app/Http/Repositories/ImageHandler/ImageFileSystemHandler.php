@@ -90,19 +90,19 @@ class ImageFileSystemHandler implements ImageHandlerInterface
 
         $index = $this->getIndexOfTimestampFromFileFormat();
 
-        while($heap->valid())
+        while($heap->valid() && !$heap->isEmpty())
         {
-            $timestamp = intval(explode('_', $heap->current())[$index]);
+            $current = $heap->current();
+            $timestamp = intval(explode('_', $current)[$index]);
 
             if($timestamp > 1000000000)
             {
                 break;
             }
 
-            $numberOfZeros = strlen("1000000000") - strlen($timestamp);
-            $heap->insert(str_repeat("0", $numberOfZeros) . $heap->current());
-
             $heap->extract();
+            $numberOfZeros = strlen("1000000000") - strlen($timestamp);
+            $heap->insert(str_repeat("0", $numberOfZeros) . $current);
         }
 
         return $heap;
