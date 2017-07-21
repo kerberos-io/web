@@ -93,15 +93,14 @@ class ImageFileSystemHandler implements ImageHandlerInterface
         while($heap->valid() && !$heap->isEmpty())
         {
             $current = $heap->current();
-            $timestamp = intval(explode('_', $current)[$index]);
-
-            if($timestamp > 1000000000)
+            $timestamp = explode('_', $current)[$index];
+            $numberOfZeros = strlen("1000000000") - strlen($timestamp);
+            if($numberOfZeros == 0)
             {
                 break;
             }
 
             $heap->extract();
-            $numberOfZeros = strlen("1000000000") - strlen($timestamp);
             $heap->insert(str_repeat("0", $numberOfZeros) . $current);
         }
 
