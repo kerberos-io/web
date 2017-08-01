@@ -69,14 +69,16 @@
 
             require(["app/controllers/toggleSettings", "app/controllers/settings_basic", "app/controllers/settings_web", "app/controllers/settings_kios", "app/controllers/Cache"], function(toggleSettings, SettingsBasic, SettingsWeb, SettingsKiOS, Cache)
             {
-                Cache(_baseUrl + "/api/v1/translate/settings").then(function(translation)
+                // First load advanced settings.
+                toggleSettings.initialize(function()
                 {
-                    SettingsBasic.initialize(translation);
-                    SettingsKiOS.initialize("{{$kios['autoremoval']}}", "{{$kios['forcenetwork']}}", translation);
-                    SettingsWeb.initialize("{{$kerberos['radius']}}", translation);
+                    Cache(_baseUrl + "/api/v1/translate/settings").then(function(translation)
+                    {
+                        SettingsKiOS.initialize("{{$kios['autoremoval']}}", "{{$kios['forcenetwork']}}", translation);
+                        SettingsWeb.initialize("{{$kerberos['radius']}}", translation);
+                        SettingsBasic.initialize(translation);
+                    });
                 });
-
-                toggleSettings.initialize();
 
                 $(".configuration-switch input[type='checkbox']").click(function()
                 {
