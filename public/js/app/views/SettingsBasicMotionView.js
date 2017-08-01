@@ -87,24 +87,19 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
             {
-                var interval = setInterval(function()
+                if($("input[name='expositor__Hull__region']").length &&
+                $("input[name='expositor__Hull__region']").val() != '')
                 {
-                    if($("input[name='expositor__Hull__region']").length &&
-                    $("input[name='expositor__Hull__region']").val() != '')
+                    hull.setImage(image.src);
+                    hull.setImageSize(image.width, image.height);
+                    hull.setCoordinates($("input[name='expositor__Hull__region']").val());
+                    hull.setName("motion-hullselection");
+                    hull.initialize(function()
                     {
-                        hull.setImage(image.src);
-                        hull.setImageSize(image.width, image.height);
-                        hull.setCoordinates($("input[name='expositor__Hull__region']").val());
-                        hull.setName("motion-hullselection");
-                        hull.initialize(function()
-                        {
-                            var loader = self.$el.find("#loading-image-view");
-                            callback(loader);
-                        });
-
-                        clearInterval(interval);
-                    }
-                }, 500);
+                        var loader = self.$el.find("#loading-image-view");
+                        callback(loader);
+                    });
+                }
             });
         },
         enabledDevices: function()
