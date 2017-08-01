@@ -371,7 +371,7 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
 
             this.$el.find("input").val(coordinateString);
         },
-        drawCoordinates: function()
+        drawCoordinates: function(callback)
         {
             var mapPosition = this.$el.find("img");
             var delta = {
@@ -396,6 +396,8 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
 
             // close hull
             this.closeHull();
+
+            callback && callback();
         },
         restore: function()
         {
@@ -413,8 +415,10 @@ define(["underscore", "backbone", "app/models/Hull", "app/views/BaseView"], func
                 "coordinates": this.model.coordinates,
             }));
             this.writeCoordinates();
-            this.drawCoordinates();
-            callback && callback();
+            this.drawCoordinates(function()
+            {
+                callback && callback();
+            });
 
             return this;
         }
