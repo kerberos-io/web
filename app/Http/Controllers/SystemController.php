@@ -40,12 +40,14 @@ class SystemController extends BaseController
     {
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
-        
+        $isActive = ($settings["condition"]["dropdown"]["Enabled"]["children"]["active"]["value"] === "true") ? "none" : "block";
+
         $days = $this->imageHandler->getDays(5);
         $insideDocker = (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true');
 
         return View::make('system',
         [
+            'isActive' => $isActive,
             'cameraName' => $settings['name']['value'],
             'days' => $days
         ]);

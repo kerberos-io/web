@@ -44,6 +44,7 @@ class ImageController extends BaseController
 
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
+        $isActive = ($settings["condition"]["dropdown"]["Enabled"]["children"]["active"]["value"] === "true") ? "none" : "block";
 
         // ----------------------------------------------------------------------
         // Get last x days from the imagehandler -> move to BaseController
@@ -51,6 +52,7 @@ class ImageController extends BaseController
         $days = $this->imageHandler->getDays(5);
 
         return View::make('image', [
+            'isActive' => $isActive,
             'cameraName' => $settings['name']['value'],
             'days' => $days,
             'selectedDay' => $selectedDay,
