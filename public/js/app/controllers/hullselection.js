@@ -60,8 +60,7 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                         context = canvas.getContext("2d");
 
                         video = document.createElement("video");
-                        var randomNumber = Math.random();
-                        video.src = videos[videos.length-1].src + '?' + randomNumber;
+                        video.src = videos[videos.length-1].src;
 
                         video.addEventListener('loadeddata', function()
                         {
