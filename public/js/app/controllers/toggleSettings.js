@@ -13,7 +13,7 @@ define(["jquery", "app/controllers/hullselection", "app/controllers/twolines"], 
         {
             return this.type;
         },
-        reloadHull: function()
+        reloadHull: function(callback)
         {
             hull.setElement($(".hullselection .map"));
             twolines.setElement($(".twolines .map"));
@@ -31,6 +31,8 @@ define(["jquery", "app/controllers/hullselection", "app/controllers/twolines"], 
                 twolines.setCoordinates($(".twolines .coordinates").val());
                 twolines.setName($(".twolines .name").val());
                 twolines.initialize();
+
+                callback && callback();
             });
         },
         setType: function(type)
@@ -61,20 +63,21 @@ define(["jquery", "app/controllers/hullselection", "app/controllers/twolines"], 
                 }
             });
         },
-        initialize: function()
+        initialize: function(callback)
         {
             // -----------------------------------
             // Load view and images
 
             var self = this;
             $(".configuration-switch input[type='checkbox']").attr("disabled", true);
+
             $.get(_baseUrl + "/api/v1/configure",function(data)
             {
                 self.type = data.type;
                 $(".configuration-switch input[type='checkbox']").attr("checked", (self.type === 'advanced'));
                 $(".configuration-switch input[type='checkbox']").attr("disabled", false);
                 $(".configuration-switch span.well").css("opacity", 1);
-                self.reloadHull();
+                self.reloadHull(callback);
             });
         }
     };

@@ -93,6 +93,10 @@ return array(
 
 	'rebooting' => 'Systeem is aan het heropstarten',
 
-	'shuttingdown' => 'Systeem is aan het afsluiten'
+	'shuttingdown' => 'Systeem is aan het afsluiten',
+
+	/* to translate */ 'newVersion' => 'Goed nieuw, er is een nieuwe versie van KiOS beschikbaar!',
+
+	/* to transalte */ 'disabled' => 'Je hebt Kerberos.io uitgeschakeld, dit betekent dat er momenteel geen afbeeldingen of videos worden opgeslagen!'
 
 );

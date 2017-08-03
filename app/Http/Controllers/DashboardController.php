@@ -32,8 +32,10 @@ class DashboardController extends BaseController
 
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
+        $isActive = ($settings["condition"]["dropdown"]["Enabled"]["children"]["active"]["value"] === "true") ? "none" : "block";
 
         return View::make('dashboard', [
+            'isActive' => $isActive,
             'cameraName' => $settings['name']['value'],
             'days' => $days,
             'kerberos' => $this->kerberos,

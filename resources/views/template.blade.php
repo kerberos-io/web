@@ -183,7 +183,8 @@
             <!-- /.navbar-collapse -->
         </nav>
 
-        <div id="new-release" style="display:none;" class="alert-update alert alert-warning" role="alert">Good news, <a href="{{URL::to('/').'/system'}}">a new release of KiOS</a> is available!</div>
+        <div id="new-release" style="display:none;" class="alert-update alert alert-warning" role="alert"><a href="{{URL::to('/').'/system'}}">{{Lang::get('system.newVersion')}}</a></div>
+        <div id="disabled-machinery" style="display:{{$isActive}};" class="alert-update alert alert-danger" role="alert">{{Lang::get('system.disabled')}}</div>
 
         <script type="text/javascript">
             require([_jsBase + 'main.js'], function(common)

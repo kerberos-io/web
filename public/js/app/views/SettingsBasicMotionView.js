@@ -43,7 +43,7 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 ],
                 onInitialized: function()
                 {
-                    callback();
+                    setTimeout(callback, 500);
                 },
             });
 
@@ -87,23 +87,19 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
             hull.setElement(this.$el.find("#region-selector"));
             hull.getLatestImage(function(image)
             {
-                hull.setImage(image.src);
-                hull.setImageSize(image.width, image.height);
-
-                var retrieveCoordinates = function()
+                if($("input[name='expositor__Hull__region']").length &&
+                $("input[name='expositor__Hull__region']").val() != '')
                 {
-                    if($("input[name='expositor__Hull__region']").length &&
-                    $("input[name='expositor__Hull__region']").val() != '')
+                    hull.setImage(image.src);
+                    hull.setImageSize(image.width, image.height);
+                    hull.setCoordinates($("input[name='expositor__Hull__region']").val());
+                    hull.setName("motion-hullselection");
+                    hull.initialize(function()
                     {
-                        hull.setCoordinates($("input[name='expositor__Hull__region']").val());
-                        hull.setName("motion-hullselection");
-                        hull.initialize(callback);
-                        self.$el.find("#loading-image-view").remove();
-                        clearInterval(interval);
-                    }
-                };
-
-                var interval = setInterval(retrieveCoordinates, 500);
+                        var loader = self.$el.find("#loading-image-view");
+                        callback(loader);
+                    });
+                }
             });
         },
         enabledDevices: function()
@@ -192,11 +188,13 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
 
             self.createCarousel(function()
             {
-                self.setRegionSelector(function()
+                self.createSlider();
+                self.setDevices();
+                self.setColor();
+
+                self.setRegionSelector(function(loader)
                 {
-                    self.createSlider();
-                    self.setDevices();
-                    self.setColor();
+                    loader.remove();
                     hull.restore();
                 });
             });
