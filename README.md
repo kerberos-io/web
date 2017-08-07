@@ -4,6 +4,10 @@
 
 [![Kerberos.io - video surveillance](https://kerberos.io/images/kerberos.png)](https://kerberos.io)
 
+## Help us internationalize
+
+We're looking for contributors to help us translating the web interface, so that more people can start using and understanding Kerberos.io. Want to help? [**Send us your contribution**](https://github.com/kerberos-io/web/issues/74).
+
 ## Vote for features
 
 [![Feature Requests](http://feathub.com/kerberos-io/machinery?format=svg)](http://feathub.com/kerberos-io/machinery)
