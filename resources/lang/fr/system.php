@@ -93,10 +93,10 @@ return array(
 
 	'rebooting' => 'Reboot du système',
 
-	'shuttingdown' => 'Éteindre du système',
+	'shuttingdown' => 'Extinction du système',
 
-	/* to translate */ 'newVersion' => 'Good news, a new release of KiOS is available!',
+	'newVersion' => 'Bonne nouvelle, une nouvelle version de KiOS est disponible !',
 
-	/* to transalte */ 'disabled' => 'You\'ve disabled the system, this means that no images or videos will be saved to disk!'
+	'disabled' => 'Vous avez désactivé le système, cela signifie que plus aucune image ni vidéo ne sera sauvegardé sur le disque !'
 
 );
