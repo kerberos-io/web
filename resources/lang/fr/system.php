@@ -97,6 +97,6 @@ return array(
 
 	'newVersion' => 'Bonne nouvelle, une nouvelle version de KiOS est disponible !',
 
-	'disabled' => 'Vous avez désactivé le système, cela signifie que plus aucune image ni vidéo ne sera sauvegardé sur le disque !'
+	'disabled' => 'Vous avez désactivé le système, cela signifie que plus aucune image ni vidéo ne sera sauvegardée sur le disque !'
 
 );
