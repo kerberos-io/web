@@ -93,7 +93,7 @@ return array(
 
 	'rebooting' => 'Reboot du système',
 
-	'shuttingdown' => 'Éteindre du système'
+	'shuttingdown' => 'Éteindre du système',
 
 	/* to translate */ 'newVersion' => 'Good news, a new release of KiOS is available!',
 
