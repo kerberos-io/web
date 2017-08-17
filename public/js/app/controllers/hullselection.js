@@ -37,6 +37,7 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
         getLatestImage: function(callback)
         {
             var image = {};
+            var self = this;
 
             $.get( _baseUrl + "/api/v1/images/latest_sequence", function(sequence)
             {
@@ -46,7 +47,6 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                 image.src = "";
                 image.width = 600;
                 image.height = 480;
-
                 if(sequence.length)
                 {
                     var videos = _.filter(sequence, function(file)
@@ -66,15 +66,18 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                         {
                             canvas.width = video.videoWidth;
                             canvas.height = video.videoHeight;
+
+                            video.pause();
                             video.play();
                             context.drawImage(video, 0, 0, canvas.width, canvas.height);
                             video.pause();
 
-                            return callback({
+                            callback({
                                 src: canvas.toDataURL(),
                                 width: canvas.width,
                                 height: canvas.height
                             });
+
                         });
                     }
                     else
@@ -120,8 +123,6 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                 model: hull,
             });
 
-            this.hullView.render(callback);
-
             var self = this;
 
             $(window).resize(function()
@@ -136,6 +137,8 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                     self.hullView.restore();
                 }
             });
+
+            this.hullView.render(callback);
         }
     };
 });

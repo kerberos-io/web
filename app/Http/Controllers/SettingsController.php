@@ -34,6 +34,7 @@ class SettingsController extends BaseController
     {
         $directory = $this->config;
         $settings = $this->reader->parse($directory)["instance"]["children"];
+        $isActive = ($settings["condition"]["dropdown"]["Enabled"]["children"]["active"]["value"] === "true") ? "none" : "block";
 
         $days = $this->imageHandler->getDays(5);
 
@@ -48,29 +49,12 @@ class SettingsController extends BaseController
 
         return View::make('settings',
         [
+            'isActive' => $isActive,
             'cameraName' => $settings['name']['value'],
             'days' => $days,
             'settings' => $settings,
             'kerberos' => $this->kerberos,
             'kios' => $kios
-        ]);
-    }
-
-    /********************************************
-     *  Show the cloud page.
-     */
-    public function cloud()
-    {
-        $directory = $this->config;
-
-        $settings = $this->reader->parse($directory)["instance"]["children"]['cloud']['dropdown']['S3']['children'];
-        $days = $this->imageHandler->getDays(5);
-
-        return View::make('cloud',
-        [
-            'days' => $days,
-            'settings' => $settings,
-            'isUpdateAvailable' => $this->isUpdateAvailable()
         ]);
     }
 
@@ -290,7 +274,11 @@ class SettingsController extends BaseController
         $authentication = "";
         if($username != "" && $password != "")
         {
-            $authentication = $username . ":" . $password . "@";
+            // Disabled in Chrome 59 and other browsers.
+            // Need to find a work a round..
+
+            //$authentication = $username . ":" . $password . "@";
+
         }
 
         $protocol = 'http://';

@@ -90,9 +90,13 @@ return array(
 	'unpacking' => 'Desempaquetant',
 
 	'transferring' => 'Transferint',
-    
+
 	'rebooting' => 'El sistema s\'esto reiniciant',
 
 	'shuttingdown' => 'El sistema s\'esto apagant',
+
+	/* to translate */ 'newVersion' => 'Good news, a new release of KiOS is available!',
+
+	/* to transalte */ 'disabled' => 'You\'ve disabled the system, this means that no images or videos will be saved to disk!'
 
 );
