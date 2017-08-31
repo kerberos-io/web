@@ -1,0 +1,76 @@
+Kerberos.io {{translation.twoServicesRunning}}.
+<h3>{{translation.versions}}</h3>
+<table class="table">
+    <tr>
+        <td>Web</td>
+        <td>{{kerberos.webVersion}}</td>
+        <td><span class="label label-success">Running</span></td>
+    </tr>
+    <tr>
+        <td>Machinery</td>
+        {{#kerberos.insideDocker}}
+        <td colspan="2">{{translation.warning-docker}}</td>
+        {{/kerberos.insideDocker}}
+
+        {{^kerberos.insideDocker}}
+        <td>{{kerberos.machineryVersion}}</td>
+        <td>
+            <span class="label 
+
+                {{#kerberos.isMachineryRunning}}
+                    label-success
+                {{/kerberos.isMachineryRunning}}
+
+                {{^kerberos.isMachineryRunning}}
+                    label-danger
+                {{/kerberos.isMachineryRunning}}
+            ">
+                {{#kerberos.isMachineryRunning}}
+                    Running
+                {{/kerberos.isMachineryRunning}}
+
+                {{^kerberos.isMachineryRunning}}
+                    Not running
+                {{/kerberos.isMachineryRunning}}
+            </span>
+        </td>
+        {{/kerberos.insideDocker}}
+    </tr>
+</table> 
+
+<h3>{{translation.statistics}}</h3>
+<table class="table">
+    <tr><td>{{translation.numberOfImages}}</td><td>{{kerberos.numberOfImages}}</td></tr>
+    <tr><td>{{translation.numberOfDays}}</td><td>{{kerberos.numberOfDays}}</td></tr>
+    <tr>
+        <td>{{translation.days}}</td>
+        <td>
+        {{#kerberos.days}}
+            {{.}} 
+        {{/kerberos.days}}
+        </td>
+    </tr>
+</table> 
+<div class="system-actions">
+    <a id="download" href="/api/v1/images/download">
+        <i class="fa fa-download"></i> {{translation.downloadImages}}
+    </a>
+    <a id="clean">
+        <i class="fa fa-trash"></i> {{translation.removeImages}}
+    </a>
+</div>
+
+<h3>{{translation.log}}</h3>
+<div class="logging">
+    <pre class="zoom"><code class="html">{{kerberos.shortLog}}</code></pre>
+</div>
+<div id="logging-modal" data-remodal-id="logging">
+    <div class="modal-body">
+        <pre><code class="html">{{kerberos.log}}</code></pre>
+    </div>
+</div>
+<div class="system-actions">
+    <a id="download" href="/api/v1/system/download">
+        <i class="fa fa-download"></i> {{translation.downloadSystemFiles}}
+    </a>
+</div>

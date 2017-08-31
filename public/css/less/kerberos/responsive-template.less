@@ -1,8 +1,27 @@
 @media only screen and (min-width: 0px) and (max-width: 767px)
 {
+    .slider .tooltip.top
+    {
+        margin-top: -48px;
+    }
+
+    .slider.slider-horizontal .slider-handle {
+        margin-left: -25px;
+        margin-top: -20px;
+        width: 50px;
+        height: 50px;
+    }
+
     body
     {
         margin-top: 50px;
+    }
+
+    pre code
+    {
+        table-layout: fixed;
+        width: 100%;
+        display: table;
     }
 
     h2
@@ -14,12 +33,6 @@
     {
         margin: 0px -15px;
         padding-bottom: 10px;
-    }
-
-    div.images div
-    {
-        width: 100%;
-        margin-top: -5px;
     }
 
     ul.top-nav
@@ -49,21 +62,21 @@
         padding: 0;
     }
 
-    #dashboard 
+    #dashboard
     {
         h2
         {
             display: none;
         }
-        
+
         div:last-child.col-lg-6
         {
-            margin-top: 30px;   
+            margin-top: 30px;
         }
-        
+
         ul.pie-legend
         {
-            display: none;  
+            display: none;
         }
     }
 
@@ -77,21 +90,55 @@
         margin: 0;
     }
 
-    .signout, .sync
+    .navbar-brand
+    {
+        display: none;
+    }
+
+    .signout, .sync, .system, .profile, label.toggle-mobile, .settings
     {
         float: right;
         display: block;
-        
+
         i
         {
             color: #fff;
-            padding: 17px 16px 0 0;
+            padding: 17px 10px 0 0;
         }
+    }
+
+    .profile, .system
+    {
+        margin-right: 16px;
+    }
+
+    .settings
+    {
+        margin-right: 6px;
+    }
+
+    label.toggle-mobile
+    {
+        margin-right: 18px;
     }
 
     .register, .forgot
     {
         display: none;
+    }
+
+    #update-profile-modal
+    {
+        width: 100% !important;
+        min-width: initial !important;
+
+        .with-tooltip
+        {
+            span
+            {
+                display: none !important;
+            }
+        }
     }
 }
 

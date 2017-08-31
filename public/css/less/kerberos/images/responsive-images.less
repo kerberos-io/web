@@ -9,14 +9,83 @@
 
 @media only screen and (min-width: 0px) and (max-width: 767px)
 {
+		.main-preview-player {
+			display: block;
+		}
+
+    div.images
+    {
+    	padding-top: 20px;
+
+	    div
+	    {
+	        width: 100%;
+	        margin-top: -5px;
+	    }
+	}
+
+    div.video-preview
+	{
+	    video
+	    {
+        	margin-top: -5px;
+	    }
+	}
+
 	div.loadimage
 	{
 		width: 100%;
 		padding-bottom: 100px;
 	}
-	
-	div#images-wrapper p.metadata
+
+	div.new-page
 	{
-    	padding-bottom: 20px;
+    	padding-top: 20px;
     }
+
+    div.video-preview
+	{
+	    .imageview-video-preview
+	    {
+	        border-radius: 0px;
+	        height: auto;
+	        width: 100%;
+	        margin-right: 0 !important;
+	    }
+	}
+
+	#video-modal
+	{
+	    padding: 52px 0 0 0;
+	    margin: 0;
+	}
+
+	.sequence-dimensions.vjs-fluid, .vjs-fluid
+	{
+	    padding-top: 70%;
+    	min-height: 200px;
+	}
+
+	.vjs-mouse.vjs-playlist {
+	  min-height: 200px;
+	}
+
+	.playlist-container
+	{
+	    flex: 1 1 30%;
+	    padding-top: 315px !important;
+	}
+
+	.video-js .vjs-big-play-button
+	{
+	    font-size: 5em;
+	    border-radius: 50%;
+	    top: 26%;
+	    left: 40%;
+	    width: 82px;
+	    height: 82px;
+	    padding: 22px;
+	    border: .06666em solid #fff;
+	    background-color: #983633;
+	}
 }

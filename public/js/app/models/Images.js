@@ -3,14 +3,41 @@
 **/
 define(["underscore", "backbone"], function (_, Backbone)
 { 
-    var Images = Backbone.Model.extend({});
+    var Images = Backbone.Model.extend({
+        defaults: {
+            // will need to include a tie breaker attribute in both models
+            type: 'image'
+        }
+    }),
+    Videos = Backbone.Model.extend({
+        defaults: {
+            // tie breaker
+            type: 'video'
+        }
+    });
+
     var ImagesCollection = Backbone.Collection.extend({
         page: 1,
+        lastTime: undefined,
         take: 12,
-        model: Images,
+        model: function(model, options)
+        {
+            switch(model.type) {
+                case 'image':
+                    return new Images(model, options);
+                    break;
+                case 'video':
+                    return new Videos(model, options);
+                    break;
+            }
+        },
         setPage: function(page)
         {
             this.page = page;
+        },
+        setLastTime: function(time)
+        {
+            this.lastTime = time
         },
         setDay: function(day)
         {

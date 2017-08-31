@@ -23,7 +23,17 @@ define(["jquery"], function($)
                 success: function(data)
                 {
                     self.status = data.active;
-                    $(".machinery-switch input[type='checkbox']").attr("checked", "true");
+
+                    if(self.status === "true")
+                    {
+                        $(".machinery-switch input[type='checkbox']").attr("checked", "checked");
+                        $("#disabled-machinery").css("display", "none");
+                    }
+                    else
+                    {
+                        $(".machinery-switch input[type='checkbox']").removeAttr("checked");
+                        $("#disabled-machinery").css("display", "table");
+                    }
                 }
             });
         },
@@ -31,7 +41,7 @@ define(["jquery"], function($)
         {
             // -----------------------------------
             // Load view and images
-            
+
             var self = this;
             $(".machinery-switch input[type='checkbox']").attr("disabled", true);
             $.get(_baseUrl + "/api/v1/condition/enabled",function(data)

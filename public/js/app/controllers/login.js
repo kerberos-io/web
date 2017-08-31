@@ -28,8 +28,12 @@ define(["jquery"], function($)
         },
         initialize: function()
         {
-            if(this.form == undefined) return false;
+            $(document).ready(function()
+            {
+                $(".center").fadeIn(2000);
+            });
 
+            if(this.form == undefined) return false;
 
             var messageBag = this.messageBag;
             var endpoint = _baseUrl + this.url;
@@ -49,8 +53,11 @@ define(["jquery"], function($)
                 // Success
                 .done(function(data)
                 {
-                    messageBag.hide();
                     location.reload();
+                    $(".login").fadeOut(1000, function(){
+                        $(".login").html('<div class="load1"><div class="loader"></div></div>');
+                        $(".login").show();
+                    });
                 })
 
                 // Failed

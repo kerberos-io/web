@@ -1,0 +1,60 @@
+<div id="ipcamera-view">
+	<h4><i class="fa fa-video-camera"></i> IP Camera</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="url-to-stream with-tooltip element">
+                    <input type="text" class="url" value="{{ipcamera.url}}"/>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>{{translation.url}}</span>
+                    </span>
+                    <i class="description">url</i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="width-and-height with-tooltip element">
+                    <input type="text" class="width" value="{{ipcamera.width}}"/>
+                    <div class="multiply"> x </div>
+                    <input class="height" type="text" value="{{ipcamera.height}}"/>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>{{translation.widthHeightInfo}}</span>
+                    </span>
+                    <i class="description">{{translation.width}}</i>
+                    <i class="description">{{translation.height}}</i>
+                </div>
+                <div class="slider with-tooltip element">
+                    <input class="slider-delay" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2" data-slider-step="0.1" data-slider-value="{{ipcamera.delay}}"/>
+                    <i class="description slider">{{translation.delay}}</i>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>{{translation.delayInfo}}</span>
+                    </span>
+                </div>
+
+                <div class="slider with-tooltip element">
+                    <input class="slider-fps" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="{{stream.fps}}"/>
+                    <i class="description slider">{{translation.livestream}}</i>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>{{translation.livestreamInfo}}</span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="rotate with-tooltip element">
+                    <div class="image" style="transform:rotate({{ipcamera.angle}}deg)">
+                        <i class="fa fa-repeat" aria-hidden="true"></i>
+                    </div>
+                    <span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <span>{{translation.rotate}}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

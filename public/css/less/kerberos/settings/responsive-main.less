@@ -1,8 +1,13 @@
 @media only screen and (min-width: 0px) and (max-width: 767px)
 {
-	#settings, #cloud
+	#settings-modal h4
 	{
-	  	padding: 0 15px 0;
+		 padding: 20px 0;
+	}
+
+	#machinery-settings, #web-settings, #cloud, #settings-modal
+	{
+	  	padding: 0 15px;
 	  	display: table;
 	 	width: 100%;
 
@@ -11,10 +16,97 @@
 	        width: 100%;
 	        margin-bottom: 10px;
 	    }
+
+		.with-tooltip > span,
+		.with-tooltip-left > span
+		{
+			display: none;
+		}
 	}
 
-	#settings select
+	#machinery-settings select, #web-settings select
 	{
 		width: 200px;
+	}
+
+	#cloud input[type=submit],
+	#cloud input[type=text],
+	#cloud select,
+	#machinery-settings input[type=submit],
+	#machinery-settings input[type=text],
+	#machinerysettings select
+	#web-settings input[type=submit],
+	#web-settings input[type=text],
+	#web-settings select
+    {
+    	width: 90%;
+    }
+
+    #settings-modal
+    {
+    	display: block;
+    	margin: 0;
+
+		.modal-body
+		{
+			margin: 0;
+			padding: 1px 15px 15px;
+		}
+
+    	#motion-view
+    	{
+    		.container-fluid
+    		{
+			    padding: 0;
+			    margin: 23px 0;
+			}
+
+	    	h4
+	    	{
+			    margin-bottom: 15px;
+			    margin: 0;
+			    padding: 20px 0;
+			}
+
+	    	div#step
+	    	{
+	    		padding: 20px 0;
+	    		width: 55%;
+	    	}
+
+	    	.owl-nav
+	    	{
+	    		display: none;
+	    	}
+	    }
+    }
+
+    .slider-horizontal
+    {
+    	margin-bottom: 30px !important;
+    }
+
+    #basic
+    {
+     	div.type
+	    {
+	        padding: 10px;
+	    }
+    }
+
+    .rotate
+    {
+    	margin-top: 40px;
+    }
+
+    .io-devices
+	{
+	    > div
+	    {
+	        .button
+	        {
+	            margin-bottom: 20px;
+	        }
+	    }
 	}
 }

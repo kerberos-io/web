@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build_the_css', ['less','cssmin']);
     grunt.registerTask('default', ['build_the_css', 'watch']);
+    grunt.registerTask('cleanUpJS', ['clean']);
 
     /*****************************************
     *   Grunt configuration
@@ -14,6 +15,27 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
+
+        clean: {
+          videojs: [
+            'js/vendor/video.js/dist/video-js-*',
+            'js/vendor/video.js/src/',
+          ],
+          bootstrap: [
+            'js/vendor/bootstrap/dist/css/',
+            'js/vendor/bootstrap/grunt/',
+            'js/vendor/bootstrap/fonts/',
+            'js/vendor/bootstrap/Gruntfile.js',
+            'js/vendor/bootstrap/bower.js',
+            'js/vendor/bootstrap/CHANGELOG.md',
+          ],
+          moment: [
+            'js/vendor/moment/min/',
+          ],
+          fontawesome: [
+            'js/vendor/fontawesome/scss/',
+          ]
+        },
 
         /*****************************************
         *   CSS Operations
@@ -43,7 +65,7 @@ module.exports = function(grunt) {
         },
 
     /*****************************************
-    *   WATCHING FILES (DO BROWSER RELOAD) 
+    *   WATCHING FILES (DO BROWSER RELOAD)
     *****************************************/
 
         watch: {
@@ -60,11 +82,12 @@ module.exports = function(grunt) {
     });
 
     /***************************
-    *   LOAD GRUNT DEPENDENCIES   
+    *   LOAD GRUNT DEPENDENCIES
     ***************************/
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
 };
