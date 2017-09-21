@@ -11,28 +11,26 @@ return array(
 	|
 	*/
 
-	'updateProfile' => 'Update profile', 
+	'updateProfile' => 'Aggiorna profilo', 
 
-	'username' => 'Your username',
+	'username' => 'Il tuo nome utente',
 
-	'language' => 'language',
+	'language' => 'lingua',
 
-	'languageInfo' => 'Is your language missing or incomplete? Contribute your language to our Github repository.',
+	'languageInfo' => 'La tua lingua manca o è incompleta? Contribuisci alla traduzione su github.',
 
 	'password' => 'password',
 
-	'newPassword' => 'new password',
+	'newPassword' => 'nuova  password',
 
-	'changePassword' => 'Change password',
+	'changePassword' => 'Cambia password',
 
-	'currentPassword' => 'current password',
+	'currentPassword' => 'Password attuale',
 
-	'newPassword' => 'new password',
+	'confirmNewPassword' => 'conferma nuova password',
 
-	'confirmNewPassword' => 'confirm new password',
+	'cancel' => 'annulla',
 
-	'cancel' => 'cancel',
-
-	'update' => 'update'
+	'update' => 'aggiorna'
 
 );

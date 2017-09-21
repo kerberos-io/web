@@ -11,94 +11,94 @@ return array(
 	|
 	*/
 
-  'settings' => 'Settings',
+  'settings' => 'Impostazioni',
 
-  'configuration' => 'Configuration',
+  'configuration' => 'Configurazione',
 
-	'update' => 'Update',
+	'update' => 'Aggiorna',
 
-	'heatmap' => 'Heatmap',
+	'heatmap' => 'Mappa del calore',
 
-	'general' => 'General settings',
+	'general' => 'Impostazioni generali',
 
-	'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!',
+	'purchase' => 'Guarda le tue attività da qualsiasi posto nel mondo con <b>Kerberos.cloud</b>. <u>Inizia</u> per soli 1,49€/mese!',
 
-	'basic' => 'Basic',
+	'basic' => 'Base',
 
-	'advanced' => 'Advanced',
+	'advanced' => 'Avanzato',
 
-	'name' => 'Name',
+	'name' => 'Nome',
 
-	'nameInfo' => 'A unique name for your camera is required, if you will run multiple Kerberos.io instances.',
+	'nameInfo' => 'È richiesto un nome univoco per la tua telecamera, se eseguirai istanze multiple di Kerberos.io.',
 
-	'timezone' => 'Timezone',
+	'timezone' => 'Fuso Orario',
 
-	'timezoneInfo' => 'The timezone is used to convert timestamps to your local time. It\'s used in both the machinery and web interface.',
+	'timezoneInfo' => 'Il fuso orario è usato per convertire i timestamp alla tua ora locale. È usato sia da machinery che da l\'interfaccia web',
 
-	'camera' => 'Camera',
+	'camera' => 'Telecamera',
 
-	'usbcamera' => 'USB camera',
+	'usbcamera' => 'Telecamera USB',
 
-	'usbcameraInfo' => 'Select this option, if you want to use an USB camera.',
+	'usbcameraInfo' => 'Seleziona questa opzione, se vuoi usare una telecmera USB',
 
-	'rpicamera' => 'RPi camera',
+	'rpicamera' => 'Telecamera RPi',
 
-	'rpicameraInfo' => 'If you run Kerberos.io on a Raspberry Pi, you can select this option, if you want to use the Raspberry Pi camera module (v1 or v2).',
+	'rpicameraInfo' => 'Se esegui Kerberos.io su una Raspberry Pi puoi selezionare questa opzione se vuoi usare un modulo telecamera Raspberry Pi (v1 o v2).',
 
-	'ipcamera' => 'IP camera',
+	'ipcamera' => 'Telecamera IP',
 
-	'ipcameraInfo' => 'Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.',
+	'ipcameraInfo' => 'Seleziona questa opzione se vuoi usare una telecamera IP che supporta i flussi RTSP oppure MJPG.',
 
-	'surveillanceMode' => 'Surveillance',
+	'surveillanceMode' => 'Sorveglianza',
 
-	'motion' => 'Motion',
+	'motion' => 'Movimento',
 
-	'motionInfo' => 'A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific region in the view.',
+	'motionInfo' => 'Un rilevatore di movimento intelligente, che salva snatshot o video, e/o innesca altri dispositivi usando un webhook. Imposta le condizioni per rilevare il movimento solo in una particolare area.',
 
-	'storage' => 'Storage',
+	'storage' => 'Spazio di archiviazione',
 
-	'storageInfo' => 'Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere in the world.',
+	'storageInfo' => 'Usa Kerberos.cloud per seguire istanze multiple di Kerberos.io da ovunque nel mondo.',
 
-	'dontForget' => 'Press update to confirm your configuration.',
+	'dontForget' => 'Premi aggiorna per confermare la configurazione',
 
-	'update' => 'Update',
+	'update' => 'Aggiorna',
 
-	'cancel' => 'Cancel',
+	'cancel' => 'Annulla',
 
-	'confirmAndSelect' => 'Confirm and select',
+	'confirmAndSelect' => 'Conferma e seleziona',
 
 
 	// --------------
 	// Camera
 
-	'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
+	'fpsRaspberryInfo' => 'Il numero di frames processati per secondo; nota che questo parametro definisce anche il numero di frame per secondo di una registrazione video.',
 
-	'width' => 'Width',
+	'width' => 'Larghezza',
 
-	'height' => 'Height',
+	'height' => 'Altezza',
 
-	'widthHeightInfo' => 'The resolution of the images being captured by your camera. Make sure that this resolution is supported!',
+	'widthHeightInfo' => 'La risoluzione delle immagini catturate dalla tua telecamera. Assicurati che questa risoluzione sia supportata!',
 
-	'delay' => 'delay in seconds',
+	'delay' => 'ritardo in secondi',
 
-	'delayInfo' => 'The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).',
+	'delayInfo' => 'Il tempo di ritardo dirà a Kerberos.io di attendere per x secondi tra due catture di frame. Questo è utile quando si vuole ridurre il numero di immagini processate al secondo (p.e. per ragioni di performance)' ,
 
-	'livestream' => 'live stream frames/sec',
+	'livestream' => 'frames/sec del flusso dal vivo',
 
-	'livestreamInfo' => 'The frames per second of the live stream can be configured. Setting this option to zero, will disable the live stream.',
+	'livestreamInfo' => 'I frame al secondo del flusso dal vivo possone essere configurati. Configurando questa opzione a zero disabiliterà il flusso dal vivo.',
 
-	'rotate' => 'Click on this image if your camera is rotated. E.g. if your camera is mounted upside down, make sure this image is also upside down.',
+	'rotate' => 'Clicca su questa immagine se la tua telecamera è capovolta. P.e. se la tua telecamera è montata capovolta, assicurati che questa immagine sia anche capovolta.',
 
-	'url' => 'Enter the url of the RTSP or MJPEG stream of your IP camera.',
+	'url' => 'Inserisci la url del flusso RTSP o MJPEG della tua telecamera IP.',
 
 	// ----------------
 	// Motion
 
-	'image' => 'Image',
+	'image' => 'Immagine',
 
 	'video' => 'Video',
 
-	'step1' => 'Step 1. Select a region',
+	'step1' => 'Passo 1. Seleziona una regione',
 
 	'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
 
