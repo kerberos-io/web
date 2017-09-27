@@ -29,11 +29,11 @@ return array(
 
 	'name' => 'Nome',
 
-	'nameInfo' => 'È richiesto un nome univoco per la tua telecamera, se eseguirai istanze multiple di Kerberos.io.',
+	'nameInfo' => 'È richiesto un nome univoco per la tua telecamera, nel caso in cui eseguirai istanze multiple di Kerberos.io.',
 
 	'timezone' => 'Fuso Orario',
 
-	'timezoneInfo' => 'Il fuso orario è usato per convertire i timestamp alla tua ora locale. È usato sia da machinery che da l\'interfaccia web',
+	'timezoneInfo' => 'Il fuso orario è usato per convertire i timestamp alla tua ora locale. È usato sia da machinery che dall\'interfaccia web',
 
 	'camera' => 'Telecamera',
 
@@ -53,7 +53,7 @@ return array(
 
 	'motion' => 'Movimento',
 
-	'motionInfo' => 'Un rilevatore di movimento intelligente, che salva snatshot o video, e/o innesca altri dispositivi usando un webhook. Imposta le condizioni per rilevare il movimento solo in una particolare area.',
+	'motionInfo' => 'Un rilevatore di movimento intelligente, che salva snapshot o filmati, e/o innesca altri dispositivi usando un webhook. Imposta le condizioni per rilevare il movimento solo in una particolare area.',
 
 	'storage' => 'Spazio di archiviazione',
 
@@ -71,7 +71,7 @@ return array(
 	// --------------
 	// Camera
 
-	'fpsRaspberryInfo' => 'Il numero di frames processati per secondo; nota che questo parametro definisce anche il numero di frame per secondo di una registrazione video.',
+	'fpsRaspberryInfo' => 'Il numero di frame processati per secondo; nota che questo parametro definisce anche il numero di frame per secondo di una registrazione video.',
 
 	'width' => 'Larghezza',
 
@@ -81,13 +81,13 @@ return array(
 
 	'delay' => 'ritardo in secondi',
 
-	'delayInfo' => 'Il tempo di ritardo dirà a Kerberos.io di attendere per x secondi tra due catture di frame. Questo è utile quando si vuole ridurre il numero di immagini processate al secondo (p.e. per ragioni di performance)' ,
+	'delayInfo' => 'Il tempo di ritardo dirà a Kerberos.io di attendere  x secondi tra due catture di frame. Questo è utile quando si vuole ridurre il numero di immagini processate al secondo (p.es. per ragioni di performance)' ,
 
 	'livestream' => 'frames/sec del flusso dal vivo',
 
 	'livestreamInfo' => 'I frame al secondo del flusso dal vivo possone essere configurati. Configurando questa opzione a zero disabiliterà il flusso dal vivo.',
 
-	'rotate' => 'Clicca su questa immagine se la tua telecamera è capovolta. P.e. se la tua telecamera è montata capovolta, assicurati che questa immagine sia anche capovolta.',
+	'rotate' => 'Clicca su questa immagine se la tua telecamera è capovolta. P.es. se la tua telecamera è montata capovolta, assicurati che questa immagine sia anche capovolta.',
 
 	'url' => 'Inserisci la url del flusso RTSP o MJPEG della tua telecamera IP.',
 
@@ -100,94 +100,94 @@ return array(
 
 	'step1' => 'Passo 1. Seleziona una regione',
 
-	'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
+	'step1Info' => 'Sposta i punti per disegnare una regione di interesse. Fai doppio click su un punto per rimuoverlo, e/o sul punto bianco per aggiungere più punti.',
 
-	'step2' => 'Step 2. Configure parameters',
+	'step2' => 'Passo 2. Configura i parametri.',
 
-	'step2Info' => 'By changing the configuration below you can make the motion detection more or less sensitive.',
+	'step2Info' => 'Cambiando la configurazione qui sotto puoi rendere il rilevamento del movimento più o meno sensibile.',
 
-	'step3' => 'Step 3. Select one or more outputs',
+	'step3' => 'Passo 3. Seleziona una o più uscite.',
 
-	'step3Info' => 'Once motion is detected you can execute (asynchronous) one or more outputs.',
+	'step3Info' => 'Una volta rilevato il movimento puoi eseguire (in modo asincrono) una o più uscite.',
 
-	'sensitivity' => 'sensitivity',
+	'sensitivity' => 'sensibilità',
 
-	'sensitivityInfo' => 'Increasing this slider will make Kerberos.io more sensitive for motion. Decreasing will make it less sensitive for motion.',
+	'sensitivityInfo' => 'Aumentando questo slider renderà Kerberos.io più sensibile al movimento. Diminuendolo lo renderà meno sensibile al movimento',
 
-	'numberOfDetections' => 'number of detections before valid',
+	'numberOfDetections' => 'numero di rilevamenti prima di validare',
 
-	'numberOfDetectionsInfo' => 'This number represents the number of detections in a row before Kerberos.io will trigger a valid event. By increasing this value, you can eliminate false-positives: e.g. lightning, clouds, etc.',
+	'numberOfDetectionsInfo' => 'Questo numero rappresenta il numero di rilevamenti successivi prima che Kerberos.io inneschi un evento valido. Aumentando questo valore puoi eliminare falsi positivi: p.es. lampi, nuvole, etc ...',
 
 		// ------------------
 		// Timestamp - Colors
 
-		'noTimestamp' => 'no timestamp',
+		'noTimestamp' => 'nessun timestamp',
 
-		'white' => 'white',
+		'white' => 'bianco',
 
-		'black' => 'black',
+		'black' => 'nero',
 
-		'red' => 'red',
+		'red' => 'rosso',
 
-		'green' => 'green',
+		'green' => 'verde',
 
-		'blue' => 'blue',
+		'blue' => 'blu',
 
-	'drawTimestamp' => 'draw timestamp',
+	'drawTimestamp' => 'stampare timestamp',
 
-	'drawTimestampInfo' => 'When an image is saved to disk, you can draw the current date and time on the image.',
+	'drawTimestampInfo' => 'Quando un\'immagine viene salvata su disco, puoi stampare la data e ora corrente sull\'immagine.',
 
-	'drawTimestampInfoVideo' => 'When a video is saved to disk, you can draw the current date and time on the video.',
+	'drawTimestampInfoVideo' => 'Quando un filmato viene salvato su disco, puoi stampare la data e ora corrente sul filmato.',
 
 	'privacy' => 'privacy',
 
-	'privacyInfo' => 'By enabling this option, only the selected region of step 1 will be visible. All pixels outside the region are made black.',
+	'privacyInfo' => 'Abilitando questa opzione, solo la regione selezionata al passo 1 sarà visibile. Tutti i pixel fuori dalla regione saranno neri.',
 
-	'fps' => 'frames per second',
+	'fps' => 'frame al secondo',
 
-	'fpsInfo' => 'The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).',
+	'fpsInfo' => 'I frame al secondo registrati nel file del filmato; fai attenzione che Raspberry Pi può processare solo un numero limitato di FPS (p.es. 7 FPS).',
 
-	'secondsRecord' => 'seconds to record',
+	'secondsRecord' => 'secondi da registrare',
 
-	'secondsRecordInfo' => 'The number of seconds that will be recorded after motion was detected.',
+	'secondsRecordInfo' => 'Il numero di secondi che saranno registrati dopo che un movimento viene rilevato.',
 
 	'webhookUrl' => 'url',
 
-	'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
+	'webhookUrlInfo' => 'L\'URL alla quale verrà inviata una POST con un oggetto JSON.',
 
-	'scriptPath' => 'path',
+	'scriptPath' => 'percorso disco',
 
-	'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
+	'scriptPathInfo' => 'Il percorso su disco ad uno script bash che verrà eseguito. Un oggetto JSON verrà passato come parametro.',
 
 	'gpioPin' => 'pin',
 
-	'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
+	'gpioPinInfo' => 'Definisce il numero del pin al quale verrà inviato un impulso.',
 
-	'gpioPeriod' => 'period',
+	'gpioPeriod' => 'periodo',
 
-	'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
+	'gpioPeriodInfo' => 'Il numero di microsecondi che l\'impulso durerà.',
 
-	'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
-	Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
+	'hardwareEncodingEnabled' => 'Il tuo dispositivo supporta l\'hardware encoding, ecco perchè non puoi scegliere parametri addizionali (p.es. timestamping).
+	Inoltre il filmato generato avrà le stesse specifiche del dispositivo di cattura che hai scelto (p.es. FPS, sharpness, etc.)',
 
 	// --------------
 	// Cloud
 
-	'whatIsThis' => 'What is this',
+	'whatIsThis' => 'Cos\'è questo',
 
-	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan, you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
+	'whatIsthisInformation' => 'Kerberos.io ha una propria applicazione cloud. Sottoscrivendo un piano di abbonamento puoi sincronizzare tutte le immagini e filmati e rivederli da ovunque nel mondo. Una volta abbonato, riceverai delle credenziali che puoi inserire nei campi qui a sinistra. Dopo la conferma ed aver aggiornato la configurazione, le tue attività saranno sincronizzate automaticamente. Divertiti! ',
 
-	'subscribeNow' => 'Subscribe now for only €1,49',
+	'subscribeNow' => 'Abbonati ora a soli €1,49',
 
 	// ---------------
 	// KiOS settings
 
-	'forceNetwork' => 'Force network mode',
+	'forceNetwork' => 'Forza il network mode',
 
-	'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+	'forceNetworkInfo' => 'Quando abilitato il Sistema  si riavvierà se non riesce a connettersi ad internet. Questo è necessario se usi l\'applicazione cloud ma non hai una connessione affidabile',
 
-	'autoRemoval' => 'Auto removal media',
+	'autoRemoval' => 'Rimuovi i media automaticamente',
 
-	'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
+	'autoRemovalInfo' => 'Quando abilitato, le immagini soo automaticamente rimosse se il disco è pieno.'
 
 );

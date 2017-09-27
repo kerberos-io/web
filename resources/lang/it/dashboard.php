@@ -11,13 +11,13 @@ return array(
 	|
 	*/
 
-	'activity' => 'Attivitá',
+	'activity' => 'Attività',
 
 	'selectView' => 'Seleziona vista',
 
 	'liveView' => 'Vista dal vivo',
 
-	'lastActivity' => 'Ultima attivitá',
+	'lastActivity' => 'Ultima attività',
 
 	'heatmap' => 'Mappa del calore',
 

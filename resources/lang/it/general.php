@@ -35,15 +35,15 @@ return array(
 	|------------------------
     */
 
-    'monday' => 'Lunedí',
+    'monday' => 'Lunedì',
 
-    'tuesday' => 'Martedí',
+    'tuesday' => 'Martedì',
 
-    'wednesday' => 'Mercoledí',
+    'wednesday' => 'Mercoledì',
 
-    'thursday' => 'Giovedí',
+    'thursday' => 'Giovedì',
 
-    'friday' => 'Venerdí',
+    'friday' => 'Venerdì',
 
     'saturday' => 'Sabato',
 

@@ -11,77 +11,77 @@ return array(
 	|
 	*/
 
-	'system' => 'System',
+	'system' => 'Sistema',
 
-	'diskAlmostFull' => 'Hey, your disk is almost full. Please remove some images..',
+	'diskAlmostFull' => 'Hey, il tuo disco è quasi pieno. Rimuovi qualche immagine..',
 
-	'board' => 'Board',
+	'board' => 'Scheda',
 
-	'model' => 'Model',
+	'model' => 'Modello',
 
 	'os' => 'OS',
 
-	'osspecifications' => 'OS specifications',
+	'osspecifications' => 'Specifiche OS',
 
-	'warning-docker' => 'Don\'t know I\'m in a separate Docker container..',
+	'warning-docker' => 'Non sai che sono in un docker container separato ...',
 
-	'statistics' => 'Statistics',
+	'statistics' => 'Statistiche',
 
 	'log' => 'Log',
 
-	'news' => 'News',
+	'news' => 'Novità',
 
-	'systemIsOnlineFor' => 'System is online for',
+	'systemIsOnlineFor' => 'Sistema attivo per ',
 
 	'kernel' => 'Kernel',
 
-	'hostname' => 'Hostname',
+	'hostname' => 'Nome host',
 
-	'architecture' => 'Architecture',
+	'architecture' => 'Architettura',
 
-	'thisMachine' => 'This machine has',
+	'thisMachine' => 'Questa macchina ha',
 
-	'cpuRunning' => 'CPU\'s running with an average load of',
+	'cpuRunning' => 'CPU in esecuzione con un carico medio di',
 
-	'diskSpecs' => 'Disk specifications',
+	'diskSpecs' => 'Specifiche disco',
 
-	'thereAre' => 'There are',
+	'thereAre' => 'Ci sono',
 
-	'harddisksAvailable' => 'hard disks available on this machine',
+	'harddisksAvailable' => 'dischi disponibili su questa macchina',
 
-	'networkSpecs' => 'Network specifications',
+	'networkSpecs' => 'Specifiche di rete',
 
-		'device' => 'Device',
+		'device' => 'Dispositivo',
 
-		'recieved' => 'Received',
+		'recieved' => 'Recevuti',
 
-		'sent' => 'Sent',
+		'sent' => 'Inviati',
 
-	'twoServicesRunning' => 'needs two services: the web and the machinery',
+	'twoServicesRunning' => 'Ha bisogno di due servizi:  web e machinery',
 
-	'versions' => 'Versions',
+	'versions' => 'Versioni',
 
-	'numberOfImages' => '# of images',
+	'numberOfImages' => '# di immagini',
 
-	'numberOfDays' => '# of days',
+	'numberOfDays' => '# di giorni',
 
-	'days' => 'Days',
+	'days' => 'Giorni',
 
-	'downloadSystemFiles' => 'Download system files',
+	'downloadSystemFiles' => 'Scarica file di sistema',
 
-	'downloadImages' => 'Download images',
+	'downloadImages' => 'Scarica immagini',
 
-	'removeImages' => 'Remove images',
+	'removeImages' => 'Rimuovi immagini',
 
-	'shutdown' => 'Shutdown',
+	'shutdown' => 'Spegni',
 
-	'reboot' => 'Reboot',
+	'reboot' => 'Riavvia',
 
-	'release' => 'Release',
+	'release' => 'Rilascia',
 
-	'publishedAt' => 'Published at',
+	'publishedAt' => 'Pubblicato in',
 
-	'install' => 'Install',
+	'install' => 'Installa',
 
 	'downloading' => 'Downloading',
 
@@ -89,14 +89,14 @@ return array(
 
 	'unpacking' => 'Unpacking',
 
-	'transferring' => 'Transferring',
+	'transferring' => 'In trasferimento',
 
-	'rebooting' => 'System is rebooting',
+	'rebooting' => 'Il sistema si sta riavviando',
 
-	'shuttingdown' => 'System is shutting down',
+	'shuttingdown' => 'Il sistema si sta spegnendo',
 
-	'newVersion' => 'Good news, a new release of KiOS is available!',
+	'newVersion' => 'Buone notizie, una nuova versione di KiOS è disponibile!',
 
-	'disabled' => 'You\'ve disabled the system, this means that no images or videos will be saved to disk!'
+	'disabled' => 'Hai disabilitato il sistema, questo significa che nessuna immagine o filmato sarà salvato su disco!'
 
 );

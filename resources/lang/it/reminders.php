@@ -17,7 +17,7 @@ return array(
 
 	"user" => "Nessun utente con questo indirizzo email trovato.",
 
-	"token" => "Questo token per re-impostare la password é invalido.",
+	"token" => "Questo token per re-impostare la password è invalido.",
 
 	"sent" => "Promemoria password inviato!",
 
