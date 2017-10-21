@@ -3,7 +3,7 @@
 ****/
 
 define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, _, Backbone, BaseView)
-{ 
+{
     var WelcomeView = BaseView.extend(
     {
         el : '#introduction',
@@ -35,7 +35,9 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
             }
         },
         finish: function(event)
-        {   
+        {
+            $(this.el).off('click', '#finish');
+
             var element = $(event.currentTarget);
             var username = this.$el.find("#username");
             var password1 = this.$el.find("#password-1");
@@ -46,10 +48,19 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
                 'password1': password1.val(),
                 'password2': password2.val()
             };
-            
+
             $.post(_baseUrl + "/api/v1/user/install", data, function(data)
             {
-                window.location.href = element.attr('href');
+                var refreshIntervalId = setInterval(function() {
+                  $.get(_baseUrl + "/api/v1/user/installation", function(result){
+                      if(result && result.completed) {
+                        clearInterval(refreshIntervalId);
+                        $(".welcome").fadeOut(500, function(){
+                          window.location.href = '/login';
+                        });
+                      }
+                  });
+                }, 1000);
             });
 
             return false;

@@ -131,6 +131,8 @@ Route::prefix('v1')->group(function()
     // --------------------
     // Installation wizard
 
+    Route::get('user/installation', 'UserController@installationCompleted');
+
     if(!Config::get('kerberos')['installed'])
     {
         Route::post('user/language', 'UserController@changeLanguage');
