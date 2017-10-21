@@ -40,12 +40,14 @@
             <h2>Welcome!</h2>
             <p>Please select your language.</p>
             <select id="language">
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="nl">Nederlands</option>
-                <option value="de">Deutsch</option>
                 <option value="bg">България</option>
                 <option value="ca">Catalan</option>
+                <option value="de">Deutsch</option>
+                <option selected value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+                <option value="nl">Nederlands</option>
+                <option value="zh">中文</option>
                 <!--<option value="pt">Português</option>-->
             </select>
             <div class="next">
