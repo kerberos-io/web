@@ -37,6 +37,8 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
         finish: function(event)
         {
             $(this.el).off('click', '#finish');
+            $("#cloud, #finish").fadeOut();
+            $(".load5").show();
 
             var element = $(event.currentTarget);
             var username = this.$el.find("#username");
@@ -60,7 +62,7 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
                         });
                       }
                   });
-                }, 1000);
+                }, 500);
             });
 
             return false;
