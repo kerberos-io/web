@@ -94,7 +94,9 @@ Route::prefix('v1')->group(function()
         Route::get('condition/enabled', 'SettingsController@getConditionEnabled');
         Route::put('condition/enabled', 'SettingsController@updateConditionEnabled');
 
-	       Route::get('stream', 'SettingsController@getStream');
+        Route::get('stream', 'SettingsController@getStream');
+
+        Route::get('images/latest_sequence', 'ImageController@getLatestSequence');
 
         Route::get('io', 'SettingsController@getIos');
         Route::put('io', 'SettingsController@updateIos');
