@@ -160,16 +160,30 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                 },
                 webhook: {
                     enabled: this.model.devices.webhook.enabled, // overkill
-                    url:  this.$el.find("#url").val()
+                    url:  this.$el.find("#url").val(),
+                    throttler:  this.$el.find("#throttler-webhook").val()
                 },
                 script: {
                     enabled: this.model.devices.script.enabled, // overkill
-                    path:  this.$el.find("#path").val()
+                    path:  this.$el.find("#path").val(),
+                    throttler:  this.$el.find("#throttler-script").val()
                 },
                 gpio: {
                     enabled: this.model.devices.gpio.enabled, // overkill
                     pin:  this.$el.find("#pin").val(),
-                    period:  this.$el.find("#period").val()
+                    period:  this.$el.find("#period").val(),
+                    throttler:  this.$el.find("#throttler-gpio").val()
+                },
+                mqtt: {
+                    enabled: this.model.devices.mqtt.enabled, // overkill
+                    secure:  this.$el.find("#secure-mqtt").prop('checked'),
+                    verifycn:  this.$el.find("#verifycn-mqtt").prop('checked'),
+                    server:  this.$el.find("#server-mqtt").val(),
+                    port:  this.$el.find("#port-mqtt").val(),
+                    topic:  this.$el.find("#topic-mqtt").val(),
+                    username:  this.$el.find("#username-mqtt").val(),
+                    password:  this.$el.find("#password-mqtt").val(),
+                    throttler:  this.$el.find("#throttler-mqtt").val()
                 }
             });
 
