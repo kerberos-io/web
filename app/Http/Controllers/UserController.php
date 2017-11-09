@@ -35,6 +35,11 @@ class UserController extends BaseController
         return Response::json(['language' => $language]);
     }
 
+    public function installationCompleted() {
+        $config = $this->kerberos;
+        return Response::json(['completed' => $config['installed']]);
+    }
+
     public function install()
     {
         $input = Input::all();
@@ -54,7 +59,15 @@ class UserController extends BaseController
 
         //$this->fileLoader->save($config, '', 'kerberos');
 
-        return Response::json($user);
+        $newConfig = Config::get("kerberos");
+
+        if($newConfig['installed'])
+        {
+            $config["error"] = false;
+            return Response::json($config);
+        }
+
+        return Response::json(["error" => true]);
     }
 
     public function updateCurrent()

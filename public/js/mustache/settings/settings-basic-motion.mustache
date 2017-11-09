@@ -152,6 +152,14 @@
                                     <span>{{translation.webhookUrlInfo}}</span>
                                 </span>
                             </div>
+														<div class="with-tooltip-left element">
+																<input type="text" id="throttler-webhook" value="{{devices.webhook.throttler}}"/>
+																<i class="description">{{translation.throttler}}</i>
+																<span>
+																		<i class="fa fa-question-circle" aria-hidden="true"></i>
+																		<span>{{translation.throttlerInfo}}</span>
+																</span>
+														</div>
                         </div>
                     </div>
                     <div class="io-script">
@@ -171,9 +179,17 @@
                                     <span>{{translation.scriptPathInfo}}</span>
                                 </span>
                             </div>
+														<div class="with-tooltip-left element">
+																<input type="text" id="throttler-script" value="{{devices.script.throttler}}"/>
+																<i class="description">{{translation.throttler}}</i>
+																<span>
+																		<i class="fa fa-question-circle" aria-hidden="true"></i>
+																		<span>{{translation.throttlerInfo}}</span>
+																</span>
+														</div>
                         </div>
                     </div>
-                    <div class="io-GPIO">
+										<div class="io-GPIO">
                         <div class="button">
                             <input class="tgl tgl-device tgl-flip" id="gpio" type="checkbox"/>
                             <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="gpio"></label>
@@ -198,6 +214,95 @@
                                     <span>{{translation.gpioPeriodInfo}}</span>
                                 </span>
                             </div>
+														<div class="with-tooltip-left element">
+																<input type="text" id="throttler-gpio" value="{{devices.gpio.throttler}}"/>
+																<i class="description">{{translation.throttler}}</i>
+																<span>
+																		<i class="fa fa-question-circle" aria-hidden="true"></i>
+																		<span>{{translation.throttlerInfo}}</span>
+																</span>
+														</div>
+                        </div>
+                    </div>
+										<div class="io-MQTT">
+                        <div class="button">
+                            <input class="tgl tgl-device tgl-flip" id="mqtt" type="checkbox"/>
+                            <label class="tgl-btn" data-tg-off="off" data-tg-on="on" for="mqtt"></label>
+                        </div>
+                        <div class="title">
+                            <i class="fa fa-bug" aria-hidden="true"></i>MQTT
+                        </div>
+                        <div class="content">
+													<div class="with-tooltip element">
+															<div class="button">
+																	<input class="tgl tgl-ios" id="secure-mqtt" {{#devices.mqtt.secure}}checked{{/devices.mqtt.secure}} type="checkbox"/>
+																	<label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="secure-mqtt"></label>
+															</div>
+															<i class="description">{{translation.secure}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.secureInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip element">
+															<div class="button">
+																	<input class="tgl tgl-ios" id="verifycn-mqtt" {{#devices.mqtt.verifycn}}checked{{/devices.mqtt.verifycn}} type="checkbox"/>
+																	<label class="tgl-btn label-ios" data-tg-off="off" data-tg-on="on" for="verifycn-mqtt"></label>
+															</div>
+															<i class="description">{{translation.verifycn}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.verifycnInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip-left element">
+															<input type="text" id="server-mqtt" value="{{devices.mqtt.server}}"/>
+															<i class="description">{{translation.mqttServer}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.mqttServerInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip-left element">
+															<input type="text" id="port-mqtt" value="{{devices.mqtt.port}}"/>
+															<i class="description">{{translation.mqttPort}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.mqttPortInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip-left element">
+															<input type="text" id="topic-mqtt" value="{{devices.mqtt.topic}}"/>
+															<i class="description">{{translation.mqttTopic}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.mqttTopicInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip-left element">
+															<input type="text" id="username-mqtt" value="{{devices.mqtt.username}}"/>
+															<i class="description">{{translation.mqttUsername}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.mqttUsernameInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip-left element">
+															<input type="text" id="password-mqtt" value="{{devices.mqtt.password}}"/>
+															<i class="description">{{translation.mqttPassword}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.mqttPasswordInfo}}</span>
+															</span>
+													</div>
+													<div class="with-tooltip-left element">
+															<input type="text" id="throttler-mqtt" value="{{devices.mqtt.throttler}}"/>
+															<i class="description">{{translation.throttler}}</i>
+															<span>
+																	<i class="fa fa-question-circle" aria-hidden="true"></i>
+																	<span>{{translation.throttlerInfo}}</span>
+															</span>
+													</div>
                         </div>
                     </div>
                 </div>

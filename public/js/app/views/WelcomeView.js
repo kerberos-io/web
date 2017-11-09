@@ -3,7 +3,7 @@
 ****/
 
 define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, _, Backbone, BaseView)
-{ 
+{
     var WelcomeView = BaseView.extend(
     {
         el : '#introduction',
@@ -35,7 +35,11 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
             }
         },
         finish: function(event)
-        {   
+        {
+            $(this.el).off('click', '#finish');
+            $("#cloud, #finish").fadeOut();
+            $(".load5").show();
+
             var element = $(event.currentTarget);
             var username = this.$el.find("#username");
             var password1 = this.$el.find("#password-1");

@@ -44,6 +44,11 @@ VOLUME ["/etc/opt/kerberosio/capture"]
 VOLUME ["/etc/opt/kerberosio/config"]
 VOLUME ["/etc/opt/kerberosio/logs"]
 
+###########################################
+# Make web config directory visible
+
+VOLUME ["/var/www/web/config"]
+
 ##############
 # Expose Ports
 

@@ -170,6 +170,38 @@ return array(
 	'hardwareEncodingEnabled' => 'De camera die je geselecteerd hebt ondersteund hardware encoding, dat is waarom bepaalde parameters niet kunnen geselecteerd worden (e.g. tijdsweergave).
 		Alsook heeft de video die wordt opgenomen dezelfde eigenschappen als degene die ingesteld zijn bij jouw camera (e.g. FPS, sharpness, etc).',
 
+  'secure' => 'beveilig',
+
+	'secureInfo' => 'Gebruik certificaten die zich bevinden in /etc/ssl/certs/.',
+
+  'verifycn' => 'verifieer',
+
+	'verifycnInfo' => 'Verifieer certificaat',
+
+  'mqttServer' => 'server',
+
+  'mqttServerInfo' =>  'Het IP adres van de host waar de MQTT broker service aanwezig is.',
+
+  'mqttPort' => 'poort',
+
+  'mqttPortInfo' =>  'Poort nummer van de MQTT broker service.',
+
+  'mqttTopic' => 'topic',
+
+  'mqttTopicInfo' =>  'De topic naam waaronder de MQTT berichten verzonden worden.',
+
+  'mqttUsername' => 'gebruikersnaam',
+
+  'mqttUsernameInfo' =>  'De gebruikersnaam nodig om MQTT berichten te versturen.',
+
+  'mqttPassword' => 'wachtwoord',
+
+  'mqttPasswordInfo' =>  'Het wachtwoord nodig om MQTT berichten te versturen.',
+
+  'throttler' => 'smoren',
+
+  'throttlerInfo' =>  'Gebruik om spam te voorkomen. Bv. slechts 1 keer uitvoeren om de 5 seconden.',
+
 	// --------------
 	// Cloud
 
@@ -182,12 +214,12 @@ return array(
 	// ---------------
 	// KiOS settings
 
-	/* to translate */ 'forceNetwork' => 'Netwerk verplicht',
+	'forceNetwork' => 'Netwerk verplicht',
 
-	/* to translate */ 'forceNetworkInfo' => 'Deze optie zal er voor zorgen dat het OS steeds internet verbinding heeft, wanneer dit niet het geval is zal KiOS opnieuw opstarten. Dit is nodig bij instabiele netwerken en het gebruik van de cloud applicatie.',
+	'forceNetworkInfo' => 'Deze optie zal er voor zorgen dat het OS steeds internet verbinding heeft, wanneer dit niet het geval is zal KiOS opnieuw opstarten. Dit is nodig bij instabiele netwerken en het gebruik van de cloud applicatie.',
 
-	/* to translate */ 'autoRemoval' => 'Automatisch verwijderen',
+	'autoRemoval' => 'Automatisch verwijderen',
 
-	/* to translate */ 'autoRemovalInfo' => 'Wanneer de SD kaart bijna vol is worden de oudste beelden automatisch verwijderd.'
+	'autoRemovalInfo' => 'Wanneer de SD kaart bijna vol is worden de oudste beelden automatisch verwijderd.'
 
 );

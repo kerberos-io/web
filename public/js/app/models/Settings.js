@@ -100,16 +100,30 @@ define(["underscore", "backbone"], function (_, Backbone)
                 },
                 webhook: {
                     enabled: false,
-                    url: $("input[name='io__Webhook__url']").val()
+                    url: $("input[name='io__Webhook__url']").val(),
+                    throttler:  $("input[name='io__Webhook__throttler']").val(),
                 },
                 script: {
                     enabled: false,
-                    path: $("input[name='io__Script__path']").val()
+                    path: $("input[name='io__Script__path']").val(),
+                    throttler:  $("input[name='io__Script__throttler']").val(),
                 },
                 gpio: {
                     enabled: false,
                     pin: $("input[name='io__GPIO__pin']").val(),
-                    period: $("input[name='io__GPIO__periodTime']").val()
+                    period: $("input[name='io__GPIO__periodTime']").val(),
+                    throttler:  $("input[name='io__GPIO__throttler']").val(),
+                },
+                mqtt: {
+                    enabled: false,
+                    secure: ($("input[name='io__MQTT__secure']").val() === "true"),
+                    verifycn: ($("input[name='io__MQTT__verifycn']").val() === "true"),
+                    server:  $("input[name='io__MQTT__server']").val(),
+                    port:  $("input[name='io__MQTT__port']").val(),
+                    topic:  $("input[name='io__MQTT__topic']").val(),
+                    username:  $("input[name='io__MQTT__username']").val(),
+                    password:  $("input[name='io__MQTT__password']").val(),
+                    throttler:  $("input[name='io__MQTT__throttler']").val(),
                 }
             };
 
@@ -173,7 +187,7 @@ define(["underscore", "backbone"], function (_, Backbone)
                 {
                     var select = $($(el)[i++]);
                     select.val(capitalizeFirstLetter(key));
-                    if(key === "gpio")
+                    if(key === "gpio" || key === "mqtt")
                     {
                         select.val(key.toUpperCase());
                     }
@@ -197,11 +211,23 @@ define(["underscore", "backbone"], function (_, Backbone)
             }
 
             $("input[name='io__Webhook__url']").val(devices.webhook.url);
+            $("input[name='io__Webhook__throttler']").val(devices.webhook.throttler);
 
             $("input[name='io__Script__path']").val(devices.script.path);
+            $("input[name='io__Script__throttler']").val(devices.script.throttler);
 
             $("input[name='io__GPIO__pin']").val(devices.gpio.pin);
             $("input[name='io__GPIO__periodTime']").val(devices.gpio.period);
+            $("input[name='io__GPIO__throttler']").val(devices.gpio.throttler);
+
+            $("input[name='io__MQTT__secure']").val(devices.mqtt.secure);
+            $("input[name='io__MQTT__verifycn']").val(devices.mqtt.verifycn);
+            $("input[name='io__MQTT__server']").val(devices.mqtt.server);
+            $("input[name='io__MQTT__port']").val(devices.mqtt.port);
+            $("input[name='io__MQTT__topic']").val(devices.mqtt.topic);
+            $("input[name='io__MQTT__username']").val(devices.mqtt.username);
+            $("input[name='io__MQTT__password']").val(devices.mqtt.password);
+            $("input[name='io__MQTT__throttler']").val(devices.mqtt.throttler);
         },
 
         // --------------------------
