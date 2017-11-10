@@ -170,6 +170,38 @@ return array(
 	'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
 	Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
+  'secure' => 'secure',
+
+	'secureInfo' => 'Use certificates in the /etc/ssl/certs/ directory.',
+
+  'verifycn' => 'verify',
+
+	'verifycnInfo' => 'Verify certificate',
+
+  'mqttServer' => 'server',
+
+  'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+
+  'mqttPort' => 'port',
+
+  'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+
+  'mqttTopic' => 'topic',
+
+  'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+
+  'mqttUsername' => 'username',
+
+  'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+
+  'mqttPassword' => 'password',
+
+  'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+
+  'throttler' => 'throttle',
+
+  'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+
 	// --------------
 	// Cloud
 

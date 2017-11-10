@@ -170,6 +170,38 @@ return array(
 	'hardwareEncodingEnabled' => '你的采集设备支持板载硬编码, 因此您不能设置额外参数 (如 时间戳)。
 	即使生成的视频特性和您选择的采集设备一样 (如 FPS, 锐度 等).',
 
+  /* to translate */ 'secure' => 'secure',
+
+  /* to translate */ 'secureInfo' => 'Use certificates in the /etc/ssl/certs/ directory.',
+
+  /* to translate */ 'verifycn' => 'verify',
+
+  /* to translate */ 'verifycnInfo' => 'Verify certificate',
+
+  /* to translate */ 'mqttServer' => 'server',
+
+  /* to translate */ 'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+
+  /* to translate */ 'mqttPort' => 'port',
+
+  /* to translate */ 'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+
+  /* to translate */ 'mqttTopic' => 'topic',
+
+  /* to translate */ 'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+
+  /* to translate */ 'mqttUsername' => 'username',
+
+  /* to translate */ 'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+
+  /* to translate */ 'mqttPassword' => 'password',
+
+  /* to translate */ 'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+
+  /* to translate */ 'throttler' => 'throttle',
+
+  /* to translate */ 'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+
 	// --------------
 	// Cloud
 
