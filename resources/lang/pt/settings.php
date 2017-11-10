@@ -168,6 +168,38 @@ return array(
 	/* to translate */ 'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
 		Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
+  /* to translate */ 'secure' => 'secure',
+
+  /* to translate */ 'secureInfo' => 'Use certificates in the /etc/ssl/certs/ directory.',
+
+  /* to translate */ 'verifycn' => 'verify',
+
+  /* to translate */ 'verifycnInfo' => 'Verify certificate',
+
+  /* to translate */ 'mqttServer' => 'server',
+
+  /* to translate */ 'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+
+  /* to translate */ 'mqttPort' => 'port',
+
+  /* to translate */ 'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+
+  /* to translate */ 'mqttTopic' => 'topic',
+
+  /* to translate */ 'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+
+  /* to translate */ 'mqttUsername' => 'username',
+
+  /* to translate */ 'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+
+  /* to translate */ 'mqttPassword' => 'password',
+
+  /* to translate */ 'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+
+  /* to translate */ 'throttler' => 'throttle',
+
+  /* to translate */ 'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+
 	// --------------
 	// Cloud
 
