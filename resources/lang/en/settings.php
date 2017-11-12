@@ -172,11 +172,11 @@ return array(
 
   'secure' => 'secure',
 
-	'secureInfo' => 'Use certificates in the /etc/ssl/certs/ directory.',
+	'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
 
   'verifycn' => 'verify',
 
-	'verifycnInfo' => 'Verify certificate',
+	'verifycnInfo' => 'Verify certificate CN (Common Name)',
 
   'mqttServer' => 'server',
 
