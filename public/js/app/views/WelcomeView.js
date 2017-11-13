@@ -50,10 +50,19 @@ define(["jquery", "underscore", "backbone", "app/views/BaseView"], function ($, 
                 'password1': password1.val(),
                 'password2': password2.val()
             };
-            
+
             //$.post(_baseUrl + "/api/v1/user/install", data, function(data)
             //{
-                window.location.href = element.attr('href');
+                var refreshIntervalId = setInterval(function() {
+                  $.get(_baseUrl + "/api/v1/user/installation", function(result){
+                      if(result && result.completed) {
+                        clearInterval(refreshIntervalId);
+                        $(".welcome").fadeOut(500, function(){
+                          window.location.href = '/login';
+                        });
+                      }
+                  });
+                }, 500);
             //});
 
             return false;
