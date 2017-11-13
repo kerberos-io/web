@@ -11,9 +11,9 @@ return array(
 	|
 	*/
 
-    'settings' => 'Instellingen',
+  'settings' => 'Instellingen',
 
-    'configuration' => 'Configuratie',
+  'configuration' => 'Configuratie',
 
 	'update' => 'Aanpassen',
 
@@ -170,13 +170,13 @@ return array(
 	'hardwareEncodingEnabled' => 'De camera die je geselecteerd hebt ondersteund hardware encoding, dat is waarom bepaalde parameters niet kunnen geselecteerd worden (e.g. tijdsweergave).
 		Alsook heeft de video die wordt opgenomen dezelfde eigenschappen als degene die ingesteld zijn bij jouw camera (e.g. FPS, sharpness, etc).',
 
-  'secure' => 'beveilig',
+  'secure' => 'secure',
 
-	'secureInfo' => 'Gebruik certificaten die zich bevinden in /etc/ssl/certs/.',
+	'secureInfo' => 'Activeer SSL/TLS. CA certificaat moet zich bevinden in /etc/ssl/certs/.',
 
-  'verifycn' => 'verifieer',
+  'verifycn' => 'verify',
 
-	'verifycnInfo' => 'Verifieer certificaat',
+	'verifycnInfo' => 'Verifieer certificaet CN (Common Name)',
 
   'mqttServer' => 'server',
 

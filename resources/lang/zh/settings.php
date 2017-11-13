@@ -118,20 +118,20 @@ return array(
 
 	'numberOfDetectionsInfo' => '这个数字表示一行探测到多少个才让Kerberos.io触发一次有效事件。增大这个值,您可消除错误情况，诸如: 光线、云层之类的。',
 
-		// ------------------
-		// Timestamp - Colors
+	// ------------------
+	// Timestamp - Colors
 
-		'noTimestamp' => '没有时间戳',
+	'noTimestamp' => '没有时间戳',
 
-		'white' => '白',
+	'white' => '白',
 
-		'black' => '黑',
+	'black' => '黑',
 
-		'red' => '红',
+	'red' => '红',
 
-		'green' => '绿',
+	'green' => '绿',
 
-		'blue' => '蓝',
+	'blue' => '蓝',
 
 	'drawTimestamp' => '绘制时间戳',
 
@@ -172,11 +172,11 @@ return array(
 
   /* to translate */ 'secure' => 'secure',
 
-  /* to translate */ 'secureInfo' => 'Use certificates in the /etc/ssl/certs/ directory.',
+  /* to translate */ 'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
 
   /* to translate */ 'verifycn' => 'verify',
 
-  /* to translate */ 'verifycnInfo' => 'Verify certificate',
+  /* to translate */ 'verifycnInfo' => 'Verify certificate CN (Common Name)',
 
   /* to translate */ 'mqttServer' => 'server',
 

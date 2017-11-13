@@ -171,11 +171,11 @@ return array(
 
   /* to translate */ 'secure' => 'secure',
 
-  /* to translate */ 'secureInfo' => 'Use certificates in the /etc/ssl/certs/ directory.',
+  /* to translate */ 'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
 
   /* to translate */ 'verifycn' => 'verify',
 
-  /* to translate */ 'verifycnInfo' => 'Verify certificate',
+  /* to translate */ 'verifycnInfo' => 'Verify certificate CN (Common Name)',
 
   /* to translate */ 'mqttServer' => 'server',
 
@@ -200,7 +200,7 @@ return array(
   /* to translate */ 'throttler' => 'throttle',
 
   /* to translate */ 'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
-  
+
 	// --------------
 	// Cloud
 
