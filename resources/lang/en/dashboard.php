@@ -11,8 +11,17 @@ return array(
 	|
 	*/
 
-	'activity' => 'Activity',
+	'activity' => 'Atividades',
 
+<<<<<<< HEAD:app/lang/pt/dashboard.php
+		'selectView' => 'Modo de Exibição',
+
+		'liveView' => 'Exibição ao vivo',
+
+		'lastActivity' => 'Últimas Atividades',
+
+		'heatmap' => 'Mapa de Calor',
+=======
 	'selectView' => 'Select view',
 
 	'liveView' => 'Live View',
@@ -20,13 +29,20 @@ return array(
 	'lastActivity' => 'Latest Activity',
 
 	'heatmap' => 'Heatmap',
+>>>>>>> upstream/master:resources/lang/en/dashboard.php
 
-	'overview' => 'Overview',
+	'overview' => 'Visão Geral',
 
+<<<<<<< HEAD:app/lang/pt/dashboard.php
+	'hour' => 'Hora',
+    
+        'average' => 'Média',
+=======
 	'hour' => 'Hour',
 
   'average' => 'Average',
+>>>>>>> upstream/master:resources/lang/en/dashboard.php
 
-	'weekday' => 'Weekday',
+	'weekday' => 'Dia da semana',
 
 );

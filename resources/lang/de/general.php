@@ -11,23 +11,31 @@ return array(
 	|
 	*/
 
-	'dashboard' => 'Dashboard',
+	'dashboard' => 'Painel',
 
-	'system' => 'System',
+	'system' => 'Sistema',
 
+<<<<<<< HEAD:app/lang/pt/general.php
+	'settings' => 'Configurações',
+=======
 	'settings' => 'Einstellungen',
 
 	'configuration' => 'Einstellungen',
+>>>>>>> upstream/master:resources/lang/de/general.php
 
-	'cloud' => 'Cloud',
+	'cloud' => 'Nuvem',
     
 	'on' => 'An',
     
 	'off' => 'Aus',
     
+<<<<<<< HEAD:app/lang/pt/general.php
+	'logout' => 'Sair',
+=======
 	'logout' => 'Abmelden',
 
 	'update-profile' => 'Profil aktualisieren',
+>>>>>>> upstream/master:resources/lang/de/general.php
     
     
     /*
@@ -36,6 +44,27 @@ return array(
 	|------------------------
     */
 
+<<<<<<< HEAD:app/lang/pt/general.php
+    'monday' => 'Segunda-Feira',
+
+    'tuesday' => 'Terça-Feira',
+
+    'wednesday' => 'Quarta-Feira',
+
+    'thursday' => 'Quinta-Feira',
+
+    'friday' => 'Sexta-Feira',
+
+    'saturday' => 'Sábado',
+
+    'sunday' => 'Domingo',
+            
+    'today' => 'Hoje',
+    
+    'yesterday' => 'Ontem',
+    
+    'dayBeforeYesterday' => 'Antes de Ontem'
+=======
     'monday' => 'Montag',
 
     'tuesday' => 'Dienstag',
@@ -55,5 +84,6 @@ return array(
     'yesterday' => 'Gestern',
     
     'dayBeforeYesterday' => 'Vorgestern'
+>>>>>>> upstream/master:resources/lang/de/general.php
 
 );
