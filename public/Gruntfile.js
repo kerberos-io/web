@@ -34,6 +34,9 @@ module.exports = function(grunt) {
           ],
           fontawesome: [
             'js/vendor/fontawesome/scss/',
+          ],
+          'eonasdan-bootstrap-datetimepicker': [
+            'js/vendor/eonasdan-bootstrap-datetimepicker/src/',
           ]
         },
 
