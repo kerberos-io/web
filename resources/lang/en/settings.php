@@ -211,6 +211,16 @@ return array(
 
 	'subscribeNow' => 'Subscribe now for only €1,49',
 
+  'verifyConnectivity' => 'Verify connectivity',
+
+  'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+
+  'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+
+  'cloudWentWrongMoreHelp' => 'Click here for more support.',
+
+  'checkConnection' => 'Check connection',
+
 	// ---------------
 	// KiOS settings
 

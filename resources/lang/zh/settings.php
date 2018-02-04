@@ -211,6 +211,16 @@ return array(
 
 	'subscribeNow' => '现在订阅只需€1,49',
 
+  /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
+
+  /* to translate */ 'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+
+  /* to translate */ 'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+
+  /* to translate */ 'cloudWentWrongMoreHelp' => 'Click here for more support.',
+
+  /* to translate */ 'checkConnection' => 'Check connection',
+
 	// ---------------
 	// KiOS settings
 

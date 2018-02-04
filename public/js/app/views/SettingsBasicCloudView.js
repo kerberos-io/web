@@ -90,6 +90,7 @@ define(["underscore", "backbone", "app/views/BaseView"], function (_, Backbone, 
         render: function()
         {
             this.$el.html(this.template(this.model));
+            this.checkVerify();
             return this;
         }
     });

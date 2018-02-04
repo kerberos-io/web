@@ -26,22 +26,19 @@
              </div>
              <div class="col-md-6">
                 <div class="check-connectivity">
-                   <h4><i class="fa fa-check"></i> Verify connectivity</h4>
+                   <h4><i class="fa fa-check"></i> {{translation.verifyConnectivity}}</h4>
                    <div id="loading-connectivity" class="load4" style="display:none; padding:10px 0;">
                        <div style="display:table;width:20px;"></div>
                        <div class="loader"></div>
                    </div>
                    <p class="ok">
-                      <i class="fa fa-thumbs-up"></i> Hurray, connection was succesful. Your media will now be synced automatically <tbody>
-
-                      </tbody> your cloud account.
+                      <i class="fa fa-thumbs-up"></i> {{translation.cloudHurray}}
                    </p>
                    <p class="not-ok">
-                     <a href="https://kerberosio.zendesk.com/hc/en-us/articles/360000662634-Can-t-connect-my-instance-to-the-cloud" target="_blank">
-                       <i class="fa fa-thumbs-down"></i> Something went wrong, click here for support.
-                     </a>
-                  </p>
-                  <button id="check-connectivity"><i class="fa fa-check-square"></i> check connection</button>
+                     <i class="fa fa-thumbs-down"></i> {{translation.cloudWentWrong}}
+                     <a href="https://kerberosio.zendesk.com/hc/en-us/articles/360000662634-Can-t-connect-my-instance-to-the-cloud" target="_blank">{{translation.cloudWentWrongMoreHelp}}</a>
+                   </p>
+                   <button id="check-connectivity"><i class="fa fa-check-square"></i> {{translation.checkConnection}}</button>
                 </div>
                 <h4><i class="fa fa-question"></i> {{translation.whatIsThis}}</h4>
                 <p>{{translation.whatIsthisInformation}}</p>

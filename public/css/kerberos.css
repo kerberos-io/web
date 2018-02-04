@@ -10947,6 +10947,8 @@ div#step {
   color: #32a24f;
 }
 .check-connectivity .not-ok a {
+  display: initial !important;
+  font-weight: bold;
   background: none !important;
   color: inherit !important;
   border: none !important;
