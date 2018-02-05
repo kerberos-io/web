@@ -34,10 +34,12 @@ after_success:
         cd docker;
         docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         if [ "$TRAVIS_BRANCH" == "master" ]; then
-            docker build -t kerberos/web:latest .;
+            docker build -t web .;
+            docker tag web kerberos/web:latest;
             docker push kerberos/web:latest;
         else
-            docker build --build-arg APP_ENV="$TRAVIS_BRANCH" -t kerberos/web:$TRAVIS_BRANCH .;
+            docker build --build-arg APP_ENV="$TRAVIS_BRANCH" web .;
+            docker tag web kerberos/web:$TRAVIS_BRANCH;
             docker push kerberos/web:$TRAVIS_BRANCH;
         fi
       fi
