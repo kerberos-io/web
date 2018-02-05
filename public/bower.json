@@ -21,8 +21,7 @@
   ],
   "dependencies": {
     "jquery": "2.2.2",
-
-    "bootstrap": "*",
+    "bootstrap": "3.3.7",
     "underscore": "*",
     "moment": "*",
     "eonasdan-bootstrap-datetimepicker": "3.1.3",
