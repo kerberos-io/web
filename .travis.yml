@@ -32,7 +32,7 @@ notifications:
 after_success:
     - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
         cd docker;
-        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         if [ "$TRAVIS_BRANCH" == "master" ]; then
             docker build -t web .;
             docker tag web kerberos/web:latest;
