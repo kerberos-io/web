@@ -25,6 +25,8 @@ notifications:
     recipients:
         - hello@cedric.ws
     irc: "chat.freenode.net#kerberos.io"
+    notifications:
+        slack: kerberosio:12QQIGq1xO9qpnWc5KvIghNR
     email:
         on_success: always
         on_failure: always
