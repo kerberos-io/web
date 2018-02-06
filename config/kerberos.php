@@ -1,17 +1,17 @@
 <?php return array (
-  'type' => 'advanced',
+  'type' => 'basic',
   'radius' => '1',
-  'installed' => true,
-  'users' => 
+  'installed' => false,
+  'users' =>
   array (
-    0 => 
+    0 =>
     array (
       'id' => 1,
       'username' => 'root',
       'password' => 'root',
       'firstname' => 'Firstname',
       'secondname' => 'Lastname',
-      'language' => 'nl',
+      'language' => 'en',
     ),
   ),
 );

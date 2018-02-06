@@ -63,6 +63,8 @@ Route::prefix('v1')->group(function()
         Route::get('system/kerberos', 'SystemController@getKerberos');
         Route::get('system/kios', 'SystemController@getKiOS');
 
+        Route::post('cloud/check', 'SystemController@checkCloud');
+
         // -----------------
         // Image Controller
 

@@ -19,6 +19,7 @@ module.exports = function(grunt) {
         clean: {
           videojs: [
             'js/vendor/video.js/dist/video-js-*',
+            'js/vendor/video.js/dist/alt/',
             'js/vendor/video.js/src/',
           ],
           bootstrap: [
@@ -34,7 +35,14 @@ module.exports = function(grunt) {
           ],
           fontawesome: [
             'js/vendor/fontawesome/scss/',
-          ]
+          ],
+          'eonasdan-bootstrap-datetimepicker': [
+            'js/vendor/eonasdan-bootstrap-datetimepicker/src/',
+          ],
+          'owl.carousel': [
+            'js/vendor/owl.carousel/docs/',
+            'js/vendor/owl.carousel/docs_src/',
+          ],
         },
 
         /*****************************************

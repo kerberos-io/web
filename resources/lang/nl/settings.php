@@ -211,6 +211,16 @@ return array(
 
 	'subscribeNow' => 'Schrijf nu in voor slechts €1,49',
 
+  'verifyConnectivity' => 'Verifieer connectiviteit',
+
+  'cloudHurray' => 'Joepie, de connectie is gelukt. Alle media zal vanaf nu automatisch worden gesynchroniseerd met je cloud account.',
+
+  'cloudWentWrong' => 'Oeps er ging iets fout, verifieer dat je jouw cloud credentials correct hebt ingegeven.',
+
+  'cloudWentWrongMoreHelp' => 'Of klik hier voor meer support.',
+
+  'checkConnection' => 'Controleer connectie',
+
 	// ---------------
 	// KiOS settings
 

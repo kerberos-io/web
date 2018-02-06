@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - 5.6
+  - 7.0
 
 services:
     - docker
@@ -25,6 +25,8 @@ notifications:
     recipients:
         - hello@cedric.ws
     irc: "chat.freenode.net#kerberos.io"
+    notifications:
+        slack: kerberosio:12QQIGq1xO9qpnWc5KvIghNR
     email:
         on_success: always
         on_failure: always
@@ -32,12 +34,14 @@ notifications:
 after_success:
     - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
         cd docker;
-        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         if [ "$TRAVIS_BRANCH" == "master" ]; then
-            docker build -t kerberos/web:latest .;
+            docker build -t web .;
+            docker tag web kerberos/web:latest;
             docker push kerberos/web:latest;
         else
-            docker build --build-arg APP_ENV="$TRAVIS_BRANCH" -t kerberos/web:$TRAVIS_BRANCH .;
+            docker build --build-arg APP_ENV="$TRAVIS_BRANCH" -t web .;
+            docker tag web kerberos/web:$TRAVIS_BRANCH;
             docker push kerberos/web:$TRAVIS_BRANCH;
         fi
       fi
