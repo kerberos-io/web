@@ -18,9 +18,9 @@ after_script:
 notifications:
   email:
     recipients:
-      - hello@cedric.ws
+      - cedric@verstraeten.io
     on_success: always
-    on_failure: always  
+    on_failure: always
   irc:
     channels:
       - chat.freenode.net#kerberos.io
