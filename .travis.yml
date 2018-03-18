@@ -1,47 +1,42 @@
 language: php
-
 php:
-  - 7.0
-
+- 7.0
 services:
-    - docker
-  
+- docker
 before_script:
-  - echo "extension = fileinfo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "extension = gd.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "extension = phar.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "extension = openssl.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - composer self-update
-  - composer install --dev
-
+- echo "extension = fileinfo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "extension = gd.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "extension = phar.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "extension = openssl.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- composer self-update
+- composer install --dev
 script:
-  - mkdir -p build/logs
-  - phpunit --coverage-clover build/logs/clover.xml
-
+- mkdir -p build/logs
+- phpunit --coverage-clover build/logs/clover.xml
 after_script:
-  - php vendor/bin/coveralls -v
-  
+- php vendor/bin/coveralls -v
 notifications:
+  email:
     recipients:
-        - hello@cedric.ws
-    irc: "chat.freenode.net#kerberos.io"
-    notifications:
-        slack: kerberosio:12QQIGq1xO9qpnWc5KvIghNR
-    email:
-        on_success: always
-        on_failure: always
-
+      - cedric@verstraeten.io
+    on_success: always
+    on_failure: always
+  irc:
+    channels:
+      - chat.freenode.net#kerberos.io
+    on_success: always
+    on_failure: always
+  slack:
+    rooms:
+      secure: pBC48TUzwFhXs2maG9a+Sd0+P3OBAS0vXi4xSraIrk0IBJCQjwH+yu3/RFT0nzCrltWuLr6e+iGtnBAl8P3QuijaNaBNJly5m1LI+Z4iGH2KzUdX/2wBOP+ALsv+mXnM3ORguBwcrMDpXMaH7UDcVQARoPxvK35Opr1RKPuQtLo=
+    on_success: always
+    on_failure: always
 after_success:
-    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-        cd docker;
-        docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-        if [ "$TRAVIS_BRANCH" == "master" ]; then
-            docker build -t web .;
-            docker tag web kerberos/web:latest;
-            docker push kerberos/web:latest;
-        else
-            docker build --build-arg APP_ENV="$TRAVIS_BRANCH" -t web .;
-            docker tag web kerberos/web:$TRAVIS_BRANCH;
-            docker push kerberos/web:$TRAVIS_BRANCH;
-        fi
-      fi
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd docker; docker login -u="$DOCKER_USERNAME"
+  -p="$DOCKER_PASSWORD"; if [ "$TRAVIS_BRANCH" == "master" ]; then docker build -t
+  web .; docker tag web kerberos/web:latest; docker push kerberos/web:latest; else
+  docker build --build-arg APP_ENV="$TRAVIS_BRANCH" -t web .; docker tag web kerberos/web:$TRAVIS_BRANCH;
+  docker push kerberos/web:$TRAVIS_BRANCH; fi fi
+env:
+  global:
+    secure: m9J2f2AphCP8fSMOONTWVHmyabBEAaBWgoXSN6c9dfKbNbN3OS3V2wbiB8OO7PuaVZegjRbsCGlB4dUoD1FAAYdyIero2yg3H7cvmKIAmoRsROJvACZh4I52g5iGCxxxLsXyhRet6FY3Tg+ztN71eKsBf7Eaggja0CUnfNz6Byc=
