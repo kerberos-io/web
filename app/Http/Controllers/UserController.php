@@ -9,7 +9,13 @@ class UserController extends BaseController
 {
     public function __construct()
     {
-        $this->kerberos = Config::get("kerberos");
+        $this->kerberos = Session::get('kerberos', []);
+        if(count($this->kerberos) == 0)
+        {
+            $this->kerberos = Config::get("kerberos");
+            Session::put('kerberos', $this->kerberos);
+        }
+
         $this->fileLoader = new FileLoader(new Filesystem(), config_path());
     }
 
@@ -58,10 +64,9 @@ class UserController extends BaseController
         }
 
         $this->fileLoader->save($config, '', 'kerberos');
+        Session::put('kerberos', $config);
 
-        $newConfig = Config::get("kerberos");
-
-        if($newConfig['installed'])
+        if($config['installed'])
         {
             $config["error"] = false;
             return Response::json($config);
