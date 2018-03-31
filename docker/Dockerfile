@@ -26,13 +26,15 @@ RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/defau
 #####################
 # Clone and build web
 
+RUN curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && apt-get install -y nodejs
+
 RUN git clone https://github.com/kerberos-io/web /var/www/web && cd /var/www/web && git checkout ${APP_ENV} && \
 chown -Rf www-data.www-data /var/www/web && curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer && \
 cd /var/www/web && \
 composer install --prefer-source && \
 npm install -g bower && \
 cd public && \
-nodejs /usr/local/bin/bower --allow-root install
+nodejs /usr/lib/node_modules/bower/bin/bower --allow-root install
 
 RUN rm /var/www/web/public/capture && \
 ln -s /etc/opt/kerberosio/capture/ /var/www/web/public/capture
