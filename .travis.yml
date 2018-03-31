@@ -18,19 +18,16 @@ after_script:
 notifications:
   email:
     recipients:
-      - cedric@verstraeten.io
+    - cedric@verstraeten.io
     on_success: always
     on_failure: always
   irc:
     channels:
-      - chat.freenode.net#kerberos.io
+    - chat.freenode.net#kerberos.io
     on_success: always
     on_failure: always
   slack:
-    rooms:
-      secure: pBC48TUzwFhXs2maG9a+Sd0+P3OBAS0vXi4xSraIrk0IBJCQjwH+yu3/RFT0nzCrltWuLr6e+iGtnBAl8P3QuijaNaBNJly5m1LI+Z4iGH2KzUdX/2wBOP+ALsv+mXnM3ORguBwcrMDpXMaH7UDcVQARoPxvK35Opr1RKPuQtLo=
-    on_success: always
-    on_failure: always
+    secure: z2awfI0UlDI1EMxsMhvEoDXXE2KajGL75WaiZHBlN50hjOsl15pbRLierhzYauTbIxroulVPyxbF+EzzaI5K7rVWwJ25BAYUp4YNdyqcM8Y1fUoj1vd1jWh1ByOJirn+StJMpj2O1ni0OIFWcZBUBF0zXzBdjvQ1xpJF/EoYm54=
 after_success:
 - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd docker; docker login -u="$DOCKER_USERNAME"
   -p="$DOCKER_PASSWORD"; if [ "$TRAVIS_BRANCH" == "master" ]; then docker build -t
