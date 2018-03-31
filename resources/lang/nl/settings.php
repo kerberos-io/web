@@ -11,9 +11,9 @@ return array(
 	|
 	*/
 
-    'settings' => 'Instellingen',
+  'settings' => 'Instellingen',
 
-    'configuration' => 'Configuratie',
+  'configuration' => 'Configuratie',
 
 	'update' => 'Aanpassen',
 
@@ -170,13 +170,13 @@ return array(
 	'hardwareEncodingEnabled' => 'De camera die je geselecteerd hebt ondersteund hardware encoding, dat is waarom bepaalde parameters niet kunnen geselecteerd worden (e.g. tijdsweergave).
 		Alsook heeft de video die wordt opgenomen dezelfde eigenschappen als degene die ingesteld zijn bij jouw camera (e.g. FPS, sharpness, etc).',
 
-  'secure' => 'beveilig',
+  'secure' => 'secure',
 
-	'secureInfo' => 'Gebruik certificaten die zich bevinden in /etc/ssl/certs/.',
+	'secureInfo' => 'Activeer SSL/TLS. CA certificaat moet zich bevinden in /etc/ssl/certs/.',
 
-  'verifycn' => 'verifieer',
+  'verifycn' => 'verify',
 
-	'verifycnInfo' => 'Verifieer certificaat',
+	'verifycnInfo' => 'Verifieer certificaet CN (Common Name)',
 
   'mqttServer' => 'server',
 
@@ -210,6 +210,16 @@ return array(
 	'whatIsthisInformation' => 'Kerberos.io heeft zijn eigen cloud applicatie. Doormiddel van een inschrijving op een plan, kan je al jouw afbeeldingen en videos synchroniseren en overal ter wereld opvolgen. Na het inschrijven zal je enkele gegevens ontvangen welke je in de velden (aan de linkerzijde) kan ingeven. Na het bevestigen van deze gegevens, zal al jouw activiteit automatisch gesynchroniseerd worden met ons platform. Veel plezier!',
 
 	'subscribeNow' => 'Schrijf nu in voor slechts €1,49',
+
+  'verifyConnectivity' => 'Verifieer connectiviteit',
+
+  'cloudHurray' => 'Joepie, de connectie is gelukt. Alle media zal vanaf nu automatisch worden gesynchroniseerd met je cloud account.',
+
+  'cloudWentWrong' => 'Oeps er ging iets fout, verifieer dat je jouw cloud credentials correct hebt ingegeven.',
+
+  'cloudWentWrongMoreHelp' => 'Of klik hier voor meer support.',
+
+  'checkConnection' => 'Controleer connectie',
 
 	// ---------------
 	// KiOS settings

@@ -839,4 +839,42 @@ div#step
     padding: 10px 0;
 }
 
+.check-connectivity {
+  display: none;
+  margin-bottom: 20px;
+  width: 100%;
+
+  button {
+    margin-top: 20px;
+    display: block;
+    padding: 12px 25px;
+    height: auto;
+    background-color: #943633;
+    color: #fff;
+    border-color: #943633;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .ok, .not-ok {
+    display: none;
+  }
+
+  .ok {
+    color: #32a24f;
+  }
+
+  .not-ok a {
+    display: initial !important;
+    font-weight: bold;
+    background: none !important;
+    color: inherit !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
 @import "responsive-main";

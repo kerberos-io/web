@@ -21,8 +21,7 @@
   ],
   "dependencies": {
     "jquery": "2.2.2",
-
-    "bootstrap": "*",
+    "bootstrap": "3.3.7",
     "underscore": "*",
     "moment": "*",
     "eonasdan-bootstrap-datetimepicker": "3.1.3",
@@ -33,15 +32,15 @@
     "seiyria-bootstrap-slider": "5.3.3",
     "csshake": "*",
     "chartjs": "1.0.2",
-    "mjpegcanvas": "~0.4.0",
-    "mustache": "~0.7.0",
-    "fontawesome": "~4.7.0",
-    "css-toggle-switch": "~4.0.2",
+    "mjpegcanvas": "0.4.0",
+    "mustache": "0.7.0",
+    "fontawesome": "4.7.0",
+    "css-toggle-switch": "4.0.2",
     "remodal": "0.6.4",
     "progressbar.js": "~1.0.0",
-    "photoswipe": "~4.1.1",
+    "photoswipe": "4.1.1",
     "video.js": "5.17.0",
-    "videojs-playlist": "^3.0.0",
-    "owl.carousel": "^2.2.0"
+    "videojs-playlist": "3.0.0",
+    "owl.carousel": "2.2.0"
   }
 }

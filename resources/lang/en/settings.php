@@ -170,6 +170,38 @@ return array(
 	'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
 	Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
+  'secure' => 'secure',
+
+	'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
+
+  'verifycn' => 'verify',
+
+	'verifycnInfo' => 'Verify certificate CN (Common Name)',
+
+  'mqttServer' => 'server',
+
+  'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+
+  'mqttPort' => 'port',
+
+  'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+
+  'mqttTopic' => 'topic',
+
+  'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+
+  'mqttUsername' => 'username',
+
+  'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+
+  'mqttPassword' => 'password',
+
+  'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+
+  'throttler' => 'throttle',
+
+  'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+
 	// --------------
 	// Cloud
 
@@ -178,6 +210,16 @@ return array(
 	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan, you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
 
 	'subscribeNow' => 'Subscribe now for only €1,49',
+
+  'verifyConnectivity' => 'Verify connectivity',
+
+  'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+
+  'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+
+  'cloudWentWrongMoreHelp' => 'Click here for more support.',
+
+  'checkConnection' => 'Check connection',
 
 	// ---------------
 	// KiOS settings

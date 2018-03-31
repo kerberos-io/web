@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use View, Redirect, Input, Config, Response, Session, Auth;
+use View, Redirect, Input, Config, Response, Session, Auth, AWS;
 use App\Http\Repositories\ImageHandler\ImageHandlerInterface as ImageHandlerInterface;
 use App\Http\Repositories\ConfigReader\ConfigReaderInterface as ConfigReaderInterface;
 use App\Http\Repositories\Support\SupportInterface as SupportInterface;
@@ -301,5 +301,32 @@ class SystemController extends BaseController
         }
 
         return Response::json(["status" => $status]);
+    }
+
+    public function checkCloud()
+    {
+        $input = Input::all();
+
+        putenv('AWS_ACCESS_KEY_ID=' . $input["public"]);
+        putenv('AWS_SECRET_ACCESS_KEY=' . $input["secret"]);
+        putenv('AWS_REGION=eu-west-1');
+
+        $s3 = AWS::createClient('s3');
+
+        try {
+          $s3->putObject([
+            'Bucket'     => $input['bucket'],
+            'Key'        => $input['folder'] . '/test_connection.txt',
+            'Body'   => 'Hello this is a test :F!'
+          ]);
+          return Response::json(["status" => 200]);
+        }
+        catch(\Aws\S3\Exception\S3Exception $ex)
+        {
+            return $ex;
+            return Response::json(["status" => 404]);
+        }
+
+        return Response::json(["status" => 404]);
     }
 }

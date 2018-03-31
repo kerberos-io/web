@@ -118,20 +118,20 @@ return array(
 
 	'numberOfDetectionsInfo' => '这个数字表示一行探测到多少个才让Kerberos.io触发一次有效事件。增大这个值,您可消除错误情况，诸如: 光线、云层之类的。',
 
-		// ------------------
-		// Timestamp - Colors
+	// ------------------
+	// Timestamp - Colors
 
-		'noTimestamp' => '没有时间戳',
+	'noTimestamp' => '没有时间戳',
 
-		'white' => '白',
+	'white' => '白',
 
-		'black' => '黑',
+	'black' => '黑',
 
-		'red' => '红',
+	'red' => '红',
 
-		'green' => '绿',
+	'green' => '绿',
 
-		'blue' => '蓝',
+	'blue' => '蓝',
 
 	'drawTimestamp' => '绘制时间戳',
 
@@ -170,6 +170,38 @@ return array(
 	'hardwareEncodingEnabled' => '你的采集设备支持板载硬编码, 因此您不能设置额外参数 (如 时间戳)。
 	即使生成的视频特性和您选择的采集设备一样 (如 FPS, 锐度 等).',
 
+  /* to translate */ 'secure' => 'secure',
+
+  /* to translate */ 'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
+
+  /* to translate */ 'verifycn' => 'verify',
+
+  /* to translate */ 'verifycnInfo' => 'Verify certificate CN (Common Name)',
+
+  /* to translate */ 'mqttServer' => 'server',
+
+  /* to translate */ 'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+
+  /* to translate */ 'mqttPort' => 'port',
+
+  /* to translate */ 'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+
+  /* to translate */ 'mqttTopic' => 'topic',
+
+  /* to translate */ 'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+
+  /* to translate */ 'mqttUsername' => 'username',
+
+  /* to translate */ 'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+
+  /* to translate */ 'mqttPassword' => 'password',
+
+  /* to translate */ 'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+
+  /* to translate */ 'throttler' => 'throttle',
+
+  /* to translate */ 'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+
 	// --------------
 	// Cloud
 
@@ -178,6 +210,16 @@ return array(
 	'whatIsthisInformation' => 'Kerberos.io带来了它自己的云应用。 通过订阅套餐， 您可同步视频与图像，并在世界各地回访。 订阅后， 您会收到一个授权信息并可填入左侧。确认并更新设置后即可同步。 尽情享用吧！',
 
 	'subscribeNow' => '现在订阅只需€1,49',
+
+  /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
+
+  /* to translate */ 'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+
+  /* to translate */ 'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+
+  /* to translate */ 'cloudWentWrongMoreHelp' => 'Click here for more support.',
+
+  /* to translate */ 'checkConnection' => 'Check connection',
 
 	// ---------------
 	// KiOS settings

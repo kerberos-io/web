@@ -11,9 +11,9 @@ return array(
 	|
 	*/
 
-    'settings' => 'Ajustos',
+  'settings' => 'Ajustos',
 
-    'configuration' => 'Configuracio',
+  'configuration' => 'Configuracio',
 
 	'update' => 'Validar',
 
@@ -66,7 +66,6 @@ return array(
 	'cancel' => 'Cancellar',
 
 	'confirmAndSelect' => 'Confirmeu i seleccioneu',
-
 
 	// --------------
 	// Camera
@@ -166,6 +165,38 @@ return array(
 	/* to translate */ 'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
 		Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
 
+  /* to translate */ 'secure' => 'secure',
+
+  /* to translate */ 'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
+
+  /* to translate */ 'verifycn' => 'verify',
+
+  /* to translate */ 'verifycnInfo' => 'Verify certificate CN (Common Name)',
+
+  /* to translate */ 'mqttServer' => 'server',
+
+  /* to translate */ 'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+
+  /* to translate */ 'mqttPort' => 'port',
+
+  /* to translate */ 'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+
+  /* to translate */ 'mqttTopic' => 'topic',
+
+  /* to translate */ 'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+
+  /* to translate */ 'mqttUsername' => 'username',
+
+  /* to translate */ 'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+
+  /* to translate */ 'mqttPassword' => 'password',
+
+  /* to translate */ 'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+
+  /* to translate */ 'throttler' => 'throttle',
+
+  /* to translate */ 'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+
 	// --------------
 	// Cloud
 
@@ -174,6 +205,16 @@ return array(
 	'whatIsthisInformation' => 'Kerberos.io disposa de la seva propia aplicacia en el novol. Si us subscriviu a un pla podreu sincronitzar totes les vostres imatges i videos, i veure\'ls des de qualsevol lloc del m�n. En subscriure-us rebreu les credencials per posar en els camps de l\'esquerra. Despros de confirmar i actualitzar els ajustos, la vostra activitat es comencara a sincronitzar automaticament.',
 
 	'subscribeNow' => 'Subscriviu-vos ara per noms 1,49€',
+
+  /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
+
+  /* to translate */ 'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+
+  /* to translate */ 'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+
+  /* to translate */ 'cloudWentWrongMoreHelp' => 'Click here for more support.',
+
+  /* to translate */ 'checkConnection' => 'Check connection',
 
 	// ---------------
 	// KiOS settings
