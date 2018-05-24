@@ -43,6 +43,14 @@ module.exports = function(grunt) {
             'js/vendor/owl.carousel/docs/',
             'js/vendor/owl.carousel/docs_src/',
           ],
+          'kerberos.css': [
+            'css/less/',
+            'css/kerberos.css',
+          ],
+          'aws': [
+            '../vendor/aws/aws-sdk-php/src/data/ec2',
+            '../vendor/aws/aws-sdk-php/src/data/cloudfront',
+          ],
         },
 
         /*****************************************
