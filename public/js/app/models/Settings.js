@@ -121,6 +121,7 @@ define(["underscore", "backbone"], function (_, Backbone)
                     server:  $("input[name='io__MQTT__server']").val(),
                     port:  $("input[name='io__MQTT__port']").val(),
                     topic:  $("input[name='io__MQTT__topic']").val(),
+                    clientId:  $("input[name='io__MQTT__clientId']").val(),
                     username:  $("input[name='io__MQTT__username']").val(),
                     password:  $("input[name='io__MQTT__password']").val(),
                     throttler:  $("input[name='io__MQTT__throttler']").val(),
@@ -225,6 +226,7 @@ define(["underscore", "backbone"], function (_, Backbone)
             $("input[name='io__MQTT__server']").val(devices.mqtt.server);
             $("input[name='io__MQTT__port']").val(devices.mqtt.port);
             $("input[name='io__MQTT__topic']").val(devices.mqtt.topic);
+            $("input[name='io__MQTT__clientId']").val(devices.mqtt.clientId);
             $("input[name='io__MQTT__username']").val(devices.mqtt.username);
             $("input[name='io__MQTT__password']").val(devices.mqtt.password);
             $("input[name='io__MQTT__throttler']").val(devices.mqtt.throttler);
