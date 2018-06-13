@@ -190,6 +190,8 @@ return array(
 
     /* to translate */ 'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
 
+    /* to translate */ 'mqttClientIdInfo' =>  'The ClientId which is used to connect to a MQTT broker.',
+
     /* to translate */ 'mqttUsername' => 'username',
 
     /* to translate */ 'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
