@@ -82,6 +82,9 @@ class SystemController extends BaseController
         $days = $this->imageHandler->getDays(-1);
 
         return [
+            'isKios' => $this->system->isKios(),
+            'board' => $this->system->getBoard(),
+            'version' => $this->system->getCurrentVersion(),
             'insideDocker' => (trim(shell_exec("[ -f /.dockerenv ] && echo true || echo false")) === 'true'),
             'days' =>  $days,
             'numberOfDays' => count($days),

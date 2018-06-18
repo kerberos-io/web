@@ -190,6 +190,10 @@ return array(
 
   'mqttTopicInfo' =>  'De topic naam waaronder de MQTT berichten verzonden worden.',
 
+  /* to translate */ 'mqttClientId' =>  'client_id',
+
+  /* to translate */ 'mqttClientIdInfo' =>  'The ClientId which is used to connect to a MQTT broker.',
+
   'mqttUsername' => 'gebruikersnaam',
 
   'mqttUsernameInfo' =>  'De gebruikersnaam nodig om MQTT berichten te versturen.',

@@ -190,6 +190,10 @@ return array(
 
   'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
 
+  'mqttClientId' =>  'client_id',
+
+  'mqttClientIdInfo' =>  'The ClientId which is used to connect to a MQTT broker.',
+
   'mqttUsername' => 'username',
 
   'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
