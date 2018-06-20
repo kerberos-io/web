@@ -180,6 +180,7 @@ define(["underscore", "jquery", "backbone", "app/views/BaseView", "seiyria-boots
                     verifycn:  this.$el.find("#verifycn-mqtt").prop('checked'),
                     server:  this.$el.find("#server-mqtt").val(),
                     port:  this.$el.find("#port-mqtt").val(),
+                    clientId: this.$el.find("#clientId-mqtt").val(),
                     topic:  this.$el.find("#topic-mqtt").val(),
                     username:  this.$el.find("#username-mqtt").val(),
                     password:  this.$el.find("#password-mqtt").val(),
