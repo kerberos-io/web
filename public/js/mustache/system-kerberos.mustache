@@ -1,6 +1,14 @@
 Kerberos.io {{translation.twoServicesRunning}}.
 <h3>{{translation.versions}}</h3>
 <table class="table">
+
+    {{#kerberos.isKios}}
+    <tr>
+        <td>KiOS</td>
+        <td>{{kerberos.version}} - {{kerberos.board}}</td>
+        <td><span class="label label-success">Running</span></td>
+    </tr>
+    {{/kerberos.isKios}}
     <tr>
         <td>Web</td>
         <td>{{kerberos.webVersion}}</td>
@@ -15,7 +23,7 @@ Kerberos.io {{translation.twoServicesRunning}}.
         {{^kerberos.insideDocker}}
         <td>{{kerberos.machineryVersion}}</td>
         <td>
-            <span class="label 
+            <span class="label
 
                 {{#kerberos.isMachineryRunning}}
                     label-success
@@ -36,7 +44,7 @@ Kerberos.io {{translation.twoServicesRunning}}.
         </td>
         {{/kerberos.insideDocker}}
     </tr>
-</table> 
+</table>
 
 <h3>{{translation.statistics}}</h3>
 <table class="table">
@@ -46,11 +54,11 @@ Kerberos.io {{translation.twoServicesRunning}}.
         <td>{{translation.days}}</td>
         <td>
         {{#kerberos.days}}
-            {{.}} 
+            {{.}}
         {{/kerberos.days}}
         </td>
     </tr>
-</table> 
+</table>
 <div class="system-actions">
     <a id="download" href="/api/v1/images/download">
         <i class="fa fa-download"></i> {{translation.downloadImages}}
