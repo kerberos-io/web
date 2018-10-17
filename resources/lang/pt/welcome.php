@@ -11,33 +11,33 @@ return array(
 	|
 	*/	
 
-	/* to translate */ 'settingThingsUp' => 'Setting things up..',
+	'settingThingsUp' => 'Preparando tudo..',
 
-	/* to translate */ 'welcome' => 'Welcome!',
+	'welcome' => 'Bem vindo!',
 
-	/* to translate */ 'introduction1' => 'Hey there, welcome to the family! Kerberos.io is used by a myriad of users, and is used for many different usecases; from surveillance to analytics. Kerberos.io <b>supports both basic users</b>, to keep an eye on there pets and/or property, <b>and big to small enterprises</b>! Are you planning to do some rocket science with Kerberos.io? Please let us know..',
+	'introduction1' => 'Olá, bem vindo à família! O Kerberos.io é usado por uma infinidade de usuários e é usado em muitos casos diferentes; da vigilância à análise. O Kerberos.io <b> suporta ambos os usuários básicos </ b>, para ficar de olho em animais de estimação e / ou propriedades, <b> e grandes para pequenas empresas </ b>! Você está planejando fazer rocket science com o Kerberos.io? Por favor nos informe..',
+	
+	'introduction2' => 'Depois de terminar esta breve instalação, você poderá configurar seu próprio sistema de segurança <b> com a câmera de sua escolha </ b>. Diverta-se! Aliás, você tem alguns links onde pode encontrar mais informações sobre nós.',
 
-	/* to translate */ 'introduction2' => 'After you\'ve finished this short installation, you\'ll be able to setup your own security system <b>with the camera of your choice</b>. Have fun! By the way here you got some links where you can find more information about us.',
+	'next' => 'Proximo',
 
-	/* to translate */ 'next' => 'Next',
+	'skip' => 'Pular',
 
-	/* to translate */ 'skip' => 'Skip',
+	'finish' => 'Finalizar',
 
-	/* to translate */ 'finish' => 'Finish',
+	'setupProfile' => 'Definir perfil', 
+	
+	'changeCredentials1' => 'A interface web do Kerberos.io é <b> protegida com um nome de usuário e senha </ b> para proteger suas imagens e vídeos para outras pessoas. Nós levamos a segurança muito a sério!',
+	
+	'changeCredentials2' => 'Depois de fazer login com sucesso, você poderá <b> configurar </ b> Kerberos.io e <b> revisar </ b> todos os seus eventos.',
 
-	/* to translate */ 'setupProfile' => 'Setup your profile', 
+	'changeCredentials3' => 'Por padrão, as credenciais a serem assinadas são definidas como username: <b> root </ b> e password: <b> root </ b>. Preencha os campos abaixo para alterar essas credenciais ou deixe-as vazias se você quiser usar as credenciais padrão.',
 
-	/* to translate */ 'changeCredentials1' => 'The Kerberos.io webinterface is <b>secured with a username and password</b> to protect your images and videos for others. We take security very seriously!',
+	'cloudStorage' => 'Armazenamento em nuvem',
 
-	/* to translate */ 'changeCredentials2' => 'After signed-in succesfully, you\'ll be able to <b>configure</b> Kerberos.io and <b>review</b> all your events.',
+	'cloud1' => 'Se você instalou várias instâncias do Kerberos.io e deseja receber notificações em tempo real, <b> Kerberos.cloud </ b> é o que você precisa! Com o Kerberos.cloud, você pode monitorar facilmente várias instâncias com apenas uma interface, que tem exatamente o mesmo design das instâncias locais do Kerberos.io. Então, nada de novo, acabamos de adicionar alguns recursos úteis:',
 
-	/* to translate */ 'changeCredentials3' => 'By default the credentials to sign are set to username: <b>root</b> and password: <b>root</b>. Fill in the fields below to change these credentials, or leave them empty if you want to use the default credentials.',
-
-	/* to translate */ 'cloudStorage' => 'Cloud storage',
-
-	/* to translate */ 'cloud1' => 'If you will install multiple Kerberos.io instances, and want to receive real-time notifications, <b>Kerberos.cloud</b> is what you need! With Kerberos.cloud you can easily monitor multiple instances with only one interface, which has exactly the same design as your local Kerberos.io instances. So nothing new, we just added a couple of useful features:',
-
-		'cloudReviewActivity' => 'Review your activity from anywhere in the world.',
+	'cloudReviewActivity' => 'Review your activity from anywhere in the world.',
 
 		'cloudNotifications' => 'Browser- and Pushbullet notifications.',
 
@@ -47,14 +47,14 @@ return array(
 
 		'cloudRegister' => 'To get started register an account on <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, and subscribe te plan.',
 
-	/* to translate */ 'username' => 'username',
+	'username' => 'Usuário',
 
-	/* to translate */ 'enterUsername' => 'Enter a username',
+	'enterUsername' => 'Digite um nome de usuário',
 
-	/* to translate */ 'password' => 'password',
+	'password' => 'Senha',
 
-	/* to translate */ 'choosePassword' => 'Choose a password',
+	'choosePassword' => 'Escolha uma senha',
 
-	/* to translate */ 'confirmPassword' => 'Confirm your password',
+	'confirmPassword' => 'Confirme sua senha',
 
 );

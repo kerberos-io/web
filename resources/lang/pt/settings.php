@@ -17,221 +17,221 @@ return array(
 
 	'update' => 'Atualizar',
 
-	/* to translate */ 'general' => 'General settings',
+	'general' => 'Configurações gerais',
 
-	/* to translate */ 'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,49€/month!',
+	'purchase' => 'Acompanhe a atividade de suas cameras de qualquer lugar do mundo com <b>Kerberos.cloud</b>, preço <u>inicial</u> apenas 1,49€/mês!',
 
-	/* to translate */ 'basic' => 'Basic',
+	'basic' => 'Básico',
 
-	/* to translate */ 'advanced' => 'Advanced',
+	'advanced' => 'Avançado',
 
-	/* to translate */ 'name' => 'Name',
+	'name' => 'Nome',
 
-	/* to translate */ 'nameInfo' => 'An unique name for your camera is required, if you will run multiple Kerberos.io instances.',
+	'nameInfo' => 'Um nome único para sua camera é necessário, caso você possua várias instâncias do Kerberos.io',
 
-	/* to translate */ 'timezone' => 'Timezone',
+	'timezone' => 'Fuso horário',
+	
+	'timezoneInfo' => 'O fuso horário é usado para converter registros de data e hora em sua hora local. É usado pela interface web e também pela machinery.',
 
-	/* to translate */ 'timezoneInfo' => 'The timezone is used to convert timestamps to your local time. It\'s used in both the machinery and web interface.',
+	'camera' => 'Camera',
 
-	/* to translate */ 'camera' => 'Camera',
+	'usbcamera' => 'Camera USB',
 
-	/* to translate */ 'usbcamera' => 'USB camera',
+	'usbcameraInfo' => 'Selecione essa opção para utilizar uma camera USB.',
 
-	/* to translate */ 'usbcameraInfo' => 'Select this option, if you want to use an USB camera.',
+	'rpicamera' => 'Camera RPi',
 
-	/* to translate */ 'rpicamera' => 'RPi camera',
+	'rpicameraInfo' => 'Se você está rodando Kerberos.io em um Raspberry Pi poderá selecionar essa opção se desejar utilizar o módulo de camera(v1 ou v2).',
 
-	/* to translate */ 'rpicameraInfo' => 'If you run Kerberos.io on a Raspberry Pi, you can select this option, if you want to use the Raspberry Pi camera module (v1 or v2).',
+	'ipcamera' => 'Camera IP',
 
-	/* to translate */ 'ipcamera' => 'IP camera',
+	'ipcameraInfo' => 'Selecione esta opção, se você deseja usar uma camera IP com suporte a RTSP ou MJPEG stream.',
 
-	/* to translate */ 'ipcameraInfo' => 'Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.',
+	 'surveillanceMode' => 'Monitoramento',
 
-	/* to translate */ 'surveillanceMode' => 'Surveillance',
+	'motion' => 'Movimento',
+	
+	'motionInfo' => 'Um detector inteligente de movimentos que salva snapshots ou vídeos e/ou conecta em outros dipositivos por meio de webhook. Configure a detecção de movimento para somente uma região especifica da visualização.',
 
-	/* to translate */ 'motion' => 'Motion',
+	'storage' => 'Armazenamento',
+	
+	'storageInfo' => 'Use Kerbberos.cloud para acompanhar multiplas instâncias de qualquer lugar do mundo.',
 
-	/* to translate */ 'motionInfo' => 'A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific region in the view.',
+	'dontForget' => 'Precione atualizar para confirmar sua configuração.',
 
-	/* to translate */ 'storage' => 'Storage',
+	'update' => 'Atualizar',
 
-	/* to translate */ 'storageInfo' => 'Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere int the world.',
+	'cancel' => 'Cancelar',
 
-	/* to translate */ 'dontForget' => 'Press update to confirm your configuration.',
-
-	/* to translate */ 'update' => 'Update',
-
-	/* to translate */ 'cancel' => 'Cancel',
-
-	/* to translate */ 'confirmAndSelect' => 'Confirm and select',
+	'confirmAndSelect' => 'Confirmar e Selecionar',
 
 
 	// --------------
 	// Camera
+	
+	'fpsRaspberryInfo' => 'O número de quadros processados por segundo; Observe que esse parâmetro também define o número de quadros por segundo de uma gravação de vídeo.',
 
-	/* to translate */ 'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
+	'width' => 'Largura',
 
-	/* to translate */ 'width' => 'Width',
+	'height' => 'Altura',
 
-	/* to translate */ 'height' => 'Height',
+	'widthHeightInfo' => 'A resolução das imagens capturadas pela sua câmera. Certifique-se de que esta resolução seja suportada!',
 
-	/* to translate */ 'widthHeightInfo' => 'The resolution of the images being captured by your camera. Make sure that this resolution is supported!',
+	'delay' => 'atraso em segundos',
 
-	/* to translate */ 'delay' => 'delay in seconds',
+	'delayInfo' => 'O tempo de atraso dirá ao Kerberos.io para aguardar x quantidade de segundos, entre duas capturas de quadro. Isso é útil quando você deseja reduzir o número de imagens processadas por segundo (por exemplo, por motivos de desempenho).',
 
-	/* to translate */ 'delayInfo' => 'The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).',
+	'livestream' => 'transmissão ao vivo qadros/seg',
+	
+	'livestreamInfo' => 'Os quadros por segundo da transmissão ao vivo podem ser configurados. Definir essa opção como zero desativará a transmissão ao vivo.',
 
-	/* to translate */ 'livestream' => 'live stream frames/sec',
+	'rotate' => 'Clique nesta imagem se a sua câmera for girada. Por exemplo. Se a sua câmera estiver montada de cabeça para baixo, certifique-se de que esta imagem também esteja de cabeça para baixo.',
 
-	/* to translate */ 'livestreamInfo' => 'The frames per second of the live stream can be configured. Setting this option to zero, will disable the live stream.',
-
-	/* to translate */ 'rotate' => 'Click on this image if your camera is rotated. E.g. if your camera is mounted upside down, make sure this image is also upside down.',
-
-	/* to translate */ 'url' => 'Enter the url of the RTSP or MJPEG stream of your IP camera.',
+	'url' => 'Digite a URL do stream RTSP ou MJPEG da sua câmera IP.',
 
 	// ----------------
 	// Motion
 
-	/* to translate */ 'image' => 'Image',
+	'image' => 'Imagem',
 
-	/* to translate */ 'video' => 'Video',
+	'video' => 'Video',
 
-	/* to translate */ 'step1' => 'Step 1. Select a region',
+	'step1' => 'Passo 1. Selecionar a região',
 
-	/* to translate */ 'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
+	'step1Info' => 'Mova os pontos para desenhar a região de interesse. Clique duas vezes em um ponto para removê-lo e / ou no ponto branco para adicionar mais pontos.',
 
-	/* to translate */ 'step2' => 'Step 2. Configure parameters',
+	'step2' => 'Etapa 2. Configurar Parâmetros',
 
-	/* to translate */ 'step2Info' => 'By changing the configuration below you can make the motion detection more or less sensitive.',
+	'step2Info' => 'Alterando a configuração abaixo, você pode tornar a detecção de movimento mais ou menos sensível.',
 
-	/* to translate */ 'step3' => 'Step 3. Select one or more outputs',
+	'step3' => 'Etapa 3. Selecione uma ou mais saídas',
 
-	/* to translate */ 'step3Info' => 'Once motion is detected you can execute (asynchronous) one or more outputs.',
+	'step3Info' => 'Uma vez que o movimento é detectado, você pode executar (assíncrono) uma ou mais saídas.',
 
-	/* to translate */ 'sensitivity' => 'sensitivity',
+	'sensitivity' => 'sensitividade',
 
-	/* to translate */ 'sensitivityInfo' => 'Increasing this slider will make Kerberos.io more sensitive for motion. Decreasing will make it less sensitive for motion.',
+	'sensitivityInfo' => 'Aumentar esse controle deslizante tornará o Kerberos.io mais sensível para o movimento. Diminuir tornará menos sensível ao movimento.',
 
-	/* to translate */ 'numberOfDetections' => 'number of detections before valid',
+	'numberOfDetections' => 'número de detecções antes de válido',
 
-	/* to translate */ 'numberOfDetectionsInfo' => 'This number represents the number of detections in a row before Kerberos.io will trigger a valid event. By increasing this value you can eliminate false-positives: e.g. lightning, clouds, etc.',
+	'numberOfDetectionsInfo' => 'se número representa o número de detecções seguidas antes que o Kerberos.io acione um evento válido. Ao aumentar esse valor, você pode eliminar falsos positivos: por exemplo, relâmpago, nuvens, etc.'
 
 		// ------------------
 		// Timestamp - Colors
 
-		/* to translate */ 'noTimestamp' => 'no timestamp',
+		'noTimestamp' => 'nenhuma timestamp',
 
-		/* to translate */ 'white' => 'white',
+		'white' => 'branco',
 
-		/* to translate */ 'black' => 'black',
+		'black' => 'preto',
 
-		/* to translate */ 'red' => 'red',
+		'red' => 'vermelho',
 
-		/* to translate */ 'green' => 'green',
+		'green' => 'verde',
 
-		/* to translate */ 'blue' => 'blue',
+		'blue' => 'azul',
 
-	/* to translate */ 'drawTimestamp' => 'draw timestamp',
+	'drawTimestamp' => 'Desenhar timestamp',
 
-	/* to translate */ 'drawTimestampInfo' => 'When an image is saved to disk, you can draw the current date and time on the image.',
+	'drawTimestampInfo' => 'Quando uma imagem é salva em disco, você pode desenhar a data e a hora atuais na imagem.',
 
-	/* to translate */ 'drawTimestampInfoVideo' => 'When a video is saved to disk, you can draw the current date and time on the video.',
+	'drawTimestampInfoVideo' => 'Quando um vídeo é salvo no disco, você pode desenhar a data e a hora atuais no vídeo.',
 
-	/* to translate */ 'privacy' => 'privacy',
+	'privacy' => 'privacidade',
 
-	/* to translate */ 'privacyInfo' => 'By enabling this option, only the selected region of step 1 will be visible. All pixels outside the region are made black.',
+	'privacyInfo' => 'Ao ativar essa opção, somente a região selecionada da etapa 1 ficará visível. Todos os pixels fora da região são pretos.',
 
-	/* to translate */ 'fps' => 'frames per second',
+	'fps' => 'Quadros por segundo',
 
-	/* to translate */ 'fpsInfo' => 'The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).',
+	'fpsInfo' => 'Os quadros por segundo são gravados em arquivo de vídeo; Esteja ciente de que um Raspberry Pi só pode processar um número limitado de FPS (por exemplo, 7 FPS).',
 
-	/* to translate */ 'secondsRecord' => 'seconds to record',
+	'secondsRecord' => 'segundos de gravação',
 
-	/* to translate */ 'secondsRecordInfo' => 'The number of seconds that will be recorded after motion was detected.',
+	'secondsRecordInfo' => 'O número de segundos que serão gravados após uma movimento ser detectado.',
 
-	/* to translate */ 'webhookUrl' => 'url',
+	 'webhookUrl' => 'url',
 
-	/* to translate */ 'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
+	 'webhookUrlInfo' => 'Url de destino em que o POST será enviado com um JSON.',
 
-	/* to translate */ 'scriptPath' => 'path',
+	'scriptPath' => 'caminho',
 
-	/* to translate */ 'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
+	'scriptPathInfo' => 'O caminho para um script bash que será executado. Um JSON é enviado como parâmetro.',
 
-	/* to translate */ 'gpioPin' => 'pin',
+	'gpioPin' => 'pino',
 
-	/* to translate */ 'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
+	'gpioPinInfo' => 'Defina o número do pino que o pulso será enviado.',
 
-	/* to translate */ 'gpioPeriod' => 'period',
+	'gpioPeriod' => 'período',
 
-	/* to translate */ 'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
+	'gpioPeriodInfo' => 'O número de microsegundos de duração do pulso.',
 
-	/* to translate */ 'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
-		Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
+	'hardwareEncodingEnabled' => 'Seu dispositivo de captura oferece suporte à codificação de hardware integrada, por isso você não pode escolher parâmetros adicionais (por exemplo, registro de data e hora).
+                 Além disso, o vídeo gerado terá as mesmas especificações que o dispositivo de captura escolhido (por exemplo, FPS, nitidez, etc).',
 
-  /* to translate */ 'secure' => 'secure',
+ 	'secure' => 'seguro',
 
-  /* to translate */ 'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
+  	'secureInfo' => 'Habilitar SSL/TLS. O certificado deve estar em /etc/ssl/certs/ directory.',
 
-  /* to translate */ 'verifycn' => 'verify',
+  	 'verifycn' => 'veriricar',
 
-  /* to translate */ 'verifycnInfo' => 'Verify certificate CN (Common Name)',
+  	'verifycnInfo' => 'Verificar certificado CN (Common Name)',
 
-  /* to translate */ 'mqttServer' => 'server',
+  	'mqttServer' => 'server',
 
-  /* to translate */ 'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+  	'mqttServerInfo' =>  'O endereço de ip utilizado pelo serviço MQTT.',
 
-  /* to translate */ 'mqttPort' => 'port',
+  	'mqttPort' => 'porta',
 
-  /* to translate */ 'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+ 	'mqttPortInfo' =>  'O numero da porta utilizada pelo serviço MQTT.',
 
-  /* to translate */ 'mqttTopic' => 'topic',
+  	'mqttTopic' => 'tópico',
 
-  /* to translate */ 'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+ 	'mqttTopicInfo' =>  'O nome do tópico que as mensagens MQTT serão enviadas.',
 
-  /* to translate */ 'mqttClientId' =>  'client_id',
+	'mqttClientId' =>  'client_id',
 
-  /* to translate */ 'mqttClientIdInfo' =>  'The ClientId which is used to connect to a MQTT broker.',
+ 	'mqttClientIdInfo' =>  'O ID de cliente usado para acessar o broker MQTT.',
 
-  /* to translate */ 'mqttUsername' => 'username',
+ 	'mqttUsername' => 'Usuário',
 
-  /* to translate */ 'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+	'mqttUsernameInfo' =>  'O usuário para acessar o broker MQTT.',
 
-  /* to translate */ 'mqttPassword' => 'password',
+	'mqttPassword' => 'senha',
 
-  /* to translate */ 'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+	'mqttPasswordInfo' =>  'A chave de acesso para acessar o broker MQTT.',
 
-  /* to translate */ 'throttler' => 'throttle',
+  	'throttler' => 'frequência',
 
-  /* to translate */ 'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+	'throttlerInfo' =>  'Use para evitar spamming. Ex. executa apenas uma vez a cada 5 segundos.',
 
 	// --------------
 	// Cloud
 
-	/* to translate */ 'whatIsThis' => 'What is this',
+	'whatIsThis' => 'O que é isso',
 
-	/* to translate */ 'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
+	'whatIsthisInformation' => 'O Kerberos.io vem com seu próprio aplicativo em nuvem. Ao assinar um plano, você pode sincronizar todas as suas imagens e vídeos s, e revê-lo de qualquer lugar do mundo. Uma vez inscrito, você receberá algumas credenciais que você pode preencher nos campos à esquerda. Depois de confirmar e atualizar Nas configurações, sua atividade será sincronizada automaticamente. Diverta-se!',
 
-	/* to translate */ 'subscribeNow' => 'Subscribe now for only €1,49',
+	'subscribeNow' => 'Assine agora por apenas €1,49',
 
-  /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
+	'verifyConnectivity' => 'Virifique sua conexão',
 
-  /* to translate */ 'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+	'cloudHurray' => 'Viva! A conexão foi estabelecida. Sua mídia será sincronizada automaticamente com a sua conta na nuvem.',
 
-  /* to translate */ 'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+	'cloudWentWrong' => 'Algo deu errado, verifique se você inseriu suas credenciais corretamente.',
 
-  /* to translate */ 'cloudWentWrongMoreHelp' => 'Click here for more support.',
+        'cloudWentWrongMoreHelp' => 'Clique aqui para mais informações.',
 
-  /* to translate */ 'checkConnection' => 'Check connection',
+        'checkConnection' => 'Verifique sua conexão',
 
 	// ---------------
 	// KiOS settings
 
-	/* to translate */ 'forceNetwork' => 'Force network mode',
+	'forceNetwork' => 'Forçar modo de rede',
 
-	/* to translate */ 'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+	'forceNetworkInfo' => 'Quando habilitado o SO irá reiniciar caso não estiver conectado há internet. Isso é necessário se você estiver utilizando a aplicação Cloud, mas tem uma rede não confiável.',
 
-	/* to translate */ 'autoRemoval' => 'Auto removal media',
-
-	/* to translate */ 'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
+	'autoRemoval' => 'Remoção automática de mídia',
+	
+	'autoRemovalInfo' => 'Quando habilitado as imagens são automaticamente removidas quando o disco está cheio..'
 
 );

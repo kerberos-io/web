@@ -21,17 +21,17 @@ return array(
 
 	'os' => 'OS',
 
-	/* to translate */ 'osspecifications' => 'OS specifications',
+	'osspecifications' => 'Especificações do SO',
 
-	/* to translate */ 'warning-docker' => 'Don\'t know i\'m in a seperate docker container..',
+	'warning-docker' => 'Não sei, estou em um container docker separado..',
 
-	/* to translate */ 'statistics' => 'Statistics',
+	'statistics' => 'Estatísticas',
 
-	/* to translate */ 'log' => 'Log',
+	'log' => 'Log',
 
-	/* to translate */ 'news' => 'News',
+	'news' => 'Noticias',
 
-	/* to translate */ 'systemIsOnlineFor' => 'System is online for',
+	'systemIsOnlineFor' => 'Sistema está online por',
 
 	'kernel' => 'Kernel',
 
@@ -89,10 +89,10 @@ return array(
 
 	'rebooting' => 'O sistema esta reiniciando',
 
-	/* to translate */ 'shuttingdown' => 'System is shutting down',
+	'shuttingdown' => 'O sistema está sendo desligado',
 
-	/* to translate */ 'newVersion' => 'Good news, a new release of KiOS is available!',
+	'newVersion' => 'Boas noticias, uma nova versão do KiOs está disponível!',
 
-	/* to transalte */ 'disabled' => 'You\'ve disabled the system, this means that no images or videos will be saved to disk!'
+	'disabled' => 'Você disabilitou o sistema, isso significa que não serão gravadas imagens ou videos no disco!'
 
 );

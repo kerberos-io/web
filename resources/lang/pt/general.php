@@ -23,13 +23,13 @@ return array(
 
 	'cloud' => 'Nuvem',
     
-	/* to translate */ 'on' => 'On',
+	'on' => 'Ligar',
     
-	/* to translate */ 'off' => 'Off',
+	'off' => 'Desligar',
     
 	'logout' => 'Sair',
 
-	/* to translate */ 'update-profile' => 'Update profile',
+	'update-profile' => 'Atualizar perfil',
     
     
     /*
