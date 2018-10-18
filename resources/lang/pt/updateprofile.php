@@ -11,28 +11,28 @@ return array(
 	|
 	*/
 
-	/* to translate */ 'updateProfile' => 'Update profile', 
+	'updateProfile' => 'Atualizar perfil', 
 
-	/* to translate */ 'username' => 'Your username',
+	'username' => 'Seu nome de usuário',
 
-	/* to translate */ 'language' => 'language',
+	'language' => 'Idioma',
 
-	/* to translate */ 'languageInfo' => 'Is your language missing or incomplete? Contribute your language to our Github repository.',
+	'languageInfo' => 'Seu idioma não existe ou está incompleto? Faça uma contribuição para seu idioma no Github.',
 
-	/* to translate */ 'password' => 'password',
+	'password' => 'senha',
 
-	/* to translate */ 'newPassword' => 'new password',
+	'newPassword' => 'nova senha',
 
-	/* to translate */ 'changePassword' => 'Change password',
+	'changePassword' => 'Modificar senha',
 
-	/* to translate */ 'currentPassword' => 'current passsword',
+	'currentPassword' => 'senha atual',
 
-	/* to translate */ 'newPassword' => 'new passsword',
+	'newPassword' => 'nova senha',
 
-	/* to translate */ 'confirmNewPassword' => 'confirm new passsword',
+	'confirmNewPassword' => 'confirme sua nova senha',
 
-	/* to translate */ 'cancel' => 'cancel',
+	'cancel' => 'cancelar',
 
-	/* to translate */ 'update' => 'update'
+	'update' => 'atualizar'
 
 );
