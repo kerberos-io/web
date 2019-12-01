@@ -373,7 +373,7 @@ class SettingsController extends BaseController
 
     public function getForceNetwork()
     {
-        $cmd = 'cat /data/etc/watch.conf | grep "netwatch_enable"';
+        $cmd = 'cat /data/etc/watch.conf | grep "NETWATCH_ENABLE"';
         $forcenetwork = shell_exec($cmd);
 
         if($forcenetwork && $forcenetwork !== '')
@@ -392,8 +392,8 @@ class SettingsController extends BaseController
 
         if($active !== $currentState)
         {
-            $old = "netwatch_enable\=$currentState";
-            $new = "netwatch_enable\=$active";
+            $old = "NETWATCH_ENABLE\=$currentState";
+            $new = "NETWATCH_ENABLE\=$active";
             shell_exec("sed -i 's/$old/$new/g' /data/etc/watch.conf");
             return ['active' => $active];
         }
@@ -403,7 +403,7 @@ class SettingsController extends BaseController
 
     public function getAutoRemoval()
     {
-        $cmd = 'cat /data/etc/watch.conf | grep "autoremoval"';
+        $cmd = 'cat /data/etc/watch.conf | grep "AUTOREMOVAL"';
         $autoremoval = shell_exec($cmd);
 
         if($autoremoval && $autoremoval !== '')
@@ -422,8 +422,8 @@ class SettingsController extends BaseController
 
       if($active !== $currentState)
       {
-          $old = "autoremoval\=$currentState";
-          $new = "autoremoval\=$active";
+          $old = "AUTOREMOVAL\=$currentState";
+          $new = "AUTOREMOVAL\=$active";
           shell_exec("sed -i 's/$old/$new/g' /data/etc/watch.conf");
           return ['active' => $active];
       }
