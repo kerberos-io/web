@@ -60,6 +60,8 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                         context = canvas.getContext("2d");
 
                         video = document.createElement("video");
+                        video.muted = "muted";
+                        video.autoplay = true;
                         video.src = videos[videos.length-1].src;
 
                         video.addEventListener('loadeddata', function()
@@ -77,7 +79,6 @@ define(["jquery", "app/controllers/event", "app/models/Hull", "app/views/HullSel
                                 width: canvas.width,
                                 height: canvas.height
                             });
-
                         });
                     }
                     else

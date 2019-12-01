@@ -1,7 +1,7 @@
 /**
-*   Dashboard Sequencer:  
+*   Dashboard Sequencer:
 *               Sends request to API (images per hour for the last x days)
-*               Morris.js is used to render the information to a graph. 
+*               Morris.js is used to render the information to a graph.
 *               Raphael is a dependency of Morris
 **/
 
@@ -24,13 +24,13 @@ define(["Sequencer", "underscore"], function(Sequencer, _)
                 self.draw();
             })
 
-            // Wait 300 ms before executing 
+            // Wait 300 ms before executing
             setTimeout(self.config.callback, 300);
         },
         redraw: function()
         {
             self = this;
-            
+
             $.get(self.config.url, function(images)
             {
                 self.config.images = images;
@@ -48,7 +48,7 @@ define(["Sequencer", "underscore"], function(Sequencer, _)
             var canvas = $("li.activity canvas");
             canvas.attr("width", $("li.activity").width());
             canvas.attr("height", canvas.width()/2);
-            $("li.activity").css({"height": canvas.width()}); 
+            $("li.activity").css({"height": canvas.width()});
             $("li.activity").css({"height": canvas.height()});
         },
         attachTo: function(element)
@@ -88,6 +88,7 @@ define(["Sequencer", "underscore"], function(Sequencer, _)
                         video.src = videos[videos.length-1].src;
                         video.loop = true;
                         video.muted = true;
+                        video.autoplay = true;
 
                         var self = this;
                         video.addEventListener('loadeddata', function()

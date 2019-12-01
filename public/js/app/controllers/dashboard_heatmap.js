@@ -99,6 +99,11 @@ define(["heatmap"], function(heatmap)
                 context = canvas.get(0).getContext("2d");
 
                 video = document.createElement("video");
+                video.muted = "muted";
+                video.autoplay = true;
+                video.loop = true;
+                video.src = videos[videos.length-1].src;
+
                 var self = this;
                 video.addEventListener('loadeddata', function()
                 {
@@ -116,9 +121,6 @@ define(["heatmap"], function(heatmap)
                     video.pause();
                     callback();
                 });
-
-                video.loop = true;
-                video.src = videos[videos.length-1].src;
             }
             else if(this.images.length)
             {
