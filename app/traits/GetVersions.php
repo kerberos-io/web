@@ -34,7 +34,7 @@ trait GetVersions
     {
         $cmd = 'cat /etc/version';
         $version = shell_exec($cmd);
-        preg_match('/os_version="(.*?)"/', $version, $matches);
+        preg_match('/OS_VERSION="(.*?)"/', $version, $matches);
 
         if(count($matches) > 0)
         {
