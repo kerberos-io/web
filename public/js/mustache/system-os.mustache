@@ -1,13 +1,5 @@
 <div>
     {{translation.systemIsOnlineFor}} {{os.uptime}}
-    <div class="system-actions">
-        <a id="shutdown">
-            <i class="fa fa-power-off"></i> {{translation.shutdown}}
-        </a>
-        <a id="reboot">
-            <i class="fa fa-refresh"></i> {{translation.reboot}}
-        </a>
-    </div>
 </div>
 <div>
     <h3>{{translation.osspecifications}}</h3>
@@ -24,7 +16,7 @@
         <tr><td>{{translation.os}}</td><td>{{os.os}}</td></tr>
         <tr><td>{{translation.kernel}}</td><td>{{os.kernel}}</td></tr>
         <tr><td>{{translation.hostname}}</td><td>{{os.hostname}}</td></tr>
-    </table> 
+    </table>
 </div>
 <div>
     <h3>{{translation.architecture}}</h3>
@@ -41,9 +33,9 @@
     <div class="disks">
         {{#os.mounts.disks}}
         <div class="disk">
-            {{device}} 
+            {{device}}
             <div class="progress">
-              <div class="progress-bar 
+              <div class="progress-bar
                 {{^isAlmostFull}}
                     progress-bar-success
                 {{/isAlmostFull}}
@@ -54,7 +46,7 @@
                     {{#isFull}}
                         progress-bar-danger
                     {{/isFull}}
-                {{/isAlmostFull}}" 
+                {{/isAlmostFull}}"
 
                 role="progressbar"
                 aria-valuenow="{{used_percent}}"
@@ -68,7 +60,7 @@
             {{text.used}}/{{text.size}}
          </div>
          {{/os.mounts.disks}}
-     </div>    
+     </div>
 </div>
 <div>
     <h3>{{translation.networkSpecs}}</h3>
@@ -85,5 +77,5 @@
             <td>{{text.sent}}</td>
         </tr>
         {{/os.network.networks}}
-    </table> 
+    </table>
 </div>
