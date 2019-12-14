@@ -47,11 +47,11 @@ Kerberos Open Source comes with different installation flavours (it includes bot
 - [**Docker**](https://doc.kerberos.io/opensource/installation): You have a lot of IP cameras, and/or don't want to mess with dependencies.
 - [**Generic**](https://doc.kerberos.io/opensource/installation): You want to develop/extend Kerberos with your own features, or you want to run a Kerberos agent on a not supported OS/architecture.
 
-### Install from source
+## Install from source
 
 If you want to install **the web**, you'll need to have **a webserver** (e.g. Nginx) and **PHP** running with some extensions. You also need **NodeJS** and **npm** installed to install **Bower**. Below you can find the installation procedure to install the web on your preferred environment.
 
-#### Install Dependencies
+### Install Dependencies
 
 Install Git, PHP7 (+extensions) and NodeJS.
 
@@ -72,7 +72,7 @@ C) OSX
 
     brew install php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip php7.0-mcrypt nodejs npm
 
-#### Configure webserver
+### Configure webserver
 
 Install Nginx,
 
@@ -114,7 +114,7 @@ Copy and paste following config file; this file tells nginx where the web will b
         }
     }
 
-#### Clone source
+### Clone source
 
 Create a www location.
 
