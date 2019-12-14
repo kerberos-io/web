@@ -1,66 +1,53 @@
-# KERBEROS.**IO**
+# Kerberos Open Source - Web
 
-[![Build Status](https://travis-ci.org/kerberos-io/web.svg)](https://travis-ci.org/kerberos-io/web) [![Stories in Ready](https://badge.waffle.io/kerberos-io/web.svg?label=ready&title=Ready)](https://waffle.io/kerberos-io/web) [![Join the chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg?style=flat)](https://gitter.im/kerberos-io/hades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![gitcheese.com](https://s3.amazonaws.com/gitcheese-ui-master/images/badge.svg)](https://www.gitcheese.com/donate/users/1546779/repos/22601588)
+[![Build Status](https://travis-ci.org/kerberos-io/machinery.svg)](https://travis-ci.org/kerberos-io/machinery) [![Join the chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg?style=flat)](https://gitter.im/kerberos-io/hades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Kerberos.io - video surveillance](https://kerberos.io/images/kerberos.png)](https://kerberos.io)
 
-## Help us internationalize
+## License
 
-We're looking for contributors to help us translating the web interface, so that more people can start using and understanding Kerberos.io. Want to help? [**Send us your contribution**](https://github.com/kerberos-io/web/issues/74).
+The Kerberos Open Source project is licensed with BY-NC-SA 4.0, this means that everyone can use Kerberos and modify if to their needs, in a non commercial activity.
+
+More information [**about this license**](https://doc.kerberos.io/opensource/license).
 
 ## Vote for features
 
-[![Feature Requests](https://feathub.com/kerberos-io/machinery?format=svg)](https://feathub.com/kerberos-io/machinery)
+[**Report features**](https://feathub.com/kerberos-io/machinery) if you think something is missing, and should be added to Kerberos Open Source, we love to hear about your ideas.
 
-# CC-NC-ND license
+## Why Kerberos?
 
-THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+As burglary is very common, we believe that video surveillance is a **trivial tool** in our daily lifes which helps us to **feel** a little bit more **secure**. Responding to this need, a lot of companies have started developing their own video surveillance software in the past few years.
 
-## Why Kerberos.io?
-
-As burgalary is very common, we believe that video surveillance is a **trivial tool** in our daily lifes which helps us to **feel** a little bit more **secure**. Responding to this need, a lot of companies have started developing their own video surveillance software in the past few years.
-
-Nowadays we have a myriad of **expensive** camera's, recorders and software solutions which are mainly **outdated** and **difficult** to install and use. Kerberos.io's goal is to solve these problems and to provide every human being in this world to have its own **ecological**, **affordable**, **easy-to-use** and **innovative** surveillance solution.
+Nowadays we have a myriad of **expensive** cameras, recorders, and software solutions which are mainly **outdated** and **difficult** to install and use. Kerberos Open Source goal is to solve these problems and to provide every human being in this world to have their own **ecological**, **affordable**, **easy-to-use** and **innovative** surveillance solution.
 
 ## Introduction
 
-[Kerberos.io](https://kerberos.io) is a **low-budget** video surveillance solution, that uses computer vision algorithms to detect changes, and that can trigger other devices. [Kerberos.io](https://kerberos.io) is open source so everyone can customize the source code to its needs and share it with the community under the [**CC-NC-ND license model**](https://doc.kerberos.io/license). When deployed on the Raspberry Pi, it has a **green footprint** and it's **easy to install**; you only need to transfer the [Kerberos.io OS (KIOS)](https://doc.kerberos.io/2.0/installation/KiOS) to your SD card and that's it.
+Kerberos Open Source is perfect for personal usage. It's great if you only have a couple of surveillance cameras to be managed. A Kerberos agent (e.g. on a Raspberry Pi or inside a Docker container) runs for each camera. Their are many different installation possibilities, please have a look at [**the architecture**](https://doc.kerberos.io/architectures) or [**installation page**](https://doc.kerberos.io/opensource/installation).
 
-Use your mobile phone, tablet or PC to keep an eye on your property. View the images taken by [Kerberos.io](https://kerberos.io) with our responsive and user-friendly web interface. Look at the dashboard to get a graphical overview of the past days. Multiple [Kerberos.io](https://kerberos.io) instances can be installed and can be viewed with only 1 web interface.
+Every Kerberos agent has it's own web interface (front-end) to review media recording, and processing engine (back-end) of a specific surveillance camera. The Open Source version doesn't come with a central overview of all recordings generated by your Kerberos agents. For this feature we highly recommend Kerberos cloud.
+
+If you want to manage more than 10 Kerberos agents, it's recommended to use [**Kerberos Enterprise**](https://doc.kerberos.io/enterprise). This will help you to scale, support high availability and load balancing. Check out [**the architecture**](https://doc.kerberos.io/architectures) section for a better understanding of when to use what.
 
 ## The web
 
-The web is responsible for the visualization. It's a **GUI** which helps the user to find activity at a specific period, configure the machinery, view a live stream, see system information and much more. It's important to note that the machinery can work without the web, however we don't recommend this.
+The web is responsible for the visualization. It's a GUI which helps the user to find activity at a specific period, configure the machinery, view a live stream, see system information and much more.
+
+It's written in PHP using the extremely popular PHP Framework Laravel, and Javascript using the client-side framework BackboneJS. We will discuss the different pages and functionality briefly. Please check out the demo environment if you want to see a real life example.
 
 ## How does it work?
 
-The web is written in PHP using the extremely popular PHP Framework **Laravel**, and Javascript using the client-side framework **BackboneJS**; to create the dynamic behaviour. We will discuss the different pages and functionality briefly. Please check out the [demo environment](https//doc.kerberos.io) if you want to see a real life example.
-
-[Read more](https://doc.kerberos.io/2.0/web/introduction)
+[Read more](https://doc.kerberos.io/opensource/web) on our documentation website to have a better understanding of how the web works.
 
 ## Installation
 
-The reason why you're reading this paragraph is because you want to know how to install the web on your Raspberry Pi, local working station, server or whatever machine you prefer. The good news is that we have **different approaches** from basic to advanced; it depends on how you want to install it.
+Kerberos Open Source comes with different installation flavours (it includes both the machinery and web repository). The reason is because depending on the use case one option is better than another. A short list of recommendations:
 
-### KiOS (for Raspberry Pi)
+- [**KiOS**](https://doc.kerberos.io/opensource/installation): You have a Raspberry Pi, and you only want to run a Kerberos agent on it.s
+- [**Raspbian**](https://doc.kerberos.io/opensource/installation): You have a Raspberry Pi, but you want other services running next to the Kerberos agent.
+- [**Docker**](https://doc.kerberos.io/opensource/installation): You have a lot of IP cameras, and/or don't want to mess with dependencies.
+- [**Generic**](https://doc.kerberos.io/opensource/installation): You want to develop/extend Kerberos with your own features, or you want to run a Kerberos agent on a not supported OS/architecture.
 
-[KiOS](https://github.com/kerberos-io/kios) is a custom linux OS (created by buildroot) which runs Kerberos.io out-of-the-box (it contains both the machinery and the web). KiOS is **installed like every other OS** for the Raspberry Pi, you need to flash the OS (.img) to a SD card, update your network configration and you're up and running; no manual compilation or horrible configurations. This is the **most simple** and **basic** installation procedure.
-
-[Read more](https://doc.kerberos.io/2.0/installation/KiOS)
-
-### Raspbian (for Raspberry Pi)
-
-If you already have a Raspberry Pi running with Raspbian, you probably don't want to reflash your SD-card. Therefore you can install and download the different parts of Kerberos.io (the machinery and the web) without the need for complex and time consuming compiling.
-
-[Read more](https://doc.kerberos.io/2.0/installation/Raspbian)
-
-### Armbian (for Orange Pi, PCDuino, etc)
-
-Kerberos.io can also be installed on other boards, which run the Armbian OS.
-
-[Read more](https://doc.kerberos.io/2.0/installation/Armbian)
-
-### Generic
+### Install from source
 
 If you want to install **the web**, you'll need to have **a webserver** (e.g. Nginx) and **PHP** running with some extensions. You also need **NodeJS** and **npm** installed to install **Bower**. Below you can find the installation procedure to install the web on your preferred environment.
 
@@ -69,18 +56,18 @@ If you want to install **the web**, you'll need to have **a webserver** (e.g. Ng
 Install Git, PHP7 (+extensions) and NodeJS.
 
 A) Ubuntu
-    
+
     sudo apt-get update && sudo apt-get upgrade
     curl -sL https://deb.nodesource.com/setup | sudo bash -
     sudo apt-get install git nginx php7.0-cli php7.0-gd php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip php7.0-fpm nodejs npm
-    
+
 B) Raspbian
 
     echo "deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi" | sudo tee --append /etc/apt/sources.list
     sudo apt-get update
     sudo apt-get install -t stretch php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip php7.0-mcrypt nodejs npm
     sudo ln -s /usr/bin/nodejs /usr/bin/node
-    
+
 C) OSX
 
     brew install php7.0 php7.0-curl php7.0-gd php7.0-fpm php7.0-cli php7.0-opcache php7.0-mbstring php7.0-xml php7.0-zip php7.0-mcrypt nodejs npm
@@ -164,6 +151,4 @@ Restart nginx
 
 ## How to access
 
-You can access **the web** by entering the IP-address in your favorite browser. You'll see a welcome page showing up, on which you will be able to choose an username and password; the default username and password is **root**. 
-
-![Welcome](https://doc.kerberos.io/documentation/develop/70_installation/1_how-to-access.png)
+You can access **the web** by entering the IP-address in your favorite browser. You'll see a welcome page showing up, on which you will be able to choose an username and password; the default username and password is **root**.
