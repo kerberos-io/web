@@ -8,7 +8,7 @@ before_script:
 - composer install --dev
 script:
 - mkdir -p build/logs
-- phpunit --coverage-clover build/logs/clover.xml
+# Disable - phpunit --coverage-clover build/logs/clover.xml
 after_script:
 - php vendor/bin/coveralls -v
 notifications:
