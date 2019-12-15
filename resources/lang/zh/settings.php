@@ -21,7 +21,7 @@ return array(
 
 	'general' => '通用设置',
 
-	'purchase' => '通过<b>Kerberos.cloud</b>随时随地监控您的活动，<u>获得它</u> 仅需 1,99€/月!',
+	'purchase' => '通过<b>Kerberos Cloud</b>随时随地监控您的活动，<u>获得它</u> 仅需 1,99€/月!',
 
 	'basic' => '基础设置',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => '存储',
 
-	'storageInfo' => '通过 Kerberos.cloud 来跟进多个 Kerberos.io 实例， 无论您身在何处。',
+	'storageInfo' => '通过 Kerberos Cloud 来跟进多个 Kerberos.io 实例， 无论您身在何处。',
 
 	'dontForget' => '点击更新以确认您的配置。',
 

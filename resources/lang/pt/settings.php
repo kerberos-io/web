@@ -19,7 +19,7 @@ return array(
 
 	'general' => 'Configurações gerais',
 
-	'purchase' => 'Acompanhe a atividade de suas cameras de qualquer lugar do mundo com <b>Kerberos.cloud</b>, preço <u>inicial</u> apenas 1,99€/mês!',
+	'purchase' => 'Acompanhe a atividade de suas cameras de qualquer lugar do mundo com <b>Kerberos Cloud</b>, preço <u>inicial</u> apenas 1,99€/mês!',
 
 	'basic' => 'Básico',
 

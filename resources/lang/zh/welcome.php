@@ -35,7 +35,7 @@ return array(
 
 	'cloudStorage' => '云存储',
 
-	'cloud1' => '如果您想安装多个Kerberos.io实例, 并接收实时提醒, <b>Kerberos.cloud</b>就是您所需要的! 有了Kerberos.cloud您就可以在一个界面监控多个地方, 就像您在本地监控Kerberos.io实例一样。没什么新东西, 我们就添加了几个有用的特性:',
+	'cloud1' => '如果您想安装多个Kerberos.io实例, 并接收实时提醒, <b>Kerberos Cloud</b>就是您所需要的! 有了Kerberos Cloud您就可以在一个界面监控多个地方, 就像您在本地监控Kerberos.io实例一样。没什么新东西, 我们就添加了几个有用的特性:',
 
 		'cloudReviewActivity' => '在世界各地回放您的活动。',
 

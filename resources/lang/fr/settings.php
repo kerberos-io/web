@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Préférences',
 
-	'purchase' => 'Accédez à votre video-surveillance depuis n\'importe où dans le monde avec <b>Kerberos.cloud</b> ; <u>démarrez</u> pour seulement 1,99€ par mois!',
+	'purchase' => 'Accédez à votre video-surveillance depuis n\'importe où dans le monde avec <b>Kerberos Cloud</b> ; <u>démarrez</u> pour seulement 1,99€ par mois!',
 
 	'basic' => 'Simple',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => 'Stockage',
 
-	'storageInfo' => 'Utiliser Kerberos.cloud to suivre plusieurs instances de Kerberos.io depuis n\'importe où dans le monde.',
+	'storageInfo' => 'Utiliser Kerberos Cloud to suivre plusieurs instances de Kerberos.io depuis n\'importe où dans le monde.',
 
 	'dontForget' => 'Clickez sur "Valider" pour confirmer la configuration.',
 

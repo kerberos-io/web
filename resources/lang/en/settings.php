@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'General settings',
 
-	'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos.cloud</b>, Get <u>started</u> for only 1,99€/month!',
+	'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos Cloud</b>, Get <u>started</u> for only 1,99€/month!',
 
 	'basic' => 'Basic',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => 'Storage',
 
-	'storageInfo' => 'Use Kerberos.cloud to follow up multiple Kerberos.io instances from anywhere in the world.',
+	'storageInfo' => 'Use Kerberos Cloud to follow up multiple Kerberos.io instances from anywhere in the world.',
 
 	'dontForget' => 'Press update to confirm your configuration.',
 

@@ -36,7 +36,7 @@ return array(
 
 	'cloudStorage' => 'Cloud storage',
 
-	'cloud1' => 'Se installi istanze multiple di Kerberos.io e vuoi ricevere notifiche in tempo reale, <b>Kerberos.cloud</b> è quello che ti serve! Con Kerberos.cloud puoi monitorare facilmente instanze multiple di Kerberos.io da un\'unica interfaccia, con la stessa grafica della tua istanza locale di Kerberos.io. Quindi niente di nuovo, abbiamo solo aggiunto un paio di utili funzionalità:',
+	'cloud1' => 'Se installi istanze multiple di Kerberos.io e vuoi ricevere notifiche in tempo reale, <b>Kerberos Cloud</b> è quello che ti serve! Con Kerberos Cloud puoi monitorare facilmente instanze multiple di Kerberos.io da un\'unica interfaccia, con la stessa grafica della tua istanza locale di Kerberos.io. Quindi niente di nuovo, abbiamo solo aggiunto un paio di utili funzionalità:',
 
 		'cloudReviewActivity' => 'Guarda le tue attività da ovunque nel mondo.',
 

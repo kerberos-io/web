@@ -35,7 +35,7 @@ return array(
 
 	'cloudStorage' => 'Emmagatzemament al novol',
 
-	'cloud1' => '<b>Kerberos.cloud</b> us permet la monitoritzacio de diverses sessions en una sola interfocie (amb el mateix disseny que Kerberos.io en local), aixo com rebre notificacions en temps real.',
+	'cloud1' => '<b>Kerberos Cloud</b> us permet la monitoritzacio de diverses sessions en una sola interfocie (amb el mateix disseny que Kerberos.io en local), aixo com rebre notificacions en temps real.',
 
 		'cloudReviewActivity' => 'Reviseu la vostra activitat de de qualsevol lloc del mon.',
 

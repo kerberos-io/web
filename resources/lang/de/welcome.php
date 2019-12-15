@@ -35,7 +35,7 @@ return array(
 
 	'cloudStorage' => 'Cloud-Speicher',
 
-	'cloud1' => 'Wenn Sie mehrere Kerberos.io Instanzen installieren und Echtzeitbenachrichtungen erhalten wollen, <b>Kerberos.cloud</b> ist was Sie brauchen! Mit Kerberos.cloud können Sie einfach mehrere Instanzen überwachen und das mit nur einem Interface, welches das gleiche Design with Ihre lokale Kerberos.io Instanz hat. Also nichts neues, wir haben nur ein paar nützliche neue Features hinzugefügt',
+	'cloud1' => 'Wenn Sie mehrere Kerberos.io Instanzen installieren und Echtzeitbenachrichtungen erhalten wollen, <b>Kerberos Cloud</b> ist was Sie brauchen! Mit Kerberos Cloud können Sie einfach mehrere Instanzen überwachen und das mit nur einem Interface, welches das gleiche Design with Ihre lokale Kerberos.io Instanz hat. Also nichts neues, wir haben nur ein paar nützliche neue Features hinzugefügt',
 
 		'cloudReviewActivity' => 'Aktivitäten von überall auf der Welt überprüfen.',
 

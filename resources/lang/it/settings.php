@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Impostazioni generali',
 
-	'purchase' => 'Guarda le tue attività da qualsiasi posto nel mondo con <b>Kerberos.cloud</b>. <u>Inizia</u> per soli 1,99€/mese!',
+	'purchase' => 'Guarda le tue attività da qualsiasi posto nel mondo con <b>Kerberos Cloud</b>. <u>Inizia</u> per soli 1,99€/mese!',
 
 	'basic' => 'Base',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => 'Spazio di archiviazione',
 
-	'storageInfo' => 'Usa Kerberos.cloud per seguire istanze multiple di Kerberos.io da ovunque nel mondo.',
+	'storageInfo' => 'Usa Kerberos Cloud per seguire istanze multiple di Kerberos.io da ovunque nel mondo.',
 
 	'dontForget' => 'Premi aggiorna per confermare la configurazione',
 

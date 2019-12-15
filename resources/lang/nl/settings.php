@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Algemene instellingen',
 
-	'purchase' => 'Bekijk je activeit overal ter wereld met <b>Kerberos.cloud</b>, Start <u>nu</u> voor slechts 1,99€/maand!',
+	'purchase' => 'Bekijk je activeit overal ter wereld met <b>Kerberos Cloud</b>, Start <u>nu</u> voor slechts 1,99€/maand!',
 
 	'basic' => 'Eenvoudig',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => 'Opslag',
 
-	'storageInfo' => 'Gebruik Kerberos.cloud om één of meerdere Kerberos.io installaties op te volgen overal ter wereld.',
+	'storageInfo' => 'Gebruik Kerberos Cloud om één of meerdere Kerberos.io installaties op te volgen overal ter wereld.',
 
 	'dontForget' => 'Klik op de update knop om jouw configuratie te bevestigen.',
 

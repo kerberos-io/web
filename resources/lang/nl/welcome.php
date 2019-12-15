@@ -35,7 +35,7 @@ return array(
 
 	'cloudStorage' => 'Online opslag',
 
-	'cloud1' => 'Als je meerdere Kerberos.io installaties zal uitvoeren, en je wilt real-time notificaties ontvangen op je smartphone, dan is <b>Kerberos.cloud</b> wat je nodig hebt! Met Kerberos.cloud kan je op een zeer eenvoudige manier één of meerdere Kerberos.io installaties opvolgen met gebruik van slechts één interface, die er identiek uitziet als je lokale Kerberos.io installaties. Dus niets nieuw, we hebben gewoon enkele handig features toegevoegd:',
+	'cloud1' => 'Als je meerdere Kerberos.io installaties zal uitvoeren, en je wilt real-time notificaties ontvangen op je smartphone, dan is <b>Kerberos Cloud</b> wat je nodig hebt! Met Kerberos Cloud kan je op een zeer eenvoudige manier één of meerdere Kerberos.io installaties opvolgen met gebruik van slechts één interface, die er identiek uitziet als je lokale Kerberos.io installaties. Dus niets nieuw, we hebben gewoon enkele handig features toegevoegd:',
 
 		'cloudReviewActivity' => 'Bekijk je activiteit van overal ter wereld.',
 
@@ -45,7 +45,7 @@ return array(
 
 		'cloudOverview' => 'Een eenvoudig overview om al je installaties te bekijken.',
 
-		'cloudRegister' => 'Om te starten met Kerberos.cloud maak je een account aan op <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, en schrijf je jezelf in voor een plan op maat.',
+		'cloudRegister' => 'Om te starten met Kerberos Cloud maak je een account aan op <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, en schrijf je jezelf in voor een plan op maat.',
 
 	'username' => 'gebruikersnaam',
 

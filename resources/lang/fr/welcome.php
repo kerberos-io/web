@@ -35,7 +35,7 @@ return array(
 
 	'cloudStorage' => 'Stockage dans le cloud',
 
-	'cloud1' => '<b>Kerberos.cloud</b> permet de profiter de plusieurs instances de Kerberos et de recevoir des notifications en temps réél. Une interface unique (identique à celle de chaque instance) permet de centraliser toutes les informations.',
+	'cloud1' => '<b>Kerberos Cloud</b> permet de profiter de plusieurs instances de Kerberos et de recevoir des notifications en temps réél. Une interface unique (identique à celle de chaque instance) permet de centraliser toutes les informations.',
 
 	'cloudReviewActivity' => 'Controlez votre activité depuis n\'importe où dans le monde.',
 

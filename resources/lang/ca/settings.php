@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Preferncies',
 
-	'purchase' => 'Accediu a la video vigia�ncia des de qualsevoll lloc del mon amb <b>Kerberos.cloud</b>, <u>Proveu-ho</u> per noms 1,99€/mes!',
+	'purchase' => 'Accediu a la video vigia�ncia des de qualsevoll lloc del mon amb <b>Kerberos Cloud</b>, <u>Proveu-ho</u> per noms 1,99€/mes!',
 
 	'basic' => 'Basic',
 
@@ -57,7 +57,7 @@ return array(
 
 	'storage' => 'Emmagatzemament',
 
-	'storageInfo' => 'Feu servir Kerberos.cloud per a monitoritzar diverses sessions de Kerberos.io des de qualsevol lloc del m�n.',
+	'storageInfo' => 'Feu servir Kerberos Cloud per a monitoritzar diverses sessions de Kerberos.io des de qualsevol lloc del m�n.',
 
 	'dontForget' => 'Premeu validar per a confirmar la configuracio.',
 

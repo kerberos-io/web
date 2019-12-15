@@ -35,7 +35,7 @@ return array(
 
 	'cloudStorage' => 'Cloud storage',
 
-	'cloud1' => 'If you will install multiple Kerberos.io instances, and want to receive real-time notifications, <b>Kerberos.cloud</b> is what you need! With Kerberos.cloud you can easily monitor multiple instances with only one interface, which has exactly the same design as your local Kerberos.io instances. So nothing new, we just added a couple of useful features:',
+	'cloud1' => 'If you will install multiple Kerberos.io instances, and want to receive real-time notifications, <b>Kerberos Cloud</b> is what you need! With Kerberos Cloud you can easily monitor multiple instances with only one interface, which has exactly the same design as your local Kerberos.io instances. So nothing new, we just added a couple of useful features:',
 
 		'cloudReviewActivity' => 'Review your activity from anywhere in the world.',
 
