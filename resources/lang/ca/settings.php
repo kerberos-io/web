@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Preferncies',
 
-	'purchase' => 'Accediu a la video vigia�ncia des de qualsevoll lloc del mon amb <b>Kerberos.cloud</b>, <u>Proveu-ho</u> per noms 1,49€/mes!',
+	'purchase' => 'Accediu a la video vigia�ncia des de qualsevoll lloc del mon amb <b>Kerberos.cloud</b>, <u>Proveu-ho</u> per noms 1,99€/mes!',
 
 	'basic' => 'Basic',
 
@@ -208,7 +208,7 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io disposa de la seva propia aplicacia en el novol. Si us subscriviu a un pla podreu sincronitzar totes les vostres imatges i videos, i veure\'ls des de qualsevol lloc del m�n. En subscriure-us rebreu les credencials per posar en els camps de l\'esquerra. Despros de confirmar i actualitzar els ajustos, la vostra activitat es comencara a sincronitzar automaticament.',
 
-	'subscribeNow' => 'Subscriviu-vos ara per noms 1,49€',
+	'subscribeNow' => 'Subscriviu-vos ara per noms 1,99€',
 
   /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
 

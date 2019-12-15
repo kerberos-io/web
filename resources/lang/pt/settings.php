@@ -19,7 +19,7 @@ return array(
 
 	'general' => 'Configurações gerais',
 
-	'purchase' => 'Acompanhe a atividade de suas cameras de qualquer lugar do mundo com <b>Kerberos.cloud</b>, preço <u>inicial</u> apenas 1,49€/mês!',
+	'purchase' => 'Acompanhe a atividade de suas cameras de qualquer lugar do mundo com <b>Kerberos.cloud</b>, preço <u>inicial</u> apenas 1,99€/mês!',
 
 	'basic' => 'Básico',
 
@@ -211,7 +211,7 @@ return array(
 
 	'whatIsthisInformation' => 'O Kerberos.io vem com seu próprio aplicativo em nuvem. Ao assinar um plano, você pode sincronizar todas as suas imagens e vídeos s, e revê-lo de qualquer lugar do mundo. Uma vez inscrito, você receberá algumas credenciais que você pode preencher nos campos à esquerda. Depois de confirmar e atualizar Nas configurações, sua atividade será sincronizada automaticamente. Diverta-se!',
 
-	'subscribeNow' => 'Assine agora por apenas €1,49',
+	'subscribeNow' => 'Assine agora por apenas €1,99',
 
 	'verifyConnectivity' => 'Virifique sua conexão',
 

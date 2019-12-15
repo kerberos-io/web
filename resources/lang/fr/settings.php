@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Préférences',
 
-	'purchase' => 'Accédez à votre video-surveillance depuis n\'importe où dans le monde avec <b>Kerberos.cloud</b> ; <u>démarrez</u> pour seulement 1,49€ par mois!',
+	'purchase' => 'Accédez à votre video-surveillance depuis n\'importe où dans le monde avec <b>Kerberos.cloud</b> ; <u>démarrez</u> pour seulement 1,99€ par mois!',
 
 	'basic' => 'Simple',
 
@@ -212,7 +212,7 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io possède sa propre application dans le cloud. En souscrivant au service, vous pouvez synchroniser toutes les images et videos capturées, et les consulter de partout dans le monde. Après l\'enregistrement, vous recevrez votre informations de connexion à copier dans les champs à gauche. Après confirmation, toute l\'activité sera synchronisée automatiquement.',
 
-	'subscribeNow' => 'Enregistrez-vous maintenant pour seulement 1,49€',
+	'subscribeNow' => 'Enregistrez-vous maintenant pour seulement 1,99€',
 
   /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
 

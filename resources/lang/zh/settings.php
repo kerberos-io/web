@@ -21,7 +21,7 @@ return array(
 
 	'general' => '通用设置',
 
-	'purchase' => '通过<b>Kerberos.cloud</b>随时随地监控您的活动，<u>获得它</u> 仅需 1,49€/月!',
+	'purchase' => '通过<b>Kerberos.cloud</b>随时随地监控您的活动，<u>获得它</u> 仅需 1,99€/月!',
 
 	'basic' => '基础设置',
 
@@ -213,7 +213,7 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io带来了它自己的云应用。 通过订阅套餐， 您可同步视频与图像，并在世界各地回访。 订阅后， 您会收到一个授权信息并可填入左侧。确认并更新设置后即可同步。 尽情享用吧！',
 
-	'subscribeNow' => '现在订阅只需€1,49',
+	'subscribeNow' => '现在订阅只需€1,99',
 
   /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
 

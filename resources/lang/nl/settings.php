@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Algemene instellingen',
 
-	'purchase' => 'Bekijk je activeit overal ter wereld met <b>Kerberos.cloud</b>, Start <u>nu</u> voor slechts 1,49€/maand!',
+	'purchase' => 'Bekijk je activeit overal ter wereld met <b>Kerberos.cloud</b>, Start <u>nu</u> voor slechts 1,99€/maand!',
 
 	'basic' => 'Eenvoudig',
 
@@ -213,7 +213,7 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io heeft zijn eigen cloud applicatie. Doormiddel van een inschrijving op een plan, kan je al jouw afbeeldingen en videos synchroniseren en overal ter wereld opvolgen. Na het inschrijven zal je enkele gegevens ontvangen welke je in de velden (aan de linkerzijde) kan ingeven. Na het bevestigen van deze gegevens, zal al jouw activiteit automatisch gesynchroniseerd worden met ons platform. Veel plezier!',
 
-	'subscribeNow' => 'Schrijf nu in voor slechts €1,49',
+	'subscribeNow' => 'Schrijf nu in voor slechts €1,99',
 
   'verifyConnectivity' => 'Verifieer connectiviteit',
 

@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Impostazioni generali',
 
-	'purchase' => 'Guarda le tue attività da qualsiasi posto nel mondo con <b>Kerberos.cloud</b>. <u>Inizia</u> per soli 1,49€/mese!',
+	'purchase' => 'Guarda le tue attività da qualsiasi posto nel mondo con <b>Kerberos.cloud</b>. <u>Inizia</u> per soli 1,99€/mese!',
 
 	'basic' => 'Base',
 
@@ -212,7 +212,7 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io ha una propria applicazione cloud. Sottoscrivendo un piano di abbonamento puoi sincronizzare tutte le immagini e filmati e rivederli da ovunque nel mondo. Una volta abbonato, riceverai delle credenziali che puoi inserire nei campi qui a sinistra. Dopo la conferma ed aver aggiornato la configurazione, le tue attività saranno sincronizzate automaticamente. Divertiti! ',
 
-	'subscribeNow' => 'Abbonati ora a soli €1,49',
+	'subscribeNow' => 'Abbonati ora a soli €1,99',
 
   /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
 

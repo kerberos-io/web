@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Allgemeine Einstellungen',
 
-	'purchase' => 'Schau deine Aktivitäten von überall auf der Welt an mit <b>Kerberos.cloud</b>, Leg <u>los</u> für nur 1,49€/Monat!',
+	'purchase' => 'Schau deine Aktivitäten von überall auf der Welt an mit <b>Kerberos.cloud</b>, Leg <u>los</u> für nur 1,99€/Monat!',
 
 	'basic' => 'Grundlagen',
 
@@ -215,7 +215,7 @@ return array(
 
 	'whatIsthisInformation' => '',
 
-	'subscribeNow' => 'Für nur €1,49 abonnieren',
+	'subscribeNow' => 'Für nur €1,99 abonnieren',
 
   /* to translate */ 'verifyConnectivity' => 'Verify connectivity',
 
