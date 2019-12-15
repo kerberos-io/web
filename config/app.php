@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'version' => '2.5.1',
+    'version' => '2.8.0',
 
     'config' => '/etc/opt/kerberosio/config',
 
