@@ -1,18 +1,14 @@
 language: php
 php:
-- 7.1
+- 7.3
 services:
 - docker
 before_script:
-- echo "extension = fileinfo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-- echo "extension = gd.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-- echo "extension = phar.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-- echo "extension = openssl.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 - composer self-update
 - composer install --dev
 script:
 - mkdir -p build/logs
-- phpunit --coverage-clover build/logs/clover.xml
+# Disable - phpunit --coverage-clover build/logs/clover.xml
 after_script:
 - php vendor/bin/coveralls -v
 notifications:
