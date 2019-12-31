@@ -34,16 +34,6 @@
                 </div>
 
                 <div id="web-settings" class="col-lg-6">
-                    @if($kios)
-                        <div id="kios-configuration">
-                            <h2><i class="fa fa-server"></i> KiOS</h2>
-                            <div class="kios-content content">
-                                <div id="loading-image-view" class="load4" style="padding:50px 0;">
-                                    <div class="loader"></div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                     <div id="configuration">
                         <h2><i class="fa fa-eye"></i> Web</h2>
                         {{ Form::open(array('action' => 'SettingsController@updateWeb')) }}

@@ -8640,7 +8640,7 @@ div.center form#login input[type='submit'] {
 .welcome .cover-cloud {
   background-image: url('../images/welcome/step3_cloud.png');
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
   height: 200px;
   width: 100%;
   margin: 20px 0;
@@ -11165,6 +11165,9 @@ div#step {
 .progress {
   width: 100%;
   margin: 10px 0;
+}
+.kios-no-update a {
+  color: #943633;
 }
 @media only screen and (min-width: 0px) and (max-width: 767px) {
   #system,
