@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "grunt-bower-requirejs": "*",
-    "bower": "~1.2.6",
+    "bower": "~1.8.8",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-contrib-qunit": "~0.3.0",
