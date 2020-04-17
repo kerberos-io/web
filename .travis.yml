@@ -24,12 +24,6 @@ notifications:
     on_failure: always
   slack:
     secure: z2awfI0UlDI1EMxsMhvEoDXXE2KajGL75WaiZHBlN50hjOsl15pbRLierhzYauTbIxroulVPyxbF+EzzaI5K7rVWwJ25BAYUp4YNdyqcM8Y1fUoj1vd1jWh1ByOJirn+StJMpj2O1ni0OIFWcZBUBF0zXzBdjvQ1xpJF/EoYm54=
-after_success:
-- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd docker; docker login -u="$DOCKER_USERNAME"
-  -p="$DOCKER_PASSWORD"; if [ "$TRAVIS_BRANCH" == "master" ]; then docker build -t
-  web .; docker tag web kerberos/web:latest; docker push kerberos/web:latest; else
-  docker build --build-arg APP_ENV="$TRAVIS_BRANCH" -t web .; docker tag web kerberos/web:$TRAVIS_BRANCH;
-  docker push kerberos/web:$TRAVIS_BRANCH; fi fi
 env:
   global:
     secure: m9J2f2AphCP8fSMOONTWVHmyabBEAaBWgoXSN6c9dfKbNbN3OS3V2wbiB8OO7PuaVZegjRbsCGlB4dUoD1FAAYdyIero2yg3H7cvmKIAmoRsROJvACZh4I52g5iGCxxxLsXyhRet6FY3Tg+ztN71eKsBf7Eaggja0CUnfNz6Byc=
