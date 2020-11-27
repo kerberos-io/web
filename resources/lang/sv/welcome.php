@@ -33,32 +33,32 @@ return array(
 
 	'changeCredentials3' => 'By default the credentials to sign are set to username: <b>root</b> and password: <b>root</b>. Fill in the fields below to change these credentials, or leave them empty if you want to use the default credentials.',
 
-	'cloudStorage' => 'Cloud storage',
+	'cloudStorage' => 'Molnlagring',
 
-	'cloud1' => 'If you will install multiple Kerberos.io instances, and want to receive real-time notifications, <b>Kerberos Cloud</b> is what you need! With Kerberos Cloud you can easily monitor multiple instances with only one interface, which has exactly the same design as your local Kerberos.io instances. So nothing new, we just added a couple of useful features:',
+	'cloud1' => 'Om du ska installera flera instanser av Kerberos.io och du vill ha realtidsnotifikationer så är <b>Kerberos Cloud</b> vad du behöver! Med Kerberos Cloud kan du enkelt övervaka flera instanser med bara ett gränssnitt, som har exakt samma design som dina lokala Kerberos.io instanser. Så inget nytt, vi har bara lagt till några användbara funktionaliteter:',
 
-		'cloudReviewActivity' => 'Review your activity from anywhere in the world.',
+		'cloudReviewActivity' => 'Granska din aktivitet fån var som helst i världen.',
 
-		'cloudNotifications' => 'Browser- and Pushbullet notifications.',
+		'cloudNotifications' => 'Webbläsar- och Pushbullet- notifikationer.',
 
-		'cloudTimeline' => 'A timeline to see your activity at a glance.',
+		'cloudTimeline' => 'En tidslinje för att se din aktivitet med en enda blick.',
 
-		'cloudOverview' => 'Simple overview to see all your instances together.',
+		'cloudOverview' => 'Enkel översikt för att se alla dina instanser tillsammans.',
 
-		'cloudRegister' => 'To get started register an account on <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, and subscribe a plan.',
+		'cloudRegister' => 'Registrera ett konto för att komma igång med <a target="_blank" href="https://cloud.kerberos.io">cloud.kerberos.io</a>, och prenumerera på en plan.',
 
-	'username' => 'username',
+	'username' => 'användarnamn',
 
-	'enterUsername' => 'Enter a username',
+	'enterUsername' => 'Ange ett användarnamn',
 
-	'language' => 'language',
+	'language' => 'språk',
 
-	'languageInfo' => 'Is your language missing or incomplete? Contribute your language to our Github repository.',
+	'languageInfo' => 'Saknas ditt språk eller är det ofullständigt? Bidra med ditt språk på vår Githubförvaringsplats.',
 
-	'password' => 'password',
+	'password' => 'lösenord',
 
-	'choosePassword' => 'Choose a password',
+	'choosePassword' => 'Välj ett lösenord',
 
-	'confirmPassword' => 'Confirm your password',
+	'confirmPassword' => 'Bekräfta ditt lösenord',
 
 );
