@@ -71,25 +71,25 @@ return array(
 	// --------------
 	// Camera
 
-	'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
+	'fpsRaspberryInfo' => 'Antalet bildrutor som hanteras per sekund; tänk på att denna parameter också definierar antalet bildrutor per sekund på en videoinspelning.',
 
-	'width' => 'Width',
+	'width' => 'Bredd',
 
-	'height' => 'Height',
+	'height' => 'Höjd',
 
-	'widthHeightInfo' => 'The resolution of the images being captured by your camera. Make sure that this resolution is supported!',
+	'widthHeightInfo' => 'Upplösningen på bilderna som fångas av din kamera. Se till att denna upplösning stöds!',
 
-	'delay' => 'delay in seconds',
+	'delay' => 'försening i sekunder',
 
-	'delayInfo' => 'The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).',
+	'delayInfo' => 'Förseningen säger till Kerberos.io att vänta i x antal sekunder mellan två fångade bildrutor. Detta är användbart när du vill midska antalet bilder som hanteras per sekund (till exempel p.g.a. prestandaanledningar).',
 
-	'livestream' => 'live stream frames/sec',
+	'livestream' => 'live ström bildrutor/sek',
 
-	'livestreamInfo' => 'The frames per second of the live stream can be configured. Setting this option to zero, will disable the live stream.',
+	'livestreamInfo' => 'Antalet bildrutor per sekund av livesändningen kan konfigureras. Sätts detta alternativ till noll kommer liveströmmen att inaktiveras.',
 
-	'rotate' => 'Click on this image if your camera is rotated. E.g. if your camera is mounted upside down, make sure this image is also upside down.',
+	'rotate' => 'Klicka på denna bild om din kamera är roterad. T.ex. om din kamera är monterad upp och ner, se till att denna bild också är upp och ner.',
 
-	'url' => 'Enter the url of the RTSP or MJPEG stream of your IP camera.',
+	'url' => 'Ange RTSP- eller MJPEG-urlen för din IP-kamera.',
 
 	// ----------------
 	// Motion
