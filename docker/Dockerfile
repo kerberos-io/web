@@ -19,6 +19,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ###################
 # nginx site conf
 
+ENV MACHINERY_HOST machinery
+ENV MACHINERY_PORT 8889
+
 RUN rm -Rf /etc/nginx/conf.d/* && rm -Rf /etc/nginx/sites-available/default && mkdir -p /etc/nginx/ssl
 ADD ./web.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
@@ -68,4 +71,4 @@ RUN sed -i 's/"GPCS"/"EGPCS"/g' /etc/php/7.0/fpm/php.ini
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./run.sh /run.sh
 RUN chmod 755 /run.sh
-CMD ["/bin/bash", "/run.sh"]
+ENTRYPOINT ["/bin/bash", "/run.sh"]
