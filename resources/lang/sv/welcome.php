@@ -11,27 +11,27 @@ return array(
 	|
 	*/	
 
-	'settingThingsUp' => 'Setting things up..',
+	'settingThingsUp' => 'Fixar lite grejer...',
 
-	'welcome' => 'Welcome!',
+	'welcome' => 'Välkommen!',
 
-	'introduction1' => 'Hey there, welcome to the family! Kerberos.io is used by a myriad of users, and is used for many different use cases; from surveillance to analytics. Kerberos.io <b>supports both basic users</b>, to keep an eye on their pets and/or property, <b>and big to small enterprises</b>! Are you planning to do some rocket science with Kerberos.io? Please let us know..',
+	'introduction1' => 'Hejsan, välkommen till familjen! Kerberos.io används av en mängd olika användare och används i flera olika syften; från övervakning till analysering. Kerberos.io <b>stödjer både grundläggande användare</b>, för att hålla ett öga på deras husdjur och/eller ägodelar, <b>och små till stora företag</b>! Planerar du att göra något storslaget med Kerberos.io? Berätta det gärna för oss...',
 
-	'introduction2' => 'After you\'ve finished this short installation, you\'ll be able to setup your own security system <b>with the camera of your choice</b>. Have fun! By the way here you got some links where you can find more information about us.',
+	'introduction2' => 'Efter att du avslutat denna korta installation kommer du kunna sätta upp ditt egna säkerhetssystem <b>med en kamera som du själv väljer</b>. Ha kul! Föresten så har du här några länkar där du kan hitta mer information om oss.',
 
-	'next' => 'Next',
+	'next' => 'Nästa',
 
-	'skip' => 'Skip',
+	'skip' => 'Hoppa över',
 
-	'finish' => 'Finish',
+	'finish' => 'Avsluta',
 
-	'setupProfile' => 'Setup your profile', 
+	'setupProfile' => 'Skapa din profil', 
 
-	'changeCredentials1' => 'The Kerberos.io web interface is <b>secured with a username and password</b> to protect your images and videos for others. We take security very seriously!',
+	'changeCredentials1' => 'Gränssnittet för Kerberos.io webbklient är <b>säkrad med ett användarnamn och lösenord</b> för att skydda dina bilder och videos från andra. Vi tar säkerhet på stort allvar!',
 
-	'changeCredentials2' => 'After signed-in successfully, you\'ll be able to <b>configure</b> Kerberos.io and <b>review</b> all your events.',
+	'changeCredentials2' => 'Efter framgångsrik inloggning så kommer du kunna <b>konfigurera</b> Kerberos.io och <b>titta på</b> alla dina händelser.',
 
-	'changeCredentials3' => 'By default the credentials to sign are set to username: <b>root</b> and password: <b>root</b>. Fill in the fields below to change these credentials, or leave them empty if you want to use the default credentials.',
+	'changeCredentials3' => 'Som standard är inloggningsuppgifterna för att skriva under satta till användarnamn: <b>root</b> och lösenord: <b>root</b>. Fyll i nederstående fält för att ändra dessa inloggningsuppgifter, eller lämna fälten tomma om du vill använda standardinloggningsuppgifterna.',
 
 	'cloudStorage' => 'Molnlagring',
 
