@@ -13,90 +13,90 @@ return array(
 
 	'system' => 'System',
 
-	'diskAlmostFull' => 'Hey, your disk is almost full. Please remove some images..',
+	'diskAlmostFull' => 'Du, din hårddisk är nästan full. Vänligen ta bort några bilder...',
 
-	'board' => 'Board',
+	'board' => 'Tavla',
 
-	'model' => 'Model',
+	'model' => 'Modell',
 
 	'os' => 'OS',
 
-	'osspecifications' => 'OS specifications',
+	'osspecifications' => 'OS specifikationer',
 
-	'warning-docker' => 'Don\'t know I\'m in a separate Docker container..',
+	'warning-docker' => 'Vet inte att jag är i en separat dockerkontainer...',
 
-	'statistics' => 'Statistics',
+	'statistics' => 'Statistik',
 
-	'log' => 'Log',
+	'log' => 'Loggga',
 
-	'news' => 'News',
+	'news' => 'Nyheter',
 
-	'systemIsOnlineFor' => 'System is online for',
+	'systemIsOnlineFor' => 'Systemet har varit online',
 
-	'kernel' => 'Kernel',
+	'kernel' => 'Kärna',
 
-	'hostname' => 'Hostname',
+	'hostname' => 'Domänaddress',
 
-	'architecture' => 'Architecture',
+	'architecture' => 'Arkitektur',
 
-	'thisMachine' => 'This machine has',
+	'thisMachine' => 'Denna maskin har',
 
-	'cpuRunning' => 'CPU\'s running with an average load of',
+	'cpuRunning' => 'Processorn har en medelbelastning på',
 
-	'diskSpecs' => 'Disk specifications',
+	'diskSpecs' => 'Hårddiskspecifikationer',
 
-	'thereAre' => 'There are',
+	'thereAre' => 'Det finns',
 
-	'harddisksAvailable' => 'hard disks available on this machine',
+	'harddisksAvailable' => 'hårddiskar tillgängliga på denna maskin',
 
-	'networkSpecs' => 'Network specifications',
+	'networkSpecs' => 'Nätverksspecifikationer',
 
-		'device' => 'Device',
+		'device' => 'Enhet',
 
-		'recieved' => 'Received',
+		'recieved' => 'Mottaget',
 
-		'sent' => 'Sent',
+		'sent' => 'Skickat',
 
-	'twoServicesRunning' => 'needs two services: the web and the machinery',
+	'twoServicesRunning' => 'behöver två tjänster: webben och maskinen',
 
-	'versions' => 'Versions',
+	'versions' => 'Versioner',
 
-	'numberOfImages' => '# of images',
+	'numberOfImages' => '# bilder',
 
-	'numberOfDays' => '# of days',
+	'numberOfDays' => '# dagar',
 
-	'days' => 'Days',
+	'days' => 'Dagar',
 
-	'downloadSystemFiles' => 'Download system files',
+	'downloadSystemFiles' => 'Ladda ner systemfiler',
 
-	'downloadImages' => 'Download images',
+	'downloadImages' => 'Ladda ner bilder',
 
-	'removeImages' => 'Remove images',
+	'removeImages' => 'Ta bort bilder',
 
-	'shutdown' => 'Shutdown',
+	'shutdown' => 'Stäng av',
 
-	'reboot' => 'Reboot',
+	'reboot' => 'Starta om',
 
-	'release' => 'Release',
+	'release' => 'Släppa',
 
-	'publishedAt' => 'Published at',
+	'publishedAt' => 'Publiserad',
 
-	'install' => 'Install',
+	'install' => 'installera',
 
-	'downloading' => 'Downloading',
+	'downloading' => 'Laddar ner',
 
-	'unzipping' => 'Unzipping',
+	'unzipping' => 'Packar upp',
 
-	'unpacking' => 'Unpacking',
+	'unpacking' => 'Packar upp',
 
-	'transferring' => 'Transferring',
+	'transferring' => 'Överför',
 
-	'rebooting' => 'System is rebooting',
+	'rebooting' => 'Systemet startar om',
 
-	'shuttingdown' => 'System is shutting down',
+	'shuttingdown' => 'Systemet stänger av',
 
-	'newVersion' => 'Good news, a new release of KiOS is available!',
+	'newVersion' => 'Goda nyheter, en ny version av KiOS är tillgänglig!',
 
-	'disabled' => 'You\'ve disabled the system, this means that no images or videos will be saved to disk!'
+	'disabled' => 'Du har stängt av systemet, detta betyder att inga bilder eller videos kommer att sparas till hårddisken!'
 
 );
