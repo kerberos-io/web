@@ -94,146 +94,146 @@ return array(
 	// ----------------
 	// Motion
 
-	'image' => 'Image',
+	'image' => 'Bild',
 
 	'video' => 'Video',
 
-	'step1' => 'Step 1. Select a region',
+	'step1' => 'Steg 1. Välj en region',
 
-	'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
+	'step1Info' => 'Flytta punkterna för att rita regionen som är intressant. Dubbelklicka på en punkt för att ta bort den, och/eller på den vita punkten för att lägga till fler punkter.',
 
-	'step2' => 'Step 2. Configure parameters',
+	'step2' => 'Steg 2. Konfigurera parametrar',
 
-	'step2Info' => 'By changing the configuration below you can make the motion detection more or less sensitive.',
+	'step2Info' => 'Genom att ändra konfigurationen nedan kan du göra rörelsedetekteringen mer eller mindre känslig.',
 
-	'step3' => 'Step 3. Select one or more outputs',
+	'step3' => 'Steg 3. Välj en eller flera utmatningar',
 
-	'step3Info' => 'Once motion is detected you can execute (asynchronous) one or more outputs.',
+	'step3Info' => 'När rörelse upptäcks kan du exekvera (asynkront) en eller flera utmatningar.',
 
-	'sensitivity' => 'sensitivity',
+	'sensitivity' => 'känslighet',
 
-	'sensitivityInfo' => 'Increasing this slider will make Kerberos.io more sensitive for motion. Decreasing will make it less sensitive for motion.',
+	'sensitivityInfo' => 'Genom att öka detta skjutreglage blir Kerberos.io mer känsligt för rörelse. mindska för att minimera känsligheten för rörelse.',
 
-	'numberOfDetections' => 'number of detections before valid',
+	'numberOfDetections' => 'antal detekteringar innan giltig',
 
-	'numberOfDetectionsInfo' => 'This number represents the number of detections in a row before Kerberos.io will trigger a valid event. By increasing this value, you can eliminate false-positives: e.g. lightning, clouds, etc.',
+	'numberOfDetectionsInfo' => 'Detta nummer representerar det antal detekteringar i följd som krävs för att Kerberos.io ska aktivera en giltig händelse. Genom att öka detta värde så kan du minimera falska positiva: t.ex. blixtar, moln, mm.',
 
 		// ------------------
 		// Timestamp - Colors
 
-		'noTimestamp' => 'no timestamp',
+		'noTimestamp' => 'ingen tidsstämpel',
 
-		'white' => 'white',
+		'white' => 'vit',
 
-		'black' => 'black',
+		'black' => 'svart',
 
-		'red' => 'red',
+		'red' => 'röd',
 
-		'green' => 'green',
+		'green' => 'grön',
 
-		'blue' => 'blue',
+		'blue' => 'blå',
 
-	'drawTimestamp' => 'draw timestamp',
+	'drawTimestamp' => 'rita tidsstämpel',
 
-	'drawTimestampInfo' => 'When an image is saved to disk, you can draw the current date and time on the image.',
+	'drawTimestampInfo' => 'När en bild sparas till hårddisken så ritas datum och tid på bilden.',
 
-	'drawTimestampInfoVideo' => 'When a video is saved to disk, you can draw the current date and time on the video.',
+	'drawTimestampInfoVideo' => 'När en video sparas till hårddisken så ritas datum och tid på videon.',
 
-	'privacy' => 'privacy',
+	'privacy' => 'integritet',
 
-	'privacyInfo' => 'By enabling this option, only the selected region of step 1 will be visible. All pixels outside the region are made black.',
+	'privacyInfo' => 'Genom att aktivera detta alternativ så blir allt utom den valda regionen från steg 1 svart.',
 
-	'fps' => 'frames per second',
+	'fps' => 'bilder per sekund',
 
-	'fpsInfo' => 'The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).',
+	'fpsInfo' => 'Antal bilder per sekund som skrivs till videofilen; tänk på att Raspberry Pi kan enbart hantera en begränsad mängd av bilder per sekund (t.ex. 7 bilder per sekund).',
 
-	'secondsRecord' => 'seconds to record',
+	'secondsRecord' => 'antal sekunder att spela in',
 
-	'secondsRecordInfo' => 'The number of seconds that will be recorded after motion was detected.',
+	'secondsRecordInfo' => 'Antalet sekunder som kommer spelas in efter att rörelse upptäcktes.',
 
 	'webhookUrl' => 'url',
 
-	'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
+	'webhookUrlInfo' => 'Addressen som en POST kommer att skickas till med ett JSON objekt.',
 
-	'scriptPath' => 'path',
+	'scriptPath' => 'sökväg',
 
-	'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
+	'scriptPathInfo' => 'Sökvägen till ett bash-skript som kommer köras. Ett JSON-objekt skickas som parameter.',
 
-	'gpioPin' => 'pin',
+	'gpioPin' => 'stift',
 
-	'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
+	'gpioPinInfo' => 'Ange stiftnummret som en puls kommer att skickas på.',
 
 	'gpioPeriod' => 'period',
 
-	'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
+	'gpioPeriodInfo' => 'Antalet mikrosekunder som pulsen kommer vara.',
 
-	'hardwareEncodingEnabled' => 'Your capture device supports on board hardware encoding, that\'s why you can\'t choose additional parameters (e.g. timestamping).
-	Also the video generated will have the same specifications as the capture device you\'ve chosen (e.g. FPS, sharpness, etc).',
+	'hardwareEncodingEnabled' => 'Din fångstenhet stödjer chiffrering på hårdvaran, därför kan du inte välja fler parametrar (t.ex. sätta tidsstämplar).
+	Videon som genereras kommer också att ha samma specifikationer som fångstenheten du valt (t.ex. bilder per sekund, skärpa, mm).',
 
-  'secure' => 'secure',
+  'secure' => 'säker',
 
-	'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
+	'secureInfo' => 'Aktivera SSL/TLS. CA certifikat bör placeras i mappen /etc/ssl/certs/ .',
 
-  'verifycn' => 'verify',
+  'verifycn' => 'verifiera',
 
-	'verifycnInfo' => 'Verify certificate CN (Common Name)',
+	'verifycnInfo' => 'Verifiera certifikatets CN (Vanligt Namn)',
 
   'mqttServer' => 'server',
 
-  'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
+  'mqttServerInfo' =>  'MQTT-mäklartjänstens IP-adress.',
 
   'mqttPort' => 'port',
 
-  'mqttPortInfo' =>  'Port number of the MQTT broker service.',
+  'mqttPortInfo' =>  'MQTT-mäklartjänstens portnummer.',
 
-  'mqttTopic' => 'topic',
+  'mqttTopic' => 'ämne',
 
-  'mqttTopicInfo' =>  'The topic name to which MQTT messages are sent.',
+  'mqttTopicInfo' =>  'Ämnesnamnet som MQTT-meddelanden skickas.',
 
-  'mqttClientId' =>  'client_id',
+  'mqttClientId' =>  'klient_id',
 
-  'mqttClientIdInfo' =>  'The ClientId which is used to connect to a MQTT broker.',
+  'mqttClientIdInfo' =>  'Klient id:t som används för att ansluta till en MQTT-mäklare.',
 
-  'mqttUsername' => 'username',
+  'mqttUsername' => 'användarnamn',
 
-  'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
+  'mqttUsernameInfo' =>  'Användarnamnet som används för att autentisera med MQTT-mäklaren.',
 
-  'mqttPassword' => 'password',
+  'mqttPassword' => 'lösenord',
 
-  'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
+  'mqttPasswordInfo' =>  'Lösenordet som används för att autentisera med MQTT-mäklaren.',
 
-  'throttler' => 'throttle',
+  'throttler' => 'begränsning',
 
-  'throttlerInfo' =>  'Use to prevent spamming. Eg. only execute once within 5 seconds.',
+  'throttlerInfo' =>  'Använd för att begränsa överdrivet många meddelanden. T.ex Kör enbart en gång var femte sekund.',
 
 	// --------------
 	// Cloud
 
-	'whatIsThis' => 'What is this',
+	'whatIsThis' => 'Vad är det här',
 
-	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan, you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
+	'whatIsthisInformation' => 'Kerberos.io har sin egen molntjänst. Genom att prenumerera på en plan så kan du synkronisera alla dina bilder och videos och titta på dem från var som helst i världen. När du prenumererar så kommer du få login-information som du kan ange i fälten till vänster. Efter att du bekräftat och uppdaterat inställningarna så kommer dina aktiviteter att sykroniseras automatiskt. Ha kul!',
 
-	'subscribeNow' => 'Subscribe now for only €1,99',
+	'subscribeNow' => 'Prenumerera nu för endast €1,99',
 
-  'verifyConnectivity' => 'Verify connectivity',
+  'verifyConnectivity' => 'Verifiera anslutning',
 
-  'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
+  'cloudHurray' => 'Hurra, anslutningen lyckades. Dina medier kommer nu synkroniseras med molnet automatiskt.',
 
-  'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
+  'cloudWentWrong' => 'Något gick fel, verifiera att du angett dina inloggningsuppgifter korrekt.',
 
-  'cloudWentWrongMoreHelp' => 'Click here for more support.',
+  'cloudWentWrongMoreHelp' => 'Klicka här för mer hjälp.',
 
-  'checkConnection' => 'Check connection',
+  'checkConnection' => 'Kolla uppkopplingen',
 
 	// ---------------
 	// KiOS settings
 
-	'forceNetwork' => 'Force network mode',
+	'forceNetwork' => 'Tvinga nätverksläge',
 
-	'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
+	'forceNetworkInfo' => 'När detta är aktiverat så kommer operativsystemet att starta om ifall det inte kan ansluta till Internet. Detta krävs om du använder molntjänsten men har ett opålitligt nätverk.',
 
-	'autoRemoval' => 'Auto removal media',
+	'autoRemoval' => 'Ta bort media automatiskt',
 
-	'autoRemovalInfo' => 'When enabled images are automatically removed when disk is almost full.'
+	'autoRemovalInfo' => 'När aktiv så tas bilder bort automatiskt om hårddisken nästan är full.'
 
 );
