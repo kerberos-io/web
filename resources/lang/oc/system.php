@@ -11,92 +11,92 @@ return array(
 	|
 	*/
 
-	'system' => 'System',
+	'system' => 'Sistèma',
 
-	'diskAlmostFull' => 'Hey, your disk is almost full. Please remove some images..',
+	'diskAlmostFull' => 'Adiu, lo disc es gaireben plen. Volgatz suprimir d’unes imatges..',
 
 	'board' => 'Board',
 
-	'model' => 'Model',
+	'model' => 'Modèl',
 
 	'os' => 'OS',
 
-	'osspecifications' => 'OS specifications',
+	'osspecifications' => 'Caracteristicas de l’OS',
 
-	'warning-docker' => 'Don\'t know I\'m in a separate Docker container..',
+	'warning-docker' => 'Impossible de determinar lo contenidor Docker..',
 
-	'statistics' => 'Statistics',
+	'statistics' => 'Estatisticas',
 
-	'log' => 'Log',
+	'log' => 'Audit',
 
-	'news' => 'News',
+	'news' => 'Novetats',
 
-	'systemIsOnlineFor' => 'System is online for',
+	'systemIsOnlineFor' => 'Sistèma en linha',
 
 	'kernel' => 'Kernel',
 
 	'hostname' => 'Hostname',
 
-	'architecture' => 'Architecture',
+	'architecture' => 'Arquitectura',
 
-	'thisMachine' => 'This machine has',
+	'thisMachine' => 'Aquesta maquina a',
 
-	'cpuRunning' => 'CPU\'s running with an average load of',
+	'cpuRunning' => 'Carga CPU mejana',
 
-	'diskSpecs' => 'Disk specifications',
+	'diskSpecs' => 'Caracteristicas del disc',
 
-	'thereAre' => 'There are',
+	'thereAre' => 'I a',
 
-	'harddisksAvailable' => 'hard disks available on this machine',
+	'harddisksAvailable' => 'disques durs disponibles sus aquesta maquina',
 
-	'networkSpecs' => 'Network specifications',
+	'networkSpecs' => 'Caracteristicas ret',
 
-		'device' => 'Device',
+		'device' => 'Periferic',
 
-		'recieved' => 'Received',
+		'recieved' => 'Recebut',
 
-		'sent' => 'Sent',
+		'sent' => 'Enviat',
 
-	'twoServicesRunning' => 'needs two services: the web and the machinery',
+	'twoServicesRunning' => 'requerís dos servicis : lo web e la machinery',
 
 	'versions' => 'Versions',
 
-	'numberOfImages' => '# of images',
+	'numberOfImages' => '# d’imatges',
 
-	'numberOfDays' => '# of days',
+	'numberOfDays' => '# de jorns',
 
-	'days' => 'Days',
+	'days' => 'Jorns',
 
-	'downloadSystemFiles' => 'Download system files',
+	'downloadSystemFiles' => 'Telecargar los fichièrs sistèma',
 
-	'downloadImages' => 'Download images',
+	'downloadImages' => 'Telecargar los imatges',
 
-	'removeImages' => 'Remove images',
+	'removeImages' => 'Suprimir los imatges',
 
-	'shutdown' => 'Shutdown',
+	'shutdown' => 'Atudar',
 
-	'reboot' => 'Reboot',
+	'reboot' => 'Reaviar',
 
-	'release' => 'Release',
+	'release' => 'Version',
 
-	'publishedAt' => 'Published at',
+	'publishedAt' => 'Publicada lo',
 
-	'install' => 'Install',
+	'install' => 'Installar',
 
-	'downloading' => 'Downloading',
+	'downloading' => 'Telecargament',
 
-	'unzipping' => 'Unzipping',
+	'unzipping' => 'Decompression',
 
-	'unpacking' => 'Unpacking',
+	'unpacking' => 'Despaquetatge',
 
-	'transferring' => 'Transferring',
+	'transferring' => 'Transferiment',
 
-	'rebooting' => 'System is rebooting',
+	'rebooting' => 'Lo sistèma es a reaviar',
 
-	'shuttingdown' => 'System is shutting down',
+	'shuttingdown' => 'Lo sistèma es a s’atudar',
 
-	'newVersion' => 'Good news, a new release of KiOS is available!',
+	'newVersion' => 'Bona novèla, i a una version de KiOS de disponibla !',
 
-	'disabled' => 'You\'ve disabled the system, this means that no images or videos will be saved to disk!'
+	'disabled' => 'Avètz desactivat lo sistèma, valent a dire que cap d’imatge o vidèo serà pas enregistrada al disc !'
 
 );
