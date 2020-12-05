@@ -11,23 +11,23 @@ return array(
 	|
 	*/
 
-	'dashboard' => 'Dashboard',
+	'dashboard' => 'Tablèu de bòrd',
 
-	'system' => 'System',
+	'system' => 'Sistèma',
 
-	'settings' => 'Settings',
+	'settings' => 'Paramètres',
 
-	'configuration' => 'Configuration',
+	'configuration' => 'Configuracion',
 
 	'cloud' => 'Cloud',
     
-	'on' => 'On',
+	'on' => 'Activat',
     
-	'off' => 'Off',
+	'off' => 'Desactivat',
     
-	'logout' => 'Logout',
+	'logout' => 'Desconnexion',
 
-	'update-profile' => 'Update profile',
+	'update-profile' => 'Actualizar lo perfil',
     
     /*
 	|------------------------
