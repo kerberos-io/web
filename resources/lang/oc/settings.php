@@ -31,41 +31,41 @@ return array(
 
 	'nameInfo' => 'A unique name for your camera is required, if you will run multiple Kerberos.io instances.',
 
-	'timezone' => 'Timezone',
+	'timezone' => 'Fus orari',
 
 	'timezoneInfo' => 'The timezone is used to convert timestamps to your local time. It\'s used in both the machinery and web interface.',
 
 	'camera' => 'Camèra',
 
-	'usbcamera' => 'USB camera',
+	'usbcamera' => 'Camèra USB',
 
 	'usbcameraInfo' => 'Select this option, if you want to use an USB camera.',
 
-	'rpicamera' => 'RPi camera',
+	'rpicamera' => 'Camèra RPi',
 
 	'rpicameraInfo' => 'If you run Kerberos.io on a Raspberry Pi, you can select this option, if you want to use the Raspberry Pi camera module (v1 or v2).',
 
-	'ipcamera' => 'IP camera',
+	'ipcamera' => 'Camèra IP',
 
 	'ipcameraInfo' => 'Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.',
 
-	'surveillanceMode' => 'Surveillance',
+	'surveillanceMode' => 'Susvelhança',
 
 	'motion' => 'Motion',
 
 	'motionInfo' => 'A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific region in the view.',
 
-	'storage' => 'Storage',
+	'storage' => 'Emmagazinatge',
 
 	'storageInfo' => 'Use Kerberos Cloud to follow up multiple Kerberos.io instances from anywhere in the world.',
 
-	'dontForget' => 'Press update to confirm your configuration.',
+	'dontForget' => 'Quichatz Actualizar per confirmar la configuracion.',
 
-	'update' => 'Update',
+	'update' => 'Actualizar',
 
 	'cancel' => 'Anullar',
 
-	'confirmAndSelect' => 'Confirm and select',
+	'confirmAndSelect' => 'Confirmar e causir',
 
 
 	// --------------
@@ -73,13 +73,13 @@ return array(
 
 	'fpsRaspberryInfo' => 'The number of frames processed per second; note that this parameter also defines the number of frames per second of a video recording.',
 
-	'width' => 'Width',
+	'width' => 'Largor',
 
-	'height' => 'Height',
+	'height' => 'Nautor',
 
 	'widthHeightInfo' => 'The resolution of the images being captured by your camera. Make sure that this resolution is supported!',
 
-	'delay' => 'delay in seconds',
+	'delay' => 'relambi en segondas',
 
 	'delayInfo' => 'The delay time will tell Kerberos.io to wait for x amount of seconds, between two frame captures. This is helpful when you would like to reduce the number of images being processed per second (e.g. for performance reasons).',
 
@@ -94,23 +94,23 @@ return array(
 	// ----------------
 	// Motion
 
-	'image' => 'Image',
+	'image' => 'Imatge',
 
-	'video' => 'Video',
+	'video' => 'Vidèo',
 
-	'step1' => 'Step 1. Select a region',
+	'step1' => 'Etapa 1. Causir una region',
 
 	'step1Info' => 'Move the points to draw the region of interest. Double click on a point to remove it, and/or on the white point to add more points.',
 
-	'step2' => 'Step 2. Configure parameters',
+	'step2' => 'Etape 2. Configurar los paramètres',
 
 	'step2Info' => 'By changing the configuration below you can make the motion detection more or less sensitive.',
 
-	'step3' => 'Step 3. Select one or more outputs',
+	'step3' => 'Etapa 3. Causir una o mai sortidas',
 
 	'step3Info' => 'Once motion is detected you can execute (asynchronous) one or more outputs.',
 
-	'sensitivity' => 'sensitivity',
+	'sensitivity' => 'sensitivitat',
 
 	'sensitivityInfo' => 'Increasing this slider will make Kerberos.io more sensitive for motion. Decreasing will make it less sensitive for motion.',
 
@@ -121,17 +121,17 @@ return array(
 		// ------------------
 		// Timestamp - Colors
 
-		'noTimestamp' => 'no timestamp',
+		'noTimestamp' => 'cap d’orodatge',
 
-		'white' => 'white',
+		'white' => 'blanc',
 
-		'black' => 'black',
+		'black' => 'negre',
 
-		'red' => 'red',
+		'red' => 'roge',
 
-		'green' => 'green',
+		'green' => 'verd',
 
-		'blue' => 'blue',
+		'blue' => 'blau',
 
 	'drawTimestamp' => 'draw timestamp',
 
@@ -139,11 +139,11 @@ return array(
 
 	'drawTimestampInfoVideo' => 'When a video is saved to disk, you can draw the current date and time on the video.',
 
-	'privacy' => 'privacy',
+	'privacy' => 'confidencialitat',
 
 	'privacyInfo' => 'By enabling this option, only the selected region of step 1 will be visible. All pixels outside the region are made black.',
 
-	'fps' => 'frames per second',
+	'fps' => 'frames per segonda',
 
 	'fpsInfo' => 'The frames per second written to the video file; be aware that a Raspberry Pi can only process a limited number of FPS (e.g. 7 FPS).',
 
@@ -155,7 +155,7 @@ return array(
 
 	'webhookUrlInfo' => 'The url to which a POST will be sent with a JSON object.',
 
-	'scriptPath' => 'path',
+	'scriptPath' => 'camin',
 
 	'scriptPathInfo' => 'The path to a bash script that will be executed. A JSON object is send as a parameter.',
 
@@ -163,7 +163,7 @@ return array(
 
 	'gpioPinInfo' => 'Define the pin number on which a pulse will be send.',
 
-	'gpioPeriod' => 'period',
+	'gpioPeriod' => 'periòde',
 
 	'gpioPeriodInfo' => 'The number of microseconds the pulse will last.',
 
@@ -172,17 +172,17 @@ return array(
 
   'secure' => 'secure',
 
-	'secureInfo' => 'Enable SSL/TLS. CA certificate should be in /etc/ssl/certs/ directory.',
+	'secureInfo' => 'Activar SSL/TLS. Lo certificat CA deu se trobar dins lo repertòri /etc/ssl/certs/.',
 
-  'verifycn' => 'verify',
+  'verifycn' => 'verificar',
 
 	'verifycnInfo' => 'Verify certificate CN (Common Name)',
 
-  'mqttServer' => 'server',
+  'mqttServer' => 'servidor',
 
   'mqttServerInfo' =>  'The IP address of the MQTT broker service.',
 
-  'mqttPort' => 'port',
+  'mqttPort' => 'pòrt',
 
   'mqttPortInfo' =>  'Port number of the MQTT broker service.',
 
@@ -194,11 +194,11 @@ return array(
 
   'mqttClientIdInfo' =>  'The ClientId which is used to connect to a MQTT broker.',
 
-  'mqttUsername' => 'username',
+  'mqttUsername' => 'nom d’utilizaire',
 
   'mqttUsernameInfo' =>  'The username to authenticate with the MQTT broker.',
 
-  'mqttPassword' => 'password',
+  'mqttPassword' => 'senhal',
 
   'mqttPasswordInfo' =>  'The password to authenticate with the MQTT broker.',
 
@@ -209,13 +209,13 @@ return array(
 	// --------------
 	// Cloud
 
-	'whatIsThis' => 'What is this',
+	'whatIsThis' => 'Qu’es aquò',
 
 	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan, you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
 
 	'subscribeNow' => 'Subscribe now for only €1,99',
 
-  'verifyConnectivity' => 'Verify connectivity',
+  'verifyConnectivity' => 'Verificar la connectivitat',
 
   'cloudHurray' => 'Hurray, connection was succesful. Your media will now be synced automatically to your cloud account.',
 
@@ -223,12 +223,12 @@ return array(
 
   'cloudWentWrongMoreHelp' => 'Click here for more support.',
 
-  'checkConnection' => 'Check connection',
+  'checkConnection' => 'Verificar la connexion',
 
 	// ---------------
 	// KiOS settings
 
-	'forceNetwork' => 'Force network mode',
+	'forceNetwork' => 'Forçar lo mòde ret',
 
 	'forceNetworkInfo' => 'When enabled the OS will reboot if it can\'t connect to the internet. This is necessary if you are using the cloud application, but have an unreliable network.',
 
