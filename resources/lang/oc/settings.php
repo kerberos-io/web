@@ -33,13 +33,13 @@ return array(
 
 	'timezone' => 'Fus orari',
 
-	'timezoneInfo' => 'The timezone is used to convert timestamps to your local time. It\'s used in both the machinery and web interface.',
+	'timezoneInfo' => 'Lo fus orari es emplegat per convertir los oradatages dins vòstra ora locala. Es utilizat tan per las maquinas e l’interfàcia web.',
 
 	'camera' => 'Camèra',
 
 	'usbcamera' => 'Camèra USB',
 
-	'usbcameraInfo' => 'Select this option, if you want to use an USB camera.',
+	'usbcameraInfo' => 'Causissètz aquesta opcion se volètz utilizar una camèra USB.',
 
 	'rpicamera' => 'Camèra RPi',
 
@@ -221,7 +221,7 @@ return array(
 
   'cloudWentWrong' => 'Something went wrong, verify you\'ve entered your credentials correctly.',
 
-  'cloudWentWrongMoreHelp' => 'Click here for more support.',
+  'cloudWentWrongMoreHelp' => 'Clicatz aquí per mai d’assistencia.',
 
   'checkConnection' => 'Verificar la connexion',
 
