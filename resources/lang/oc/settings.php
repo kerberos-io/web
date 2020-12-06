@@ -21,7 +21,7 @@ return array(
 
 	'general' => 'Paramètres general',
 
-	'purchase' => 'Watch your activity from anywhere in the world with <b>Kerberos Cloud</b>, Get <u>started</u> for only 1,99€/month!',
+	'purchase' => 'Agachatz vòstra activitat de partir pel monde amb <b>Kerberos Cloud</b>, Podètz <u>començar</u> per sonque 1,99€/mes !',
 
 	'basic' => 'Basic',
 
@@ -29,7 +29,7 @@ return array(
 
 	'name' => 'Nom',
 
-	'nameInfo' => 'A unique name for your camera is required, if you will run multiple Kerberos.io instances.',
+	'nameInfo' => 'Un nom unic per la camèra es requerit, s’avètz mantuna instància Kerberos.io',
 
 	'timezone' => 'Fus orari',
 
@@ -43,21 +43,21 @@ return array(
 
 	'rpicamera' => 'Camèra RPi',
 
-	'rpicameraInfo' => 'If you run Kerberos.io on a Raspberry Pi, you can select this option, if you want to use the Raspberry Pi camera module (v1 or v2).',
+	'rpicameraInfo' => 'S’utilizatz Kerberos.io sus un Raspberry Pi, causissètz aquesta opcion, se volètz utilizar lo modul camèra de Raspberry Pi (v1 or v2).',
 
 	'ipcamera' => 'Camèra IP',
 
-	'ipcameraInfo' => 'Select this option, if you want to use an IP camera which supports an RTSP or MJPEG stream.',
+	'ipcameraInfo' => 'Causissètz aquesta opcion, se volètz utilizar una camèra IP amb la presa en carga del flux vidèo RTSP o MJPEG.',
 
 	'surveillanceMode' => 'Susvelhança',
 
-	'motion' => 'Motion',
+	'motion' => 'Movement',
 
-	'motionInfo' => 'A smart motion detector, that saves snapshots or video, and/or trigger other devices by using a webhook. Setup conditions to only detect motion at a specific region in the view.',
+	'motionInfo' => 'Un detector intelligent de movements, qu’enregistra de snapshots o de videos, e/o avia d’autres aparelhs en utilizant un webhook. Condicions de configuracion per sonque detectar un movement dins una region donada de la vista.',
 
 	'storage' => 'Emmagazinatge',
 
-	'storageInfo' => 'Use Kerberos Cloud to follow up multiple Kerberos.io instances from anywhere in the world.',
+	'storageInfo' => 'Utilizatz Kerberos Cloud per seguir mantuna instància Kerberos.io  de pertot pel monde.',
 
 	'dontForget' => 'Quichatz Actualizar per confirmar la configuracion.',
 
@@ -77,7 +77,7 @@ return array(
 
 	'height' => 'Nautor',
 
-	'widthHeightInfo' => 'The resolution of the images being captured by your camera. Make sure that this resolution is supported!',
+	'widthHeightInfo' => 'La resolucion dels imatges capturats per la camèra. Asseguratz-vos que la resolucion es compatibla !',
 
 	'delay' => 'relambi en segondas',
 
@@ -213,7 +213,7 @@ return array(
 
 	'whatIsthisInformation' => 'Kerberos.io comes with its own cloud application. By subscribing to a plan, you can sync all your images and videos, and review it from anywhere in the world. Once subscribed, you\'ll receive some credentials which you can fill in the fields on the left. After confirming and updating the settings, you\'re activity will be synced automatically. Have fun!',
 
-	'subscribeNow' => 'Subscribe now for only €1,99',
+	'subscribeNow' => 'Abonatz-vos per sonque €1,99',
 
   'verifyConnectivity' => 'Verificar la connectivitat',
 
